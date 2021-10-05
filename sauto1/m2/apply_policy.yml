@@ -1,0 +1,18 @@
+---
+- name: "PLAY 1: Apply security policy"
+  hosts: "perimeter_asav"
+  tasks:
+    - name: "TASK 1: Render jinja2 template and push to devices"
+      asa_config:
+        src: "templates/policy.j2"
+        save: true
+      register: "asa_updates"
+      notify: "policy_applied"
+      changed_when: "asa_updates['updates'] is defined"
+
+  handlers:
+    - name: "HANDLER 1: Display config changes when updates exist"
+      listen: "policy_applied"
+      debug:
+        var: "asa_updates['updates']"  # or "asa_updates.updates"
+...

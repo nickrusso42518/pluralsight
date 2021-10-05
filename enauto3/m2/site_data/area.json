@@ -1,0 +1,9 @@
+{
+  "type": "area",
+  "site": {
+    "area": {
+      "name": "Maryland",
+      "parentName": "Global"
+    }
+  }
+}

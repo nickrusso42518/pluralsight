@@ -1,0 +1,45 @@
+PxGrid user nick3 created. Please approve via ISE UI
+Account state: pending
+Account state: pending
+Account state: enabled
+PxGrid user nick3 activated
+websocket opened
+>> CONNECT
+accept-version:1.2
+host:ise-pubsub-ise24
+
+
+websocket CONNECT complete
+>> SUBSCRIBE
+destination:/topic/com.cisco.ise.radius.failure
+id:0
+
+
+websocket SUBSCRIBE complete
+<< CONNECTED
+heart-beat:0,0
+version:1.2
+
+
+<< MESSAGE
+content-length:644
+destination:/topic/com.cisco.ise.radius.failure
+message-id:148
+subscription:0
+
+{"failures":[{"id":"1594756952762464","timestamp":"2020-07-14T20:43:56.269Z","failureReason":"22040 Wrong password or invalid shared secret","messageCode":5400,"userName":"badguy","serverName":"ise24","nasName":"laptop","accessService":"Default Network Access","authenticationMethod":"PAP_ASCII","authenticationProtocol":"PAP_ASCII","deviceType":"All Device Types","location":"All Locations","response":"{RadiusPacketType\u003dAccessReject; AuthenticationResult\u003dFailed; }","responseTime":4,"executionSteps":["11001","11017","11015","11117","15049","15008","22040","22002","11003"],"credentialCheck":"PAP_ASCII","policySetName":"Default"}]}
+<< MESSAGE
+content-length:644
+destination:/topic/com.cisco.ise.radius.failure
+message-id:149
+subscription:0
+
+{"failures":[{"id":"1594756952762466","timestamp":"2020-07-14T20:43:56.355Z","failureReason":"22040 Wrong password or invalid shared secret","messageCode":5400,"userName":"badguy","serverName":"ise24","nasName":"laptop","accessService":"Default Network Access","authenticationMethod":"PAP_ASCII","authenticationProtocol":"PAP_ASCII","deviceType":"All Device Types","location":"All Locations","response":"{RadiusPacketType\u003dAccessReject; AuthenticationResult\u003dFailed; }","responseTime":3,"executionSteps":["11001","11017","11015","11117","15049","15008","22040","22002","11003"],"credentialCheck":"PAP_ASCII","policySetName":"Default"}]}
+<< MESSAGE
+content-length:644
+destination:/topic/com.cisco.ise.radius.failure
+message-id:151
+subscription:0
+
+{"failures":[{"id":"1594756952762468","timestamp":"2020-07-14T20:43:56.442Z","failureReason":"22040 Wrong password or invalid shared secret","messageCode":5400,"userName":"badguy","serverName":"ise24","nasName":"laptop","accessService":"Default Network Access","authenticationMethod":"PAP_ASCII","authenticationProtocol":"PAP_ASCII","deviceType":"All Device Types","location":"All Locations","response":"{RadiusPacketType\u003dAccessReject; AuthenticationResult\u003dFailed; }","responseTime":4,"executionSteps":["11001","11017","11015","11117","15049","15008","22040","22002","11003"],"credentialCheck":"PAP_ASCII","policySetName":"Default"}]}
+^Cwebsocket closed

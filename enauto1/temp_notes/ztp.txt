@@ -1,0 +1,13 @@
+basics:
+  - similar to PnP except standards based
+  - not as "turn-key" but more compatible
+  - very similar to Nexus POAP
+  - runs when a device does not have a startup-config
+  - unlike ipxe, it requires an imagine already on the device
+  - gets IP address via DHCP along with TFTP server IP (option 150)
+  - gets python script name to download and run in guestshell (option 67)
+  - guestshell stays on after ZTP is complete
+  - must have `ip http server` enabled, which doesn't appear default
+    on CSR1000v (but should be on hardware platforms)
+
+puts [open "unix:ztp.py" w+] {

@@ -1,0 +1,15 @@
+timestamp,direction,subject,icid,sender,recipients
+26 Apr 2018 18:35:06 (GMT),incoming,Your Trip to Las Vegas Awaits!,2122,detroit@casino.mgmgranddetroit.com,manager@dcloud.cisco.com
+26 Apr 2018 18:34:13 (GMT),incoming,ACTION REQUIRED!,2121,support@apple.com,manager@dcloud.cisco.com
+26 Apr 2018 18:31:12 (GMT),incoming,Your bill is past due,2120,VZWMail@ecrmemail.verizonwireless.com,manager@dcloud.cisco.com
+26 Apr 2018 18:31:06 (GMT),incoming,Important Information About Your Account!,2119,support@apple.com,manager@dcloud.cisco.com
+26 Apr 2018 18:31:01 (GMT),incoming,Somebody requested a new password for your Facebook account,2118,admin@facebookmail.com,manager@dcloud.cisco.com
+26 Apr 2018 17:59:36 (GMT),N/A,(empty subject),2117,alert@wsa.dcloud.cisco.com,test@dcloud.cisco.com
+26 Apr 2018 17:16:35 (GMT),N/A,(empty subject),2116,alert@wsa.dcloud.cisco.com,test@dcloud.cisco.com
+26 Apr 2018 16:56:35 (GMT),N/A,(empty subject),2115,alert@wsa.dcloud.cisco.com,test@dcloud.cisco.com
+26 Apr 2018 16:46:35 (GMT),N/A,(empty subject),2114,alert@wsa.dcloud.cisco.com,test@dcloud.cisco.com
+26 Apr 2018 16:41:35 (GMT),N/A,(empty subject),2113,alert@wsa.dcloud.cisco.com,test@dcloud.cisco.com
+26 Apr 2018 16:40:20 (GMT),N/A,(empty subject),2112,(no sender),arpwatch@dcloud.cisco.com
+26 Apr 2018 16:40:19 (GMT),N/A,(empty subject),2111,arpwatch@dcloud.cisco.com,root@dcloud.cisco.com
+26 Apr 2018 16:38:58 (GMT),incoming,ACTION REQUIRED!,2110,support@apple.com,manager@dcloud.cisco.com
+26 Apr 2018 16:32:06 (GMT),N/A,(empty subject),2109,alert@wsa.dcloud.cisco.com,test@dcloud.cisco.com

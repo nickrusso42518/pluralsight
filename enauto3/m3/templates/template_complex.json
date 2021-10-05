@@ -1,0 +1,47 @@
+{
+  "body": {
+    "name": "complex_temp",
+    "composite": false,
+    "deviceTypes": [
+      {
+        "productFamily": "Switches and Hubs",
+        "productSeries": "Cisco Catalyst 9300 Series Switches"
+      }
+    ],
+    "softwareType": "IOS-XE",
+    "templateContent": "#if($ntp_logging == \"true\")\nntp logging\n#else\nno ntp logging\n#end\n#foreach($s in $ntp_servers)\nntp server $s\n#end",
+    "templateParams": [
+      {
+        "parameterName": "ntp_servers",
+        "dataType": "STRING",
+        "required": true,
+        "order": 2,
+        "selection": {
+          "selectionType": "MULTI_SELECT",
+          "selectionValues": {
+            "s1": "203.0.113.1",
+            "s2": "203.0.113.2"
+          },
+          "defaultSelectedValues": [
+            "s1",
+            "s2"
+          ]
+        },
+        "paramArray": true
+      },
+      {
+        "parameterName": "ntp_logging",
+        "dataType": "STRING",
+        "required": true,
+        "order": 1
+      }
+    ]
+  },
+  "params": {
+    "ntp_servers": [
+      "203.0.113.1",
+      "203.0.113.2"
+    ],
+    "ntp_logging": "true"
+  }
+}

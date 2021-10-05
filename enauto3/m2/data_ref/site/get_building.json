@@ -1,0 +1,29 @@
+{
+  "response": [
+    {
+      "parentId": "639ceb71-2bef-478c-9f21-a4d66bc4956e",
+      "systemGroup": false,
+      "groupTypeList": [
+        "SITE"
+      ],
+      "additionalInfo": [
+        {
+          "nameSpace": "Location",
+          "attributes": {
+            "country": "United States",
+            "address": "123 Main Street",
+            "latitude": "39.0458",
+            "addressInheritedFrom": "35347602-c9c6-43a3-8bc8-5089d5bb0b1a",
+            "type": "building",
+            "longitude": "-76.6413"
+          }
+        }
+      ],
+      "name": "secretlab",
+      "instanceTenantId": "5be540a20700b3004c25ea95",
+      "id": "35347602-c9c6-43a3-8bc8-5089d5bb0b1a",
+      "siteHierarchy": "8b820681-a903-4b7b-b803-e32c1f5c0c7e/639ceb71-2bef-478c-9f21-a4d66bc4956e/35347602-c9c6-43a3-8bc8-5089d5bb0b1a",
+      "siteNameHierarchy": "Global/Maryland/secretlab"
+    }
+  ]
+}

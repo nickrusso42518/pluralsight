@@ -1,0 +1,16 @@
+[
+  {
+    "lat": 37.4180951010362,
+    "lng": -122.098531723022,
+    "address": "",
+    "serial": "Q2FV-RQJM-572T",
+    "mac": "34:56:fe:a2:c1:83",
+    "lanIp": "192.168.1.165",
+    "networkId": "N_585467951558167081",
+    "name": "Lobby Cam",
+    "model": "MV12WE",
+    "firmware": "camera-4-0",
+    "floorPlanId": null,
+    "wirelessMac": "34:56:fe:a2:c1:84"
+  }
+]

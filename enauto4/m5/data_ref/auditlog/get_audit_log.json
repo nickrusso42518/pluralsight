@@ -1,0 +1,782 @@
+{
+    "header": {
+        "generatedOn": 1578746250360,
+        "viewKeys": {
+            "uniqueKey": [],
+            "preferenceKey": "grid-raw_auditlog"
+        },
+        "columns": [
+            {
+                "title": "Entry_time",
+                "property": "entry_time",
+                "displayFormat": "DD MMM YYYY h:mm:ss A z",
+                "inputFormat": "unix-time",
+                "dataType": "date"
+            },
+            {
+                "title": "Log id",
+                "property": "logid",
+                "dataType": "string"
+            },
+            {
+                "title": "Log module",
+                "property": "logmodule",
+                "dataType": "string"
+            },
+            {
+                "title": "Log feature",
+                "property": "logfeature",
+                "dataType": "string"
+            },
+            {
+                "title": "Log user",
+                "property": "loguser",
+                "dataType": "string"
+            },
+            {
+                "title": "Log message",
+                "property": "logmessage",
+                "dataType": "string"
+            },
+            {
+                "title": "Log device id",
+                "property": "logdeviceid",
+                "dataType": "string"
+            },
+            {
+                "title": "Log details",
+                "property": "logdetails",
+                "dataType": "string"
+            },
+            {
+                "title": "Log process id",
+                "property": "logprocessid",
+                "dataType": "string"
+            }
+        ],
+        "fields": [
+            {
+                "property": "entry_time",
+                "dataType": "date"
+            },
+            {
+                "property": "logid",
+                "dataType": "string"
+            },
+            {
+                "property": "logmodule",
+                "dataType": "string"
+            },
+            {
+                "property": "logfeature",
+                "dataType": "string"
+            },
+            {
+                "property": "loguser",
+                "dataType": "string"
+            },
+            {
+                "property": "logmessage",
+                "dataType": "string"
+            },
+            {
+                "property": "logdeviceid",
+                "dataType": "string"
+            },
+            {
+                "property": "logdetails",
+                "dataType": "string"
+            },
+            {
+                "property": "logprocessid",
+                "dataType": "string"
+            }
+        ],
+        "chart": {}
+    },
+    "data": [
+        {
+            "logid": "c9b7c9d4-5a59-430b-a88a-151d1faa8911",
+            "entry_time": 1578746040726,
+            "statcycletime": 1578746040726,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user test - failed",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user test - failed"
+            ],
+            "tenant": "default",
+            "id": "AW-UmNGXAMmjjUqq6Aor"
+        },
+        {
+            "logid": "3625b55f-14b2-4e87-9929-acf156e9badc",
+            "entry_time": 1578746032696,
+            "statcycletime": 1578746032696,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user jdoe - failed",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user jdoe - failed"
+            ],
+            "tenant": "default",
+            "id": "AW-UmLI5AMmjjUqq6Aoq"
+        },
+        {
+            "logid": "b4aa58ef-4efa-4881-98cb-8f1865fa0404",
+            "entry_time": 1578746017010,
+            "statcycletime": 1578746017010,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user jdoe - failed",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user jdoe - failed"
+            ],
+            "tenant": "default",
+            "id": "AW-UmHT0AMmjjUqq6Aop"
+        },
+        {
+            "logid": "591397c3-49cc-4f1b-a205-1e91e8151adc",
+            "entry_time": 1578746007052,
+            "statcycletime": 1578746007052,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user jdoe - successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user jdoe - successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-UmE4MAMmjjUqq6Aoo"
+        },
+        {
+            "logid": "b7fd7ebc-98dd-42b6-bfc8-1e6912dd5f71",
+            "entry_time": 1578746000879,
+            "statcycletime": 1578746000879,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Delete user user1 - successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Delete user user1 - successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-UmDXwAMmjjUqq6Aol"
+        },
+        {
+            "logid": "2c8bb156-e608-40d1-b368-44947522013f",
+            "entry_time": 1578745996779,
+            "statcycletime": 1578745996779,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Delete user jdoe - successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Delete user jdoe - successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-UmCXuAMmjjUqq6Aoj"
+        },
+        {
+            "logid": "244ee736-ec76-4833-8136-0ec23d14f89c",
+            "entry_time": 1578745972367,
+            "statcycletime": 1578745972367,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user jdoe - failed",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user jdoe - failed"
+            ],
+            "tenant": "default",
+            "id": "AW-Ul8aQAMmjjUqq6Aoi"
+        },
+        {
+            "logid": "d0736e3d-30f4-49d9-8a67-fb08c1a496bb",
+            "entry_time": 1578745916136,
+            "statcycletime": 1578745916136,
+            "logmodule": "user group",
+            "logfeature": "user group",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user group device - Successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user group device - Successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-UlurpAMmjjUqq6Aoh"
+        },
+        {
+            "logid": "0be5e519-fd0a-40ad-a5f7-e73b59173f6f",
+            "entry_time": 1578745910776,
+            "statcycletime": 1578745910776,
+            "logmodule": "user group",
+            "logfeature": "user group",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Deleted user group device - Successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Deleted user group device - Successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-UltX5AMmjjUqq6Aoe"
+        },
+        {
+            "logid": "f0da2612-86f1-4d04-b91b-bae86ff6f717",
+            "entry_time": 1578745841883,
+            "statcycletime": 1578745841883,
+            "logmodule": "user group",
+            "logfeature": "user group",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user group newdevice - Failed",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user group newdevice - Failed"
+            ],
+            "tenant": "default",
+            "id": "AW-UlcjcAMmjjUqq6Aod"
+        },
+        {
+            "logid": "d8ec4f82-548d-4b83-bf4b-a351c48fe3f0",
+            "entry_time": 1578745828646,
+            "statcycletime": 1578745828646,
+            "logmodule": "user group",
+            "logfeature": "user group",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user group newgroup - Successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user group newgroup - Successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-UlZUnAMmjjUqq6Aoc"
+        },
+        {
+            "logid": "133e0d7a-609f-4c51-8d16-fe479c163664",
+            "entry_time": 1578745712948,
+            "statcycletime": 1578745712948,
+            "logmodule": "user group",
+            "logfeature": "user group",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user group device - Successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user group device - Successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-Uk9E1AMmjjUqq6Aoa"
+        },
+        {
+            "logid": "506908d3-1398-4f85-a3d8-5ceaaa8f6875",
+            "entry_time": 1578745640814,
+            "statcycletime": 1578745640814,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Modified password for user jdoe - successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Modified password for user jdoe - successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-UkrdvAMmjjUqq6AoX"
+        },
+        {
+            "logid": "0d7e62c0-feb5-491c-8a61-92bdb1a60396",
+            "entry_time": 1578745611227,
+            "statcycletime": 1578745611227,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Modified password for user jdoe - failed",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Modified password for user jdoe - failed"
+            ],
+            "tenant": "default",
+            "id": "AW-UkkPbAMmjjUqq6AoW"
+        },
+        {
+            "logid": "a088083e-f4d9-41d0-9d37-e174bbc130f3",
+            "entry_time": 1578745553736,
+            "statcycletime": 1578745553736,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Modified password for user jdoe - successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Modified password for user jdoe - successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-UkWNJAMmjjUqq6AoU"
+        },
+        {
+            "logid": "fdc2108a-27ff-41d7-8889-f8b37779d525",
+            "entry_time": 1578745463528,
+            "statcycletime": 1578745463528,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Modified password for user jdoe - successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Modified password for user jdoe - successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-UkALpAMmjjUqq6AoQ"
+        },
+        {
+            "logid": "45bf69c5-572e-4f29-b457-8da2f639fb90",
+            "entry_time": 1578745320908,
+            "statcycletime": 1578745320908,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user jdoe - failed",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user jdoe - failed"
+            ],
+            "tenant": "default",
+            "id": "AW-UjdXMAMmjjUqq6AoP"
+        },
+        {
+            "logid": "fcdee342-9be5-4c5c-8f7e-144157e98338",
+            "entry_time": 1578745204333,
+            "statcycletime": 1578745204333,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user jdoe - successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user jdoe - successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-UjA5uAMmjjUqq6AoN"
+        },
+        {
+            "logid": "67bdb5cc-3cae-4b12-aa4c-518daec704e3",
+            "entry_time": 1578744376458,
+            "statcycletime": 1578744376458,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Created user user1 - successfully",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Created user user1 - successfully"
+            ],
+            "tenant": "default",
+            "id": "AW-Uf2yMAMmjjUqq6Ahg"
+        },
+        {
+            "logid": "624c4825-a51b-4a65-9d9d-971e2fc1e7c5",
+            "entry_time": 1578744103389,
+            "statcycletime": 1578744103389,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "admin",
+            "logusersrcip": "192.168.115.1",
+            "logmessage": "Authentication succeeded for admin,source IP:192.168.115.1",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Authentication succeeded for admin,source IP:192.168.115.1"
+            ],
+            "tenant": "default",
+            "id": "AW-Ue0HfAMmjjUqq6Ahd"
+        },
+        {
+            "logid": "ba0c875b-039a-4b60-94ba-386f184c52dc",
+            "entry_time": 1578740688983,
+            "statcycletime": 1578740688983,
+            "logmodule": "user",
+            "logfeature": "user",
+            "loguser": "viptela-reserved-cloud",
+            "logusersrcip": "127.0.0.1",
+            "logmessage": "Authentication failed for viptela-reserved-cloud,source IP:127.0.0.1",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Authentication failed for viptela-reserved-cloud,source IP:127.0.0.1"
+            ],
+            "tenant": "default",
+            "id": "AW-URyhZAMmjjUqq6Abh"
+        },
+        {
+            "logid": "7c75ac5e-add3-47d4-92a6-7fb6d63ccadb",
+            "entry_time": 1578740676378,
+            "statcycletime": 1578740676378,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Installed root cert chain on vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Installed root cert chain on vManage",
+                "UUID: e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+                "Device IP: 4.4.4.90"
+            ],
+            "logprocessid": "e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "tenant": "default",
+            "id": "AW-URvcbAMmjjUqq6Aba"
+        },
+        {
+            "logid": "7bd724c2-c988-44ed-8b2b-9c3892e9ae9d",
+            "entry_time": 1578740674095,
+            "statcycletime": 1578740674095,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Installed root cert chain on vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Installed root cert chain on vManage",
+                "UUID: e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+                "Device IP: 4.4.4.90"
+            ],
+            "logprocessid": "e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "tenant": "default",
+            "id": "AW-URu4wAMmjjUqq6AbZ"
+        },
+        {
+            "logid": "c90e9463-85b6-4903-9c73-43d303815d0f",
+            "entry_time": 1578740670931,
+            "statcycletime": 1578740670931,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Installed root cert chain on vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "logdeviceid": "4.4.4.80",
+            "auditdetails": [
+                "Installed root cert chain on vBond",
+                "UUID: 8163a199-96b2-4886-9b20-bcb9fce4bf88",
+                "Device IP: 4.4.4.80"
+            ],
+            "logprocessid": "8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "tenant": "default",
+            "id": "AW-URuHUAMmjjUqq6AbY"
+        },
+        {
+            "logid": "0a87ffd8-2e81-4393-974c-fcd217a47ee3",
+            "entry_time": 1578740670600,
+            "statcycletime": 1578740670600,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Transfered root cert chain file to vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "logdeviceid": "4.4.4.80",
+            "auditdetails": [
+                "Transfered root cert chain file to vBond",
+                "UUID: 8163a199-96b2-4886-9b20-bcb9fce4bf88",
+                "Device IP: 4.4.4.80"
+            ],
+            "logprocessid": "8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "tenant": "default",
+            "id": "AW-URuCOAMmjjUqq6AbX"
+        },
+        {
+            "logid": "b947d049-7450-4fff-874c-0ab31941a310",
+            "entry_time": 1578740669842,
+            "statcycletime": 1578740669842,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Installed root cert chain on vSmart-50cb5f09-3b74-49b7-aa5a-c17db012206c",
+            "logdeviceid": "4.4.4.70",
+            "auditdetails": [
+                "Installed root cert chain on vSmart",
+                "UUID: 50cb5f09-3b74-49b7-aa5a-c17db012206c",
+                "Device IP: 4.4.4.70"
+            ],
+            "logprocessid": "50cb5f09-3b74-49b7-aa5a-c17db012206c",
+            "tenant": "default",
+            "id": "AW-URt2UAMmjjUqq6AbW"
+        },
+        {
+            "logid": "3fb521d6-bad3-474a-a8e1-e96a56416fed",
+            "entry_time": 1578740669602,
+            "statcycletime": 1578740669602,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Installed root cert chain on vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Installed root cert chain on vManage",
+                "UUID: e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+                "Device IP: 4.4.4.90"
+            ],
+            "logprocessid": "e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "tenant": "default",
+            "id": "AW-URtyjAMmjjUqq6AbV"
+        },
+        {
+            "logid": "1287e4b8-09bd-44f5-9d15-03bdc54b425b",
+            "entry_time": 1578740669325,
+            "statcycletime": 1578740669325,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Transfered root cert chain file to vSmart-50cb5f09-3b74-49b7-aa5a-c17db012206c",
+            "logdeviceid": "4.4.4.70",
+            "auditdetails": [
+                "Transfered root cert chain file to vSmart",
+                "UUID: 50cb5f09-3b74-49b7-aa5a-c17db012206c",
+                "Device IP: 4.4.4.70"
+            ],
+            "logprocessid": "50cb5f09-3b74-49b7-aa5a-c17db012206c",
+            "tenant": "default",
+            "id": "AW-URtvNAMmjjUqq6AbU"
+        },
+        {
+            "logid": "87de9d64-c0d5-43fd-8bb3-1f8b2ab4030d",
+            "entry_time": 1578740669306,
+            "statcycletime": 1578740669306,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Uploaded root ca uuid list file on vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "logdeviceid": "4.4.4.80",
+            "auditdetails": [
+                "Uploaded root ca uuid list file on vBond",
+                "UUID: 8163a199-96b2-4886-9b20-bcb9fce4bf88",
+                "Device IP: 4.4.4.80"
+            ],
+            "logprocessid": "8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "tenant": "default",
+            "id": "AW-URtt7AMmjjUqq6AbT"
+        },
+        {
+            "logid": "da55b7b9-5e41-4e84-b45a-7ca533f3491f",
+            "entry_time": 1578740669196,
+            "statcycletime": 1578740669196,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Transfered root ca uuid list file to vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "logdeviceid": "4.4.4.80",
+            "auditdetails": [
+                "Transfered root ca uuid list file to vBond",
+                "UUID: 8163a199-96b2-4886-9b20-bcb9fce4bf88",
+                "Device IP: 4.4.4.80"
+            ],
+            "logprocessid": "8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "tenant": "default",
+            "id": "AW-URtsNAMmjjUqq6AbS"
+        },
+        {
+            "logid": "71f8823b-dad7-4c9b-b8fc-3959e8f69868",
+            "entry_time": 1578740668964,
+            "statcycletime": 1578740668964,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Transfered root cert chain file to vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Transfered root cert chain file to vManage",
+                "UUID: e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+                "Device IP: 4.4.4.90"
+            ],
+            "logprocessid": "e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "tenant": "default",
+            "id": "AW-URtolAMmjjUqq6AbR"
+        },
+        {
+            "logid": "bb6e4d23-5ee7-40d7-a286-774a2f52df96",
+            "entry_time": 1578740667830,
+            "statcycletime": 1578740667830,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Installed root cert chain on vSmart-50cb5f09-3b74-49b7-aa5a-c17db012206c",
+            "logdeviceid": "4.4.4.70",
+            "auditdetails": [
+                "Installed root cert chain on vSmart",
+                "UUID: 50cb5f09-3b74-49b7-aa5a-c17db012206c",
+                "Device IP: 4.4.4.70"
+            ],
+            "logprocessid": "50cb5f09-3b74-49b7-aa5a-c17db012206c",
+            "tenant": "default",
+            "id": "AW-URtW4AMmjjUqq6AbQ"
+        },
+        {
+            "logid": "38eaaf0a-67bd-4569-bcf3-e1b13bc89458",
+            "entry_time": 1578740667333,
+            "statcycletime": 1578740667333,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Installed root cert chain on vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "logdeviceid": "4.4.4.80",
+            "auditdetails": [
+                "Installed root cert chain on vBond",
+                "UUID: 8163a199-96b2-4886-9b20-bcb9fce4bf88",
+                "Device IP: 4.4.4.80"
+            ],
+            "logprocessid": "8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "tenant": "default",
+            "id": "AW-URtPJAMmjjUqq6AbP"
+        },
+        {
+            "logid": "9ce3d3a2-e858-4242-944f-396cb28804b3",
+            "entry_time": 1578740666939,
+            "statcycletime": 1578740666939,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Uploaded root ca uuid list file on vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "logdeviceid": "4.4.4.80",
+            "auditdetails": [
+                "Uploaded root ca uuid list file on vBond",
+                "UUID: 8163a199-96b2-4886-9b20-bcb9fce4bf88",
+                "Device IP: 4.4.4.80"
+            ],
+            "logprocessid": "8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "tenant": "default",
+            "id": "AW-URtI7AMmjjUqq6AbO"
+        },
+        {
+            "logid": "576b10d5-aef5-4dc4-9201-51b746a96885",
+            "entry_time": 1578740666936,
+            "statcycletime": 1578740666936,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Transfered root cert chain file to vSmart-50cb5f09-3b74-49b7-aa5a-c17db012206c",
+            "logdeviceid": "4.4.4.70",
+            "auditdetails": [
+                "Transfered root cert chain file to vSmart",
+                "UUID: 50cb5f09-3b74-49b7-aa5a-c17db012206c",
+                "Device IP: 4.4.4.70"
+            ],
+            "logprocessid": "50cb5f09-3b74-49b7-aa5a-c17db012206c",
+            "tenant": "default",
+            "id": "AW-URtI5AMmjjUqq6AbN"
+        },
+        {
+            "logid": "6fb60e91-ec21-4cf7-813a-42a18a91ffaa",
+            "entry_time": 1578740666830,
+            "statcycletime": 1578740666830,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Transfered root ca uuid list file to vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "logdeviceid": "4.4.4.80",
+            "auditdetails": [
+                "Transfered root ca uuid list file to vBond",
+                "UUID: 8163a199-96b2-4886-9b20-bcb9fce4bf88",
+                "Device IP: 4.4.4.80"
+            ],
+            "logprocessid": "8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "tenant": "default",
+            "id": "AW-URtHPAMmjjUqq6AbL"
+        },
+        {
+            "logid": "664ff445-ce6b-47a3-93b5-1bb96f023934",
+            "entry_time": 1578740666821,
+            "statcycletime": 1578740666821,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Transfered root cert chain file to vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "logdeviceid": "4.4.4.80",
+            "auditdetails": [
+                "Transfered root cert chain file to vBond",
+                "UUID: 8163a199-96b2-4886-9b20-bcb9fce4bf88",
+                "Device IP: 4.4.4.80"
+            ],
+            "logprocessid": "8163a199-96b2-4886-9b20-bcb9fce4bf88",
+            "tenant": "default",
+            "id": "AW-URtHoAMmjjUqq6AbM"
+        },
+        {
+            "logid": "67608a6a-bdf0-47d5-b1d8-39ed7bcc1eee",
+            "entry_time": 1578740666013,
+            "statcycletime": 1578740666013,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Transfered root cert chain file to vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Transfered root cert chain file to vManage",
+                "UUID: e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+                "Device IP: 4.4.4.90"
+            ],
+            "logprocessid": "e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "tenant": "default",
+            "id": "AW-URs7CAMmjjUqq6AbJ"
+        },
+        {
+            "logid": "2b53c126-c0b8-4821-ba87-7fbd9f09dfb4",
+            "entry_time": 1578740666011,
+            "statcycletime": 1578740666011,
+            "logmodule": "vmanage-root-ca",
+            "logfeature": "vmanage-root-ca",
+            "loguser": "system",
+            "logusersrcip": "4.4.4.90",
+            "logmessage": "Transfered root cert chain file to vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "logdeviceid": "4.4.4.90",
+            "auditdetails": [
+                "Transfered root cert chain file to vManage",
+                "UUID: e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+                "Device IP: 4.4.4.90"
+            ],
+            "logprocessid": "e85cd6d5-4dea-46a1-affb-38fd4cd8debd",
+            "tenant": "default",
+            "id": "AW-URs7DAMmjjUqq6AbK"
+        }
+    ],
+    "pageInfo": {
+        "startTime": "1578746040726",
+        "endTime": "1578740666011",
+        "count": 39
+    }
+}

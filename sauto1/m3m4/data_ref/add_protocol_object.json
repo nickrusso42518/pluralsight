@@ -1,0 +1,12 @@
+{
+  "version": "e7kfqvfthc7x2",
+  "name": "PROTO_ESP",
+  "description": "Encapsulating Security Payload for IPsec VPNs",
+  "isSystemDefined": false,
+  "protocol": "ESP",
+  "id": "5c947f21-9dad-11ea-9df4-cffa9542815b",
+  "type": "protocolobject",
+  "links": {
+    "self": "https://10.10.20.65/api/fdm/latest/object/protocols/5c947f21-9dad-11ea-9df4-cffa9542815b"
+  }
+}

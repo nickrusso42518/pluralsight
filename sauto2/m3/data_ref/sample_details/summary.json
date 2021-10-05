@@ -1,0 +1,24 @@
+{
+  "api_version": 2,
+  "id": 5334275,
+  "data": {
+    "registry_count": 1,
+    "tags": [],
+    "stream_count": 7,
+    "md5": "dead69d07bc33b762abd466fb6f53e11",
+    "run_start": "2020-06-24T18:37:49Z",
+    "run_type": "exe",
+    "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+    "times_seen": 24,
+    "sample": "2d0025ac53a89954ab46c1e8fe39b515",
+    "filename": "windows_calc",
+    "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+    "magic_type": "PE32+ executable (GUI) x86-64, for MS Windows",
+    "run_stop": "2020-06-24T18:43:48Z",
+    "last_seen": "2020-06-24T18:37:48Z",
+    "first_seen": "2019-02-17T09:20:52Z",
+    "artifacts": {
+      "disk": 4
+    }
+  }
+}

@@ -1,0 +1,29 @@
+---
+plugin: "netbox.netbox.nb_inventory"
+api_endpoint: "http://netbox1:8000"
+# token: "0123456789abcdef0123456789abcdef01234567"
+token: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          38363231643733363535313732643031303933366436356461303965366534386435386261346437
+          3834316539343933633432653936363466633430386566320a313631623032636331376262363065
+          33373139323839626632376536643963373963343439376561313066343730613964343339653232
+          6365396135353065310a346232643664336434323861383365643563616463643834613861633965
+          65633366313161353837353130646538323430316462616435646363323562306339393863666333
+          6435653330333134656463646239316538313164313665623866
+
+# We don't need to pull down extra config data
+config_context: false
+
+# Create Ansible groups based on device roles: Router and Switch
+group_by:
+  - "device_roles"
+
+# Only return devices with management IPs (ignore passive devices)
+# The plug will also store this as "ansible_host"
+device_query_filters:
+  - has_primary_ip: "true"
+
+# Additionally, have the plugin include the network OS
+compose:
+  ansible_network_os: "platform.slug"
+...

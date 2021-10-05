@@ -1,0 +1,43 @@
+---
+# Connectivity variables
+netbox_url: "http://netbox1:8000"
+netbox_token: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          38363231643733363535313732643031303933366436356461303965366534386435386261346437
+          3834316539343933633432653936363466633430386566320a313631623032636331376262363065
+          33373139323839626632376536643963373963343439376561313066343730613964343339653232
+          6365396135353065310a346232643664336434323861383365643563616463643834613861633965
+          65633366313161353837353130646538323430316462616435646363323562306339393863666333
+          6435653330333134656463646239316538313164313665623866
+# netbox_token: "0123456789abcdef0123456789abcdef01234567"
+
+# Configuration data; kept sparse for simplicity
+location:
+  region: "Americas"
+  hq: "Globo HQ"
+interfaces:
+  lan: "GigabitEthernet1"  # TO S2
+  wan: "GigabitEthernet4"  # TO INTERNET
+vlan_list:
+  - name: "Management"
+    prefix: "192.168.10.0/24"
+    vid: 10
+  - name: "Engineering"
+    prefix: "192.168.11.0/24"
+    vid: 11
+  - name: "Sales"
+    prefix: "192.168.12.0/24"
+    vid: 12
+  - name: "Finance"
+    prefix: "192.168.13.0/24"
+    vid: 13
+ethernet_cables:
+  - a: {device: "R1", name: "{{ interfaces.lan }}"}  # can reference other vars
+    b: {device: "S2", name: "GigabitEthernet0/1"}
+  - a: {device: "S2", name: "GigabitEthernet0/2"}
+    b: {device: "S3", name: "Ethernet1/2"}
+  - a: {device: "S2", name: "GigabitEthernet0/3"}
+    b: {device: "S4", name: "Ethernet3"}
+  - a: {device: "S3", name: "Ethernet1/1"}
+    b: {device: "S4", name: "Ethernet1"}
+...

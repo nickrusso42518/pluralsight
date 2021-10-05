@@ -1,0 +1,20 @@
+[
+  {
+    "name": "globo_ip",
+    "discoveryType": "Range",
+    "ipAddressList": "10.10.20.80-10.10.20.84",
+    "timeOut": 1,
+    "protocolOrder": "ssh,telnet",
+    "preferredMgmtIPMethod": "None"
+  },
+  {
+    "name": "globo_cdp",
+    "discoveryType": "CDP",
+    "ipAddressList": "10.10.20.80",
+    "cdpLevel": 1,
+    "timeOut": 1,
+    "isAutoCdp": true,
+    "protocolOrder": "ssh",
+    "preferredMgmtIPMethod": "None"
+  }
+]

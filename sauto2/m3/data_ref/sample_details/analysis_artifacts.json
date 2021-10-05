@@ -1,0 +1,1082 @@
+{
+  "api_version": 2,
+  "id": 9087375,
+  "data": {
+    "items": {
+      "1": {
+        "forensics": {
+          "exports": [],
+          "file_info": {
+            "company_name": "Microsoft Corporation",
+            "copyright": "\u00a9 Microsoft Corporation. All rights reserved.",
+            "file_description": "Windows Calculator",
+            "file_version": "10.0.17763.1 (WinBuild.160101.0800)",
+            "internal_name": "CALC",
+            "original_file_name": "CALC.EXE",
+            "product_name": "Microsoft\u00ae Windows\u00ae Operating System",
+            "product_version": "10.0.17763.1"
+          },
+          "headers": {
+            "dos": {
+              "checksum": 0,
+              "header_relocations": 0,
+              "initial_code_segment": 0,
+              "initial_instruction_pointer": 0,
+              "initial_stack_pointer": 184,
+              "initial_stack_segment": 0,
+              "pages": 3,
+              "size_in_paragraphs": 4
+            },
+            "pe": {
+              "signed": false,
+              "tls_callback_addr": null,
+              "tls_callback_rva": null,
+              "timestamp": 2405010078,
+              "certificate": null,
+              "machine": "amd64",
+              "vt_import_hash": "8eeaa9499666119d13b3f44ecd77a729",
+              "optional_header": {
+                "linker_major_version": 14,
+                "number_of_rva_and_sizes": 16,
+                "claimed_checksum": 92807,
+                "reserved_field": 0,
+                "file_alignment": 512,
+                "actual_checksum": 92807,
+                "entrypoint_address": 6192,
+                "type": 523,
+                "linker_minor_version": 13,
+                "size": 240,
+                "subsystem": 2,
+                "loader_flag": 0,
+                "section_alignment": 4096
+              },
+              "import_hash": "8eeaa9499666119d13b3f44ecd77a729",
+              "number_of_symbols": 0
+            }
+          },
+          "imports": [
+            {
+              "dll": "SHELL32.dll",
+              "entries": [
+                [
+                  "ShellExecuteW",
+                  5368717728
+                ]
+              ]
+            },
+            {
+              "dll": "KERNEL32.dll",
+              "entries": [
+                [
+                  "GetCurrentThreadId",
+                  5368717624
+                ],
+                [
+                  "GetSystemTimeAsFileTime",
+                  5368717632
+                ],
+                [
+                  "GetTickCount",
+                  5368717640
+                ],
+                [
+                  "RtlCaptureContext",
+                  5368717648
+                ],
+                [
+                  "GetCurrentProcessId",
+                  5368717656
+                ],
+                [
+                  "RtlVirtualUnwind",
+                  5368717664
+                ],
+                [
+                  "UnhandledExceptionFilter",
+                  5368717672
+                ],
+                [
+                  "SetUnhandledExceptionFilter",
+                  5368717680
+                ],
+                [
+                  "GetCurrentProcess",
+                  5368717688
+                ],
+                [
+                  "TerminateProcess",
+                  5368717696
+                ],
+                [
+                  "QueryPerformanceCounter",
+                  5368717704
+                ],
+                [
+                  "RtlLookupFunctionEntry",
+                  5368717712
+                ]
+              ]
+            },
+            {
+              "dll": "msvcrt.dll",
+              "entries": [
+                [
+                  "__setusermatherr",
+                  5368717792
+                ],
+                [
+                  "_initterm",
+                  5368717800
+                ],
+                [
+                  "__C_specific_handler",
+                  5368717808
+                ],
+                [
+                  "_wcmdln",
+                  5368717816
+                ],
+                [
+                  "_fmode",
+                  5368717824
+                ],
+                [
+                  "_commode",
+                  5368717832
+                ],
+                [
+                  "?terminate@@YAXXZ",
+                  5368717840
+                ],
+                [
+                  "_cexit",
+                  5368717848
+                ],
+                [
+                  "__wgetmainargs",
+                  5368717856
+                ],
+                [
+                  "_amsg_exit",
+                  5368717864
+                ],
+                [
+                  "_XcptFilter",
+                  5368717872
+                ],
+                [
+                  "exit",
+                  5368717880
+                ],
+                [
+                  "__set_app_type",
+                  5368717888
+                ],
+                [
+                  "_exit",
+                  5368717896
+                ]
+              ]
+            },
+            {
+              "dll": "ADVAPI32.dll",
+              "entries": [
+                [
+                  "EventSetInformation",
+                  5368717592
+                ],
+                [
+                  "EventWriteTransfer",
+                  5368717600
+                ],
+                [
+                  "EventRegister",
+                  5368717608
+                ]
+              ]
+            },
+            {
+              "dll": "api-ms-win-core-synch-l1-2-0.dll",
+              "entries": [
+                [
+                  "Sleep",
+                  5368717776
+                ]
+              ]
+            },
+            {
+              "dll": "api-ms-win-core-processthreads-l1-1-0.dll",
+              "entries": [
+                [
+                  "GetStartupInfoW",
+                  5368717760
+                ]
+              ]
+            },
+            {
+              "dll": "api-ms-win-core-libraryloader-l1-2-0.dll",
+              "entries": [
+                [
+                  "GetModuleHandleW",
+                  5368717744
+                ]
+              ]
+            }
+          ],
+          "internal_checksum_match": true,
+          "resources": [
+            {
+              "offset": 23040,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "c95bb5bd0d39255df7889d6b29c46dabc694834accba3e64e6559bcf6cc042ee",
+              "path": "#3#1#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_ICON",
+              "size": 1128,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 24168,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "3e6c7cc4bd5870acb414f9bec4602e4737483fe14947306e0eae8fc3cbccb8f0",
+              "path": "#3#2#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_ICON",
+              "size": 536,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 24704,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "0ac0f42771fc0d2245c369f1e8277ba0a3ffe4c78b15093206bdb243aa65b2c5",
+              "path": "#3#3#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_ICON",
+              "size": 4264,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 28968,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "d4617e344732a0cf6bc6e8807f77cab668009342ab158cd9ac88d9877de318d9",
+              "path": "#3#4#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_ICON",
+              "size": 9640,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 38608,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "f4813285cef4f96b09578dc599d989c780fc042bc747f26acc9690aefdb73133",
+              "path": "#14/IDI_CALC_ICON#1033",
+              "name": "IDI_CALC_ICON",
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_GROUP_ICON",
+              "size": 62,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 22136,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "cfa938c32c78cc5a022b30c992c08d08b8a61855897d3f81deabd3acf900e356",
+              "path": "#16#1#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_VERSION",
+              "size": 900,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 20960,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "9c32df4118c1601d8d06e8a8bbd1ae72202fa81d429ede9218bdb9b8ca7743f2",
+              "path": "#24#1#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_MANIFEST",
+              "size": 1169,
+              "language": "LANG_ENGLISH"
+            }
+          ],
+          "sections": [
+            {
+              "virtual_size": 2960,
+              "data_pointer": 1024,
+              "section": ".text",
+              "address": 4096,
+              "entropy_type": [
+                "native",
+                "packed"
+              ],
+              "entropy": 5.71557895857208,
+              "characteristics": [
+                "IMAGE_SCN_CNT_CODE",
+                "IMAGE_SCN_MEM_EXECUTE",
+                "IMAGE_SCN_MEM_READ"
+              ],
+              "size": 3072,
+              "section_hash": "63a851169cb2846516f4ebbb5e80655e63d31b24173aaad1b86b8c398afdd222"
+            },
+            {
+              "virtual_size": 3142,
+              "data_pointer": 4096,
+              "section": ".rdata",
+              "address": 8192,
+              "entropy_type": [
+                "text"
+              ],
+              "entropy": 3.870283098988849,
+              "characteristics": [
+                "IMAGE_SCN_CNT_INITIALIZED_DATA",
+                "IMAGE_SCN_MEM_READ"
+              ],
+              "size": 3584,
+              "section_hash": "575e3488c48d38195be1e8bd92c8bafe2532b591a65896a9e67c8ba001a44a2b"
+            },
+            {
+              "virtual_size": 1592,
+              "data_pointer": 7680,
+              "section": ".data",
+              "address": 12288,
+              "entropy_type": [
+                "text"
+              ],
+              "entropy": 0.378703493487675,
+              "characteristics": [
+                "IMAGE_SCN_CNT_INITIALIZED_DATA",
+                "IMAGE_SCN_MEM_READ",
+                "IMAGE_SCN_MEM_WRITE"
+              ],
+              "size": 512,
+              "section_hash": "75f3ff0b47a67bbfe6563ce7c246aecf6a5e05a1123d7faf27f7ca77dc6b163f"
+            },
+            {
+              "virtual_size": 228,
+              "data_pointer": 8192,
+              "section": ".pdata",
+              "address": 16384,
+              "entropy_type": [
+                "text"
+              ],
+              "entropy": 1.8850436847853438,
+              "characteristics": [
+                "IMAGE_SCN_CNT_INITIALIZED_DATA",
+                "IMAGE_SCN_MEM_READ"
+              ],
+              "size": 512,
+              "section_hash": "a8dc2edbd18e0f3d8a4bcf200aa6f98a5dd816ed78db008fb352d5942b1d404f"
+            },
+            {
+              "virtual_size": 18192,
+              "data_pointer": 8704,
+              "section": ".rsrc",
+              "address": 20480,
+              "entropy_type": [
+                "text"
+              ],
+              "entropy": 2.813963355201639,
+              "characteristics": [
+                "IMAGE_SCN_CNT_INITIALIZED_DATA",
+                "IMAGE_SCN_MEM_READ"
+              ],
+              "size": 18432,
+              "section_hash": "1ab0e4afcf4d6921082f361b5a4fe3fc44aa82a932f7bccabb8dab61db61c7b9"
+            },
+            {
+              "virtual_size": 44,
+              "data_pointer": 27136,
+              "section": ".reloc",
+              "address": 40960,
+              "entropy_type": [
+                "text"
+              ],
+              "entropy": 0.4719648839649068,
+              "characteristics": [
+                "IMAGE_SCN_CNT_INITIALIZED_DATA",
+                "IMAGE_SCN_MEM_DISCARDABLE",
+                "IMAGE_SCN_MEM_READ"
+              ],
+              "size": 512,
+              "section_hash": "7283b26f1b9316c2ae4070ed5682448aa50179d229630f36c2e24230814412c2"
+            }
+          ],
+          "signatures": []
+        },
+        "antivirus": {
+          "cognitive": {
+            "model_a_id": "big-dataset-2019-05-15",
+            "model_a_malicious": false,
+            "model_b_id": "big-dataset-2019-05-15",
+            "model_b_malicious": false,
+            "vectorizer_a_id": "big-dataset-2019-05-15",
+            "vectorizer_b_id": "big-dataset-2019-05-15"
+          },
+          "reversing_labs": {
+            "threat_name": "",
+            "scanner_match": 0,
+            "scanner_count": 47,
+            "threat_level": 0,
+            "first_seen": "2018-09-26T20:00:08Z",
+            "query_hash": {
+              "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51"
+            },
+            "status": "KNOWN",
+            "last_seen": "2020-03-17T03:13:35Z",
+            "trust_factor": 0
+          },
+          "virustotal": {
+            "engines": 73,
+            "hits": 0,
+            "results": {},
+            "scanned": "2020-04-30T13:51:05Z",
+            "score": 0
+          }
+        },
+        "origin": "submitted",
+        "executed_from": [],
+        "path": "windows_calc.exe",
+        "mime-type": "application/x-dosexec; charset=binary",
+        "whitelist": [],
+        "created-time": 0,
+        "read_by": [],
+        "created_by": [],
+        "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+        "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+        "md5": "dead69d07bc33b762abd466fb6f53e11",
+        "entropy": 3.8743902487326953,
+        "type": "exe",
+        "size": 27648,
+        "modified_by": [],
+        "magic-type": "PE32+ executable (GUI) x86-64, for MS Windows",
+        "relation": {
+          "contains": null,
+          "extracted_from": null,
+          "network": null,
+          "process": null
+        }
+      },
+      "2": {
+        "forensics": {
+          "exports": [],
+          "file_info": {
+            "company_name": "Microsoft Corporation",
+            "copyright": "\u00a9 Microsoft Corporation. All rights reserved.",
+            "file_description": "Windows Calculator",
+            "file_version": "10.0.17763.1 (WinBuild.160101.0800)",
+            "internal_name": "CALC",
+            "original_file_name": "CALC.EXE",
+            "product_name": "Microsoft\u00ae Windows\u00ae Operating System",
+            "product_version": "10.0.17763.1"
+          },
+          "headers": {
+            "dos": {
+              "checksum": 0,
+              "header_relocations": 0,
+              "initial_code_segment": 0,
+              "initial_instruction_pointer": 0,
+              "initial_stack_pointer": 184,
+              "initial_stack_segment": 0,
+              "pages": 3,
+              "size_in_paragraphs": 4
+            },
+            "pe": {
+              "signed": false,
+              "tls_callback_addr": null,
+              "tls_callback_rva": null,
+              "timestamp": 2405010078,
+              "certificate": null,
+              "machine": "amd64",
+              "vt_import_hash": "8eeaa9499666119d13b3f44ecd77a729",
+              "optional_header": {
+                "linker_major_version": 14,
+                "number_of_rva_and_sizes": 16,
+                "claimed_checksum": 92807,
+                "reserved_field": 0,
+                "file_alignment": 512,
+                "actual_checksum": 92807,
+                "entrypoint_address": 6192,
+                "type": 523,
+                "linker_minor_version": 13,
+                "size": 240,
+                "subsystem": 2,
+                "loader_flag": 0,
+                "section_alignment": 4096
+              },
+              "import_hash": "8eeaa9499666119d13b3f44ecd77a729",
+              "number_of_symbols": 0
+            }
+          },
+          "imports": [
+            {
+              "dll": "SHELL32.dll",
+              "entries": [
+                [
+                  "ShellExecuteW",
+                  5368717728
+                ]
+              ]
+            },
+            {
+              "dll": "KERNEL32.dll",
+              "entries": [
+                [
+                  "GetCurrentThreadId",
+                  5368717624
+                ],
+                [
+                  "GetSystemTimeAsFileTime",
+                  5368717632
+                ],
+                [
+                  "GetTickCount",
+                  5368717640
+                ],
+                [
+                  "RtlCaptureContext",
+                  5368717648
+                ],
+                [
+                  "GetCurrentProcessId",
+                  5368717656
+                ],
+                [
+                  "RtlVirtualUnwind",
+                  5368717664
+                ],
+                [
+                  "UnhandledExceptionFilter",
+                  5368717672
+                ],
+                [
+                  "SetUnhandledExceptionFilter",
+                  5368717680
+                ],
+                [
+                  "GetCurrentProcess",
+                  5368717688
+                ],
+                [
+                  "TerminateProcess",
+                  5368717696
+                ],
+                [
+                  "QueryPerformanceCounter",
+                  5368717704
+                ],
+                [
+                  "RtlLookupFunctionEntry",
+                  5368717712
+                ]
+              ]
+            },
+            {
+              "dll": "msvcrt.dll",
+              "entries": [
+                [
+                  "__setusermatherr",
+                  5368717792
+                ],
+                [
+                  "_initterm",
+                  5368717800
+                ],
+                [
+                  "__C_specific_handler",
+                  5368717808
+                ],
+                [
+                  "_wcmdln",
+                  5368717816
+                ],
+                [
+                  "_fmode",
+                  5368717824
+                ],
+                [
+                  "_commode",
+                  5368717832
+                ],
+                [
+                  "?terminate@@YAXXZ",
+                  5368717840
+                ],
+                [
+                  "_cexit",
+                  5368717848
+                ],
+                [
+                  "__wgetmainargs",
+                  5368717856
+                ],
+                [
+                  "_amsg_exit",
+                  5368717864
+                ],
+                [
+                  "_XcptFilter",
+                  5368717872
+                ],
+                [
+                  "exit",
+                  5368717880
+                ],
+                [
+                  "__set_app_type",
+                  5368717888
+                ],
+                [
+                  "_exit",
+                  5368717896
+                ]
+              ]
+            },
+            {
+              "dll": "ADVAPI32.dll",
+              "entries": [
+                [
+                  "EventSetInformation",
+                  5368717592
+                ],
+                [
+                  "EventWriteTransfer",
+                  5368717600
+                ],
+                [
+                  "EventRegister",
+                  5368717608
+                ]
+              ]
+            },
+            {
+              "dll": "api-ms-win-core-synch-l1-2-0.dll",
+              "entries": [
+                [
+                  "Sleep",
+                  5368717776
+                ]
+              ]
+            },
+            {
+              "dll": "api-ms-win-core-processthreads-l1-1-0.dll",
+              "entries": [
+                [
+                  "GetStartupInfoW",
+                  5368717760
+                ]
+              ]
+            },
+            {
+              "dll": "api-ms-win-core-libraryloader-l1-2-0.dll",
+              "entries": [
+                [
+                  "GetModuleHandleW",
+                  5368717744
+                ]
+              ]
+            }
+          ],
+          "internal_checksum_match": true,
+          "resources": [
+            {
+              "offset": 23040,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "c95bb5bd0d39255df7889d6b29c46dabc694834accba3e64e6559bcf6cc042ee",
+              "path": "#3#1#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_ICON",
+              "size": 1128,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 24168,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "3e6c7cc4bd5870acb414f9bec4602e4737483fe14947306e0eae8fc3cbccb8f0",
+              "path": "#3#2#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_ICON",
+              "size": 536,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 24704,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "0ac0f42771fc0d2245c369f1e8277ba0a3ffe4c78b15093206bdb243aa65b2c5",
+              "path": "#3#3#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_ICON",
+              "size": 4264,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 28968,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "d4617e344732a0cf6bc6e8807f77cab668009342ab158cd9ac88d9877de318d9",
+              "path": "#3#4#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_ICON",
+              "size": 9640,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 38608,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "f4813285cef4f96b09578dc599d989c780fc042bc747f26acc9690aefdb73133",
+              "path": "#14/IDI_CALC_ICON#1033",
+              "name": "IDI_CALC_ICON",
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_GROUP_ICON",
+              "size": 62,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 22136,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "cfa938c32c78cc5a022b30c992c08d08b8a61855897d3f81deabd3acf900e356",
+              "path": "#16#1#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_VERSION",
+              "size": 900,
+              "language": "LANG_ENGLISH"
+            },
+            {
+              "offset": 20960,
+              "codepage": 0,
+              "magic": null,
+              "resource_sha256": "9c32df4118c1601d8d06e8a8bbd1ae72202fa81d429ede9218bdb9b8ca7743f2",
+              "path": "#24#1#1033",
+              "name": null,
+              "locale": "en_US",
+              "mime": null,
+              "sublanguage": "SUBLANG_ENGLISH_US",
+              "type": "RT_MANIFEST",
+              "size": 1169,
+              "language": "LANG_ENGLISH"
+            }
+          ],
+          "sections": [
+            {
+              "virtual_size": 2960,
+              "data_pointer": 1024,
+              "section": ".text",
+              "address": 4096,
+              "entropy_type": [
+                "native",
+                "packed"
+              ],
+              "entropy": 5.71557895857208,
+              "characteristics": [
+                "IMAGE_SCN_CNT_CODE",
+                "IMAGE_SCN_MEM_EXECUTE",
+                "IMAGE_SCN_MEM_READ"
+              ],
+              "size": 3072,
+              "section_hash": "63a851169cb2846516f4ebbb5e80655e63d31b24173aaad1b86b8c398afdd222"
+            },
+            {
+              "virtual_size": 3142,
+              "data_pointer": 4096,
+              "section": ".rdata",
+              "address": 8192,
+              "entropy_type": [
+                "text"
+              ],
+              "entropy": 3.870283098988849,
+              "characteristics": [
+                "IMAGE_SCN_CNT_INITIALIZED_DATA",
+                "IMAGE_SCN_MEM_READ"
+              ],
+              "size": 3584,
+              "section_hash": "575e3488c48d38195be1e8bd92c8bafe2532b591a65896a9e67c8ba001a44a2b"
+            },
+            {
+              "virtual_size": 1592,
+              "data_pointer": 7680,
+              "section": ".data",
+              "address": 12288,
+              "entropy_type": [
+                "text"
+              ],
+              "entropy": 0.378703493487675,
+              "characteristics": [
+                "IMAGE_SCN_CNT_INITIALIZED_DATA",
+                "IMAGE_SCN_MEM_READ",
+                "IMAGE_SCN_MEM_WRITE"
+              ],
+              "size": 512,
+              "section_hash": "75f3ff0b47a67bbfe6563ce7c246aecf6a5e05a1123d7faf27f7ca77dc6b163f"
+            },
+            {
+              "virtual_size": 228,
+              "data_pointer": 8192,
+              "section": ".pdata",
+              "address": 16384,
+              "entropy_type": [
+                "text"
+              ],
+              "entropy": 1.8850436847853438,
+              "characteristics": [
+                "IMAGE_SCN_CNT_INITIALIZED_DATA",
+                "IMAGE_SCN_MEM_READ"
+              ],
+              "size": 512,
+              "section_hash": "a8dc2edbd18e0f3d8a4bcf200aa6f98a5dd816ed78db008fb352d5942b1d404f"
+            },
+            {
+              "virtual_size": 18192,
+              "data_pointer": 8704,
+              "section": ".rsrc",
+              "address": 20480,
+              "entropy_type": [
+                "text"
+              ],
+              "entropy": 2.813963355201639,
+              "characteristics": [
+                "IMAGE_SCN_CNT_INITIALIZED_DATA",
+                "IMAGE_SCN_MEM_READ"
+              ],
+              "size": 18432,
+              "section_hash": "1ab0e4afcf4d6921082f361b5a4fe3fc44aa82a932f7bccabb8dab61db61c7b9"
+            },
+            {
+              "virtual_size": 44,
+              "data_pointer": 27136,
+              "section": ".reloc",
+              "address": 40960,
+              "entropy_type": [
+                "text"
+              ],
+              "entropy": 0.4719648839649068,
+              "characteristics": [
+                "IMAGE_SCN_CNT_INITIALIZED_DATA",
+                "IMAGE_SCN_MEM_DISCARDABLE",
+                "IMAGE_SCN_MEM_READ"
+              ],
+              "size": 512,
+              "section_hash": "7283b26f1b9316c2ae4070ed5682448aa50179d229630f36c2e24230814412c2"
+            }
+          ],
+          "signatures": []
+        },
+        "antivirus": {
+          "cognitive": {
+            "model_a_id": "big-dataset-2019-05-15",
+            "model_a_malicious": false,
+            "model_b_id": "big-dataset-2019-05-15",
+            "model_b_malicious": false,
+            "vectorizer_a_id": "big-dataset-2019-05-15",
+            "vectorizer_b_id": "big-dataset-2019-05-15"
+          },
+          "reversing_labs": {
+            "threat_name": "",
+            "scanner_match": 0,
+            "scanner_count": 47,
+            "threat_level": 0,
+            "first_seen": "2018-09-26T20:00:08Z",
+            "query_hash": {
+              "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51"
+            },
+            "status": "KNOWN",
+            "last_seen": "2020-03-17T03:13:35Z",
+            "trust_factor": 0
+          }
+        },
+        "origin": "disk",
+        "executed_from": [],
+        "path": "/TEMP/windows_calc.exe",
+        "mime-type": "application/x-dosexec; charset=binary",
+        "whitelist": [],
+        "created-time": 1593024225,
+        "read_by": [],
+        "created_by": [],
+        "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+        "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+        "md5": "dead69d07bc33b762abd466fb6f53e11",
+        "entropy": 3.8743902487326953,
+        "type": "exe",
+        "size": 27648,
+        "modified_by": [],
+        "magic-type": "PE32+ executable (GUI) x86-64, for MS Windows",
+        "relation": {
+          "contains": null,
+          "extracted_from": null,
+          "network": null,
+          "process": null
+        }
+      },
+      "3": {
+        "antivirus": {
+          "reversing_labs": {
+            "threat_name": "",
+            "scanner_match": 0,
+            "scanner_count": 0,
+            "threat_level": 0,
+            "first_seen": "0001-01-01T00:00:00Z",
+            "query_hash": {
+              "sha256": "0d32a25289d74437c440720f341f21b870dacf4dfb685edf1f74513077b20aee"
+            },
+            "status": "UNKNOWN",
+            "last_seen": "0001-01-01T00:00:00Z",
+            "trust_factor": 0
+          }
+        },
+        "origin": "disk",
+        "executed_from": [],
+        "path": "/Windows/rescache/rc0008/ResCache.hit",
+        "mime-type": "application/octet-stream; charset=binary",
+        "whitelist": [],
+        "created-time": 1593024225,
+        "read_by": [],
+        "created_by": [],
+        "sha256": "0d32a25289d74437c440720f341f21b870dacf4dfb685edf1f74513077b20aee",
+        "sha1": "bf002ba75db6df763715e387c5b4cf51e807fc77",
+        "md5": "cfb7b8a04e0b18f052e71c3ef452d5ef",
+        "entropy": 3.418839221723583,
+        "type": "",
+        "size": 4176,
+        "modified_by": [],
+        "magic-type": "data",
+        "relation": {
+          "contains": null,
+          "extracted_from": null,
+          "network": null,
+          "process": null
+        }
+      },
+      "4": {
+        "forensics": {
+          "powershell": {}
+        },
+        "antivirus": {
+          "reversing_labs": {
+            "threat_name": "",
+            "scanner_match": 0,
+            "scanner_count": 0,
+            "threat_level": 0,
+            "first_seen": "0001-01-01T00:00:00Z",
+            "query_hash": {
+              "sha256": "56429441305f69b4e84c28a8f2f67159c157b04fb662d8fa23cf8a567865f5b5"
+            },
+            "status": "UNKNOWN",
+            "last_seen": "0001-01-01T00:00:00Z",
+            "trust_factor": 0
+          }
+        },
+        "origin": "disk",
+        "executed_from": [],
+        "path": "/Windows/System32/winevt/Logs/Microsoft-Windows-PowerShell%4Operational.evtx",
+        "mime-type": "application/octet-stream; charset=binary",
+        "whitelist": [],
+        "created-time": 1593024225,
+        "read_by": [],
+        "created_by": [],
+        "sha256": "56429441305f69b4e84c28a8f2f67159c157b04fb662d8fa23cf8a567865f5b5",
+        "sha1": "3a2e5430b9e30d27d1369d0a69c4dbad877775c2",
+        "md5": "d071db695917a4b15db54924bf3cc011",
+        "entropy": 2.0235524503085904,
+        "type": "evtx",
+        "size": 69632,
+        "modified_by": [
+          10
+        ],
+        "magic-type": "MS Windows Vista Event Log, 1 chunks (no. 0 in use), next record no. 14, DIRTY",
+        "relation": {
+          "contains": null,
+          "extracted_from": null,
+          "network": null,
+          "process": null
+        }
+      },
+      "5": {
+        "forensics": {},
+        "antivirus": {
+          "reversing_labs": {
+            "threat_name": "",
+            "scanner_match": 0,
+            "scanner_count": 0,
+            "threat_level": 0,
+            "first_seen": "0001-01-01T00:00:00Z",
+            "query_hash": {
+              "sha256": "8ed188182484535e0c3c331380eebd35d30f05679ceba6bb3e56e245d1d372e2"
+            },
+            "status": "UNKNOWN",
+            "last_seen": "0001-01-01T00:00:00Z",
+            "trust_factor": 0
+          }
+        },
+        "origin": "disk",
+        "executed_from": [],
+        "path": "/Windows/System32/winevt/Logs/Microsoft-Windows-WMI-Activity%4Operational.evtx",
+        "mime-type": "application/octet-stream; charset=binary",
+        "whitelist": [],
+        "created-time": 1593024225,
+        "read_by": [],
+        "created_by": [],
+        "sha256": "8ed188182484535e0c3c331380eebd35d30f05679ceba6bb3e56e245d1d372e2",
+        "sha1": "198a7e426abee5daacf387f853ceda397c302a33",
+        "md5": "2aaa19466ef08e20e213a8b400dfe652",
+        "entropy": 2.0373079766527336,
+        "type": "evtx",
+        "size": 69632,
+        "modified_by": [
+          10
+        ],
+        "magic-type": "MS Windows Vista Event Log, 1 chunks (no. 0 in use), next record no. 42, DIRTY",
+        "relation": {
+          "contains": null,
+          "extracted_from": null,
+          "network": null,
+          "process": null
+        }
+      }
+    }
+  }
+}

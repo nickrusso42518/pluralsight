@@ -1,0 +1,35 @@
+{
+  "api_version": 2,
+  "id": 4035198,
+  "data": {
+    "general_details": {
+      "report_created": 1593024228,
+      "sandbox_id": "mtv-work-063",
+      "sandbox_version": "pilot-d"
+    },
+    "malware_desc": [
+      {
+        "filename": "windows_calc.exe",
+        "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+        "md5": "dead69d07bc33b762abd466fb6f53e11",
+        "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+        "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+        "size": 27648,
+        "type": "exe"
+      }
+    ],
+    "sandcastle_env": {
+      "sample_executed": 1593023915,
+      "analysis_end": 1593024227,
+      "sandcastle": "3.5.59.16936.6349e9da7-1",
+      "current_os": "7601.18798.amd64fre.win7sp1_gdr.150316-1654",
+      "run_time": 300,
+      "controlsubject": "win7-x64-intel-2020.02.03",
+      "display_name": "Windows 7 64-bit",
+      "vm_id": "2d0025ac53a89954ab46c1e8fe39b515",
+      "analysis_start": 1593023869,
+      "vm": "win7-x64",
+      "analysis_features": []
+    }
+  }
+}

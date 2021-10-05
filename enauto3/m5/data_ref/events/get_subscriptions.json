@@ -1,0 +1,46 @@
+{
+  "version": null,
+  "subscriptionId": "066b77bd-136a-4165-b5f2-3a359a456e3c",
+  "name": "globo_assurance",
+  "subscriptionEndpoints": [
+    {
+      "instanceId": "7f960ad4-b014-4639-9d19-a90988ddd04b",
+      "subscriptionDetails": {
+        "connectorType": "REST",
+        "instanceId": null,
+        "name": "webhook.site",
+        "description": "Great for testing",
+        "url": "https://webhook.site/885c4fbb-eda9-4d60-a2fb-010d2bde776f",
+        "basePath": null,
+        "resource": null,
+        "method": "POST",
+        "trustCert": false,
+        "headers": [],
+        "queryParams": [],
+        "body": null,
+        "connectTimeout": 10,
+        "readTimeout": 10
+      },
+      "connectorType": "REST",
+      "id": "0a9c28ab-ea04-4d4c-bbdb-bc2a4fc436f9",
+      "instanceCreated": true
+    }
+  ],
+  "filter": {
+    "eventIds": [
+      "NETWORK-DEVICES-3-103",
+      "NETWORK-DEVICES-3-207",
+      "NETWORK-NETWORKS-2-318",
+      "NETWORK-DEVICES-2-201",
+      "NETWORK-FABRIC_WIRED-1-310",
+      "NETWORK-FABRIC_WIRED-2-309",
+      "NETWORK-DEVICES-3-105",
+      "NETWORK-DEVICES-3-252",
+      "NETWORK-DEVICES-3-208",
+      "NETWORK-NON-FABRIC_WIRED-1-250"
+    ],
+    "others": []
+  },
+  "isPrivate": false,
+  "tenantId": "5a8d14f0ae788e008ec14ecb"
+}

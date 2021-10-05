@@ -1,0 +1,152 @@
+{
+  "changed":true,
+  "failed":false,
+  "instances":[
+    {
+      "ami_launch_index":0,
+      "architecture":"x86_64",
+      "block_device_mappings":[
+        
+      ],
+      "capacity_reservation_specification":{
+        "capacity_reservation_preference":"open"
+      },
+      "client_token":"",
+      "cpu_options":{
+        "core_count":1,
+        "threads_per_core":2
+      },
+      "ebs_optimized":false,
+      "ena_support":true,
+      "enclave_options":{
+        "enabled":false
+      },
+      "hibernation_options":{
+        "configured":false
+      },
+      "hypervisor":"xen",
+      "image_id":"ami-04d797af2d3326de3",
+      "instance_id":"i-0c5622997b7ff1ec7",
+      "instance_type":"m5.large",
+      "key_name":"EC2-key-pair",
+      "launch_time":"2020-12-13T13:33:08+00:00",
+      "metadata_options":{
+        "http_endpoint":"enabled",
+        "http_put_response_hop_limit":1,
+        "http_tokens":"optional",
+        "state":"pending"
+      },
+      "monitoring":{
+        "state":"disabled"
+      },
+      "network_interfaces":[
+        
+      ],
+      "placement":{
+        "availability_zone":"us-east-1b",
+        "group_name":"",
+        "tenancy":"default"
+      },
+      "private_dns_name":"",
+      "product_codes":[
+        
+      ],
+      "public_dns_name":"",
+      "root_device_name":"/dev/xvda",
+      "root_device_type":"ebs",
+      "security_groups":[
+        
+      ],
+      "state":{
+        "code":48,
+        "name":"terminated"
+      },
+      "state_reason":{
+        "code":"Client.UserInitiatedShutdown",
+        "message":"Client.UserInitiatedShutdown: User initiated shutdown"
+      },
+      "state_transition_reason":"User initiated (2020-12-13 14:52:19 GMT)",
+      "tags":{
+        "Name":"EC2_Globo_PAN_VM1"
+      },
+      "virtualization_type":"hvm"
+    },
+    {
+      "ami_launch_index":0,
+      "architecture":"x86_64",
+      "block_device_mappings":[
+        
+      ],
+      "capacity_reservation_specification":{
+        "capacity_reservation_preference":"open"
+      },
+      "client_token":"",
+      "cpu_options":{
+        "core_count":1,
+        "threads_per_core":2
+      },
+      "ebs_optimized":false,
+      "ena_support":true,
+      "enclave_options":{
+        "enabled":false
+      },
+      "hibernation_options":{
+        "configured":false
+      },
+      "hypervisor":"xen",
+      "image_id":"ami-04d797af2d3326de3",
+      "instance_id":"i-08332760067c8a6c3",
+      "instance_type":"m5.large",
+      "key_name":"EC2-key-pair",
+      "launch_time":"2020-12-13T15:18:01+00:00",
+      "metadata_options":{
+        "http_endpoint":"enabled",
+        "http_put_response_hop_limit":1,
+        "http_tokens":"optional",
+        "state":"pending"
+      },
+      "monitoring":{
+        "state":"disabled"
+      },
+      "network_interfaces":[
+        
+      ],
+      "placement":{
+        "availability_zone":"us-east-1b",
+        "group_name":"",
+        "tenancy":"default"
+      },
+      "private_dns_name":"",
+      "product_codes":[
+        
+      ],
+      "public_dns_name":"",
+      "root_device_name":"/dev/xvda",
+      "root_device_type":"ebs",
+      "security_groups":[
+        
+      ],
+      "state":{
+        "code":48,
+        "name":"terminated"
+      },
+      "state_reason":{
+        "code":"Client.UserInitiatedShutdown",
+        "message":"Client.UserInitiatedShutdown: User initiated shutdown"
+      },
+      "state_transition_reason":"User initiated (2020-12-13 15:41:57 GMT)",
+      "tags":{
+        "Name":"EC2_Globo_PAN_VM1"
+      },
+      "virtualization_type":"hvm"
+    }
+  ],
+  "msg":"Instances terminated",
+  "terminate_failed":[
+    
+  ],
+  "terminate_success":[
+    "i-08332760067c8a6c3",
+    "i-0c5622997b7ff1ec7"
+  ]
+}

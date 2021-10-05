@@ -1,0 +1,9 @@
+{
+  "response": {
+    "errorCode": "UNEXPECTED_ERROR",
+    "message": "Invalid Integer value two passed to parameter ssh_ver",
+    "detail": "An error occurred while invoking a REST API",
+    "href": ""
+  },
+  "version": "1.0"
+}

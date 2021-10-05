@@ -1,0 +1,63 @@
+Logged into HUB# successfully
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+HUB(config)#key chain KC_OSPF_AUTH
+HUB(config-keychain)# key 1
+HUB(config-keychain-key)#  key-string SECRET123
+HUB(config-keychain-key)#   cryptographic-algorithm hmac-sha-256
+HUB(config-keychain-key)#interface Tunnel100
+HUB(config-if)# ip ospf authentication key-chain KC_OSPF_AUTH
+HUB(config-if)#router ospf 1
+HUB(config-router)# passive-interface Loopback0
+HUB(config-router)# auto-cost reference-bandwidth 1000
+% OSPF: Reference bandwidth is changed. 
+        Please ensure reference bandwidth is consistent across all routers.
+HUB(config-router)# ttl-security all-interfaces hops 1
+HUB(config-router)#do write memory
+Building configuration...
+[OK]
+HUB(config-router)#
+HUB(config-router)#end
+HUB#
+Logged into ZTP-9TVCW8U5WDO# successfully
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+ZTP-9TVCW8U5WDO(config)#key chain KC_OSPF_AUTH
+ZTP-9TVCW8U5WDO(config-keychain)# key 1
+ZTP-9TVCW8U5WDO(config-keychain-key)#  key-string SECRET123
+ZTP-9TVCW8U5WDO(config-keychain-key)#   cryptographic-algorithm hmac-sha-256
+ZTP-9TVCW8U5WDO(config-keychain-key)#interface Tunnel100
+ZTP-9TVCW8U5WDO(config-if)# ip ospf authentication key-chain KC_OSPF_AUTH
+ZTP-9TVCW8U5WDO(config-if)#router ospf 1
+ZTP-9TVCW8U5WDO(config-router)# passive-interface Loopback0
+ZTP-9TVCW8U5WDO(config-router)# auto-cost reference-bandwidth 1000
+% OSPF: Reference bandwidth is changed. 
+        Please ensure reference bandwidth is consistent across all routers.
+ZTP-9TVCW8U5WDO(config-router)# ttl-security all-interfaces hops 1
+ZTP-9TVCW8U5WDO(config-router)#do write memory
+Building configuration...
+[OK]
+ZTP-9TVCW8U5WDO(config-router)#
+ZTP-9TVCW8U5WDO(config-router)#end
+ZTP-9TVCW8U5WDO#
+Logged into ZTP-9XFZQ9A2Y9P# successfully
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+ZTP-9XFZQ9A2Y9P(config)#key chain KC_OSPF_AUTH
+ZTP-9XFZQ9A2Y9P(config-keychain)# key 1
+ZTP-9XFZQ9A2Y9P(config-keychain-key)#  key-string SECRET123
+ZTP-9XFZQ9A2Y9P(config-keychain-key)#   cryptographic-algorithm hmac-sha-256
+ZTP-9XFZQ9A2Y9P(config-keychain-key)#interface Tunnel100
+ZTP-9XFZQ9A2Y9P(config-if)# ip ospf authentication key-chain KC_OSPF_AUTH
+ZTP-9XFZQ9A2Y9P(config-if)#router ospf 1
+ZTP-9XFZQ9A2Y9P(config-router)# passive-interface Loopback0
+ZTP-9XFZQ9A2Y9P(config-router)# auto-cost reference-bandwidth 1000
+% OSPF: Reference bandwidth is changed. 
+        Please ensure reference bandwidth is consistent across all routers.
+ZTP-9XFZQ9A2Y9P(config-router)# ttl-security all-interfaces hops 1
+ZTP-9XFZQ9A2Y9P(config-router)#do write memory
+Building configuration...
+[OK]
+ZTP-9XFZQ9A2Y9P(config-router)#
+ZTP-9XFZQ9A2Y9P(config-router)#end
+ZTP-9XFZQ9A2Y9P#

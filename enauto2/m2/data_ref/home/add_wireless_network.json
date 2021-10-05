@@ -1,0 +1,14 @@
+{
+  "id": "N_585467951558167026",
+  "organizationId": "937534",
+  "type": "wireless",
+  "productTypes": [
+    "wireless"
+  ],
+  "name": "Globo Wireless",
+  "timeZone": "America/New_York",
+  "tags": "",
+  "disableMyMerakiCom": false,
+  "disableRemoteStatusPage": true,
+  "enrollmentString": null
+}

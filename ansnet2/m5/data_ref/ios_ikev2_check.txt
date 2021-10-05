@@ -1,0 +1,5 @@
+R1#show crypto ikev2 sa remote 54.152.117.199
+Tunnel-id Local                 Remote                fvrf/ivrf            Status
+2         10.125.0.61/4500      54.152.117.199/4500   none/none            READY
+      Encr: AES-CBC, keysize: 256, PRF: SHA384, Hash: SHA384, DH Grp:20, Auth sign: PSK, Auth verify: PSK
+      Life/Active Time: 86400/426 sec

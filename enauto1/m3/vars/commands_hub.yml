@@ -1,0 +1,8 @@
+---
+commands:
+  - "show ip nhrp brief"
+  - "show ip ospf neighbor Tunnel100"
+  - "show ip ospf interface Tunnel100 | begin Cryptographic"
+  - "show ip ospf | include TTL|Reference"
+  - "show ip route ospf | begin ^Gateway"
+...

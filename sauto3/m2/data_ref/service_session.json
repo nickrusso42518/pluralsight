@@ -1,0 +1,15 @@
+{
+  "services": [
+    {
+      "name": "com.cisco.ise.session",
+      "nodeName": "ise-mnt-ise24",
+      "properties": {
+        "sessionTopic": "/topic/com.cisco.ise.session",
+        "groupTopic": "/topic/com.cisco.ise.session.group",
+        "wsPubsubService": "com.cisco.ise.pubsub",
+        "restBaseURL": "https://ise24.abc.inc:8910/pxgrid/mnt/sd",
+        "restBaseUrl": "https://ise24.abc.inc:8910/pxgrid/mnt/sd"
+      }
+    }
+  ]
+}

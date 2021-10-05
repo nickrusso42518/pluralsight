@@ -1,0 +1,12 @@
+{
+  "www.internetbadguys.com": {
+    "status": -1,
+    "security_categories": [
+      "Malware",
+      "Phishing"
+    ],
+    "content_categories": [
+      "Computer Security"
+    ]
+  }
+}

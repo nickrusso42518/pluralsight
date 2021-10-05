@@ -1,0 +1,14 @@
+{
+  "number": 3,
+  "name": "Unconfigured SSID 4",
+  "enabled": false,
+  "splashPage": "None",
+  "ssidAdminAccessible": false,
+  "authMode": "open",
+  "radiusAccountingEnabled": null,
+  "ipAssignmentMode": "NAT mode",
+  "minBitrate": 11,
+  "bandSelection": "Dual band operation",
+  "perClientBandwidthLimitUp": 0,
+  "perClientBandwidthLimitDown": 0
+}

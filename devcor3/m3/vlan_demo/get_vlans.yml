@@ -1,0 +1,24 @@
+---
+- name: "PLAY 1: VLAN GET"
+  hosts: "restconf_switches"
+  tasks:
+    # Issue HTTP GET for VLANs and store result in rc_get
+    - name: "TASK 1: Get Cisco-modeled YANG VLANs config via RESTCONF"
+      restconf_get:
+        path: "/data/Cisco-IOS-XE-native:native/vlan"
+      register: "rc_get"
+
+    # Should exist, but create data_ref directory if it doesn't
+    - name: "TASK 2: Ensure data_ref/ folder exists"
+      file:
+        path: "data_ref"
+        state: "directory"
+      run_once: true
+      delegate_to: "localhost"
+
+    # Write rc_get to disk in pretty JSON format on a per-host basis
+    - name: "TASK 3: Write JSON to disk"
+      copy:
+        content: "{{ rc_get.response | to_nice_json(indent=2) }}"
+        dest: "data_ref/{{ inventory_hostname }}_restconf_vlans.json"
+...

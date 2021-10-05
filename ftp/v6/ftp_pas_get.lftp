@@ -1,0 +1,5 @@
+debug 5
+set ftp:passive-mode yes
+open -u ftpuser,ftppass fc00:10:2:5::5
+get R1.cfg
+ls

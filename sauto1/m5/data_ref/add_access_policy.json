@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "inherit": false,
+    "domain": {
+      "name": "Global",
+      "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+      "type": "Domain"
+    }
+  },
+  "type": "AccessPolicy",
+  "links": {
+    "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/accesspolicies/005056BB-0B24-0ed3-0000-880468686479"
+  },
+  "rules": {
+    "refType": "list",
+    "links": {
+      "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/accesspolicies/005056BB-0B24-0ed3-0000-880468686479/accessrules"
+    },
+    "type": "AccessRule"
+  },
+  "name": "GLOBO_POLICY",
+  "description": "General VPN access and blacklist protection",
+  "id": "005056BB-0B24-0ed3-0000-880468686479"
+}

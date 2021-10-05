@@ -1,0 +1,16 @@
+{
+  "response": {
+    "version": 1578245739520,
+    "startTime": 1578245739520,
+    "endTime": 1578245739564,
+    "data": "6471ec08-e02e-4018-ad8d-ba8e5c860fce",
+    "serviceType": "SDN Programmer Service",
+    "progress": "Successfully created template with name nickrus_temp",
+    "rootId": "353f02fb-9a6e-4932-a4c0-6555dc9b1480",
+    "isError": false,
+    "instanceTenantId": "5be540a20700b3004c25ea95",
+    "id": "353f02fb-9a6e-4932-a4c0-6555dc9b1480"
+  },
+  "version": "1.0"
+}
+

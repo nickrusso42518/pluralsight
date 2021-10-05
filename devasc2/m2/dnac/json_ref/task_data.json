@@ -1,0 +1,14 @@
+{
+  "response": {
+    "version": 1564799342751,
+    "startTime": 1564799342751,
+    "endTime": 1564799342755,
+    "serviceType": "Inventory service",
+    "isError": false,
+    "progress": "",
+    "rootId": "999b89e7-3bca-4b6f-9883-26012e2ccaa5",
+    "instanceTenantId": "5bd3634ab2bea0004c3ebb58",
+    "id": "999b89e7-3bca-4b6f-9883-26012e2ccaa5"
+  },
+  "version": "1.0"
+}

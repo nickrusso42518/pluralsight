@@ -1,0 +1,17 @@
+---
+- name: "PLAY 1: Update config related to WAN"
+  hosts: "all"
+  tasks:
+    - name: "TASK 1: Render jinja2 template onto device"
+      ios_config:
+        src: "templates/{{ template_name }}.j2"
+        save_when: "changed"
+      register: "cli_output"
+      notify: "config_changed"
+
+  handlers:
+    - name: "HANDLER 1: Reveal config differences only when updated"
+      listen: "config_changed"
+      debug:
+        var: "cli_output.updates"
+...

@@ -1,0 +1,7 @@
+basics:
+  - considered "westbound"
+  - IT service management (ITSM) workflow integration
+  - minimizes handoffs, reduces duplication of effort, streamlines flow
+  - integrates into formal change mgmt process, maint windows, etc
+  - DNAC ships with Infoblox and Bluecoat "IPAM providers"
+  - https://developer.cisco.com/docs/dna-center/#!ipam-api-reference

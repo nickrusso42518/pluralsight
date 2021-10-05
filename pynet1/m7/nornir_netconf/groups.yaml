@@ -1,0 +1,30 @@
+---
+devices:
+  username: pyuser
+  password: pypass
+
+  # Common NETCONF options for all devices in our environment
+  connection_options:
+    netconf:
+      extras:
+        allow_agent: false
+        hostkey_verify: false
+        look_for_keys: false
+
+ios:
+  platform: ios
+  groups:
+    - devices
+  data:
+    edit_target: running
+    vrf_filter: "<native><vrf></vrf></native>"
+
+iosxr:
+  platform: iosxr
+  groups:
+    - devices
+  data:
+    edit_target: candidate
+    operation: replace
+    vrf_filter: >-
+      <vrfs xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-infra-rsi-cfg"></vrfs>

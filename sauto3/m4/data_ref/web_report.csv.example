@@ -1,0 +1,21 @@
+timestamp,url,src_ip,bw_kbps,wbrs_score,status
+2018-04-26 14:54:00,http://downloads.ironport.com/vtl/meter.txt,198.19.10.51,965,9.2,ALLOW_DEFAULT
+2018-04-26 14:53:00,http://downloads.ironport.com/vtl/meter.txt,198.19.10.51,964,9.2,ALLOW_DEFAULT
+2018-04-26 14:52:00,http://downloads.ironport.com/vtl/meter.txt,198.19.10.51,963,9.2,ALLOW_DEFAULT
+2018-04-26 14:51:00,http://downloads.ironport.com/vtl/meter.txt,198.19.10.51,965,9.2,ALLOW_DEFAULT
+2018-04-26 14:50:00,http://downloads.ironport.com/vtl/meter.txt,198.19.10.51,965,9.2,ALLOW_DEFAULT
+2018-04-26 14:49:00,http://downloads.ironport.com/vtl/meter.txt,198.19.10.51,965,9.2,ALLOW_DEFAULT
+2018-04-26 14:48:00,http://downloads.ironport.com/vtl/meter.txt,198.19.10.51,964,9.2,ALLOW_DEFAULT
+2018-04-26 14:47:00,http://downloads.ironport.com/vtl/meter.txt,198.19.10.51,955,9.2,ALLOW_DEFAULT
+2018-04-26 14:46:19,23.253.22.115:443,198.19.19.100,4972,1.5,ALLOW
+2018-04-26 14:46:00,http://downloads.ironport.com/vtl/meter.txt,198.19.10.51,965,9.2,ALLOW_DEFAULT
+2018-04-26 14:45:52,https://safebrowsing.googleapis.com:443/v4/threatListUpdates:fetch?$ct=applicati,198.19.10.1,3637,1.5,ALLOW_DEFAULT
+2018-04-26 14:45:14,http://email.mgmgrand.com/offers/detroit/2016/08_vegas_getaway/images/mgmd-top.j,198.19.19.100,9052,-3.0,ALLOW_DEFAULT
+2018-04-26 14:45:09,67.215.92.210:443,198.19.19.100,3193,7.8,ALLOW
+2018-04-26 14:45:05,23.253.22.115:443,198.19.19.100,4940,1.5,ALLOW
+2018-04-26 14:45:00,http://downloads.ironport.com/vtl/meter.txt,198.19.10.51,965,9.2,ALLOW_DEFAULT
+2018-04-26 14:44:56,http://ocsp.pki.goog/GTSGIAG3,198.19.19.100,1218,0.0,ALLOW_DEFAULT
+2018-04-26 14:44:35,52.89.179.237:443,198.19.19.100,4325,8.0,ALLOW
+2018-04-26 14:44:33,http://ocsp.digicert.com/,198.19.10.1,1309,2.8,ALLOW_DEFAULT
+2018-04-26 14:44:32,52.32.92.108:443,198.19.19.100,203,1.5,ALLOW
+2018-04-26 14:44:31,172.217.7.202:443,198.19.19.100,3057,1.5,ALLOW

@@ -1,0 +1,24 @@
+---
+access_lists:
+  IN_TO_OUT_BLACKLIST:
+    direction: "in"
+    nameif: "inside"
+    rules: 
+      - action: "deny"
+        protocol: "ip"
+        src_net: "any"
+        dst_net: "object-group NETG_BLACKLIST"
+      - action: "permit"
+        protocol: "ip"
+        src_net: "any"
+        dst_net: "any"
+
+  OUT_TO_IN_VPN:
+    direction: "in"
+    nameif: "outside"
+    rules:
+      - action: "permit"
+        protocol: "object-group PORTG_IPSEC"
+        src_net: "any"
+        dst_net: "object-group NETG_VPN_CONCENTRATORS"
+...

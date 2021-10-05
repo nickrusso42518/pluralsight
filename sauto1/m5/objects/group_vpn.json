@@ -1,0 +1,19 @@
+{
+  "name": "NETG_VPN_CONCENTRATORS",
+  "description": "All VPN concentrators",
+  "type": "NetworkGroup",
+  "objects": [
+    {
+      "name": "NET_VPN_EAST",
+      "description": "VPN concentrator in Baltimore",
+      "value": "192.168.5.10",
+      "type": "Host"
+    },
+    {
+      "name": "NET_VPN_WEST",
+      "description": "VPN concentrator in Seattle",
+      "value": "192.168.6.10",
+      "type": "Host"
+    }
+  ]
+}

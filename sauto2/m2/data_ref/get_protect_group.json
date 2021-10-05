@@ -1,0 +1,249 @@
+{
+  "version": "v1.2.0",
+  "metadata": {
+    "links": {
+      "self": "https://api.amp.cisco.com/v1/groups/1efca1bf-d627-4336-aeb6-ff03400ff163"
+    }
+  },
+  "data": {
+    "name": "Protect",
+    "description": "Protect Group for nickrus+lab",
+    "guid": "1efca1bf-d627-4336-aeb6-ff03400ff163",
+    "source": null,
+    "policies": [
+      {
+        "name": "Protect",
+        "description": "This is the standard policy for the AMP for Endpoints Connector that will quarantine malicious files and block malicious network connections.",
+        "guid": "d25ba78d-e32f-400f-b421-9ef8bd2df1c0",
+        "product": "windows",
+        "default": false,
+        "serial_number": 111,
+        "links": {
+          "policy_xml": "https://api.amp.cisco.com/v1/policies/d25ba78d-e32f-400f-b421-9ef8bd2df1c0.xml",
+          "policy": "https://api.amp.cisco.com/v1/policies/d25ba78d-e32f-400f-b421-9ef8bd2df1c0"
+        },
+        "file_lists": [
+          {
+            "name": "File Blacklist",
+            "guid": "45226d15-dc9b-4f71-9fa9-7df74d5b401e",
+            "type": "simple_custom_detections"
+          },
+          {
+            "name": "Execution Blacklist",
+            "guid": "382bb653-e866-4459-b3dd-d2028e1307e9",
+            "type": "application_blocking"
+          },
+          {
+            "name": "File Whitelist",
+            "guid": "032ef3bb-4a2f-4e67-aca3-8350153a6e5d",
+            "type": "allowed_applications"
+          }
+        ],
+        "ip_lists": [],
+        "isolation_ip_lists": [],
+        "exclusion_sets": [
+          {
+            "name": "Workstation Exclusions",
+            "guid": "99962bf5-97c6-4a76-84d4-510cbb338edb"
+          }
+        ],
+        "used_in_groups": [
+          {
+            "name": "Protect",
+            "description": "Protect Group for nickrus+lab",
+            "guid": "1efca1bf-d627-4336-aeb6-ff03400ff163"
+          }
+        ],
+        "inherited": false
+      },
+      {
+        "name": "Protect",
+        "description": "This is the standard policy for the AMP for Endpoints Connector that will quarantine malicious files and block malicious network connections.",
+        "guid": "bef7d7af-d419-414d-bf95-79c6673583b1",
+        "product": "android",
+        "default": true,
+        "serial_number": 58,
+        "links": {
+          "policy_xml": "https://api.amp.cisco.com/v1/policies/bef7d7af-d419-414d-bf95-79c6673583b1.xml",
+          "policy": "https://api.amp.cisco.com/v1/policies/bef7d7af-d419-414d-bf95-79c6673583b1"
+        },
+        "file_lists": [],
+        "ip_lists": [],
+        "isolation_ip_lists": [],
+        "used_in_groups": [
+          {
+            "name": "Audit",
+            "description": "Audit Group for nickrus+lab",
+            "guid": "0fd176db-c9f8-4741-8909-d48d38c383d6"
+          }
+        ],
+        "inherited": false
+      },
+      {
+        "name": "Protect",
+        "description": "This is the standard policy for the AMP for Endpoints Connector that will quarantine malicious files and block malicious network connections.",
+        "guid": "adf97fbc-6807-4ccd-959c-e61c4d8cdb14",
+        "product": "mac",
+        "default": false,
+        "serial_number": 104,
+        "links": {
+          "policy_xml": "https://api.amp.cisco.com/v1/policies/adf97fbc-6807-4ccd-959c-e61c4d8cdb14.xml",
+          "policy": "https://api.amp.cisco.com/v1/policies/adf97fbc-6807-4ccd-959c-e61c4d8cdb14"
+        },
+        "file_lists": [
+          {
+            "name": "File Blacklist",
+            "guid": "45226d15-dc9b-4f71-9fa9-7df74d5b401e",
+            "type": "simple_custom_detections"
+          },
+          {
+            "name": "Execution Blacklist",
+            "guid": "382bb653-e866-4459-b3dd-d2028e1307e9",
+            "type": "application_blocking"
+          },
+          {
+            "name": "File Whitelist",
+            "guid": "032ef3bb-4a2f-4e67-aca3-8350153a6e5d",
+            "type": "allowed_applications"
+          }
+        ],
+        "ip_lists": [],
+        "isolation_ip_lists": [],
+        "exclusion_sets": [
+          {
+            "name": "Workstation Exclusions",
+            "guid": "b152c1bc-1295-42a8-974a-600c4992d7b7"
+          }
+        ],
+        "used_in_groups": [
+          {
+            "name": "Protect",
+            "description": "Protect Group for nickrus+lab",
+            "guid": "1efca1bf-d627-4336-aeb6-ff03400ff163"
+          }
+        ],
+        "inherited": false
+      },
+      {
+        "name": "Protect",
+        "description": "This is the standard policy for the AMP for Endpoints Connector that will quarantine malicious files and block malicious network connections.",
+        "guid": "2f4f7b22-b8d8-47e3-b249-0a540206ae12",
+        "product": "linux",
+        "default": false,
+        "serial_number": 107,
+        "links": {
+          "policy_xml": "https://api.amp.cisco.com/v1/policies/2f4f7b22-b8d8-47e3-b249-0a540206ae12.xml",
+          "policy": "https://api.amp.cisco.com/v1/policies/2f4f7b22-b8d8-47e3-b249-0a540206ae12"
+        },
+        "file_lists": [
+          {
+            "name": "File Blacklist",
+            "guid": "45226d15-dc9b-4f71-9fa9-7df74d5b401e",
+            "type": "simple_custom_detections"
+          },
+          {
+            "name": "Execution Blacklist",
+            "guid": "382bb653-e866-4459-b3dd-d2028e1307e9",
+            "type": "application_blocking"
+          },
+          {
+            "name": "File Whitelist",
+            "guid": "032ef3bb-4a2f-4e67-aca3-8350153a6e5d",
+            "type": "allowed_applications"
+          }
+        ],
+        "ip_lists": [],
+        "isolation_ip_lists": [],
+        "exclusion_sets": [
+          {
+            "name": "Workstation Exclusions",
+            "guid": "8a7ae603-f065-4e69-a326-a3f9d35e4f80"
+          }
+        ],
+        "used_in_groups": [
+          {
+            "name": "Protect",
+            "description": "Protect Group for nickrus+lab",
+            "guid": "1efca1bf-d627-4336-aeb6-ff03400ff163"
+          }
+        ],
+        "inherited": false
+      },
+      {
+        "name": "Protect",
+        "description": "This is the standard policy for Clarity that will log and alert on convictions and block any potentially malicious traffic.",
+        "guid": "609280c0-2b92-4787-a714-43b4a36cab45",
+        "product": "ios",
+        "default": false,
+        "serial_number": 109,
+        "links": {
+          "policy_xml": "https://api.amp.cisco.com/v1/policies/609280c0-2b92-4787-a714-43b4a36cab45.xml",
+          "policy": "https://api.amp.cisco.com/v1/policies/609280c0-2b92-4787-a714-43b4a36cab45"
+        },
+        "file_lists": [],
+        "ip_lists": [],
+        "isolation_ip_lists": [],
+        "used_in_groups": [
+          {
+            "name": "Protect",
+            "description": "Protect Group for nickrus+lab",
+            "guid": "1efca1bf-d627-4336-aeb6-ff03400ff163"
+          }
+        ],
+        "inherited": false
+      }
+    ]
+  }
+}
+(py365) Nicholass-MBP:m2 nicholasrusso$ cat > data_ref/get_windows_computer.json
+{
+  "version": "v1.2.0",
+  "metadata": {
+    "links": {
+      "self": "https://api.amp.cisco.com/v1/computers/2ac2ae9a-f475-411c-aea6-b16eccebefb3"
+    }
+  },
+  "data": {
+    "connector_guid": "2ac2ae9a-f475-411c-aea6-b16eccebefb3",
+    "hostname": "EC2AMAZ-M367V5R",
+    "windows_processor_id": "1789fbff000306f2",
+    "active": true,
+    "links": {
+      "computer": "https://api.amp.cisco.com/v1/computers/2ac2ae9a-f475-411c-aea6-b16eccebefb3",
+      "trajectory": "https://api.amp.cisco.com/v1/computers/2ac2ae9a-f475-411c-aea6-b16eccebefb3/trajectory",
+      "group": "https://api.amp.cisco.com/v1/groups/1efca1bf-d627-4336-aeb6-ff03400ff163"
+    },
+    "connector_version": "7.2.11.11804",
+    "operating_system": "Windows Server 2019 Datacenter",
+    "internal_ips": [
+      "172.31.46.65"
+    ],
+    "external_ip": "18.211.161.218",
+    "group_guid": "1efca1bf-d627-4336-aeb6-ff03400ff163",
+    "install_date": "2020-07-04T00:38:54Z",
+    "network_addresses": [
+      {
+        "mac": "06:"ip": "172.31.46.65"
+      }
+    ],
+    "policy": {
+      "guid": "d25ba78d-e32f-400f-b421-9ef8bd2df1c0",
+      "name": "Protect"
+    },
+    "last_seen": "2020-07-05T11:00:43Z",
+    "av_update_definitions": {
+      "version": "81006",
+      "status": "Definitions Up To Date",
+      "updated_at": "2020-07-05T10:33:49+00:00",
+      "detection_engine": "TETRA 64 bit"
+    },
+    "faults": [],
+    "isolation": {
+      "available": false,
+      "status": "not_isolated"
+    },
+    "orbital": {
+      "status": "not_enabled"
+    }
+  }
+}

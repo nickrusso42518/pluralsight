@@ -1,0 +1,18 @@
+---
+- name: "PLAY 1: Manage VPNs with ios_config and jinja2"
+  hosts: routers
+  connection: network_cli
+  tasks:
+    - name: "TASK 1: Apply IOS VPN config via SSH/CLI"
+      # ios_config:
+      cisco.ios.ios_config:
+        src: "templates/cli_vpn.j2"
+        save_when: changed
+      notify: config_changed
+      register: cli_result
+
+  handlers:
+    - name: "HANDLER 1: Display relevant changes"
+      listen: config_changed
+      debug:
+        msg: "{{ cli_result.commands }}"

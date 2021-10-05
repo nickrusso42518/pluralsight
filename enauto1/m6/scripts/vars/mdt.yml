@@ -1,0 +1,21 @@
+---
+subscriptions:
+  100:
+    xpath: "/process-cpu-ios-xe-oper:cpu-usage/cpu-utilization/five-seconds"
+    period: 1000
+    rx:
+      ip: "10.0.19.188"
+      tcp_port: 42518
+  101:
+    xpath: "/memory-ios-xe-oper:memory-statistics/memory-statistic"
+    period: 1000
+    rx:
+      ip: "10.0.19.188"
+      tcp_port: 42518
+  102:
+    xpath: "/cdp-ios-xe-oper:cdp-neighbor-details/cdp-neighbor-detail/device-name"
+    period: "on_change"
+    rx:
+      ip: "10.0.19.188"
+      tcp_port: 42518
+...

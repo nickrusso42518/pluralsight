@@ -1,0 +1,25 @@
+$ python src/unittest_run.py
+test_balance (unittests.database_test_case.DatabaseTestCase) ... ok
+test_owes_money (unittests.database_test_case.DatabaseTestCase) ... FAIL
+
+======================================================================
+FAIL: test_owes_money (unittests.database_test_case.DatabaseTestCase)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ec2-user/pluralsight/devasc2/m5/src/unittests/database_test_case.py", line 43, in test_owes_money
+    self.assertTrue(self.db.owes_money("ACCT100"))
+AssertionError: None is not true
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=1)
+test_get_bad_page (unittests.system_test_case.SystemTestCase) ... ok
+test_get_good_page (unittests.system_test_case.SystemTestCase) ... ok
+test_post_bad_acct (unittests.system_test_case.SystemTestCase) ... ok
+test_post_good_acct (unittests.system_test_case.SystemTestCase) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.081s
+
+OK

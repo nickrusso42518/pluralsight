@@ -1,0 +1,27 @@
+[
+  {
+    "lat": 37.7703718,
+    "lng": -122.3871248,
+    "address": "500 Terry Francois, San Francisco",
+    "serial": "Q2QN-9J8L-SLPD",
+    "mac": "e0:55:3d:17:d4:23",
+    "wan1Ip": "10.10.10.106",
+    "wan2Ip": null,
+    "lanIp": "10.10.10.106",
+    "tags": " recently-added ",
+    "networkId": "L_646829496481099586",
+    "model": "MX65"
+  },
+  {
+    "lat": 37.4180951010362,
+    "lng": -122.098531723022,
+    "address": "",
+    "serial": "Q2HP-F5K5-R88R",
+    "mac": "88:15:44:df:f3:af",
+    "lanIp": "192.168.128.2",
+    "tags": " recently-added ",
+    "networkId": "L_646829496481099586",
+    "model": "MS220-8P",
+    "switchProfileId": null
+  }
+]

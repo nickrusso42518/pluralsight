@@ -1,0 +1,91 @@
+{
+  "failures": [
+    {
+      "id": "1594815525759205",
+      "timestamp": "2020-07-15T15:16:09.885Z",
+      "failureReason": "22040 Wrong password or invalid shared secret",
+      "messageCode": 5400,
+      "userName": "user",
+      "serverName": "ise24",
+      "nasName": "RAVPN",
+      "accessService": "Default Network Access",
+      "authenticationMethod": "PAP_ASCII",
+      "authenticationProtocol": "PAP_ASCII",
+      "deviceType": "All Device Types",
+      "location": "All Locations",
+      "response": "{RadiusPacketType=AccessReject; AuthenticationResult=Failed; }",
+      "responseTime": 3,
+      "executionSteps": [
+        "11001",
+        "11017",
+        "11015",
+        "11117",
+        "15049",
+        "15008",
+        "22040",
+        "22002",
+        "11003"
+      ],
+      "credentialCheck": "PAP_ASCII",
+      "policySetName": "Default"
+    },
+    {
+      "id": "1594815525759203",
+      "timestamp": "2020-07-15T15:16:09.805Z",
+      "failureReason": "22040 Wrong password or invalid shared secret",
+      "messageCode": 5400,
+      "userName": "user",
+      "serverName": "ise24",
+      "nasName": "RAVPN",
+      "accessService": "Default Network Access",
+      "authenticationMethod": "PAP_ASCII",
+      "authenticationProtocol": "PAP_ASCII",
+      "deviceType": "All Device Types",
+      "location": "All Locations",
+      "response": "{RadiusPacketType=AccessReject; AuthenticationResult=Failed; }",
+      "responseTime": 3,
+      "executionSteps": [
+        "11001",
+        "11017",
+        "11015",
+        "11117",
+        "15049",
+        "15008",
+        "22040",
+        "22002",
+        "11003"
+      ],
+      "credentialCheck": "PAP_ASCII",
+      "policySetName": "Default"
+    },
+    {
+      "id": "1594815525759201",
+      "timestamp": "2020-07-15T15:16:09.719Z",
+      "failureReason": "22040 Wrong password or invalid shared secret",
+      "messageCode": 5400,
+      "userName": "user",
+      "serverName": "ise24",
+      "nasName": "RAVPN",
+      "accessService": "Default Network Access",
+      "authenticationMethod": "PAP_ASCII",
+      "authenticationProtocol": "PAP_ASCII",
+      "deviceType": "All Device Types",
+      "location": "All Locations",
+      "response": "{RadiusPacketType=AccessReject; AuthenticationResult=Failed; }",
+      "responseTime": 5,
+      "executionSteps": [
+        "11001",
+        "11017",
+        "11015",
+        "11117",
+        "15049",
+        "15008",
+        "22040",
+        "22002",
+        "11003"
+      ],
+      "credentialCheck": "PAP_ASCII",
+      "policySetName": "Default"
+    }
+  ]
+}

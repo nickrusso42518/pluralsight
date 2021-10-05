@@ -1,0 +1,12 @@
+basics:
+  - considered "southbound" API from DNAC to devices
+  - can use SDKs to interact with non-Cisco devices (encapsulation)
+  - NETCONF, SNMP, Telnet/SSH
+  - called "Device Packages" which can be installed on DNAC
+  - currently supports the following features
+    - discovery, inventory, topology, assurance, command runner
+
+setup:
+  - requires Java 8 JDK (java -version should be 1.8)
+  - SDK is built off the Eclipse IDE
+  - the Cisco-built IDE has built-in instructions and examples

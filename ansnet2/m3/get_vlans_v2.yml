@@ -1,0 +1,27 @@
+---
+- name: "Get VLANs with NAPALM"
+  hosts: "all"
+  tasks:
+    - name: "Ensure state/ directory exists"
+      ansible.builtin.file:
+        path: "{{ playbook_dir }}/state"
+        state: "directory"
+      delegate_to: "localhost"
+      run_once: true
+
+    # NAPALM documentation with "Getters Support Matrix"
+    # https://napalm.readthedocs.io/en/latest/support
+    - name: "Collect VLANs from switches"
+      napalm_get_facts:
+        filter: "vlans"
+      register: "raw_vlans"
+
+    - name: "Restructure raw VLANs. Strict mode? --> {{ strict_mode }}"
+      ansible.builtin.set_fact:
+        reformed_vlans: "{{ raw_vlans | reform_vlans(strict_mode=strict_mode) }}"
+
+    - name: "Generate validation file based on current state"
+      ansible.builtin.copy:
+        content: "{{ reformed_vlans | to_nice_yaml(indent=2) }}"
+        dest: "{{ playbook_dir }}/state/{{ inventory_hostname }}_vlans.yml"
+...

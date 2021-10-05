@@ -1,0 +1,32 @@
+{
+  "changed":false,
+  "failed":false,
+  "route_tables":[
+    {
+      "associations":[
+        {
+          "id":"rtbassoc-08edae10182a1238e",
+          "main":true,
+          "route_table_id":"rtb-0230ebd9a68834a88",
+          "subnet_id":null
+        }
+      ],
+      "id":"rtb-0230ebd9a68834a88",
+      "routes":[
+        {
+          "destination_cidr_block":"10.0.0.0/16",
+          "gateway_id":"local",
+          "instance_id":null,
+          "interface_id":null,
+          "origin":"CreateRouteTable",
+          "state":"active",
+          "vpc_peering_connection_id":null
+        }
+      ],
+      "tags":{
+        
+      },
+      "vpc_id":"vpc-01c27ced48b8275d8"
+    }
+  ]
+}

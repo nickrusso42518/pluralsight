@@ -1,0 +1,16 @@
+methods:
+  cdp:
+    - choose "Discovery" tool on main dashboard page
+    - used if you don't know the subnets
+    - enter single IP to start the scan
+    - can exclude subnets, specify number of hops
+    - choose variety of credentials: CLI, snmpv2/3, netconf, HTTPS
+  range:
+    - choose "Discovery" tool on main dashboard page
+    - provide beginning and end IP addresses
+    - DNAC scans them in order up to 4096 devices
+    - can specify multiple ranges
+    - both cdp and range can use global creds or custom discovery creds
+
+todo:
+  - can we do this through an API?

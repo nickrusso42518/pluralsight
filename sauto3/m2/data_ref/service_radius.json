@@ -1,0 +1,13 @@
+{
+  "services": [
+    {
+      "name": "com.cisco.ise.radius",
+      "nodeName": "ise-mnt-ise24",
+      "properties": {
+        "wsPubsubService": "com.cisco.ise.pubsub",
+        "restBaseUrl": "https://ise24.abc.inc:8910/pxgrid/ise/radius",
+        "failureTopic": "/topic/com.cisco.ise.radius.failure"
+      }
+    }
+  ]
+}

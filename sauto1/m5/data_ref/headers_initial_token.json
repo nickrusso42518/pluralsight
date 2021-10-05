@@ -1,0 +1,19 @@
+{
+  "Date": "Thu, 28 May 2020 12:43:19 GMT",
+  "Server": "Apache",
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+  "Cache-Control": "no-cache, no-store, must-revalidate, max-age=0",
+  "Accept-Ranges": "bytes",
+  "Vary": "Accept-Charset,Accept-Encoding,Accept-Language,Accept",
+  "X-auth-access-token": "1f97b8e6-5969-4b7e-a09b-b82aa065c736",
+  "X-auth-refresh-token": "e8eb4da7-5ee4-4f2d-b808-2bd65e8ad3b2",
+  "USER_UUID": "005c7a54-a0d9-11ea-bad9-204b13596ba2",
+  "DOMAIN_ID": "111",
+  "DOMAIN_UUID": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+  "global": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+  "DOMAINS": "[{\"name\":\"Global\",\"uuid\":\"e276abec-e0f2-11e3-8169-6d9ed49b625f\"}]",
+  "X-Frame-Options": "SAMEORIGIN",
+  "X-UA-Compatible": "IE=edge",
+  "Keep-Alive": "timeout=5, max=100",
+  "Connection": "Keep-Alive"
+}

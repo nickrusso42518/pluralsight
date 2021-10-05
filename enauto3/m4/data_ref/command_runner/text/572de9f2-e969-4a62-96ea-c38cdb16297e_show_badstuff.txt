@@ -1,0 +1,7 @@
+Error occured while executing command : show badstuff
+
+show badstuff
+       ^
+% Invalid input detected at '^' marker.
+
+leaf1#

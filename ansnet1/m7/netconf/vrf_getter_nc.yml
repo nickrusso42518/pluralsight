@@ -1,0 +1,28 @@
+---
+- name: "PLAY 1: Capture and store VRF config"
+  hosts: routers
+  connection: netconf
+  tasks:
+    - name: "TASK 1: Get VRF config with NETCONF"
+      netconf_get:
+        source: running
+        filter: "<native><vrf></vrf></native>"
+      register: nc_vrf
+
+    - name: "TASK 2: Format XML for easy viewing"
+      xml:
+        xmlstring: "{{ nc_vrf.stdout }}"
+        pretty_print: true
+      register: pretty_config
+      changed_when: false
+
+    - name: "TASK 3: Ensure outputs/ folder exists"
+      file:
+        path: "outputs"
+        state: directory
+      run_once: true
+
+    - name: "TASK 4: Write XML to disk"
+      copy:
+        content: "{{ pretty_config.xmlstring }}"
+        dest: "outputs/{{ inventory_hostname }}_netconf.xml"

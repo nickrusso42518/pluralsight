@@ -1,0 +1,49 @@
+{
+  "metadata": {
+    "ruleIndex": 1,
+    "section": "Default",
+    "category": "--Undefined--",
+    "accessPolicy": {
+      "type": "AccessPolicy",
+      "name": "GLOBO_POLICY",
+      "id": "005056BB-0B24-0ed3-0000-880468686479"
+    }
+  },
+  "links": {
+    "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/accesspolicies/005056BB-0B24-0ed3-0000-880468686479/accessrules/005056BB-0B24-0ed3-0000-000268489733"
+  },
+  "id": "005056BB-0B24-0ed3-0000-000268489733",
+  "vlanTags": {},
+  "enableSyslog": false,
+  "sourceZones": {
+    "objects": [
+      {
+        "name": "inside-zone",
+        "id": "30b7717e-23c4-11e9-8047-ef3db50da465",
+        "type": "SecurityZone"
+      }
+    ]
+  },
+  "destinationZones": {
+    "objects": [
+      {
+        "name": "outside-zone",
+        "id": "f2302de2-23c3-11e9-8047-ef3db50da465",
+        "type": "SecurityZone"
+      }
+    ]
+  },
+  "logFiles": false,
+  "logBegin": false,
+  "logEnd": false,
+  "variableSet": {
+    "name": "Default-Set",
+    "id": "76fa83ea-c972-11e2-8be8-8e45bb1343c0",
+    "type": "VariableSet"
+  },
+  "sendEventsToFMC": false,
+  "type": "AccessRule",
+  "name": "IN_TO_OUT_GENERAL",
+  "enabled": true,
+  "action": "ALLOW"
+}

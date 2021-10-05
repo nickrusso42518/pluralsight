@@ -1,0 +1,5 @@
+ansible-base==2.10.4
+boto
+boto3
+paramiko
+netaddr

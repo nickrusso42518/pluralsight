@@ -1,0 +1,43 @@
+---
+# Basic information about the current testbed. The credentials supplied
+# are generic to the whole network, which reduces copy/paste in the
+# "devices" section below.
+testbed:
+  name: "globomantics_testbed"
+  credentials:
+    default:
+      username: "pyats"
+      password: "pyats"
+
+# Collection of network devices to be tested. In this example, the three
+# routers (R1, R2, and F1) are all running OSPF, a routing protocol, to
+# exchange IP routes. This is the focus of this example. Even though these
+# devices are IOS, not IOS-XE, some of the Genie parsers for IOS have not
+# been fully implemented, but they have for IOS-XE, which generally still
+# work on IOS devices. Note that the hostname for each device, such as R1,
+# is case sensitive and MUST match the configured hostname of the device.
+devices:
+  R1:
+    os: "iosxe"
+    type: "CSR1000v"
+    connections:
+      default:
+        protocol: "ssh"
+        ip: "10.0.0.1"
+
+  R2:
+    os: "iosxe"
+    type: "CSR1000v"
+    connections:
+      default:
+        protocol: "ssh"
+        ip: "10.0.0.2"
+
+  F1:
+    os: "iosxe"
+    type: "CSR1000v"
+    connections:
+      default:
+        protocol: "ssh"
+        ip: "10.0.0.3"
+...

@@ -1,0 +1,8 @@
+{
+  "changed":false,
+  "failed":false,
+  "stdout":"Loading http://ifconfig.me/ip 54.162.84.190",
+  "stdout_lines":[
+    "Loading http://ifconfig.me/ip 54.162.84.190"
+  ]
+}

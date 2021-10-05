@@ -1,0 +1,279 @@
+{
+  "ietf-interfaces:interfaces": {
+    "interface": [
+      {
+        "description": "MANAGEMENT INTERFACE - DON'T TOUCH ME",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "10.10.20.48",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "GigabitEthernet1",
+        "type": "iana-if-type:ethernetCsmacd"
+      },
+      {
+        "description": "Configured by NETCONF",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "10.255.255.1",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "GigabitEthernet2",
+        "type": "iana-if-type:ethernetCsmacd"
+      },
+      {
+        "description": "Test VRRP",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "192.168.90.102",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "GigabitEthernet3",
+        "type": "iana-if-type:ethernetCsmacd"
+      },
+      {
+        "description": "Configured by RESTCONF",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "172.16.100.1",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "Loopback100",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "Demo interface by NETCONF",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "192.168.102.1",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "Loopback102",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "**TEST 111*",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "192.168.111.100",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "Loopback111",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "Updated interface using RESTCONF",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "192.168.0.1",
+              "netmask": "255.255.255.255"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "Loopback114",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "test 144",
+        "enabled": true,
+        "ietf-ip:ipv4": {},
+        "ietf-ip:ipv6": {},
+        "name": "Loopback144",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "**TEST 222**",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "192.168.222.100",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "Loopback222",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "Configured by Johny",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "10.10.23.2",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "Loopback235",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "test 244",
+        "enabled": true,
+        "ietf-ip:ipv4": {},
+        "ietf-ip:ipv6": {},
+        "name": "Loopback244",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "test 333",
+        "enabled": true,
+        "ietf-ip:ipv4": {},
+        "ietf-ip:ipv6": {},
+        "name": "Loopback333",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "test 444",
+        "enabled": true,
+        "ietf-ip:ipv4": {},
+        "ietf-ip:ipv6": {},
+        "name": "Loopback444",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "test 555",
+        "enabled": true,
+        "ietf-ip:ipv4": {},
+        "ietf-ip:ipv6": {},
+        "name": "Loopback555",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "test 666",
+        "enabled": true,
+        "ietf-ip:ipv4": {},
+        "ietf-ip:ipv6": {},
+        "name": "Loopback666",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "test 1212",
+        "enabled": true,
+        "ietf-ip:ipv4": {},
+        "ietf-ip:ipv6": {},
+        "name": "Loopback1212",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "test 2323",
+        "enabled": true,
+        "ietf-ip:ipv4": {},
+        "ietf-ip:ipv6": {},
+        "name": "Loopback2323",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "Pod Number 11199",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "10.111.11.1",
+              "netmask": "255.255.255.255"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "Loopback11199",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "Pod Number 12199",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "10.111.12.1",
+              "netmask": "255.255.255.255"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "Loopback12199",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "Pod Number 13199",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "10.111.13.1",
+              "netmask": "255.255.255.255"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "Loopback13199",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "description": "Pod Number 14199",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "10.111.14.1",
+              "netmask": "255.255.255.255"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "Loopback14199",
+        "type": "iana-if-type:softwareLoopback"
+      },
+      {
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "192.168.35.1",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "VirtualPortGroup0",
+        "type": "iana-if-type:propVirtual"
+      }
+    ]
+  }
+}

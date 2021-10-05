@@ -1,0 +1,157 @@
+{
+  "links": {
+    "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies?offset=0&limit=18"
+  },
+  "items": [
+    {
+      "name": "No Rules Active",
+      "id": "abba416e-3127-11da-9f4c-d463d19aa744",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/abba416e-3127-11da-9f4c-d463d19aa744"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "Maximum Detection",
+      "id": "d224e29c-6c27-11e0-ac9d-988fc3da9be6",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/d224e29c-6c27-11e0-ac9d-988fc3da9be6"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "Connectivity Over Security",
+      "id": "abbad193-46bd-4535-ade6-73cc7e76fb7b",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/abbad193-46bd-4535-ade6-73cc7e76fb7b"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "Balanced Security and Connectivity",
+      "id": "abba00a0-cf29-425c-9d75-49699aadc898",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/abba00a0-cf29-425c-9d75-49699aadc898"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "Security Over Connectivity",
+      "id": "abba9b63-bb10-4729-b901-2e2aa0f4491c",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/abba9b63-bb10-4729-b901-2e2aa0f4491c"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "NIPS Intrusion Policy",
+      "id": "28857fce-4219-11e8-b587-ab49e9d72c04",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/28857fce-4219-11e8-b587-ab49e9d72c04"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "TST",
+      "id": "fe27e7f8-c5c1-11e8-afb6-96ccad416b97",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/fe27e7f8-c5c1-11e8-afb6-96ccad416b97"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "testab",
+      "id": "1bc98a62-cc63-11e8-b442-f660cf045630",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/1bc98a62-cc63-11e8-b442-f660cf045630"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "Golden_IPS_Ruleset",
+      "id": "8a9146b2-7c3d-11e9-8d5f-c43d0a52d09e",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/8a9146b2-7c3d-11e9-8d5f-c43d0a52d09e"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "test",
+      "id": "b64e3634-73dd-11e8-8179-f665c068cda9",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/b64e3634-73dd-11e8-8179-f665c068cda9"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "CANES Intrusion Policy",
+      "id": "55bf9d5e-03f0-11ea-b753-d982133856be",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/55bf9d5e-03f0-11ea-b753-d982133856be"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "Travis-Intrusion-Policy",
+      "id": "b0f956c6-e10e-11e7-a1ee-8138dbabd4ae",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/b0f956c6-e10e-11e7-a1ee-8138dbabd4ae"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "Arshad-SNORT-Policy",
+      "id": "883919b2-6988-11e8-a2e6-e0dc428f6e63",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/883919b2-6988-11e8-a2e6-e0dc428f6e63"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "abcnips",
+      "id": "e64b50ae-97f5-11ea-b537-d87b00f29f64",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/e64b50ae-97f5-11ea-b537-d87b00f29f64"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "bbbb-IPS-Policy",
+      "id": "a03b1566-a149-11e9-aa1f-d16894522999",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/a03b1566-a149-11e9-aa1f-d16894522999"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "PH-Intrusion-Policy",
+      "id": "e8485544-5003-11ea-9cf9-db161aa5c774",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/e8485544-5003-11ea-9cf9-db161aa5c774"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "FMC-IPS",
+      "id": "f958bcf0-5910-11ea-ab44-85248408d774",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/f958bcf0-5910-11ea-ab44-85248408d774"
+      },
+      "type": "intrusionpolicy"
+    },
+    {
+      "name": "IPS_policy",
+      "id": "edcde6ac-5984-11ea-baf5-bb89eaf1a5a8",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/intrusionpolicies/edcde6ac-5984-11ea-baf5-bb89eaf1a5a8"
+      },
+      "type": "intrusionpolicy"
+    }
+  ],
+  "paging": {
+    "offset": 0,
+    "limit": 18,
+    "count": 18,
+    "pages": 1
+  }
+}

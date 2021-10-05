@@ -1,0 +1,5 @@
+**.pyc
+**.csv
+.creds
+m3/sample_details/**
+m4/domain_details/**

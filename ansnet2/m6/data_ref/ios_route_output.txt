@@ -1,0 +1,16 @@
+R1_VPN#show ip route 10.0.0.0 255.255.0.0
+Routing entry for 10.0.0.0/16
+  Known via "bgp 65000", distance 20, metric 100
+  Tag 64512, type external
+  Last update from 169.254.102.1 00:00:56 ago
+  Routing Descriptor Blocks:
+  * 169.254.102.1, from 169.254.102.1, 00:00:56 ago
+      opaque_ptr 0x7F17B7F80788
+      Route metric is 100, traffic share count is 1
+      AS Hops 1
+      Route tag 64512
+      MPLS label: none
+
+
+R1_VPN#show ip route 10.0.0.0 255.255.0.0
+% Network not in table

@@ -1,0 +1,5 @@
+---
+- import_playbook: "configure_aws.yml"
+- import_playbook: "configure_pan_fw.yml"
+- import_playbook: "configure_ios_pan_vpn.yml"
+...

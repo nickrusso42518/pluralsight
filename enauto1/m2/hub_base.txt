@@ -1,0 +1,119 @@
+no service config
+no service call-home
+no call-home
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname HUB
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging buffered 900000
+enable password cisco
+!
+no aaa new-model
+!
+cdp run
+!
+ip host connect.njrusmc.net 203.0.113.1
+ip host hub.njrusmc.net 10.0.0.1
+ip host site2.njrusmc.net 10.0.0.2
+ip host site3.njrusmc.net 10.0.0.3
+ip domain name njrusmc.net
+ip dhcp excluded-address 203.0.113.0 203.0.113.10
+!
+ip dhcp pool ZTP
+ network 203.0.113.0 255.255.255.0
+ default-router 203.0.113.1 
+ domain-name njrusmc.net
+ dns-server 203.0.113.1 
+ option 150 ip 203.0.113.1 
+ option 67 ascii ztp.py
+!
+no login on-success log
+!
+no license smart enable
+diagnostic bootup level minimal
+!
+!
+username cisco privilege 15 password 0 cisco
+!
+interface Loopback0
+ ip address 10.0.0.1 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Tunnel100
+ description DMVPN HUB TUNNEL
+ ip address 172.16.100.1 255.255.255.0
+ no ip redirects
+ cdp enable
+ ip nhrp network-id 100
+ ip ospf network point-to-multipoint
+ ip ospf 1 area 0
+ tunnel source GigabitEthernet1
+ tunnel mode gre multipoint
+!
+interface GigabitEthernet1
+ description TO SITE LAN
+ ip address 203.0.113.1 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+ no shutdown
+!
+interface GigabitEthernet2
+ description TO MGMT NETWORK
+ ip address 192.168.2.191 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+ no shutdown
+!
+interface GigabitEthernet3
+ description TO DEVBOX
+ ip address 10.0.19.1 255.255.255.0
+ ip ospf 1 area 0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+ no shutdown
+!
+router ospf 1
+ passive-interface GigabitEthernet3
+!
+no ip forward-protocol nd
+no ip http server
+no ip http secure-server
+ip dns server
+!
+ip ssh logging events
+ip ssh version 2
+!
+tftp-server bootflash:ztp.py alias ztp.py
+!
+netconf-yang
+!
+banner incoming %
+site2 serial: 92Z8YAWE1YO
+site3 serial: 9G7LDZKE6F4
+
+tclsh
+puts [open "bootflash:ztp.py" w+] {(paste)
+}
+tclquit
+%
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ stopbits 1
+line vty 0 4
+ exec-timeout 0 0
+ login local
+!
+end

@@ -1,0 +1,14 @@
+---
+services:
+  - name: "UDP_IKE"
+    description: "Internet Key Exchange for IPsec VPNs"
+    type: "udp"
+    value: "isakmp"  # port 500
+  - name: "UDP_IPSEC_NATT"
+    description: "ESP encapsulated in UDP for NAT Traversal IPsec"
+    type: "udp"
+    value: 4500
+  - name: "PROTO_ESP"
+    description: "Encapsulating Security Payload for IPsec VPNs"
+    type: "esp"
+...

@@ -1,0 +1,50 @@
+{
+  "version": "pk6i66wvrhmg",
+  "name": "IN_TO_OUT_BLACKLIST",
+  "ruleId": 268435471,
+  "sourceZones": [
+    {
+      "version": "f2pirv6ffutzh",
+      "name": "inside_zone",
+      "id": "90c377e0-b3e5-11e5-8db8-651556da7898",
+      "type": "securityzone"
+    }
+  ],
+  "destinationZones": [
+    {
+      "version": "nb3xioyndbyfp",
+      "name": "outside_zone",
+      "id": "b1af33e1-b3e5-11e5-8db8-afdc0be5453e",
+      "type": "securityzone"
+    }
+  ],
+  "sourceNetworks": [],
+  "destinationNetworks": [
+    {
+      "version": "pc7rmo5rkghjv",
+      "name": "NETG_BLACKLIST",
+      "id": "5d0b0ec0-9dad-11ea-9df4-e58fc287357d",
+      "type": "networkobjectgroup"
+    }
+  ],
+  "sourcePorts": [],
+  "destinationPorts": [],
+  "rulePosition": 20,
+  "ruleAction": "DENY",
+  "eventLogAction": "LOG_BOTH",
+  "identitySources": [],
+  "users": [],
+  "embeddedAppFilter": null,
+  "urlFilter": null,
+  "intrusionPolicy": null,
+  "filePolicy": null,
+  "logFiles": false,
+  "syslogServer": null,
+  "destinationDynamicObjects": [],
+  "sourceDynamicObjects": [],
+  "id": "5d712396-9dad-11ea-9df4-7ff92f090d93",
+  "type": "accessrule",
+  "links": {
+    "self": "https://10.10.20.65/api/fdm/latest/policy/accesspolicies/c78e66bc-cb57-43fe-bcbf-96b79b3475b3/accessrules/5d712396-9dad-11ea-9df4-7ff92f090d93"
+  }
+}

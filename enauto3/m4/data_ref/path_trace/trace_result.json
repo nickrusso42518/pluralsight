@@ -1,0 +1,208 @@
+{
+  "response": {
+    "request": {
+      "sourceIP": "10.10.20.81",
+      "destIP": "10.10.20.82",
+      "periodicRefresh": false,
+      "inclusions": [
+        "INTERFACE-STATS",
+        "DEVICE-STATS",
+        "QOS-STATS"
+      ],
+      "id": "40f7758b-97f9-43a5-b774-2d87ada00ba7",
+      "status": "COMPLETED",
+      "createTime": 1578784601698,
+      "lastUpdateTime": 1578784601975,
+      "controlPath": false
+    },
+    "lastUpdate": "Sat Jan 11 23:17:40 UTC 2020",
+    "networkElementsInfo": [
+      {
+        "id": "6a49c827-9b28-490b-8df0-8b6c3b582d8a",
+        "name": "leaf1.labb.local",
+        "type": "Switches and Hubs",
+        "ip": "10.10.20.81",
+        "egressInterface": {
+          "physicalInterface": {
+            "id": "46297b12-b339-43a6-8860-b6c90c83b2b3",
+            "name": "GigabitEthernet1/0/2",
+            "interfaceStatistics": {
+              "adminStatus": "up",
+              "inputPackets": 842579371,
+              "inputQueueDrops": 0,
+              "inputQueueMaxDepth": 2000,
+              "inputQueueCount": 0,
+              "inputQueueFlushes": 0,
+              "inputRatebps": 41000,
+              "operationalStatus": "up",
+              "outputDrop": 0,
+              "outputPackets": 845821703,
+              "outputQueueCount": 0,
+              "outputQueueDepth": 40,
+              "outputRatebps": 45000,
+              "refreshedAt": 1578784658732
+            },
+            "interfaceStatsCollection": "SUCCESS",
+            "usedVlan": "823"
+          },
+          "virtualInterface": [
+            {
+              "id": "72112d94-7bc4-4e3b-8a95-914e12e0d578",
+              "name": "Vlan823",
+              "interfaceStatistics": {
+                "adminStatus": "up",
+                "inputPackets": 1581498082,
+                "inputQueueDrops": 0,
+                "inputQueueMaxDepth": 375,
+                "inputQueueCount": 0,
+                "inputQueueFlushes": 0,
+                "inputRatebps": 75000,
+                "operationalStatus": "up",
+                "outputDrop": 0,
+                "outputPackets": 841484419,
+                "outputQueueCount": 0,
+                "outputQueueDepth": 40,
+                "outputRatebps": 42000,
+                "refreshedAt": 1578784658732
+              },
+              "interfaceStatsCollection": "SUCCESS",
+              "usedVlan": "823"
+            }
+          ]
+        },
+        "role": "ACCESS",
+        "linkInformationSource": "InterVlan Routing",
+        "deviceStatistics": {
+          "cpuStatistics": {
+            "fiveMinUsageInPercentage": 0.0,
+            "fiveSecsUsageInPercentage": 0.0,
+            "oneMinUsageInPercentage": 0.0,
+            "refreshedAt": 1578784658739
+          },
+          "memoryStatistics": {
+            "totalMemory": 1425966824,
+            "refreshedAt": 1578784658574,
+            "memoryUsage": 320934792
+          }
+        },
+        "deviceStatsCollection": "SUCCESS"
+      },
+      {
+        "id": "b558bdcc-6835-4420-bfe8-26efa3fcf0b9",
+        "name": "spine1.abc.in.labb.local",
+        "type": "Switches and Hubs",
+        "ip": "10.10.20.80",
+        "ingressInterface": {
+          "physicalInterface": {
+            "id": "9b4973bd-1a97-4b4d-8af9-3aa0a1d4c8a6",
+            "name": "GigabitEthernet1/0/2",
+            "interfaceStatistics": {
+              "adminStatus": "up",
+              "inputPackets": 153734792,
+              "inputQueueDrops": 0,
+              "inputQueueMaxDepth": 2000,
+              "inputQueueCount": 0,
+              "inputQueueFlushes": 0,
+              "inputRatebps": 41000,
+              "operationalStatus": "up",
+              "outputDrop": 0,
+              "outputPackets": 151945825,
+              "outputQueueCount": 0,
+              "outputQueueDepth": 40,
+              "outputRatebps": 35000,
+              "refreshedAt": 1578784657855
+            },
+            "interfaceStatsCollection": "SUCCESS",
+            "usedVlan": "823"
+          }
+        },
+        "egressInterface": {
+          "physicalInterface": {
+            "id": "2a77b8c8-e732-491b-8a4c-a9a0f07789a5",
+            "name": "GigabitEthernet1/0/3",
+            "interfaceStatistics": {
+              "adminStatus": "up",
+              "inputPackets": 291651329,
+              "inputQueueDrops": 0,
+              "inputQueueMaxDepth": 2000,
+              "inputQueueCount": 0,
+              "inputQueueFlushes": 0,
+              "inputRatebps": 55000,
+              "operationalStatus": "up",
+              "outputDrop": 0,
+              "outputPackets": 285625118,
+              "outputQueueCount": 0,
+              "outputQueueDepth": 40,
+              "outputRatebps": 58000,
+              "refreshedAt": 1578784657855
+            },
+            "interfaceStatsCollection": "SUCCESS",
+            "usedVlan": "823"
+          }
+        },
+        "role": "BORDER ROUTER",
+        "linkInformationSource": "Switched",
+        "deviceStatistics": {
+          "cpuStatistics": {
+            "fiveMinUsageInPercentage": 5.0,
+            "fiveSecsUsageInPercentage": 3.0,
+            "oneMinUsageInPercentage": 6.0,
+            "refreshedAt": 1578784658093
+          },
+          "memoryStatistics": {
+            "totalMemory": 885692992,
+            "refreshedAt": 1578784657583,
+            "memoryUsage": 306842840
+          }
+        },
+        "deviceStatsCollection": "SUCCESS"
+      },
+      {
+        "id": "d101ef07-b508-4cc9-bfe3-2acf7e8a1015",
+        "name": "leaf2.labb.local",
+        "type": "Switches and Hubs",
+        "ip": "10.10.20.82",
+        "ingressInterface": {
+          "physicalInterface": {
+            "id": "a33b2752-8b75-437f-b8a6-94ca3c68bdf1",
+            "name": "GigabitEthernet1/0/3",
+            "interfaceStatistics": {
+              "adminStatus": "up",
+              "inputPackets": 1548256155,
+              "inputQueueDrops": 0,
+              "inputQueueMaxDepth": 2000,
+              "inputQueueCount": 0,
+              "inputQueueFlushes": 0,
+              "inputRatebps": 59000,
+              "operationalStatus": "up",
+              "outputDrop": 0,
+              "outputPackets": 1573567275,
+              "outputQueueCount": 0,
+              "outputQueueDepth": 40,
+              "outputRatebps": 57000,
+              "refreshedAt": 1578784655724
+            },
+            "interfaceStatsCollection": "SUCCESS",
+            "usedVlan": "823"
+          }
+        },
+        "role": "ACCESS",
+        "deviceStatistics": {
+          "cpuStatistics": {
+            "fiveMinUsageInPercentage": 1.0,
+            "fiveSecsUsageInPercentage": 1.0,
+            "oneMinUsageInPercentage": 0.0,
+            "refreshedAt": 1578784655772
+          },
+          "memoryStatistics": {
+            "totalMemory": 1425966824,
+            "refreshedAt": 1578784655578,
+            "memoryUsage": 321309016
+          }
+        },
+        "deviceStatsCollection": "SUCCESS"
+      }
+    ]
+  },
+  "version": "1.0"
+}

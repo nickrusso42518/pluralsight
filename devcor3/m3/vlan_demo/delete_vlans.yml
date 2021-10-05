@@ -1,0 +1,15 @@
+---
+- name: "PLAY 1: VLAN DELETE"
+  hosts: "restconf_switches"
+  tasks:
+    # Loop over list of interfaces and issue individual HTTP DELETE
+    # requests for each one. Must specify the key (VLAN ID) in
+    # the URL, and no HTTP body is needed.
+    - name: "TASK 1: Delete existing Cisco-modeled YANG VLANs via RESTCONF"
+      restconf_config:
+        path: "/data/Cisco-IOS-XE-native:native/vlan/vlan-list={{ item['id'] }}"
+        method: "delete"
+      loop: "{{ new_vlans['Cisco-IOS-XE-vlan:vlan-list'] }}"
+      loop_control:
+        label: "{{ item['id'] }}"
+...

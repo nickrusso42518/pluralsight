@@ -1,0 +1,57 @@
+{
+  "version": "jmmiidctthdj6",
+  "name": "OUT_TO_IN_VPN",
+  "ruleId": 268435470,
+  "sourceZones": [
+    {
+      "version": "nb3xioyndbyfp",
+      "name": "outside_zone",
+      "id": "b1af33e1-b3e5-11e5-8db8-afdc0be5453e",
+      "type": "securityzone"
+    }
+  ],
+  "destinationZones": [
+    {
+      "version": "f2pirv6ffutzh",
+      "name": "inside_zone",
+      "id": "90c377e0-b3e5-11e5-8db8-651556da7898",
+      "type": "securityzone"
+    }
+  ],
+  "sourceNetworks": [],
+  "destinationNetworks": [
+    {
+      "version": "z5pv7kc54mbo",
+      "name": "NETG_VPN_CONCENTRATORS",
+      "id": "5c454da8-9dad-11ea-9df4-55415fe7190e",
+      "type": "networkobjectgroup"
+    }
+  ],
+  "sourcePorts": [],
+  "destinationPorts": [
+    {
+      "version": "hi6jh35t2wy4e",
+      "name": "PORTG_IPSEC",
+      "id": "5caee4f4-9dad-11ea-9df4-2548a88e7479",
+      "type": "portobjectgroup"
+    }
+  ],
+  "rulePosition": 10,
+  "ruleAction": "PERMIT",
+  "eventLogAction": "LOG_BOTH",
+  "identitySources": [],
+  "users": [],
+  "embeddedAppFilter": null,
+  "urlFilter": null,
+  "intrusionPolicy": null,
+  "filePolicy": null,
+  "logFiles": false,
+  "syslogServer": null,
+  "destinationDynamicObjects": [],
+  "sourceDynamicObjects": [],
+  "id": "5d4b7323-9dad-11ea-9df4-3f53e1db9db1",
+  "type": "accessrule",
+  "links": {
+    "self": "https://10.10.20.65/api/fdm/latest/policy/accesspolicies/c78e66bc-cb57-43fe-bcbf-96b79b3475b3/accessrules/5d4b7323-9dad-11ea-9df4-3f53e1db9db1"
+  }
+}

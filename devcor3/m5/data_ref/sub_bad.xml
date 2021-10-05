@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:b23a2407-347c-4ffb-8033-e10af0b73a60" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0"><subscription-result xmlns='urn:ietf:params:xml:ns:yang:ietf-event-notifications' xmlns:notif-bis="urn:ietf:params:xml:ns:yang:ietf-event-notifications">notif-bis:error-no-such-option</subscription-result>
+</rpc-reply>

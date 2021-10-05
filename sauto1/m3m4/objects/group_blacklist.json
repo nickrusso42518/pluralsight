@@ -1,0 +1,28 @@
+{
+  "name": "NETG_BLACKLIST",
+  "description": "in-to-out blacklist",
+  "type": "networkobjectgroup",
+  "objects": [
+    {
+      "name": "NET_TEST_1",
+      "description": "See RFC-5737 section 3",
+      "subType": "NETWORK",
+      "value": "192.0.2.0/24",
+      "type": "networkobject"
+    },
+    {
+      "name": "NET_TEST_2",
+      "description": "See RFC-5737 section 3",
+      "subType": "NETWORK",
+      "value": "198.51.100.0/24",
+      "type": "networkobject"
+    },
+    {
+      "name": "NET_TEST_3",
+      "description": "See RFC-5737 section 3",
+      "subType": "NETWORK",
+      "value": "203.0.113.0/24",
+      "type": "networkobject"
+    }
+  ]
+}

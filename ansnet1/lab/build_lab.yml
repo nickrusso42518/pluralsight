@@ -1,0 +1,63 @@
+---
+- name: "PLAY 1: Build course lab"
+  hosts: routers
+  tasks:
+    - name: "TASK 1: Apply device configurations using SSH/CLI"
+      ios_config:
+        src: "configs/{{ inventory_hostname }}.txt"
+        save_when: changed
+      notify: config_changed
+      register: cli_result
+
+  handlers:
+    - name: "HANDLER 1: Display relevant changes"
+      listen: config_changed
+      debug:
+        msg: "{{ cli_result.commands }}"
+
+    - name: "HANDLER 2: Wait 90 seconds for convergence"
+      listen: config_changed
+      pause:
+        seconds: 90
+
+- name: "PLAY 2: Check pings on R1"
+  hosts: R1
+  tasks:
+    - name: "TASK 1: Ping R2 Lo1 in POLICE VPN"
+      ios_ping:
+        dest: 10.0.1.2
+        source: Loopback1
+        vrf: POLICE
+
+    - name: "TASK 2: Ping R2 Lo2 in CHEMICAL VPN"
+      ios_ping:
+        dest: 10.0.2.2
+        source: Loopback2
+        vrf: CHEMICAL
+
+    - name: "TASK 3: Ping R2 Lo3 in CHEM_MGMT VPN"
+      ios_ping:
+        dest: 10.0.2.2
+        source: Loopback3
+        vrf: CHEM_MGMT
+
+- name: "PLAY 3: Check pings on R2"
+  hosts: R2
+  tasks:
+    - name: "TASK 1: Ping R1 Lo1 in POLICE VPN"
+      ios_ping:
+        dest: 10.0.1.1
+        source: Loopback1
+        vrf: POLICE
+
+    - name: "TASK 2: Ping R1 Lo2 in CHEMICAL VPN"
+      ios_ping:
+        dest: 10.0.2.1
+        source: Loopback2
+        vrf: CHEMICAL
+
+    - name: "TASK 3: Ping R1 Lo3 in CHEMICAL VPN"
+      ios_ping:
+        dest: 10.0.3.1
+        source: Loopback2
+        vrf: CHEMICAL

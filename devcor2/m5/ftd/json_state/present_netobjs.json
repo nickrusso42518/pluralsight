@@ -1,0 +1,114 @@
+[
+  {
+    "version": "gsbb76z5u7w45",
+    "name": "GOOGLE-DNS",
+    "description": "Well-known DNS server",
+    "subType": "HOST",
+    "value": "8.8.8.8",
+    "isSystemDefined": false,
+    "dnsResolution": null,
+    "id": "ab326718-e060-11e9-adf9-5d822f57bd2e",
+    "type": "networkobject",
+    "links": {
+      "self": "https://10.10.20.65/api/fdm/v2/object/networks/ab326718-e060-11e9-adf9-5d822f57bd2e"
+    }
+  },
+  {
+    "version": "hytwvsi7plnpt",
+    "name": "IPV6-DOC",
+    "description": "See RFC3849",
+    "subType": "NETWORK",
+    "value": "2001:db8::/32",
+    "isSystemDefined": false,
+    "dnsResolution": null,
+    "id": "ac4d9b24-e060-11e9-adf9-13cb6cabfabc",
+    "type": "networkobject",
+    "links": {
+      "self": "https://10.10.20.65/api/fdm/v2/object/networks/ac4d9b24-e060-11e9-adf9-13cb6cabfabc"
+    }
+  },
+  {
+    "version": "dr4yummmino7q",
+    "name": "NICK-WEBSITE",
+    "description": "Nick Russo website",
+    "subType": "FQDN",
+    "value": "njrusmc.net",
+    "isSystemDefined": false,
+    "dnsResolution": "IPV4_AND_IPV6",
+    "id": "aae72d45-e060-11e9-adf9-bfe598679d4d",
+    "type": "networkobject",
+    "links": {
+      "self": "https://10.10.20.65/api/fdm/v2/object/networks/aae72d45-e060-11e9-adf9-bfe598679d4d"
+    }
+  },
+  {
+    "version": "oiqvqnj3tmz73",
+    "name": "TEST-NET-1",
+    "description": "See RFC5737",
+    "subType": "NETWORK",
+    "value": "192.0.2.0/24",
+    "isSystemDefined": false,
+    "dnsResolution": null,
+    "id": "ab7822ab-e060-11e9-adf9-378ce72c7f87",
+    "type": "networkobject",
+    "links": {
+      "self": "https://10.10.20.65/api/fdm/v2/object/networks/ab7822ab-e060-11e9-adf9-378ce72c7f87"
+    }
+  },
+  {
+    "version": "dikv3oy3brxzu",
+    "name": "TEST-NET-2",
+    "description": "See RFC5737",
+    "subType": "NETWORK",
+    "value": "198.51.100.0/24",
+    "isSystemDefined": false,
+    "dnsResolution": null,
+    "id": "abc446de-e060-11e9-adf9-d30ea99d1d26",
+    "type": "networkobject",
+    "links": {
+      "self": "https://10.10.20.65/api/fdm/v2/object/networks/abc446de-e060-11e9-adf9-d30ea99d1d26"
+    }
+  },
+  {
+    "version": "j3mtbjpswvlif",
+    "name": "TEST-NET-3",
+    "description": "See RFC5737",
+    "subType": "NETWORK",
+    "value": "203.0.113.0/24",
+    "isSystemDefined": false,
+    "dnsResolution": null,
+    "id": "ac0a77a1-e060-11e9-adf9-bd8aa0e3b84e",
+    "type": "networkobject",
+    "links": {
+      "self": "https://10.10.20.65/api/fdm/v2/object/networks/ac0a77a1-e060-11e9-adf9-bd8aa0e3b84e"
+    }
+  },
+  {
+    "version": "ocyllbikulxb6",
+    "name": "any-ipv4",
+    "description": null,
+    "subType": "NETWORK",
+    "value": "0.0.0.0/0",
+    "isSystemDefined": true,
+    "dnsResolution": null,
+    "id": "47c6684d-86ad-11e9-a788-cf9c3e5a3c29",
+    "type": "networkobject",
+    "links": {
+      "self": "https://10.10.20.65/api/fdm/v2/object/networks/47c6684d-86ad-11e9-a788-cf9c3e5a3c29"
+    }
+  },
+  {
+    "version": "cdewamoaqsagn",
+    "name": "any-ipv6",
+    "description": null,
+    "subType": "NETWORK",
+    "value": "::/0",
+    "isSystemDefined": true,
+    "dnsResolution": null,
+    "id": "47d07a6e-86ad-11e9-a788-9f79af0804d2",
+    "type": "networkobject",
+    "links": {
+      "self": "https://10.10.20.65/api/fdm/v2/object/networks/47d07a6e-86ad-11e9-a788-9f79af0804d2"
+    }
+  }
+]

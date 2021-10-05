@@ -1,0 +1,27 @@
+{
+  "changed":true,
+  "failed":false,
+  "interface":{
+    "description":"OUTSIDE",
+    "groups":{
+      "sg-0b9c3ed07a8c51e8e":"securityPAN"
+    },
+    "id":"eni-0d070e62766101ac4",
+    "mac_address":"12:c2:07:75:c9:4f",
+    "owner_id":"043535020805",
+    "private_ip_address":"10.125.0.77",
+    "private_ip_addresses":[
+      {
+        "primary_address":true,
+        "private_ip_address":"10.125.0.77"
+      }
+    ],
+    "source_dest_check":true,
+    "status":"available",
+    "subnet_id":"subnet-3045491d",
+    "tags":{
+      
+    },
+    "vpc_id":"vpc-7d5a7b1b"
+  }
+}

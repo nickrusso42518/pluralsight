@@ -1,0 +1,143 @@
+---
+- name: "Teardown AWS network infrastructure"
+  hosts: "localhost"
+  vars_files:
+    - "vault.yml"
+  tasks:
+    - name: "Collect information for report and/or teardown"
+      block:
+        - name: "Use default vpc_name and vpc_cidr if either is undefined"
+          ansible.builtin.set_fact:
+            vpc_name: "VPC_Globo"
+            vpc_cidr: "10.0.0.0/16"
+          when: "vpc_name is not defined or vpc_cidr is not defined"
+
+        - name: "Get information from VPC {{ vpc_name }} / {{ vpc_cidr }}"
+          amazon.aws.ec2_vpc_net_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            filters:
+              "tag:Name": "{{ vpc_name }}"
+          register: "vpc"
+
+        - name: "Store VPC ID for quick reference in VPC"
+          ansible.builtin.set_fact:
+            vpc_id: "{{ vpc.vpcs[0].id }}"
+
+        - name: "Get information from subnets in VPC"
+          amazon.aws.ec2_vpc_subnet_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            filters:
+              vpc-id: "{{ vpc_id }}"
+          register: "subnets"  # not needed for teardown
+
+        - name: "Get information from Server SG within VPC"
+          amazon.aws.ec2_group_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            filters:
+              vpc-id: "{{ vpc_id }}"
+              group-name: "SG_Globo_Servers"
+          register: "sgs"
+
+        - name: "Get information from CGWs in VPC"
+          community.aws.ec2_customer_gateway_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+          register: "cgw"
+
+        - name: "Get information from VGWs in VPC"
+          community.aws.ec2_vpc_vgw_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+          register: "vgw"
+
+        - name: "Get information from VPN connections in VPC"
+          community.aws.ec2_vpc_vpn_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+          register: "vpn"
+      # end block
+      tags: ["report", "teardown"]  # could also say ["always"]
+
+    - name: "Generate vpc_report.yml to record VPC dependencies"
+      ansible.builtin.copy:
+        content: "{{ root_dict | to_nice_yaml(indent=2) }}"
+        dest: "{{ playbook_dir }}/vpc_report.yml"
+      vars:
+        root_dict:
+          vpc: "{{ vpc }}"
+          subnets: "{{ subnets }}"
+          sgs: "{{ sgs }}"
+          cgw: "{{ cgw }}"
+          vgw: "{{ vgw }}"
+          vpn: "{{ vpn }}"
+      tags: ["report"]
+
+    - name: "Teardown infrastructure"
+      block:
+        - name: "Delete IPsec VPN connection from VGW to CGW"
+          community.aws.ec2_vpc_vpn:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            vpn_connection_id: "{{ vpn.vpn_connections[0].vpn_connection_id }}"
+
+        - name: "Delete IPsec VPN gateway (VGW)"
+          community.aws.ec2_vpc_vgw:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            vpn_gateway_id: "{{ vgw.virtual_gateways[0].vpn_gateway_id }}"
+
+        - name: "Delete IPsec customer gateway (CGW)"
+          community.aws.ec2_customer_gateway:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            name: "{{ cgw.customer_gateways[0].customer_gateway_name }}"
+            ip_address: "{{ cgw.customer_gateways[0].ip_address }}"
+            bgp_asn: "{{ cgw.customer_gateways[0].bgp_asn }}"
+
+        - name: "Delete Servers security group"
+          amazon.aws.ec2_group:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            group_id: "{{ sgs.security_groups[0].group_id }}"
+
+        - name: "Delete server subnet within VPC"
+          amazon.aws.ec2_vpc_subnet:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            vpc_id: "{{ vpc_id }}"
+            cidr: "10.0.2.0/24"
+
+        - name: "Wait 10 seconds; sometimes VPC dependencies persist"
+          pause:
+            seconds: 10
+
+        - name: "Delete VPC {{ vpc_name }} / {{ vpc_cidr }} / {{ vpc_id }}"
+          amazon.aws.ec2_vpc_net:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            name: "{{ vpc_name }}"
+            cidr_block: "{{ vpc_cidr }}"
+      # end block
+      tags: ["teardown"]
+...

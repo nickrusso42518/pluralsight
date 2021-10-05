@@ -1,0 +1,42 @@
+{
+  "changed":true,
+  "failed":false,
+  "gateway":{
+    "customer_gateway":{
+      "bgp_asn":"65000",
+      "customer_gateway_id":"cgw-0bcc498f1d08ffdb6",
+      "ip_address":"54.162.84.190",
+      "state":"available",
+      "tags":[],
+      "type":"ipsec.1"
+    },
+    "response_metadata":{
+      "http_headers":{
+        "cache-control":"no-cache, no-store",
+        "content-length":"487",
+        "content-type":"text/xml;charset=UTF-8",
+        "date":"Tue, 15 Dec 2020 13:58:54 GMT",
+        "server":"AmazonEC2",
+        "x-amzn-requestid":"f40e1096-7ec4-4011-9fbc-d46943478571"
+      },
+      "http_status_code":200,
+      "request_id":"f40e1096-7ec4-4011-9fbc-d46943478571",
+      "retry_attempts":0
+    }
+  },
+  "name":{
+    "response_metadata":{
+      "http_headers":{
+        "cache-control":"no-cache, no-store",
+        "content-length":"221",
+        "content-type":"text/xml;charset=UTF-8",
+        "date":"Tue, 15 Dec 2020 13:58:55 GMT",
+        "server":"AmazonEC2",
+        "x-amzn-requestid":"3779e2d7-512f-4264-8b21-052c10ffe8dc"
+      },
+      "http_status_code":200,
+      "request_id":"3779e2d7-512f-4264-8b21-052c10ffe8dc",
+      "retry_attempts":0
+    }
+  }
+}

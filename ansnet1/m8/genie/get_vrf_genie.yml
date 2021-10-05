@@ -1,0 +1,29 @@
+---
+- name: "PLAY 1: Collect and store VRF data from routers"
+  hosts: routers
+  connection: network_cli
+  tasks:
+    - name: "TASK 1: Send '{{ vrf_command }}' to routers"
+      ios_command:
+        commands: "{{ vrf_command }}"
+      register: vrf_output
+
+    # Check the docs to see if a specific parser exists
+    # https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/
+    # Click "Parsers" then search
+    - name: "TASK 2: Parse output into structured data using Genie"
+      set_fact:
+        vrf_data: >-
+          {{ vrf_output.stdout[0] | clay584.genie.parse_genie(
+          command=vrf_command, os='iosxe') }}
+
+    - name: "TASK 3: Create outputs/ folder"
+      file:
+        path: "outputs"
+        state: directory
+      run_once: true
+
+    - name: "TASK 4: Write output to file"
+      copy:
+        content: "{{ vrf_data | to_nice_json(indent=2) }}"
+        dest: "outputs/{{ inventory_hostname }}.json"

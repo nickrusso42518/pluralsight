@@ -1,0 +1,5 @@
+---
+ansible_python_interpreter: "/usr/bin/env python"
+ansible_connection: "ansible.netcommon.network_cli"
+strict_mode: true
+...

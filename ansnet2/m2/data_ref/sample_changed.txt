@@ -1,0 +1,67 @@
+PLAY [Configure VLANs and SVIs on switches] *********************************************
+
+TASK [Store template path per device type] **********************************************
+ok: [S2]
+ok: [S4]
+ok: [S3]
+
+TASK [Apply config updates from jinja2 templates] ***************************************
+changed: [S2]
+changed: [S3]
+changed: [S4]
+
+RUNNING HANDLER [Print on-box diff when updates occurred and feature is available] ******
+skipping: [S2]
+skipping: [S3]
+ok: [S4] => {
+    "msg": [
+        "--- system:/running-config",
+        "+++ session:/ansible_1611435900-session-config",
+        "@@ -24,6 +24,9 @@",
+        " !",
+        " vlan 12",
+        "    name SALES",
+        "+!",
+        "+vlan 13",
+        "+   name FINANCE",
+        " !",
+        " interface Ethernet1",
+        "    description TO SW3 (NXOS)",
+        "@@ -73,6 +76,10 @@",
+        "    description SALES VLAN",
+        "    ip address 192.168.12.4/24",
+        " !",
+        "+interface Vlan13",
+        "+   description FINANCE VLAN",
+        "+   ip address 192.168.13.4/24",
+        "+!",
+        " no ip routing",
+        " !",
+        " management api http-commands"
+    ]
+}
+
+RUNNING HANDLER [Print commands issued when updates occurred (no on-box diff)] **********
+skipping: [S4]
+ok: [S2] => {
+    "vlan_updates.commands": [
+        "interface Vlan11",
+        "description ENGINEERING VLAN"
+    ]
+}
+ok: [S3] => {
+    "vlan_updates.commands": [
+        "interface Vlan12",
+        "ip address 192.168.12.3/24"
+    ]
+}
+
+RUNNING HANDLER [Save configuration when updates occurred] ******************************
+ok: [S4]
+ok: [S3]
+ok: [S2]
+
+PLAY RECAP ******************************************************************************
+S2                         : ok=4    changed=1    unreachable=0    failed=0    skipped=1 
+S3                         : ok=4    changed=1    unreachable=0    failed=0    skipped=1 
+S4                         : ok=4    changed=1    unreachable=0    failed=0    skipped=1

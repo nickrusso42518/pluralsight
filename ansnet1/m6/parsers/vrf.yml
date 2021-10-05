@@ -1,0 +1,51 @@
+---
+- name: "Parser metadata"
+  parser_metadata:
+    version: 1.0
+    command: "show running-config | section ^vrf definition"
+    network_os: ios
+
+- name: "Match each VRF"
+  pattern_match:
+    regex: "vrf\\s+definition"
+    match_all: true
+    match_greedy: true
+  register: vrf_list
+
+- name: "Match VRF components"
+  pattern_group:
+    - name: "Parse VRF name"
+      pattern_match:
+        regex: "vrf\\s+definition\\s+(\\S+)"
+        content: "{{ item }}"
+      register: name
+
+    - name: "Parse imported RTs"
+      pattern_match:
+        regex: "route-target\\s+import\\s+(\\d+:\\d+)"
+        content: "{{ item }}"
+        match_all: true
+      register: rti_matches
+
+    - name: "Parse exported RTs"
+      pattern_match:
+        regex: "route-target\\s+export\\s+(\\d+:\\d+)"
+        content: "{{ item }}"
+        match_all: true
+      register: rte_matches
+  loop: "{{ vrf_list }}"
+  register: vrf_components
+
+- name: "Create JSON structure"
+  json_template:
+    template:
+      - key: "{{ item.name.matches[0] }}"
+        object:
+          - key: route_import
+            value: "{{ item.rti_matches | map(attribute='matches') | list }}"
+          - key: route_export
+            value: "{{ item.rte_matches | map(attribute='matches') | list }}"
+  loop: "{{ vrf_components }}"
+  export: true
+  export_as: dict
+  register: vrf_data

@@ -1,0 +1,5 @@
+ansible-base==2.10.4
+napalm-ansible
+netmiko
+pynxos
+pyeapi

@@ -1,0 +1,30 @@
+{
+  "version": null,
+  "instanceId": "151251a8-0951-405b-b449-de2cfebbe64e",
+  "eventId": "NETWORK-NON-FABRIC_WIRED-1-250",
+  "namespace": "ASSURANCE",
+  "name": null,
+  "description": null,
+  "type": "NETWORK",
+  "category": "ALERT",
+  "domain": "Connectivity",
+  "subDomain": "Non-Fabric Wired",
+  "severity": 1,
+  "source": "ndp",
+  "timestamp": 1578845380364,
+  "tags": null,
+  "details": {
+    "Type": "Network Device",
+    "Assurance Issue Priority": "P1",
+    "Assurance Issue Details": "This network device asr1001hx-r6.njrusmc.net is unreachable from controller. The device role is BORDER ROUTER",
+    "Device": "192.0.2.1",
+    "Assurance Issue Name": "Network Device 192.0.2.1 Is Unreachable From Controller",
+    "Assurance Issue Category": "Availability",
+    "Assurance Issue Status": "active"
+  },
+  "ciscoDnaEventLink": "dna/assurance/issueDetails?issueId=151251a8-0951-405b-b449-de2cfebbe64e",
+  "note": "To programmatically get more info see here - https://<ip-address>/dna/platform/app/consumer-portal/developer-toolkit/apis?apiId=8684-39bb-4e89-a6e4",
+  "tntId": "",
+  "context": null,
+  "tenantId": ""
+}

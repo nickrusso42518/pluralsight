@@ -1,0 +1,574 @@
+{
+  "enis": {
+    "changed": false,
+    "failed": false,
+    "network_interfaces": [
+      {
+        "attachment": {
+          "attach_time": "2020-12-14T13:27:56+00:00",
+          "attachment_id": "eni-attach-0e1a90c2786ea3bca",
+          "delete_on_termination": false,
+          "device_index": 2,
+          "instance_id": "i-0f874c1c0b188ff05",
+          "instance_owner_id": "043535020805",
+          "network_card_index": 0,
+          "status": "attached"
+        },
+        "availability_zone": "us-east-1b",
+        "description": "",
+        "groups": [
+          {
+            "group_id": "sg-0829dc5cd440185cb",
+            "group_name": "SG_Globo_Servers"
+          }
+        ],
+        "id": "eni-039e83807056c928e",
+        "interface_type": "interface",
+        "ipv6_addresses": [],
+        "mac_address": "12:c6:d5:44:b6:cb",
+        "name": "ENI_Globo_Servers",
+        "network_interface_id": "eni-039e83807056c928e",
+        "owner_id": "043535020805",
+        "private_dns_name": "ip-10-0-2-77.ec2.internal",
+        "private_ip_address": "10.0.2.77",
+        "private_ip_addresses": [
+          {
+            "primary": true,
+            "private_dns_name": "ip-10-0-2-77.ec2.internal",
+            "private_ip_address": "10.0.2.77"
+          }
+        ],
+        "requester_id": "AIDAQUIXDWMCQCHEYHTXM",
+        "requester_managed": false,
+        "source_dest_check": false,
+        "status": "in-use",
+        "subnet_id": "subnet-02e360edb5d5fca71",
+        "tag_set": {
+          "Name": "ENI_Globo_Servers"
+        },
+        "tags": {
+          "Name": "ENI_Globo_Servers"
+        },
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      },
+      {
+        "association": {
+          "allocation_id": "eipalloc-0c3c834572cc4fbb4",
+          "association_id": "eipassoc-09bee243fe13198d0",
+          "ip_owner_id": "043535020805",
+          "public_dns_name": "ec2-34-206-112-17.compute-1.amazonaws.com",
+          "public_ip": "34.206.112.17"
+        },
+        "attachment": {
+          "attach_time": "2020-12-14T13:27:56+00:00",
+          "attachment_id": "eni-attach-07a4e19f6c150f4ee",
+          "delete_on_termination": false,
+          "device_index": 0,
+          "instance_id": "i-0f874c1c0b188ff05",
+          "instance_owner_id": "043535020805",
+          "network_card_index": 0,
+          "status": "attached"
+        },
+        "availability_zone": "us-east-1b",
+        "description": "",
+        "groups": [
+          {
+            "group_id": "sg-048f5304b2c5c3b9c",
+            "group_name": "SG_Globo_Mgmt"
+          }
+        ],
+        "id": "eni-0323a85ed3e8d7ad3",
+        "interface_type": "interface",
+        "ipv6_addresses": [],
+        "mac_address": "12:6f:61:9d:0b:1b",
+        "name": "ENI_Globo_Mgmt",
+        "network_interface_id": "eni-0323a85ed3e8d7ad3",
+        "owner_id": "043535020805",
+        "private_dns_name": "ip-10-0-0-77.ec2.internal",
+        "private_ip_address": "10.0.0.77",
+        "private_ip_addresses": [
+          {
+            "association": {
+              "allocation_id": "eipalloc-0c3c834572cc4fbb4",
+              "association_id": "eipassoc-09bee243fe13198d0",
+              "ip_owner_id": "043535020805",
+              "public_dns_name": "ec2-34-206-112-17.compute-1.amazonaws.com",
+              "public_ip": "34.206.112.17"
+            },
+            "primary": true,
+            "private_dns_name": "ip-10-0-0-77.ec2.internal",
+            "private_ip_address": "10.0.0.77"
+          }
+        ],
+        "requester_id": "AIDAQUIXDWMCQCHEYHTXM",
+        "requester_managed": false,
+        "source_dest_check": true,
+        "status": "in-use",
+        "subnet_id": "subnet-02be767068ee519a3",
+        "tag_set": {
+          "Name": "ENI_Globo_Mgmt"
+        },
+        "tags": {
+          "Name": "ENI_Globo_Mgmt"
+        },
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      },
+      {
+        "association": {
+          "allocation_id": "eipalloc-0c3c16d31fc230179",
+          "association_id": "eipassoc-059127d5ccb00e05e",
+          "ip_owner_id": "043535020805",
+          "public_dns_name": "ec2-23-20-152-157.compute-1.amazonaws.com",
+          "public_ip": "23.20.152.157"
+        },
+        "attachment": {
+          "attach_time": "2020-12-14T13:27:56+00:00",
+          "attachment_id": "eni-attach-06de9db1db0c72548",
+          "delete_on_termination": false,
+          "device_index": 1,
+          "instance_id": "i-0f874c1c0b188ff05",
+          "instance_owner_id": "043535020805",
+          "network_card_index": 0,
+          "status": "attached"
+        },
+        "availability_zone": "us-east-1b",
+        "description": "",
+        "groups": [
+          {
+            "group_id": "sg-05b6c708dfc4110a2",
+            "group_name": "SG_Globo_VPN"
+          }
+        ],
+        "id": "eni-0ca375000f00c7a62",
+        "interface_type": "interface",
+        "ipv6_addresses": [],
+        "mac_address": "12:d4:ec:87:f7:f7",
+        "name": "ENI_Globo_VPN",
+        "network_interface_id": "eni-0ca375000f00c7a62",
+        "owner_id": "043535020805",
+        "private_dns_name": "ip-10-0-1-77.ec2.internal",
+        "private_ip_address": "10.0.1.77",
+        "private_ip_addresses": [
+          {
+            "association": {
+              "allocation_id": "eipalloc-0c3c16d31fc230179",
+              "association_id": "eipassoc-059127d5ccb00e05e",
+              "ip_owner_id": "043535020805",
+              "public_dns_name": "ec2-23-20-152-157.compute-1.amazonaws.com",
+              "public_ip": "23.20.152.157"
+            },
+            "primary": true,
+            "private_dns_name": "ip-10-0-1-77.ec2.internal",
+            "private_ip_address": "10.0.1.77"
+          }
+        ],
+        "requester_id": "AIDAQUIXDWMCQCHEYHTXM",
+        "requester_managed": false,
+        "source_dest_check": false,
+        "status": "in-use",
+        "subnet_id": "subnet-0112d43d6ece9758c",
+        "tag_set": {
+          "Name": "ENI_Globo_VPN"
+        },
+        "tags": {
+          "Name": "ENI_Globo_VPN"
+        },
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      }
+    ]
+  },
+  "igw": {
+    "changed": false,
+    "failed": false,
+    "internet_gateways": [
+      {
+        "attachments": [
+          {
+            "state": "available",
+            "vpc_id": "vpc-047772d8c1ca9bd0c"
+          }
+        ],
+        "internet_gateway_id": "igw-065dc37ae40445df9",
+        "tags": [
+          {
+            "key": "Name",
+            "value": "IGW_Globo"
+          }
+        ]
+      }
+    ]
+  },
+  "rts": {
+    "changed": false,
+    "failed": false,
+    "route_tables": [
+      {
+        "associations": [
+          {
+            "id": "rtbassoc-02c280d55088c6cba",
+            "main": true,
+            "route_table_id": "rtb-0b2984d11174f4336",
+            "subnet_id": null
+          }
+        ],
+        "id": "rtb-0b2984d11174f4336",
+        "routes": [
+          {
+            "destination_cidr_block": "10.0.0.0/16",
+            "gateway_id": "local",
+            "instance_id": null,
+            "interface_id": null,
+            "origin": "CreateRouteTable",
+            "state": "active",
+            "vpc_peering_connection_id": null
+          }
+        ],
+        "tags": {},
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      },
+      {
+        "associations": [
+          {
+            "id": "rtbassoc-029bd91ef306bf4ca",
+            "main": false,
+            "route_table_id": "rtb-01425aafa905a652e",
+            "subnet_id": "subnet-02be767068ee519a3"
+          },
+          {
+            "id": "rtbassoc-0c4e5e79bba733d8d",
+            "main": false,
+            "route_table_id": "rtb-01425aafa905a652e",
+            "subnet_id": "subnet-0112d43d6ece9758c"
+          }
+        ],
+        "id": "rtb-01425aafa905a652e",
+        "routes": [
+          {
+            "destination_cidr_block": "10.0.0.0/16",
+            "gateway_id": "local",
+            "instance_id": null,
+            "interface_id": null,
+            "origin": "CreateRouteTable",
+            "state": "active",
+            "vpc_peering_connection_id": null
+          },
+          {
+            "destination_cidr_block": "0.0.0.0/0",
+            "gateway_id": "igw-065dc37ae40445df9",
+            "instance_id": null,
+            "interface_id": null,
+            "origin": "CreateRoute",
+            "state": "active",
+            "vpc_peering_connection_id": null
+          }
+        ],
+        "tags": {
+          "Name": "RT_Globo_Public"
+        },
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      },
+      {
+        "associations": [
+          {
+            "id": "rtbassoc-075638eb2efc3ade8",
+            "main": false,
+            "route_table_id": "rtb-0e646f9bc7e971606",
+            "subnet_id": "subnet-02e360edb5d5fca71"
+          }
+        ],
+        "id": "rtb-0e646f9bc7e971606",
+        "routes": [
+          {
+            "destination_cidr_block": "10.0.0.0/16",
+            "gateway_id": "local",
+            "instance_id": null,
+            "interface_id": null,
+            "origin": "CreateRouteTable",
+            "state": "active",
+            "vpc_peering_connection_id": null
+          }
+        ],
+        "tags": {
+          "Name": "RT_Globo_Private"
+        },
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      }
+    ]
+  },
+  "sgs": {
+    "changed": false,
+    "failed": false,
+    "security_groups": [
+      {
+        "description": "Allow SSH and HTTPS",
+        "group_id": "sg-048f5304b2c5c3b9c",
+        "group_name": "SG_Globo_Mgmt",
+        "ip_permissions": [
+          {
+            "from_port": 22,
+            "ip_protocol": "tcp",
+            "ip_ranges": [
+              {
+                "cidr_ip": "0.0.0.0/0",
+                "description": "SSH"
+              }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "to_port": 22,
+            "user_id_group_pairs": []
+          },
+          {
+            "from_port": 443,
+            "ip_protocol": "tcp",
+            "ip_ranges": [
+              {
+                "cidr_ip": "0.0.0.0/0",
+                "description": "HTTPS"
+              }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "to_port": 443,
+            "user_id_group_pairs": []
+          }
+        ],
+        "ip_permissions_egress": [
+          {
+            "ip_protocol": "-1",
+            "ip_ranges": [
+              {
+                "cidr_ip": "0.0.0.0/0"
+              }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "user_id_group_pairs": []
+          }
+        ],
+        "owner_id": "043535020805",
+        "tags": {},
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      },
+      {
+        "description": "Allow IKE and IPsec NAT-T",
+        "group_id": "sg-05b6c708dfc4110a2",
+        "group_name": "SG_Globo_VPN",
+        "ip_permissions": [
+          {
+            "from_port": 4500,
+            "ip_protocol": "udp",
+            "ip_ranges": [
+              {
+                "cidr_ip": "0.0.0.0/0",
+                "description": "IPSEC NAT-T"
+              }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "to_port": 4500,
+            "user_id_group_pairs": []
+          },
+          {
+            "from_port": 500,
+            "ip_protocol": "udp",
+            "ip_ranges": [
+              {
+                "cidr_ip": "0.0.0.0/0",
+                "description": "IKE"
+              }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "to_port": 500,
+            "user_id_group_pairs": []
+          }
+        ],
+        "ip_permissions_egress": [
+          {
+            "ip_protocol": "-1",
+            "ip_ranges": [
+              {
+                "cidr_ip": "0.0.0.0/0"
+              }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "user_id_group_pairs": []
+          }
+        ],
+        "owner_id": "043535020805",
+        "tags": {},
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      },
+      {
+        "description": "Allow all traffic",
+        "group_id": "sg-0829dc5cd440185cb",
+        "group_name": "SG_Globo_Servers",
+        "ip_permissions": [
+          {
+            "ip_protocol": "-1",
+            "ip_ranges": [
+              {
+                "cidr_ip": "0.0.0.0/0",
+                "description": "ALL"
+              }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "user_id_group_pairs": []
+          }
+        ],
+        "ip_permissions_egress": [
+          {
+            "ip_protocol": "-1",
+            "ip_ranges": [
+              {
+                "cidr_ip": "0.0.0.0/0"
+              }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "user_id_group_pairs": []
+          }
+        ],
+        "owner_id": "043535020805",
+        "tags": {},
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      },
+      {
+        "description": "default VPC security group",
+        "group_id": "sg-0a3c8002ca4617d58",
+        "group_name": "default",
+        "ip_permissions": [
+          {
+            "ip_protocol": "-1",
+            "ip_ranges": [],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "user_id_group_pairs": [
+              {
+                "group_id": "sg-0a3c8002ca4617d58",
+                "user_id": "043535020805"
+              }
+            ]
+          }
+        ],
+        "ip_permissions_egress": [
+          {
+            "ip_protocol": "-1",
+            "ip_ranges": [
+              {
+                "cidr_ip": "0.0.0.0/0"
+              }
+            ],
+            "ipv6_ranges": [],
+            "prefix_list_ids": [],
+            "user_id_group_pairs": []
+          }
+        ],
+        "owner_id": "043535020805",
+        "tags": {},
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      }
+    ]
+  },
+  "subnets": {
+    "changed": false,
+    "failed": false,
+    "subnets": [
+      {
+        "assign_ipv6_address_on_creation": false,
+        "availability_zone": "us-east-1b",
+        "availability_zone_id": "use1-az2",
+        "available_ip_address_count": 250,
+        "cidr_block": "10.0.1.0/24",
+        "default_for_az": false,
+        "id": "subnet-0112d43d6ece9758c",
+        "ipv6_cidr_block_association_set": [],
+        "map_customer_owned_ip_on_launch": false,
+        "map_public_ip_on_launch": false,
+        "owner_id": "043535020805",
+        "state": "available",
+        "subnet_arn": "arn:aws:ec2:us-east-1:043535020805:subnet/subnet-0112d43d6ece9758c",
+        "subnet_id": "subnet-0112d43d6ece9758c",
+        "tags": {
+          "Name": "NET_Globo_VPN"
+        },
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      },
+      {
+        "assign_ipv6_address_on_creation": false,
+        "availability_zone": "us-east-1b",
+        "availability_zone_id": "use1-az2",
+        "available_ip_address_count": 250,
+        "cidr_block": "10.0.0.0/24",
+        "default_for_az": false,
+        "id": "subnet-02be767068ee519a3",
+        "ipv6_cidr_block_association_set": [],
+        "map_customer_owned_ip_on_launch": false,
+        "map_public_ip_on_launch": false,
+        "owner_id": "043535020805",
+        "state": "available",
+        "subnet_arn": "arn:aws:ec2:us-east-1:043535020805:subnet/subnet-02be767068ee519a3",
+        "subnet_id": "subnet-02be767068ee519a3",
+        "tags": {
+          "Name": "NET_Globo_Mgmt"
+        },
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      },
+      {
+        "assign_ipv6_address_on_creation": false,
+        "availability_zone": "us-east-1b",
+        "availability_zone_id": "use1-az2",
+        "available_ip_address_count": 250,
+        "cidr_block": "10.0.2.0/24",
+        "default_for_az": false,
+        "id": "subnet-02e360edb5d5fca71",
+        "ipv6_cidr_block_association_set": [],
+        "map_customer_owned_ip_on_launch": false,
+        "map_public_ip_on_launch": false,
+        "owner_id": "043535020805",
+        "state": "available",
+        "subnet_arn": "arn:aws:ec2:us-east-1:043535020805:subnet/subnet-02e360edb5d5fca71",
+        "subnet_id": "subnet-02e360edb5d5fca71",
+        "tags": {
+          "Name": "NET_Globo_Servers"
+        },
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      }
+    ]
+  },
+  "vpc": {
+    "changed": false,
+    "failed": false,
+    "vpcs": [
+      {
+        "cidr_block": "10.0.0.0/16",
+        "cidr_block_association_set": [
+          {
+            "association_id": "vpc-cidr-assoc-0e8308c3c6a8aea41",
+            "cidr_block": "10.0.0.0/16",
+            "cidr_block_state": {
+              "state": "associated"
+            }
+          }
+        ],
+        "classic_link_dns_supported": false,
+        "classic_link_enabled": false,
+        "dhcp_options_id": "dopt-4d2cb42a",
+        "enable_dns_hostnames": true,
+        "enable_dns_support": true,
+        "id": "vpc-047772d8c1ca9bd0c",
+        "instance_tenancy": "default",
+        "is_default": false,
+        "owner_id": "043535020805",
+        "state": "available",
+        "tags": {
+          "Name": "VPC_Globo"
+        },
+        "vpc_id": "vpc-047772d8c1ca9bd0c"
+      }
+    ]
+  }
+}

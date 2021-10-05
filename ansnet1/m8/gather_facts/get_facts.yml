@@ -1,0 +1,12 @@
+---
+- name: "PLAY 1: Check memory utilization on routers"
+  hosts: routers
+  tasks:
+    - name: "TASK 1: Extract free and total memory measurements"
+      set_fact:
+        free_mem: "{{ ansible_facts.net_memfree_mb }}"
+        total_mem: "{{ ansible_facts.net_memtotal_mb }}"
+
+    - name: "TASK 2: Reveal memory utilization"
+      debug:
+        msg: "{{ 100 - (free_mem | int * 100) // total_mem | int }}%"

@@ -1,0 +1,249 @@
+{
+  "id": "5e2b4bdb-9dad-11ea-9df4-f364ca7c63d0",
+  "statusMessage": null,
+  "statusMessages": null,
+  "modifiedObjects": {
+    "AccessPolicy": [
+      "NGFW-Access-Policy"
+    ],
+    "AccessRule": [
+      "OUT_TO_IN_VPN",
+      "IN_TO_OUT_BLACKLIST",
+      "OUT_TO_IN_VPN",
+      "IN_TO_OUT_BLACKLIST"
+    ],
+    "NetworkObject": [
+      "NET_TEST_3",
+      "NET_TEST_1",
+      "NET_VPN_WEST",
+      "NET_TEST_2",
+      "NET_TEST_3",
+      "NET_VPN_EAST",
+      "NET_VPN_EAST",
+      "NET_TEST_2",
+      "NET_VPN_WEST",
+      "NET_TEST_1"
+    ],
+    "NetworkObjectGroup": [
+      "NETG_VPN_CONCENTRATORS",
+      "NETG_BLACKLIST",
+      "NETG_BLACKLIST",
+      "NETG_VPN_CONCENTRATORS"
+    ],
+    "PortObjectGroup": [
+      "PORTG_IPSEC",
+      "PORTG_IPSEC"
+    ],
+    "ProtocolObject": [
+      "PROTO_ESP",
+      "PROTO_ESP"
+    ],
+    "UDPPortObject": [
+      "UDP_IKE",
+      "UDP_IPSEC_NATT",
+      "UDP_IPSEC_NATT",
+      "UDP_IKE"
+    ]
+  },
+  "cliErrorMessage": null,
+  "queuedTime": 1590317852302,
+  "startTime": 1590317853194,
+  "endTime": -1,
+  "state": "DEPLOYING",
+  "name": "User (admin) Triggered Deployment",
+  "deploymentStatusMessages": [
+    {
+      "taskName": "PendingChangesTask",
+      "timestamp": 1590317852705,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "PendingChangesTask",
+      "timestamp": 1590317853174,
+      "message": "Task complete in 469ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ChangeStateToDeployingTask",
+      "timestamp": 1590317853184,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ChangeStateToDeployingTask",
+      "timestamp": 1590317853224,
+      "message": "Task complete in 40ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "InspectDeploymentEntriesTask",
+      "timestamp": 1590317853230,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "InspectDeploymentEntriesTask",
+      "timestamp": 1590317853913,
+      "message": "Task complete in 683ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "CalculateDeltaTask",
+      "timestamp": 1590317853931,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "CalculateDeltaTask",
+      "timestamp": 1590317854139,
+      "message": "Task complete in 208ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "PopulateStatusTask",
+      "timestamp": 1590317854158,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "PopulateStatusTask",
+      "timestamp": 1590317854177,
+      "message": "Task complete in 19ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "StageDirectoryTask",
+      "timestamp": 1590317854188,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "StageDirectoryTask",
+      "timestamp": 1590317854194,
+      "message": "Task complete in 6ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "HAExportTask",
+      "timestamp": 1590317854200,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "LinaOnlyExportTask",
+      "timestamp": 1590317854204,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "HAExportTask",
+      "timestamp": 1590317854206,
+      "message": "Task complete in 6ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "LinaOnlyExportTask",
+      "timestamp": 1590317854218,
+      "message": "Task complete in 14ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "SnortExportTask",
+      "timestamp": 1590317854224,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "LinaExportTask",
+      "timestamp": 1590317854227,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "LinaExportTask",
+      "timestamp": 1590317854270,
+      "message": "Task complete in 43ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    }
+  ],
+  "links": {
+    "self": "https://10.10.20.65/api/fdm/latest/operational/deploy/5e2b4bdb-9dad-11ea-9df4-f364ca7c63d0"
+  }
+}

@@ -1,0 +1,250 @@
+2019-09-06T01:00:49: %AETEST-INFO: Starting testcase NetworkTestcase
+2019-09-06T01:00:49: %AETEST-INFO: Starting section setup
+[2019-09-06 01:00:49,722] +++ R1 logfile /tmp/R1-cli-20190906T010049722.log +++
+[2019-09-06 01:00:49,723] +++ Unicon plugin iosxe +++
+[2019-09-06 01:00:49,736] +++ R2 logfile /tmp/R2-cli-20190906T010049736.log +++
+[2019-09-06 01:00:49,736] +++ Unicon plugin iosxe +++
+[2019-09-06 01:00:49,750] +++ F1 logfile /tmp/F1-cli-20190906T010049750.log +++
+[2019-09-06 01:00:49,751] +++ Unicon plugin iosxe +++
+Password: 
+[2019-09-06 01:00:52,297] +++ connection to spawn: ssh -l pyats 10.0.0.1, id: 140094076326688 +++
+[2019-09-06 01:00:52,297] connection to R1
+Password: 
+[2019-09-06 01:00:52,303] +++ connection to spawn: ssh -l pyats 10.0.0.2, id: 140093628115824 +++
+[2019-09-06 01:00:52,303] connection to R2
+Password: 
+[2019-09-06 01:00:52,341] +++ connection to spawn: ssh -l pyats 10.0.0.3, id: 140093628199600 +++
+[2019-09-06 01:00:52,341] connection to F1
+
+
+R2#
+[2019-09-06 01:00:52,368] +++ initializing handle +++
+[2019-09-06 01:00:52,369] +++ R2: executing command 'term length 0' +++
+
+
+R1#
+[2019-09-06 01:00:52,370] +++ initializing handle +++
+[2019-09-06 01:00:52,370] +++ R1: executing command 'term length 0' +++
+tterermm l
+ elnengt
+F1#
+[2019-09-06 01:00:52,399] +++ initializing handle +++
+[2019-09-06 01:00:52,399] +++ F1: executing command 'term length 0' +++
+hgth 0 0
+R1#
+[2019-09-06 01:00:52,407] +++ R1: executing command 'term width 0' +++
+
+R2#
+[2019-09-06 01:00:52,408] +++ R2: executing command 'term width 0' +++
+tetterermmrm wi  wdthi 0ld
+R1#
+[2019-09-06 01:00:52,425] +++ R1: executing command 'show version' +++
+eth 0sn
+hgR2#
+[2019-09-06 01:00:52,434] +++ R2: executing command 'show version' +++
+ow tsvershhoiown
+  Cisco IOS Software, Linux Software (I86BI_LINUX-ADVENTERPRISEK9-M), Version 15.6(3)M3a, DEVELOPMENT TEST SOFTWARE
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2017 by Cisco Systems, Inc.
+Compiled Tue 19-Sep-17 10:03 by prod_rel_team
+
+ROM: Bootstrap program is Linux
+
+R1 uptime is 21 minutes
+System returned to ROM by reload at 0
+System restarted at 22:32:10 UTC Fri Sep 6 2019
+System image file is "unix:/opt/gns3/images/IOU/i86bi_linux-adventerprisek9-ms.156-3.M3a"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 77857K bytes of memory.
+Processor board ID 2048001
+4 Ethernet interfaces
+4 Serial interfaces
+64K bytes of NVRAM.
+
+
+
+Configuration register is 0x0
+
+R1#
+[2019-09-06 01:00:52,447] +++ R1: config +++
+0verco
+snF1#
+[2019-09-06 01:00:52,456] +++ F1: executing command 'term width 0' +++
+ionfig
+Cisco IOS Software, Linux Software (I86BI_LINUX-ADVENTERPRISEK9-M), Version 15.6(3)M3a, DEVELOPMENT TEST SOFTWARE
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2017 by Cisco Systems, Inc.
+Compiled Tue 19-Sep-17 10:03 by prod_rel_team
+
+ROM: Bootstrap program is Linux
+
+R2 uptime is 21 minutes
+System returned to ROM by reload at 0
+System restarted at 22:32:10 UTC Fri Sep 6 2019
+System image file is "unix:/opt/gns3/images/IOU/i86bi_linux-adventerprisek9-ms.156-3.M3a"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 77857K bytes of memory.
+Processor board ID 2048002
+4 Ethernet interfaces
+4 Serial interfaces
+64K bytes of NVRAM.
+
+
+
+Configuration register is 0x0
+
+R2#
+[2019-09-06 01:00:52,460] +++ R2: config +++
+ tertcm
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#eonnrfigo lo ggimtng erm co
+nsowEnter configuration commands, one per line.  End with CNTL/Z.
+R2(config)#lie
+R1(config)#dnlto inle cohon ggsolie 0n0
+g c
+R1(config-line)#oF1#
+[2019-09-06 01:00:52,512] +++ F1: executing command 'show version' +++
+nsoexelec-ti
+smR2(config)#eout h0
+oliR1(config-line)#nween  cd
+oR1#
+vnesolre 0s
+iR2(config-line)#one
+xec-tiCisco IOS Software, Linux Software (I86BI_LINUX-ADVENTERPRISEK9-M), Version 15.6(3)M3a, DEVELOPMENT TEST SOFTWARE
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2017 by Cisco Systems, Inc.
+Compiled Tue 19-Sep-17 10:03 by prod_rel_team
+
+ROM: Bootstrap program is Linux
+
+F1 uptime is 21 minutes
+System returned to ROM by reload at 0
+System restarted at 22:32:10 UTC Fri Sep 6 2019
+System image file is "unix:/opt/gns3/images/IOU/i86bi_linux-adventerprisek9-ms.156-3.M3a"
+Last reload reason: Unknown reason
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 208929K bytes of memory.
+Processor board ID 2048003
+4 Ethernet interfaces
+4 Serial interfaces
+64K bytes of NVRAM.
+
+
+
+Configuration register is 0x0
+
+F1#
+[2019-09-06 01:00:52,567] +++ F1: config +++
+meout 0
+R2(config-line)#ceond
+R2#
+nfig term
+Enter configuration commands, one per line.  End with CNTL/Z.
+F1(config)#no logging console
+F1(config)#line console 0
+F1(config-line)#exec-timeout 0
+F1(config-line)#end
+F1#
+2019-09-06T01:00:52: %AETEST-INFO: The result of section setup is => PASSED
+2019-09-06T01:00:52: %AETEST-INFO: Starting section test_ospf_neighbors
+[2019-09-06 01:00:52,955] +++ R1: executing command 'show ip ospf neighbor' +++
+show ip ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+10.0.0.2          0   FULL/  -        00:00:39    10.1.2.2        Ethernet0/1
+R1#
+R1 OSPF neighbors:
+{
+  "interfaces": {
+    "Ethernet0/1": {
+      "neighbors": {
+        "10.0.0.2": {
+          "priority": 0,
+          "state": "FULL/  -",
+          "dead_time": "00:00:39",
+          "address": "10.1.2.2"
+        }
+      }
+    }
+  }
+}
+2019-09-06T01:00:53: %AETEST-WARNING: [33mAn assertion failure was caught:[0m[39m
+2019-09-06T01:00:53: %AETEST-WARNING: [33mTraceback (most recent call last):[0m[39m
+2019-09-06T01:00:53: %AETEST-WARNING: [33m  File "run_test.py", line 45, in test_ospf_neighbors[0m[39m
+2019-09-06T01:00:53: %AETEST-WARNING: [33m    assert len(ospf_nbrs["interfaces"]) == 2[0m[39m
+2019-09-06T01:00:53: %AETEST-WARNING: [33mAssertionError[0m[39m
+2019-09-06T01:00:53: %AETEST-INFO: The result of section test_ospf_neighbors is => FAILED
+2019-09-06T01:00:53: %AETEST-INFO: The result of testcase NetworkTestcase is => FAILED
+2019-09-06T01:00:53: %AETEST-INFO: +------------------------------------------------------------------------------+
+2019-09-06T01:00:53: %AETEST-INFO: |                               Detailed Results                               |
+2019-09-06T01:00:53: %AETEST-INFO: +------------------------------------------------------------------------------+
+2019-09-06T01:00:53: %AETEST-INFO:  SECTIONS/TESTCASES                                                      RESULT   
+2019-09-06T01:00:53: %AETEST-INFO: --------------------------------------------------------------------------------
+2019-09-06T01:00:53: %AETEST-INFO: .
+2019-09-06T01:00:53: %AETEST-INFO: `-- NetworkTestcase                                                      FAILED
+2019-09-06T01:00:53: %AETEST-INFO:     |-- setup                                                            PASSED
+2019-09-06T01:00:53: %AETEST-INFO:     `-- test_ospf_neighbors                                              FAILED
+2019-09-06T01:00:53: %AETEST-INFO: +------------------------------------------------------------------------------+
+2019-09-06T01:00:53: %AETEST-INFO: |                                   Summary                                    |
+2019-09-06T01:00:53: %AETEST-INFO: +------------------------------------------------------------------------------+
+2019-09-06T01:00:53: %AETEST-INFO:  Number of ABORTED                                                            0 
+2019-09-06T01:00:53: %AETEST-INFO:  Number of BLOCKED                                                            0 
+2019-09-06T01:00:53: %AETEST-INFO:  Number of ERRORED                                                            0 
+2019-09-06T01:00:53: %AETEST-INFO:  Number of FAILED                                                             1 
+2019-09-06T01:00:53: %AETEST-INFO:  Number of PASSED                                                             0 
+2019-09-06T01:00:53: %AETEST-INFO:  Number of PASSX                                                              0 
+2019-09-06T01:00:53: %AETEST-INFO:  Number of SKIPPED                                                            0 
+2019-09-06T01:00:53: %AETEST-INFO: --------------------------------------------------------------------------------

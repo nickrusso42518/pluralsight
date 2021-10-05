@@ -1,0 +1,66 @@
+---
+- name: "Create R1 WAN interface"
+  netbox.netbox.netbox_device_interface:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      device: "R1"
+      description: "DHCP client"
+      name: "{{ interfaces.wan }}"
+      type: "1000base-x-sfp"  # 1 Gbps Ethernet over fiber
+      enabled: true
+
+- name: "Create Verizon ISP"
+  netbox.netbox.netbox_provider:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      name: "Verizon"
+      asn: 701
+      account: "GLOBO123"
+      portal_url: "https://business.verizon.com"
+
+- name: "Create Fios circuit type"
+  netbox.netbox.netbox_circuit_type:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      name: "Fios"
+
+- name: "Create Verizon uplink circuit"
+  netbox.netbox.netbox_circuit:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      cid: "XYZ987"
+      provider: "Verizon"
+      circuit_type: "Fios"
+      status: "active"
+      install_date: "2021-01-04"
+      commit_rate: 150000  # measured in kbps; 150 Mbps service
+
+- name: "Create circuit termination (Z)"
+  netbox.netbox.netbox_circuit_termination:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      circuit: "XYZ987"
+      port_speed: 1000000  # measured in kbps; 1 Gbps line rate
+      term_side: "Z"  # A: provider / Z: customer
+      site: "{{ location.hq }}"
+
+- name: "Create cable from R1 WAN interface to circuit termination"
+  netbox.netbox.netbox_cable:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      type: "smf"
+      status: "connected"
+      termination_a_type: "dcim.interface"
+      termination_a:
+        device: "R1"
+        name: "{{ interfaces.wan }}"
+      termination_b_type: "circuits.circuittermination"
+      termination_b:
+        circuit: "XYZ987"
+...

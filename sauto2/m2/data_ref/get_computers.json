@@ -1,0 +1,143 @@
+{
+  "version": "v1.2.0",
+  "metadata": {
+    "links": {
+      "self": "https://api.amp.cisco.com/v1/computers"
+    },
+    "results": {
+      "total": 3,
+      "current_item_count": 3,
+      "index": 0,
+      "items_per_page": 500
+    }
+  },
+  "data": [
+    {
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "hostname": "EC2AMAZ-M367V5R",
+      "windows_processor_id": "1789fbff000306f2",
+      "active": true,
+      "links": {
+        "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+        "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+        "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+      },
+      "connector_version": "7.2.7.11687",
+      "operating_system": "Windows Server 2019 Datacenter",
+      "internal_ips": [
+        "172.31.46.65"
+      ],
+      "external_ip": "54.90.2.203",
+      "group_guid": "0fd176db-c9f8-4741-8909-d48d38c383d6",
+      "install_date": "2020-06-18T13:59:08Z",
+      "network_addresses": [
+        {
+          "mac": "06:6b:13:a3:05:61",
+          "ip": "172.31.46.65"
+        }
+      ],
+      "policy": {
+        "guid": "f1c0d020-6dfe-4d26-9134-f1665b83833a",
+        "name": "Audit"
+      },
+      "last_seen": "2020-06-19T15:14:42Z",
+      "faults": [],
+      "isolation": {
+        "available": false,
+        "status": "not_isolated"
+      },
+      "orbital": {
+        "status": "not_enabled"
+      }
+    },
+    {
+      "connector_guid": "cbd9f94d-850c-45bc-9e7e-fa48837a6f57",
+      "hostname": "ernakh",
+      "windows_processor_id": "0000000000000000",
+      "active": true,
+      "links": {
+        "computer": "https://api.amp.cisco.com/v1/computers/cbd9f94d-850c-45bc-9e7e-fa48837a6f57",
+        "trajectory": "https://api.amp.cisco.com/v1/computers/cbd9f94d-850c-45bc-9e7e-fa48837a6f57/trajectory",
+        "group": "https://api.amp.cisco.com/v1/groups/1efca1bf-d627-4336-aeb6-ff03400ff163"
+      },
+      "connector_version": "7.2.7.11687",
+      "operating_system": "Windows 10 Enterprise 2016 LTSB",
+      "internal_ips": [
+        "192.168.133.30",
+        " 169.254.54.240"
+      ],
+      "external_ip": "128.107.246.221",
+      "group_guid": "1efca1bf-d627-4336-aeb6-ff03400ff163",
+      "install_date": "2020-06-17T14:03:13Z",
+      "network_addresses": [
+        {
+          "mac": "00:50:56:99:30:34",
+          "ip": "192.168.133.30"
+        },
+        {
+          "mac": "00:50:56:99:9c:3e",
+          "ip": "169.254.54.240"
+        }
+      ],
+      "policy": {
+        "guid": "d25ba78d-e32f-400f-b421-9ef8bd2df1c0",
+        "name": "Protect"
+      },
+      "last_seen": "2020-06-17T18:18:51Z",
+      "faults": [],
+      "isolation": {
+        "available": false,
+        "status": "not_isolated"
+      },
+      "orbital": {
+        "status": "not_enabled"
+      }
+    },
+    {
+      "connector_guid": "39839b40-f755-42a7-869e-fd841e1c40bc",
+      "hostname": "Nicholas\u2019s MacBook Pro",
+      "mac_hardware_id": "9caaea5e-31e1-5dfa-93b6-133a4624054f",
+      "active": true,
+      "links": {
+        "computer": "https://api.amp.cisco.com/v1/computers/39839b40-f755-42a7-869e-fd841e1c40bc",
+        "trajectory": "https://api.amp.cisco.com/v1/computers/39839b40-f755-42a7-869e-fd841e1c40bc/trajectory",
+        "group": "https://api.amp.cisco.com/v1/groups/1efca1bf-d627-4336-aeb6-ff03400ff163"
+      },
+      "connector_version": "1.12.4.740",
+      "operating_system": "OS X 10.14.6",
+      "internal_ips": [
+        "192.168.1.151"
+      ],
+      "external_ip": "100.16.207.26",
+      "group_guid": "1efca1bf-d627-4336-aeb6-ff03400ff163",
+      "install_date": "2020-06-17T14:45:46Z",
+      "network_addresses": [
+        {
+          "mac": "c8:e0:eb:13:de:6d",
+          "ip": "192.168.1.151"
+        },
+        {
+          "mac": "32:00:19:11:ea:c0",
+          "ip": ""
+        },
+        {
+          "mac": "32:00:19:11:ea:c1",
+          "ip": ""
+        }
+      ],
+      "policy": {
+        "guid": "adf97fbc-6807-4ccd-959c-e61c4d8cdb14",
+        "name": "Protect"
+      },
+      "last_seen": "2020-06-23T23:22:58Z",
+      "faults": [],
+      "isolation": {
+        "available": false,
+        "status": "not_isolated"
+      },
+      "orbital": {
+        "status": "not_enabled"
+      }
+    }
+  ]
+}

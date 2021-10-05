@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc-reply message-id="urn:uuid:41c377a9-03f2-48ee-85c9-4af7afd0135a" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <data>
+        <interfaces xmlns="http://openconfig.net/yang/interfaces">
+            <interface>
+                <name>eth1/71</name>
+                <config>
+                    <enabled>true</enabled>
+                    <mtu>1500</mtu>
+                    <name>eth1/71</name>
+                    <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+                </config>
+                <hold-time>
+                    <config>
+                        <down>100</down>
+                    </config>
+                </hold-time>
+                <subinterfaces>
+                    <subinterface>
+                        <config>
+                            <index>0</index>
+                        </config>
+                        <index>0</index>
+                    </subinterface>
+                </subinterfaces>
+                <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+                    <config>
+                        <auto-negotiate>true</auto-negotiate>
+                    </config>
+                    <switched-vlan xmlns="http://openconfig.net/yang/vlan">
+                        <config>
+                            <access-vlan>1</access-vlan>
+                            <interface-mode>ACCESS</interface-mode>
+                            <native-vlan>1</native-vlan>
+                        </config>
+                    </switched-vlan>
+                </ethernet>
+            </interface>
+            <interface>
+                <name>eth1/72</name>
+                <config>
+                    <enabled>true</enabled>
+                    <mtu>1500</mtu>
+                    <name>eth1/72</name>
+                    <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+                </config>
+                <hold-time>
+                    <config>
+                        <down>100</down>
+                    </config>
+                </hold-time>
+                <subinterfaces>
+                    <subinterface>
+                        <config>
+                            <index>0</index>
+                        </config>
+                        <index>0</index>
+                    </subinterface>
+                </subinterfaces>
+                <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+                    <config>
+                        <auto-negotiate>true</auto-negotiate>
+                    </config>
+                    <switched-vlan xmlns="http://openconfig.net/yang/vlan">
+                        <config>
+                            <access-vlan>1</access-vlan>
+                            <interface-mode>ACCESS</interface-mode>
+                            <native-vlan>1</native-vlan>
+                        </config>
+                    </switched-vlan>
+                </ethernet>
+            </interface>
+            <interface>
+                <name>eth1/73</name>
+                <config>
+                    <enabled>true</enabled>
+                    <mtu>1500</mtu>
+                    <name>eth1/73</name>
+                    <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+                </config>
+                <hold-time>
+                    <config>
+                        <down>100</down>
+                    </config>
+                </hold-time>
+                <subinterfaces>
+                    <subinterface>
+                        <config>
+                            <index>0</index>
+                        </config>
+                        <index>0</index>
+                    </subinterface>
+                </subinterfaces>
+                <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+                    <config>
+                        <auto-negotiate>true</auto-negotiate>
+                    </config>
+                    <switched-vlan xmlns="http://openconfig.net/yang/vlan">
+                        <config>
+                            <access-vlan>1</access-vlan>
+                            <interface-mode>ACCESS</interface-mode>
+                            <native-vlan>1</native-vlan>
+                        </config>
+                    </switched-vlan>
+                </ethernet>
+            </interface>
+        </interfaces>
+    </data>
+</rpc-reply>

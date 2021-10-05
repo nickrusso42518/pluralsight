@@ -1,0 +1,214 @@
+version 16.12
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+enable password globoPass123!
+!
+no aaa new-model
+no ip icmp rate-limit unreachable
+!
+!
+ip domain name globomantics.net
+!
+!
+!
+no login on-success log
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01 nvram:CiscoLicensi#1CA.cer
+!
+license udi pid CSR1000V sn 9X5OU3AP0G0
+diagnostic bootup level minimal
+memory free low-watermark processor 72406
+!
+!
+spanning-tree extend system-id
+!
+username admin privilege 15 password 0 globoPass123!
+!
+redundancy
+!
+crypto ikev2 proposal IKEV2_PROPOSAL 
+ encryption aes-cbc-256
+ integrity sha384
+ group 20
+!
+crypto ikev2 policy IKEV2_POLICY 
+ proposal IKEV2_PROPOSAL
+!
+!
+crypto ikev2 profile IKEV2_PROFILE
+ match identity remote address 0.0.0.0 
+ authentication remote pre-share key globoIPsec123
+ authentication local pre-share key globoIPsec123
+ dpd 30 10 periodic
+!
+!
+!
+!
+! 
+crypto logging session
+crypto logging ikev2
+!
+!
+!
+!
+!
+!
+!
+crypto ipsec transform-set IPSEC_XFORM esp-gcm 256 
+ mode tunnel
+!
+crypto ipsec profile IPSEC_PROFILE
+ set transform-set IPSEC_XFORM 
+ set ikev2-profile IKEV2_PROFILE
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface Tunnel101
+ ip address 169.254.101.2 255.255.255.252
+ tunnel source GigabitEthernet4
+ tunnel mode ipsec ipv4
+ tunnel destination 34.224.19.123
+ tunnel protection ipsec profile IPSEC_PROFILE
+!
+interface Tunnel102
+ ip address 169.254.102.2 255.255.255.252
+ tunnel source GigabitEthernet4
+ tunnel mode ipsec ipv4
+ tunnel destination 34.234.197.251
+ tunnel protection ipsec profile IPSEC_PROFILE
+!
+interface GigabitEthernet1
+ description TO S2 (IOS)
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet1.10
+ description MANAGEMENT VLAN
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+!
+interface GigabitEthernet1.11
+ description ENGINEERING VLAN
+ encapsulation dot1Q 11
+ ip address 192.168.11.1 255.255.255.0
+!
+interface GigabitEthernet1.12
+ description SALES VLAN
+ encapsulation dot1Q 12
+ ip address 192.168.12.1 255.255.255.0
+!
+interface GigabitEthernet1.13
+ description FINANCE VLAN
+ encapsulation dot1Q 13
+ ip address 192.168.13.1 255.255.255.0
+!
+interface GigabitEthernet2
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet4
+ description TO INTERNET
+ ip address dhcp
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+router bgp 65000
+ bgp log-neighbor-changes
+ bgp update-delay 5
+ network 192.168.0.0 mask 255.255.0.0
+ neighbor 169.254.101.1 remote-as 64512
+ neighbor 169.254.101.1 description Tunnel101
+ neighbor 169.254.102.1 remote-as 64512
+ neighbor 169.254.102.1 description Tunnel102
+!
+no ip forward-protocol nd
+ip tcp synwait-time 5
+no ip http server
+ip http authentication local
+no ip http secure-server
+!
+ip route 192.168.0.0 255.255.0.0 Null0 name BGP_AGGREGATE
+ip ssh logging events
+ip ssh version 2
+!
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ stopbits 1
+line vty 0 4
+ exec-timeout 0 0
+ login local
+ transport input telnet ssh
+!
+!
+!
+!
+!
+!
+end

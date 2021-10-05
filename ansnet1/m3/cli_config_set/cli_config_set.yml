@@ -1,0 +1,24 @@
+---
+- name: "PLAY 1: Manage VPNs with cli_config and jinja2"
+  hosts: routers
+  connection: network_cli
+  tasks:
+    - name: "TASK 1: Store platform-specific template path"
+      set_fact:
+        vpn_path: "templates/{{ ansible_network_os }}_vpn.j2"
+
+    # Cisco IOS configurations do not save
+    # https://github.com/ansible/ansible/issues/53270
+    - name: "TASK 2: Apply generic VPN config via SSH/CLI"
+      cli_config:
+        config: "{{ lookup('template', vpn_path) }}"
+      notify: config_changed
+      register: cli_result
+
+  handlers:
+    # Changes are not included in registered variable
+    # https://github.com/ansible/ansible/issues/53271
+    - name: "HANDLER 1: Display relevant changes"
+      listen: config_changed
+      debug:
+        msg: "{{ cli_result }}"

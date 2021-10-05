@@ -1,0 +1,518 @@
+{
+  "version": "v1.2.0",
+  "metadata": {
+    "links": {
+      "self": "https://api.amp.cisco.com/v1/event_types"
+    },
+    "results": {
+      "total": 101
+    }
+  },
+  "data": [
+    {
+      "id": 553648130,
+      "name": "Policy Update",
+      "description": "An agent has been told to fetch policy."
+    },
+    {
+      "id": 554696714,
+      "name": "Scan Started",
+      "description": "An agent has started scanning."
+    },
+    {
+      "id": 554696715,
+      "name": "Scan Completed, No Detections",
+      "description": "A scan has completed without detecting anything malicious."
+    },
+    {
+      "id": 1091567628,
+      "name": "Scan Completed With Detections",
+      "description": "A scan has completed and detected malicious items."
+    },
+    {
+      "id": 2165309453,
+      "name": "Scan Failed",
+      "description": "A scan has been attempted, and failed to run."
+    },
+    {
+      "id": 1090519054,
+      "name": "Threat Detected",
+      "description": "A threat was found on this system."
+    },
+    {
+      "id": 553648143,
+      "name": "Threat Quarantined",
+      "description": "A threat was successfully quarantined."
+    },
+    {
+      "id": 2164260880,
+      "name": "Quarantine Failure",
+      "description": "A detected threat was not successfully quarantined."
+    },
+    {
+      "id": 570425394,
+      "name": "Quarantine Restore Requested",
+      "description": "A request has been made to move a file from Quarantine back to its original location."
+    },
+    {
+      "id": 553648149,
+      "name": "Quarantined Item Restored",
+      "description": "An item has been pulled restored from Quarantine to its original location."
+    },
+    {
+      "id": 2164260884,
+      "name": "Quarantine Restore Failed",
+      "description": "An item requested to be restored to its original location could not be restored."
+    },
+    {
+      "id": 2181038130,
+      "name": "Quarantine Request Failed to be Delivered",
+      "description": "A request to restore an item from quarantine was not successfully sent."
+    },
+    {
+      "id": 553648154,
+      "name": "Cloud Recall Restore from Quarantine",
+      "description": "A retrospective restore was completed successfully."
+    },
+    {
+      "id": 553648155,
+      "name": "Cloud Recall Quarantine Successful",
+      "description": "A retrospective quarantine was completed successfully."
+    },
+    {
+      "id": 2164260892,
+      "name": "Cloud Recall Restore from Quarantine Failed",
+      "description": "A retrospective restore was attemped and failed. Most likely the original location no longer exists."
+    },
+    {
+      "id": 2164260893,
+      "name": "Cloud Recall Quarantine Attempt Failed",
+      "description": "A retrospective quarantine was attemped and failed. Most likely the original location no longer exists."
+    },
+    {
+      "id": 553648158,
+      "name": "Install Started",
+      "description": "An installation has begun."
+    },
+    {
+      "id": 2164260895,
+      "name": "Install Failure",
+      "description": "An installation has failed."
+    },
+    {
+      "id": 553648166,
+      "name": "Uninstall",
+      "description": ""
+    },
+    {
+      "id": 2164260903,
+      "name": "Uninstall Failure",
+      "description": ""
+    },
+    {
+      "id": 1003,
+      "name": "Email Confirmation",
+      "description": "Sent when a user account gets created."
+    },
+    {
+      "id": 1004,
+      "name": "Forgotten Password Reset",
+      "description": "Sent when a user forgets password."
+    },
+    {
+      "id": 1005,
+      "name": "Password Has Been Reset",
+      "description": "Sent when a user has reset his password."
+    },
+    {
+      "id": 2164260866,
+      "name": "Policy Update Failure",
+      "description": "A policy update failed, and the policy was not successfully applied."
+    },
+    {
+      "id": 553648146,
+      "name": "Cloud Recall Restore of False Positive",
+      "description": "A file once thought to be malicious has been marked as clean and restored."
+    },
+    {
+      "id": 553648147,
+      "name": "Cloud Recall Detection",
+      "description": "A file once thought to be clean has been marked malicious."
+    },
+    {
+      "id": 553648168,
+      "name": "Execution Blocked",
+      "description": "Execution of an application was blocked."
+    },
+    {
+      "id": 553648150,
+      "name": "Quarantine Restore Started",
+      "description": "The restoring of a file from Quarantine was attempted."
+    },
+    {
+      "id": 570425396,
+      "name": "Application Registered",
+      "description": "An Application was registered."
+    },
+    {
+      "id": 570425397,
+      "name": "Application Deregistered",
+      "description": "An Application was deregistered."
+    },
+    {
+      "id": 570425398,
+      "name": "Application Authorized",
+      "description": "An Application authorized to access a portion of the API."
+    },
+    {
+      "id": 570425399,
+      "name": "Application Deauthorized",
+      "description": "An Application authorized to access a portion of the API."
+    },
+    {
+      "id": 1090524040,
+      "name": "APK Threat Detected",
+      "description": "A threat was found on this system."
+    },
+    {
+      "id": 1090524041,
+      "name": "APK Custom Threat Detected",
+      "description": "An apk matching an Android Simple Custom Detection was found on this system."
+    },
+    {
+      "id": 1090519084,
+      "name": "DFC Threat Detected",
+      "description": "A connection has been detected by DFC."
+    },
+    {
+      "id": 1107296261,
+      "name": "Adobe Reader compromise",
+      "description": "A suspicious portable executable file was downloaded and executed by Adobe Reader."
+    },
+    {
+      "id": 1107296262,
+      "name": "Microsoft Word compromise",
+      "description": "A suspicious portable executable file was downloaded and executed by Microsoft Word."
+    },
+    {
+      "id": 1107296263,
+      "name": "Microsoft Excel compromise",
+      "description": "A suspicious portable executable file was downloaded and executed by Microsoft Excel."
+    },
+    {
+      "id": 1107296264,
+      "name": "Microsoft PowerPoint compromise",
+      "description": "A suspicious portable executable file was downloaded and executed by Microsoft PowerPoint."
+    },
+    {
+      "id": 1107296266,
+      "name": "Adobe Reader launched a shell",
+      "description": "Adobe Reader executed an unknown application, which in turn launched a command shell."
+    },
+    {
+      "id": 1107296267,
+      "name": "Microsoft Word launched a shell",
+      "description": "Microsoft Word executed an unknown application, which in turn launched a command shell."
+    },
+    {
+      "id": 1107296268,
+      "name": "Microsoft Excel launched a shell",
+      "description": "Microsoft Excel executed an unknown application, which in turn launched a command shell."
+    },
+    {
+      "id": 1107296269,
+      "name": "Microsoft PowerPoint launched a shell",
+      "description": "Microsoft PowerPoint executed an unknown application, which in turn launched a command shell."
+    },
+    {
+      "id": 1107296270,
+      "name": "Apple QuickTime compromise",
+      "description": "A suspicious portable executable file was downloaded and executed by Apple QuickTime."
+    },
+    {
+      "id": 1107296271,
+      "name": "Apple QuickTime launched a shell",
+      "description": "Apple QuickTime executed an unknown application, which in turn launched a command shell."
+    },
+    {
+      "id": 1107296272,
+      "name": "Executed malware",
+      "description": "The computer executed known malware"
+    },
+    {
+      "id": 1107296273,
+      "name": "Suspected botnet connection",
+      "description": "The computer made outbound connections to suspected botnet command and control systems."
+    },
+    {
+      "id": 553648170,
+      "name": "Reboot Pending",
+      "description": "An agent has started the reboot process"
+    },
+    {
+      "id": 553648171,
+      "name": "Reboot Completed",
+      "description": "An agent has completed its reboot"
+    },
+    {
+      "id": 1107296274,
+      "name": "Cloud IOC",
+      "description": "Suspicious behavior that indicates possible compromise of the computer"
+    },
+    {
+      "id": 1107296275,
+      "name": "Microsoft Calculator compromise",
+      "description": "A suspicious portable executable file was downloaded and executed by Microsoft Calculator."
+    },
+    {
+      "id": 1107296276,
+      "name": "Microsoft Notepad compromise",
+      "description": "A suspicious portable executable file was downloaded and executed by Microsoft Notepad."
+    },
+    {
+      "id": 553648173,
+      "name": "File Fetch Completed",
+      "description": "The request for a remote file was successful"
+    },
+    {
+      "id": 2164260910,
+      "name": "File Fetch Failed",
+      "description": "The request for a remote file failed"
+    },
+    {
+      "id": 554696756,
+      "name": "Endpoint IOC Scan Started",
+      "description": "Endpoint IOC Scan Started"
+    },
+    {
+      "id": 554696757,
+      "name": "Endpoint IOC Scan Completed, No Detections",
+      "description": "Endpoint IOC Scan Completed, No Detections"
+    },
+    {
+      "id": 1091567670,
+      "name": "Endpoint IOC Scan Completed With Detections",
+      "description": "Endpoint IOC Scan Completed With Detections"
+    },
+    {
+      "id": 2165309495,
+      "name": "Endpoint IOC Scan Failed",
+      "description": "Endpoint IOC Scan Failed"
+    },
+    {
+      "id": 2164260914,
+      "name": "Endpoint IOC Definition Update Failure",
+      "description": "Endpoint IOC Definition Update Failure"
+    },
+    {
+      "id": 553648179,
+      "name": "Endpoint IOC Definition Update Success",
+      "description": "Endpoint IOC Definition Update Success"
+    },
+    {
+      "id": 2164260911,
+      "name": "Endpoint IOC Configuration Update Failure",
+      "description": "Endpoint IOC Configuration Update Failure"
+    },
+    {
+      "id": 553648176,
+      "name": "Endpoint IOC Configuration Update Success",
+      "description": "Endpoint IOC Configuration Update Success"
+    },
+    {
+      "id": 1090519089,
+      "name": "Endpoint IOC Scan Detection Summary",
+      "description": "Endpoint IOC Scan Detection Summary"
+    },
+    {
+      "id": 1107296277,
+      "name": "Connection to suspicious domain",
+      "description": "The computer made an outbound connection to a domain that is similar to randomly generated domains used by some malware command and control systems."
+    },
+    {
+      "id": 1107296278,
+      "name": "Threat Detected in Low Prevalence Executable",
+      "description": "Threat Detected in Low Prevalence Executable"
+    },
+    {
+      "id": 1107296279,
+      "name": "Vulnerable Application Detected",
+      "description": "Vulnerable Application Detected"
+    },
+    {
+      "id": 1107296280,
+      "name": "Suspicious Download",
+      "description": "A suspicious file was downloaded."
+    },
+    {
+      "id": 1107296281,
+      "name": "Microsoft CHM Compromise",
+      "description": "A suspicious portable executable was downloaded and executed by Microsoft Help."
+    },
+    {
+      "id": 1107296282,
+      "name": "Suspicious Cscript Launch",
+      "description": "It triggers when Internet Explorer launches Command Shell which in turn launches Microsoft Windows Script Host (aka cscript)"
+    },
+    {
+      "id": 1090519096,
+      "name": "Update: Reboot Required",
+      "description": "It triggers when the new connector is installed but not running"
+    },
+    {
+      "id": 1090519097,
+      "name": "Update: Reboot Advised",
+      "description": "It triggers when the new connector is installed and running but some new driver features will not be available until the system is rebooted"
+    },
+    {
+      "id": 2164260922,
+      "name": "Update: Unexpected Reboot Required",
+      "description": "It triggers when the new connector is installed but not running for some unexpected scenario"
+    },
+    {
+      "id": 553648137,
+      "name": "Product Update Failed",
+      "description": "A product update has failed."
+    },
+    {
+      "id": 553648135,
+      "name": "Product Update Started",
+      "description": "A product update has begun."
+    },
+    {
+      "id": 553648136,
+      "name": "Product Update Completed",
+      "description": "A product update has successfully completed"
+    },
+    {
+      "id": 1107296284,
+      "name": "Potential Ransomware",
+      "description": "The computer may be infected with ransomware."
+    },
+    {
+      "id": 1107296283,
+      "name": "Possible Webshell",
+      "description": "The computer may have been compromised granting remote access."
+    },
+    {
+      "id": 1090519103,
+      "name": "Exploit Prevention",
+      "description": "An exploit was prevented from running"
+    },
+    {
+      "id": 2164260931,
+      "name": "Critical Fault Raised",
+      "description": "A critical fault has been raised"
+    },
+    {
+      "id": 1090519107,
+      "name": "Major Fault Raised",
+      "description": "A major fault has been raised"
+    },
+    {
+      "id": 553648195,
+      "name": "Minor Fault Raised",
+      "description": "A minor fault has been raised"
+    },
+    {
+      "id": 553648196,
+      "name": "Fault Cleared",
+      "description": "A fault has been cleared"
+    },
+    {
+      "id": 1090519081,
+      "name": "Rootkit Detection",
+      "description": "A threat was found hidden on this system."
+    },
+    {
+      "id": 1090519105,
+      "name": "Malicious Activity Detection",
+      "description": "A malicious activity is detected"
+    },
+    {
+      "id": 1090519102,
+      "name": "iOS Network Detection",
+      "description": "It reports the conviction of a network connection"
+    },
+    {
+      "id": 553648199,
+      "name": "Malicious Activity Block",
+      "description": "A malicious activity has been blocked"
+    },
+    {
+      "id": 1090519112,
+      "name": "System Process Protection",
+      "description": "An access to a process or registry has been blocked"
+    },
+    {
+      "id": 553648202,
+      "name": "Endpoint Isolation Start Success",
+      "description": "An agent has been isolated successfully"
+    },
+    {
+      "id": 2164260939,
+      "name": "Endpoint Isolation Start Failure",
+      "description": "The agent isolation has been failed"
+    },
+    {
+      "id": 553648204,
+      "name": "Endpoint Isolation Stop Success",
+      "description": "An agent has stopped to be isolated"
+    },
+    {
+      "id": 2164260941,
+      "name": "Endpoint Isolation Stop Failure",
+      "description": "The agent failed to stop being isolated"
+    },
+    {
+      "id": 553648206,
+      "name": "Endpoint Isolation Update Success",
+      "description": "An isolated agent has been updated successfully"
+    },
+    {
+      "id": 2164260943,
+      "name": "Endpoint Isolation Update Failure",
+      "description": "An isolated agent update has been failed"
+    },
+    {
+      "id": 553648208,
+      "name": "Orbital Install Success",
+      "description": "Orbital has been installed successfully"
+    },
+    {
+      "id": 2164260945,
+      "name": "Orbital Install Failure",
+      "description": "Orbital installation failed"
+    },
+    {
+      "id": 553648210,
+      "name": "Orbital Update Success",
+      "description": "Orbital version has been updated successfully"
+    },
+    {
+      "id": 2164260947,
+      "name": "Orbital Update Failure",
+      "description": "Orbital version can not be updated"
+    },
+    {
+      "id": 553648215,
+      "name": "Endpoint Isolation Unlock Limit Reached",
+      "description": "An isolated agent has failed to unlock with the unlock code too many times"
+    },
+    {
+      "id": 1107296257,
+      "name": "Potential Dropper Infection",
+      "description": "Potential dropper infections indicate a single file is repeatedly attempting to download malware onto a computer."
+    },
+    {
+      "id": 1107296258,
+      "name": "Multiple Infected Files",
+      "description": "Multiple infected files indicate multiple files on a computer are attempting to download malware."
+    },
+    {
+      "id": 1107296344,
+      "name": "SecureX Threat Hunting Incident",
+      "description": "When portal receives api call from RET and incident is created, this event is triggered and displayed."
+    }
+  ]
+}

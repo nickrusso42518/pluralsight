@@ -1,0 +1,28 @@
+{
+  "response": {
+    "name": "globo_cdp",
+    "discoveryType": "CDP",
+    "ipAddressList": "10.10.20.80",
+    "cdpLevel": 1,
+    "deviceIds": "24498184-6fc7-40a6-9944-1911dcb5395f,be1fa065-0804-4635-9318-8f41f94f73bd,b8fea8e3-1a64-4230-bf20-398b37ff7141",
+    "passwordList": "",
+    "ipFilterList": "",
+    "snmpRoCommunity": "",
+    "snmpRwCommunity": "",
+    "protocolOrder": "ssh",
+    "discoveryCondition": "In Progress",
+    "discoveryStatus": "Active",
+    "timeOut": 5,
+    "numDevices": 3,
+    "retryCount": 3,
+    "isAutoCdp": true,
+    "globalCredentialIdList": [
+      "791e63f2-002a-43a6-beaf-705b6dfd1c2c",
+      "28f99664-d924-4b8d-95c3-f62a483068d3",
+      "2a1950a8-a82e-437e-9a1c-6d0a37f4d04c"
+    ],
+    "preferredMgmtIPMethod": "None",
+    "id": "194"
+  },
+  "version": "1.0"
+}

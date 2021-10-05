@@ -1,0 +1,56 @@
+netconf-yang
+restconf
+ip tcp mss 1400
+ip ssh logging events
+mpls ldp router-id Loopback0
+vrf definition POLICE
+ rd 65000:1
+ description POLICE DEPARTMENT
+ route-target export 65000:1
+ route-target import 65000:1
+ address-family ipv4
+ address-family ipv6
+vrf definition CHEMICAL
+ rd 65000:2
+ description CHEMICAL ENGINEERING FIRM
+ route-target export 65000:2
+ route-target export 65000:4
+ route-target import 65000:2
+ route-target import 65000:3
+ address-family ipv4
+ address-family ipv6
+interface Loopback0
+ ip address 192.168.0.2 255.255.255.255
+ ip ospf 1 area 0
+interface Loopback1
+ description POLICE DEPARTMENT
+ vrf forwarding POLICE
+ ip address 10.0.1.2 255.255.255.255
+interface Loopback2
+ description CHEMICAL ENGINEERING FIRM
+ vrf forwarding CHEMICAL
+ ip address 10.0.2.2 255.255.255.255
+interface Tunnel23
+ description R2 TO R3
+ ip address 192.168.23.2 255.255.255.0
+ ip ospf 1 area 0
+ mpls ip
+ tunnel source GigabitEthernet1
+ tunnel destination 10.125.0.63
+router ospf 1
+ router-id 192.168.0.2
+router bgp 65000
+ bgp router-id 192.168.0.2
+ bgp log-neighbor-changes
+ scope global
+  neighbor 192.168.0.1 remote-as 65000
+  neighbor 192.168.0.1 update-source Loopback0
+  address-family vpnv4
+   neighbor 192.168.0.1 activate
+   neighbor 192.168.0.1 send-community extended
+ scope vrf CHEMICAL
+  address-family ipv4
+   redistribute connected
+ scope vrf POLICE
+  address-family ipv4
+   redistribute connected

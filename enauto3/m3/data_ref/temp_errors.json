@@ -1,0 +1,11 @@
+{
+  "templateId": "bf37d4e7-6ced-459e-bc5b-621d3943569f",
+  "cliPreview": null,
+  "deviceId": null,
+  "validationErrors": [
+    {
+      "type": "INVALID_DATA",
+      "message": null
+    }
+  ]
+}

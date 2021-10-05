@@ -1,0 +1,124 @@
+---
+#
+# Build layer-1 connectivity between devices
+#
+- name: "Create Ethernet interfaces on A-side device"
+  netbox.netbox.netbox_device_interface:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      device: "{{ item.a.device }}"
+      description: "To {{ item.b.device }} {{ item.b.name }}"
+      name: "{{ item.a.name }}"
+      type: "1000base-t"  # 1 Gbps Ethernet over copper/cat5e
+      enabled: true
+  loop: "{{ ethernet_cables }}"
+  loop_control:
+    label: "{{ item.a.device }} - {{ item.a.name }}"
+
+- name: "Create Ethernet interfaces on B-side device"
+  netbox.netbox.netbox_device_interface:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      device: "{{ item.b.device }}"
+      description: "To {{ item.a.device }} {{ item.a.name }}"
+      name: "{{ item.b.name }}"
+      type: "1000base-t"  # 1 Gbps Ethernet over copper/cat5e
+      enabled: true
+  loop: "{{ ethernet_cables }}"
+  loop_control:
+    label: "{{ item.b.device }} - {{ item.b.name }}"
+
+- name: "Create cables to interconnect Ethernet interfaces"
+  netbox.netbox.netbox_cable:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      type: "cat5e"
+      status: "connected"
+      termination_a_type: "dcim.interface"
+      termination_a: "{{ item.a }}"
+      termination_b_type: "dcim.interface"
+      termination_b: "{{ item.b }}"
+  loop: "{{ ethernet_cables }}"
+  loop_control:
+    label: "{{ item.a.device }} - {{ item.b.device }}"
+
+#
+# Build layer-2/3 connectivity between devices
+#
+- name: "Create VLANs"
+  netbox.netbox.netbox_vlan:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      name: "{{ item.name }}"
+      vid: "{{ item.vid }}"
+      site: "{{ location.hq }}"
+      status: "active"
+  loop: "{{ vlan_list }}"
+  loop_control:
+    label: "{{ item.name }} / VID {{ item.vid }}"
+
+- name: "Create IP prefixes and assign to VLANs"
+  netbox.netbox.netbox_prefix:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      prefix: "{{ item.prefix }}"
+      vlan: "{{ item.name }}"
+      site: "{{ location.hq }}"
+  loop: "{{ vlan_list }}"
+  loop_control:
+    label: "{{ item.prefix }} / VLAN {{ item.name }}"
+
+- name: "Create R1 802.1Q subinterfaces"
+  netbox.netbox.netbox_device_interface:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      device: "R1"
+      name: "{{ interfaces.lan }}.{{ item.vid }}"  # eg: GigabitEthernet1.10
+      type: "1000base-t"
+      enabled: true
+      mode: "tagged"
+      tagged_vlans:
+        - name: "{{ item.name }}"
+          site: "{{ location.hq }}"
+  loop: "{{ vlan_list }}"
+  loop_control:
+    label: "{{ interfaces.lan }}.{{ item.vid }} / VLAN {{ item.name }}"
+
+- name: "Create IP addresses and assign to R1 interfaces"
+  netbox.netbox.netbox_ip_address:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      address: "{{ ip }}"
+      status: "active"
+      assigned_object:
+        device: "R1"
+        name: "{{ intf }}"
+  vars:
+    ip: "{{ item.prefix | ipaddr('1') }}"
+    intf: "{{ interfaces.lan }}.{{ item.vid }}"
+  loop: "{{ vlan_list }}"
+  loop_control:
+    label: "{{ intf }} / IP {{ ip }}"
+
+- name: "Update R1 primary IP address for future management"
+  netbox.netbox.netbox_device:
+    netbox_url: "{{ netbox_url }}"
+    netbox_token: "{{ netbox_token }}"
+    data:
+      name: "R1"
+      primary_ip4: "{{ vlan_list[0].prefix | ipaddr('1') }}"
+
+# Perform similar steps on the switches with nested loop
+- name: "Create interfaces and IP addresses for switches"
+  include_tasks: "tasks/switch_intf.yml"
+  loop: [2, 3, 4]
+  loop_control:
+    loop_var: "swid"
+...

@@ -1,0 +1,12 @@
+---
+security:
+  key_chain:
+    name: "KC_OSPF_AUTH"
+    key:
+      id: 1
+      text: "SECRET123"
+
+routing:
+  ref_bw: 1000
+  ttl_security_hops: 1
+...

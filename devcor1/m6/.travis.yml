@@ -1,0 +1,41 @@
+---
+# Use a Python-based system in a 3.7 virtual environment.
+# Per Travis docs, xenial must be used for Python 3.7 or newer.
+dist: "xenial"
+language: "python"
+python:
+  - "3.7"
+
+# Need docker and docker-compose support.
+services:
+  - "docker"
+
+# Install required Python packages for testing and operation.
+# Newly added: Generate SSL certificate and key.
+install:
+  - "pip install -r requirements.txt"
+  - "./make_cert.sh"
+
+# Execute the linting and unit tests before spinning up containers.
+# Newly added: Use bandit for static code analysis to reveal any
+# security vulnerabilities. Skips B101 "assert" statements which are
+# valid for pytest and are not security concerns here.
+# Once containers are up, print them out for logging purposes.
+# Newly added: Script to wait until HTTPS on port 5000 is responding.
+before_script:
+  - "pylint src/*.py"
+  - "bandit src/*.py --skip B101"
+  - "pytest --verbose src/test_unit.py"
+  - "docker-compose up --detach"
+  - "docker container ls"
+  - "./wait_for_https.sh 60"
+
+# Run the system tests to ensure the web server is functional.
+script:
+  - "pytest --verbose src/test_system.py"
+
+# Not completely necessary, but gracefully tear down containers.
+# Newly added: Also delete leftover data created by MySQL volume.
+after_script:
+  - "docker-compose down --volumes"
+...

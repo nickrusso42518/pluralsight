@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "version": "k7irzhfjcsdx",
+      "name": "PORTG_IPSEC",
+      "description": "All IPsec related ports and protocols",
+      "isSystemDefined": false,
+      "id": "048046f8-9dad-11ea-9df4-0b1c4e22a884",
+      "objects": [
+        {
+          "version": "hu77ohzg2wjtf",
+          "name": "PROTO_ESP",
+          "id": "0468a045-9dad-11ea-9df4-87e4228355d6",
+          "type": "protocolobject"
+        },
+        {
+          "version": "guym3ftsmvsvc",
+          "name": "UDP_IKE",
+          "id": "042e7d6f-9dad-11ea-9df4-5197dd802342",
+          "type": "udpportobject"
+        },
+        {
+          "version": "okr3za4266tfw",
+          "name": "UDP_IPSEC_NATT",
+          "id": "04493162-9dad-11ea-9df4-9fa592aa8872",
+          "type": "udpportobject"
+        }
+      ],
+      "type": "portobjectgroup",
+      "links": {
+        "self": "https://10.10.20.65/api/fdm/latest/object/portgroups/048046f8-9dad-11ea-9df4-0b1c4e22a884"
+      }
+    }
+  ],
+  "paging": {
+    "prev": [],
+    "next": [],
+    "limit": 10,
+    "offset": 0,
+    "count": 1,
+    "pages": 0
+  }
+}

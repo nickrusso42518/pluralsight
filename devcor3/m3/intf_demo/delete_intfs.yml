@@ -1,0 +1,15 @@
+---
+- name: "PLAY 1: INTERFACE DELETE"
+  hosts: "restconf_routers"
+  tasks:
+    # Loop over list of interfaces and issue individual HTTP DELETE
+    # requests for each one. Must specify the key (interface name) in
+    # the URL, and no HTTP body is needed.
+    - name: "TASK 1: Delete existing IETF YANG interfaces via RESTCONF"
+      restconf_config:
+        path: "/data/ietf-interfaces:interfaces/interface={{ item['name'] }}"
+        method: "delete"
+      loop: "{{ new_interfaces['interface'] }}"
+      loop_control:
+        label: "{{ item['name'] }}"
+...

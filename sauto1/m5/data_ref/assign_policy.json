@@ -1,0 +1,13 @@
+{
+  "links": {
+    "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/assignment/policyassignments/005056BB-0B24-0ed3-0000-871878384614"
+  },
+  "type": "PolicyAssignment",
+  "policy": {
+    "type": "AccessPolicy",
+    "name": "GLOBO_POLICY",
+    "id": "005056BB-0B24-0ed3-0000-871878384614"
+  },
+  "id": "005056BB-0B24-0ed3-0000-871878384614",
+  "name": "GLOBO_POLICY"
+}

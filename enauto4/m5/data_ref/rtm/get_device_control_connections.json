@@ -1,0 +1,258 @@
+{
+  "header": {
+    "generatedOn": 1578076063150,
+    "viewKeys": {
+      "uniqueKey": [
+        "vdevice-dataKey"
+      ],
+      "preferenceKey": "grid-ControlConnection"
+    },
+    "columns": [
+      {
+        "title": "Instance ID",
+        "property": "instance",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Peer Type",
+        "property": "peer-type",
+        "hideable": false,
+        "width": 100,
+        "dataType": "string"
+      },
+      {
+        "title": "Peer Protocol",
+        "property": "protocol",
+        "width": 150,
+        "dataType": "string"
+      },
+      {
+        "title": "Peer System IP",
+        "property": "system-ip",
+        "hideable": false,
+        "width": 200,
+        "dataType": "ip"
+      },
+      {
+        "title": "Site ID",
+        "property": "site-id",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Domain ID",
+        "property": "domain-id",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Private IP",
+        "property": "private-ip",
+        "width": 200,
+        "dataType": "ip"
+      },
+      {
+        "title": "Private Port",
+        "property": "private-port",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Public IP",
+        "property": "public-ip",
+        "width": 100,
+        "dataType": "ip"
+      },
+      {
+        "title": "Public Port",
+        "property": "public-port",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Local Color",
+        "property": "local-color",
+        "width": 120,
+        "dataType": "string"
+      },
+      {
+        "title": "Remote Color",
+        "property": "remote-color",
+        "width": 150,
+        "dataType": "string"
+      },
+      {
+        "title": "State",
+        "property": "state",
+        "width": 100,
+        "dataType": "string"
+      },
+      {
+        "title": "Controller Group ID",
+        "property": "controller-group-id",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Up Since",
+        "property": "uptime-date",
+        "displayFormat": "DD MMM YYYY h:mm:ss A z",
+        "inputFormat": "unix-time",
+        "width": 220,
+        "dataType": "date"
+      },
+      {
+        "title": "Up Time",
+        "property": "uptime",
+        "width": 100,
+        "dataType": "uptime"
+      },
+      {
+        "title": "Last Updated",
+        "property": "lastupdated",
+        "displayFormat": "DD MMM YYYY h:mm:ss A z",
+        "inputFormat": "unix-time",
+        "hideable": false,
+        "minWidth": 100,
+        "dataType": "date"
+      },
+      {
+        "title": "Proxy",
+        "property": "behind-proxy",
+        "width": 100,
+        "dataType": "string"
+      }
+    ],
+    "fields": [
+      {
+        "property": "vdevice-name",
+        "dataType": "string"
+      },
+      {
+        "property": "vdevice-host-name",
+        "dataType": "string"
+      },
+      {
+        "property": "instance",
+        "dataType": "number"
+      },
+      {
+        "property": "peer-type",
+        "dataType": "string"
+      },
+      {
+        "property": "protocol",
+        "dataType": "string"
+      },
+      {
+        "property": "system-ip",
+        "dataType": "ip"
+      },
+      {
+        "property": "site-id",
+        "dataType": "number"
+      },
+      {
+        "property": "domain-id",
+        "dataType": "number"
+      },
+      {
+        "property": "private-ip",
+        "dataType": "ip"
+      },
+      {
+        "property": "private-port",
+        "dataType": "number"
+      },
+      {
+        "property": "public-ip",
+        "dataType": "ip"
+      },
+      {
+        "property": "public-port",
+        "dataType": "number"
+      },
+      {
+        "property": "local-color",
+        "dataType": "string"
+      },
+      {
+        "property": "remote-color",
+        "dataType": "string"
+      },
+      {
+        "property": "state",
+        "dataType": "string"
+      },
+      {
+        "property": "controller-group-id",
+        "dataType": "number"
+      },
+      {
+        "property": "uptime-date",
+        "dataType": "date"
+      },
+      {
+        "property": "uptime",
+        "dataType": "uptime"
+      },
+      {
+        "property": "lastupdated",
+        "dataType": "date"
+      },
+      {
+        "property": "behind-proxy",
+        "dataType": "string"
+      }
+    ]
+  },
+  "data": [
+    {
+      "domain-id": 1,
+      "instance": 0,
+      "vdevice-name": "4.4.4.61",
+      "behind-proxy": "No",
+      "system-ip": "4.4.4.70",
+      "remote-color": "default",
+      "site-id": 100,
+      "private-port": 12446,
+      "controller-group-id": 0,
+      "vdevice-host-name": "vedge-002",
+      "local-color": "default",
+      "uptime": "0:02:36:14",
+      "peer-type": "vsmart",
+      "protocol": "dtls",
+      "vdevice-dataKey": "4.4.4.61-0-default-4.4.4.70-default",
+      "public-ip": "10.10.20.70",
+      "public-port": 12446,
+      "lastupdated": 1578076063130,
+      "state": "up",
+      "private-ip": "10.10.20.70",
+      "uptime-date": 1578066660000
+    },
+    {
+      "domain-id": 0,
+      "instance": 0,
+      "vdevice-name": "4.4.4.61",
+      "behind-proxy": "No",
+      "system-ip": "4.4.4.90",
+      "remote-color": "default",
+      "site-id": 100,
+      "private-port": 12446,
+      "controller-group-id": 0,
+      "vdevice-host-name": "vedge-002",
+      "local-color": "default",
+      "uptime": "0:02:36:14",
+      "peer-type": "vmanage",
+      "protocol": "dtls",
+      "vdevice-dataKey": "4.4.4.61-0-default-4.4.4.90-default",
+      "public-ip": "10.10.20.90",
+      "public-port": 12446,
+      "lastupdated": 1578076063130,
+      "state": "up",
+      "private-ip": "10.10.20.90",
+      "uptime-date": 1578066660000
+    }
+  ]
+}

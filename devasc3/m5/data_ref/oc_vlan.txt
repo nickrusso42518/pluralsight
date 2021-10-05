@@ -1,0 +1,127 @@
+module: openconfig-vlan
+  augment /oc-if:interfaces/oc-if:interface/oc-if:subinterfaces/oc-if:subinterface:
+    +--rw vlan
+       +--rw config
+       |  x--rw vlan-id?   union
+       +--ro state
+       |  x--ro vlan-id?   union
+       +--rw match
+       |  +--rw single-tagged
+       |  |  +--rw config
+       |  |  |  +--rw vlan-id?   oc-vlan-types:vlan-id
+       |  |  +--ro state
+       |  |     +--ro vlan-id?   oc-vlan-types:vlan-id
+       |  +--rw single-tagged-list
+       |  |  +--rw config
+       |  |  |  +--rw vlan-ids*   oc-vlan-types:vlan-id
+       |  |  +--ro state
+       |  |     +--ro vlan-ids*   oc-vlan-types:vlan-id
+       |  +--rw single-tagged-range
+       |  |  +--rw config
+       |  |  |  +--rw low-vlan-id?    oc-vlan-types:vlan-id
+       |  |  |  +--rw high-vlan-id?   oc-vlan-types:vlan-id
+       |  |  +--ro state
+       |  |     +--ro low-vlan-id?    oc-vlan-types:vlan-id
+       |  |     +--ro high-vlan-id?   oc-vlan-types:vlan-id
+       |  +--rw double-tagged
+       |  |  +--rw config
+       |  |  |  +--rw inner-vlan-id?   oc-vlan-types:vlan-id
+       |  |  |  +--rw outer-vlan-id?   oc-vlan-types:vlan-id
+       |  |  +--ro state
+       |  |     +--ro inner-vlan-id?   oc-vlan-types:vlan-id
+       |  |     +--ro outer-vlan-id?   oc-vlan-types:vlan-id
+       |  +--rw double-tagged-inner-list
+       |  |  +--rw config
+       |  |  |  +--rw inner-vlan-ids*   oc-vlan-types:vlan-id
+       |  |  |  +--rw outer-vlan-id?    oc-vlan-types:vlan-id
+       |  |  +--ro state
+       |  |     +--ro inner-vlan-ids*   oc-vlan-types:vlan-id
+       |  |     +--ro outer-vlan-id?    oc-vlan-types:vlan-id
+       |  +--rw double-tagged-outer-list
+       |  |  +--rw config
+       |  |  |  +--rw inner-vlan-id?    oc-vlan-types:vlan-id
+       |  |  |  +--rw outer-vlan-ids*   oc-vlan-types:vlan-id
+       |  |  +--ro state
+       |  |     +--ro inner-vlan-id?    oc-vlan-types:vlan-id
+       |  |     +--ro outer-vlan-ids*   oc-vlan-types:vlan-id
+       |  +--rw double-tagged-inner-range
+       |  |  +--rw config
+       |  |  |  +--rw inner-low-vlan-id?    oc-vlan-types:vlan-id
+       |  |  |  +--rw inner-high-vlan-id?   oc-vlan-types:vlan-id
+       |  |  |  +--rw outer-vlan-id*        oc-vlan-types:vlan-id
+       |  |  +--ro state
+       |  |     +--ro inner-low-vlan-id?    oc-vlan-types:vlan-id
+       |  |     +--ro inner-high-vlan-id?   oc-vlan-types:vlan-id
+       |  |     +--ro outer-vlan-id*        oc-vlan-types:vlan-id
+       |  +--rw double-tagged-outer-range
+       |  |  +--rw config
+       |  |  |  +--rw inner-vlan-id?        oc-vlan-types:vlan-id
+       |  |  |  +--rw outer-low-vlan-id?    oc-vlan-types:vlan-id
+       |  |  |  +--rw outer-high-vlan-id?   oc-vlan-types:vlan-id
+       |  |  +--ro state
+       |  |     +--ro inner-vlan-id?        oc-vlan-types:vlan-id
+       |  |     +--ro outer-low-vlan-id?    oc-vlan-types:vlan-id
+       |  |     +--ro outer-high-vlan-id?   oc-vlan-types:vlan-id
+       |  +--rw double-tagged-inner-outer-range
+       |     +--rw config
+       |     |  +--rw inner-low-vlan-id?    oc-vlan-types:vlan-id
+       |     |  +--rw inner-high-vlan-id?   oc-vlan-types:vlan-id
+       |     |  +--rw outer-low-vlan-id?    oc-vlan-types:vlan-id
+       |     |  +--rw outer-high-vlan-id?   oc-vlan-types:vlan-id
+       |     +--ro state
+       |        +--ro inner-low-vlan-id?    oc-vlan-types:vlan-id
+       |        +--ro inner-high-vlan-id?   oc-vlan-types:vlan-id
+       |        +--ro outer-low-vlan-id?    oc-vlan-types:vlan-id
+       |        +--ro outer-high-vlan-id?   oc-vlan-types:vlan-id
+       +--rw ingress-mapping
+       |  +--rw config
+       |  |  +--rw vlan-stack-action?   oc-vlan-types:vlan-stack-action
+       |  |  +--rw vlan-id?             oc-vlan-types:vlan-id
+       |  |  +--rw tpid?                identityref
+       |  +--ro state
+       |     +--ro vlan-stack-action?   oc-vlan-types:vlan-stack-action
+       |     +--ro vlan-id?             oc-vlan-types:vlan-id
+       |     +--ro tpid?                identityref
+       +--rw egress-mapping
+          +--rw config
+          |  +--rw vlan-stack-action?   oc-vlan-types:vlan-stack-action
+          |  +--rw vlan-id?             oc-vlan-types:vlan-id
+          |  +--rw tpid?                identityref
+          +--ro state
+             +--ro vlan-stack-action?   oc-vlan-types:vlan-stack-action
+             +--ro vlan-id?             oc-vlan-types:vlan-id
+             +--ro tpid?                identityref
+  augment /oc-if:interfaces/oc-if:interface/oc-if:config:
+    +--rw tpid?   identityref
+  augment /oc-if:interfaces/oc-if:interface/oc-if:state:
+    +--ro tpid?   identityref
+  augment /oc-if:interfaces/oc-if:interface/oc-eth:ethernet:
+    +--rw switched-vlan
+       +--rw config
+       |  +--rw interface-mode?   oc-vlan-types:vlan-mode-type
+       |  +--rw native-vlan?      oc-vlan-types:vlan-id
+       |  +--rw access-vlan?      oc-vlan-types:vlan-id
+       |  +--rw trunk-vlans*      union
+       +--ro state
+          +--ro interface-mode?   oc-vlan-types:vlan-mode-type
+          +--ro native-vlan?      oc-vlan-types:vlan-id
+          +--ro access-vlan?      oc-vlan-types:vlan-id
+          +--ro trunk-vlans*      union
+  augment /oc-if:interfaces/oc-if:interface/oc-lag:aggregation:
+    +--rw switched-vlan
+       +--rw config
+       |  +--rw interface-mode?   oc-vlan-types:vlan-mode-type
+       |  +--rw native-vlan?      oc-vlan-types:vlan-id
+       |  +--rw access-vlan?      oc-vlan-types:vlan-id
+       |  +--rw trunk-vlans*      union
+       +--ro state
+          +--ro interface-mode?   oc-vlan-types:vlan-mode-type
+          +--ro native-vlan?      oc-vlan-types:vlan-id
+          +--ro access-vlan?      oc-vlan-types:vlan-id
+          +--ro trunk-vlans*      union
+  augment /oc-if:interfaces/oc-if:interface:
+    +--rw routed-vlan
+       +--rw config
+       |  +--rw vlan?   union
+       +--ro state
+          +--ro vlan?   union

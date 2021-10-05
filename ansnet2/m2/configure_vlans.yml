@@ -1,0 +1,42 @@
+---
+- name: "Configure VLANs and SVIs on switches"
+  hosts: "all"
+  collections:
+    - "ansible.netcommon"
+  tasks:
+    - name: "Store template path per device type"
+      set_fact:
+        template_path: "templates/{{ ansible_network_os }}_vlans.j2"
+
+    # Reduce forks if your system is CPU/memory constrained!
+    - name: "Apply config updates from jinja2 templates"
+      cli_config:
+        config: "{{ lookup('template', template_path) }}"
+      register: "vlan_updates"
+      notify: "changes_occurred"
+      vars:
+        ansible_forks: 1  # default is 5
+
+  handlers:
+    # Arista EOS supports on-box diff to compare two config files. Example:
+    # S4#diff running-config startup-config
+    - name: "Print on-box diff when updates occurred and feature is available"
+      listen: "changes_occurred"
+      debug:
+        msg: "{{ vlan_updates['diff'].split('\n') }}"
+      when: "'diff' in vlan_updates"
+
+    # Cisco IOS and NXOS do not support on-box diff
+    - name: "Print commands issued when updates occurred (no on-box diff)"
+      listen: "changes_occurred"
+      debug:
+        var: "vlan_updates.commands"
+      when: "'commands' in vlan_updates"
+
+    # We are fortunate that all devices use the identical save command;
+    # variabilize this at the group_vars/ level for extra flexibility
+    - name: "Save configuration when updates occurred"
+      listen: "changes_occurred"
+      cli_command:
+        command: "copy running-config startup-config"
+...

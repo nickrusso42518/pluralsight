@@ -1,0 +1,19 @@
+---
+- name: "PLAY 1: Infrastructure-as-code using NETCONF"
+  hosts: routers
+  connection: netconf
+  vars:
+    ansible_network_os: "default"
+  tasks:
+    - name: "TASK 1: Update VRF config with NETCONF"
+      # netconf_config:
+      ansible.netcommon.netconf_config:
+        content: "{{ lookup('template', 'templates/netconf_vpn.j2') }}"
+
+    # Issue fixed shortly after submission! :)
+    # https://github.com/ansible/ansible/issues/53236
+    - name: "TASK 2: Save configuration"
+      # netconf_rpc:
+      ansible.netcommon.netconf_rpc:
+        xmlns: "http://cisco.com/yang/cisco-ia"
+        rpc: "save-config"

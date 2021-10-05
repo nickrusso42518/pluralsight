@@ -1,0 +1,7 @@
+---
+all:
+  children:
+    routers:
+      hosts:
+        R1:
+        R2:

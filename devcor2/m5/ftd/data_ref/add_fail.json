@@ -1,0 +1,13 @@
+{
+  "error": {
+    "severity": "ERROR",
+    "key": "Validation",
+    "messages": [
+      {
+        "description": "Validation failed due to a duplicate name: \"TEST-NET-3\"",
+        "code": "duplicateName",
+        "location": "name"
+      }
+    ]
+  }
+}

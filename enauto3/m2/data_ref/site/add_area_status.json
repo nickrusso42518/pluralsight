@@ -1,0 +1,11 @@
+{
+  "bapiKey": "50b5-89fd-4c7a-930a",
+  "bapiName": "Create Site",
+  "bapiExecutionId": "11292931-741f-49f7-8f97-873f9a61d8fa",
+  "startTime": "Sat Jan 18 12:58:27 UTC 2020",
+  "startTimeEpoch": 1579352307297,
+  "endTime": "Sat Jan 18 12:58:27 UTC 2020",
+  "endTimeEpoch": 1579352307763,
+  "timeDuration": 466,
+  "status": "SUCCESS"
+}

@@ -1,0 +1,13 @@
+{
+  "changed":true,
+  "failed":false,
+  "vgw":{
+    "id":"vgw-0deed7cb3efc260f5",
+    "state":"available",
+    "tags":{
+      "Name":"VGW_Globo_R1"
+    },
+    "type":"ipsec.1",
+    "vpc_id":"vpc-0174def06d5788b80"
+  }
+}

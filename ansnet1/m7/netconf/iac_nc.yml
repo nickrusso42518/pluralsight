@@ -1,0 +1,16 @@
+---
+- name: "PLAY 1: Infrastructure-as-code using NETCONF"
+  hosts: routers
+  connection: netconf
+  tasks:
+    - name: "TASK 1: Update VRF config with NETCONF"
+      netconf_config:
+        content: "{{ lookup('template', 'templates/vpn.j2') }}"
+
+    # Operation works but Ansible task fails
+    # https://github.com/ansible/ansible/issues/53236
+    - name: "TASK 2: Save configuration"
+      netconf_rpc:
+        xmlns: "http://cisco.com/yang/cisco-ia"
+        rpc: "save-config"
+      ignore_errors: true

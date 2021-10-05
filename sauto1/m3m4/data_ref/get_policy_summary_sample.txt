@@ -1,0 +1,14 @@
+Policy name: NGFW-Access-Policy
+  Rule name: Inside_Outside_Rule -> TRUST
+    sourceZones: inside_zone
+    destinationZones: outside_zone
+  Rule name: OUT_TO_IN_VPN -> PERMIT
+    sourceZones: outside_zone
+    destinationZones: inside_zone
+    destinationNetworks: NETG_VPN_CONCENTRATORS
+    destinationPorts: PORTG_IPSEC
+    intrusionPolicy: Balanced Security and Connectivity
+  Rule name: IN_TO_OUT_BLACKLIST -> DENY
+    sourceZones: inside_zone
+    destinationZones: outside_zone
+    destinationNetworks: NETG_BLACKLIST

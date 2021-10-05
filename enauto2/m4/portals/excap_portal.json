@@ -1,0 +1,18 @@
+{
+  "1": {
+    "ssid_body": {
+      "name": "Meraki Javascript excap",
+      "enabled": true,
+      "splashPage": "Click-through splash page",
+      "authMode": "open",
+      "adminSplashUrl": "http://excapjs.njrusmc.net/index.html",
+      "walledGardenEnabled": true,
+      "walledGardenRanges": "excapjs.njrusmc.net"
+    },
+    "splash_body": {
+      "splashMethod": "Click-through splash page",
+      "splashUrl": "http://excapjs.njrusmc.net/index.html",
+      "useSplashUrl": true
+    }
+  }
+}

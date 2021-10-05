@@ -1,0 +1,212 @@
+{
+    "header": {
+        "generatedOn": 1578493732578,
+        "viewKeys": {
+            "uniqueKey": [],
+            "preferenceKey": "grid-DeviceActionTemplateConfigureResult"
+        },
+        "columns": [
+            {
+                "title": "Status",
+                "property": "status",
+                "display": "iconAndText",
+                "iconProperty": "statusId",
+                "hideable": false,
+                "icon": [
+                    {
+                        "key": "validation_success",
+                        "value": "images/action_success.png"
+                    },
+                    {
+                        "key": "validation_failure",
+                        "value": "images/action_failure.png"
+                    },
+                    {
+                        "key": "success",
+                        "value": "images/action_success.png"
+                    },
+                    {
+                        "key": "success_warning",
+                        "value": "images/action_success_warning.png"
+                    },
+                    {
+                        "key": "failure",
+                        "value": "images/action_failure.png"
+                    },
+                    {
+                        "key": "in_progress",
+                        "value": "images/action_in_progress.png"
+                    },
+                    {
+                        "key": "scheduled",
+                        "value": "images/action_scheduled.png"
+                    },
+                    {
+                        "key": "time_out",
+                        "value": "images/action_timedout.png"
+                    },
+                    {
+                        "key": "skipped",
+                        "value": "images/action_skipped.png"
+                    }
+                ],
+                "dataType": "string"
+            },
+            {
+                "title": "Message",
+                "property": "currentActivity",
+                "dataType": "string"
+            },
+            {
+                "title": "Chassis Number",
+                "property": "uuid",
+                "dataType": "string"
+            },
+            {
+                "title": "Device Model",
+                "property": "deviceModel",
+                "display": "keyvalue",
+                "keyvalueProperty": "deviceModel",
+                "dataType": "string"
+            },
+            {
+                "title": "Hostname",
+                "property": "host-name",
+                "display": "iconAndText",
+                "iconProperty": "host-name-icon",
+                "hideable": false,
+                "dataType": "string"
+            },
+            {
+                "title": "System IP",
+                "property": "local-system-ip",
+                "dataType": "ipv4"
+            },
+            {
+                "title": "Site ID",
+                "property": "site-id",
+                "dataType": "number"
+            },
+            {
+                "title": "vManage IP",
+                "property": "vmanageIP",
+                "dataType": "ipv4"
+            }
+        ],
+        "fields": [
+            {
+                "property": "status",
+                "dataType": "string",
+                "display": "iconAndText"
+            },
+            {
+                "property": "currentActivity",
+                "dataType": "string"
+            },
+            {
+                "property": "uuid",
+                "dataType": "string"
+            },
+            {
+                "property": "deviceModel",
+                "dataType": "string",
+                "display": "keyvalue"
+            },
+            {
+                "property": "host-name",
+                "dataType": "string",
+                "display": "iconAndText"
+            },
+            {
+                "property": "system-ip",
+                "dataType": "ipv4"
+            },
+            {
+                "property": "local-system-ip",
+                "dataType": "ipv4"
+            },
+            {
+                "property": "site-id",
+                "dataType": "number"
+            },
+            {
+                "property": "vmanageIP",
+                "dataType": "ipv4"
+            }
+        ]
+    },
+    "data": [
+        {
+            "local-system-ip": "4.4.4.70",
+            "activity": [
+                "[8-Jan-2020 14:26:29 UTC] Configuring device with feature template: Basic_template",
+                "[8-Jan-2020 14:26:29 UTC] Generating configuration from template",
+                "[8-Jan-2020 14:26:31 UTC] Checking and creating device in vManage",
+                "[8-Jan-2020 14:26:31 UTC] Device is online",
+                "[8-Jan-2020 14:26:31 UTC] Updating device configuration in vManage",
+                "[8-Jan-2020 14:26:31 UTC] Pushing configuration to device, vManage Transaction Id: 2020-01-08T14:26:31.760000+00:00",
+                "[8-Jan-2020 14:26:31 UTC] Verification of configuration push may take upto 8 minutes",
+                "[8-Jan-2020 14:28:33 UTC] Template successfully attached to device"
+            ],
+            "statusType": "push_feature_template_configuration",
+            "vmanageIP": "4.4.4.90",
+            "system-ip": "4.4.4.70",
+            "host-name": "vsmart-01",
+            "site-id": "100",
+            "uuid": "50cb5f09-3b74-49b7-aa5a-c17db012206c",
+            "deviceID": "50cb5f09-3b74-49b7-aa5a-c17db012206c",
+            "@rid": 1853,
+            "statusId": "success",
+            "currentActivity": "Done - Push Feature Template Configuration",
+            "actionConfig": "{\"csv-status\":\"complete\",\"csv-deviceId\":\"50cb5f09-3b74-49b7-aa5a-c17db012206c\",\"csv-deviceIP\":\"4.4.4.70\",\"csv-host-name\":\"vsmart-01\",\"/0/vpn-instance/ip/route/0.0.0.0/0/next-hop/address\":\"10.10.20.254\",\"//system/host-name\":\"vsmart-01\",\"//system/system-ip\":\"4.4.4.70\",\"//system/site-id\":\"100\",\"csv-templateId\":\"103c84cd-c465-494f-a01b-7c031bd06ee6\"}",
+            "processId": "push_feature_template_configuration-b58a1728-5c2a-4632-a448-476040ef2ea9",
+            "device-type": "vsmart",
+            "action": "push_feature_template_configuration",
+            "deviceModel": "vsmart",
+            "startTime": 1578493589851,
+            "validity": "valid",
+            "requestStatus": "received",
+            "status": "Success"
+        }
+    ],
+    "validation": {
+        "activity": [
+            "[8-Jan-2020 14:26:29 UTC] Starting Checks.",
+            "[8-Jan-2020 14:26:29 UTC] Validating if device scheduled for template push are active",
+            "[8-Jan-2020 14:26:29 UTC] Sending message to vmanage:4.4.4.90",
+            "[8-Jan-2020 14:26:29 UTC] Published messages to vmanage(s)",
+            "[8-Jan-2020 14:26:29 UTC] Checks completed."
+        ],
+        "statusType": "push_feature_template_configuration",
+        "vmanageIP": "4.4.4.90",
+        "system-ip": "Validation",
+        "uuid": "Validation",
+        "deviceID": "Validation",
+        "@rid": 1610,
+        "statusId": "validation_success",
+        "actionConfig": "{}",
+        "currentActivity": "Done - Validation",
+        "processId": "push_feature_template_configuration-b58a1728-5c2a-4632-a448-476040ef2ea9",
+        "action": "push_feature_template_configuration",
+        "startTime": 1578493589422,
+        "requestStatus": "received",
+        "status": "Validation success"
+    },
+    "summary": {
+        "action": "push_feature_template_configuration",
+        "name": "Push Feature Template Configuration",
+        "detailsURL": "/dataservice/device/action/status",
+        "startTime": "1578493589653",
+        "endTime": "1578493713096",
+        "userSessionUserName": "admin",
+        "userSessionIP": "192.168.101.1",
+        "tenantName": "DefaultTenant",
+        "total": 1,
+        "status": "done",
+        "count": {
+            "Success": 1
+        }
+    },
+    "isCancelEnabled": false,
+    "isParallelExecutionEnabled": false
+}

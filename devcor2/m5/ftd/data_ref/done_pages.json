@@ -1,0 +1,42 @@
+{
+  "items": [
+    {
+      "version": "ocyllbikulxb6",
+      "name": "any-ipv4",
+      "description": null,
+      "subType": "NETWORK",
+      "value": "0.0.0.0/0",
+      "isSystemDefined": true,
+      "dnsResolution": null,
+      "id": "47c6684d-86ad-11e9-a788-cf9c3e5a3c29",
+      "type": "networkobject",
+      "links": {
+        "self": "https://10.10.20.65/api/fdm/v2/object/networks/47c6684d-86ad-11e9-a788-cf9c3e5a3c29"
+      }
+    },
+    {
+      "version": "cdewamoaqsagn",
+      "name": "any-ipv6",
+      "description": null,
+      "subType": "NETWORK",
+      "value": "::/0",
+      "isSystemDefined": true,
+      "dnsResolution": null,
+      "id": "47d07a6e-86ad-11e9-a788-9f79af0804d2",
+      "type": "networkobject",
+      "links": {
+        "self": "https://10.10.20.65/api/fdm/v2/object/networks/47d07a6e-86ad-11e9-a788-9f79af0804d2"
+      }
+    }
+  ],
+  "paging": {
+    "prev": [
+      "https://10.10.20.65/api/fdm/v2/object/networks?limit=3&offset=3"
+    ],
+    "next": [],
+    "limit": 3,
+    "offset": 6,
+    "count": 8,
+    "pages": 0
+  }
+}

@@ -1,0 +1,222 @@
+---
+- name: "Build AWS network infrastructure and deploy EC2 instances"
+  hosts: "localhost"
+  vars_files:
+    - "vault.yml"
+  tasks:
+
+    # AWS collection documentation:
+    # https://github.com/ansible-collections/amazon.aws
+    # https://github.com/ansible-collections/community.aws
+    - name: "Create Virtual Private Cloud (VPC)"
+      amazon.aws.ec2_vpc_net:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        name: "VPC_Globo"
+        region: "us-east-1"
+        cidr_block: "10.0.0.0/16"
+      register: "vpc"
+
+    - name: "Create new subnets within VPC"
+      amazon.aws.ec2_vpc_subnet:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        vpc_id: "{{ vpc.vpc.id }}"
+        region: "us-east-1"
+        az: "us-east-1b"
+        cidr: "{{ item.cidr }}"
+        tags:
+          Name: "{{ item.name }}"
+      loop:
+        - name: "NET_Globo_Mgmt"
+          cidr: "10.0.0.0/24"
+        - name: "NET_Globo_VPN"
+          cidr: "10.0.1.0/24"
+        - name: "NET_Globo_Servers"
+          cidr: "10.0.2.0/24"
+      register: "subnets"
+
+    - name: "Create new Internet Gateway (IGW) within VPC"
+      community.aws.ec2_vpc_igw:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        vpc_id: "{{ vpc.vpc.id }}"
+        region: "us-east-1"
+        tags:
+          Name: "IGW_Globo"
+      register: "igw"
+
+    - name: "Create public route table within VPC"
+      community.aws.ec2_vpc_route_table:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        vpc_id: "{{ vpc.vpc.id }}"
+        region: "us-east-1"
+        tags:
+          Name: "RT_Globo_Public"
+        subnets:
+          - "{{ subnets.results[0].subnet.id }}"  # Mgmt
+          - "{{ subnets.results[1].subnet.id }}"  # VPN
+        routes:
+          - dest: "0.0.0.0/0"
+            gateway_id: "{{ igw.gateway_id }}"
+
+    - name: "Create private route table within VPC"
+      community.aws.ec2_vpc_route_table:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        vpc_id: "{{ vpc.vpc.id }}"
+        region: "us-east-1"
+        tags:
+          Name: "RT_Globo_Private"
+        subnets: ["{{ subnets.results[2].subnet.id }}"]  # Servers
+
+    - name: "Search for Palo Alto NGFW images"
+      amazon.aws.ec2_ami_info:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        region: "us-east-1"
+        image_id: "ami-04d797af2d3326de3"  # PA-VM 9.1.6
+        # filters: name=PA-VM-AWS*
+
+    - name: "Create Management security group"
+      amazon.aws.ec2_group:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        name: "SG_Globo_Mgmt"
+        description: "Allow SSH and HTTPS"  # required!
+        vpc_id: "{{ vpc.vpc.id }}"
+        region: "us-east-1"
+        rules:
+          - rule_desc: "SSH"
+            proto: "tcp"
+            from_port: 22
+            to_port: 22
+            cidr_ip: "0.0.0.0/0"
+          - rule_desc: "HTTPS"
+            proto: "tcp"
+            from_port: 443
+            to_port: 443
+            cidr_ip: "0.0.0.0/0"
+
+    - name: "Create VPN underlay security group"
+      amazon.aws.ec2_group:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        name: "SG_Globo_VPN"
+        description: "Allow IKE and IPsec NAT-T"  # required!
+        vpc_id: "{{ vpc.vpc.id }}"
+        region: "us-east-1"
+        rules:
+          - rule_desc: "IKE"
+            proto: "udp"
+            from_port: 500
+            to_port: 500
+            cidr_ip: "0.0.0.0/0"
+          - rule_desc: "IPSEC NAT-T"
+            proto: "udp"
+            from_port: 4500
+            to_port: 4500
+            cidr_ip: "0.0.0.0/0"
+
+    - name: "Create servers security group"
+      amazon.aws.ec2_group:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        name: "SG_Globo_Servers"
+        description: "Allow all traffic"  # required!
+        vpc_id: "{{ vpc.vpc.id }}"
+        region: "us-east-1"
+        rules:
+          - rule_desc: "ALL"
+            proto: "all"
+            from_port: 42518  # ignored but required
+            to_port: 42518  # ignored but required
+            cidr_ip: "0.0.0.0/0"
+
+    - name: "Create new Elastic Network Interfaces (ENIs)"
+      amazon.aws.ec2_eni:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        name: "{{ item.name }}"
+        subnet_id: "{{ item.subnet_id }}"
+        region: "us-east-1"
+        private_ip_address: "{{ item.private_ip_address }}"
+        security_groups: "{{ item.security_groups }}"
+      loop:
+        - name: "ENI_Globo_Mgmt"
+          subnet_id: "{{ subnets.results[0].subnet.id }}"
+          private_ip_address: "10.0.0.77"
+          security_groups: ["SG_Globo_Mgmt"]
+        - name: "ENI_Globo_VPN"
+          subnet_id: "{{ subnets.results[1].subnet.id }}"
+          private_ip_address: "10.0.1.77"
+          security_groups: ["SG_Globo_VPN"]
+        - name: "ENI_Globo_Servers"
+          subnet_id: "{{ subnets.results[2].subnet.id }}"
+          private_ip_address: "10.0.2.77"
+          security_groups: ["SG_Globo_Servers"]
+      loop_control:
+        label: "{{ item.name }}: {{ item.private_ip_address }}"
+      register: "enis_orig"
+
+    - name: "Extract ENI IDs from results"
+      ansible.builtin.set_fact:
+        enis: "{{ enis_orig.results | map(attribute='interface.id') | list }}"
+
+    - name: "Associate new Elastic IPs (EIP) to PAN Mgmt and VPN ENIs"
+      community.aws.ec2_eip:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        device_id: "{{ item }}"
+        region: "us-east-1"
+        in_vpc: true
+        reuse_existing_ip_allowed: true
+        tag_name: "Name"
+        tag_value: "{{ item }}"  # needed for idempotence
+      register: "eips"
+      loop: "{{ enis[:-1] }}"  # Slice captures all interfaces except the last
+
+    - name: "Deploy PAN NGFW EC2 instance"
+      amazon.aws.ec2:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        image: "ami-04d797af2d3326de3"  # PA-VM-AWS-9.1.6
+        region: "us-east-1"
+        zone: "us-east-1b"
+        instance_type: "m5.large"
+        instance_tags:
+          Name: "EC2_Globo_PAN_VM1"
+        exact_count: 1  # needed for idempotence
+        count_tag:
+          Name: "EC2_Globo_PAN_VM1"
+        network_interfaces: "{{ enis }}"
+        volumes:
+          - device_name: "/dev/xvda"
+            volume_type: "gp2"
+            volume_size: 60
+            delete_on_termination: true
+        wait: true
+        wait_timeout: 120
+        key_name: "globokey"  # already exists
+      register: "ec2"
+
+    - name: "Disable source/dest check on non-mgmt ENIs (enables routing)"
+      amazon.aws.ec2_eni:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        eni_id: "{{ item }}"
+        region: "us-east-1"
+        source_dest_check: false
+      loop: "{{ enis[1:] }}"  # Slice captures all interfaces except the first
+
+    - name: "Add NGFW to 'pan_aws' group (Mgmt:{{ mgmt_ip }} VPN:{{ vpn_ip }})"
+      ansible.builtin.add_host:
+        name: "PAN_VM1"
+        groups: "pan_aws"
+        ansible_host: "{{ mgmt_ip }}"
+        ipsec_endpoint: "{{ vpn_ip }}"
+      vars:
+        mgmt_ip: "{{ ec2.tagged_instances[0].public_ip }}"
+        vpn_ip: "{{ eips.results[1].public_ip }}"
+...

@@ -1,0 +1,56 @@
+{
+    "body": {
+        "vrf": {
+            "definition": [
+                {
+                    "address-family": {
+                        "ipv4": {}, 
+                        "ipv6": {}
+                    }, 
+                    "description": "CHEMICAL ENGINEERING FIRM", 
+                    "name": "CHEMICAL", 
+                    "rd": "65000:2", 
+                    "route-target": {
+                        "export": [
+                            {
+                                "asn-ip": "65000:2"
+                            }, 
+                            {
+                                "asn-ip": "65000:4"
+                            }
+                        ], 
+                        "import": [
+                            {
+                                "asn-ip": "65000:2"
+                            }, 
+                            {
+                                "asn-ip": "65000:3"
+                            }
+                        ]
+                    }
+                }, 
+                {
+                    "address-family": {
+                        "ipv4": {}, 
+                        "ipv6": {}
+                    }, 
+                    "description": "POLICE DEPARTMENT", 
+                    "name": "POLICE", 
+                    "rd": "65000:1", 
+                    "route-target": {
+                        "export": [
+                            {
+                                "asn-ip": "65000:1"
+                            }
+                        ], 
+                        "import": [
+                            {
+                                "asn-ip": "65000:1"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

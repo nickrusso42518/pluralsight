@@ -1,0 +1,15 @@
+{
+  "response": {
+    "version": 1578784601973,
+    "startTime": 1578784601698,
+    "endTime": 1578784601987,
+    "serviceType": "Policy Analysis Service",
+    "isError": false,
+    "lastUpdate": 1578784601973,
+    "progress": "40f7758b-97f9-43a5-b774-2d87ada00ba7",
+    "rootId": "3340ea64-9d1a-4774-ba4f-b1051add4299",
+    "instanceTenantId": "5b6cfdfc4309900089f0ff30",
+    "id": "3340ea64-9d1a-4774-ba4f-b1051add4299"
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,21 @@
+$ python submit_sample.py data_ref/calc.exe
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state run
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state run
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state run
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state run
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state run
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state run
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state run
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state run
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state run
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state run
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state run
+Sample d170e8b2a44a30c0fc89c6b87de21b77 in state succ
+Saved sample details from summary to sample_details/summary.json
+Saved sample details from threat to sample_details/threat.json
+Saved sample details from analysis/metadata to sample_details/analysis_metadata.json
+Saved sample details from analysis/artifacts to sample_details/analysis_artifacts.json
+Saved sample details from analysis/processes to sample_details/analysis_processes.json
+Saved sample details from analysis/network_streams to sample_details/analysis_network_streams.json
+Saved sample details from analysis/annotations to sample_details/analysis_annotations.json
+Saved sample details from analysis/iocs to sample_details/analysis_iocs.json

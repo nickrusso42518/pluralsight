@@ -1,0 +1,43 @@
+dtg,device,user,msg
+2020-04-08 13:49:46+00:00,4.4.4.90,jdoe,Authentication succeeded for jdoe,source IP:192.168.140.1
+2020-04-08 13:49:45+00:00,4.4.4.90,admin,Modified password for user jdoe - successfully
+2020-04-08 13:49:33+00:00,4.4.4.90,admin,Created user jdoe - successfully
+2020-04-08 13:49:32+00:00,4.4.4.90,admin,Created user group audit - Successfully
+2020-04-08 13:46:26+00:00,4.4.4.90,admin,Deleted user group audit - Successfully
+2020-04-08 13:46:18+00:00,4.4.4.90,admin,Delete user jdoe - successfully
+2020-04-08 13:40:01+00:00,4.4.4.70,system,Template configuration rollback by device
+2020-04-08 13:39:52+00:00,4.4.4.90,jdoe,Authentication failed for jdoe,source IP:192.168.140.1
+2020-04-08 13:39:47+00:00,4.4.4.90,admin,Modified password for user jdoe - successfully
+2020-04-08 13:39:40+00:00,4.4.4.90,admin,Created user jdoe - successfully
+2020-04-08 13:39:39+00:00,4.4.4.90,admin,Created user group audit - Successfully
+2020-04-08 13:36:59+00:00,4.4.4.70,admin,Successfully applied vSmart policy EngPolicy to 4.4.4.70
+2020-04-08 13:34:56+00:00,Validation,admin,Device Validation vSmart policy config - Validation success
+2020-04-08 13:34:54+00:00,none,admin,vSmart policy EngPolicy created
+2020-04-08 13:34:53+00:00,none,admin,Sequence definition VoiceMPLS created
+2020-04-08 13:34:52+00:00,none,admin,Sequence definition EngMesh created
+2020-04-08 13:34:52+00:00,none,admin,Policy list Voice created
+2020-04-08 13:34:51+00:00,none,admin,Policy list Engineering created
+2020-04-08 13:34:51+00:00,none,admin,Policy list WestUS created
+2020-04-08 13:30:46+00:00,4.4.4.70,system,Template configuration rollback by device
+2020-04-08 13:27:35+00:00,4.4.4.70,admin,Template Basic_template successfully attached to device 4.4.4.70 with personality:vsmart, vManage Transaction ID: 2020-04-08T13:25:33.969000+00:00
+2020-04-08 13:25:31+00:00,Validation,admin,Device Validation Template device config - Validation success
+2020-04-08 13:25:30+00:00,none,admin,Template Basic_template created
+2020-04-08 13:19:07+00:00,4.4.4.90,admin,Authentication succeeded for admin,source IP:192.168.140.1
+2020-04-08 11:12:49+00:00,4.4.4.90,admin,Authentication succeeded for admin,source IP:192.168.140.1
+2020-04-08 10:05:12+00:00,4.4.4.90,viptela-reserved-cloud,Authentication failed for viptela-reserved-cloud,source IP:127.0.0.1
+2020-04-08 10:05:00+00:00,4.4.4.90,system,Installed root cert chain on vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd
+2020-04-08 10:04:49+00:00,4.4.4.90,system,Installed root cert chain on vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd
+2020-04-08 10:04:47+00:00,4.4.4.80,system,Installed root cert chain on vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88
+2020-04-08 10:04:47+00:00,4.4.4.80,system,Transfered root cert chain file to vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88
+2020-04-08 10:04:47+00:00,4.4.4.90,system,Transfered root cert chain file to vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd
+2020-04-08 10:04:47+00:00,4.4.4.80,system,Uploaded root ca uuid list file on vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88
+2020-04-08 10:04:46+00:00,4.4.4.80,system,Transfered root ca uuid list file to vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88
+2020-04-08 10:04:45+00:00,4.4.4.80,system,Uploaded root ca uuid list file on vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88
+2020-04-08 10:04:45+00:00,4.4.4.80,system,Installed root cert chain on vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88
+2020-04-08 10:04:45+00:00,4.4.4.70,system,Installed root cert chain on vSmart-50cb5f09-3b74-49b7-aa5a-c17db012206c
+2020-04-08 10:04:45+00:00,4.4.4.90,system,Installed root cert chain on vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd
+2020-04-08 10:04:44+00:00,4.4.4.80,system,Transfered root ca uuid list file to vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88
+2020-04-08 10:04:44+00:00,4.4.4.70,system,Transfered root cert chain file to vSmart-50cb5f09-3b74-49b7-aa5a-c17db012206c
+2020-04-08 10:04:44+00:00,4.4.4.80,system,Transfered root cert chain file to vBond-8163a199-96b2-4886-9b20-bcb9fce4bf88
+2020-04-08 10:04:43+00:00,4.4.4.90,system,Transfered root cert chain file to vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd
+2020-04-08 10:04:43+00:00,4.4.4.90,system,Transfered root cert chain file to vManage-e85cd6d5-4dea-46a1-affb-38fd4cd8debd

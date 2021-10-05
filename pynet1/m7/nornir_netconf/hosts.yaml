@@ -1,0 +1,10 @@
+---
+R1:
+  hostname: R1
+  groups:
+    - ios
+
+R2:
+  hostname: R2
+  groups:
+    - iosxr

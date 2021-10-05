@@ -1,0 +1,16 @@
+{
+  "response": {
+    "version": 1578235328316,
+    "startTime": 1578235327319,
+    "endTime": 1578235328813,
+    "serviceType": "Command Runner Service",
+    "username": "admin",
+    "progress": "{\"fileId\":\"1378b891-ca6f-4e2f-a945-017ba6cc63b2\"}",
+    "rootId": "2cf56da8-87eb-49a0-b0d1-0f6dbcbae3dd",
+    "isError": false,
+    "lastUpdate": 1578235328316,
+    "instanceTenantId": "5be540a20700b3004c25ea95",
+    "id": "2cf56da8-87eb-49a0-b0d1-0f6dbcbae3dd"
+  },
+  "version": "1.0"
+}

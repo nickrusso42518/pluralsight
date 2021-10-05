@@ -1,0 +1,413 @@
+{
+  "meta": {
+    "num_bad_records": 6,
+    "totalCount": 14
+  },
+  "data": [
+    {
+      "attributes": {
+        "direction": "incoming",
+        "icid": 2122,
+        "senderGroup": "N/A",
+        "sender": "detroit@casino.mgmgranddetroit.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 18:35:06 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "Your Trip to Las Vegas Awaits!",
+        "mid": [
+          2212
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2212": "Last State Not Available"
+        },
+        "mailPolicy": [
+          "DEFAULT"
+        ],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "manager@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "incoming",
+        "icid": 2121,
+        "senderGroup": "N/A",
+        "sender": "support@apple.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 18:34:13 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "ACTION REQUIRED!",
+        "mid": [
+          2211
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2211": "Last State Not Available"
+        },
+        "mailPolicy": [
+          "DEFAULT"
+        ],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "manager@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "incoming",
+        "icid": 2120,
+        "senderGroup": "N/A",
+        "sender": "VZWMail@ecrmemail.verizonwireless.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 18:31:12 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "Your bill is past due",
+        "mid": [
+          2209,
+          2210
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2210": "Last State Not Available"
+        },
+        "mailPolicy": [
+          "DEFAULT"
+        ],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "manager@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "incoming",
+        "icid": 2119,
+        "senderGroup": "N/A",
+        "sender": "support@apple.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 18:31:06 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "Important Information About Your Account!",
+        "mid": [
+          2208
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2208": "Last State Not Available"
+        },
+        "mailPolicy": [
+          "DEFAULT"
+        ],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "manager@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "incoming",
+        "icid": 2118,
+        "senderGroup": "N/A",
+        "sender": "admin@facebookmail.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 18:31:01 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "Somebody requested a new password for your Facebook account",
+        "mid": [
+          2207
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2207": "Last State Not Available"
+        },
+        "mailPolicy": [
+          "DEFAULT"
+        ],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "manager@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "",
+        "icid": 2117,
+        "senderGroup": "N/A",
+        "sender": "alert@wsa.dcloud.cisco.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 17:59:36 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "(empty subject)",
+        "mid": [
+          2206
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2206": "Last State Not Available"
+        },
+        "mailPolicy": [],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "test@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "",
+        "icid": 2116,
+        "senderGroup": "N/A",
+        "sender": "alert@wsa.dcloud.cisco.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 17:16:35 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "(empty subject)",
+        "mid": [
+          2205
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2205": "Last State Not Available"
+        },
+        "mailPolicy": [],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "test@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "",
+        "icid": 2115,
+        "senderGroup": "N/A",
+        "sender": "alert@wsa.dcloud.cisco.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 16:56:35 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "(empty subject)",
+        "mid": [
+          2204
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2204": "Last State Not Available"
+        },
+        "mailPolicy": [],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "test@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "",
+        "icid": 2114,
+        "senderGroup": "N/A",
+        "sender": "alert@wsa.dcloud.cisco.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 16:46:35 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "(empty subject)",
+        "mid": [
+          2203
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2203": "Last State Not Available"
+        },
+        "mailPolicy": [],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "test@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "",
+        "icid": 2113,
+        "senderGroup": "N/A",
+        "sender": "alert@wsa.dcloud.cisco.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 16:41:35 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "(empty subject)",
+        "mid": [
+          2202
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2202": "Last State Not Available"
+        },
+        "mailPolicy": [],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "test@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "",
+        "icid": 2112,
+        "senderGroup": "N/A",
+        "sender": "(no sender)",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 16:40:20 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "(empty subject)",
+        "mid": [
+          2201
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2201": "Last State Not Available"
+        },
+        "mailPolicy": [],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "arpwatch@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "",
+        "icid": 2111,
+        "senderGroup": "N/A",
+        "sender": "arpwatch@dcloud.cisco.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 16:40:19 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "(empty subject)",
+        "mid": [
+          2200
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2200": "Last State Not Available"
+        },
+        "mailPolicy": [],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "root@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "incoming",
+        "icid": 2110,
+        "senderGroup": "N/A",
+        "sender": "support@apple.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 16:38:58 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "ACTION REQUIRED!",
+        "mid": [
+          2199
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2199": "Last State Not Available"
+        },
+        "mailPolicy": [
+          "DEFAULT"
+        ],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "manager@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    },
+    {
+      "attributes": {
+        "direction": "",
+        "icid": 2109,
+        "senderGroup": "N/A",
+        "sender": "alert@wsa.dcloud.cisco.com",
+        "replyTo": "N/A",
+        "timestamp": "26 Apr 2018 16:32:06 (GMT)",
+        "hostName": "esa.dcloud.cisco.com",
+        "subject": "(empty subject)",
+        "mid": [
+          2198
+        ],
+        "isCompleteData": "N/A",
+        "messageStatus": {
+          "2198": "Last State Not Available"
+        },
+        "mailPolicy": [],
+        "senderIp": "N/A",
+        "verdictChart": {},
+        "senderDomain": "N/A",
+        "recipient": [
+          "test@dcloud.cisco.com"
+        ],
+        "sbrs": "N/A",
+        "serialNumber": "4238C0F25B8AC071FEBE-FAC362D5AEDC"
+      }
+    }
+  ]
+}

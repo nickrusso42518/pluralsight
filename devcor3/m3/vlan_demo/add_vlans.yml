@@ -1,0 +1,12 @@
+---
+- name: "PLAY 1: VLAN ADD"
+  hosts: "restconf_switches"
+  tasks:
+    # Issue HTTP POST with list of interfaces to add in the HTTP body.
+    # Can bulk-add interfaces using this approach. The "new_interfaces"
+    # variable is defined in group_vars/restconf_switches.yml
+    - name: "TASK 1: Add new Cisco-modeled YANG VLANs via RESTCONF"
+      restconf_config:
+        path: "/data/Cisco-IOS-XE-native:native/vlan"
+        content: "{{ new_vlans | to_json }}"
+...

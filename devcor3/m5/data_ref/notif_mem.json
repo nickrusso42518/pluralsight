@@ -1,0 +1,33 @@
+{
+  "notification": {
+    "@xmlns": "urn:ietf:params:xml:ns:netconf:notification:1.0",
+    "eventTime": "2019-09-15T23:24:13.24Z",
+    "push-update": {
+      "@xmlns": "urn:ietf:params:xml:ns:yang:ietf-yang-push",
+      "subscription-id": 2147483757,
+      "datastore-contents-xml": {
+        "memory-statistics": {
+          "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-memory-oper",
+          "memory-statistic": [
+            {
+              "name": "Processor",
+              "total-memory": 2435521856,
+              "used-memory": 309693168,
+              "free-memory": 2125828688,
+              "lowest-usage": 2123876640,
+              "highest-usage": 1498083996
+            },
+            {
+              "name": "lsmpi_io",
+              "total-memory": 3149400,
+              "used-memory": 3148576,
+              "free-memory": 824,
+              "lowest-usage": 824,
+              "highest-usage": 412
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+basics:
+  - northbound API to provide "business intent" API to apps
+  - focus on outcomes rather than individual steps
+  - RESTful CRUD over HTTP with JSON payloads
+  - hierarchical "domains" and "subdomains"
+  - retrieve auth token to identify privileges of each REST client
+
+know your network:
+  sites:
+    - CRUD on sites, assign devices to sites
+    - sites are hierarchical collections of other sites and "buildings"
+  topology:
+    - network health for layers 1-3 (including VLANs)
+  devices:
+    - device info based on timestamp, MAC, UUID, name, etc
+  clients:
+    - Get client details and health info
+  users:
+    - Get user info by specifying user-ID or MAC address
+  issues:
+    - Get detailed info and recommended mitigation for an issue
+    - can supply issue-ID or MAC address

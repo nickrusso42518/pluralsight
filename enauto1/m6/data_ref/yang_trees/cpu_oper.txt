@@ -1,0 +1,18 @@
+module: Cisco-IOS-XE-process-cpu-oper
+  +--ro cpu-usage
+     +--ro cpu-utilization
+        +--ro five-seconds?          uint8
+        +--ro five-seconds-intr?     uint8
+        +--ro one-minute?            uint8
+        +--ro five-minutes?          uint8
+        +--ro cpu-usage-processes
+           +--ro cpu-usage-process* [pid name]
+              +--ro pid                 uint32
+              +--ro name                string
+              +--ro tty?                uint16
+              +--ro total-run-time?     uint64
+              +--ro invocation-count?   uint32
+              +--ro avg-run-time?       uint64
+              +--ro five-seconds?       decimal64
+              +--ro one-minute?         decimal64
+              +--ro five-minutes?       decimal64

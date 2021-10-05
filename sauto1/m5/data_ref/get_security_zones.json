@@ -1,0 +1,40 @@
+{
+  "links": {
+    "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/securityzones?offset=0&limit=1&expanded=True&name=outside-zone"
+  },
+  "items": [
+    {
+      "name": "outside-zone",
+      "id": "f2302de2-23c3-11e9-8047-ef3db50da465",
+      "type": "SecurityZone",
+      "links": {
+        "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/securityzones/f2302de2-23c3-11e9-8047-ef3db50da465",
+        "parent": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/interfaceobjects"
+      },
+      "metadata": {
+        "readOnly": {
+          "state": false
+        },
+        "parentType": "InterfaceObject",
+        "timestamp": 1557244271,
+        "lastUser": {
+          "name": "admin",
+          "id": "68d03c42-d9bd-11dc-89f2-b7961d42c462",
+          "type": "user"
+        },
+        "domain": {
+          "name": "Global",
+          "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f",
+          "type": "domain"
+        }
+      },
+      "interfaceMode": "ROUTED"
+    }
+  ],
+  "paging": {
+    "offset": 0,
+    "limit": 1,
+    "count": 1,
+    "pages": 1
+  }
+}

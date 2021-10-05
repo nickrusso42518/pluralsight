@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:d1125ab3-2f9a-41b3-ad69-d95fb62a6e1c">
+  <data>
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+      <interface>
+        <Tunnel>
+          <name xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">100</name>
+          <description>DMVPN SPOKE TUNNEL</description>
+          <ip>
+            <address>
+              <primary>
+                <address>172.16.100.3</address>
+                <mask>255.255.255.0</mask>
+              </primary>
+            </address>
+            <redirects>false</redirects>
+            <nhrp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-nhrp">
+              <network-id>100</network-id>
+              <nhs>
+                <dynamic>
+                  <nbma>
+                    <dyn-fqdn>
+                      <dyn-fqdn>connect.njrusmc.net</dyn-fqdn>
+                      <multicast/>
+                    </dyn-fqdn>
+                  </nbma>
+                </dynamic>
+              </nhs>
+            </nhrp>
+            <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+              <process-id>
+                <id>1</id>
+                <area>0</area>
+              </process-id>
+              <network>point-to-multipoint</network>
+            </ospf>
+          </ip>
+          <tunnel xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-tunnel">
+            <source>GigabitEthernet1</source>
+            <mode>
+              <gre>
+                <multipoint/>
+              </gre>
+            </mode>
+          </tunnel>
+        </Tunnel>
+      </interface>
+      <router>
+        <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-ospf">
+          <id xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">1</id>
+        </ospf>
+      </router>
+    </native>
+  </data>
+</rpc-reply>

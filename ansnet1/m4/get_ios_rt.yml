@@ -1,0 +1,17 @@
+---
+- name: "PLAY 1: Testing our IOS VRF route-target parser"
+  hosts: routers
+  connection: network_cli
+  tasks:
+    - name: "TASK 1: Get router configuration"
+      ios_command:
+        commands: "show running-config | section ^vrf_definition"
+      register: vrf_config
+
+    - name: "TASK 2: Parse the RT import and export data"
+      set_fact:
+        vrf_data: "{{ vrf_config.stdout[0] | ios_vrf_rt }}"
+
+    - name: "TASK 3: Print resulting dictionary"
+      debug:
+        msg: "{{ vrf_data }}"

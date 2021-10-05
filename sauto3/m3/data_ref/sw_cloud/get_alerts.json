@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "limit": 1000,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total_count": 1,
+    "page_description": "Page 1 of 1",
+    "description": "1 open and closed alert sorted by newest"
+  },
+  "objects": [
+    {
+      "id": 1,
+      "assigned_to_username": null,
+      "comments": {
+        "count": 0,
+        "text": "0 comments",
+        "comments": []
+      },
+      "new_comment": null,
+      "natural_time": "12\u00a0hours ago",
+      "tags": [],
+      "source_info": {
+        "name": "i-0fa932ae8d54700ae",
+        "created": "2020-07-17T12:15:52.041300+00:00",
+        "namespace": "awsv2:043535020805:us-east-1:vpc-7d5a7b1b",
+        "ips": [
+          "10.125.0.100",
+          "52.45.123.182"
+        ],
+        "hostnames": [
+          "i-0fa932ae8d54700ae"
+        ]
+      },
+      "source_params": {
+        "id": 6,
+        "name": "i-0fa932ae8d54700ae",
+        "meta": "net-link"
+      },
+      "text": "User Watchlist Hit on i-0fa932ae8d54700ae\nhttps://cisco-nickrus.obsrvbl.com/#/alerts/1",
+      "publish_time": "2020-07-17T23:51:26.638367+00:00",
+      "resolved": false,
+      "resolved_user": null,
+      "ips_when_created": [
+        "10.125.0.100",
+        "52.45.123.182"
+      ],
+      "snooze_settings": null,
+      "rules_matched": null,
+      "type": "User Watchlist Hit",
+      "description": "Device exchanged traffic with an IP address on a user-supplied watchlist or attempted to resolve a domain name on that watchlist. This alert uses the Watchlist Interaction observation and may indicate a device is compromised. (Watchlists: google2)",
+      "time": "2020-07-17T23:00:00Z",
+      "obj_created": "2020-07-17T23:51:26.682760Z",
+      "created": "2020-07-17T23:00:00Z",
+      "source_name": "i-0fa932ae8d54700ae",
+      "hostname": "i-0fa932ae8d54700ae",
+      "priority": 20,
+      "merit": 0,
+      "resolved_time": null,
+      "last_modified": "2020-07-17T23:51:26.640895Z",
+      "source": 6,
+      "assigned_to": null,
+      "observations": [
+        21
+      ]
+    }
+  ]
+}

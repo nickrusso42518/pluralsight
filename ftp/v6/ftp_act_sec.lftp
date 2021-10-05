@@ -1,0 +1,4 @@
+set ftp:passive-mode no
+open -u ftpuser,ftppass fc00:10:2:5::5
+get R1.cfg
+put R3.cfg

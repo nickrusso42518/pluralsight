@@ -1,0 +1,31 @@
+---
+- name: "PLAY 1: Manage web servers"
+  hosts: "web"
+  become: true
+  tasks:
+    - name: "TASK 1: Update hostname"
+      hostname:
+        name: "{{ inventory_hostname }}"
+
+    - name: "TASK 2: Install httpd"
+      yum:
+        name: "httpd"
+        state: "latest"
+
+    - name: "TASK 3: Update HTML h1 header"
+      lineinfile:
+        path: "/usr/share/httpd/noindex/index.html"
+        line: "<h1>{{ inventory_hostname }}</h1>"
+        regexp: "<h1>.*</h1>"
+
+    - name: "TASK 4: Start httpd"
+      service:
+        name: "httpd"
+        state: "started"
+
+    - name: "TASK 5: Add webadmin user"
+      user:
+        name: "{{ web_user }}"
+        password: "{{ web_pass }}"
+        shell: "/bin/bash"
+...

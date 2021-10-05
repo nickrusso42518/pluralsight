@@ -1,0 +1,47 @@
+### Begin interface summary ###
+1. Tunnel100: up/up
+2. Loopback0: up/up
+3. GigabitEthernet1: up/up
+4. GigabitEthernet2: up/up
+5. GigabitEthernet3: up/up
+### End   interface summary ###
+### Begin output from command: show ip nhrp brief ###
+****************************************************************************
+    NOTE: Link-Local, No-socket and Incomplete entries are not displayed
+****************************************************************************
+Legend: Type --> S - Static, D - Dynamic
+        Flags --> u - unique, r - registered, e - temporary, c - claimed
+        a - authoritative, t - route
+============================================================================
+
+Intf     NextHop Address                                    NBMA Address
+         Target Network                              T/Flag
+-------- ------------------------------------------- ------ ----------------
+Tu100    172.16.100.2                                       203.0.113.11
+         172.16.100.2/32                             D/r   
+Tu100    172.16.100.3                                       203.0.113.12
+         172.16.100.3/32                             D/r
+### End   output from command: show ip nhrp brief ###
+### Begin output from command: show ip ospf neighbor Tunnel100 ###
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+10.0.0.3          0   FULL/  -        00:01:54    172.16.100.3    Tunnel100
+10.0.0.2          0   FULL/  -        00:01:36    172.16.100.2    Tunnel100
+### End   output from command: show ip ospf neighbor Tunnel100 ###
+### Begin output from command: show ip ospf interface Tunnel100 | begin Cryptographic ###
+Cryptographic authentication enabled
+    Sending SA: Key 1, Algorithm HMAC-SHA-256 - key chain KC_OSPF_AUTH
+### End   output from command: show ip ospf interface Tunnel100 | begin Cryptographic ###
+### Begin output from command: show ip ospf | include TTL|Reference ###
+Reference bandwidth unit is 1000 mbps
+ Strict TTL checking enabled
+### End   output from command: show ip ospf | include TTL|Reference ###
+### Begin output from command: show ip route ospf | begin ^Gateway ###
+Gateway of last resort is not set
+
+      10.0.0.0/8 is variably subnetted, 5 subnets, 2 masks
+O        10.0.0.2/32 [110/10001] via 172.16.100.2, 00:14:06, Tunnel100
+O        10.0.0.3/32 [110/10001] via 172.16.100.3, 00:14:06, Tunnel100
+      172.16.0.0/16 is variably subnetted, 4 subnets, 2 masks
+O        172.16.100.2/32 [110/10000] via 172.16.100.2, 00:14:06, Tunnel100
+O        172.16.100.3/32 [110/10000] via 172.16.100.3, 00:14:06, Tunnel100
+### End   output from command: show ip route ospf | begin ^Gateway ###

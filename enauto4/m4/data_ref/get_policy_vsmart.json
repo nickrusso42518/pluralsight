@@ -1,0 +1,123 @@
+{
+  "header": {
+    "generatedOn": 1578500682401,
+    "viewKeys": {
+      "uniqueKey": [],
+      "preferenceKey": "grid-VSmartPolicy"
+    },
+    "columns": [
+      {
+        "title": "Name",
+        "property": "policyName",
+        "hideable": false,
+        "dataType": "string"
+      },
+      {
+        "title": "Description",
+        "property": "policyDescription",
+        "dataType": "string"
+      },
+      {
+        "title": "Type",
+        "property": "policyType",
+        "display": "keyvalue",
+        "keyvalueProperty": "policyType",
+        "hideable": false,
+        "keyvalue": [
+          {
+            "key": "cli",
+            "value": "CLI"
+          },
+          {
+            "key": "feature",
+            "value": "UI Policy Builder"
+          }
+        ],
+        "dataType": "string"
+      },
+      {
+        "title": "Activated",
+        "property": "isPolicyActivated",
+        "display": "iconAndText",
+        "iconProperty": "isPolicyActivated",
+        "hideable": false,
+        "icon": [
+          {
+            "key": "true",
+            "value": "images/policy_active.png"
+          },
+          {
+            "key": "false",
+            "value": "images/policy_inactive.png"
+          }
+        ],
+        "dataType": "string"
+      },
+      {
+        "title": "Updated By",
+        "property": "lastUpdatedBy",
+        "dataType": "string"
+      },
+      {
+        "title": "Policy Version",
+        "property": "policyVersion",
+        "dataType": "string"
+      },
+      {
+        "title": "Last Updated",
+        "property": "lastUpdatedOn",
+        "displayFormat": "DD MMM YYYY h:mm:ss A z",
+        "inputFormat": "unix-time",
+        "dataType": "date"
+      }
+    ],
+    "fields": [
+      {
+        "property": "policyName",
+        "dataType": "string"
+      },
+      {
+        "property": "policyDescription",
+        "dataType": "string"
+      },
+      {
+        "property": "policyType",
+        "dataType": "string",
+        "display": "keyvalue"
+      },
+      {
+        "property": "isPolicyActivated",
+        "dataType": "string",
+        "display": "iconAndText"
+      },
+      {
+        "property": "lastUpdatedBy",
+        "dataType": "string"
+      },
+      {
+        "property": "policyVersion",
+        "dataType": "string"
+      },
+      {
+        "property": "lastUpdatedOn",
+        "dataType": "date"
+      }
+    ]
+  },
+  "data": [
+    {
+      "lastUpdatedBy": "admin",
+      "policyVersion": "01082020T162435714",
+      "policyName": "EngPolicy",
+      "policyDefinition": "{\"assembly\":[{\"definitionId\":\"2a18c87e-bcee-4450-976a-3ce6427a111a\",\"type\":\"appRoute\",\"entries\":[{\"siteLists\":[\"e897b6ee-6abe-419d-9e00-a937f4f8d483\"],\"vpnLists\":[\"2d66c522-22ec-40c9-bef0-d18936a30eef\"]}]},{\"definitionId\":\"1d2b3a2f-75d6-4d71-8f62-7ad417e3c1e8\",\"type\":\"mesh\"}]}",
+      "createdOn": 1578500675714,
+      "isPolicyActivated": false,
+      "policyDescription": "Tie everything together",
+      "@rid": 1602,
+      "policyId": "26cb433b-9f05-438a-8b93-b034cb278a2b",
+      "createdBy": "admin",
+      "policyType": "feature",
+      "lastUpdatedOn": 1578500675714
+    }
+  ]
+}

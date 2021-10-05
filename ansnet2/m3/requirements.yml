@@ -1,0 +1,7 @@
+---
+collections:
+  - "ansible.netcommon"
+  - "cisco.ios"
+  - "cisco.nxos"
+  - "arista.eos"
+...

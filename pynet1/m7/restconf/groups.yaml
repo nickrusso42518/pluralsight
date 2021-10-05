@@ -1,0 +1,14 @@
+---
+devices:
+  username: pyuser
+  password: pypass
+
+ios:
+  platform: ios
+  groups:
+    - devices
+
+iosxr:
+  platform: iosxr
+  groups:
+    - devices

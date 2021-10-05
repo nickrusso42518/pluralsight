@@ -1,0 +1,27 @@
+{
+  "name": "PORTG_IPSEC",
+  "description": "All IPsec related ports and protocols",
+  "type": "PortObjectGroup",
+  "objects": [
+    {
+      "name": "UDP_IKE",
+      "description": "Internet Key Exchange for IPsec VPNs",
+      "protocol": "UDP",
+      "port": "500",
+      "type": "ProtocolPortObject"
+    },
+    {
+      "name": "UDP_IPSEC_NATT",
+      "description": "ESP encapsulated in UDP for NAT Traversal IPsec",
+      "protocol": "UDP",
+      "port": "4500",
+      "type": "ProtocolPortObject"
+    },
+    {
+      "name": "PROTO_ESP",
+      "description": "Encapsulating Security Payload for IPsec VPNs",
+      "protocol": "ESP",
+      "type": "ProtocolPortObject"
+    }
+  ]
+}

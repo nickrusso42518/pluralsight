@@ -1,0 +1,12 @@
+{
+  "errors": {
+    "error": [
+      {
+        "error-message": "object already exists: /rt:routing/rt:routing-instance[rt:name='default']/rt:routing-protocols/rt:routing-protocol[rt:type='rt:static'][rt:name='1']/rt:static-routes/v4ur:ipv4/v4ur:route[v4ur:destination-prefix='192.0.2.0/24']",
+        "error-path": "/ietf-routing:routing/routing-instance=default/routing-protocols/routing-protocol=rt:static,1/static-routes/ietf-ipv4-unicast-routing:ipv4",
+        "error-tag": "data-exists",
+        "error-type": "application"
+      }
+    ]
+  }
+}

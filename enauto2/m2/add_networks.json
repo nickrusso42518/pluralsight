@@ -1,0 +1,36 @@
+[
+  {
+    "body": {
+      "name": "Globo Wireless",
+      "timeZone": "America/New_York",
+      "type": "wireless"
+    },
+    "devices": [
+      {
+        "add": {
+          "serial": "Q2XD-R6QM-XUMP"
+        },
+        "update": {
+          "name": "First Floor AP"
+        }
+      }
+    ]
+  },
+  {
+    "body": {
+      "name": "Globo Camera",
+      "timeZone": "America/New_York",
+      "type": "camera"
+    },
+    "devices": [
+      {
+        "add": {
+          "serial": "Q2FV-RQJM-572T"
+        },
+        "update": {
+          "name": "Lobby Cam"
+        }
+      }
+    ]
+  }
+]

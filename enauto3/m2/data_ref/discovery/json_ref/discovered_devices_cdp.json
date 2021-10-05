@@ -1,0 +1,56 @@
+{
+  "response": [
+    {
+      "hostname": "spine1.abc.inc",
+      "managementIpAddress": "10.10.20.80",
+      "reachabilityStatus": "Success",
+      "pingStatus": "SUCCESS",
+      "snmpStatus": "SUCCESS",
+      "cliStatus": "SUCCESS",
+      "httpStatus": "NOT-PROVIDED",
+      "netconfStatus": "NOT-PROVIDED",
+      "inventoryCollectionStatus": "Managed",
+      "inventoryReachabilityStatus": "Reachable",
+      "id": "24498184-6fc7-40a6-9944-1911dcb5395f"
+    },
+    {
+      "hostname": "leaf2.abc.inc",
+      "managementIpAddress": "10.10.20.82",
+      "reachabilityStatus": "Success",
+      "pingStatus": "SUCCESS",
+      "snmpStatus": "SUCCESS",
+      "cliStatus": "SUCCESS",
+      "httpStatus": "NOT-PROVIDED",
+      "netconfStatus": "NOT-PROVIDED",
+      "inventoryCollectionStatus": "Managed",
+      "inventoryReachabilityStatus": "Reachable",
+      "id": "be1fa065-0804-4635-9318-8f41f94f73bd"
+    },
+    {
+      "hostname": "leaf1.abc.inc",
+      "managementIpAddress": "10.10.20.81",
+      "reachabilityStatus": "Success",
+      "pingStatus": "SUCCESS",
+      "snmpStatus": "SUCCESS",
+      "cliStatus": "SUCCESS",
+      "httpStatus": "NOT-PROVIDED",
+      "netconfStatus": "NOT-PROVIDED",
+      "inventoryCollectionStatus": "Managed",
+      "inventoryReachabilityStatus": "Reachable",
+      "id": "b8fea8e3-1a64-4230-bf20-398b37ff7141"
+    },
+    {
+      "managementIpAddress": "10.10.2.105",
+      "reachabilityStatus": "Unreachable",
+      "reachabilityFailureReason": "Device with ip 10.10.2.105 is ping reachable. SSH/Telnet not enabled on device or SSH/Telnet credentials are invalid hence can not configure SNMP.",
+      "pingStatus": "SUCCESS",
+      "snmpStatus": "FAILURE",
+      "cliStatus": "FAILURE",
+      "httpStatus": "NOT-PROVIDED",
+      "netconfStatus": "NOT-PROVIDED",
+      "inventoryCollectionStatus": "NOT-AVAILABLE",
+      "inventoryReachabilityStatus": "NOT-AVAILABLE"
+    }
+  ],
+  "version": "1.0"
+}

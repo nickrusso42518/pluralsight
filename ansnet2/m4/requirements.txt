@@ -1,0 +1,3 @@
+ansible-base==2.10.4
+pynetbox
+netaddr

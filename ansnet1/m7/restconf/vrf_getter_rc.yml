@@ -1,0 +1,27 @@
+---
+- name: "PLAY 1: Infrastructure-as-code using RESTCONF"
+  hosts: routers
+  connection: local
+  tasks:
+    - name: "TASK 1: Get VRF config with RESTCONF"
+      uri:
+        url: "{{ url }}/data/Cisco-IOS-XE-native:native/Cisco-IOS-XE-native:vrf"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        method: GET
+        return_content: true
+        headers:
+          Accept: "application/yang-data+json"
+        validate_certs: false
+      register: rc_vrf
+
+    - name: "TASK 2: Ensure outputs/ folder exists"
+      file:
+        path: "outputs"
+        state: directory
+      run_once: true
+
+    - name: "TASK 3: Write JSON to disk"
+      copy:
+        content: "{{ rc_vrf.json | to_nice_json }}"
+        dest: "outputs/{{ inventory_hostname }}_restconf.json"

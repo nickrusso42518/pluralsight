@@ -1,0 +1,14 @@
+{
+  "version": "g63jpzarkzqrb",
+  "name": "NET_VPN_EAST",
+  "description": "VPN concentrator in Baltimore",
+  "subType": "HOST",
+  "value": "192.168.5.10",
+  "isSystemDefined": false,
+  "dnsResolution": null,
+  "id": "5c10a912-9dad-11ea-9df4-d7388b030995",
+  "type": "networkobject",
+  "links": {
+    "self": "https://10.10.20.65/api/fdm/latest/object/networks/5c10a912-9dad-11ea-9df4-d7388b030995"
+  }
+}

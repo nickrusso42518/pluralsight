@@ -1,0 +1,92 @@
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model ribd
+!
+hostname S4
+!
+spanning-tree mode rapid-pvst
+!
+aaa authorization exec default local
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$Ym1AcldQwKr7.Rw/$.H7KwS4HPo69WtrPFcWR.1Yvq/5u25QStCiQttmUdexjzqX1yBcl6DJaFrWgP2XoK5wsCgO5iggyxu3OR4tzn1
+username admin_sshkey privilege 15 nopassword
+username admin_sshkey ssh-key ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9bj6BtXbi1sD82y11kgajBv+OenFy0Sq6tO3diRGwqPrIuTg5lVd6PHCVpawgdBNrfLfcGXTclixqS7R+CsWNnEOjSV3R/5gjg4OgQuC83wsVAGJWKQtjgRKe6WVPu5e/L5lMyx+N+uTPF7zh6LAeszVOKA+N8mWME9WVPnIA2Re1ecD3T9uifxgslfjzUJAj//ly3yJfTGOWx1e1tzsaWuyWga3zy82HClJ8eZUAe2Vt7ohYJEw6fd6ejeVd6+rUJEARzVeBZM7fVCo3ZpxFZKUHhTKfamHpP5YoYDeTy8AEOYQsbQ/un+bwd/jTt1GlDat8e6LbcyYxHmr7MLox
+!
+vlan 10
+   name MANAGEMENT
+!
+vlan 11
+   name ENGINEERING
+!
+vlan 12
+   name SALES
+!
+vlan 13
+   name FINANCE
+!
+interface Ethernet1
+   description TO S3 (NXOS)
+   switchport trunk allowed vlan 10-13
+   switchport mode trunk
+!
+interface Ethernet2
+   description TO ANSIBLE
+   switchport access vlan 10
+   spanning-tree portfast
+   spanning-tree bpdufilter enable
+!
+interface Ethernet3
+   description TO S2 (IOS)
+   switchport trunk allowed vlan 10-13
+   switchport mode trunk
+!
+interface Ethernet4
+!
+interface Ethernet5
+!
+interface Ethernet6
+!
+interface Ethernet7
+!
+interface Ethernet8
+!
+interface Ethernet9
+!
+interface Ethernet10
+!
+interface Ethernet11
+!
+interface Ethernet12
+!
+interface Management1
+!
+interface Vlan10
+   description MANAGEMENT VLAN
+   ip address 192.168.10.4/24
+!
+interface Vlan11
+   description ENGINEERING VLAN
+   ip address 192.168.11.4/24
+!
+interface Vlan12
+   description SALES VLAN
+   ip address 192.168.12.4/24
+!
+interface Vlan13
+   description FINANCE VLAN
+   ip address 192.168.13.4/24
+!
+no ip routing
+!
+management api http-commands
+   no shutdown
+!
+management http-server
+   protocol http
+!
+management ssh
+   cipher aes128-ctr
+!
+end

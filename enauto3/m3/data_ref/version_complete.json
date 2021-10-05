@@ -1,0 +1,16 @@
+{
+  "response": {
+    "version": 1585584886361,
+    "data": "1",
+    "startTime": 1585584886361,
+    "progress": "Successfully versioned template to version 1",
+    "endTime": 1585584886384,
+    "serviceType": "NCTP",
+    "isError": false,
+    "rootId": "113cb55a-2ee0-4590-9242-7f060cc1e68e",
+    "username": "admin",
+    "instanceTenantId": "5be5fcaaee9a67004cf94d6b",
+    "id": "113cb55a-2ee0-4590-9242-7f060cc1e68e"
+  },
+  "version": "1.0"
+}

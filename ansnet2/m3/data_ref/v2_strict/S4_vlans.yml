@@ -1,0 +1,48 @@
+- get_vlans:
+    '1':
+      interfaces:
+        _mode: strict
+        list:
+        - Ethernet8
+        - Ethernet9
+        - Ethernet4
+        - Ethernet6
+        - Ethernet5
+        - Ethernet10
+        - Ethernet11
+        - Ethernet12
+        - Ethernet7
+      name: default
+    '10':
+      interfaces:
+        _mode: strict
+        list:
+        - Ethernet2
+        - Ethernet3
+        - Ethernet1
+        - Cpu
+      name: MANAGEMENT
+    '11':
+      interfaces:
+        _mode: strict
+        list:
+        - Ethernet1
+        - Ethernet3
+        - Cpu
+      name: ENGINEERING
+    '12':
+      interfaces:
+        _mode: strict
+        list:
+        - Ethernet1
+        - Ethernet3
+        - Cpu
+      name: SALES
+    '13':
+      interfaces:
+        _mode: strict
+        list:
+        - Ethernet1
+        - Ethernet3
+        - Cpu
+      name: FINANCE

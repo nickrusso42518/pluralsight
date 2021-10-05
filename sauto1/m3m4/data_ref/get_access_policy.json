@@ -1,0 +1,38 @@
+{
+  "items": [
+    {
+      "version": "gyoqmf5n3vpuj",
+      "name": "NGFW-Access-Policy",
+      "defaultAction": {
+        "action": "DENY",
+        "eventLogAction": "LOG_NONE",
+        "intrusionPolicy": null,
+        "syslogServer": null,
+        "hitCount": {
+          "hitCount": 0,
+          "firstHitTimeStamp": "",
+          "lastHitTimeStamp": "",
+          "lastFetchTimeStamp": "",
+          "type": "hitcount"
+        },
+        "type": "accessdefaultaction"
+      },
+      "sslPolicy": null,
+      "id": "c78e66bc-cb57-43fe-bcbf-96b79b3475b3",
+      "identityPolicySetting": null,
+      "securityIntelligence": null,
+      "type": "accesspolicy",
+      "links": {
+        "self": "https://10.10.20.65/api/fdm/latest/policy/accesspolicies/c78e66bc-cb57-43fe-bcbf-96b79b3475b3"
+      }
+    }
+  ],
+  "paging": {
+    "prev": [],
+    "next": [],
+    "limit": 10,
+    "offset": 0,
+    "count": 1,
+    "pages": 0
+  }
+}

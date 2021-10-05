@@ -1,0 +1,14 @@
+{
+  "response": {
+    "version": 1578242295712,
+    "startTime": 1578242295712,
+    "serviceType": "Command Runner Service",
+    "username": "admin",
+    "progress": "CLI Runner request creation",
+    "rootId": "7c51b992-9f64-41b5-b13e-916d0b0026ad",
+    "isError": false,
+    "instanceTenantId": "5be540a20700b3004c25ea95",
+    "id": "7c51b992-9f64-41b5-b13e-916d0b0026ad"
+  },
+  "version": "1.0"
+}

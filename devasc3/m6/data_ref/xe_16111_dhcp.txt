@@ -1,0 +1,3300 @@
+module: Cisco-IOS-XE-dhcp
+  augment /ios:native/ios:ip/ios:dhcp:
+    +--rw aaa
+    |  +--rw default
+    |     +--rw username?   string
+    +--rw bootp
+    |  +--rw ignore?   empty
+    +--rw class* [id]
+    |  +--rw id        string
+    |  +--rw option
+    |  |  +--rw option-list* [option-range]
+    |  |     +--rw option-range    uint8
+    |  |     +--rw LINE?           string
+    |  |     +--rw hex-list* [hex-string]
+    |  |        +--rw hex-string    string
+    |  |        +--rw mask?         inet:ipv4-address
+    |  +--rw relay
+    |  |  +--rw agent
+    |  |     +--rw information?   empty
+    |  +--rw remark?   string
+    +--rw ping
+    |  +--rw packets!
+    |  |  +--rw number-packets?   uint8
+    |  +--rw timeout?   uint16
+    +--rw conflict
+    |  +--rw logging?      boolean
+    |  +--rw resolution!
+    |     +--rw interval?   uint32
+    +--rw excluded-address
+    |  +--rw low-address-list* [low-address]
+    |  |  +--rw low-address    inet:ipv4-address
+    |  +--rw low-high-address-list* [low-address high-address]
+    |  |  +--rw low-address     inet:ipv4-address
+    |  |  +--rw high-address    inet:ipv4-address
+    |  +--rw vrf-low-address-list* [vrf low-address]
+    |  |  +--rw vrf            string
+    |  |  +--rw low-address    inet:ipv4-address
+    |  +--rw vrf-low-high-address-list* [vrf low-address high-address]
+    |     +--rw vrf             string
+    |     +--rw low-address     inet:ipv4-address
+    |     +--rw high-address    inet:ipv4-address
+    +--rw binding
+    |  +--rw cleanup
+    |     +--rw interval?   uint16
+    +--rw database
+    |  +--rw resource* [resource-locator]
+    |     +--rw resource-locator    string
+    |     +--rw write-delay?        uint32
+    |     +--rw timeout?            uint16
+    +--rw limit
+    |  +--rw lease
+    |     +--rw log?   empty
+    |     +--rw per
+    |        +--rw interface?   uint16
+    +--rw subscriber-id
+    |  +--rw interface-name?   empty
+    +--rw route
+    |  +--rw route?   enumeration
+    +--rw relay
+    |  +--rw information
+    |     +--rw trust-all?   empty
+    |     +--rw option
+    |        +--rw option-default?   empty
+    |        +--rw vpn?              empty
+    +--rw pool* [id]
+    |  +--rw id                         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range    uint8
+    |  |     +--rw ascii?          string
+    |  |     +--rw hex
+    |  |     |  +--rw hex-line?   string
+    |  |     |  +--rw none?       empty
+    |  |     +--rw ip*             inet:host
+    |  +--rw class* [name]
+    |  |  +--rw name       string
+    |  |  +--rw import
+    |  |  |  +--rw interface
+    |  |  |     +--rw (interface-choice)?
+    |  |  |        +--:(AppNav-Compress)
+    |  |  |        |  +--rw AppNav-Compress?             uint16
+    |  |  |        +--:(AppNav-UnCompress)
+    |  |  |        |  +--rw AppNav-UnCompress?           uint16
+    |  |  |        +--:(ATM)
+    |  |  |        |  +--rw ATM?                         string
+    |  |  |        +--:(ATM-subinterface)
+    |  |  |        |  +--rw ATM-subinterface
+    |  |  |        |     +--rw ATM?   string
+    |  |  |        +--:(ATM-ACR)
+    |  |  |        |  +--rw ATM-ACR?                     string
+    |  |  |        +--:(ATM-ACRsubinterface)
+    |  |  |        |  +--rw ATM-ACRsubinterface
+    |  |  |        |     +--rw ATM-ACR?   string
+    |  |  |        +--:(BDI)
+    |  |  |        |  +--rw BDI?                         string
+    |  |  |        +--:(CEM)
+    |  |  |        |  +--rw CEM?                         string
+    |  |  |        +--:(CEM-ACR)
+    |  |  |        |  +--rw CEM-ACR?                     uint8
+    |  |  |        +--:(Embedded-Service-Engine)
+    |  |  |        |  +--rw Embedded-Service-Engine?     string
+    |  |  |        +--:(Ethernet)
+    |  |  |        |  +--rw Ethernet?                    string
+    |  |  |        +--:(FastEthernet)
+    |  |  |        |  +--rw FastEthernet?                string
+    |  |  |        +--:(GigabitEthernet)
+    |  |  |        |  +--rw GigabitEthernet?             string
+    |  |  |        +--:(FiveGigabitEthernet)
+    |  |  |        |  +--rw FiveGigabitEthernet?         string
+    |  |  |        +--:(AppGigabitEthernet)
+    |  |  |        |  +--rw AppGigabitEthernet?          string
+    |  |  |        +--:(TwentyFiveGigabitEthernet)
+    |  |  |        |  o--rw TwentyFiveGigabitEthernet?   string
+    |  |  |        +--:(TwentyFiveGigE)
+    |  |  |        |  +--rw TwentyFiveGigE?              string
+    |  |  |        +--:(TwoGigabitEthernet)
+    |  |  |        |  +--rw TwoGigabitEthernet?          string
+    |  |  |        +--:(FortyGigabitEthernet)
+    |  |  |        |  +--rw FortyGigabitEthernet?        string
+    |  |  |        +--:(HundredGigE)
+    |  |  |        |  +--rw HundredGigE?                 string
+    |  |  |        +--:(LISP)
+    |  |  |        |  +--rw LISP?                        string
+    |  |  |        +--:(LISP-subinterface)
+    |  |  |        |  +--rw LISP-subinterface
+    |  |  |        |     +--rw LISP?   string
+    |  |  |        +--:(Loopback)
+    |  |  |        |  +--rw Loopback?                    uint32
+    |  |  |        +--:(Multilink)
+    |  |  |        |  +--rw Multilink?                   uint16
+    |  |  |        +--:(nve)
+    |  |  |        |  +--rw nve?                         uint16
+    |  |  |        +--:(overlay)
+    |  |  |        |  +--rw overlay?                     uint16
+    |  |  |        +--:(Port-channel)
+    |  |  |        |  +--rw Port-channel?                uint32
+    |  |  |        +--:(Port-channel-subinterface)
+    |  |  |        |  +--rw Port-channel-subinterface
+    |  |  |        |     +--rw Port-channel?   string
+    |  |  |        +--:(pseudowire)
+    |  |  |        |  +--rw pseudowire?                  uint32
+    |  |  |        +--:(SM)
+    |  |  |        |  +--rw SM?                          string
+    |  |  |        +--:(Cellular)
+    |  |  |        |  +--rw Cellular?                    string
+    |  |  |        +--:(Dialer)
+    |  |  |        |  +--rw Dialer?                      string
+    |  |  |        +--:(Serial)
+    |  |  |        |  +--rw Serial?                      string
+    |  |  |        +--:(TenGigabitEthernet)
+    |  |  |        |  +--rw TenGigabitEthernet?          string
+    |  |  |        +--:(Tunnel)
+    |  |  |        |  +--rw Tunnel?                      uint32
+    |  |  |        +--:(Virtual-Template)
+    |  |  |        |  +--rw Virtual-Template?            uint16
+    |  |  |        +--:(Vlan)
+    |  |  |        |  +--rw Vlan?                        uint16
+    |  |  |        +--:(VirtualPortGroup)
+    |  |  |        |  +--rw VirtualPortGroup?            uint16
+    |  |  |        +--:(vasileft)
+    |  |  |        |  +--rw vasileft?                    uint16
+    |  |  |        +--:(vasiright)
+    |  |  |        |  +--rw vasiright?                   uint16
+    |  |  |        +--:(BD-VIF)
+    |  |  |           +--rw BD-VIF?                      string
+    |  |  +--rw option
+    |  |  |  +--rw option?   uint8
+    |  |  |  +--rw ascii?    string
+    |  |  |  +--rw hex?      string
+    |  |  |  +--rw ip*       inet:host
+    |  |  |  +--rw ext
+    |  |  |     +--rw option?   uint8
+    |  |  |     +--rw ascii?    string
+    |  |  |     +--rw hex?      string
+    |  |  +--rw address
+    |  |     +--rw range
+    |  |        +--rw ipv4-start?   inet:ipv4-address
+    |  |        +--rw ipv4-end?     inet:ipv4-address
+    |  +--rw vrf?                       string
+    |  +--rw lease
+    |  |  +--rw (lease)?
+    |  |     +--:(lease-value)
+    |  |     |  +--rw lease-value
+    |  |     |     +--rw days?      uint16
+    |  |     |     +--rw hours?     uint8
+    |  |     |     +--rw minutes?   uint8
+    |  |     +--:(infinite)
+    |  |        +--rw infinite?      empty
+    |  +--rw default-router
+    |  |  +--rw default-router-list*   union
+    |  +--rw dns-server
+    |  |  +--rw dns-server-list*   union
+    |  +--rw domain-name?               string
+    |  +--rw network
+    |  |  +--rw primary-network
+    |  |  |  +--rw number?   inet:ipv4-address
+    |  |  |  +--rw mask?     union
+    |  |  +--rw secondary-network* [number]
+    |  |     +--rw number       inet:ipv4-address
+    |  |     +--rw mask?        union
+    |  |     +--rw secondary?   empty
+    |  +--rw host
+    |  |  +--rw number?   inet:ipv4-address
+    |  |  +--rw mask?     inet:ipv4-address
+    |  +--rw (hardware-addr-cient-id-choice)?
+    |  |  +--:(hardware-address)
+    |  |  |  +--rw hardware-address
+    |  |  |     +--rw hardware-address-val?   ios-types:cisco-mac-address-type
+    |  |  +--:(client-identifier)
+    |  |     +--rw client-identifier?   string
+    |  +--rw client-name?               string
+    +--rw smart-relay?        empty
+    +--rw snooping?           empty
+    +--rw snooping-conf
+    |  +--rw snooping
+    |     +--rw database
+    |     |  +--rw url?           string
+    |     |  +--rw timeout?       uint32
+    |     |  +--rw write-delay?   uint32
+    |     +--rw glean?         empty
+    |     +--rw information
+    |     |  +--rw option?    boolean
+    |     |  +--rw options
+    |     |     +--rw option
+    |     |        +--rw allow-untrusted?   empty
+    |     |        +--rw format
+    |     |           +--rw remote-id
+    |     |              +--rw (remote-id-choice)?
+    |     |                 +--:(hostname)
+    |     |                 |  +--rw hostname?   empty
+    |     |                 +--:(string)
+    |     |                    +--rw string?     string
+    |     +--rw track
+    |     |  +--rw host?   empty
+    |     +--rw verify
+    |     |  +--rw mac-address?              empty
+    |     |  +--rw no-relay-agent-address?   empty
+    |     +--rw vlan* [id]
+    |     |  +--rw id    uint16
+    |     +--rw wireless
+    |        +--rw bootp-broadcast
+    |           +--rw enable?   empty
+    +--rw use
+       +--rw (client-type)?
+       |  +--:(subscriber-id)
+       |  |  +--rw subscriber-id
+       |  |     +--rw client-id?   empty
+       |  +--:(hardware-address)
+       |     +--rw hardware-address
+       |        +--rw client-id?   empty
+       +--rw class!
+       |  +--rw aaa?   empty
+       +--rw vrf
+          +--rw connected?   boolean
+          +--rw remote?      empty
+  augment /ios:native/ios:ipv6/ios:dhcp:
+    +--rw server
+    |  +--rw vrf
+    |     +--rw enable?   empty
+    +--rw guard
+    |  +--rw policy* [dhcp-guard-policy-name]
+    |     +--rw dhcp-guard-policy-name    string
+    |     +--rw device-role
+    |     |  +--rw server?   empty
+    |     |  +--rw client?   empty
+    |     +--rw match
+    |        +--rw server
+    |           +--rw access-list?   string
+    +--rw pool* [name]
+       +--rw name            string
+       +--rw vrf?            string
+       +--rw address
+       |  +--rw prefix* [ipv6-address]
+       |     +--rw ipv6-address    ios-types:ipv6-prefix
+       |     +--rw lifetime
+       |        +--rw valid-lifetime?       union
+       |        +--rw preferred-lifetime?   union
+       +--rw dns-server*     union
+       +--rw domain-name?    string
+       +--rw import
+       |  +--rw all?         empty
+       |  +--rw interface
+       |     +--rw (interface-choice)?
+       |        +--:(AppNav-Compress)
+       |        |  +--rw AppNav-Compress?             uint16
+       |        +--:(AppNav-UnCompress)
+       |        |  +--rw AppNav-UnCompress?           uint16
+       |        +--:(ATM)
+       |        |  +--rw ATM?                         string
+       |        +--:(ATM-subinterface)
+       |        |  +--rw ATM-subinterface
+       |        |     +--rw ATM?   string
+       |        +--:(ATM-ACR)
+       |        |  +--rw ATM-ACR?                     string
+       |        +--:(ATM-ACRsubinterface)
+       |        |  +--rw ATM-ACRsubinterface
+       |        |     +--rw ATM-ACR?   string
+       |        +--:(BDI)
+       |        |  +--rw BDI?                         string
+       |        +--:(CEM)
+       |        |  +--rw CEM?                         string
+       |        +--:(CEM-ACR)
+       |        |  +--rw CEM-ACR?                     uint8
+       |        +--:(Embedded-Service-Engine)
+       |        |  +--rw Embedded-Service-Engine?     string
+       |        +--:(Ethernet)
+       |        |  +--rw Ethernet?                    string
+       |        +--:(FastEthernet)
+       |        |  +--rw FastEthernet?                string
+       |        +--:(GigabitEthernet)
+       |        |  +--rw GigabitEthernet?             string
+       |        +--:(FiveGigabitEthernet)
+       |        |  +--rw FiveGigabitEthernet?         string
+       |        +--:(AppGigabitEthernet)
+       |        |  +--rw AppGigabitEthernet?          string
+       |        +--:(TwentyFiveGigabitEthernet)
+       |        |  o--rw TwentyFiveGigabitEthernet?   string
+       |        +--:(TwentyFiveGigE)
+       |        |  +--rw TwentyFiveGigE?              string
+       |        +--:(TwoGigabitEthernet)
+       |        |  +--rw TwoGigabitEthernet?          string
+       |        +--:(FortyGigabitEthernet)
+       |        |  +--rw FortyGigabitEthernet?        string
+       |        +--:(HundredGigE)
+       |        |  +--rw HundredGigE?                 string
+       |        +--:(LISP)
+       |        |  +--rw LISP?                        string
+       |        +--:(LISP-subinterface)
+       |        |  +--rw LISP-subinterface
+       |        |     +--rw LISP?   string
+       |        +--:(Loopback)
+       |        |  +--rw Loopback?                    uint32
+       |        +--:(Multilink)
+       |        |  +--rw Multilink?                   uint16
+       |        +--:(nve)
+       |        |  +--rw nve?                         uint16
+       |        +--:(overlay)
+       |        |  +--rw overlay?                     uint16
+       |        +--:(Port-channel)
+       |        |  +--rw Port-channel?                uint32
+       |        +--:(Port-channel-subinterface)
+       |        |  +--rw Port-channel-subinterface
+       |        |     +--rw Port-channel?   string
+       |        +--:(pseudowire)
+       |        |  +--rw pseudowire?                  uint32
+       |        +--:(SM)
+       |        |  +--rw SM?                          string
+       |        +--:(Cellular)
+       |        |  +--rw Cellular?                    string
+       |        +--:(Dialer)
+       |        |  +--rw Dialer?                      string
+       |        +--:(Serial)
+       |        |  +--rw Serial?                      string
+       |        +--:(TenGigabitEthernet)
+       |        |  +--rw TenGigabitEthernet?          string
+       |        +--:(Tunnel)
+       |        |  +--rw Tunnel?                      uint32
+       |        +--:(Virtual-Template)
+       |        |  +--rw Virtual-Template?            uint16
+       |        +--:(Vlan)
+       |        |  +--rw Vlan?                        uint16
+       |        +--:(VirtualPortGroup)
+       |        |  +--rw VirtualPortGroup?            uint16
+       |        +--:(vasileft)
+       |        |  +--rw vasileft?                    uint16
+       |        +--:(vasiright)
+       |        |  +--rw vasiright?                   uint16
+       |        +--:(BD-VIF)
+       |           +--rw BD-VIF?                      string
+       +--rw link-address* [address]
+       |  +--rw address    ios-types:ipv6-prefix
+       +--rw bootfile-url?   string
+  augment /ios:native/ios:interface/ios:Ethernet/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:FastEthernet/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:HundredGigE/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:Port-channel/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:Loopback/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:Tunnel/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:Vlan/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:Dialer/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:vasileft/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:vasiright/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:ATM/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:ATM-subinterface/ios:ATM/ios:ip/ios:dhcp:
+    +--rw client
+    |  +--rw hostname?         string
+    |  +--rw option
+    |  |  +--rw option-range* [option-range]
+    |  |     +--rw option-range      uint8
+    |  |     +--rw option_path
+    |  |     |  +--rw hex?     string
+    |  |     |  +--rw ascii?   string
+    |  |     |  +--rw ip*      inet:host
+    |  |     +--rw option125_path
+    |  |        +--rw enterprise_id?   uint32
+    |  |        +--rw suboption?       uint8
+    |  |        +--rw ascii?           string
+    |  |        +--rw hex?             string
+    |  +--rw request
+    |  |  +--rw option?   uint8
+    |  +--rw route
+    |  |  +--rw distance?   uint8
+    |  |  +--rw track?      uint16
+    |  +--rw default-router
+    |     +--rw distance?   uint8
+    +--rw server
+    |  +--rw use
+    |     +--rw (client-type)?
+    |        +--:(subscriber-id)
+    |        |  +--rw subscriber-id
+    |        |     +--rw client-id?   empty
+    |        +--:(hardware-address)
+    |           +--rw hardware-address
+    |              +--rw client-id?   empty
+    +--rw relay
+    |  +--rw information
+    |  |  +--rw check-reply!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw option
+    |  |  |  +--rw subscriber-id?   string
+    |  |  +--rw option-insert!
+    |  |  |  +--rw none?   empty
+    |  |  +--rw policy-action?   enumeration
+    |  |  +--rw trusted?         empty
+    |  +--rw source-interface?   string
+    +--rw snooping
+       +--rw limit
+       |  +--rw rate?   uint16
+       +--rw trust?   empty
+       +--rw vlan* [id]
+          +--rw id             uint16
+          +--rw information
+             +--rw option
+                +--rw format-type
+                   +--rw circuit-id
+                      +--rw string?   string
+  augment /ios:native/ios:interface/ios:FastEthernet/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:GigabitEthernet/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:HundredGigE/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:Port-channel/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:Loopback/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:Tunnel/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:Vlan/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:vasileft/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:vasiright/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:ATM/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string
+  augment /ios:native/ios:interface/ios:ATM-subinterface/ios:ATM/ios:ipv6/ios:dhcp:
+    +--rw (client-server-relay-choice)?
+    |  +--:(client)
+    |  |  +--rw client
+    |  |     +--rw request
+    |  |        +--rw vendor?   empty
+    |  +--:(server)
+    |  |  +--rw server* [word]
+    |  |     +--rw word          string
+    |  |     +--rw preference?   uint8
+    |  +--:(relay)
+    |     +--rw relay
+    |        +--rw destination
+    |        |  +--rw vrf* [vrf-name relay-address]
+    |        |  |  +--rw vrf-name           string
+    |        |  |  +--rw relay-address      inet:ipv6-address
+    |        |  |  +--rw relay-interface*   string
+    |        |  +--rw global* [relay-address]
+    |        |     +--rw relay-address      inet:ipv6-address
+    |        |     +--rw relay-interface*   string
+    |        +--rw trust?              empty
+    |        +--rw option
+    |        |  +--rw vpn?   empty
+    |        +--rw source-interface
+    |           +--rw (interface-choice)?
+    |              +--:(AppNav-Compress)
+    |              |  +--rw AppNav-Compress?             uint16
+    |              +--:(AppNav-UnCompress)
+    |              |  +--rw AppNav-UnCompress?           uint16
+    |              +--:(ATM)
+    |              |  +--rw ATM?                         string
+    |              +--:(ATM-subinterface)
+    |              |  +--rw ATM-subinterface
+    |              |     +--rw ATM?   string
+    |              +--:(ATM-ACR)
+    |              |  +--rw ATM-ACR?                     string
+    |              +--:(ATM-ACRsubinterface)
+    |              |  +--rw ATM-ACRsubinterface
+    |              |     +--rw ATM-ACR?   string
+    |              +--:(BDI)
+    |              |  +--rw BDI?                         string
+    |              +--:(CEM)
+    |              |  +--rw CEM?                         string
+    |              +--:(CEM-ACR)
+    |              |  +--rw CEM-ACR?                     uint8
+    |              +--:(Embedded-Service-Engine)
+    |              |  +--rw Embedded-Service-Engine?     string
+    |              +--:(Ethernet)
+    |              |  +--rw Ethernet?                    string
+    |              +--:(FastEthernet)
+    |              |  +--rw FastEthernet?                string
+    |              +--:(GigabitEthernet)
+    |              |  +--rw GigabitEthernet?             string
+    |              +--:(FiveGigabitEthernet)
+    |              |  +--rw FiveGigabitEthernet?         string
+    |              +--:(AppGigabitEthernet)
+    |              |  +--rw AppGigabitEthernet?          string
+    |              +--:(TwentyFiveGigabitEthernet)
+    |              |  o--rw TwentyFiveGigabitEthernet?   string
+    |              +--:(TwentyFiveGigE)
+    |              |  +--rw TwentyFiveGigE?              string
+    |              +--:(TwoGigabitEthernet)
+    |              |  +--rw TwoGigabitEthernet?          string
+    |              +--:(FortyGigabitEthernet)
+    |              |  +--rw FortyGigabitEthernet?        string
+    |              +--:(HundredGigE)
+    |              |  +--rw HundredGigE?                 string
+    |              +--:(LISP)
+    |              |  +--rw LISP?                        string
+    |              +--:(LISP-subinterface)
+    |              |  +--rw LISP-subinterface
+    |              |     +--rw LISP?   string
+    |              +--:(Loopback)
+    |              |  +--rw Loopback?                    uint32
+    |              +--:(Multilink)
+    |              |  +--rw Multilink?                   uint16
+    |              +--:(nve)
+    |              |  +--rw nve?                         uint16
+    |              +--:(overlay)
+    |              |  +--rw overlay?                     uint16
+    |              +--:(Port-channel)
+    |              |  +--rw Port-channel?                uint32
+    |              +--:(Port-channel-subinterface)
+    |              |  +--rw Port-channel-subinterface
+    |              |     +--rw Port-channel?   string
+    |              +--:(pseudowire)
+    |              |  +--rw pseudowire?                  uint32
+    |              +--:(SM)
+    |              |  +--rw SM?                          string
+    |              +--:(Cellular)
+    |              |  +--rw Cellular?                    string
+    |              +--:(Dialer)
+    |              |  +--rw Dialer?                      string
+    |              +--:(Serial)
+    |              |  +--rw Serial?                      string
+    |              +--:(TenGigabitEthernet)
+    |              |  +--rw TenGigabitEthernet?          string
+    |              +--:(Tunnel)
+    |              |  +--rw Tunnel?                      uint32
+    |              +--:(Virtual-Template)
+    |              |  +--rw Virtual-Template?            uint16
+    |              +--:(Vlan)
+    |              |  +--rw Vlan?                        uint16
+    |              +--:(VirtualPortGroup)
+    |              |  +--rw VirtualPortGroup?            uint16
+    |              +--:(vasileft)
+    |              |  +--rw vasileft?                    uint16
+    |              +--:(vasiright)
+    |              |  +--rw vasiright?                   uint16
+    |              +--:(BD-VIF)
+    |                 +--rw BD-VIF?                      string
+    +--rw guard!
+       +--rw attach-policy?   string

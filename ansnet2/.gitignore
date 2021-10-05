@@ -1,0 +1,7 @@
+*.pyc
+m2/backup/*
+m3/state/*
+m3/compliance/*
+m4/state/*
+.DS_Store
+*.zip

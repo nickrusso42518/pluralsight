@@ -1,0 +1,64 @@
+{
+  "response": [
+    {
+      "sourceIP": "10.10.20.81",
+      "sourcePort": "0",
+      "destIP": "10.10.20.82",
+      "destPort": "0",
+      "protocol": "tcp",
+      "periodicRefresh": true,
+      "id": "7916708d-be09-40d9-b73f-0b71eb9575b0",
+      "status": "COMPLETED",
+      "createTime": 1567424273187,
+      "lastUpdateTime": 1578780403512,
+      "controlPath": false
+    },
+    {
+      "sourceIP": "10.10.20.81",
+      "sourcePort": "8080",
+      "destIP": "10.10.20.250",
+      "destPort": "8080",
+      "periodicRefresh": true,
+      "inclusions": [
+        "INTERFACE-STATS",
+        "DEVICE-STATS"
+      ],
+      "id": "b2a3c143-9872-494c-a14a-7e2a7bf16372",
+      "status": "FAILED",
+      "createTime": 1566743150803,
+      "lastUpdateTime": 1578780421389,
+      "failureReason": "Unable to retrieve links for  AP - T1-10 [ a2168b2d-adef-4589-b3b5-2add5f37daeb]. Make sure its connected device is discovered in Managed state.",
+      "controlPath": true
+    },
+    {
+      "sourceIP": "10.10.20.81",
+      "sourcePort": "8080",
+      "destIP": "10.10.20.250",
+      "destPort": "8080",
+      "periodicRefresh": true,
+      "inclusions": [
+        "INTERFACE-STATS",
+        "DEVICE-STATS"
+      ],
+      "id": "23e82098-be1d-47dd-996a-7e18b7fa08ca",
+      "status": "FAILED",
+      "createTime": 1566743099669,
+      "lastUpdateTime": 1578780411378,
+      "failureReason": "Unable to retrieve links for  AP - T1-10 [ a2168b2d-adef-4589-b3b5-2add5f37daeb]. Make sure its connected device is discovered in Managed state.",
+      "controlPath": true
+    },
+    {
+      "sourceIP": "10.10.20.51",
+      "destIP": "10.10.20.51",
+      "protocol": "tcp",
+      "periodicRefresh": true,
+      "id": "f6535703-f12d-4e92-8a7e-69a873eb84ed",
+      "status": "FAILED",
+      "createTime": 1559856186466,
+      "lastUpdateTime": 1578780415298,
+      "failureReason": "Unsupported Request Type for control path.Please verify pathRequest Tuples",
+      "controlPath": true
+    }
+  ],
+  "version": "1.0"
+}

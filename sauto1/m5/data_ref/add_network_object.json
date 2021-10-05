@@ -1,0 +1,24 @@
+{
+  "links": {
+    "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/networks/005056BB-0B24-0ed3-0000-880468652284",
+    "parent": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/networkaddresses"
+  },
+  "type": "Network",
+  "value": "203.0.113.0/24",
+  "overridable": false,
+  "description": "See RFC-5737 section 3",
+  "id": "005056BB-0B24-0ed3-0000-880468652284",
+  "name": "NET_TEST_3",
+  "metadata": {
+    "timestamp": 0,
+    "lastUser": {
+      "name": "njrusmc"
+    },
+    "domain": {
+      "name": "Global",
+      "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f"
+    },
+    "ipType": "V_4",
+    "parentType": "NetworkAddress"
+  }
+}

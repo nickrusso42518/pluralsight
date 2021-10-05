@@ -1,0 +1,13 @@
+{% for vrf in data %}
+vrf {{ vrf.name }}
+ description {{ vrf.description }}
+ address-family ipv4 unicast
+  import route-target
+{%  for rt in vrf.route_import %}
+   {{ rt }}
+{%  endfor %}
+  export route-target
+{%  for rt in vrf.route_export %}
+   {{ rt }}
+{%  endfor %}
+{% endfor %}

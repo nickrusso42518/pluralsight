@@ -1,0 +1,49 @@
+basics:
+  - "project" is a grouping of templates
+  - tool > template editor
+  - adding tags to templates makes them searchable and referable later
+  - regular templates:
+      - supports IOS-XE, IOS-XR, and NX-OS
+      - validation checks for syntax errors or blacklisted commands
+      - often small, perform one action (hostname, ntp, ospf, etc)
+      - uses the velocity template language (VTL)
+  - composite template:
+      - composition of two or more regular templates
+      - combine small regular template to form a full config
+      - "template editor" lets you sequence the component templates
+  - can "simulate" templates by rendering them with mock data to check
+  - saving a template adds it to a version control system
+  - templates are assigned to profiles
+    1. routing and NFV
+    2. switching: specify devices and device type
+    3. wireless: specify SSIDs
+  - then assign sites?
+  - then "provision" and identify devices from inventory
+  - can be deployed now or scheduled for later
+  - 3 panels
+    form editor:
+      - where you build the template
+      - example:
+        #if($ntp_logging == "true")
+        ntp logging
+        #else
+        no ntp logging
+        #end
+        #foreach($s in $ntp_servers)
+        ntp server $s
+        #end
+    form editor:
+      - where you define the schema/warnings/types
+      - to make a list, use Display Type "multiple select"
+      - can create list of str, int, macaddr, or ipaddr
+      - the items in multiple select are kv pairs
+      - the key identifies the item, the value is used while iterating
+      - "if" statements work, but "true" and "false" must be strings
+    simulator editor:
+      - can override defaults specified in the form editor
+      - can identify the "filters" (kv pairs) in multiple select elements
+      - can save different simulations (basically, a rendering)
+
+api:
+  - under "Template programmer"
+  - /dna/intent/api/v1/template-programmer

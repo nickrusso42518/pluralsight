@@ -1,0 +1,23 @@
+---
+networks:
+  - name: "NET_TEST_1"
+    description: "See RFC-5737 section 3"
+    type: "subnet"
+    value: "192.0.2.0 255.255.255.0"
+  - name: "NET_TEST_2"
+    description: "See RFC-5737 section 3"
+    type: "subnet"
+    value: "198.51.100.0 255.255.255.0"
+  - name: "NET_TEST_3"
+    description: "See RFC-5737 section 3"
+    type: "subnet"
+    value: "203.0.113.0 255.255.255.0"
+  - name: "NET_VPN_EAST"
+    description: "VPN concentrator in Baltimore"
+    type: "host"
+    value: "192.168.5.10"
+  - name: "NET_VPN_WEST"
+    description: "VPN concentrator in Seattle"
+    type: "host"
+    value: "192.168.6.10"
+...

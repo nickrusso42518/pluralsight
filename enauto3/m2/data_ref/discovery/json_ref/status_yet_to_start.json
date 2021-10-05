@@ -1,0 +1,26 @@
+{
+  "response": {
+    "name": "globo_cdp",
+    "discoveryType": "CDP",
+    "ipAddressList": "10.10.20.80",
+    "cdpLevel": 1,
+    "passwordList": "",
+    "ipFilterList": "",
+    "snmpRoCommunity": "",
+    "snmpRwCommunity": "",
+    "protocolOrder": "ssh",
+    "discoveryCondition": "Yet to Start",
+    "discoveryStatus": "Active",
+    "timeOut": 5,
+    "retryCount": 3,
+    "isAutoCdp": true,
+    "globalCredentialIdList": [
+      "791e63f2-002a-43a6-beaf-705b6dfd1c2c",
+      "28f99664-d924-4b8d-95c3-f62a483068d3",
+      "2a1950a8-a82e-437e-9a1c-6d0a37f4d04c"
+    ],
+    "preferredMgmtIPMethod": "None",
+    "id": "194"
+  },
+  "version": "1.0"
+}

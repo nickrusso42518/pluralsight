@@ -1,0 +1,10 @@
+module: Cisco-IOS-XE-crypto
+  augment /ios:native/ios:key:
+    +--rw chain* [name]
+       +--rw name      string
+       +--rw key* [id]
+          +--rw id                         string
+          +--rw cryptographic-algorithm?   enumeration
+          +--rw key-string
+             +--rw encryption?   enumeration
+             +--rw key?          string

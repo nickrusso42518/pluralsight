@@ -1,0 +1,21 @@
+---
+- name: "PLAY 1: Manage VPN config with ios_vrf only"
+  hosts: routers
+  connection: network_cli
+  tasks:
+    - name: "TASK 1: Apply VPN using SSH/CLI"
+      ios_vrf:
+        vrfs: "{{ vrfs }}"
+      notify: config_changed
+      register: cli_result
+
+  handlers:
+    - name: "HANDLER 1: Display commands to be sent to device"
+      listen: config_changed
+      debug:
+        msg: "{{ cli_result.commands }}"
+
+    - name: "HANDLER 2: Save configuration"
+      listen: config_changed
+      ios_config:
+        save_when: always

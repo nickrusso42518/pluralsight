@@ -1,0 +1,10 @@
+module: interfaces
+  +--rw interface-container
+     +--rw switchport-list* [name]
+     |  +--rw name       string
+     |  +--rw enabled?   boolean
+     |  +--rw vlan?      vlan-type
+     +--rw virtual-list* [name]
+        +--rw name          string
+        +--rw enabled?      boolean
+        +--rw ip_address?   string

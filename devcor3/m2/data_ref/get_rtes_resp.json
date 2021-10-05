@@ -1,0 +1,24 @@
+{
+  "ietf-routing:routing-protocol": {
+    "type": "ietf-routing:static",
+    "name": "1",
+    "static-routes": {
+      "ietf-ipv4-unicast-routing:ipv4": {
+        "route": [
+          {
+            "destination-prefix": "0.0.0.0/0",
+            "next-hop": {
+              "outgoing-interface": "GigabitEthernet1"
+            }
+          },
+          {
+            "destination-prefix": "192.0.2.0/24",
+            "next-hop": {
+              "next-hop-address": "10.10.20.254"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

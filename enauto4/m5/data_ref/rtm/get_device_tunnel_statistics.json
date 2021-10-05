@@ -1,0 +1,244 @@
+{
+  "header": {
+    "generatedOn": 1578076062760,
+    "viewKeys": {
+      "uniqueKey": [
+        "vdevice-dataKey"
+      ],
+      "preferenceKey": "grid-TunnelStatistics"
+    },
+    "columns": [
+      {
+        "title": "Hostname",
+        "property": "vdevice-host-name",
+        "hideable": false,
+        "dataType": "string"
+      },
+      {
+        "title": "Tunnel Protocol",
+        "property": "tunnel-protocol",
+        "width": 100,
+        "dataType": "string"
+      },
+      {
+        "title": "Remote System IP",
+        "property": "system-ip",
+        "width": 100,
+        "dataType": "ipv4"
+      },
+      {
+        "title": "Local Color",
+        "property": "local-color",
+        "width": 100,
+        "dataType": "string"
+      },
+      {
+        "title": "Remote Color",
+        "property": "remote-color",
+        "width": 100,
+        "dataType": "string"
+      },
+      {
+        "title": "Source IP",
+        "property": "source-ip",
+        "width": 100,
+        "dataType": "ipv4"
+      },
+      {
+        "title": "Destination IP",
+        "property": "dest-ip",
+        "width": 100,
+        "dataType": "ipv4"
+      },
+      {
+        "title": "Source Port",
+        "property": "source-port",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Destination Port",
+        "property": "dest-port",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Tunnel MTU",
+        "property": "tunnel-mtu",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Tx Packets",
+        "property": "tx_pkts",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Tx Octets",
+        "property": "tx_octets",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Rx Packets",
+        "property": "rx_pkts",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Rx Octets",
+        "property": "rx_octets",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "TCP MSS Adjust",
+        "property": "tcp-mss-adjust",
+        "width": 100,
+        "dataType": "number"
+      },
+      {
+        "title": "Last Updated",
+        "property": "lastupdated",
+        "displayFormat": "DD MMM YYYY h:mm:ss A z",
+        "inputFormat": "unix-time",
+        "hideable": false,
+        "minWidth": 200,
+        "dataType": "date"
+      }
+    ],
+    "fields": [
+      {
+        "property": "vdevice-host-name",
+        "dataType": "string"
+      },
+      {
+        "property": "vdevice-name",
+        "dataType": "string"
+      },
+      {
+        "property": "tunnel-protocol",
+        "dataType": "string"
+      },
+      {
+        "property": "system-ip",
+        "dataType": "ipv4"
+      },
+      {
+        "property": "local-color",
+        "dataType": "string"
+      },
+      {
+        "property": "remote-color",
+        "dataType": "string"
+      },
+      {
+        "property": "source-ip",
+        "dataType": "ipv4"
+      },
+      {
+        "property": "dest-ip",
+        "dataType": "ipv4"
+      },
+      {
+        "property": "source-port",
+        "dataType": "number"
+      },
+      {
+        "property": "dest-port",
+        "dataType": "number"
+      },
+      {
+        "property": "tunnel-mtu",
+        "dataType": "number"
+      },
+      {
+        "property": "tx_pkts",
+        "dataType": "number"
+      },
+      {
+        "property": "tx_octets",
+        "dataType": "number"
+      },
+      {
+        "property": "rx_pkts",
+        "dataType": "number"
+      },
+      {
+        "property": "rx_octets",
+        "dataType": "number"
+      },
+      {
+        "property": "tcp-mss-adjust",
+        "dataType": "number"
+      },
+      {
+        "property": "lastupdated",
+        "dataType": "date"
+      }
+    ]
+  },
+  "data": [
+    {
+      "dest-ip": "10.10.20.60",
+      "source-port": 12346,
+      "vdevice-name": "4.4.4.61",
+      "rx_pkts": 18764,
+      "system-ip": "4.4.4.60",
+      "tcp-mss-adjust": 1361,
+      "remote-color": "default",
+      "tx_octets": 3151367,
+      "vdevice-host-name": "vedge-002",
+      "tunnel-protocol": "ipsec",
+      "local-color": "default",
+      "tx_pkts": 18766,
+      "dest-port": 12346,
+      "vdevice-dataKey": "4.4.4.61-ipsec-10.10.20.61-10.10.20.60-12346-12346",
+      "rx_octets": 3160692,
+      "tunnel-mtu": 1441,
+      "lastupdated": 1578076062739,
+      "source-ip": "10.10.20.61"
+    },
+    {
+      "dest-ip": "10.10.20.64",
+      "source-port": 12346,
+      "vdevice-name": "4.4.4.61",
+      "rx_pkts": 18760,
+      "system-ip": "4.4.4.64",
+      "tcp-mss-adjust": 1361,
+      "remote-color": "default",
+      "tx_octets": 3154795,
+      "vdevice-host-name": "vedge-002",
+      "tunnel-protocol": "ipsec",
+      "local-color": "default",
+      "tx_pkts": 18762,
+      "dest-port": 12346,
+      "vdevice-dataKey": "4.4.4.61-ipsec-10.10.20.61-10.10.20.64-12346-12346",
+      "rx_octets": 3155924,
+      "tunnel-mtu": 1441,
+      "lastupdated": 1578076062739,
+      "source-ip": "10.10.20.61"
+    },
+    {
+      "dest-ip": "10.10.20.65",
+      "source-port": 12346,
+      "vdevice-name": "4.4.4.61",
+      "rx_pkts": 18759,
+      "system-ip": "4.4.4.65",
+      "tcp-mss-adjust": 1361,
+      "remote-color": "default",
+      "tx_octets": 3152125,
+      "vdevice-host-name": "vedge-002",
+      "tunnel-protocol": "ipsec",
+      "local-color": "default",
+      "tx_pkts": 18761,
+      "dest-port": 12346,
+      "vdevice-dataKey": "4.4.4.61-ipsec-10.10.20.61-10.10.20.65-12346-12346",
+      "rx_octets": 3157185,
+      "tunnel-mtu": 1441,
+      "lastupdated": 1578076062739,
+      "source-ip": "10.10.20.61"
+    }
+  ]
+}

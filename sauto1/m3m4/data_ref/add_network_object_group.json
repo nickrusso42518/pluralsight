@@ -1,0 +1,25 @@
+{
+  "version": "z5pv7kc54mbo",
+  "name": "NETG_VPN_CONCENTRATORS",
+  "description": "All VPN concentrators",
+  "isSystemDefined": false,
+  "id": "5c454da8-9dad-11ea-9df4-55415fe7190e",
+  "objects": [
+    {
+      "version": "g63jpzarkzqrb",
+      "name": "NET_VPN_EAST",
+      "id": "5c10a912-9dad-11ea-9df4-d7388b030995",
+      "type": "networkobject"
+    },
+    {
+      "version": "flpt44st6vbvk",
+      "name": "NET_VPN_WEST",
+      "id": "5c28c4f5-9dad-11ea-9df4-6f7ee37184cb",
+      "type": "networkobject"
+    }
+  ],
+  "type": "networkobjectgroup",
+  "links": {
+    "self": "https://10.10.20.65/api/fdm/latest/object/networkgroups/5c454da8-9dad-11ea-9df4-55415fe7190e"
+  }
+}

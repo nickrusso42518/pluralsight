@@ -1,0 +1,222 @@
+cgw:
+  changed: false
+  customer_gateways:
+  - bgp_asn: '65000'
+    customer_gateway_id: cgw-0a5f178ad645af969
+    customer_gateway_name: CGW_Globo_R1
+    ip_address: 54.162.84.190
+    state: available
+    tags:
+      Name: CGW_Globo_R1
+    type: ipsec.1
+  failed: false
+sgs:
+  changed: false
+  failed: false
+  security_groups:
+  - description: Allow SSH/HTTP/ICMP ping only from GloboHQ
+    group_id: sg-0603f14b73dc22834
+    group_name: SG_Globo_Servers
+    ip_permissions:
+    - from_port: 80
+      ip_protocol: tcp
+      ip_ranges:
+      - cidr_ip: 192.168.0.0/16
+        description: HTTP
+      ipv6_ranges: []
+      prefix_list_ids: []
+      to_port: 80
+      user_id_group_pairs: []
+    - from_port: 0
+      ip_protocol: icmp
+      ip_ranges:
+      - cidr_ip: 192.168.0.0/16
+        description: ICMP echo-reply
+      ipv6_ranges: []
+      prefix_list_ids: []
+      to_port: 0
+      user_id_group_pairs: []
+    - from_port: 22
+      ip_protocol: tcp
+      ip_ranges:
+      - cidr_ip: 192.168.0.0/16
+        description: SSH
+      ipv6_ranges: []
+      prefix_list_ids: []
+      to_port: 22
+      user_id_group_pairs: []
+    - from_port: 8
+      ip_protocol: icmp
+      ip_ranges:
+      - cidr_ip: 192.168.0.0/16
+        description: ICMP echo-request
+      ipv6_ranges: []
+      prefix_list_ids: []
+      to_port: 0
+      user_id_group_pairs: []
+    ip_permissions_egress:
+    - ip_protocol: '-1'
+      ip_ranges:
+      - cidr_ip: 0.0.0.0/0
+      ipv6_ranges: []
+      prefix_list_ids: []
+      user_id_group_pairs: []
+    owner_id: 043535020805
+    tags: {}
+    vpc_id: vpc-0b57cd49ea637192f
+subnets:
+  changed: false
+  failed: false
+  subnets:
+  - assign_ipv6_address_on_creation: false
+    availability_zone: us-east-1b
+    availability_zone_id: use1-az2
+    available_ip_address_count: 251
+    cidr_block: 10.0.2.0/24
+    default_for_az: false
+    id: subnet-0448306b73c5a38c9
+    ipv6_cidr_block_association_set: []
+    map_customer_owned_ip_on_launch: false
+    map_public_ip_on_launch: false
+    owner_id: 043535020805
+    state: available
+    subnet_arn: arn:aws:ec2:us-east-1:043535020805:subnet/subnet-0448306b73c5a38c9
+    subnet_id: subnet-0448306b73c5a38c9
+    tags:
+      Name: NET_Globo_Servers
+    vpc_id: vpc-0b57cd49ea637192f
+vgw:
+  changed: false
+  failed: false
+  virtual_gateways:
+  - state: available
+    tags:
+    - key: Name
+      value: VGW_Globo_R1
+    type: ipsec.1
+    vpc_attachments:
+    - state: attached
+      vpc_id: vpc-0b57cd49ea637192f
+    vpn_gateway_id: vgw-0b613ddf21cd8483f
+  - state: deleted
+    tags: []
+    type: ipsec.1
+    vpc_attachments:
+    - state: detached
+      vpc_id: vpc-002e65d4c400b31e2
+    vpn_gateway_id: vgw-0ea37c45fdfde04d4
+vpc:
+  changed: false
+  failed: false
+  vpcs:
+  - cidr_block: 10.0.0.0/16
+    cidr_block_association_set:
+    - association_id: vpc-cidr-assoc-0f0128292eb5de913
+      cidr_block: 10.0.0.0/16
+      cidr_block_state:
+        state: associated
+    classic_link_dns_supported: false
+    classic_link_enabled: false
+    dhcp_options_id: dopt-4d2cb42a
+    enable_dns_hostnames: true
+    enable_dns_support: true
+    id: vpc-0b57cd49ea637192f
+    instance_tenancy: default
+    is_default: false
+    owner_id: 043535020805
+    state: available
+    tags:
+      Name: VPC_Globo
+    vpc_id: vpc-0b57cd49ea637192f
+vpn:
+  changed: false
+  failed: false
+  vpn_connections:
+  - category: VPN
+    customer_gateway_configuration: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
+      <vpn_connection id=\"vpn-0f3a862e7ea488aa7\">\n  <customer_gateway_id>cgw-0a5f178ad645af969</customer_gateway_id>\n\
+      \  <vpn_gateway_id>vgw-0b613ddf21cd8483f</vpn_gateway_id>\n  <vpn_connection_type>ipsec.1</vpn_connection_type>\n\
+      \  <ipsec_tunnel>\n    <customer_gateway>\n      <tunnel_outside_address>\n\
+      \        <ip_address>54.162.84.190</ip_address>\n      </tunnel_outside_address>\n\
+      \      <tunnel_inside_address>\n        <ip_address>169.254.101.2</ip_address>\n\
+      \        <network_mask>255.255.255.252</network_mask>\n        <network_cidr>30</network_cidr>\n\
+      \      </tunnel_inside_address>\n      <bgp>\n        <asn>65000</asn>\n   \
+      \     <hold_time>30</hold_time>\n      </bgp>\n    </customer_gateway>\n   \
+      \ <vpn_gateway>\n      <tunnel_outside_address>\n        <ip_address>34.200.79.242</ip_address>\n\
+      \      </tunnel_outside_address>\n      <tunnel_inside_address>\n        <ip_address>169.254.101.1</ip_address>\n\
+      \        <network_mask>255.255.255.252</network_mask>\n        <network_cidr>30</network_cidr>\n\
+      \      </tunnel_inside_address>\n      <bgp>\n        <asn>64512</asn>\n   \
+      \     <hold_time>30</hold_time>\n      </bgp>\n    </vpn_gateway>\n    <ike>\n\
+      \      <authentication_protocol>sha1</authentication_protocol>\n      <encryption_protocol>aes-128-cbc</encryption_protocol>\n\
+      \      <lifetime>28800</lifetime>\n      <perfect_forward_secrecy>group2</perfect_forward_secrecy>\n\
+      \      <mode>main</mode>\n      <pre_shared_key>globoIPsec123</pre_shared_key>\n\
+      \    </ike>\n    <ipsec>\n      <protocol>esp</protocol>\n      <authentication_protocol>hmac-sha1-96</authentication_protocol>\n\
+      \      <encryption_protocol>aes-128-cbc</encryption_protocol>\n      <lifetime>3600</lifetime>\n\
+      \      <perfect_forward_secrecy>group2</perfect_forward_secrecy>\n      <mode>tunnel</mode>\n\
+      \      <clear_df_bit>true</clear_df_bit>\n      <fragmentation_before_encryption>true</fragmentation_before_encryption>\n\
+      \      <tcp_mss_adjustment>1379</tcp_mss_adjustment>\n      <dead_peer_detection>\n\
+      \        <interval>10</interval>\n        <retries>3</retries>\n      </dead_peer_detection>\n\
+      \    </ipsec>\n  </ipsec_tunnel>\n  <ipsec_tunnel>\n    <customer_gateway>\n\
+      \      <tunnel_outside_address>\n        <ip_address>54.162.84.190</ip_address>\n\
+      \      </tunnel_outside_address>\n      <tunnel_inside_address>\n        <ip_address>169.254.102.2</ip_address>\n\
+      \        <network_mask>255.255.255.252</network_mask>\n        <network_cidr>30</network_cidr>\n\
+      \      </tunnel_inside_address>\n      <bgp>\n        <asn>65000</asn>\n   \
+      \     <hold_time>30</hold_time>\n      </bgp>\n    </customer_gateway>\n   \
+      \ <vpn_gateway>\n      <tunnel_outside_address>\n        <ip_address>54.88.79.162</ip_address>\n\
+      \      </tunnel_outside_address>\n      <tunnel_inside_address>\n        <ip_address>169.254.102.1</ip_address>\n\
+      \        <network_mask>255.255.255.252</network_mask>\n        <network_cidr>30</network_cidr>\n\
+      \      </tunnel_inside_address>\n      <bgp>\n        <asn>64512</asn>\n   \
+      \     <hold_time>30</hold_time>\n      </bgp>\n    </vpn_gateway>\n    <ike>\n\
+      \      <authentication_protocol>sha1</authentication_protocol>\n      <encryption_protocol>aes-128-cbc</encryption_protocol>\n\
+      \      <lifetime>28800</lifetime>\n      <perfect_forward_secrecy>group2</perfect_forward_secrecy>\n\
+      \      <mode>main</mode>\n      <pre_shared_key>globoIPsec123</pre_shared_key>\n\
+      \    </ike>\n    <ipsec>\n      <protocol>esp</protocol>\n      <authentication_protocol>hmac-sha1-96</authentication_protocol>\n\
+      \      <encryption_protocol>aes-128-cbc</encryption_protocol>\n      <lifetime>3600</lifetime>\n\
+      \      <perfect_forward_secrecy>group2</perfect_forward_secrecy>\n      <mode>tunnel</mode>\n\
+      \      <clear_df_bit>true</clear_df_bit>\n      <fragmentation_before_encryption>true</fragmentation_before_encryption>\n\
+      \      <tcp_mss_adjustment>1379</tcp_mss_adjustment>\n      <dead_peer_detection>\n\
+      \        <interval>10</interval>\n        <retries>3</retries>\n      </dead_peer_detection>\n\
+      \    </ipsec>\n  </ipsec_tunnel>\n</vpn_connection>"
+    customer_gateway_id: cgw-0a5f178ad645af969
+    options:
+      enable_acceleration: false
+      local_ipv4_network_cidr: 0.0.0.0/0
+      remote_ipv4_network_cidr: 0.0.0.0/0
+      static_routes_only: false
+      tunnel_inside_ip_version: ipv4
+      tunnel_options:
+      - outside_ip_address: 34.200.79.242
+        pre_shared_key: globoIPsec123
+        tunnel_inside_cidr: 169.254.101.0/30
+      - outside_ip_address: 54.88.79.162
+        pre_shared_key: globoIPsec123
+        tunnel_inside_cidr: 169.254.102.0/30
+    routes: []
+    state: available
+    tags:
+      Name: VPN_Globo_R1
+    type: ipsec.1
+    vgw_telemetry:
+    - accepted_route_count: 0
+      last_status_change: '2021-02-12T16:44:19+00:00'
+      outside_ip_address: 34.200.79.242
+      status: DOWN
+      status_message: IPSEC IS DOWN
+    - accepted_route_count: 0
+      last_status_change: '2021-02-12T16:45:21+00:00'
+      outside_ip_address: 54.88.79.162
+      status: DOWN
+      status_message: IPSEC IS DOWN
+    vpn_connection_id: vpn-0f3a862e7ea488aa7
+    vpn_gateway_id: vgw-0b613ddf21cd8483f
+  - category: VPN
+    customer_gateway_id: cgw-0a5f178ad645af969
+    options:
+      enable_acceleration: false
+      static_routes_only: false
+    routes: []
+    state: deleted
+    tags: {}
+    type: ipsec.1
+    vpn_connection_id: vpn-02a19b5edbe52b7c2
+    vpn_gateway_id: vgw-0ea37c45fdfde04d4

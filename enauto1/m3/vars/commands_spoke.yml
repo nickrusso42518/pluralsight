@@ -1,0 +1,7 @@
+---
+commands:
+  - "show ip ospf neighbor Tunnel100 detail"
+  - "show ip interface brief | exclude unassigned"
+  - "show ip ospf interface Tunnel100 | begin Cryptographic"
+  - "show ip ospf | include TTL|Reference"
+...

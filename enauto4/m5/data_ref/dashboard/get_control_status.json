@@ -1,0 +1,37 @@
+{
+  "header": {
+    "generatedOn": 1578064335802,
+    "title": "Control Status"
+  },
+  "data": [
+    {
+      "name": "Control Status",
+      "count": 5,
+      "detailsURL": "",
+      "status": "error",
+      "statusList": [
+        {
+          "name": "Control up",
+          "status": "up",
+          "message": "devices up",
+          "detailsURL": "/dataservice/device/control/networksummary?state=up",
+          "count": 5
+        },
+        {
+          "name": "Partial",
+          "status": "warning",
+          "message": "devices down",
+          "detailsURL": "/dataservice/device/control/networksummary?state=partial",
+          "count": 0
+        },
+        {
+          "name": "Control down",
+          "status": "error",
+          "message": "devices down",
+          "detailsURL": "/dataservice/device/control/networksummary?state=down",
+          "count": 0
+        }
+      ]
+    }
+  ]
+}

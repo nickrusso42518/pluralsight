@@ -1,0 +1,102 @@
+[
+  {
+    "id": "L_646829496481099586",
+    "organizationId": "549236",
+    "name": "DevNet Always On Read Only",
+    "timeZone": "America/Los_Angeles",
+    "tags": " Sandbox ",
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "N_646829496481152899",
+    "organizationId": "549236",
+    "name": "test - mx65",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "type": "appliance",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481102553",
+    "organizationId": "549236",
+    "name": "DNSMB1",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481102927",
+    "organizationId": "549236",
+    "name": "DNSMB5",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481102963",
+    "organizationId": "549236",
+    "name": "DNSMB4",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481102979",
+    "organizationId": "549236",
+    "name": "DNENT3",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481102981",
+    "organizationId": "549236",
+    "name": "DNENT2",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481102986",
+    "organizationId": "549236",
+    "name": "DNENT1",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481103001",
+    "organizationId": "549236",
+    "name": "DNSMB3",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481103002",
+    "organizationId": "549236",
+    "name": "DNSMB2",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  }
+]

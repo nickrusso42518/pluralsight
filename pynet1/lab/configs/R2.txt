@@ -1,0 +1,110 @@
+hostname R2
+username pyuser
+ group root-lr
+ group cisco-support
+ password pypass
+!
+vrf POLICE
+ address-family ipv4 unicast
+  import route-target
+   65000:1
+  !
+  export route-target
+   65000:1
+  !       
+ !
+!
+vrf CHEMICAL
+ address-family ipv4 unicast
+  import route-target
+   65000:2
+   65000:3
+  !
+  export route-target
+   65000:2
+   65000:4
+  !
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+interface Loopback0
+ ipv4 address 192.168.0.2 255.255.255.255
+!
+interface Loopback1
+ description POLICE DEPARTMENT
+ vrf POLICE
+ ipv4 address 10.0.1.2 255.255.255.255
+!
+interface Loopback2
+ description CHEMICAL ENGINEERING FIRM
+ vrf CHEMICAL
+ ipv4 address 10.0.2.2 255.255.255.255
+!
+interface tunnel-ip23
+ ipv4 address 192.168.23.2 255.255.255.0
+ tunnel source TenGigE0/0/0/0
+ tunnel destination 10.235.0.83
+!
+interface TenGigE0/0/0/0
+ ipv4 address 10.125.0.82 255.255.255.0
+!
+router static
+ address-family ipv4 unicast
+  0.0.0.0/0 10.125.0.1
+ !
+!
+router ospf 1
+ router-id 192.168.0.2
+ area 0
+  mpls ldp auto-config
+  interface Loopback0
+   passive enable
+  !
+  interface tunnel-ip12
+  !
+ !
+!
+router bgp 65000
+ address-family vpnv4 unicast
+ !
+ neighbor 192.168.0.1
+  remote-as 65000
+  update-source Loopback0
+  address-family vpnv4 unicast
+  !
+ !
+ vrf POLICE
+  rd 65000:1
+  address-family ipv4 unicast
+   redistribute connected
+  !
+ !
+ vrf CHEMICAL
+  rd 65000:2
+  address-family ipv4 unicast
+   redistribute connected
+  !
+ !        
+!
+mpls oam
+!
+mpls ldp
+!
+xml agent tty
+ iteration off
+!
+xml agent
+ vrf default
+ !
+!
+netconf agent tty
+!
+netconf-yang agent
+ ssh
+!
+ssh server v2
+ssh server vrf default
+ssh server netconf vrf default

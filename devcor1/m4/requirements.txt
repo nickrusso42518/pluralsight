@@ -1,0 +1,7 @@
+flask
+requests
+pytest
+pylint
+bandit
+mysqlclient
+SQLAlchemy

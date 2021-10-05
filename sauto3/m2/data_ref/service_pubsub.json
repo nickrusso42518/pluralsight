@@ -1,0 +1,11 @@
+{
+  "services": [
+    {
+      "name": "com.cisco.ise.pubsub",
+      "nodeName": "ise-pubsub-ise24",
+      "properties": {
+        "wsUrl": "wss://ise24.abc.inc:8910/pxgrid/ise/pubsub"
+      }
+    }
+  ]
+}

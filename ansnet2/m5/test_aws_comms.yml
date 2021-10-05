@@ -1,0 +1,17 @@
+---
+- name: "Test AWS connectivity"
+  hosts: "localhost"
+  vars_files:
+    - "vault.yml"
+  tasks:
+
+    - name: "Get caller information"
+      amazon.aws.aws_caller_info:
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+      register: "caller_info"
+
+    - name: "Display caller information"
+      ansible.builtin.debug:
+        var: "caller_info"
+...

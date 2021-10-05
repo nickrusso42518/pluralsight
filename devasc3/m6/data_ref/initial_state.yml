@@ -1,0 +1,19 @@
+---
+# Pass this into add_pools.py before running "get_pools.py"
+# ip dhcp pool GLOBOMANTICS_VLAN10
+#  network 192.0.2.0 255.255.255.0
+#  default-router 192.0.2.254
+#  dns-server 8.8.8.8 8.8.4.4
+#  domain-name globomantics.com
+add_pools:
+  - id: "GLOBOMANTICS_VLAN10"
+    default-router:
+      default-router-list: ["192.0.2.254"]
+    dns-server:
+      dns-server-list: ["8.8.4.4", "8.8.8.8"]
+    domain-name: "globomantics.com"
+    network:
+      primary-network:
+        number: "192.0.2.0"
+        mask: "255.255.255.0"
+...

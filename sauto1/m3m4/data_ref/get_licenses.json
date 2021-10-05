@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "version": "fv5u7do5i47jf",
+      "count": 1,
+      "compliant": true,
+      "id": "bf6304b0-9daa-11ea-9df4-cfb3e952d609",
+      "licenseType": "THREAT",
+      "type": "license",
+      "links": {
+        "self": "https://10.10.20.65/api/fdm/latest/license/smartlicenses/bf6304b0-9daa-11ea-9df4-cfb3e952d609"
+      }
+    },
+    {
+      "version": "dnjgrmf5h52lf",
+      "count": 1,
+      "compliant": true,
+      "id": "6bc24294-9b55-11ea-8b22-d9fe7f42c1b7",
+      "licenseType": "BASE",
+      "type": "license",
+      "links": {
+        "self": "https://10.10.20.65/api/fdm/latest/license/smartlicenses/6bc24294-9b55-11ea-8b22-d9fe7f42c1b7"
+      }
+    }
+  ],
+  "paging": {
+    "prev": [],
+    "next": [],
+    "limit": 10,
+    "offset": 0,
+    "count": 2,
+    "pages": 0
+  }
+}

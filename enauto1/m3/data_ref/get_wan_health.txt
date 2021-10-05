@@ -1,0 +1,114 @@
+Logged into HUB# successfully
+
+show ip nhrp brief
+------------------
+****************************************************************************
+    NOTE: Link-Local, No-socket and Incomplete entries are not displayed
+****************************************************************************
+Legend: Type --> S - Static, D - Dynamic
+        Flags --> u - unique, r - registered, e - temporary, c - claimed
+        a - authoritative, t - route
+============================================================================
+
+Intf     NextHop Address                                    NBMA Address
+         Target Network                              T/Flag
+-------- ------------------------------------------- ------ ----------------
+Tu100    172.16.100.2                                       203.0.113.11
+         172.16.100.2/32                             D/r   
+Tu100    172.16.100.3                                       203.0.113.12
+         172.16.100.3/32                             D/r   
+
+show ip ospf neighbor Tunnel100
+-------------------------------
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+10.0.0.3          0   FULL/  -        00:01:57    172.16.100.3    Tunnel100
+10.0.0.2          0   FULL/  -        00:01:46    172.16.100.2    Tunnel100
+
+show ip ospf interface Tunnel100 | begin Cryptographic
+------------------------------------------------------
+
+
+show ip ospf | include TTL|Reference
+------------------------------------
+Reference bandwidth unit is 100 mbps
+
+show ip route ospf | begin ^Gateway
+-----------------------------------
+Gateway of last resort is not set
+
+      10.0.0.0/8 is variably subnetted, 5 subnets, 2 masks
+O        10.0.0.2/32 [110/1001] via 172.16.100.2, 00:11:09, Tunnel100
+O        10.0.0.3/32 [110/1001] via 172.16.100.3, 00:02:31, Tunnel100
+      172.16.0.0/16 is variably subnetted, 4 subnets, 2 masks
+O        172.16.100.2/32 [110/1000] via 172.16.100.2, 00:11:09, Tunnel100
+O        172.16.100.3/32 [110/1000] via 172.16.100.3, 00:02:31, Tunnel100
+
+Logged into ZTP-9TVCW8U5WDO# successfully
+
+show ip ospf neighbor Tunnel100 detail
+--------------------------------------
+Neighbor 10.0.0.1, interface address 172.16.100.1, interface-id 12
+    In the area 0 via interface Tunnel100
+    Neighbor priority is 0, State is FULL, 6 state changes
+    DR is 0.0.0.0 BDR is 0.0.0.0
+    Options is 0x12 in Hello (E-bit, L-bit)
+    Options is 0x52 in DBD (E-bit, L-bit, O-bit)
+    LLS Options is 0x1 (LR)
+    Dead timer due in 00:01:55
+    Neighbor is up for 00:11:15
+    Index 1/1/1, retransmission queue length 0, number of retransmission 0
+    First 0x0(0)/0x0(0)/0x0(0) Next 0x0(0)/0x0(0)/0x0(0)
+    Last retransmission scan length is 0, maximum is 0
+    Last retransmission scan time is 0 msec, maximum is 0 msec
+
+show ip interface brief | exclude unassigned
+--------------------------------------------
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       203.0.113.11    YES DHCP   up                    up      
+Loopback0              10.0.0.2        YES TFTP   up                    up      
+Tunnel100              172.16.100.2    YES TFTP   up                    up      
+VirtualPortGroup31     192.168.2.1     YES TFTP   up                    up      
+
+
+show ip ospf interface Tunnel100 | begin Cryptographic
+------------------------------------------------------
+
+
+show ip ospf | include TTL|Reference
+------------------------------------
+Reference bandwidth unit is 100 mbps
+
+Logged into ZTP-9XFZQ9A2Y9P# successfully
+
+show ip ospf neighbor Tunnel100 detail
+--------------------------------------
+Neighbor 10.0.0.1, interface address 172.16.100.1, interface-id 12
+    In the area 0 via interface Tunnel100
+    Neighbor priority is 0, State is FULL, 6 state changes
+    DR is 0.0.0.0 BDR is 0.0.0.0
+    Options is 0x12 in Hello (E-bit, L-bit)
+    Options is 0x52 in DBD (E-bit, L-bit, O-bit)
+    LLS Options is 0x1 (LR)
+    Dead timer due in 00:01:47
+    Neighbor is up for 00:02:45
+    Index 1/1/1, retransmission queue length 0, number of retransmission 0
+    First 0x0(0)/0x0(0)/0x0(0) Next 0x0(0)/0x0(0)/0x0(0)
+    Last retransmission scan length is 0, maximum is 0
+    Last retransmission scan time is 0 msec, maximum is 0 msec
+
+show ip interface brief | exclude unassigned
+--------------------------------------------
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       203.0.113.12    YES DHCP   up                    up      
+Loopback0              10.0.0.3        YES TFTP   up                    up      
+Tunnel100              172.16.100.3    YES TFTP   up                    up      
+VirtualPortGroup31     192.168.2.1     YES TFTP   up                    up      
+
+
+show ip ospf interface Tunnel100 | begin Cryptographic
+------------------------------------------------------
+
+
+show ip ospf | include TTL|Reference
+------------------------------------
+Reference bandwidth unit is 100 mbps

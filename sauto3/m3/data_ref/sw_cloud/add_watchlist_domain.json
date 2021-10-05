@@ -1,0 +1,12 @@
+{
+  "id": 5,
+  "title": "Google primary DNS",
+  "reason": "Unauthorized DNS server for Globomantics",
+  "category": "domain",
+  "identifier": "8.8.8.8",
+  "list_on": "blacklist",
+  "is_bidirectional": false,
+  "started_on": "2020-07-18T11:11:45.404920Z",
+  "expires_on": null,
+  "threshold": 1
+}

@@ -1,0 +1,11 @@
+---
+# Found under "ietf-ipv4-unicast-routing:ipv4"
+# It's smart to keep data in proper YANG format for easy consumption
+route:
+  - destination-prefix: "192.0.2.0/24"
+    next-hop:
+      outgoing-interface: "GigabitEthernet1"
+  - destination-prefix: "203.0.113.0/24"
+    next-hop:
+      next-hop-address: "10.10.20.254"
+...

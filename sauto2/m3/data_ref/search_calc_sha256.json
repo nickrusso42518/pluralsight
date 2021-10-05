@@ -1,0 +1,697 @@
+{
+  "api_version": 2,
+  "id": 3107139,
+  "data": {
+    "index": 0,
+    "total": 6,
+    "took": 173,
+    "timed_out": false,
+    "items_per_page": 100,
+    "current_item_count": 6,
+    "items": [
+      {
+        "score": 1000000,
+        "matches": {},
+        "item": {
+          "properties": {
+            "metadata": null
+          },
+          "tags": [],
+          "vm_runtime": 300,
+          "md5": "dead69d07bc33b762abd466fb6f53e11",
+          "private": true,
+          "organization_id": 119386,
+          "state": "succ",
+          "login": "nirusso",
+          "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+          "sample": "2d0025ac53a89954ab46c1e8fe39b515",
+          "filename": "windows_calc",
+          "analysis": {
+            "metadata": {
+              "sandcastle_env": {
+                "controlsubject": "win7-x64-intel-2020.02.03",
+                "vm": "win7-x64",
+                "vm_id": "2d0025ac53a89954ab46c1e8fe39b515",
+                "sample_executed": 1593023915,
+                "analysis_end": "2020-06-24T18:43:47Z",
+                "analysis_features": [],
+                "analysis_start": "2020-06-24T18:37:49Z",
+                "display_name": "Windows 7 64-bit",
+                "run_time": 300,
+                "sandcastle": "3.5.59.16936.6349e9da7-1",
+                "current_os": "7601.18798.amd64fre.win7sp1_gdr.150316-1654"
+              },
+              "submitted_file": {
+                "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+                "filename": "windows_calc.exe",
+                "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+                "type": "exe",
+                "md5": "dead69d07bc33b762abd466fb6f53e11"
+              },
+              "general_details": {
+                "report_created": "2020-06-24T18:43:48Z",
+                "sandbox_version": "pilot-d",
+                "sandbox_id": "mtv-work-063"
+              },
+              "malware_desc": [
+                {
+                  "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+                  "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                  "filename": "windows_calc.exe",
+                  "size": 27648,
+                  "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+                  "type": "exe",
+                  "md5": "dead69d07bc33b762abd466fb6f53e11"
+                }
+              ],
+              "analyzed_file": {
+                "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+                "filename": "windows_calc.exe",
+                "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+                "type": "exe",
+                "md5": "dead69d07bc33b762abd466fb6f53e11"
+              }
+            },
+            "behaviors": [
+              {
+                "name": "pe-header-timestamp-future",
+                "threat": 3,
+                "title": "PE COFF Header Timestamp is Set to Date in the Future"
+              }
+            ],
+            "threat_score": 3
+          },
+          "status": "job_done",
+          "submitted_at": "2020-06-24T18:37:48Z",
+          "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51"
+        }
+      },
+      {
+        "score": 1000000,
+        "matches": {},
+        "item": {
+          "properties": {
+            "metadata": null
+          },
+          "tags": [],
+          "vm_runtime": 300,
+          "md5": "dead69d07bc33b762abd466fb6f53e11",
+          "private": false,
+          "organization_id": 119386,
+          "state": "succ",
+          "login": "nirusso",
+          "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+          "sample": "b47c0c78c90ba6698ce34bf3e3f95edd",
+          "filename": "calc.exe",
+          "analysis": {
+            "metadata": {
+              "sandcastle_env": {
+                "controlsubject": "win7-x64-intel-2020.02.03",
+                "vm": "win7-x64",
+                "vm_id": "b47c0c78c90ba6698ce34bf3e3f95edd",
+                "sample_executed": 1593022742,
+                "analysis_end": "2020-06-24T18:24:13Z",
+                "analysis_features": [],
+                "analysis_start": "2020-06-24T18:18:16Z",
+                "display_name": "Windows 7 64-bit",
+                "run_time": 300,
+                "sandcastle": "3.5.59.16936.6349e9da7-1",
+                "current_os": "7601.18798.amd64fre.win7sp1_gdr.150316-1654"
+              },
+              "submitted_file": {
+                "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+                "filename": "calc.exe",
+                "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+                "type": "exe",
+                "md5": "dead69d07bc33b762abd466fb6f53e11"
+              },
+              "general_details": {
+                "report_created": "2020-06-24T18:24:14Z",
+                "sandbox_version": "pilot-d",
+                "sandbox_id": "mtv-work-012"
+              },
+              "malware_desc": [
+                {
+                  "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+                  "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                  "filename": "calc.exe",
+                  "size": 27648,
+                  "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+                  "type": "exe",
+                  "md5": "dead69d07bc33b762abd466fb6f53e11"
+                }
+              ],
+              "analyzed_file": {
+                "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+                "filename": "calc.exe",
+                "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+                "type": "exe",
+                "md5": "dead69d07bc33b762abd466fb6f53e11"
+              }
+            },
+            "behaviors": [
+              {
+                "name": "pe-header-timestamp-future",
+                "threat": 3,
+                "title": "PE COFF Header Timestamp is Set to Date in the Future"
+              }
+            ],
+            "threat_score": 3
+          },
+          "status": "job_done",
+          "submitted_at": "2020-06-24T18:18:15Z",
+          "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51"
+        }
+      },
+      {
+        "score": 1000000,
+        "matches": {},
+        "item": {
+          "properties": {
+            "metadata": null
+          },
+          "tags": [],
+          "vm_runtime": 300,
+          "md5": "dead69d07bc33b762abd466fb6f53e11",
+          "private": true,
+          "organization_id": 119386,
+          "state": "succ",
+          "login": "nirusso",
+          "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+          "sample": "e8b33759db70e306e32881f92029a542",
+          "filename": "windows_calc",
+          "analysis": {
+            "metadata": {
+              "sandcastle_env": {
+                "controlsubject": "win7-x64-intel-2020.02.03",
+                "vm": "win7-x64",
+                "vm_id": "e8b33759db70e306e32881f92029a542",
+                "sample_executed": 1592576906,
+                "analysis_end": "2020-06-19T14:33:51Z",
+                "analysis_features": [],
+                "analysis_start": "2020-06-19T14:27:40Z",
+                "display_name": "Windows 7 64-bit",
+                "run_time": 300,
+                "sandcastle": "3.5.59.16936.6349e9da7-1",
+                "current_os": "7601.18798.amd64fre.win7sp1_gdr.150316-1654"
+              },
+              "submitted_file": {
+                "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+                "filename": "windows_calc.exe",
+                "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+                "type": "exe",
+                "md5": "dead69d07bc33b762abd466fb6f53e11"
+              },
+              "general_details": {
+                "report_created": "2020-06-19T14:33:52Z",
+                "sandbox_version": "pilot-d",
+                "sandbox_id": "rcn-work-060"
+              },
+              "malware_desc": [
+                {
+                  "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+                  "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                  "filename": "windows_calc.exe",
+                  "size": 27648,
+                  "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+                  "type": "exe",
+                  "md5": "dead69d07bc33b762abd466fb6f53e11"
+                }
+              ],
+              "analyzed_file": {
+                "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+                "filename": "windows_calc.exe",
+                "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+                "type": "exe",
+                "md5": "dead69d07bc33b762abd466fb6f53e11"
+              }
+            },
+            "behaviors": [
+              {
+                "name": "pe-header-timestamp-future",
+                "threat": 3,
+                "title": "PE COFF Header Timestamp is Set to Date in the Future"
+              }
+            ],
+            "threat_score": 3
+          },
+          "status": "job_done",
+          "submitted_at": "2020-06-19T14:27:39Z",
+          "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51"
+        }
+      },
+      {
+        "score": 1000000,
+        "matches": {},
+        "item": {
+          "properties": {
+            "metadata": null
+          },
+          "tags": [
+            "talos",
+            "gravity"
+          ],
+          "vm_runtime": 300,
+          "md5": "3d526e6461ba8340f7ad537cfad103f4",
+          "state": "succ",
+          "sha1": "45042b51207e1d131fa070c214171e0a6bc24bee",
+          "sample": "ac6369439d7fe5760ada8fd9272d37bb",
+          "filename": "9af58b6cd29e6a6a22bd752c51f52b21a853126a6323352d452c005d5a1fd813",
+          "analysis": {
+            "metadata": {
+              "sandcastle_env": {
+                "controlsubject": "win7-x64-intel-2020.02.03",
+                "vm": "win7-x64",
+                "vm_id": "ac6369439d7fe5760ada8fd9272d37bb",
+                "sample_executed": 1591373949,
+                "analysis_end": "2020-06-05T16:24:37Z",
+                "analysis_features": [],
+                "analysis_start": "2020-06-05T16:18:23Z",
+                "display_name": "Windows 7 64-bit",
+                "run_time": 300,
+                "sandcastle": "3.5.58.16892.3a7eece90-1",
+                "current_os": "7601.18798.amd64fre.win7sp1_gdr.150316-1654"
+              },
+              "submitted_file": {
+                "magic": "Rich Text Format data, version 1, ANSI",
+                "sha1": "45042b51207e1d131fa070c214171e0a6bc24bee",
+                "filename": "9af58b6cd29e6a6a22bd752c51f52b21a853126a6323352d452c005d5a1fd813.rtf",
+                "sha256": "9af58b6cd29e6a6a22bd752c51f52b21a853126a6323352d452c005d5a1fd813",
+                "type": "rtf",
+                "md5": "3d526e6461ba8340f7ad537cfad103f4"
+              },
+              "general_details": {
+                "report_created": "2020-06-05T16:24:41Z",
+                "sandbox_version": "pilot-d",
+                "sandbox_id": "mtv-work-105"
+              },
+              "malware_desc": [
+                {
+                  "sha1": "45042b51207e1d131fa070c214171e0a6bc24bee",
+                  "magic": "Rich Text Format data, version 1, ANSI",
+                  "filename": "9af58b6cd29e6a6a22bd752c51f52b21a853126a6323352d452c005d5a1fd813.rtf",
+                  "size": 72597,
+                  "sha256": "9af58b6cd29e6a6a22bd752c51f52b21a853126a6323352d452c005d5a1fd813",
+                  "type": "rtf",
+                  "md5": "3d526e6461ba8340f7ad537cfad103f4"
+                }
+              ],
+              "analyzed_file": {
+                "magic": "Rich Text Format data, version 1, ANSI",
+                "sha1": "45042b51207e1d131fa070c214171e0a6bc24bee",
+                "filename": "9af58b6cd29e6a6a22bd752c51f52b21a853126a6323352d452c005d5a1fd813.rtf",
+                "sha256": "9af58b6cd29e6a6a22bd752c51f52b21a853126a6323352d452c005d5a1fd813",
+                "type": "rtf",
+                "md5": "3d526e6461ba8340f7ad537cfad103f4"
+              }
+            },
+            "behaviors": [
+              {
+                "name": "document-contains-embedded-executable",
+                "threat": 85,
+                "title": "Document Contains an Embedded Executable File"
+              },
+              {
+                "name": "memory-execute-readwrite",
+                "threat": 25,
+                "title": "Potential Code Injection Detected"
+              },
+              {
+                "name": "document-fault-report-file-created",
+                "threat": 64,
+                "title": "A Submitted Document Caused a Fault Report to be Created"
+              },
+              {
+                "name": "modified-executable",
+                "threat": 60,
+                "title": "Process Modified an Executable File"
+              },
+              {
+                "name": "created-executable-in-user-dir",
+                "threat": 57,
+                "title": "Process Created an Executable in a User Directory"
+              },
+              {
+                "name": "windows-crash-tool-execution-detected",
+                "threat": 16,
+                "title": "Windows Crash Tool Execution Detected"
+              },
+              {
+                "name": "crash-dump-file-created",
+                "threat": 16,
+                "title": "A Crash Dump File Was Created"
+              },
+              {
+                "name": "antivirus-flagged-cve",
+                "threat": 72,
+                "title": "Artifact Flagged by Antivirus Has Assigned CVE Number"
+              },
+              {
+                "name": "document-launch-utility",
+                "threat": 85,
+                "title": "Document Launched Utility Application"
+              },
+              {
+                "name": "antivirus-service-flagged-artifact",
+                "threat": 95,
+                "title": "Artifact Flagged Malicious by Antivirus Service"
+              },
+              {
+                "name": "document-crash-dump-file-created",
+                "threat": 64,
+                "title": "A Submitted Document Caused a Crash Dump File to be Created"
+              },
+              {
+                "name": "malware-document-av",
+                "threat": 85,
+                "title": "Document Flagged by Antivirus"
+              },
+              {
+                "name": "modified-file-in-user-dir",
+                "threat": 56,
+                "title": "Process Modified File in a User Directory"
+              },
+              {
+                "name": "file-alternate-data-stream-creation",
+                "threat": 72,
+                "title": "Alternate Data Stream File Creation Detected"
+              },
+              {
+                "name": "eqnedt32-child-process",
+                "threat": 95,
+                "title": "Microsoft Equation Editor (EQNEDT32.exe) Launched Child Process"
+              },
+              {
+                "name": "cmd-windows-env-vars-detected",
+                "threat": 40,
+                "title": "CMD Using Default Windows Environment Variable Detected"
+              },
+              {
+                "name": "artifact-flagged-obfuscation",
+                "threat": 56,
+                "title": "Static Analysis Flagged Artifact As Potentially Obfuscated"
+              },
+              {
+                "name": "rtf-cve-2017-11882",
+                "threat": 81,
+                "title": "RTF Using Embedded Equation (CVE 2017-11882)"
+              },
+              {
+                "name": "rtf-contains-pe",
+                "threat": 95,
+                "title": "RTF Containing PE File"
+              },
+              {
+                "name": "cmd-exe-substr",
+                "threat": 80,
+                "title": "Command Substring Obfuscation Detected"
+              },
+              {
+                "name": "artifact-flagged-anomaly",
+                "threat": 48,
+                "title": "Static Analysis Flagged Artifact As Anomalous"
+              },
+              {
+                "name": "document-crash-detected",
+                "threat": 48,
+                "title": "Document Caused Windows Crash Tool Execution"
+              },
+              {
+                "name": "cdf-contains-pe",
+                "threat": 56,
+                "title": "Compound Document Format Contains an Embedded Executable File"
+              },
+              {
+                "name": "compound-rtf-cve-crash-dump",
+                "threat": 95,
+                "title": "Submitted RTF Caused Crash in EQNEDT32"
+              }
+            ],
+            "threat_score": 95
+          },
+          "status": "job_done",
+          "submitted_at": "2020-06-05T16:18:22Z",
+          "sha256": "9af58b6cd29e6a6a22bd752c51f52b21a853126a6323352d452c005d5a1fd813"
+        }
+      },
+      {
+        "score": 1000000,
+        "matches": {},
+        "item": {
+          "properties": {
+            "metadata": null
+          },
+          "tags": [
+            "talos",
+            "gravity"
+          ],
+          "vm_runtime": 300,
+          "md5": "b1429b0b8da8554d87e68cd42918f62d",
+          "state": "succ",
+          "sha1": "36b95cff508ef198424f250b91f5ffab9e349758",
+          "sample": "731837a162682f87c9cd6247fde54615",
+          "filename": "8b16ba9bdf2b3096ed42309af699aa09c0f6f78e055d3e409f08df7b396d7b81",
+          "analysis": {
+            "metadata": {
+              "sandcastle_env": {
+                "controlsubject": "win7-x64-intel-2020.02.03",
+                "vm": "win7-x64",
+                "vm_id": "731837a162682f87c9cd6247fde54615",
+                "sample_executed": 1588679307,
+                "analysis_end": "2020-05-05T11:53:52Z",
+                "analysis_features": [],
+                "analysis_start": "2020-05-05T11:47:42Z",
+                "display_name": "Windows 7 64-bit",
+                "run_time": 300,
+                "sandcastle": "3.5.53.16811.52b83c537-1",
+                "current_os": "7601.18798.amd64fre.win7sp1_gdr.150316-1654"
+              },
+              "submitted_file": {
+                "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                "sha1": "36b95cff508ef198424f250b91f5ffab9e349758",
+                "filename": "8b16ba9bdf2b3096ed42309af699aa09c0f6f78e055d3e409f08df7b396d7b81.exe",
+                "sha256": "8b16ba9bdf2b3096ed42309af699aa09c0f6f78e055d3e409f08df7b396d7b81",
+                "type": "exe",
+                "md5": "b1429b0b8da8554d87e68cd42918f62d"
+              },
+              "general_details": {
+                "report_created": "2020-05-05T11:53:54Z",
+                "sandbox_version": "pilot-d",
+                "sandbox_id": "mtv-work-120"
+              },
+              "malware_desc": [
+                {
+                  "sha1": "36b95cff508ef198424f250b91f5ffab9e349758",
+                  "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                  "filename": "8b16ba9bdf2b3096ed42309af699aa09c0f6f78e055d3e409f08df7b396d7b81.exe",
+                  "size": 157184,
+                  "sha256": "8b16ba9bdf2b3096ed42309af699aa09c0f6f78e055d3e409f08df7b396d7b81",
+                  "type": "exe",
+                  "md5": "b1429b0b8da8554d87e68cd42918f62d"
+                }
+              ],
+              "analyzed_file": {
+                "magic": "PE32+ executable (GUI) x86-64, for MS Windows",
+                "sha1": "36b95cff508ef198424f250b91f5ffab9e349758",
+                "filename": "8b16ba9bdf2b3096ed42309af699aa09c0f6f78e055d3e409f08df7b396d7b81.exe",
+                "sha256": "8b16ba9bdf2b3096ed42309af699aa09c0f6f78e055d3e409f08df7b396d7b81",
+                "type": "exe",
+                "md5": "b1429b0b8da8554d87e68cd42918f62d"
+              }
+            },
+            "behaviors": [
+              {
+                "name": "pe-encrypted-section",
+                "threat": 9,
+                "title": "Executable with Encrypted Sections"
+              },
+              {
+                "name": "modified-executable",
+                "threat": 60,
+                "title": "Process Modified an Executable File"
+              },
+              {
+                "name": "created-executable-in-user-dir",
+                "threat": 57,
+                "title": "Process Created an Executable in a User Directory"
+              },
+              {
+                "name": "pe-header-timestamp-prior",
+                "threat": 3,
+                "title": "PE COFF Header Timestamp is Set to Date Prior to 1999"
+              },
+              {
+                "name": "modified-file-in-user-dir",
+                "threat": 56,
+                "title": "Process Modified File in a User Directory"
+              },
+              {
+                "name": "pe-header-timestamp-future",
+                "threat": 3,
+                "title": "PE COFF Header Timestamp is Set to Date in the Future"
+              },
+              {
+                "name": "registry-autorun-key-modified",
+                "threat": 48,
+                "title": "Process Modified Autorun Registry Key Value"
+              },
+              {
+                "name": "artifact-flagged-anomaly",
+                "threat": 48,
+                "title": "Static Analysis Flagged Artifact As Anomalous"
+              },
+              {
+                "name": "potential-registry-persistence",
+                "threat": 10,
+                "title": "Possible Registry Persistence Mechanism Detected"
+              }
+            ],
+            "threat_score": 60
+          },
+          "status": "job_done",
+          "submitted_at": "2020-05-05T11:47:41Z",
+          "sha256": "8b16ba9bdf2b3096ed42309af699aa09c0f6f78e055d3e409f08df7b396d7b81"
+        }
+      },
+      {
+        "score": 1000000,
+        "matches": {},
+        "item": {
+          "properties": {
+            "metadata": null
+          },
+          "tags": [
+            "talos",
+            "gravity"
+          ],
+          "vm_runtime": 300,
+          "md5": "239e06f35e8dc9da76ca7ec7599ffb66",
+          "state": "succ",
+          "sha1": "a500f0c0a381a558932e8582877b975303e1ce45",
+          "sample": "6f5fe27c726049a27a86eb094f079635",
+          "filename": "b303c6b9b8b2208cfc54de1185f803f4e038d52453e3c9318396ea1cd415de3c",
+          "analysis": {
+            "metadata": {
+              "sandcastle_env": {
+                "controlsubject": "win7-x64-intel-2020.02.03",
+                "vm": "win7-x64",
+                "vm_id": "6f5fe27c726049a27a86eb094f079635",
+                "sample_executed": 1588187971,
+                "analysis_end": "2020-04-29T19:24:50Z",
+                "analysis_features": [],
+                "analysis_start": "2020-04-29T19:18:45Z",
+                "display_name": "Windows 7 64-bit",
+                "run_time": 300,
+                "sandcastle": "3.5.53.16811.52b83c537-1",
+                "current_os": "7601.18798.amd64fre.win7sp1_gdr.150316-1654"
+              },
+              "submitted_file": {
+                "magic": "PE32 executable (GUI) Intel 80386, for MS Windows",
+                "sha1": "a500f0c0a381a558932e8582877b975303e1ce45",
+                "filename": "b303c6b9b8b2208cfc54de1185f803f4e038d52453e3c9318396ea1cd415de3c.exe",
+                "sha256": "b303c6b9b8b2208cfc54de1185f803f4e038d52453e3c9318396ea1cd415de3c",
+                "type": "exe",
+                "md5": "239e06f35e8dc9da76ca7ec7599ffb66"
+              },
+              "general_details": {
+                "report_created": "2020-04-29T19:24:51Z",
+                "sandbox_version": "pilot-d",
+                "sandbox_id": "mtv-work-035"
+              },
+              "malware_desc": [
+                {
+                  "sha1": "a500f0c0a381a558932e8582877b975303e1ce45",
+                  "magic": "PE32 executable (GUI) Intel 80386, for MS Windows",
+                  "filename": "b303c6b9b8b2208cfc54de1185f803f4e038d52453e3c9318396ea1cd415de3c.exe",
+                  "size": 383962,
+                  "sha256": "b303c6b9b8b2208cfc54de1185f803f4e038d52453e3c9318396ea1cd415de3c",
+                  "type": "exe",
+                  "md5": "239e06f35e8dc9da76ca7ec7599ffb66"
+                }
+              ],
+              "analyzed_file": {
+                "magic": "PE32 executable (GUI) Intel 80386, for MS Windows",
+                "sha1": "a500f0c0a381a558932e8582877b975303e1ce45",
+                "filename": "b303c6b9b8b2208cfc54de1185f803f4e038d52453e3c9318396ea1cd415de3c.exe",
+                "sha256": "b303c6b9b8b2208cfc54de1185f803f4e038d52453e3c9318396ea1cd415de3c",
+                "type": "exe",
+                "md5": "239e06f35e8dc9da76ca7ec7599ffb66"
+              }
+            },
+            "behaviors": [
+              {
+                "name": "pe-filename-mismatch",
+                "threat": 64,
+                "title": "File Name of Executable on Disk Does Not Match Original File Name"
+              },
+              {
+                "name": "imports-IsDebuggerPresent",
+                "threat": 4,
+                "title": "Executable Imported the IsDebuggerPresent Symbol"
+              },
+              {
+                "name": "memory-execute-readwrite",
+                "threat": 25,
+                "title": "Potential Code Injection Detected"
+              },
+              {
+                "name": "modified-executable",
+                "threat": 60,
+                "title": "Process Modified an Executable File"
+              },
+              {
+                "name": "created-executable-in-user-dir",
+                "threat": 57,
+                "title": "Process Created an Executable in a User Directory"
+              },
+              {
+                "name": "antivirus-service-flagged-artifact",
+                "threat": 95,
+                "title": "Artifact Flagged Malicious by Antivirus Service"
+              },
+              {
+                "name": "modified-file-in-user-dir",
+                "threat": 56,
+                "title": "Process Modified File in a User Directory"
+              },
+              {
+                "name": "pe-header-timestamp-future",
+                "threat": 3,
+                "title": "PE COFF Header Timestamp is Set to Date in the Future"
+              },
+              {
+                "name": "artifact-sfx-rar",
+                "threat": 42,
+                "title": "RAR Self-Extracting Archive Found"
+              },
+              {
+                "name": "cta-static-analyzer-malicious",
+                "threat": 81,
+                "title": "Machine Learning Model Identified Executable Artifact as Likely Malicious"
+              },
+              {
+                "name": "artifact-flagged-anomaly",
+                "threat": 48,
+                "title": "Static Analysis Flagged Artifact As Anomalous"
+              }
+            ],
+            "threat_score": 95
+          },
+          "status": "job_done",
+          "submitted_at": "2020-04-29T19:18:43Z",
+          "sha256": "b303c6b9b8b2208cfc54de1185f803f4e038d52453e3c9318396ea1cd415de3c"
+        }
+      }
+    ],
+    "warnings": [
+      "advanced=true is deprecated",
+      "Replace query pattern with: `?q=3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51&advanced=false`"
+    ]
+  }
+}

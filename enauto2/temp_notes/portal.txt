@@ -1,0 +1,52 @@
+two methods for working with captive portal API:
+
+1. click-through: simple, branding, terms of service, less secure
+2. sign-on: advanced, authentication, accounting, more secure
+
+IMPORTANT: the context of these APIs is for you to supply a custom
+splash page URL on a custom web server, then use JS to interact with clients.
+maybe flask would work too?
+
+example: https://github.com/meraki/js-splash
+
+note: "walled garden" provides an exceptions list of reachable destinations,
+good for client redirection after connecting
+
+click-through api:
+1. The client connects to AP.
+2. AP redirects the client to splash server, and embeds
+additional query parameters in the URL.
+  - base_grant_url 	The URL a client will use to authenticate
+  - user_continue_url 	The URL the client intended on visiting
+  - node_id 	 	not used
+  - node_mac 	 	Access Point’s physical network address
+  - gateway_id 	 	not used
+  - client_ip 	 	Client’s logical network address
+  - client_mac 	 	Client’s physical network address
+3. Splash page displays content (after redirection)
+4. The client interacts with the site (form, oAuth, SMS, etc.).
+5. Form submission redirects the client to the base_grant_url (auth url).
+6. Meraki grants login and redirects client to the continue_url (original).
+7. The client is logged in and lands on their intended (or modified) site.
+
+sign-on api:
+1. Client connects to AP.
+2. AP redirects the client to splash server, and embeds
+additional query parameters in the URL.
+  - login_url 	 The authentication URL which includes an mauth token.
+  - continue_url The URL a client will be redirected to post login.
+  - ap_name 	 The Access Point’s name.
+  - ap_mac 	 Access Point’s physical network address.
+  - ap_tags 	 The Access Point’s tags.
+  - client_ip 	 Client’s logical network address.
+  - client_mac 	 Client’s physical network address
+3. Splash page displays content (after redirection)
+4. Client enters credentials on splash page (form, oAuth, SMS, etc.)
+5. Form submission sends credentials to Meraki login_url in the POST body.
+The login_url contains an mauth token as a query parameter.
+6. Meraki sends user creds to the RADIUS or Meraki Auth server in the POST body.
+7. Meraki grants the login and redirects the client to the success_url.
+8. The success_url is a route on the splash server that will store the logout_url paramater.
+9. The client is logged in and will see a final splash page which optionally presents a logout button using the supplied logout_url parameter.
+10. The user can optionally press a logout button using the logout_url to end their session. If a continue_url is provided in the query, it will send the client to this page.
+

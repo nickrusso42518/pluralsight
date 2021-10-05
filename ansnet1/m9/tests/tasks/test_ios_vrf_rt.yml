@@ -1,0 +1,54 @@
+---
+- name: "Store IOS VRF text"
+  set_fact:
+    text: |-
+      vrf definition A
+       description first VRF
+       rd 65000:1
+       route-target export 65000:111
+       route-target import 65000:101
+      vrf definition VPN2
+       description second VRF
+       rd 65000:2
+       route-target export 65000:111
+       route-target export 65000:222
+       route-target import 65000:101
+       route-target import 65000:202
+      vrf definition 123
+       description third VRF
+       rd 65000:3
+       route-target import 65000:303
+
+- name: "Perform parsing"
+  set_fact:
+    vrf_data: "{{ text | ios_vrf_rt }}"
+
+- name: "Print structured vrf_data"
+  debug:
+    msg: "{{ vrf_data }}"
+
+- name: "ASSERT >> Ensure VRF A parsing succeeded"
+  assert:
+    that:
+      - "vrf_data['A']['route_export'] | length == 1"
+      - "vrf_data['A']['route_export'][0] == '65000:111'"
+      - "vrf_data['A']['route_import'] | length == 1"
+      - "vrf_data['A']['route_import'][0] == '65000:101'"
+
+- name: "ASSERT >> Ensure VRF VPN2 parsing succeeded"
+  assert:
+    that:
+      - "vrf_data['VPN2']['route_export'] | length == 2"
+      - "vrf_data['VPN2']['route_export'][0] == '65000:111'"
+      - "vrf_data['VPN2']['route_export'][1] == '65000:222'"
+      - "vrf_data['VPN2']['route_import'] | length == 2"
+      - "vrf_data['VPN2']['route_import'][0] == '65000:101'"
+      - "vrf_data['VPN2']['route_import'][1] == '65000:202'"
+
+- name: "ASSERT >> Ensure VRF 123 parsing succeeded"
+  assert:
+    that:
+      - "vrf_data['123']['route_export'] | length == 0"
+      - "vrf_data['123']['route_import'] | length == 1"
+      - "vrf_data['123']['route_import'][0] == '65000:303'"
+...

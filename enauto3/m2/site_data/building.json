@@ -1,0 +1,12 @@
+{
+  "type": "building",
+  "site": {
+    "building": {
+      "name": "secretlab",
+      "address": "123 Main Street",
+      "parentName": "Global/Maryland",
+      "latitude": "39.0458",
+      "longitude": "-76.6413"
+    }
+  }
+}

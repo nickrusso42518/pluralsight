@@ -1,0 +1,19 @@
+PLAY [Configure VLANs and SVIs on switches] ***********************************
+
+TASK [Store template path per device type] ************************************
+ok: [S3]
+ok: [S2]
+ok: [S4]
+
+TASK [Apply config updates from jinja2 templates] *****************************
+[WARNING]: To ensure idempotency and correct diff the input configuration lines
+should be similar to how they appear if present in the running configuration on
+device including the indentation
+ok: [S3]
+ok: [S4]
+ok: [S2]
+
+PLAY RECAP ********************************************************************
+S2                         : ok=2    changed=0    unreachable=0    failed=0
+S3                         : ok=2    changed=0    unreachable=0    failed=0
+S4                         : ok=2    changed=0    unreachable=0    failed=0

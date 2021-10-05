@@ -1,0 +1,110 @@
+[
+    {
+        "subscriptionId": null,
+        "name": "nickrus-test",
+        "description": "",
+        "subscriptionEndpoints": [
+            {
+                "id": null,
+                "instanceId": null,
+                "subscriptionDetails": {
+                    "connectorType": "REST",
+                    "name": "endpointname",
+                    "description": "endpointdesc",
+                    "method": "POST",
+                    "trustCert": "false",
+                    "url": "https://webhook.site/885c4fbb-eda9-4d60-a2fb-010d2bde776f",
+                    "headers": [
+                        {
+                            "name": "",
+                            "value": "",
+                            "defaultValue": null,
+                            "dataType": null,
+                            "required": false,
+                            "encrypt": false,
+                            "key": "",
+                            "evaluatedValue": null
+                        }
+                    ]
+                }
+            }
+        ],
+        "filter": {
+            "eventIds": [
+                "NETWORK-DEVICES-2-152",
+                "NETWORK-DEVICES-2-153"
+            ]
+        },
+        "duration": null,
+        "muteDuration": null
+    }
+]
+
+
+
+minimal payload works
+
+[
+    {
+        "name": "nickrus-test",
+        "subscriptionEndpoints": [
+            {
+                "subscriptionDetails": {
+                    "connectorType": "REST",
+                    "name": "endpointname",
+                    "description": "endpointdesc",
+                    "method": "POST",
+                    "url": "https://webhook.site/885c4fbb-eda9-4d60-a2fb-010d2bde776f"
+                }
+            }
+        ],
+        "filter": {
+            "eventIds": [
+                "NETWORK-DEVICES-2-152",
+                "NETWORK-DEVICES-2-153"
+            ]
+        }
+    }
+]
+
+
+{
+    "statusUri": "/dna/intent/api/v1/event/api-status/93f2b7c7-bd2e-45af-81a9-a572a63ff19d"
+}
+
+do a GET on that
+
+{
+    "errorMessage": null,
+    "apiStatus": "SUCCESS",
+    "statusMessage": "Subscription's nickrus2 created "
+}
+
+
+
+
+to delete:
+https://dnac.aws.labrats.se/dna/intent/api/v1/event/subscription?subscriptions=b925a41b-6373-44e3-be1e-829fc10eb3d6,59c20204-ff10-4479-840b-1ffc4812b0ef
+
+{
+    "statusUri": "/dna/intent/api/v1/event/api-status/451fdd6f-57fb-4acf-9237-a3a0b435dbf5"
+}
+
+do a GET on that
+
+{
+    "errorMessage": null,
+    "apiStatus": "SUCCESS",
+    "statusMessage": "Subscription's b925a41b-6373-44e3-be1e-829fc10eb3d6,59c20204-ff10-4479-840b-1ffc4812b0ef un-registered "
+}
+
+
+
+
+
+
+
+
+
+
+

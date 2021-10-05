@@ -1,0 +1,37 @@
+{
+  "changed":true,
+  "debugging":{
+    "expected_cidrs":[
+      "10.0.0.0/16"
+    ],
+    "to_add":[
+      
+    ],
+    "to_remove":[
+      
+    ]
+  },
+  "failed":false,
+  "vpc":{
+    "cidr_block":"10.0.0.0/16",
+    "cidr_block_association_set":[
+      {
+        "association_id":"vpc-cidr-assoc-07f42cd4100d524cf",
+        "cidr_block":"10.0.0.0/16",
+        "cidr_block_state":{
+          "state":"associated"
+        }
+      }
+    ],
+    "classic_link_enabled":false,
+    "dhcp_options_id":"dopt-4d2cb42a",
+    "id":"vpc-0151ec2bd5acc3a2e",
+    "instance_tenancy":"default",
+    "is_default":false,
+    "owner_id":"043535020805",
+    "state":"available",
+    "tags":{
+      "Name":"VPC_Globo"
+    }
+  }
+}

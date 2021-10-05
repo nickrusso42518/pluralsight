@@ -1,0 +1,494 @@
+{
+  "header": {
+    "generatedOn": 1578943291981,
+    "viewKeys": {
+      "uniqueKey": [],
+      "preferenceKey": "grid-raw_devicesystemstatusstatistics"
+    },
+    "columns": [
+      {
+        "title": "Entry_time",
+        "property": "entry_time",
+        "displayFormat": "DD MMM YYYY h:mm:ss A z",
+        "inputFormat": "unix-time",
+        "dataType": "date"
+      },
+      {
+        "title": "StatCycleTime",
+        "property": "statcycletime",
+        "displayFormat": "DD MMM YYYY h:mm:ss A z",
+        "inputFormat": "unix-time",
+        "dataType": "date"
+      },
+      {
+        "title": "Device IP",
+        "property": "vdevice_name",
+        "hideable": true,
+        "dataType": "string"
+      },
+      {
+        "title": "Host name",
+        "property": "host_name",
+        "hideable": false,
+        "dataType": "string"
+      },
+      {
+        "title": "Device Model",
+        "property": "device_model",
+        "display": "keyvalue",
+        "keyvalueProperty": "deviceModel",
+        "width": 120,
+        "dataType": "string"
+      },
+      {
+        "title": "System IP",
+        "property": "system-ip",
+        "dataType": "string"
+      },
+      {
+        "title": "Total number of processes",
+        "property": "totalp",
+        "dataType": "number"
+      },
+      {
+        "title": "Number of running processes",
+        "property": "runningp",
+        "dataType": "number"
+      },
+      {
+        "title": "CPU User(%)",
+        "property": "cpu_user",
+        "dataType": "double"
+      },
+      {
+        "title": "CPU System(%)",
+        "property": "cpu_system",
+        "dataType": "double"
+      },
+      {
+        "title": "CPU Idle(%)",
+        "property": "cpu_idle",
+        "dataType": "double"
+      },
+      {
+        "title": "CPU User(%)",
+        "property": "cpu_user_new",
+        "dataType": "double"
+      },
+      {
+        "title": "CPU System(%)",
+        "property": "cpu_system_new",
+        "dataType": "double"
+      },
+      {
+        "title": "CPU Idle(%)",
+        "property": "cpu_idle_new",
+        "dataType": "double"
+      },
+      {
+        "title": "Memory Used",
+        "property": "mem_used",
+        "dataType": "number"
+      },
+      {
+        "title": "Memory Free",
+        "property": "mem_free",
+        "dataType": "number"
+      },
+      {
+        "title": "Memory Buffers",
+        "property": "mem_buffers",
+        "dataType": "number"
+      },
+      {
+        "title": "Memory Cached",
+        "property": "mem_cached",
+        "dataType": "number"
+      },
+      {
+        "title": "Memory Utilization percentage",
+        "property": "mem_util",
+        "dataType": "double"
+      },
+      {
+        "title": "Disk Used",
+        "property": "disk_used",
+        "dataType": "number"
+      },
+      {
+        "title": "Disk Available",
+        "property": "disk_avail",
+        "dataType": "number"
+      },
+      {
+        "title": "1 minute average CPU",
+        "property": "min1_avg",
+        "dataType": "double"
+      },
+      {
+        "title": "5 minute average CPU",
+        "property": "min5_avg",
+        "dataType": "double"
+      },
+      {
+        "title": "15 minute average CPU",
+        "property": "min15_avg",
+        "dataType": "double"
+      }
+    ],
+    "fields": [
+      {
+        "property": "entry_time",
+        "dataType": "date"
+      },
+      {
+        "property": "vip_idx",
+        "dataType": "number"
+      },
+      {
+        "property": "statcycletime",
+        "dataType": "date"
+      },
+      {
+        "property": "vdevice_name",
+        "dataType": "string"
+      },
+      {
+        "property": "host_name",
+        "dataType": "string"
+      },
+      {
+        "property": "device_model",
+        "dataType": "string",
+        "display": "keyvalue"
+      },
+      {
+        "property": "system-ip",
+        "dataType": "string"
+      },
+      {
+        "property": "totalp",
+        "dataType": "number"
+      },
+      {
+        "property": "runningp",
+        "dataType": "number"
+      },
+      {
+        "property": "cpu_user",
+        "dataType": "double"
+      },
+      {
+        "property": "cpu_system",
+        "dataType": "double"
+      },
+      {
+        "property": "cpu_idle",
+        "dataType": "double"
+      },
+      {
+        "property": "cpu_user_new",
+        "dataType": "double"
+      },
+      {
+        "property": "cpu_system_new",
+        "dataType": "double"
+      },
+      {
+        "property": "cpu_idle_new",
+        "dataType": "double"
+      },
+      {
+        "property": "mem_used",
+        "dataType": "number"
+      },
+      {
+        "property": "mem_free",
+        "dataType": "number"
+      },
+      {
+        "property": "mem_buffers",
+        "dataType": "number"
+      },
+      {
+        "property": "mem_cached",
+        "dataType": "number"
+      },
+      {
+        "property": "mem_util",
+        "dataType": "double"
+      },
+      {
+        "property": "disk_used",
+        "dataType": "number"
+      },
+      {
+        "property": "disk_avail",
+        "dataType": "number"
+      },
+      {
+        "property": "min1_avg",
+        "dataType": "double"
+      },
+      {
+        "property": "min5_avg",
+        "dataType": "double"
+      },
+      {
+        "property": "min15_avg",
+        "dataType": "double"
+      }
+    ],
+    "chart": {
+      "xAxis": [
+        "entry_time"
+      ],
+      "yAxis": [
+        "min1_avg",
+        "min5_avg",
+        "min15_avg",
+        "mem_used",
+        "mem_util"
+      ],
+      "series": [
+        "min1_avg",
+        "min5_avg",
+        "min15_avg",
+        "mem_used",
+        "mem_util"
+      ],
+      "title": "",
+      "xAxisLabel": "",
+      "yAxisLabel": ""
+    }
+  },
+  "data": [
+    {
+      "entry_time": 1578939729719,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gNJxGt1kHUsijGHB1"
+    },
+    {
+      "entry_time": 1578939789725,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gNJxGt1kHUsijGHB2"
+    },
+    {
+      "entry_time": 1578939849729,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gNJxGt1kHUsijGHB3"
+    },
+    {
+      "entry_time": 1578939909734,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gNJxGt1kHUsijGHB4"
+    },
+    {
+      "entry_time": 1578939969735,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gNJxGt1kHUsijGHB5"
+    },
+    {
+      "entry_time": 1578940029739,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gNJxGt1kHUsijGHB6"
+    },
+    {
+      "entry_time": 1578940089742,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gNJxGt1kHUsijGHB7"
+    },
+    {
+      "entry_time": 1578940149745,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZc"
+    },
+    {
+      "entry_time": 1578940209748,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.3,
+      "id": "AW-gUBOTt1kHUsijGHZd"
+    },
+    {
+      "entry_time": 1578940269753,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZe"
+    },
+    {
+      "entry_time": 1578940329756,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZf"
+    },
+    {
+      "entry_time": 1578940389768,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZg"
+    },
+    {
+      "entry_time": 1578940449774,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZh"
+    },
+    {
+      "entry_time": 1578940509788,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZi"
+    },
+    {
+      "entry_time": 1578940569794,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZj"
+    },
+    {
+      "entry_time": 1578940629801,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZk"
+    },
+    {
+      "entry_time": 1578940689811,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZl"
+    },
+    {
+      "entry_time": 1578940749816,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZw"
+    },
+    {
+      "entry_time": 1578940809819,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZx"
+    },
+    {
+      "entry_time": 1578940869825,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZy"
+    },
+    {
+      "entry_time": 1578940929831,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZz"
+    },
+    {
+      "entry_time": 1578940989835,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZ0"
+    },
+    {
+      "entry_time": 1578941049840,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZ1"
+    },
+    {
+      "entry_time": 1578941109845,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZ2"
+    },
+    {
+      "entry_time": 1578941169851,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZ3"
+    },
+    {
+      "entry_time": 1578941229853,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZ4"
+    },
+    {
+      "entry_time": 1578941289855,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZ5"
+    },
+    {
+      "entry_time": 1578941349860,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZm"
+    },
+    {
+      "entry_time": 1578941409865,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZn"
+    },
+    {
+      "entry_time": 1578941469871,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZo"
+    },
+    {
+      "entry_time": 1578941529878,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZp"
+    },
+    {
+      "entry_time": 1578941589880,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZq"
+    },
+    {
+      "entry_time": 1578941649888,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZr"
+    },
+    {
+      "entry_time": 1578941709896,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZs"
+    },
+    {
+      "entry_time": 1578941769907,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZt"
+    },
+    {
+      "entry_time": 1578941829914,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZu"
+    },
+    {
+      "entry_time": 1578941889920,
+      "cpu_user_new": 3.13,
+      "mem_util": 0.29,
+      "id": "AW-gUBOTt1kHUsijGHZv"
+    }
+  ],
+  "pageInfo": {
+    "startTime": "1578939729719",
+    "endTime": "1578941889920",
+    "count": 37
+  }
+}

@@ -1,0 +1,31 @@
+basics:
+  - enhanced PXE by embedding scripts into the image
+  - unlike pnp/ztp, does not require an image on device
+  - perform device boot after timeout, or try forever
+  - could be local image or static URL in "boot system" path
+    - rommon BOOTMODE = ipxe-forever | ipxe-timeout | device
+    - rommon IPXE_TIMEOUT = seconds
+  - DHCPOFFER contains TFTP/FTP/HTTP server with image
+  - only works via management port (gig0/0)
+  - manual boot (not often used) requires "boot manual switch" to boot
+  - to identify the device at the DHCP server:
+    - chassis serial number (option 61)
+    - product ID (option 6)
+    - device MAC address
+  - DHCPv4 and v6 both use option 77 user-class set to "iPXE"
+  - the device tries DHCPv6 first, then DHCPv4 after
+  - can interrupt with serial break to console
+
+ipv6:
+  - regular RS/RA process to obtain SLAAC address
+  - client sends DHCPv6 solicit to DHCPv6 server
+  - DHCPv6 advertise from server contains boot file URL
+  - does it work with stateless DHCP? it should, device can use SLAAC/LLA
+
+sample_commands:
+  - boot ipxe forever (switch 2)
+  - boot ipxe timeout 30 (switch 2)
+  - boot system ... (only matters in device boot or ipxe timeout)
+  - no boot ipxe
+  - troubleshoot in rommon using net6-show, net-dhcp, net6-dhcp
+  - use "dig" to resolve names

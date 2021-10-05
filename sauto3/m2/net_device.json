@@ -1,0 +1,26 @@
+{
+  "name": "RAVPN",
+  "id": "123",
+  "description": "Simulated Globomantics switches",
+  "modelName": "3650",
+  "authenticationSettings": {
+    "networkProtocol": "RADIUS",
+    "radiusSharedSecret": "globo123",
+    "enableKeyWrap": false,
+    "keyEncryptionKey": "",
+    "keyInputFormat": "ASCII"
+  },
+  "profileName": "Cisco",
+  "coaPort": 1700,
+  "NetworkDeviceIPList": [
+    {
+      "ipaddress": "192.168.0.0",
+      "mask": 16
+    }
+  ],
+  "NetworkDeviceGroupList": [
+    "Location#All Locations",
+    "IPSEC#Is IPSEC Device#No",
+    "Device Type#All Device Types"
+  ]
+}

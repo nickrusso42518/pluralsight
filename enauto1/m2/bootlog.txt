@@ -1,0 +1,136 @@
+*Jan 30 13:42:55.951: %AN-6-AN_ABORTED_BY_MANUAL_CONFIG_DETECTED: Autonomic disabled due to detection of new configuration.
+*Jan 30 13:42:55.951: %AN-6-AN_ABORTED_BY_CONSOLE_INPUT: Autonomic disabled due to User intervention on console. configure 'autonomic' to enable it.
+*Jan 30 13:42:56.184: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet1, changed state to up
+*Jan 30 13:43:04.053: AUTOINSTALL: Obtain tftp server address (opt 150) 203.0.113.1
+*Jan 30 13:43:04.053: PNPA: Setting autoinstall complete to true for 203.0.113.1
+*Jan 30 13:43:04.066: SHELL-EXECUTION: downloading script from url "tftp://203.0.113.1/ztp.py" ...
+*Jan 30 13:43:04.076: SHELL-EXECUTION: successfully downloaded script from url "tftp://203.0.113.1/ztp.py" ...
+*Jan 30 13:43:04.076: SHELL-EXECUTION: successfully saved downloaded script (into file "/bootflash/downloaded_script.py")
+*Jan 30 13:43:04.076: SHELL-EXECUTION: starting guestshell (network interface "Gi1") ...
+*Jan 30 13:43:05.096: %UICFGEXP-6-SERVER_NOTIFIED_START: R0/0: psd: Server iox has been notified to start
+*Jan 30 13:43:07.198: %LINEPROTO-5-UPDOWN: Line protocol on Interface VirtualPortGroup31, changed state to up
+*Jan 30 13:43:15.398: %PKI-2-NON_AUTHORITATIVE_CLOCK: PKI functions can not be initialized until an authoritative time source, like NTP, can be obtained.
+*Jan 30 13:43:26.214: %PKI-4-NOCONFIGAUTOSAVE: Configuration was modified.  Issue "write memory" to save new IOS PKI configuration
+*Jan 30 13:43:26.226: %SMART_LIC-6-EXPORT_CONTROLLED: Usage of export controlled features is not allowed
+*Jan 30 13:43:26.235: %CALL_HOME-6-CALL_HOME_ENABLED: Call-home is enabled by Smart Agent for Licensing.
+*Jan 30 13:43:26.236: %SMART_LIC-5-COMM_RESTORED: Communications with the Cisco Smart Software Manager or satellite restored
+
+Router#guestshell installed successfully
+Current state is: DEPLOYED
+guestshell activated successfully
+Current state is: ACTIVATED
+guestshell started successfully
+Current state is: RUNNING
+Guestshell enabled successfully
+
+HTTP server statistics:
+Accepted connections total: 0
+*Jan 30 13:46:29.709: %IM-6-IOX_INST_INFO: R0/0: ioxman: IOX SERVICE guestshell LOG: Guestshell is up at 00/30/2020 13:46:29
+*Jan 30 13:46:31.126: SHELL-EXECUTION: guestshell started successfully (network interface "Gi1")
+*Jan 30 13:46:34.597: %IM-2-IOX_ENABLEMENT: R0/0: ioxman: IOX is ready.
+*Jan 30 13:46:35.582: SHELL-EXECUTION: executing command "python2 /bootflash/downloaded_script.py " inside guestshell ...
+* Capture device serial number
+
+* sn 92Z8YAWE1YO -> lb0: 10.0.0.2, tun100: 172.16.100.2
+
+* Performing ZTP configuration
+
+CRYPTO_PKI: setting trustpoint policy TP-self-signed-759014305 to use keypair TP-self-signed-759014305
+*Jan 30 13:47:05.565: %CRYPTO_ENGINE-5-KEY_ADDITION: A key named ZTP-92Z8YAWE1YO.njrusmc.net has been generated or imported by crypto-engine
+*Jan 30 13:47:05.565: %SSH-5-ENABLED: SSH 2.0 has been enabled
+*Jan 30 13:47:05.602: %AAA-5-USER_RESET: User cisco failed attempts reset by  on vty0
+*Jan 30 13:47:05.790: yang-infra: netconf-yang server has been notified to start
+*Jan 30 13:47:06.022: %LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback0, changed state to up
+*Jan 30 13:47:06.439: %OSPF-6-DFT_OPT: Protocol timers for fast convergence are Enabled.
+*Jan 30 13:47:07.954: %CRYPTO_ENGINE-5-KEY_ADDITION: A key named ZTP-92Z8YAWE1YO.njrusmc.net.server has been generated or imported by crypto-engine
+*Jan 30 13:47:08.040: %LINEPROTO-5-UPDOWN: Line protocol on Interface Tunnel100, changed state to upLine 1 SUCCESS: hostname ZTP-92Z8YAWE1YO
+Line 2 SUCCESS: ip ssh version 2
+Line 3 SUCCESS: ip ssh logging events
+Line 4 SUCCESS: crypto key generate rsa modulus 2048
+**CLI Line # 4: The name for the keys will be: ZTP-92Z8YAWE1YO.njrusmc.net
+**CLI Line # 4: % The key modulus size is 2048 bits
+**CLI Line # 4: % Generating 2048 bit RSA keys, keys will be non-exportable...
+**CLI Line # 4: [OK] (elapsed time was 2 seconds)
+
+Line 5 SUCCESS: username cisco privilege 15 secret cisco
+Line 6 SUCCESS: enable secret cisco
+Line 7 SUCCESS: netconf-yang
+Line 8 SUCCESS: line vty 0 4
+Line 9 SUCCESS: login local
+Line 10 SUCCESS: transport input ssh
+Line 11 SUCCESS: interface Loopback0
+Line 12 SUCCESS: ip address 10.0.0.2 255.255.255.255
+Line 13 SUCCESS: ip ospf 1 area 0
+Line 14 SUCCESS: interface Tunnel100
+Line 15 SUCCESS: description DMVPN SPOKE TUNNEL
+Line 16 SUCCESS: ip address 172.16.100.2 255.255.255.0
+Line 17 SUCCESS: ip nhrp network-id 100
+Line 18 SUCCESS: ip nhrp nhs dynamic nbma connect.njrusmc.net multicast
+Line 19 SUCCESS: ip ospf network point-to-multipoint
+Line 20 SUCCESS: ip ospf 1 area 0
+Line 21 SUCCESS: tunnel source GigabitEthernet1
+Line 22 SUCCESS: tunnel mode gre multipoint
+
+*Jan 30 13:47:08.171: %OSPF-5-ADJCHG: Process 1, Nbr 10.0.0.1 on Tunnel100 from LOADING to FULL, Loading Done
+
+* Performing ZTP verification
+
+* Running command 'show ip ssh'
+SSH Enabled - version 2.0
+Authentication methods:publickey,keyboard-interactive,password
+Authentication Publickey Algorithms:x509v3-ssh-rsa,ssh-rsa
+Hostkey Algorithms:x509v3-ssh-rsa,ssh-rsa
+Encryption Algorithms:aes128-ctr,aes192-ctr,aes256-ctr
+MAC Algorithms:hmac-sha2-256,hmac-sha2-512,hmac-sha1,hmac-sha1-96
+KEX Algorithms:diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
+Authentication timeout: 120 secs; Authentication retries: 3
+Minimum expected Diffie Hellman key size : 2048 bits
+IOS Keys in SECSH format(ssh-rsa, base64 encoded): ZTP-92Z8YAWE1YO.njrusmc.net
+Modulus Size : 2048 bits
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2a4U8lksIjTvsm+gy24wPtsI/jNTzN+YRHHNv+GE2
+cCF27hWV97rXY+YbzvPmNEoVoIIQISdpaoftrDkFsv75n253tvrDahOI8Tm1fnImiLJ2CLRVH6TMzRMa
+Ba2Nd7emg19KDTkKcSbCwJS4odia8qNey1ty+qnUeuoSGaQrRu1Qyb9OnCwusfxPL6QZ4ILXwD62lsXW
+m0imweY+dW3v0GowHDfbUD/5f2LVwvZElS1RL0+LE8Cp9sCyxxrpxy3pt9WQVNFYGTUIln7+u28OoPpS
+iaiSHxeOsvqbj7UJdqZtEtXNHqBNoKl8T7DAw1J97mPDwh6RSYGCGi2pBUYl                    
+
+* Running command 'show ip interface brief'
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       203.0.113.12    YES DHCP   up                    up      
+GigabitEthernet2       unassigned      YES unset  administratively down down    
+GigabitEthernet3       unassigned      YES unset  administratively down down    
+Loopback0              10.0.0.2        YES TFTP   up                    up      
+Tunnel100              172.16.100.2    YES TFTP   up                    up      
+VirtualPortGroup31     192.168.2.1     YES TFTP   up                    up      
+
+* Running command 'show dhcp lease'
+Temp IP addr: 203.0.113.12  for peer on Interface: GigabitEthernet1
+Temp  sub net mask: 255.255.255.0
+   DHCP Lease server: 203.0.113.1, state: 7 Renewing
+   DHCP transaction id: 82F
+   Lease: 86400 secs,  Renewal: 43200 secs,  Rebind: 75600 secs
+Temp default-gateway addr: 203.0.113.1
+   Next timer fires after: 08:59:57
+   Retry count: 1   Client-ID: 92Z8YAWE1YO
+   Client-ID hex dump: 39325A385941574531594F
+   Hostname: ZTP-92Z8YAWE1YO
+
+* Running command 'show ip ospf interface brief'
+Interface    PID   Area            IP Address/Mask    Cost  State Nbrs F/C
+Lo0          1     0               10.0.0.2/32        1     LOOP  0/0
+Tu100        1     0               172.16.100.2/24    1000  P2MP  1/1
+
+
+*Jan 30 13:47:18.922: %CRYPTO_ENGINE-5-KEY_ADDITION: A key named TP-self-signed-759014305 has been generated or imported by crypto-engine
+*Jan 30 13:47:19.313: %PKI-4-NOCONFIGAUTOSAVE: Configuration was modified.  Issue "write memory" to save new IOS PKI configuration
+*Jan 30 13:47:19.313: yang-infra: Trustpoint created: TP-self-signed-759014305
+*Jan 30 13:47:24.516: %ONEP_BASE-6-SS_ENABLED: ONEP: Service set Vty was enabled by Platform
+*Jan 30 13:47:24.961: %ONEP_BASE-6-CONNECT: [Element]: ONEP session Application:com.cisco.nesd Host:ZTP-92Z8YAWE1YO ID:4463 User:NETCONF has connected.
+*Jan 30 13:47:31.718: SHELL-EXECUTION: successfully executed command "python2 /bootflash/downloaded_script.py " inside guestshell.
+*Jan 30 13:47:31.719: AUTOINSTALL: Tftp script execution successful for Gi1.
+*Jan 30 13:47:52.822: %NDBMAN-5-ACTIVE: R0/0: ndbmand: All data providers active.
+*Jan 30 13:47:54.076: %ONEP_BASE-6-CONNECT: [Element]: ONEP session Application:com.cisco.syncfd Host:ZTP-92Z8YAWE1YO ID:1110 User:a has connected.
+*Jan 30 13:47:57.500: %DMI-5-NACM_INIT: R0/0: dmiauthd: NACM configuration has been set to its initial configuration.
+*Jan 30 13:47:58.686: %DMI-5-SYNC_START: R0/0: syncfd: External change to running configuration detected. The running configuration will be synchronized to the NETCONF running data store.
+*Jan 30 13:48:00.461: %DMI-5-ACTIVE: R0/0: nesd: process is in steady state.
+*Jan 30 13:48:01.364: %DMI-5-SYNC_COMPLETE: R0/0: syncfd: The running configuration has been synchronized to the NETCONF running data store.
+*Jan 30 13:48:01.372: %DMI-5-ACTIVE: R0/0: syncfd: process is in steady state.

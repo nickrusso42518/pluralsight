@@ -1,0 +1,51 @@
+{
+  "version": "v1.2.0",
+  "metadata": {
+    "links": {
+      "self": "https://api.amp.cisco.com/v1/policies/f1c0d020-6dfe-4d26-9134-f1665b83833a"
+    }
+  },
+  "data": {
+    "name": "Audit",
+    "description": "This policy puts the AMP for Endpoints Connector in a mode that will only detect malicious files but not quarantine them. Malicious network traffic is also detected but not blocked.",
+    "guid": "f1c0d020-6dfe-4d26-9134-f1665b83833a",
+    "product": "windows",
+    "default": true,
+    "serial_number": 110,
+    "links": {
+      "policy_xml": "https://api.amp.cisco.com/v1/policies/f1c0d020-6dfe-4d26-9134-f1665b83833a.xml"
+    },
+    "file_lists": [
+      {
+        "name": "File Blacklist",
+        "guid": "45226d15-dc9b-4f71-9fa9-7df74d5b401e",
+        "type": "simple_custom_detections"
+      },
+      {
+        "name": "Execution Blacklist",
+        "guid": "382bb653-e866-4459-b3dd-d2028e1307e9",
+        "type": "application_blocking"
+      },
+      {
+        "name": "File Whitelist",
+        "guid": "032ef3bb-4a2f-4e67-aca3-8350153a6e5d",
+        "type": "allowed_applications"
+      }
+    ],
+    "ip_lists": [],
+    "isolation_ip_lists": [],
+    "exclusion_sets": [
+      {
+        "name": "Workstation Exclusions",
+        "guid": "99962bf5-97c6-4a76-84d4-510cbb338edb"
+      }
+    ],
+    "used_in_groups": [
+      {
+        "name": "Audit",
+        "description": "Audit Group for nickrus+lab",
+        "guid": "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+ansible-base==2.10.4
+boto
+boto3
+pan-python
+pan-os-python
+paramiko
+netaddr

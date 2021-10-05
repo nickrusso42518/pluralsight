@@ -1,0 +1,17 @@
+[
+  { 
+    "acctid": "ACCT100",
+    "paid": 60.00,
+    "due": 100.00
+  },
+  { 
+    "acctid": "ACCT200",
+    "paid": 70.00,
+    "due": 60.00
+  },
+  { 
+    "acctid": "ACCT300",
+    "paid": 0.00,
+    "due": 0.00
+  }
+]

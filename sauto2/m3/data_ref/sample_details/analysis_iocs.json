@@ -1,0 +1,42 @@
+{
+  "api_version": 2,
+  "id": 7622330,
+  "data": {
+    "items": [
+      {
+        "confidence": 60,
+        "truncated": false,
+        "mitre-techniques": [],
+        "hits": 2,
+        "tags": [
+          "file",
+          "attributes",
+          "anomaly",
+          "PE"
+        ],
+        "title": "PE COFF Header Timestamp is Set to Date in the Future",
+        "ioc": "pe-header-timestamp-future",
+        "category": [
+          "attribute"
+        ],
+        "severity": 5,
+        "heuristic_coefficient": -0.63181808608,
+        "data": [
+          {
+            "Artifact_ID": 1,
+            "Path": "windows_calc.exe",
+            "Timestamp": 2405010078
+          },
+          {
+            "Artifact_ID": 2,
+            "Path": "\\TEMP\\windows_calc.exe",
+            "Timestamp": 2405010078
+          }
+        ],
+        "mitre-tactics": [],
+        "orbital-queries": [],
+        "description": "The TimeDateStamp field is usually set to the build date and time of the PE32 File. While this field is set automatically at link or compiler time, it can easily be modified. Malware will often modify or completely remove this field to hinder forensic investigations into the executable."
+      }
+    ]
+  }
+}

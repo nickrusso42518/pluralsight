@@ -1,0 +1,12 @@
+{
+  "0": {
+    "ssid_body": {
+      "name": "Meraki basic portal",
+      "enabled": true,
+      "splashPage": "Click-through splash page",
+      "authMode": "open",
+      "walledGardenEnabled": false
+    },
+    "splash_body": null
+  }
+}

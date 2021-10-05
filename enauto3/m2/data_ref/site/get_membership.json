@@ -1,0 +1,38 @@
+{
+  "site": {
+    "response": [],
+    "version": "1.0",
+    "message": "Site does not have childrens."
+  },
+  "device": [
+    {
+      "response": [
+        {
+          "instanceUuid": "14f3f740-6440-4dbd-921e-2b75476dafce",
+          "instanceTenantId": "5be540a20700b3004c25ea95",
+          "deployPending": "NONE",
+          "instanceVersion": 0,
+          "apManagerInterfaceIp": "",
+          "associatedWlcIp": "",
+          "collectionInterval": "Global Default",
+          "collectionStatus": "In Progress",
+          "deviceSupportLevel": "Unsupported",
+          "interfaceCount": "0",
+          "inventoryStatusDetail": "<status><general code=\"SYNC\"/></status>",
+          "lineCardCount": "0",
+          "lineCardId": "",
+          "managementIpAddress": "192.0.2.1",
+          "memorySize": "NA",
+          "paddedMgmtIpAddress": "192.  0.  2.  1",
+          "reachabilityFailureReason": "",
+          "reachabilityStatus": "Unknown",
+          "role": "UNKNOWN",
+          "roleSource": "AUTO",
+          "tagCount": "0"
+        }
+      ],
+      "version": "1.0",
+      "siteId": "959fc645-66af-4133-bd26-5a6d329fd335"
+    }
+  ]
+}

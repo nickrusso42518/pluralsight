@@ -1,0 +1,18 @@
+{
+  "number": 0,
+  "name": "DNSMB2 - wireless WiFi",
+  "enabled": true,
+  "splashPage": "Click-through splash page",
+  "ssidAdminAccessible": false,
+  "authMode": "open",
+  "radiusAccountingEnabled": false,
+  "ipAssignmentMode": "NAT mode",
+  "adminSplashUrl": "http://excapjs.njrusmc.net/index.html",
+  "splashTimeout": "1440 minutes",
+  "walledGardenEnabled": true,
+  "walledGardenRanges": "excapjs.njrusmc.net",
+  "minBitrate": 11,
+  "bandSelection": "Dual band operation",
+  "perClientBandwidthLimitUp": 0,
+  "perClientBandwidthLimitDown": 0
+}

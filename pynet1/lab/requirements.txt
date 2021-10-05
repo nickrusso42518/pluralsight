@@ -1,0 +1,12 @@
+cryptography==2.4.2
+nornir==2.3.0
+paramiko
+netmiko
+napalm
+requests
+pylint
+black
+pytest
+ncclient
+lxml
+xmltodict

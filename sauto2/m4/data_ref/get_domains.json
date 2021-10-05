@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "page": 1,
+    "limit": 200,
+    "prev": false,
+    "next": false
+  },
+  "data": [
+    {
+      "id": 30916,
+      "name": "internetbadguys.com",
+      "lastSeenAt": 1593198847
+    },
+    {
+      "id": 50213434,
+      "name": "malware4less.com",
+      "lastSeenAt": 1593198847
+    }
+  ]
+}

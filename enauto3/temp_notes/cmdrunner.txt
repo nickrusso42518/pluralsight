@@ -1,0 +1,14 @@
+gui:
+  - click on "Command runner" tool on front dashboard
+  - only executes read commands
+  - will say "command not supported" if you do a config command
+  - build your device list manually or by searching
+  - then, create command list by adding command strings
+  - will run commands on all devices (can remove some from specific devices)
+  - green box means success, can click to see output (can save)
+  - red box means failure, probably command string typo
+  - can click red box to see error output, just like the shell
+
+api:
+  - need to perform a GET network-device to get UUID
+  - then, POST commands to run on a given UUID

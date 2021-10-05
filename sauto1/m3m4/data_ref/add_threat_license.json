@@ -1,0 +1,11 @@
+{
+  "version": "fv5u7do5i47jf",
+  "count": 1,
+  "compliant": true,
+  "id": "bf6304b0-9daa-11ea-9df4-cfb3e952d609",
+  "licenseType": "THREAT",
+  "type": "license",
+  "links": {
+    "self": "https://10.10.20.65/api/fdm/latest/license/smartlicenses/bf6304b0-9daa-11ea-9df4-cfb3e952d609"
+  }
+}

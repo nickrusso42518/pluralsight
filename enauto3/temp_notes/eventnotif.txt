@@ -1,0 +1,51 @@
+basics:
+  - considered "eastbound"
+  - can push event notifications to third party apps
+  - follows subscriber/publisher design, like dial-in telemetry
+  - user provides a receiving URL (webhook/callback URL)
+  - DNAC sends notifications as HTTP POST requests to the callback URL
+
+
+NEW WAY 1.3.1.x gui setup:
+  - no longer a separate bundle, integrated for better performance
+  - system settings (gear) > settings > events and subscriptions
+  - list of possible events shown, click to subscribe and see tags
+
+OLD WAY gui setup:
+  - under Platform settings, manage bundles
+  - enable "network events for REST API endpoint" (deprecated, not needed)
+  - configure the bundle and set the REST endpoint (callback URL)
+  - developer tooklit, integration flows
+  - schedule to publish SWIM events, schedule flow
+  - can schedule frequency
+  - to choose events: platform settings, event settings
+  - possible test endpoint `https://mylistener.ngrok.io`
+  - username/password required, but maybe not necessary?
+
+api method:
+  - GET/POST `/dna/intent/api/v1/event/subscription` 
+  - model below:
+    [
+      {
+        "subscriptionId": "string",
+        "version": "string",
+        "name": "string",
+        "description": "string",
+        "subscriptionEndpoints": [
+          {
+            "instanceId": "string",
+            "subscriptionDetails": {
+              "name": "string",
+              "url": "string",
+              "method": "string",
+              "connectorType": "string"
+            }
+          }
+        ],
+        "filter": {
+          "eventIds": [
+            "string"
+          ]
+        }
+      }
+    ]

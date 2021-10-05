@@ -1,0 +1,36 @@
+{
+  "header": {
+    "columns": [
+      {
+        "title": "Warning",
+        "property": "warning",
+        "dataType": "string"
+      },
+      {
+        "title": "Invalid",
+        "property": "invalid",
+        "dataType": "string"
+      }
+    ],
+    "fields": [
+      {
+        "property": "warning",
+        "dataType": "string"
+      },
+      {
+        "property": "invalid",
+        "dataType": "string"
+      }
+    ],
+    "viewKeys": {
+      "uniqueKey": [],
+      "preferenceKey": "grid-CertificateSummary"
+    }
+  },
+  "data": [
+    {
+      "invalid": 0,
+      "warning": 0
+    }
+  ]
+}

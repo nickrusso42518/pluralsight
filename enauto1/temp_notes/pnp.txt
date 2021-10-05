@@ -1,0 +1,44 @@
+components:
+  agent:
+    - embedded in cisco products
+    - usesopen pnp over HTTP
+    - tries to acquire pnp server via DNS, DHCP, etc
+  server:
+    - centralized logic for managing images/configs
+    - DNAC services this purpose, formerly APIC-EM
+  protocol:
+    - runs between agent and server
+    - ?
+  helper app:
+    - runs on iOS/android to serve as a tether for pnp
+    - downloads image over cellular/wifi
+    - transfers to device using special cable
+  connect:
+    - cloud component for server discovery
+    - useful when DHCP and DNS aren't in use
+    - device contacts devicehelper.cisco.com to get IP of pnp server
+    - have to register your org with cisco to use this option
+
+deployments:
+  branch:
+    - netadmin provisions device in pnp application
+    - onsite installer uses helper app on smartphone to onboard device
+    - device reaches pnp server to get it's full config/image
+  campus:
+    - configure DHCP server with option 43 to carry DNAC IP/hostname
+    - netadmin provisions device in pnp application
+    - installer cables device and powers it up
+    - device reaches pnp server to get it's full config/image
+  connect:
+    - netadmin configures controller profile in pnp connect
+    - web portal lets you assign device templates to devices
+    - register DNAC with Smart Account so pnp connect knows how to broker
+    - installer cables device and powers it up
+    - device queries pnp connect, discovers pnp server (DNAC)
+    - device identifies itself by sn and downloads full config/image
+  unplanned:
+    - deploy sites without pre-configured them in pnp server
+    - configure DHCP server with option 43 to carry DNAC IP/hostname
+    - installer cables device and powers it up
+    - device reaches pnp server but is marked as unplanned
+    - can be claimed/configured later, but this tests the connectivity

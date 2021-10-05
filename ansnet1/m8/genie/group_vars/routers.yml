@@ -1,0 +1,8 @@
+---
+ansible_python_interpreter: "/usr/bin/env python"
+ansible_network_os: "ios"
+ansible_user: "ansible"
+ansible_password: "ansible"
+
+# Reduce Genie copy/paste errors
+vrf_command: "show vrf detail"

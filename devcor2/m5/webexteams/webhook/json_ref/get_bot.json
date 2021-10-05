@@ -1,0 +1,16 @@
+{
+  "notFoundIds": null,
+  "items": [
+    {
+      "id": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9kNDRiNDg0MC1lYWQ5LTQwMmUtOWYxNi0zMzA2ZDI5NDNkNzE",
+      "emails": [
+        "globobot@webex.bot"
+      ],
+      "displayName": "globobot",
+      "avatar": "https://avatar-prod-us-east-2.webexcontent.com/Avtr~V1~consumer/V1~d44b4840-ead9-402e-9f16-3306d2943d71~ef047d7028b2425ea859c76cfa80c8b0~80",
+      "orgId": "Y2lzY29zcGFyazovL3VzL09SR0FOSVpBVElPTi9jb25zdW1lcg",
+      "created": "2019-09-24T13:35:01.819Z",
+      "type": "bot"
+    }
+  ]
+}

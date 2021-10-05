@@ -1,0 +1,74 @@
+{
+  "metadata": {
+    "ruleIndex": 1,
+    "section": "Default",
+    "category": "--Undefined--",
+    "accessPolicy": {
+      "type": "AccessPolicy",
+      "name": "GLOBO_POLICY",
+      "id": "005056BB-0B24-0ed3-0000-880468688745"
+    }
+  },
+  "links": {
+    "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/policy/accesspolicies/005056BB-0B24-0ed3-0000-880468688745/accessrules/005056BB-0B24-0ed3-0000-000268489740"
+  },
+  "id": "005056BB-0B24-0ed3-0000-000268489740",
+  "ipsPolicy": {
+    "name": "Balanced Security and Connectivity",
+    "id": "abba00a0-cf29-425c-9d75-49699aadc898",
+    "type": "IntrusionPolicy"
+  },
+  "vlanTags": {},
+  "enableSyslog": false,
+  "sourceZones": {
+    "objects": [
+      {
+        "name": "outside-zone",
+        "id": "f2302de2-23c3-11e9-8047-ef3db50da465",
+        "type": "SecurityZone"
+      }
+    ]
+  },
+  "destinationZones": {
+    "objects": [
+      {
+        "name": "inside-zone",
+        "id": "30b7717e-23c4-11e9-8047-ef3db50da465",
+        "type": "SecurityZone"
+      }
+    ]
+  },
+  "destinationNetworks": {
+    "objects": [
+      {
+        "type": "NetworkGroup",
+        "overridable": false,
+        "id": "005056BB-0B24-0ed3-0000-880468688584",
+        "name": "NETG_VPN_CONCENTRATORS"
+      }
+    ]
+  },
+  "logFiles": false,
+  "logBegin": false,
+  "logEnd": false,
+  "variableSet": {
+    "name": "Default-Set",
+    "id": "76fa83ea-c972-11e2-8be8-8e45bb1343c0",
+    "type": "VariableSet"
+  },
+  "destinationPorts": {
+    "objects": [
+      {
+        "type": "PortObjectGroup",
+        "overridable": false,
+        "id": "005056BB-0B24-0ed3-0000-880468688728",
+        "name": "PORTG_IPSEC"
+      }
+    ]
+  },
+  "sendEventsToFMC": false,
+  "type": "AccessRule",
+  "name": "OUT_TO_IN_VPN",
+  "enabled": true,
+  "action": "ALLOW"
+}

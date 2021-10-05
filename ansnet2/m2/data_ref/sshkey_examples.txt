@@ -1,0 +1,33 @@
+# Neatly print a public key for consumption on Cisco IOS
+$ fold -b -w 72 ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9bj6BtXbi1sD82y11kgajBv+OenFy0Sq6
+tO3diRGwqPrIuTg5lVd6PHCVpawgdBNrfLfcGXTclixqS7R+CsWNnEOjSV3R/5gjg4OgQuC8
+3wsVAGJWKQtjgRKe6WVPu5e/L5lMyx+N+uTPF7zh6LAeszVOKA+N8mWME9WVPnIA2Re1ecD3
+T9uifxgslfjzUJAj//ly3yJfTGOWx1e1tzsaWuyWga3zy82HClJ8eZUAe2Vt7ohYJEw6fd6e
+jeVd6+rUJEARzVeBZM7fVCo3ZpxFZKUHhTKfamHpP5YoYDeTy8AEOYQsbQ/un+bwd/jTt1Gl
+Dat8e6LbcyYxHmr7MLox centos@localhost.localdomain
+
+# Cisco IOS, uses folded lines, no "ssh-rsa" in front
+username admin_sshkey privilege 15 nopassword
+ip ssh pubkey-chain
+ username admin_sshkey
+  key-string
+   AAAAB3NzaC1yc2EAAAADAQABAAABAQC9bj6BtXbi1sD82y11kgajBv+OenFy0Sq6
+   tO3diRGwqPrIuTg5lVd6PHCVpawgdBNrfLfcGXTclixqS7R+CsWNnEOjSV3R/5gjg4OgQuC8
+   3wsVAGJWKQtjgRKe6WVPu5e/L5lMyx+N+uTPF7zh6LAeszVOKA+N8mWME9WVPnIA2Re1ecD3
+   T9uifxgslfjzUJAj//ly3yJfTGOWx1e1tzsaWuyWga3zy82HClJ8eZUAe2Vt7ohYJEw6fd6e
+   jeVd6+rUJEARzVeBZM7fVCo3ZpxFZKUHhTKfamHpP5YoYDeTy8AEOYQsbQ/un+bwd/jTt1Gl
+   Dat8e6LbcyYxHmr7MLox
+  exit
+ exit
+exit
+
+# Cisco NXOS, one long line, needs "ssh-rsa" in front
+username admin_sshkey role network-admin
+username admin_sshkey sshkey ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9bj6BtXbi1sD82y11kgajBv+OenFy0Sq6tO3diRGwqPrIuTg5lVd6PHCVpawgdBNrfLfcGXTclixqS7R+CsWNnEOjSV3R/5gjg4OgQuC83wsVAGJWKQtjgRKe6WVPu5e/L5lMyx+N+uTPF7zh6LAeszVOKA+N8mWME9WVPnIA2Re1ecD3T9uifxgslfjzUJAj//ly3yJfTGOWx1e1tzsaWuyWga3zy82HClJ8eZUAe2Vt7ohYJEw6fd6ejeVd6+rUJEARzVeBZM7fVCo3ZpxFZKUHhTKfamHpP5YoYDeTy8AEOYQsbQ/un+bwd/jTt1GlDat8e6LbcyYxHmr7MLox
+
+# Arista EOS, one long line, needs "ssh-rsa" in front
+username admin_sshkey privilege 15 nopassword
+username admin_sshkey ssh-key ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9bj6BtXbi1sD82y11kgajBv+OenFy0Sq6tO3diRGwqPrIuTg5lVd6PHCVpawgdBNrfLfcGXTclixqS7R+CsWNnEOjSV3R/5gjg4OgQuC83wsVAGJWKQtjgRKe6WVPu5e/L5lMyx+N+uTPF7zh6LAeszVOKA+N8mWME9WVPnIA2Re1ecD3T9uifxgslfjzUJAj//ly3yJfTGOWx1e1tzsaWuyWga3zy82HClJ8eZUAe2Vt7ohYJEw6fd6ejeVd6+rUJEARzVeBZM7fVCo3ZpxFZKUHhTKfamHpP5YoYDeTy8AEOYQsbQ/un+bwd/jTt1GlDat8e6LbcyYxHmr7MLox
+
+# Note that all three platforms omit the hostname "centos@localhost.localdomain"

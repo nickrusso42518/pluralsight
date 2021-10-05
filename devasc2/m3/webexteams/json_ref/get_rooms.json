@@ -1,0 +1,33 @@
+{
+  "items": [
+    {
+      "id": "Y2lzY29zcGFyazovL3VzL1JPT00vMzVkZDliMjAtYjYwOC0xMWU5LTlmMTQtZGQ0MzkwYzA2NGZl",
+      "title": "Globomantics",
+      "type": "group",
+      "isLocked": false,
+      "lastActivity": "2019-08-03T16:25:55.808Z",
+      "creatorId": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS8zODhhMDJlMi01NDVmLTRhOTAtYmVjNC02NDE5Y2IyNDA4NGQ",
+      "created": "2019-08-03T16:03:19.123Z",
+      "ownerId": "consumer"
+    },
+    {
+      "id": "Y2lzY29zcGFyazovL3VzL1JPT00vOThkMzRiZTAtM2QyOC0xMWU3LWJkYzEtNmQ0OTM5N2I0ZjIw",
+      "title": "Evolving Technologies",
+      "type": "group",
+      "isLocked": false,
+      "lastActivity": "2018-12-05T00:38:31.788Z",
+      "creatorId": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9iODI0MjZlOS0xNWRlLTQ1MTgtYjU4Yy0xNGU4MDY3MDExZmE",
+      "created": "2017-05-20T06:50:23.151Z",
+      "ownerId": "consumer"
+    },
+    {
+      "id": "Y2lzY29zcGFyazovL3VzL1JPT00vMTdjMGJmNDAtNzY4My0xMWU2LWFmNzktMzUzZmIyOTM1YjBl",
+      "title": "Sample Room",
+      "type": "group",
+      "isLocked": false,
+      "creatorId": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS83NjBmMmZmMi0yYWJkLTQ4MTEtOWNmZS0yMjNmOTZmZTFjN2I",
+      "created": "2016-09-09T11:46:49.268Z",
+      "ownerId": "584cf4cd-eea7-4c8c-83ee-67d88fc6eab5"
+    }
+  ]
+}

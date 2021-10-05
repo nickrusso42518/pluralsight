@@ -1,0 +1,57 @@
+<config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <vrfs xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-infra-rsi-cfg">
+{% for vrf in data %}
+   <vrf>
+    <vrf-name>{{ vrf.name }}</vrf-name>
+    <create/>
+    <description>{{ vrf.description }}</description>
+    <afs>
+     <af>
+      <af-name>ipv4</af-name>
+      <saf-name>unicast</saf-name>
+      <topology-name>default</topology-name>
+      <create/>
+      <bgp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-bgp-cfg">
+{%  if vrf.route_import %}
+       <import-route-targets>
+        <route-targets>
+         <route-target>
+          <type>as</type>
+{%   for rti in vrf.route_import %}
+{%   set rt_halves = rti.split(":") %}
+          <as-or-four-byte-as>
+           <as-xx>0</as-xx>
+           <as>{{ rt_halves[0] }}</as>
+           <as-index>{{ rt_halves[1] }}</as-index>
+           <stitching-rt>0</stitching-rt>
+          </as-or-four-byte-as>
+{%   endfor %}
+         </route-target>
+        </route-targets>
+       </import-route-targets>
+{%  endif %}
+{%  if vrf.route_export %}
+       <export-route-targets>
+        <route-targets>
+         <route-target>
+          <type>as</type>
+{%   for rte in vrf.route_export %}
+{%   set rt_halves = rte.split(":") %}
+          <as-or-four-byte-as>
+           <as-xx>0</as-xx>
+           <as>{{ rt_halves[0] }}</as>
+           <as-index>{{ rt_halves[1] }}</as-index>
+           <stitching-rt>0</stitching-rt>
+          </as-or-four-byte-as>
+{%   endfor %}
+         </route-target>
+        </route-targets>
+       </export-route-targets>
+{%  endif %}
+      </bgp>
+     </af>
+    </afs>
+   </vrf>
+{% endfor %}
+  </vrfs>
+</config>

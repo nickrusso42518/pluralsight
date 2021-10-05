@@ -1,0 +1,46 @@
+<config>
+ <mdt-config-data xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-mdt-cfg">
+  <mdt-subscription>
+   <subscription-id>100</subscription-id>
+   <base>
+    <stream>yang-push</stream>
+    <encoding>encode-kvgpb</encoding>
+    <period>1000</period>
+    <xpath>/process-cpu-ios-xe-oper:cpu-usage/cpu-utilization/five-seconds</xpath>
+   </base>
+   <mdt-receivers>
+    <address>10.0.19.188</address>
+    <port>42518</port>
+    <protocol>grpc-tcp</protocol>
+   </mdt-receivers>
+  </mdt-subscription>
+  <mdt-subscription>
+   <subscription-id>101</subscription-id>
+   <base>
+    <stream>yang-push</stream>
+    <encoding>encode-kvgpb</encoding>
+    <period>1000</period>
+    <xpath>/memory-ios-xe-oper:memory-statistics/memory-statistic</xpath>
+   </base>
+   <mdt-receivers>
+    <address>10.0.19.188</address>
+    <port>42518</port>
+    <protocol>grpc-tcp</protocol>
+   </mdt-receivers>
+  </mdt-subscription>
+  <mdt-subscription>
+   <subscription-id>102</subscription-id>
+   <base>
+    <stream>yang-push</stream>
+    <encoding>encode-kvgpb</encoding>
+    <no-synch-on-start>false</no-synch-on-start>
+    <xpath>/cdp-ios-xe-oper:cdp-neighbor-details/cdp-neighbor-detail/device-name</xpath>
+   </base>
+   <mdt-receivers>
+    <address>10.0.19.188</address>
+    <port>42518</port>
+    <protocol>grpc-tcp</protocol>
+   </mdt-receivers>
+  </mdt-subscription>
+ </mdt-config-data>
+</config>

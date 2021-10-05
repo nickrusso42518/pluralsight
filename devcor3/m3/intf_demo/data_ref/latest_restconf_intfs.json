@@ -1,0 +1,58 @@
+{
+  "ietf-interfaces:interfaces": {
+    "interface": [
+      {
+        "description": "MANAGEMENT INTERFACE - DON'T TOUCH ME",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "10.10.20.48",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "GigabitEthernet1",
+        "type": "iana-if-type:ethernetCsmacd"
+      },
+      {
+        "description": "daniyal",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "2.2.2.2",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "GigabitEthernet2",
+        "type": "iana-if-type:ethernetCsmacd"
+      },
+      {
+        "description": "Network Interface",
+        "enabled": false,
+        "ietf-ip:ipv4": {},
+        "ietf-ip:ipv6": {},
+        "name": "GigabitEthernet3",
+        "type": "iana-if-type:ethernetCsmacd"
+      },
+      {
+        "enabled": true,
+        "ietf-ip:ipv4": {
+          "address": [
+            {
+              "ip": "10.222.234.8",
+              "netmask": "255.255.255.0"
+            }
+          ]
+        },
+        "ietf-ip:ipv6": {},
+        "name": "Loopback235",
+        "type": "iana-if-type:softwareLoopback"
+      }
+    ]
+  }
+}

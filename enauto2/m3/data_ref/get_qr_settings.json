@@ -1,0 +1,8 @@
+{
+  "motionBasedRetentionEnabled": true,
+  "audioRecordingEnabled": false,
+  "restrictedBandwidthModeEnabled": true,
+  "profileId": null,
+  "quality": "Enhanced",
+  "resolution": "1920x1080"
+}

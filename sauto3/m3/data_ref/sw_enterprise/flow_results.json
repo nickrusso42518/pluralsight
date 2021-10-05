@@ -1,0 +1,2370 @@
+{
+  "data": {
+    "flows": [
+      {
+        "id": 79600,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "TCP",
+        "serviceId": 26,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 169,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 298000,
+          "numCombinedFlowRecords": 5,
+          "firstActiveTime": "2020-07-20T14:34:01.000+0000",
+          "lastActiveTime": "2020-07-20T14:38:59.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 28878,
+          "packetCount": 326,
+          "byteRate": 96.90604026845638,
+          "packetRate": 1.0939597315436242,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 50.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 375289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 35720,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 50.0,
+          "bytes": 14439,
+          "packets": 163,
+          "byteRate": 48.45302013422819,
+          "packetRate": 0.5469798657718121,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 7,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        },
+        "peer": {
+          "hostGroupIds": [
+            61755
+          ],
+          "countryCode": "XR",
+          "ipAddress": "10.20.30.40",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 8080,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 50.0,
+          "bytes": 14439,
+          "packets": 163,
+          "byteRate": 48.45302013422819,
+          "packetRate": 0.5469798657718121,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 7,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        }
+      },
+      {
+        "id": 79596,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "UDP",
+        "serviceId": 38,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 170,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 256000,
+          "numCombinedFlowRecords": 4,
+          "firstActiveTime": "2020-07-20T14:34:43.000+0000",
+          "lastActiveTime": "2020-07-20T14:38:59.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 52110,
+          "packetCount": 43,
+          "byteRate": 203.5546875,
+          "packetRate": 0.16796875,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 100.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 333289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 16384,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 100.0,
+          "bytes": 52110,
+          "packets": 43,
+          "byteRate": 203.5546875,
+          "packetRate": 0.16796875,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.226",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 2055,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 0,
+          "byteRate": 0.0,
+          "packetRate": 0.0,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        }
+      },
+      {
+        "id": 79588,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "UDP",
+        "serviceId": 38,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 170,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 256000,
+          "numCombinedFlowRecords": 4,
+          "firstActiveTime": "2020-07-20T14:34:43.000+0000",
+          "lastActiveTime": "2020-07-20T14:38:59.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 52110,
+          "packetCount": 43,
+          "byteRate": 203.5546875,
+          "packetRate": 0.16796875,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 100.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 333289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 16384,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 100.0,
+          "bytes": 52110,
+          "packets": 43,
+          "byteRate": 203.5546875,
+          "packetRate": 0.16796875,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.227",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 2055,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 0,
+          "byteRate": 0.0,
+          "packetRate": 0.0,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        }
+      },
+      {
+        "id": 79585,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "UDP",
+        "serviceId": 38,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 170,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 256000,
+          "numCombinedFlowRecords": 4,
+          "firstActiveTime": "2020-07-20T14:34:43.000+0000",
+          "lastActiveTime": "2020-07-20T14:38:59.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 52110,
+          "packetCount": 43,
+          "byteRate": 203.5546875,
+          "packetRate": 0.16796875,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 100.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 333289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 16384,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 100.0,
+          "bytes": 52110,
+          "packets": 43,
+          "byteRate": 203.5546875,
+          "packetRate": 0.16796875,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.228",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 2055,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 0,
+          "byteRate": 0.0,
+          "packetRate": 0.0,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        }
+      },
+      {
+        "id": 79584,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "UDP",
+        "serviceId": 38,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 170,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 256000,
+          "numCombinedFlowRecords": 4,
+          "firstActiveTime": "2020-07-20T14:34:43.000+0000",
+          "lastActiveTime": "2020-07-20T14:38:59.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 52110,
+          "packetCount": 43,
+          "byteRate": 203.5546875,
+          "packetRate": 0.16796875,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 100.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 333289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 16384,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 100.0,
+          "bytes": 52110,
+          "packets": 43,
+          "byteRate": 203.5546875,
+          "packetRate": 0.16796875,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.229",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 2055,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 0,
+          "byteRate": 0.0,
+          "packetRate": 0.0,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        }
+      },
+      {
+        "id": 79618,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "UDP",
+        "serviceId": 60017,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 170,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 60000,
+          "numCombinedFlowRecords": 2,
+          "firstActiveTime": "2020-07-20T14:37:03.000+0000",
+          "lastActiveTime": "2020-07-20T14:38:03.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 26408,
+          "packetCount": 20,
+          "byteRate": 440.133333333333,
+          "packetRate": 0.333333333333333,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 50.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 193289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 35501,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 50.0,
+          "bytes": 13204,
+          "packets": 10,
+          "byteRate": 220.066666666667,
+          "packetRate": 0.166666666666667,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61755
+          ],
+          "countryCode": "XR",
+          "ipAddress": "10.20.30.40",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 8080,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 50.0,
+          "bytes": 13204,
+          "packets": 10,
+          "byteRate": 220.066666666667,
+          "packetRate": 0.166666666666667,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        }
+      },
+      {
+        "id": 79619,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "TCP",
+        "serviceId": 4,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 171,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 62000,
+          "numCombinedFlowRecords": 2,
+          "firstActiveTime": "2020-07-20T14:37:57.000+0000",
+          "lastActiveTime": "2020-07-20T14:38:59.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 1817,
+          "packetCount": 25,
+          "byteRate": 29.3064516129032,
+          "packetRate": 0.403225806451613,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 41.66208035222895,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 139289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 443,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 41.6620803522289,
+          "bytes": 757,
+          "packets": 12,
+          "byteRate": 12.2096774193548,
+          "packetRate": 0.193548387096774,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 1,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.227",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 45297,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 58.3379196477711,
+          "bytes": 1060,
+          "packets": 13,
+          "byteRate": 17.0967741935484,
+          "packetRate": 0.209677419354839,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 1,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 47,
+              "maxTtl": 47,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        }
+      },
+      {
+        "id": 79620,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "TCP",
+        "serviceId": 4,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 171,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 64000,
+          "numCombinedFlowRecords": 2,
+          "firstActiveTime": "2020-07-20T14:37:55.000+0000",
+          "lastActiveTime": "2020-07-20T14:38:59.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 1868,
+          "packetCount": 26,
+          "byteRate": 29.1875,
+          "packetRate": 0.40625,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 42.71948608137045,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 141289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 443,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 42.7194860813704,
+          "bytes": 798,
+          "packets": 12,
+          "byteRate": 12.46875,
+          "packetRate": 0.1875,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 1,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.229",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 50668,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 57.2805139186296,
+          "bytes": 1070,
+          "packets": 14,
+          "byteRate": 16.71875,
+          "packetRate": 0.21875,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 1,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 47,
+              "maxTtl": 47,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        }
+      },
+      {
+        "id": 79623,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "TCP",
+        "serviceId": 60006,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 169,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 5000,
+          "numCombinedFlowRecords": 2,
+          "firstActiveTime": "2020-07-20T14:37:58.000+0000",
+          "lastActiveTime": "2020-07-20T14:38:03.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 0,
+          "packetCount": 4,
+          "byteRate": 0.0,
+          "packetRate": 0.8,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": -1.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 138289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 42518,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 4,
+          "byteRate": 0.0,
+          "packetRate": 0.8,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 4,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "192.168.118.1",
+              "interfaceId": 0,
+              "interfaceDescription": "192.168.118.1 (ifIndex-0)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.6",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 43283,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 0,
+          "byteRate": 0.0,
+          "packetRate": 0.0,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        }
+      },
+      {
+        "id": 79625,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "TCP",
+        "serviceId": 4,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 171,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 12000,
+          "numCombinedFlowRecords": 1,
+          "firstActiveTime": "2020-07-20T14:38:47.000+0000",
+          "lastActiveTime": "2020-07-20T14:38:59.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 422,
+          "packetCount": 6,
+          "byteRate": 35.1666666666667,
+          "packetRate": 0.5,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 0.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 89289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 443,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 0,
+          "byteRate": 0.0,
+          "packetRate": 0.0,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.226",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 55400,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 100.0,
+          "bytes": 422,
+          "packets": 6,
+          "byteRate": 35.1666666666667,
+          "packetRate": 0.5,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 47,
+              "maxTtl": 47,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        }
+      },
+      {
+        "id": 79629,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "TCP",
+        "serviceId": 4,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 171,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 58000,
+          "numCombinedFlowRecords": 1,
+          "firstActiveTime": "2020-07-20T14:38:01.000+0000",
+          "lastActiveTime": "2020-07-20T14:38:59.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 1789,
+          "packetCount": 21,
+          "byteRate": 30.8448275862069,
+          "packetRate": 0.362068965517241,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 42.2023476802683,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 135289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 443,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 42.2023476802683,
+          "bytes": 755,
+          "packets": 10,
+          "byteRate": 13.0172413793103,
+          "packetRate": 0.172413793103448,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.228",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 43283,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 57.7976523197317,
+          "bytes": 1034,
+          "packets": 11,
+          "byteRate": 17.8275862068966,
+          "packetRate": 0.189655172413793,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 47,
+              "maxTtl": 47,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        }
+      },
+      {
+        "id": 79425,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "TCP",
+        "serviceId": 26,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 169,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 406000,
+          "numCombinedFlowRecords": 1,
+          "firstActiveTime": "2020-07-20T14:04:01.000+0000",
+          "lastActiveTime": "2020-07-20T14:10:47.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 1196,
+          "packetCount": 18,
+          "byteRate": 38.5806451612903,
+          "packetRate": 0.580645161290323,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 50.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 1800289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 36092,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 50.0,
+          "bytes": 598,
+          "packets": 9,
+          "byteRate": 19.2903225806452,
+          "packetRate": 0.290322580645161,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61755
+          ],
+          "countryCode": "XR",
+          "ipAddress": "10.20.30.40",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 8080,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 50.0,
+          "bytes": 598,
+          "packets": 9,
+          "byteRate": 19.2903225806452,
+          "packetRate": 0.290322580645161,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        }
+      },
+      {
+        "id": 79428,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "UDP",
+        "serviceId": 38,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 170,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 394000,
+          "numCombinedFlowRecords": 2,
+          "firstActiveTime": "2020-07-20T14:04:43.000+0000",
+          "lastActiveTime": "2020-07-20T14:11:17.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 34430,
+          "packetCount": 26,
+          "byteRate": 564.426229508197,
+          "packetRate": 0.426229508196721,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 100.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 1800289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 16384,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 100.0,
+          "bytes": 34430,
+          "packets": 26,
+          "byteRate": 564.426229508197,
+          "packetRate": 0.426229508196721,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.226",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 2055,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 0,
+          "byteRate": 0.0,
+          "packetRate": 0.0,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        }
+      },
+      {
+        "id": 79429,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "UDP",
+        "serviceId": 38,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 170,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 394000,
+          "numCombinedFlowRecords": 2,
+          "firstActiveTime": "2020-07-20T14:04:43.000+0000",
+          "lastActiveTime": "2020-07-20T14:11:17.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 34430,
+          "packetCount": 26,
+          "byteRate": 564.426229508197,
+          "packetRate": 0.426229508196721,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 100.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 1800289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 16384,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 100.0,
+          "bytes": 34430,
+          "packets": 26,
+          "byteRate": 564.426229508197,
+          "packetRate": 0.426229508196721,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.227",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 2055,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 0,
+          "byteRate": 0.0,
+          "packetRate": 0.0,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        }
+      },
+      {
+        "id": 79430,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "UDP",
+        "serviceId": 38,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 170,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 394000,
+          "numCombinedFlowRecords": 2,
+          "firstActiveTime": "2020-07-20T14:04:43.000+0000",
+          "lastActiveTime": "2020-07-20T14:11:17.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 34430,
+          "packetCount": 26,
+          "byteRate": 564.426229508197,
+          "packetRate": 0.426229508196721,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 100.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 1800289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 16384,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 100.0,
+          "bytes": 34430,
+          "packets": 26,
+          "byteRate": 564.426229508197,
+          "packetRate": 0.426229508196721,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.228",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 2055,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 0,
+          "byteRate": 0.0,
+          "packetRate": 0.0,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        }
+      },
+      {
+        "id": 79431,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "UDP",
+        "serviceId": 38,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 170,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 394000,
+          "numCombinedFlowRecords": 2,
+          "firstActiveTime": "2020-07-20T14:04:43.000+0000",
+          "lastActiveTime": "2020-07-20T14:11:17.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 34430,
+          "packetCount": 26,
+          "byteRate": 564.426229508197,
+          "packetRate": 0.426229508196721,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 100.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 1800289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 16384,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 100.0,
+          "bytes": 34430,
+          "packets": 26,
+          "byteRate": 564.426229508197,
+          "packetRate": 0.426229508196721,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.229",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 2055,
+            "protocol": "UDP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 0,
+          "byteRate": 0.0,
+          "packetRate": 0.0,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        }
+      },
+      {
+        "id": 79439,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "TCP",
+        "serviceId": 4,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 171,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 180000,
+          "numCombinedFlowRecords": 1,
+          "firstActiveTime": "2020-07-20T14:07:55.000+0000",
+          "lastActiveTime": "2020-07-20T14:10:55.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 1626,
+          "packetCount": 21,
+          "byteRate": 41.6923076923077,
+          "packetRate": 0.538461538461538,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 42.00492004920049,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 1800289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 443,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 42.0049200492005,
+          "bytes": 683,
+          "packets": 10,
+          "byteRate": 17.5128205128205,
+          "packetRate": 0.256410256410256,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.229",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 50668,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 57.9950799507995,
+          "bytes": 943,
+          "packets": 11,
+          "byteRate": 24.1794871794872,
+          "packetRate": 0.282051282051282,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 47,
+              "maxTtl": 47,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        }
+      },
+      {
+        "id": 79440,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "TCP",
+        "serviceId": 4,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 171,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 180000,
+          "numCombinedFlowRecords": 1,
+          "firstActiveTime": "2020-07-20T14:07:57.000+0000",
+          "lastActiveTime": "2020-07-20T14:10:57.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 1707,
+          "packetCount": 21,
+          "byteRate": 41.6341463414634,
+          "packetRate": 0.51219512195122,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 42.12067955477446,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 1800289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 443,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 42.1206795547745,
+          "bytes": 719,
+          "packets": 10,
+          "byteRate": 17.5365853658537,
+          "packetRate": 0.24390243902439,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 1,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.227",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 45297,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 57.8793204452255,
+          "bytes": 988,
+          "packets": 11,
+          "byteRate": 24.0975609756098,
+          "packetRate": 0.268292682926829,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 1,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 47,
+              "maxTtl": 47,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        }
+      },
+      {
+        "id": 79470,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "TCP",
+        "serviceId": 4,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 171,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 180000,
+          "numCombinedFlowRecords": 2,
+          "firstActiveTime": "2020-07-20T14:08:01.000+0000",
+          "lastActiveTime": "2020-07-20T14:11:01.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 1789,
+          "packetCount": 23,
+          "byteRate": 39.7555555555556,
+          "packetRate": 0.511111111111111,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": 42.2023476802683,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 1800289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 443,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 42.2023476802683,
+          "bytes": 755,
+          "packets": 11,
+          "byteRate": 16.7777777777778,
+          "packetRate": 0.244444444444444,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 1,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 64,
+              "maxTtl": 64,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "216.83.162.228",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 43283,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 57.7976523197317,
+          "bytes": 1034,
+          "packets": 12,
+          "byteRate": 22.9777777777778,
+          "packetRate": 0.266666666666667,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 1,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10101,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10101)",
+              "dscpValue": -1,
+              "dscpDescription": "Other",
+              "direction": "OUTBOUND",
+              "exporterType": "exporter"
+            },
+            {
+              "exporterIpAddress": "172.16.16.100",
+              "interfaceId": 10201,
+              "interfaceDescription": "172.16.16.100 (ifIndex-10201)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "minTtl": 47,
+              "maxTtl": 47,
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        }
+      },
+      {
+        "id": 79555,
+        "tenantId": 132,
+        "flowCollectorId": 141,
+        "mplsLabel": -1,
+        "protocol": "TCP",
+        "serviceId": 60006,
+        "tlsVersion": "NONE",
+        "vlanId": -1,
+        "applicationId": 169,
+        "cipherSuite": {
+          "id": "N/A",
+          "name": "N/A",
+          "protocol": "N/A",
+          "keyExchange": "N/A",
+          "authAlgorithm": "N/A",
+          "encAlgorithm": "N/A",
+          "keyLength": "N/A",
+          "messageAuthCode": "N/A"
+        },
+        "statistics": {
+          "activeDuration": 25000,
+          "numCombinedFlowRecords": 2,
+          "firstActiveTime": "2020-07-20T14:15:50.000+0000",
+          "lastActiveTime": "2020-07-20T14:16:15.000+0000",
+          "tcpRetransmissions": 0,
+          "byteCount": 0,
+          "packetCount": 5,
+          "byteRate": 0.0,
+          "packetRate": 0.2,
+          "tcpConnections": 0,
+          "roundTripTime": 0,
+          "serverResponseTime": 0,
+          "subjectPeerRatio": -1.0,
+          "rttAverage": 0,
+          "rttMaximum": 0,
+          "rttMinimum": 0,
+          "srtAverage": 0,
+          "srtMaximum": 0,
+          "srtMinimum": 0,
+          "flowTimeSinceStart": 1466289,
+          "tcpRetransmissionsRatio": 0.0
+        },
+        "subject": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.5",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 42518,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 5,
+          "byteRate": 0.0,
+          "packetRate": 0.2,
+          "orientation": "client",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 5,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1,
+          "interfaces": [
+            {
+              "exporterIpAddress": "192.168.118.1",
+              "interfaceId": 0,
+              "interfaceDescription": "192.168.118.1 (ifIndex-0)",
+              "dscpValue": 0,
+              "dscpDescription": "best effort (0)",
+              "direction": "INBOUND",
+              "exporterType": "exporter"
+            }
+          ]
+        },
+        "peer": {
+          "hostGroupIds": [
+            61627
+          ],
+          "countryCode": "US",
+          "ipAddress": "209.182.177.6",
+          "natPort": -1,
+          "portProtocol": {
+            "port": 43283,
+            "protocol": "TCP",
+            "serviceId": 0
+          },
+          "percentBytes": 0.0,
+          "bytes": 0,
+          "packets": 0,
+          "byteRate": 0.0,
+          "packetRate": 0.0,
+          "orientation": "server",
+          "finPackets": 0,
+          "rstPackets": 0,
+          "synPackets": 0,
+          "synAckPackets": 0,
+          "tlsVersion": "NONE",
+          "trustSecId": -1
+        }
+      }
+    ]
+  }
+}

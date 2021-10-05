@@ -1,0 +1,13 @@
+---
+- name: "PLAY 1: INTERFACE ADD"
+  hosts: "restconf_routers"
+  tasks:
+    # Issue HTTP POST with list of interfaces to add in the HTTP body.
+    # Can bulk-add interfaces using this approach. The "new_interfaces"
+    # variable is defined in group_vars/restconf_routers.yml
+    # Issue: https://github.com/ansible/ansible/issues/61372
+    - name: "TASK 1: Add new IETF YANG interfaces via RESTCONF"
+      restconf_config:
+        path: "/data/ietf-interfaces:interfaces"
+        content: "{{ new_interfaces | to_json }}"
+...

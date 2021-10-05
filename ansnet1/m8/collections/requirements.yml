@@ -1,0 +1,6 @@
+---
+# List of collections to be downloaded from
+# https://galaxy.ansible.com by default.
+collections:
+  - "cisco.ios"
+  - "ansible.netcommon"

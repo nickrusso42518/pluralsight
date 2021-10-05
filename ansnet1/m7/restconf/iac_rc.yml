@@ -1,0 +1,33 @@
+---
+- name: "PLAY 1: Infrastructure-as-code using RESTCONF"
+  hosts: routers
+  connection: local
+  tasks:
+    - name: "TASK 1: Update VRF config with HTTP PUT"
+      uri:
+        url: "{{ url }}/data/Cisco-IOS-XE-native:native/Cisco-IOS-XE-native:vrf"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        method: PUT
+        headers:
+          Content-Type: 'application/yang-data+json'
+          Accept: >-
+            application/yang-data+json,
+            application/yang-data.errors+json
+        body_format: json
+        body: "{{ body }}"
+        validate_certs: false
+        status_code:
+          - 200  # OK
+          - 204  # NO CONTENT
+
+    - name: "TASK 2: Save configuration"
+      uri:
+        url: "{{ url }}/operations/cisco-ia:save-config"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        method: POST
+        headers:
+          Content-Type: "application/yang-data+json"
+          Accept:  "application/yang-data+json"
+        validate_certs: false

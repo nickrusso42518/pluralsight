@@ -1,0 +1,20 @@
+module: ietf-ipv4-unicast-routing
+  augment /rt:routing/rt:routing-instance/rt:routing-protocols/rt:routing-protocol/rt:static-routes:
+    +--rw ipv4
+       +--rw route* [destination-prefix]
+          +--rw destination-prefix    inet:ipv4-prefix
+          +--rw description?          string
+          +--rw next-hop
+             +--rw (next-hop-options)
+                +--:(simple-next-hop)
+                |  +--rw outgoing-interface?   string
+                +--:(special-next-hop)
+                |  +--rw special-next-hop?     enumeration
+                +--:(next-hop-address)
+                   +--rw next-hop-address?     inet:ipv4-address
+  augment /rt:fib-route/rt:input/rt:destination-address:
+    +-- address?   inet:ipv4-address
+  augment /rt:fib-route/rt:output/rt:route:
+    +-- destination-prefix?   inet:ipv4-prefix
+  augment /rt:fib-route/rt:output/rt:route/rt:next-hop/rt:next-hop-options/rt:simple-next-hop:
+    +-- next-hop-address?   inet:ipv4-address

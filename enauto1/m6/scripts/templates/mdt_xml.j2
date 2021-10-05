@@ -1,0 +1,24 @@
+<config>
+ <mdt-config-data xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-mdt-cfg">
+{% for id, sub in data["subscriptions"].items() %}
+  <mdt-subscription>
+   <subscription-id>{{ id }}</subscription-id>
+   <base>
+    <stream>yang-push</stream>
+    <encoding>encode-kvgpb</encoding>
+{% if sub["period"] == "on_change" %}
+    <no-synch-on-start>false</no-synch-on-start>
+{% else %}
+    <period>{{ sub["period"] }}</period>
+{% endif %}
+    <xpath>{{ sub["xpath"] }}</xpath>
+   </base>
+   <mdt-receivers>
+    <address>{{ sub["rx"]["ip"] }}</address>
+    <port>{{ sub["rx"]["tcp_port"] }}</port>
+    <protocol>grpc-tcp</protocol>
+   </mdt-receivers>
+  </mdt-subscription>
+{% endfor %}
+ </mdt-config-data>
+</config>

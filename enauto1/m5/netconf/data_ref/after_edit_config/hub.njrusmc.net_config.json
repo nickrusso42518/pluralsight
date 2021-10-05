@@ -1,0 +1,94 @@
+{
+  "rpc-reply": {
+    "@xmlns": "urn:ietf:params:xml:ns:netconf:base:1.0",
+    "@message-id": "urn:uuid:937fc789-23e9-4326-9481-e4a617a9beee",
+    "@xmlns:nc": "urn:ietf:params:xml:ns:netconf:base:1.0",
+    "data": {
+      "native": {
+        "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-native",
+        "interface": {
+          "Tunnel": {
+            "name": {
+              "@xmlns:nc": "urn:ietf:params:xml:ns:netconf:base:1.0",
+              "#text": "100"
+            },
+            "description": "DMVPN HUB TUNNEL",
+            "ip": {
+              "address": {
+                "primary": {
+                  "address": "172.16.100.1",
+                  "mask": "255.255.255.0"
+                }
+              },
+              "redirects": "false",
+              "nhrp": {
+                "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-nhrp",
+                "network-id": "100"
+              },
+              "ospf": {
+                "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ospf",
+                "process-id": {
+                  "id": "1",
+                  "area": "0"
+                },
+                "authentication": {
+                  "key-chain": {
+                    "name": "KC_OSPF_AUTH"
+                  }
+                },
+                "network": "point-to-multipoint"
+              }
+            },
+            "tunnel": {
+              "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-tunnel",
+              "source": "GigabitEthernet1",
+              "mode": {
+                "gre": {
+                  "multipoint": null
+                }
+              }
+            }
+          }
+        },
+        "key": {
+          "chain": {
+            "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-crypto",
+            "name": {
+              "@xmlns:nc": "urn:ietf:params:xml:ns:netconf:base:1.0",
+              "#text": "KC_OSPF_AUTH"
+            },
+            "key": {
+              "id": "1",
+              "cryptographic-algorithm": "hmac-sha-256",
+              "key-string": {
+                "key": "SECRET123"
+              }
+            }
+          }
+        },
+        "router": {
+          "ospf": {
+            "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ospf",
+            "id": {
+              "@xmlns:nc": "urn:ietf:params:xml:ns:netconf:base:1.0",
+              "#text": "1"
+            },
+            "auto-cost": {
+              "reference-bandwidth": "1000"
+            },
+            "passive-interface": {
+              "interface": [
+                "GigabitEthernet3",
+                "Loopback0"
+              ]
+            },
+            "ttl-security": {
+              "all-interfaces": null,
+              "hops": "1"
+            }
+          }
+        }
+      }
+    }
+  }
+}

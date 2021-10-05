@@ -1,0 +1,9 @@
+{
+  "changed":true,
+  "failed":false,
+  "gateway_id":"igw-0add1df726f469ca0",
+  "tags":{
+    "Name":"IGW_Globo"
+  },
+  "vpc_id":"vpc-0151ec2bd5acc3a2e"
+}

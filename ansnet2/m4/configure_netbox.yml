@@ -1,0 +1,17 @@
+---
+- name: "Build Globomantics network in NetBox"
+  hosts: "netbox_servers"
+  tasks:
+
+    # REST API documentation (it's very good):
+    # http://netbox1:8000/api/docs/
+    - name: "Iteratively include all task lists"
+      include_tasks: "tasks/{{ taskname }}.yml"
+      loop:
+        - "org"
+        - "device"
+        - "ipam"
+        - "circuit"
+      loop_control:
+        loop_var: "taskname"
+...

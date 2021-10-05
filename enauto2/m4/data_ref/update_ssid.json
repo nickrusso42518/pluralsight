@@ -1,0 +1,16 @@
+{
+  "number": 0,
+  "name": "Meraki basic portal",
+  "enabled": true,
+  "splashPage": "Click-through splash page",
+  "ssidAdminAccessible": false,
+  "authMode": "open",
+  "ipAssignmentMode": "NAT mode",
+  "adminSplashUrl": null,
+  "splashTimeout": "1440 minutes",
+  "walledGardenEnabled": false,
+  "minBitrate": 11,
+  "bandSelection": "Dual band operation",
+  "perClientBandwidthLimitUp": 0,
+  "perClientBandwidthLimitDown": 0
+}

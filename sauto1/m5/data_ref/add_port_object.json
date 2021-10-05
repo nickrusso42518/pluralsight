@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "timestamp": 0,
+    "lastUser": {
+      "name": "njrusmc"
+    },
+    "domain": {
+      "name": "Global",
+      "id": "e276abec-e0f2-11e3-8169-6d9ed49b625f"
+    },
+    "parentType": "Port"
+  },
+  "links": {
+    "self": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/protocolportobjects/005056BB-0B24-0ed3-0000-880468652665",
+    "parent": "https://fmcrestapisandbox.cisco.com/api/fmc_config/v1/domain/e276abec-e0f2-11e3-8169-6d9ed49b625f/object/ports"
+  },
+  "type": "ProtocolPortObject",
+  "protocol": "UDP",
+  "port": "4500",
+  "overridable": false,
+  "description": "ESP encapsulated in UDP for NAT Traversal IPsec",
+  "id": "005056BB-0B24-0ed3-0000-880468652665",
+  "name": "UDP_IPSEC_NATT"
+}

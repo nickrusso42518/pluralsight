@@ -1,0 +1,35 @@
+---
+# Version 3.7 for compose files corresponds with
+# Docker engine 18.06.0 and newer (per Docker docs).
+version: "3.7"
+
+# Nested dictionary of containers to create. I'm demonstrating
+# 3 CRM apps each exposing a different public TCP port. This is
+# a "scale out" technique and you could put a load balancer in front.
+services:
+  crm1:
+    build: "."
+    image: "crm:latest"
+    ports:
+      - "5001:5000/tcp"
+    volumes:
+      - type: "bind"
+        source: "./src"
+        target: "/src"
+  crm2:
+    image: "crm:latest"
+    ports:
+      - "5002:5000/tcp"
+    volumes:
+      - type: "bind"
+        source: "./src"
+        target: "/src"
+  crm3:
+    image: "crm:latest"
+    ports:
+      - "5003:5000/tcp"
+    volumes:
+      - type: "bind"
+        source: "./src"
+        target: "/src"
+...

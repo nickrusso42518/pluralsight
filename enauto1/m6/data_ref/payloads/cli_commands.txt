@@ -1,0 +1,18 @@
+telemetry ietf subscription 100
+ encoding encode-kvgpb
+ filter xpath /process-cpu-ios-xe-oper:cpu-usage/cpu-utilization/five-seconds
+ stream yang-push
+ update-policy periodic 1000
+ receiver ip address 10.0.19.188 42518 protocol grpc-tcp
+telemetry ietf subscription 101
+ encoding encode-kvgpb
+ filter xpath /memory-ios-xe-oper:memory-statistics/memory-statistic
+ stream yang-push
+ update-policy periodic 1000
+ receiver ip address 10.0.19.188 42518 protocol grpc-tcp
+telemetry ietf subscription 102
+ encoding encode-kvgpb
+ filter xpath /cdp-ios-xe-oper:cdp-neighbor-details/cdp-neighbor-detail/device-name
+ stream yang-push
+ update-policy on-change
+ receiver ip address 10.0.19.188 42518 protocol grpc-tcp

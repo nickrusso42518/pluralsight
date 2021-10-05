@@ -1,0 +1,5 @@
+set sftp:auto-confirm yes
+open sftp://ftpuser:ftppass@10.2.5.5
+cd ftp
+get R1.cfg
+put R3.cfg

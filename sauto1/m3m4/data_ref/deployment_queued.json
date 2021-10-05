@@ -1,0 +1,16 @@
+{
+  "id": "5e2b4bdb-9dad-11ea-9df4-f364ca7c63d0",
+  "statusMessage": null,
+  "statusMessages": null,
+  "modifiedObjects": {},
+  "cliErrorMessage": null,
+  "queuedTime": 1590317852302,
+  "startTime": -1,
+  "endTime": -1,
+  "state": "QUEUED",
+  "name": "User (admin) Triggered Deployment",
+  "deploymentStatusMessages": [],
+  "links": {
+    "self": "https://10.10.20.65/api/fdm/latest/operational/deploy/5e2b4bdb-9dad-11ea-9df4-f364ca7c63d0"
+  }
+}

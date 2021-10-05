@@ -1,0 +1,207 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+ip dhcp excluded-address 10.1.10.0 10.1.10.10
+ip dhcp excluded-address 10.1.20.0 10.1.20.10
+!
+ip dhcp pool USER_POOL
+ network 10.1.10.0 255.255.255.0
+ default-router 10.1.10.1
+ domain-name globomantics.com
+ dns-server 8.8.8.8 8.8.4.4
+!
+ip dhcp pool VOICE_POOL
+ network 10.1.20.0 255.255.255.0
+ default-router 10.1.20.1
+ domain-name globomantics.com
+ dns-server 8.8.8.8 8.8.4.4
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.1 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Ethernet0/0
+ description F1
+ mac-address 0000.0000.aaaa
+ ip address 10.1.3.1 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet0/1
+ description R2
+ mac-address 0000.0000.aaaa
+ ip address 10.1.2.1 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet0/2
+ description S1
+ mac-address 0000.0000.aaaa
+ no ip address
+!
+interface Ethernet0/2.10
+ description USER VLAN
+ encapsulation dot1Q 10
+ ip address 10.1.10.1 255.255.255.0
+ ip ospf 1 area 0
+!
+interface Ethernet0/2.20
+ description VOICE VLAN
+ encapsulation dot1Q 20
+ ip address 10.1.20.1 255.255.255.0
+ ip ospf 1 area 0
+!
+interface Ethernet0/2.30
+ description MGMT VLAN
+ encapsulation dot1Q 30
+ ip address 10.1.30.1 255.255.255.0
+ ip ospf 1 area 0
+!
+interface Ethernet0/3
+ mac-address 0000.0000.aaaa
+ no ip address
+ shutdown
+!
+interface Serial1/0
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/1
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+router ospf 1
+ passive-interface default
+ no passive-interface Ethernet0/0
+ no passive-interface Ethernet0/1
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+snmp-server user SNMPUSER GROUP v3
+snmp-server group GROUP v3 noauth read READ
+snmp-server view READ iso included
+snmp-server ifindex persist
+snmp-server queue-limit notification-host 1
+snmp-server location GlobomanticsHQ
+snmp-server contact nick@globomantics.com
+snmp-server chassis-id R1
+snmp-server enable traps snmp linkdown linkup
+snmp-server host 10.1.23.85 version 3 noauth SNMPUSER
+snmp-server host 10.1.30.85 version 3 noauth SNMPUSER
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp source Loopback0
+ntp server 132.163.96.5
+!
+end

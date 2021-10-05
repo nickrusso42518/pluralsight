@@ -1,0 +1,11 @@
+module: Cisco-IOS-XE-native
+  +--rw native
+     +--rw interface
+        +--rw Tunnel* [name]
+           +--rw name                uint32
+           +--rw description?        string
+           +--rw ip
+              +--rw address
+                 +--rw primary
+                    +--rw address?   inet:ipv4-address
+                    +--rw mask?      inet:ipv4-address

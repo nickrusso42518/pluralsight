@@ -1,0 +1,43 @@
+{
+  "version": "lu4xcgrrmhvoi",
+  "name": "IN_TO_OUT_GENERAL",
+  "ruleId": 268435474,
+  "sourceZones": [
+    {
+      "version": "f2pirv6ffutzh",
+      "name": "inside_zone",
+      "id": "90c377e0-b3e5-11e5-8db8-651556da7898",
+      "type": "securityzone"
+    }
+  ],
+  "destinationZones": [
+    {
+      "version": "nb3xioyndbyfp",
+      "name": "outside_zone",
+      "id": "b1af33e1-b3e5-11e5-8db8-afdc0be5453e",
+      "type": "securityzone"
+    }
+  ],
+  "sourceNetworks": [],
+  "destinationNetworks": [],
+  "sourcePorts": [],
+  "destinationPorts": [],
+  "rulePosition": 30,
+  "ruleAction": "PERMIT",
+  "eventLogAction": "LOG_BOTH",
+  "identitySources": [],
+  "users": [],
+  "embeddedAppFilter": null,
+  "urlFilter": null,
+  "intrusionPolicy": null,
+  "filePolicy": null,
+  "logFiles": false,
+  "syslogServer": null,
+  "destinationDynamicObjects": [],
+  "sourceDynamicObjects": [],
+  "id": "f1cb4599-9e0f-11ea-b8bb-8fa761981666",
+  "type": "accessrule",
+  "links": {
+    "self": "https://10.10.20.65/api/fdm/latest/policy/accesspolicies/c78e66bc-cb57-43fe-bcbf-96b79b3475b3/accessrules/f1cb4599-9e0f-11ea-b8bb-8fa761981666"
+  }
+}

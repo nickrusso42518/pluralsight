@@ -1,0 +1,11 @@
+---
+all:
+  children:
+    routers:
+      children:
+        ios_routers:
+          hosts:
+            R1:
+        iosxr_routers:
+          hosts:
+            R2:

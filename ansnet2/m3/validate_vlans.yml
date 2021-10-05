@@ -1,0 +1,28 @@
+---
+- name: "Validate VLANs with NAPALM"
+  hosts: "all"
+  tasks:
+    - name: "Ensure compliance/ directory exists"
+      ansible.builtin.file:
+        path: "./compliance"
+        state: "directory"
+      delegate_to: "localhost"
+      run_once: true
+
+    # Normally fails if compliance fails. We only want failure if
+    # a report isn't generated (SSH failure, etc.)
+    - name: "Check VLANs on switches against state file"
+      napalm_validate:
+        validation_file: "./state/{{ inventory_hostname }}_vlans.yml"
+      register: "vlan_report"
+      failed_when: "'compliance_report' not in vlan_report"
+
+    - name: "Print device compliance status"
+      ansible.builtin.debug:
+        var: "vlan_report.compliance_report.complies"
+
+    - name: "Store VLAN detailed compliance report"
+      ansible.builtin.copy:
+        content: "{{ vlan_report | to_nice_json(indent=2) }}"
+        dest: "./compliance/{{ inventory_hostname }}_vlans.json"
+...

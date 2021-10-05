@@ -1,0 +1,416 @@
+[
+  {
+    "name": "router1",
+    "address": "127.0.0.1",
+    "port": 10022,
+    "ssh": {
+      "host-key": [
+        {
+          "algorithm": "ssh-rsa"
+        }
+      ],
+      "operations": {
+        "fetch-host-keys": "/api/running/devices/device/router1/ssh/_operations/fetch-host-keys"
+      }
+    },
+    "authgroup": "default",
+    "device-type": {
+      "cli": {}
+    },
+    "state": {
+      "admin-state": "unlocked"
+    },
+    "config": {
+      "tailf-ned-cisco-ios:ip": {
+        "vrf": [
+          {
+            "name": "my-forward"
+          }
+        ],
+        "community-list": {
+          "number-standard": [
+            {
+              "no": 1
+            },
+            {
+              "no": 2
+            }
+          ],
+          "standard": [
+            {
+              "name": "s"
+            }
+          ]
+        },
+        "http": {
+          "server": false,
+          "secure-server": false
+        },
+        "routing": [
+          null
+        ],
+        "source-route": true
+      },
+      "tailf-ned-cisco-ios:interface": {
+        "FastEthernet": [
+          {
+            "name": "1/0"
+          }
+        ],
+        "Loopback": [
+          {
+            "name": "0"
+          },
+          {
+            "name": "10022"
+          }
+        ]
+      },
+      "tailf-ned-cisco-ios:class-map": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "cmap1"
+        }
+      ],
+      "tailf-ned-cisco-ios:policy-map": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "map1"
+        }
+      ],
+      "tailf-ned-cisco-ios:spanning-tree": {
+        "optimize": {
+          "bpdu": {
+            "transmission": false
+          }
+        }
+      },
+      "tailf-ned-cisco-ios:mpls": {
+        "ip": {
+          "conf": {
+            "propagate-ttl": true
+          }
+        }
+      },
+      "tailf-ned-cisco-ios:router": {
+        "bgp": [
+          {
+            "as-no": 64512
+          }
+        ]
+      }
+    },
+    "rpc": {
+      "tailf-ned-cisco-ios-stats:rpc-idle-timeout": {
+        "operations": {
+          "idle-timeout": "/api/running/devices/device/router1/rpc/ios-stats:rpc-idle-timeout/_operations/idle-timeout"
+        }
+      }
+    },
+    "netconf-notifications": {
+      "received-notifications": {
+        "operations": {
+          "clear": "/api/running/devices/device/router1/netconf-notifications/received-notifications/_operations/clear"
+        }
+      }
+    },
+    "operations": {
+      "copy-capabilities": "/api/running/devices/device/router1/_operations/copy-capabilities",
+      "find-capabilities": "/api/running/devices/device/router1/_operations/find-capabilities",
+      "add-capability": "/api/running/devices/device/router1/_operations/add-capability",
+      "apply-template": "/api/running/devices/device/router1/_operations/apply-template",
+      "instantiate-from-other-device": "/api/running/devices/device/router1/_operations/instantiate-from-other-device",
+      "compare-config": "/api/running/devices/device/router1/_operations/compare-config",
+      "sync-from": "/api/running/devices/device/router1/_operations/sync-from",
+      "sync-to": "/api/running/devices/device/router1/_operations/sync-to",
+      "check-sync": "/api/running/devices/device/router1/_operations/check-sync",
+      "check-yang-modules": "/api/running/devices/device/router1/_operations/check-yang-modules",
+      "connect": "/api/running/devices/device/router1/_operations/connect",
+      "disconnect": "/api/running/devices/device/router1/_operations/disconnect",
+      "ping": "/api/running/devices/device/router1/_operations/ping",
+      "delete-config": "/api/running/devices/device/router1/_operations/delete-config",
+      "scp-to": "/api/running/devices/device/router1/_operations/scp-to",
+      "scp-from": "/api/running/devices/device/router1/_operations/scp-from"
+    }
+  },
+  {
+    "name": "router2",
+    "address": "127.0.0.1",
+    "port": 10023,
+    "ssh": {
+      "host-key": [
+        {
+          "algorithm": "ssh-rsa"
+        }
+      ],
+      "operations": {
+        "fetch-host-keys": "/api/running/devices/device/router2/ssh/_operations/fetch-host-keys"
+      }
+    },
+    "authgroup": "default",
+    "device-type": {
+      "cli": {}
+    },
+    "state": {
+      "admin-state": "unlocked"
+    },
+    "config": {
+      "tailf-ned-cisco-ios:ip": {
+        "vrf": [
+          {
+            "name": "my-forward"
+          }
+        ],
+        "community-list": {
+          "number-standard": [
+            {
+              "no": 1
+            },
+            {
+              "no": 2
+            }
+          ],
+          "standard": [
+            {
+              "name": "s"
+            }
+          ]
+        },
+        "http": {
+          "server": false,
+          "secure-server": false
+        },
+        "routing": [
+          null
+        ],
+        "source-route": true
+      },
+      "tailf-ned-cisco-ios:interface": {
+        "FastEthernet": [
+          {
+            "name": "1/0"
+          }
+        ],
+        "Loopback": [
+          {
+            "name": "0"
+          },
+          {
+            "name": "10023"
+          }
+        ]
+      },
+      "tailf-ned-cisco-ios:class-map": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "cmap1"
+        }
+      ],
+      "tailf-ned-cisco-ios:policy-map": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "map1"
+        }
+      ],
+      "tailf-ned-cisco-ios:spanning-tree": {
+        "optimize": {
+          "bpdu": {
+            "transmission": false
+          }
+        }
+      },
+      "tailf-ned-cisco-ios:mpls": {
+        "ip": {
+          "conf": {
+            "propagate-ttl": true
+          }
+        }
+      },
+      "tailf-ned-cisco-ios:router": {
+        "bgp": [
+          {
+            "as-no": 64512
+          }
+        ]
+      }
+    },
+    "rpc": {
+      "tailf-ned-cisco-ios-stats:rpc-idle-timeout": {
+        "operations": {
+          "idle-timeout": "/api/running/devices/device/router2/rpc/ios-stats:rpc-idle-timeout/_operations/idle-timeout"
+        }
+      }
+    },
+    "netconf-notifications": {
+      "received-notifications": {
+        "operations": {
+          "clear": "/api/running/devices/device/router2/netconf-notifications/received-notifications/_operations/clear"
+        }
+      }
+    },
+    "operations": {
+      "copy-capabilities": "/api/running/devices/device/router2/_operations/copy-capabilities",
+      "find-capabilities": "/api/running/devices/device/router2/_operations/find-capabilities",
+      "add-capability": "/api/running/devices/device/router2/_operations/add-capability",
+      "apply-template": "/api/running/devices/device/router2/_operations/apply-template",
+      "instantiate-from-other-device": "/api/running/devices/device/router2/_operations/instantiate-from-other-device",
+      "compare-config": "/api/running/devices/device/router2/_operations/compare-config",
+      "sync-from": "/api/running/devices/device/router2/_operations/sync-from",
+      "sync-to": "/api/running/devices/device/router2/_operations/sync-to",
+      "check-sync": "/api/running/devices/device/router2/_operations/check-sync",
+      "check-yang-modules": "/api/running/devices/device/router2/_operations/check-yang-modules",
+      "connect": "/api/running/devices/device/router2/_operations/connect",
+      "disconnect": "/api/running/devices/device/router2/_operations/disconnect",
+      "ping": "/api/running/devices/device/router2/_operations/ping",
+      "delete-config": "/api/running/devices/device/router2/_operations/delete-config",
+      "scp-to": "/api/running/devices/device/router2/_operations/scp-to",
+      "scp-from": "/api/running/devices/device/router2/_operations/scp-from"
+    }
+  },
+  {
+    "name": "router3",
+    "address": "127.0.0.1",
+    "port": 10024,
+    "ssh": {
+      "host-key": [
+        {
+          "algorithm": "ssh-rsa"
+        }
+      ],
+      "operations": {
+        "fetch-host-keys": "/api/running/devices/device/router3/ssh/_operations/fetch-host-keys"
+      }
+    },
+    "authgroup": "default",
+    "device-type": {
+      "cli": {}
+    },
+    "state": {
+      "admin-state": "unlocked"
+    },
+    "config": {
+      "tailf-ned-cisco-ios:ip": {
+        "vrf": [
+          {
+            "name": "my-forward"
+          }
+        ],
+        "community-list": {
+          "number-standard": [
+            {
+              "no": 1
+            },
+            {
+              "no": 2
+            }
+          ],
+          "standard": [
+            {
+              "name": "s"
+            }
+          ]
+        },
+        "http": {
+          "server": false,
+          "secure-server": false
+        },
+        "routing": [
+          null
+        ],
+        "source-route": true
+      },
+      "tailf-ned-cisco-ios:interface": {
+        "FastEthernet": [
+          {
+            "name": "1/0"
+          }
+        ],
+        "Loopback": [
+          {
+            "name": "0"
+          },
+          {
+            "name": "10024"
+          }
+        ]
+      },
+      "tailf-ned-cisco-ios:class-map": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "cmap1"
+        }
+      ],
+      "tailf-ned-cisco-ios:policy-map": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "map1"
+        }
+      ],
+      "tailf-ned-cisco-ios:spanning-tree": {
+        "optimize": {
+          "bpdu": {
+            "transmission": false
+          }
+        }
+      },
+      "tailf-ned-cisco-ios:mpls": {
+        "ip": {
+          "conf": {
+            "propagate-ttl": true
+          }
+        }
+      },
+      "tailf-ned-cisco-ios:router": {
+        "bgp": [
+          {
+            "as-no": 64512
+          }
+        ]
+      }
+    },
+    "rpc": {
+      "tailf-ned-cisco-ios-stats:rpc-idle-timeout": {
+        "operations": {
+          "idle-timeout": "/api/running/devices/device/router3/rpc/ios-stats:rpc-idle-timeout/_operations/idle-timeout"
+        }
+      }
+    },
+    "netconf-notifications": {
+      "received-notifications": {
+        "operations": {
+          "clear": "/api/running/devices/device/router3/netconf-notifications/received-notifications/_operations/clear"
+        }
+      }
+    },
+    "operations": {
+      "copy-capabilities": "/api/running/devices/device/router3/_operations/copy-capabilities",
+      "find-capabilities": "/api/running/devices/device/router3/_operations/find-capabilities",
+      "add-capability": "/api/running/devices/device/router3/_operations/add-capability",
+      "apply-template": "/api/running/devices/device/router3/_operations/apply-template",
+      "instantiate-from-other-device": "/api/running/devices/device/router3/_operations/instantiate-from-other-device",
+      "compare-config": "/api/running/devices/device/router3/_operations/compare-config",
+      "sync-from": "/api/running/devices/device/router3/_operations/sync-from",
+      "sync-to": "/api/running/devices/device/router3/_operations/sync-to",
+      "check-sync": "/api/running/devices/device/router3/_operations/check-sync",
+      "check-yang-modules": "/api/running/devices/device/router3/_operations/check-yang-modules",
+      "connect": "/api/running/devices/device/router3/_operations/connect",
+      "disconnect": "/api/running/devices/device/router3/_operations/disconnect",
+      "ping": "/api/running/devices/device/router3/_operations/ping",
+      "delete-config": "/api/running/devices/device/router3/_operations/delete-config",
+      "scp-to": "/api/running/devices/device/router3/_operations/scp-to",
+      "scp-from": "/api/running/devices/device/router3/_operations/scp-from"
+    }
+  }
+]

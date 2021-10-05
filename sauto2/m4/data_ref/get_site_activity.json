@@ -1,0 +1,174 @@
+{
+  "requests": [
+    {
+      "tags": [],
+      "originId": 435018686,
+      "originType": "Anyconnect Roaming Client",
+      "internalIp": "100.16.207.26",
+      "externalIp": "100.16.207.26",
+      "categories": [
+        "Malware",
+        "Phishing",
+        "Enforcement API Testing",
+        "Computer Security"
+      ],
+      "destination": "www.internetbadguys.com",
+      "originLabel": "Nicholas\u2019s MacBook Pro",
+      "actionTaken": "BLOCKED",
+      "datetime": "2020-07-09T10:20:40.000Z"
+    },
+    {
+      "tags": [],
+      "originId": 435022770,
+      "originType": "Roaming Computers",
+      "internalIp": "172.31.46.65",
+      "externalIp": "18.211.161.218",
+      "categories": [
+        "Malware",
+        "Phishing",
+        "Enforcement API Testing",
+        "Computer Security"
+      ],
+      "destination": "www.internetbadguys.com",
+      "originLabel": "EC2AMAZ-M367V5R",
+      "actionTaken": "BLOCKED",
+      "datetime": "2020-07-09T10:01:12.000Z"
+    },
+    {
+      "tags": [],
+      "originId": 435018686,
+      "originType": "Anyconnect Roaming Client",
+      "internalIp": "100.16.207.26",
+      "externalIp": "100.16.207.26",
+      "categories": [
+        "Malware",
+        "Phishing",
+        "Enforcement API Testing",
+        "Computer Security"
+      ],
+      "destination": "www.internetbadguys.com",
+      "originLabel": "Nicholas\u2019s MacBook Pro",
+      "actionTaken": "BLOCKED",
+      "datetime": "2020-07-09T09:59:01.000Z"
+    },
+    {
+      "tags": [],
+      "originId": 435022770,
+      "originType": "Roaming Computers",
+      "internalIp": "172.31.46.65",
+      "externalIp": "18.211.161.218",
+      "categories": [
+        "Malware",
+        "Phishing",
+        "Enforcement API Testing",
+        "Computer Security"
+      ],
+      "destination": "www.internetbadguys.com",
+      "originLabel": "EC2AMAZ-M367V5R",
+      "actionTaken": "BLOCKED",
+      "datetime": "2020-07-09T09:57:49.000Z"
+    },
+    {
+      "tags": [],
+      "originId": 435022770,
+      "originType": "Roaming Computers",
+      "internalIp": "172.31.46.65",
+      "externalIp": "18.211.161.218",
+      "categories": [
+        "Malware",
+        "Phishing",
+        "Enforcement API Testing",
+        "Computer Security"
+      ],
+      "destination": "www.internetbadguys.com",
+      "originLabel": "EC2AMAZ-M367V5R",
+      "actionTaken": "BLOCKED",
+      "datetime": "2020-07-09T09:57:48.000Z"
+    },
+    {
+      "tags": [],
+      "originId": 435018686,
+      "originType": "Anyconnect Roaming Client",
+      "internalIp": "100.16.207.26",
+      "externalIp": "100.16.207.26",
+      "categories": [
+        "Malware",
+        "Phishing",
+        "Enforcement API Testing",
+        "Computer Security"
+      ],
+      "destination": "www.internetbadguys.com",
+      "originLabel": "Nicholas\u2019s MacBook Pro",
+      "actionTaken": "BLOCKED",
+      "datetime": "2020-07-09T09:54:28.000Z"
+    },
+    {
+      "tags": [],
+      "originId": 435018686,
+      "originType": "Anyconnect Roaming Client",
+      "internalIp": "100.16.207.26",
+      "externalIp": "100.16.207.26",
+      "categories": [
+        "Malware",
+        "Phishing",
+        "Enforcement API Testing",
+        "Computer Security"
+      ],
+      "destination": "www.internetbadguys.com",
+      "originLabel": "Nicholas\u2019s MacBook Pro",
+      "actionTaken": "BLOCKED",
+      "datetime": "2020-07-09T03:41:26.000Z"
+    },
+    {
+      "tags": [],
+      "originId": 435018686,
+      "originType": "Anyconnect Roaming Client",
+      "internalIp": "100.16.207.26",
+      "externalIp": "100.16.207.26",
+      "categories": [
+        "Malware",
+        "Phishing",
+        "Enforcement API Testing",
+        "Computer Security"
+      ],
+      "destination": "www.internetbadguys.com",
+      "originLabel": "Nicholas\u2019s MacBook Pro",
+      "actionTaken": "BLOCKED",
+      "datetime": "2020-07-08T23:09:16.000Z"
+    },
+    {
+      "tags": [],
+      "originId": 435018686,
+      "originType": "Anyconnect Roaming Client",
+      "internalIp": "100.16.207.26",
+      "externalIp": "100.16.207.26",
+      "categories": [
+        "Malware",
+        "Phishing",
+        "Enforcement API Testing",
+        "Computer Security"
+      ],
+      "destination": "www.internetbadguys.com",
+      "originLabel": "Nicholas\u2019s MacBook Pro",
+      "actionTaken": "BLOCKED",
+      "datetime": "2020-07-08T22:37:54.000Z"
+    },
+    {
+      "tags": [],
+      "originId": 435018686,
+      "originType": "Anyconnect Roaming Client",
+      "internalIp": "100.16.207.26",
+      "externalIp": "100.16.207.26",
+      "categories": [
+        "Malware",
+        "Phishing",
+        "Enforcement API Testing",
+        "Computer Security"
+      ],
+      "destination": "www.internetbadguys.com",
+      "originLabel": "Nicholas\u2019s MacBook Pro",
+      "actionTaken": "BLOCKED",
+      "datetime": "2020-07-08T22:32:25.000Z"
+    }
+  ]
+}

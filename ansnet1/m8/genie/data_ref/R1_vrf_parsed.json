@@ -1,0 +1,118 @@
+{
+  "CHEMICAL": {
+    "address_family": {
+      "ipv4 unicast": {
+        "flags": "0x0",
+        "route_targets": {
+          "65000:2": {
+            "route_target": "65000:2",
+            "rt_type": "both"
+          }
+        },
+        "table_id": "0x9",
+        "vrf_label": {
+          "allocation_mode": "per-prefix"
+        }
+      },
+      "ipv6 unicast": {
+        "flags": "0x0",
+        "route_targets": {
+          "65000:2": {
+            "route_target": "65000:2",
+            "rt_type": "both"
+          }
+        },
+        "table_id": "0x1E000008",
+        "vrf_label": {
+          "allocation_mode": "per-prefix"
+        }
+      }
+    },
+    "cli_format": "New",
+    "description": "CHEMICAL ENGINEERING FIRM",
+    "flags": "0x180C",
+    "route_distinguisher": "65000:2",
+    "support_af": "multiple address-families",
+    "vrf_id": 9
+  },
+  "CHEM_MGMT": {
+    "address_family": {
+      "ipv4 unicast": {
+        "flags": "0x0",
+        "route_targets": {
+          "65000:3": {
+            "route_target": "65000:3",
+            "rt_type": "export"
+          },
+          "65000:4": {
+            "route_target": "65000:4",
+            "rt_type": "import"
+          }
+        },
+        "table_id": "0xA",
+        "vrf_label": {
+          "allocation_mode": "per-prefix"
+        }
+      },
+      "ipv6 unicast": {
+        "flags": "0x0",
+        "route_targets": {
+          "65000:3": {
+            "route_target": "65000:3",
+            "rt_type": "export"
+          },
+          "65000:4": {
+            "route_target": "65000:4",
+            "rt_type": "import"
+          }
+        },
+        "table_id": "0x1E000009",
+        "vrf_label": {
+          "allocation_mode": "per-prefix"
+        }
+      }
+    },
+    "cli_format": "New",
+    "description": "CHEMICAL ENGINEERING MANAGER",
+    "flags": "0x180C",
+    "route_distinguisher": "65000:3",
+    "support_af": "multiple address-families",
+    "vrf_id": 10
+  },
+  "POLICE": {
+    "address_family": {
+      "ipv4 unicast": {
+        "flags": "0x0",
+        "route_targets": {
+          "65000:1": {
+            "route_target": "65000:1",
+            "rt_type": "both"
+          }
+        },
+        "table_id": "0x8",
+        "vrf_label": {
+          "allocation_mode": "per-prefix"
+        }
+      },
+      "ipv6 unicast": {
+        "flags": "0x0",
+        "route_targets": {
+          "65000:1": {
+            "route_target": "65000:1",
+            "rt_type": "both"
+          }
+        },
+        "table_id": "0x1E000001",
+        "vrf_label": {
+          "allocation_mode": "per-prefix"
+        }
+      }
+    },
+    "cli_format": "New",
+    "description": "POLICE DEPARTMENT",
+    "flags": "0x180C",
+    "route_distinguisher": "65000:1",
+    "support_af": "multiple address-families",
+    "vrf_id": 8
+  }
+}

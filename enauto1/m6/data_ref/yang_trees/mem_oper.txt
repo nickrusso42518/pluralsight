@@ -1,0 +1,9 @@
+module: Cisco-IOS-XE-memory-oper
+  +--ro memory-statistics
+     +--ro memory-statistic* [name]
+        +--ro name             string
+        +--ro total-memory?    uint64
+        +--ro used-memory?     uint64
+        +--ro free-memory?     uint64
+        +--ro lowest-usage?    uint64
+        +--ro highest-usage?   uint64

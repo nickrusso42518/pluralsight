@@ -1,0 +1,38 @@
+### Begin interface summary ###
+1. GigabitEthernet1: up/up
+2. GigabitEthernet2: administratively down/down
+3. GigabitEthernet3: administratively down/down
+4. Loopback0: up/up
+5. Tunnel100: up/up
+6. VirtualPortGroup31: up/up
+### End   interface summary ###
+### Begin output from command: show ip ospf neighbor Tunnel100 detail ###
+Neighbor 10.0.0.1, interface address 172.16.100.1, interface-id 12
+    In the area 0 via interface Tunnel100
+    Neighbor priority is 0, State is FULL, 6 state changes
+    DR is 0.0.0.0 BDR is 0.0.0.0
+    Options is 0x12 in Hello (E-bit, L-bit)
+    Options is 0x52 in DBD (E-bit, L-bit, O-bit)
+    LLS Options is 0x1 (LR)
+    Dead timer due in 00:01:33
+    Neighbor is up for 00:25:41
+    Index 1/1/1, retransmission queue length 0, number of retransmission 1
+    First 0x0(0)/0x0(0)/0x0(0) Next 0x0(0)/0x0(0)/0x0(0)
+    Last retransmission scan length is 1, maximum is 1
+    Last retransmission scan time is 0 msec, maximum is 0 msec
+### End   output from command: show ip ospf neighbor Tunnel100 detail ###
+### Begin output from command: show ip interface brief | exclude unassigned ###
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       203.0.113.12    YES DHCP   up                    up      
+Loopback0              10.0.0.3        YES TFTP   up                    up      
+Tunnel100              172.16.100.3    YES TFTP   up                    up      
+VirtualPortGroup31     192.168.2.1     YES TFTP   up                    up
+### End   output from command: show ip interface brief | exclude unassigned ###
+### Begin output from command: show ip ospf interface Tunnel100 | begin Cryptographic ###
+Cryptographic authentication enabled
+    Sending SA: Key 1, Algorithm HMAC-SHA-256 - key chain KC_OSPF_AUTH
+### End   output from command: show ip ospf interface Tunnel100 | begin Cryptographic ###
+### Begin output from command: show ip ospf | include TTL|Reference ###
+Reference bandwidth unit is 1000 mbps
+ Strict TTL checking enabled
+### End   output from command: show ip ospf | include TTL|Reference ###

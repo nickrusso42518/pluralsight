@@ -1,0 +1,114 @@
+{
+  "rpc-reply": {
+    "@message-id": "urn:uuid:55824df3-4a99-4fa2-833b-738438505438",
+    "@xmlns:nc": "urn:ietf:params:xml:ns:netconf:base:1.0",
+    "@xmlns": "urn:ietf:params:xml:ns:netconf:base:1.0",
+    "data": {
+      "vrfs": {
+        "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-infra-rsi-cfg",
+        "vrf": [
+          {
+            "vrf-name": "POLICE",
+            "create": null,
+            "description": "POLICE DEPARTMENT",
+            "afs": {
+              "af": {
+                "af-name": "ipv4",
+                "saf-name": "unicast",
+                "topology-name": "default",
+                "create": null,
+                "bgp": {
+                  "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-bgp-cfg",
+                  "import-route-targets": {
+                    "route-targets": {
+                      "route-target": {
+                        "type": "as",
+                        "as-or-four-byte-as": {
+                          "as-xx": "0",
+                          "as": "65000",
+                          "as-index": "1",
+                          "stitching-rt": "0"
+                        }
+                      }
+                    }
+                  },
+                  "export-route-targets": {
+                    "route-targets": {
+                      "route-target": {
+                        "type": "as",
+                        "as-or-four-byte-as": {
+                          "as-xx": "0",
+                          "as": "65000",
+                          "as-index": "1",
+                          "stitching-rt": "0"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "vrf-name": "CHEMICAL",
+            "create": null,
+            "description": "CHEMICAL ENGINEERING FIRM",
+            "afs": {
+              "af": {
+                "af-name": "ipv4",
+                "saf-name": "unicast",
+                "topology-name": "default",
+                "create": null,
+                "bgp": {
+                  "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-bgp-cfg",
+                  "import-route-targets": {
+                    "route-targets": {
+                      "route-target": {
+                        "type": "as",
+                        "as-or-four-byte-as": [
+                          {
+                            "as-xx": "0",
+                            "as": "65000",
+                            "as-index": "2",
+                            "stitching-rt": "0"
+                          },
+                          {
+                            "as-xx": "0",
+                            "as": "65000",
+                            "as-index": "3",
+                            "stitching-rt": "0"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "export-route-targets": {
+                    "route-targets": {
+                      "route-target": {
+                        "type": "as",
+                        "as-or-four-byte-as": [
+                          {
+                            "as-xx": "0",
+                            "as": "65000",
+                            "as-index": "2",
+                            "stitching-rt": "0"
+                          },
+                          {
+                            "as-xx": "0",
+                            "as": "65000",
+                            "as-index": "4",
+                            "stitching-rt": "0"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "version": "v1.2.0",
+  "metadata": {
+    "links": {
+      "self": "https://api.amp.cisco.com/v1/policies?product=windows&name=Audit"
+    },
+    "results": {
+      "total": 1,
+      "current_item_count": 1,
+      "index": 0,
+      "items_per_page": 500
+    }
+  },
+  "data": [
+    {
+      "name": "Audit",
+      "description": "This policy puts the AMP for Endpoints Connector in a mode that will only detect malicious files but not quarantine them. Malicious network traffic is also detected but not blocked.",
+      "guid": "f1c0d020-6dfe-4d26-9134-f1665b83833a",
+      "product": "windows",
+      "default": true,
+      "serial_number": 110,
+      "links": {
+        "policy": "https://api.amp.cisco.com/v1/policies/f1c0d020-6dfe-4d26-9134-f1665b83833a"
+      }
+    }
+  ]
+}

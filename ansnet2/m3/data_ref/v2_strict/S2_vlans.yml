@@ -1,0 +1,63 @@
+- get_vlans:
+    '1':
+      interfaces:
+        _mode: strict
+        list:
+        - GigabitEthernet0/0
+        - GigabitEthernet1/0
+        - GigabitEthernet1/1
+        - GigabitEthernet1/2
+        - GigabitEthernet1/3
+      name: default
+    '10':
+      interfaces:
+        _mode: strict
+        list:
+        - GigabitEthernet0/1
+        - GigabitEthernet0/2
+        - GigabitEthernet0/3
+      name: MANAGEMENT
+    '1002':
+      interfaces:
+        _mode: strict
+        list: []
+      name: fddi-default
+    '1003':
+      interfaces:
+        _mode: strict
+        list: []
+      name: token-ring-default
+    '1004':
+      interfaces:
+        _mode: strict
+        list: []
+      name: fddinet-default
+    '1005':
+      interfaces:
+        _mode: strict
+        list: []
+      name: trnet-default
+    '11':
+      interfaces:
+        _mode: strict
+        list:
+        - GigabitEthernet0/1
+        - GigabitEthernet0/2
+        - GigabitEthernet0/3
+      name: ENGINEERING
+    '12':
+      interfaces:
+        _mode: strict
+        list:
+        - GigabitEthernet0/1
+        - GigabitEthernet0/2
+        - GigabitEthernet0/3
+      name: SALES
+    '13':
+      interfaces:
+        _mode: strict
+        list:
+        - GigabitEthernet0/1
+        - GigabitEthernet0/2
+        - GigabitEthernet0/3
+      name: FINANCE

@@ -1,0 +1,7 @@
+**.pyc
+.DS_Store
+m3/audit_log.csv
+m3/swe_flow_report.csv
+m3/swc_flows/*
+m4/email_report.csv
+m4/web_report.csv

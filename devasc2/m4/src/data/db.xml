@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <ACCT100 extra="fun">
+    <paid>60</paid>
+    <due>100</due>
+  </ACCT100>
+  <ACCT200>
+    <paid>70</paid>
+    <due>60</due>
+  </ACCT200>
+  <ACCT300>
+    <paid>0</paid>
+    <due>0</due>
+  </ACCT300>
+</root>

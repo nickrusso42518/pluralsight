@@ -1,0 +1,9 @@
+{
+  "Q2FV-RQJM-572T": {
+    "motionBasedRetentionEnabled": true,
+    "audioRecordingEnabled": false,
+    "restrictedBandwidthModeEnabled": true,
+    "quality": "Enhanced",
+    "resolution": "1920x1080"
+  }
+}

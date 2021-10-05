@@ -1,0 +1,48 @@
+{
+  "mdt-config-data": {
+    "mdt-subscription": [
+      {
+        "subscription-id": 100,
+        "base": {
+          "stream": "yang-push",
+          "encoding": "encode-kvgpb",
+          "xpath": "/process-cpu-ios-xe-oper:cpu-usage/cpu-utilization/five-seconds",
+          "period": 1000
+        },
+        "mdt-receivers": {
+          "address": "10.0.19.188",
+          "port": 42518,
+          "protocol": "grpc-tcp"
+        }
+      },
+      {
+        "subscription-id": 101,
+        "base": {
+          "stream": "yang-push",
+          "encoding": "encode-kvgpb",
+          "xpath": "/memory-ios-xe-oper:memory-statistics/memory-statistic",
+          "period": 1000
+        },
+        "mdt-receivers": {
+          "address": "10.0.19.188",
+          "port": 42518,
+          "protocol": "grpc-tcp"
+        }
+      },
+      {
+        "subscription-id": 102,
+        "base": {
+          "stream": "yang-push",
+          "encoding": "encode-kvgpb",
+          "xpath": "/cdp-ios-xe-oper:cdp-neighbor-details/cdp-neighbor-detail/device-name",
+          "no-synch-on-start": false
+        },
+        "mdt-receivers": {
+          "address": "10.0.19.188",
+          "port": 42518,
+          "protocol": "grpc-tcp"
+        }
+      }
+    ]
+  }
+}

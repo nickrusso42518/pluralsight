@@ -1,0 +1,21 @@
+---
+# Connectivity parameters
+ansible_connection: "httpapi"
+ansible_network_os: "restconf"
+ansible_httpapi_use_ssl: true
+ansible_httpapi_validate_certs: false
+ansible_httpapi_port: 443  # default
+ansible_httpapi_restconf_root: "/restconf"  # default
+ansible_user: "developer"
+ansible_password: "C1sco12345"
+
+# Infrastructure parameters
+new_vlans:
+  Cisco-IOS-XE-vlan:vlan-list:
+    - id: 171
+      name: "DATA"
+    - id: 172
+      name: "VOICE"
+    - id: 173
+      name: "MGMT"
+...

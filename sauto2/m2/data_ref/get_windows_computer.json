@@ -1,0 +1,52 @@
+{
+  "version": "v1.2.0",
+  "metadata": {
+    "links": {
+      "self": "https://api.amp.cisco.com/v1/computers/2ac2ae9a-f475-411c-aea6-b16eccebefb3"
+    }
+  },
+  "data": {
+    "connector_guid": "2ac2ae9a-f475-411c-aea6-b16eccebefb3",
+    "hostname": "EC2AMAZ-M367V5R",
+    "windows_processor_id": "1789fbff000306f2",
+    "active": true,
+    "links": {
+      "computer": "https://api.amp.cisco.com/v1/computers/2ac2ae9a-f475-411c-aea6-b16eccebefb3",
+      "trajectory": "https://api.amp.cisco.com/v1/computers/2ac2ae9a-f475-411c-aea6-b16eccebefb3/trajectory",
+      "group": "https://api.amp.cisco.com/v1/groups/1efca1bf-d627-4336-aeb6-ff03400ff163"
+    },
+    "connector_version": "7.2.11.11804",
+    "operating_system": "Windows Server 2019 Datacenter",
+    "internal_ips": [
+      "172.31.46.65"
+    ],
+    "external_ip": "18.211.161.218",
+    "group_guid": "1efca1bf-d627-4336-aeb6-ff03400ff163",
+    "install_date": "2020-07-04T00:38:54Z",
+    "network_addresses": [
+      {
+        "mac": "06:6b:13:a3:05:61",
+        "ip": "172.31.46.65"
+      }
+    ],
+    "policy": {
+      "guid": "d25ba78d-e32f-400f-b421-9ef8bd2df1c0",
+      "name": "Protect"
+    },
+    "last_seen": "2020-07-05T11:00:43Z",
+    "av_update_definitions": {
+      "version": "81006",
+      "status": "Definitions Up To Date",
+      "updated_at": "2020-07-05T10:33:49+00:00",
+      "detection_engine": "TETRA 64 bit"
+    },
+    "faults": [],
+    "isolation": {
+      "available": false,
+      "status": "not_isolated"
+    },
+    "orbital": {
+      "status": "not_enabled"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "tailf-ned-cisco-ios-stats:arp": {
+    "address": [
+      {
+        "ip": "172.16.252.1",
+        "protocol": "Internet",
+        "age-mins": 12,
+        "hardware-addr": "5254.0012.7689",
+        "type": "ARPA",
+        "interface": "GigabitEthernet4"
+      },
+      {
+        "ip": "172.16.252.10",
+        "protocol": "Internet",
+        "hardware-addr": "5254.0014.3f67",
+        "type": "ARPA",
+        "interface": "GigabitEthernet5"
+      },
+      {
+        "ip": "172.16.252.17",
+        "protocol": "Internet",
+        "hardware-addr": "5254.0008.343b",
+        "type": "ARPA",
+        "interface": "GigabitEthernet6"
+      },
+      {
+        "ip": "172.16.252.18",
+        "protocol": "Internet",
+        "age-mins": 53,
+        "hardware-addr": "5254.001c.1784",
+        "type": "ARPA",
+        "interface": "GigabitEthernet6"
+      },
+      {
+        "ip": "172.16.252.2",
+        "protocol": "Internet",
+        "hardware-addr": "5254.000f.a8cd",
+        "type": "ARPA",
+        "interface": "GigabitEthernet4"
+      },
+      {
+        "ip": "172.16.252.21",
+        "protocol": "Internet",
+        "hardware-addr": "5254.0011.2287",
+        "type": "ARPA",
+        "interface": "GigabitEthernet2"
+      },
+      {
+        "ip": "172.16.252.22",
+        "protocol": "Internet",
+        "age-mins": 41,
+        "hardware-addr": "5254.001d.7171",
+        "type": "ARPA",
+        "interface": "GigabitEthernet2"
+      },
+      {
+        "ip": "172.16.252.25",
+        "protocol": "Internet",
+        "hardware-addr": "5254.0008.4646",
+        "type": "ARPA",
+        "interface": "GigabitEthernet3"
+      },
+      {
+        "ip": "172.16.252.26",
+        "protocol": "Internet",
+        "age-mins": 50,
+        "hardware-addr": "5254.000f.c6e8",
+        "type": "ARPA",
+        "interface": "GigabitEthernet3"
+      },
+      {
+        "ip": "172.16.252.9",
+        "protocol": "Internet",
+        "age-mins": 12,
+        "hardware-addr": "5254.001f.7d31",
+        "type": "ARPA",
+        "interface": "GigabitEthernet5"
+      }
+    ],
+    "vrf": [
+      {
+        "name": "Mgmt-intf",
+        "address": [
+          {
+            "ip": "10.10.20.175",
+            "protocol": "Internet",
+            "hardware-addr": "5254.0012.3156",
+            "type": "ARPA",
+            "interface": "GigabitEthernet1"
+          },
+          {
+            "ip": "10.10.20.254",
+            "protocol": "Internet",
+            "age-mins": 40,
+            "hardware-addr": "0050.56bf.6e6c",
+            "type": "ARPA",
+            "interface": "GigabitEthernet1"
+          },
+          {
+            "ip": "10.10.20.49",
+            "protocol": "Internet",
+            "age-mins": 12,
+            "hardware-addr": "0050.56bf.d2a9",
+            "type": "ARPA",
+            "interface": "GigabitEthernet1"
+          }
+        ]
+      }
+    ]
+  }
+}

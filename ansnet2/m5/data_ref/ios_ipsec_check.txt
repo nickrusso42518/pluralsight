@@ -1,0 +1,50 @@
+R1#show crypto ipsec sa peer 54.152.117.199
+
+interface: Tunnel100
+    Crypto map tag: Tunnel100-head-0, local addr 10.125.0.61
+
+   protected vrf: (none)
+   local  ident (addr/mask/prot/port): (0.0.0.0/0.0.0.0/0/0)
+   remote ident (addr/mask/prot/port): (0.0.0.0/0.0.0.0/0/0)
+   current_peer 54.152.117.199 port 4500
+     PERMIT, flags={origin_is_acl,}
+    #pkts encaps: 0, #pkts encrypt: 0, #pkts digest: 0
+    #pkts decaps: 0, #pkts decrypt: 0, #pkts verify: 0
+    #pkts compressed: 0, #pkts decompressed: 0
+    #pkts not compressed: 0, #pkts compr. failed: 0
+    #pkts not decompressed: 0, #pkts decompress failed: 0
+    #send errors 0, #recv errors 0
+
+     local crypto endpt.: 10.125.0.61, remote crypto endpt.: 54.152.117.199
+     plaintext mtu 1438, path mtu 1500, ip mtu 1500, ip mtu idb GigabitEthernet1
+     current outbound spi: 0xC24A5D25(3259653413)
+     PFS (Y/N): N, DH group: none
+
+     inbound esp sas:
+      spi: 0x19C9AD16(432647446)
+        transform: esp-gcm 256 ,
+        in use settings ={Tunnel UDP-Encaps, }
+        conn id: 2006, flow_id: CSR:6, sibling_flags FFFFFFFF80000048, crypto map: Tunnel100-head-0
+         sa timing: remaining key lifetime (k/sec): (4608000/3173)
+        IV size: 8 bytes
+        replay detection support: Y
+        Status: ACTIVE(ACTIVE)
+
+     inbound ah sas:
+
+     inbound pcp sas:
+
+     outbound esp sas:
+      spi: 0xC24A5D25(3259653413)
+        transform: esp-gcm 256 ,
+        in use settings ={Tunnel UDP-Encaps, }
+        conn id: 2005, flow_id: CSR:5, sibling_flags FFFFFFFF80000048, crypto map: Tunnel100-head-0
+         sa timing: remaining key lifetime (k/sec): (4608000/3173)
+        IV size: 8 bytes
+        replay detection support: Y
+        Status: ACTIVE(ACTIVE)
+
+     outbound ah sas:
+
+     outbound pcp sas:
+

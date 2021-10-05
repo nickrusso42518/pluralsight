@@ -1,0 +1,50 @@
+{
+    "version": "2.0",
+    "type": "DevicesSeen",
+    "data": {
+        "apMac": "00:18:0a:13:dd:b0",
+        "apFloors": [],
+        "apTags": [
+            "globotest",
+            "devcor"
+        ],
+        "observations": [
+            {
+                "ipv4": "/192.168.0.38",
+                "location": {
+                    "lat": 51.5355157,
+                    "lng": -0.06990350000000944,
+                    "unc": 1.233417960754815,
+                    "x": [],
+                    "y": []
+                },
+                "seenTime": "2016-09-24T00:06:23Z",
+                "ssid": "globomantics",
+                "os": null,
+                "clientMac": "18:fe:34:fc:5a:7f",
+                "seenEpoch": 1474675583,
+                "rssi": 47,
+                "ipv6": null,
+                "manufacturer": "Espressif"
+            },
+            {
+                "ipv4": "/192.168.0.15",
+                "location": {
+                    "lat": 51.5355157,
+                    "lng": -0.06990350000000944,
+                    "unc": 1.5497743004111961,
+                    "x": [],
+                    "y": []
+                },
+                "seenTime": "2016-09-24T00:06:40Z",
+                "ssid": "globomantics",
+                "os": "Generic Linux",
+                "clientMac": "74:da:38:56:0a:80",
+                "seenEpoch": 1474675600,
+                "rssi": 47,
+                "ipv6": null,
+                "manufacturer": "Edimax Technology"
+            }
+        ]
+    }
+}

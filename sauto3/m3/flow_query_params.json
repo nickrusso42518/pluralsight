@@ -1,0 +1,15 @@
+{
+  "devbox only": {
+    "ip": "10.125.0.100",
+    "limit": "10"
+  },
+  "attack time": {
+    "start_timestamp_utc__gt": "2020-07-17T18:45:00Z",
+    "start_timestamp_utc__lt": "2020-07-17T19:00:00Z"
+  },
+  "google dns": {
+    "connected_ip__in": "8.8.8.8,8.8.4.4",
+    "connected_port": 53,
+    "protocol": 17
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "response": [
+    {
+      "parentId": "35347602-c9c6-43a3-8bc8-5089d5bb0b1a",
+      "systemGroup": false,
+      "groupTypeList": [
+        "SITE"
+      ],
+      "additionalInfo": [
+        {
+          "nameSpace": "mapsSummary",
+          "attributes": {
+            "rfModel": "37037",
+            "imageURL": "",
+            "isCadFile": "false",
+            "locationGroup": null,
+            "floorIndex": "1"
+          }
+        },
+        {
+          "nameSpace": "Location",
+          "attributes": {
+            "address": "123 Main Street",
+            "addressInheritedFrom": "35347602-c9c6-43a3-8bc8-5089d5bb0b1a",
+            "type": "floor"
+          }
+        },
+        {
+          "nameSpace": "mapGeometry",
+          "attributes": {
+            "offsetX": "0.0",
+            "offsetY": "0.0",
+            "width": "50.0",
+            "length": "60.0",
+            "geometryType": "DUMMYTYPE",
+            "height": "10.0"
+          }
+        }
+      ],
+      "name": "Floor 2",
+      "instanceTenantId": "5be540a20700b3004c25ea95",
+      "id": "53a85034-d803-4228-b062-2e0281a3f728",
+      "siteHierarchy": "8b820681-a903-4b7b-b803-e32c1f5c0c7e/639ceb71-2bef-478c-9f21-a4d66bc4956e/35347602-c9c6-43a3-8bc8-5089d5bb0b1a/53a85034-d803-4228-b062-2e0281a3f728",
+      "siteNameHierarchy": "Global/Maryland/secretlab/Floor 2"
+    }
+  ]
+}

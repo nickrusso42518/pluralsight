@@ -1,0 +1,184 @@
+---
+- name: "Teardown AWS network infrastructure and EC2 instances"
+  hosts: "localhost"
+  vars_files:
+    - "vault.yml"
+  tasks:
+    - name: "Collect information for report and/or teardown"
+      block:
+        - name: "Use default vpc_name and vpc_cidr if either is undefined"
+          ansible.builtin.set_fact:
+            vpc_name: "VPC_Globo"
+            vpc_cidr: "10.0.0.0/16"
+          when: "vpc_name is not defined or vpc_cidr is not defined"
+
+        - name: "Get information from VPC {{ vpc_name }} / {{ vpc_cidr }}"
+          amazon.aws.ec2_vpc_net_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            filters:
+              "tag:Name": "{{ vpc_name }}"
+          register: "vpc"
+
+        - name: "Store VPC ID for quick reference in VPC"
+          ansible.builtin.set_fact:
+            vpc_id: "{{ vpc.vpcs[0].id }}"
+
+        - name: "Get information from ENIs within VPC"
+          amazon.aws.ec2_eni_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            filters:
+              vpc-id: "{{ vpc_id }}"
+          register: "enis"
+
+        - name: "Get information from SGs within VPC"
+          amazon.aws.ec2_group_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            filters:
+              vpc-id: "{{ vpc_id }}"
+          register: "sgs"
+
+        - name: "Get information from IGWs in VPC"
+          community.aws.ec2_vpc_igw_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            filters:
+              attachment.vpc-id: "{{ vpc_id }}"
+          register: "igw"  # not needed for deletion
+
+        - name: "Get information from subnets in VPC"
+          amazon.aws.ec2_vpc_subnet_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            filters:
+              vpc-id: "{{ vpc_id }}"
+          register: "subnets"
+
+        - name: "Get information from route tables in VPC"
+          community.aws.ec2_vpc_route_table_info:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"  # required but not documented
+            filters:
+              vpc-id: "{{ vpc_id }}"
+          register: "rts"
+      # end block
+      tags: ["always"]  # could also say ["report", "teardown"]
+
+    - name: "Generate vpc_report.json to record VPC dependencies"
+      ansible.builtin.copy:
+        content: "{{ root_dict | to_nice_json(indent=2) }}"
+        dest: "{{ playbook_dir }}/vpc_report.json"
+      vars:
+        root_dict:
+          vpc: "{{ vpc }}"
+          enis: "{{ enis }}"
+          sgs: "{{ sgs }}"
+          igw: "{{ igw }}"
+          subnets: "{{ subnets }}"
+          rts: "{{ rts }}"
+      tags: ["report"]
+
+    - name: "Teardown infrastructure"
+      block:
+        - name: "Terminate EC2 instances in VPC {{ vpc_name }} / {{ vpc_id }}"
+          community.aws.ec2_instance:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            filters:
+              vpc-id: "{{ vpc_id }}"
+
+        - name: "Disassociate and release EIPs on all ENIs"
+          community.aws.ec2_eip:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            device_id: "{{ item.id }}"
+            public_ip: "{{ item.association.public_ip }}"
+            in_vpc: true
+            release_on_disassociation: true
+          when: "item.association is defined"
+          loop: "{{ enis.network_interfaces }}"
+          loop_control:
+            label: >-
+              {{ item.name }} /
+              {{ item.association.public_ip | default('no public IP') }}
+
+        - name: "Delete ENIs within VPC"
+          amazon.aws.ec2_eni:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            eni_id: "{{ item.id }}"
+          loop: "{{ enis.network_interfaces }}"
+          loop_control:
+            label: "{{ item.name }} / {{ item.id }}"
+
+        - name: "Delete security groups within VPC (skip the default)"
+          amazon.aws.ec2_group:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            group_id: "{{ item.group_id }}"
+          loop: "{{ sgs.security_groups }}"
+          when: "item.group_name != 'default'"
+          loop_control:
+            label: "{{ item.group_name }} / {{ item.group_id }}"
+
+        - name: "Delete IGWs within VPC"
+          community.aws.ec2_vpc_igw:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            vpc_id: "{{ vpc_id }}"
+
+        - name: "Delete subnets within VPC"
+          amazon.aws.ec2_vpc_subnet:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            vpc_id: "{{ vpc_id }}"
+            cidr: "{{ item.cidr_block }}"
+          loop: "{{ subnets.subnets }}"
+          loop_control:
+            label: "{{ item.cidr_block }} / {{ item.id }}"
+
+        - name: "Delete route tables in VPC (skip the default)"
+          community.aws.ec2_vpc_route_table:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            vpc_id: "{{ vpc_id }}"
+            lookup: "id"
+            route_table_id: "{{ item.id }}"
+          loop: "{{ rts.route_tables }}"
+          when: "'Name' in item.tags"  # default table has no tags
+          loop_control:
+            label: "{{ item.id }}"
+
+        - name: "Delete VPC {{ vpc_name }} / {{ vpc_cidr }} / {{ vpc_id }}"
+          amazon.aws.ec2_vpc_net:
+            aws_access_key: "{{ aws_access_key }}"
+            aws_secret_key: "{{ aws_secret_key }}"
+            region: "us-east-1"
+            state: "absent"
+            name: "{{ vpc_name }}"
+            cidr_block: "{{ vpc_cidr }}"
+      # end block
+      tags: ["teardown"]
+...

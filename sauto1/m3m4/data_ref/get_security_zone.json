@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "version": "f2pirv6ffutzh",
+      "name": "inside_zone",
+      "description": null,
+      "interfaces": [
+        {
+          "version": "kcu6glvdsa23r",
+          "name": "inside",
+          "hardwareName": "GigabitEthernet0/1",
+          "id": "df144a30-9b4c-11ea-95ce-9f72102f3cf1",
+          "type": "physicalinterface"
+        }
+      ],
+      "mode": "ROUTED",
+      "id": "90c377e0-b3e5-11e5-8db8-651556da7898",
+      "type": "securityzone",
+      "links": {
+        "self": "https://10.10.20.65/api/fdm/latest/object/securityzones/90c377e0-b3e5-11e5-8db8-651556da7898"
+      }
+    }
+  ],
+  "paging": {
+    "prev": [],
+    "next": [],
+    "limit": 10,
+    "offset": 0,
+    "count": 1,
+    "pages": 0
+  }
+}

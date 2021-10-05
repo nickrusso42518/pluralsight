@@ -1,0 +1,32 @@
+# Contains configuration to be added to NSO after netsim network is built.
+# This "registers" devices to NSO, effectively creating a homemade sandbox
+# using virtual devices.
+
+config
+devices authgroups group default default-map remote-name admin remote-password admin remote-secondary-password enable
+devices device router1
+address 127.0.0.1 port 10022
+device-type cli ned-id cisco-ios protocol ssh
+state admin-state unlocked
+authgroup default
+commit
+ssh fetch-host-keys
+sync-from
+
+devices device router2
+address 127.0.0.1 port 10023
+device-type cli ned-id cisco-ios protocol ssh
+state admin-state unlocked
+authgroup default
+commit
+ssh fetch-host-keys
+sync-from
+
+devices device router3
+address 127.0.0.1 port 10024
+device-type cli ned-id cisco-ios protocol ssh
+state admin-state unlocked
+authgroup default
+commit
+ssh fetch-host-keys
+sync-from

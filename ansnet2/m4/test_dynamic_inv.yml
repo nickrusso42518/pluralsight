@@ -1,0 +1,16 @@
+---
+- name: "Test dynamic inventory using NetBox plugin"
+  hosts: "device_roles_switch"
+  connection: "ansible.builtin.local"
+  vars:
+    ansible_python_interpreter: "/usr/bin/env python"
+  tasks:
+    # https://blog.networktocode.com/post/Ansible-Dynamic-Inventory-using-Plugins/
+    - name: "Reveal discovered host and network_os values"
+      ansible.builtin.debug:
+        msg: "{{ ansible_host }} / {{ ansible_network_os }}"
+
+    - name: "Attempt to ping ansible_host from control machine"
+      ansible.builtin.command: "ping -c 2 -w 5 {{ ansible_host }}"
+      changed_when: false
+...

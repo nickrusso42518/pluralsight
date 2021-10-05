@@ -1,0 +1,32 @@
+{
+  "body": {
+    "name": "bad_temp",
+    "composite": false,
+    "deviceTypes": [
+      {
+        "productFamily": "Switches and Hubs",
+        "productSeries": "Cisco Catalyst 9300 Series Switches"
+      }
+    ],
+    "softwareType": "IOS-XE",
+    "templateContent": "ip ftp source-interface $ftp_src\nip ssh version $ssh_ver",
+    "templateParams": [
+      {
+        "parameterName": "hostname",
+        "dataType": "STRING",
+        "required": true,
+        "order": 1
+      },
+      {
+        "parameterName": "ssh_ver",
+        "dataType": "INTEGER",
+        "required": true,
+        "order": 2
+      }
+    ]
+  },
+  "params": {
+    "ftp_src": "Loopback0",
+    "ssh_ver": "this should be an integer"
+  }
+}

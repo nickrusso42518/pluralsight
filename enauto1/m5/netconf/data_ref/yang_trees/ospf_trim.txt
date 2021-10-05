@@ -1,0 +1,27 @@
+module: Cisco-IOS-XE-ospf
+  augment /ios:native/ios:router:
+    +--rw router-ospf
+       +--rw ospf
+          +--rw process-id* [id]
+             +--rw id                    uint16
+             +--rw ttl-security
+                +--rw all-interfaces!
+                   +--rw hops?   uint8
+             +--rw passive-interface
+                +--rw (passive-interface-choice)?
+                   +--:(default)
+                   |  +--rw default?     boolean
+                   +--:(interface)
+                      +--rw interface*   string
+
+  augment /ios:native/ios:interface/ios:Tunnel/ios:ip:
+    +--rw router-ospf
+       +--rw ospf
+          +--rw process-id* [id]
+             +--rw id      uint16
+             +--rw area* [area-id]
+                +--rw area-id        ios-types:ospf-area-type
+                +--rw secondaries?   enumeration
+          +--rw authentication
+             +--rw key-chain
+                +--rw key-chain?        string

@@ -1,0 +1,588 @@
+{
+  "version": "2.0",
+  "secret": "cisco123",
+  "type": "DevicesSeen",
+  "data": {
+    "apMac": "34:56:fe:50:08:78",
+    "apFloors": [],
+    "apTags": [],
+    "observations": [
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:58Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "00:02:d1:39:1c:ac",
+        "seenEpoch": 1584567358,
+        "rssi": 15,
+        "ipv6": null,
+        "manufacturer": "Vivotek"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:56Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "3c:9b:d6:7a:fb:ae",
+        "seenEpoch": 1584567356,
+        "rssi": 4,
+        "ipv6": null,
+        "manufacturer": "Vizio"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:36Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "64:51:06:1b:b3:6d",
+        "seenEpoch": 1584567336,
+        "rssi": 3,
+        "ipv6": null,
+        "manufacturer": "Hewlett-Packard"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:33Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "60:38:e0:42:c4:35",
+        "seenEpoch": 1584567333,
+        "rssi": 3,
+        "ipv6": null,
+        "manufacturer": "Belkin"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:43Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "b8:e8:56:37:ad:72",
+        "seenEpoch": 1584567343,
+        "rssi": 8,
+        "ipv6": null,
+        "manufacturer": "Apple"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:16Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "60:38:e0:42:c4:34",
+        "seenEpoch": 1584567316,
+        "rssi": 4,
+        "ipv6": null,
+        "manufacturer": "Belkin"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:34:51Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "f4:f5:d8:72:43:50",
+        "seenEpoch": 1584567291,
+        "rssi": 3,
+        "ipv6": null,
+        "manufacturer": "Google"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:34:47Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "38:8b:59:38:ee:b3",
+        "seenEpoch": 1584567287,
+        "rssi": 2,
+        "ipv6": null,
+        "manufacturer": "Google"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:31Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "f4:f5:d8:b3:8a:0a",
+        "seenEpoch": 1584567331,
+        "rssi": 5,
+        "ipv6": null,
+        "manufacturer": "Google"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:11Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "04:b4:29:16:df:7d",
+        "seenEpoch": 1584567311,
+        "rssi": 2,
+        "ipv6": null,
+        "manufacturer": "Samsung"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:34:52Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "e4:e0:a6:00:1c:34",
+        "seenEpoch": 1584567292,
+        "rssi": 15,
+        "ipv6": null,
+        "manufacturer": "Apple"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:57Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "f4:5e:ab:13:7a:ab",
+        "seenEpoch": 1584567357,
+        "rssi": 3,
+        "ipv6": null,
+        "manufacturer": "Texas Instruments"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:54Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "00:0d:4b:f0:74:c5",
+        "seenEpoch": 1584567354,
+        "rssi": 3,
+        "ipv6": null,
+        "manufacturer": "Roku"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:28Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "1c:f2:9a:70:00:50",
+        "seenEpoch": 1584567328,
+        "rssi": 9,
+        "ipv6": null,
+        "manufacturer": "Google"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:55Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "c4:6e:1f:12:82:fc",
+        "seenEpoch": 1584567355,
+        "rssi": 11,
+        "ipv6": null,
+        "manufacturer": "TP-LINK Technologies"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:53Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "f4:f5:d8:d9:24:5c",
+        "seenEpoch": 1584567353,
+        "rssi": 4,
+        "ipv6": null,
+        "manufacturer": "Google"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:18Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "a0:c9:a0:63:ee:2b",
+        "seenEpoch": 1584567318,
+        "rssi": 3,
+        "ipv6": null,
+        "manufacturer": "Murata Manufacturing"
+      },
+      {
+        "ipv4": "/10.33.187.174",
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 13.371238138547138,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:45Z",
+        "ssid": "Globo Wireless WiFi",
+        "os": "iOS",
+        "clientMac": "00:56:cd:ee:f1:71",
+        "seenEpoch": 1584567345,
+        "rssi": 28,
+        "ipv6": null,
+        "manufacturer": "Apple"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:58Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "98:6d:35:0e:e4:f5",
+        "seenEpoch": 1584567358,
+        "rssi": 12,
+        "ipv6": null,
+        "manufacturer": "IEEE Registration..."
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:37Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "d8:6c:63:7c:ae:8b",
+        "seenEpoch": 1584567337,
+        "rssi": 16,
+        "ipv6": null,
+        "manufacturer": "Google"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:04Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "f0:ef:86:50:5b:02",
+        "seenEpoch": 1584567304,
+        "rssi": 9,
+        "ipv6": null,
+        "manufacturer": "Google"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:23Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "a8:6d:aa:ce:c2:7d",
+        "seenEpoch": 1584567323,
+        "rssi": 4,
+        "ipv6": null,
+        "manufacturer": "Intel"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:53Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "9c:4f:cf:b4:cc:80",
+        "seenEpoch": 1584567353,
+        "rssi": 3,
+        "ipv6": null,
+        "manufacturer": "TCT mobile"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:43Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "fc:f1:36:bd:6f:8c",
+        "seenEpoch": 1584567343,
+        "rssi": 11,
+        "ipv6": null,
+        "manufacturer": "Samsung"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:34:59Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "44:07:0b:92:7c:6c",
+        "seenEpoch": 1584567299,
+        "rssi": 2,
+        "ipv6": null,
+        "manufacturer": "Google"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:07Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "1c:f2:9a:57:83:d4",
+        "seenEpoch": 1584567307,
+        "rssi": 2,
+        "ipv6": null,
+        "manufacturer": "Google"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:50Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "74:75:48:9e:d0:ee",
+        "seenEpoch": 1584567350,
+        "rssi": 9,
+        "ipv6": null,
+        "manufacturer": "Amazon Technologies"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:34:41Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "bc:a5:8b:0d:89:90",
+        "seenEpoch": 1584567281,
+        "rssi": 10,
+        "ipv6": null,
+        "manufacturer": "Samsung"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:38Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "70:bc:10:69:ef:53",
+        "seenEpoch": 1584567338,
+        "rssi": 2,
+        "ipv6": null,
+        "manufacturer": "Microsoft"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:37Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "84:20:96:93:64:d0",
+        "seenEpoch": 1584567337,
+        "rssi": 4,
+        "ipv6": null,
+        "manufacturer": "SHENZHEN RF-LINK..."
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:51Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "ec:aa:25:37:ef:5f",
+        "seenEpoch": 1584567351,
+        "rssi": 8,
+        "ipv6": null,
+        "manufacturer": "Samsung"
+      },
+      {
+        "ipv4": null,
+        "location": {
+          "lat": 37.4180951010362,
+          "lng": -122.098531723022,
+          "unc": 49.0,
+          "x": [],
+          "y": []
+        },
+        "seenTime": "2020-03-18T21:35:44Z",
+        "ssid": null,
+        "os": null,
+        "clientMac": "54:88:0e:37:e6:ea",
+        "seenEpoch": 1584567344,
+        "rssi": 2,
+        "ipv6": null,
+        "manufacturer": "Samsung(THAILAND)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "error": {
+    "severity": "ERROR",
+    "key": "Validation",
+    "messages": [
+      {
+        "description": "Cannot delete object because it is being used by \"SSHAccessList, HTTPAccessList\". You must remove the object from all parts of the configuration before you can delete it.",
+        "code": "deleteObjWithRel",
+        "location": ""
+      },
+      {
+        "description": "You cannot modify or delete system defined objects.",
+        "code": "systemDefinedObject",
+        "location": ""
+      }
+    ]
+  }
+}

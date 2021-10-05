@@ -1,0 +1,15 @@
+{% for vrf in needed_vrf_changes %}
+vrf definition {{ vrf.name }}
+{%  for rt in vrf.add_rte %}
+ route-target export {{ rt }}
+{%  endfor %}
+{%  for rt in vrf.add_rti %}
+ route-target import {{ rt }}
+{%  endfor %}
+{%  for rt in vrf.del_rte %}
+ no route-target export {{ rt }}
+{%  endfor %}
+{%  for rt in vrf.del_rti %}
+ no route-target import {{ rt }}
+{%  endfor %}
+{% endfor %}

@@ -1,0 +1,6 @@
+debug 9
+set sftp:auto-confirm yes
+open sftp://ftpuser:ftppass@10.2.5.5
+cd ftp
+ls
+get R1.cfg

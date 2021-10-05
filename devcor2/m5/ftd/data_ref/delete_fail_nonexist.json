@@ -1,0 +1,13 @@
+{
+  "error": {
+    "severity": "ERROR",
+    "key": "Validation",
+    "messages": [
+      {
+        "description": "Validation failed due to an invalid UUID: \"2d210fc1-f0e1-11e9-92e6-232b4247fc14\"",
+        "code": "invalidUuid",
+        "location": ""
+      }
+    ]
+  }
+}

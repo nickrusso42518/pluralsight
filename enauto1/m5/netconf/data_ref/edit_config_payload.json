@@ -1,0 +1,53 @@
+{
+  "config": {
+    "native": {
+      "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-native",
+      "key": {
+        "chain": {
+          "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-crypto",
+          "name": "KC_OSPF_AUTH",
+          "key": {
+            "id": 1,
+            "key-string": {
+              "key": "SECRET123"
+            },
+            "cryptographic-algorithm": "hmac-sha-256"
+          }
+        }
+      },
+      "interface": {
+        "Tunnel": {
+          "name": "100",
+          "ip": {
+            "ospf": {
+              "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ospf",
+              "authentication": {
+                "key-chain": {
+                  "name": "KC_OSPF_AUTH"
+                }
+              }
+            }
+          }
+        }
+      },
+      "router": {
+        "ospf": {
+          "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XE-ospf",
+          "id": "1",
+          "auto-cost": {
+            "reference-bandwidth": 1000
+          },
+          "passive-interface": {
+            "interface": [
+              "Loopback0"
+            ]
+          },
+          "ttl-security": {
+            "all-interfaces": null,
+            "hops": 1
+          }
+        }
+      }
+    }
+  }
+}

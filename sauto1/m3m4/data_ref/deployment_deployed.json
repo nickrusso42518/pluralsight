@@ -1,0 +1,569 @@
+{
+  "id": "5e2b4bdb-9dad-11ea-9df4-f364ca7c63d0",
+  "statusMessage": "Deployed successfully",
+  "statusMessages": [
+    "Deployed successfully"
+  ],
+  "modifiedObjects": {
+    "AccessPolicy": [
+      "NGFW-Access-Policy"
+    ],
+    "AccessRule": [
+      "OUT_TO_IN_VPN",
+      "IN_TO_OUT_BLACKLIST",
+      "OUT_TO_IN_VPN",
+      "IN_TO_OUT_BLACKLIST"
+    ],
+    "NetworkObject": [
+      "NET_TEST_3",
+      "NET_TEST_1",
+      "NET_VPN_WEST",
+      "NET_TEST_2",
+      "NET_TEST_3",
+      "NET_VPN_EAST",
+      "NET_VPN_EAST",
+      "NET_TEST_2",
+      "NET_VPN_WEST",
+      "NET_TEST_1"
+    ],
+    "NetworkObjectGroup": [
+      "NETG_VPN_CONCENTRATORS",
+      "NETG_BLACKLIST",
+      "NETG_BLACKLIST",
+      "NETG_VPN_CONCENTRATORS"
+    ],
+    "PortObjectGroup": [
+      "PORTG_IPSEC",
+      "PORTG_IPSEC"
+    ],
+    "ProtocolObject": [
+      "PROTO_ESP",
+      "PROTO_ESP"
+    ],
+    "UDPPortObject": [
+      "UDP_IKE",
+      "UDP_IPSEC_NATT",
+      "UDP_IPSEC_NATT",
+      "UDP_IKE"
+    ]
+  },
+  "cliErrorMessage": null,
+  "queuedTime": 1590317852302,
+  "startTime": 1590317853194,
+  "endTime": 1590317888500,
+  "state": "DEPLOYED",
+  "name": "User (admin) Triggered Deployment",
+  "deploymentStatusMessages": [
+    {
+      "taskName": "PendingChangesTask",
+      "timestamp": 1590317852705,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "PendingChangesTask",
+      "timestamp": 1590317853174,
+      "message": "Task complete in 469ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ChangeStateToDeployingTask",
+      "timestamp": 1590317853184,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ChangeStateToDeployingTask",
+      "timestamp": 1590317853224,
+      "message": "Task complete in 40ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "InspectDeploymentEntriesTask",
+      "timestamp": 1590317853230,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "InspectDeploymentEntriesTask",
+      "timestamp": 1590317853913,
+      "message": "Task complete in 683ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "CalculateDeltaTask",
+      "timestamp": 1590317853931,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "CalculateDeltaTask",
+      "timestamp": 1590317854139,
+      "message": "Task complete in 208ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "PopulateStatusTask",
+      "timestamp": 1590317854158,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "PopulateStatusTask",
+      "timestamp": 1590317854177,
+      "message": "Task complete in 19ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "StageDirectoryTask",
+      "timestamp": 1590317854188,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "StageDirectoryTask",
+      "timestamp": 1590317854194,
+      "message": "Task complete in 6ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "HAExportTask",
+      "timestamp": 1590317854200,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "LinaOnlyExportTask",
+      "timestamp": 1590317854204,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "HAExportTask",
+      "timestamp": 1590317854206,
+      "message": "Task complete in 6ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "LinaOnlyExportTask",
+      "timestamp": 1590317854218,
+      "message": "Task complete in 14ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "SnortExportTask",
+      "timestamp": 1590317854224,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "LinaExportTask",
+      "timestamp": 1590317854227,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "LinaExportTask",
+      "timestamp": 1590317854270,
+      "message": "Task complete in 43ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "SnortExportTask",
+      "timestamp": 1590317863410,
+      "message": "Task complete in 9186ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "PushLinaToDbTask",
+      "timestamp": 1590317863422,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "PushLinaToDbTask",
+      "timestamp": 1590317863432,
+      "message": "Task complete in 10ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "HADeltaExportTask",
+      "timestamp": 1590317863439,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "HADeltaExportTask",
+      "timestamp": 1590317863445,
+      "message": "Task complete in 6ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "RequiredPackagesExportTask",
+      "timestamp": 1590317863451,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "RequiredPackagesExportTask",
+      "timestamp": 1590317863488,
+      "message": "Task complete in 37ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ExportSSPConfigDeployTask",
+      "timestamp": 1590317863497,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ExportSSPConfigDeployTask",
+      "timestamp": 1590317863503,
+      "message": "Task complete in 6ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ExportMultiDeviceDeployTask",
+      "timestamp": 1590317863509,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ExportMultiDeviceDeployTask",
+      "timestamp": 1590317863519,
+      "message": "Task complete in 10ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ExportApplyerVersionInfoDeployTask",
+      "timestamp": 1590317863526,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ExportApplyerVersionInfoDeployTask",
+      "timestamp": 1590317863598,
+      "message": "Task complete in 72ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "LicenseEnforcementTask",
+      "timestamp": 1590317863604,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "LicenseEnforcementTask",
+      "timestamp": 1590317863638,
+      "message": "Task complete in 34ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "CreateDeploymentArchiveTask",
+      "timestamp": 1590317863652,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "CreateDeploymentArchiveTask",
+      "timestamp": 1590317864177,
+      "message": "Task complete in 525ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ConfigDispatcherDeploymentTask",
+      "timestamp": 1590317864185,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ConfigDispatcherDeploymentTask",
+      "timestamp": 1590317864543,
+      "message": "CD currently executing  PREPARE ",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "IN_PROGRESS",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ConfigDispatcherDeploymentTask",
+      "timestamp": 1590317877729,
+      "message": "CD currently executing  SIGNAL ",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "IN_PROGRESS",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ConfigDispatcherDeploymentTask",
+      "timestamp": 1590317882764,
+      "message": "CD currently executing LINA_APPLY",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "IN_PROGRESS",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ConfigDispatcherDeploymentTask",
+      "timestamp": 1590317883274,
+      "message": "CD currently executing  FINALIZE ",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "IN_PROGRESS",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "",
+      "timestamp": 1590317888491,
+      "message": "Deployed successfully",
+      "properties": {},
+      "taskState": null,
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ConfigDispatcherDeploymentTask",
+      "timestamp": 1590317888507,
+      "message": "Task complete in 24322ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "FixPermissionsTask",
+      "timestamp": 1590317888514,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "FixPermissionsTask",
+      "timestamp": 1590317888520,
+      "message": "Task complete in 6ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "UpdateCurrentPolicyBundleForLinaOnlyDeployTask",
+      "timestamp": 1590317888528,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "UpdateCurrentPolicyBundleForLinaOnlyDeployTask",
+      "timestamp": 1590317888534,
+      "message": "Task complete in 6ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ChangeStateToDeployedTask",
+      "timestamp": 1590317888541,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "ChangeStateToDeployedTask",
+      "timestamp": 1590317888592,
+      "message": "Task complete in 51ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "RefreshRealmTask",
+      "timestamp": 1590317888608,
+      "message": "Task begin",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "STARTED",
+      "type": "deploymentstatusmessage"
+    },
+    {
+      "taskName": "RefreshRealmTask",
+      "timestamp": 1590317888616,
+      "message": "Task complete in 8ms",
+      "properties": {
+        "hideFromUi": true
+      },
+      "taskState": "FINISHED",
+      "type": "deploymentstatusmessage"
+    }
+  ],
+  "links": {
+    "self": "https://10.10.20.65/api/fdm/latest/operational/deploy/5e2b4bdb-9dad-11ea-9df4-f364ca7c63d0"
+  }
+}

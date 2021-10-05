@@ -1,0 +1,118 @@
+{
+  "facts": {
+    "ansible_facts": {
+      "ansible_net_all_ipv4_addresses": [
+        "172.16.100.1",
+        "10.0.0.1",
+        "203.0.113.1",
+        "192.168.2.191",
+        "10.0.19.1"
+      ],
+      "ansible_net_all_ipv6_addresses": [],
+      "ansible_net_api": "cliconf",
+      "ansible_net_gather_subset": [
+        "default",
+        "interfaces"
+      ],
+      "ansible_net_hostname": "HUB",
+      "ansible_net_image": "bootflash:packages.conf",
+      "ansible_net_interfaces": {
+        "GigabitEthernet1": {
+          "bandwidth": 1000000,
+          "description": "TO SITE LAN",
+          "duplex": "Full",
+          "ipv4": [
+            {
+              "address": "203.0.113.1",
+              "subnet": "24"
+            }
+          ],
+          "lineprotocol": "up",
+          "macaddress": "000c.29e8.0871",
+          "mediatype": "Virtual",
+          "mtu": 1500,
+          "operstatus": "up",
+          "type": "CSR vNIC"
+        },
+        "GigabitEthernet2": {
+          "bandwidth": 1000000,
+          "description": "TO MGMT NETWORK",
+          "duplex": "Full",
+          "ipv4": [
+            {
+              "address": "192.168.2.191",
+              "subnet": "24"
+            }
+          ],
+          "lineprotocol": "up",
+          "macaddress": "000c.29e8.087b",
+          "mediatype": "Virtual",
+          "mtu": 1500,
+          "operstatus": "up",
+          "type": "CSR vNIC"
+        },
+        "GigabitEthernet3": {
+          "bandwidth": 1000000,
+          "description": "TO DEVBOX",
+          "duplex": "Full",
+          "ipv4": [
+            {
+              "address": "10.0.19.1",
+              "subnet": "24"
+            }
+          ],
+          "lineprotocol": "up",
+          "macaddress": "000c.29e8.0885",
+          "mediatype": "Virtual",
+          "mtu": 1500,
+          "operstatus": "up",
+          "type": "CSR vNIC"
+        },
+        "Loopback0": {
+          "bandwidth": 8000000,
+          "description": null,
+          "duplex": null,
+          "ipv4": [
+            {
+              "address": "10.0.0.1",
+              "subnet": "32"
+            }
+          ],
+          "lineprotocol": "up",
+          "macaddress": null,
+          "mediatype": null,
+          "mtu": 1514,
+          "operstatus": "up",
+          "type": null
+        },
+        "Tunnel100": {
+          "bandwidth": 100,
+          "description": "DMVPN HUB TUNNEL",
+          "duplex": null,
+          "ipv4": [
+            {
+              "address": "172.16.100.1",
+              "subnet": "24"
+            }
+          ],
+          "lineprotocol": "up",
+          "macaddress": null,
+          "mediatype": null,
+          "mtu": 9976,
+          "operstatus": "up",
+          "type": null
+        }
+      },
+      "ansible_net_iostype": "IOS-XE",
+      "ansible_net_model": "CSR1000V",
+      "ansible_net_neighbors": {},
+      "ansible_net_python_version": "2.7.5",
+      "ansible_net_serialnum": "9I3LFKG88AQ",
+      "ansible_net_system": "ios",
+      "ansible_net_version": "16.09.04",
+      "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "failed": false
+  }
+}

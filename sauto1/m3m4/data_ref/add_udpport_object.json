@@ -1,0 +1,12 @@
+{
+  "version": "dobr43lnfnpiu",
+  "name": "UDP_IKE",
+  "description": "Internet Key Exchange for IPsec VPNs",
+  "isSystemDefined": false,
+  "port": "500",
+  "id": "5c5f655b-9dad-11ea-9df4-ebf635e15042",
+  "type": "udpportobject",
+  "links": {
+    "self": "https://10.10.20.65/api/fdm/latest/object/udpports/5c5f655b-9dad-11ea-9df4-ebf635e15042"
+  }
+}

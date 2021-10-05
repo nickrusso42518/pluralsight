@@ -1,0 +1,17 @@
+---
+- name: "PLAY 1: Locally render templates to visually check policy"
+  hosts: "perimeter_asav"
+  tasks:
+    - name: "TASK 1: Ensure outputs/ directory exists"
+      file:
+        path: "outputs"
+        state: "directory"
+      run_once: true
+      delegate_to: "localhost"
+
+    - name: "TASK 2: Save data to host-specific file"
+      template:
+        src: "templates/policy.j2"
+        dest: "{{ playbook_dir }}/outputs/{{ inventory_hostname }}_policy.txt"
+      delegate_to: "localhost"
+...

@@ -1,0 +1,24 @@
+netconf-yang
+restconf
+ip tcp mss 1400
+ip ssh logging events
+mpls ldp router-id Loopback0
+interface Loopback0
+ ip address 192.168.0.3 255.255.255.255
+ ip ospf 1 area 0
+interface Tunnel13
+ description R1 TO R3
+ ip address 192.168.13.3 255.255.255.0
+ ip ospf 1 area 0
+ mpls ip
+ tunnel source GigabitEthernet1
+ tunnel destination 10.125.0.61
+interface Tunnel23
+ description R2 TO R3
+ ip address 192.168.23.3 255.255.255.0
+ ip ospf 1 area 0
+ mpls ip
+ tunnel source GigabitEthernet1
+ tunnel destination 10.125.0.62
+router ospf 1
+ router-id 192.168.0.3

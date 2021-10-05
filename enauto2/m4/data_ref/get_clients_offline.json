@@ -1,0 +1,25 @@
+[
+  {
+    "id": "k21bbae",
+    "mac": "00:56:cd:ee:f1:71",
+    "description": null,
+    "ip": "10.33.187.174",
+    "ip6": null,
+    "user": null,
+    "firstSeen": "2020-02-04T22:23:23Z",
+    "lastSeen": "2020-02-04T22:24:46Z",
+    "manufacturer": "Apple",
+    "os": null,
+    "recentDeviceSerial": "Q2XD-R6QM-XUMP",
+    "recentDeviceName": "First Floor AP",
+    "recentDeviceMac": "34:56:fe:50:08:78",
+    "ssid": "Meraki basic portal",
+    "vlan": 0,
+    "switchport": null,
+    "usage": {
+      "sent": 48,
+      "recv": 233
+    },
+    "status": "Offline"
+  }
+]

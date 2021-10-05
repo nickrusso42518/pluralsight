@@ -1,0 +1,31 @@
+module: openconfig-if-ethernet
+  augment /oc-if:interfaces/oc-if:interface:
+    +--rw ethernet
+       +--rw config
+       |  +--rw mac-address?           oc-yang:mac-address
+       |  +--rw auto-negotiate?        boolean
+       |  +--rw duplex-mode?           enumeration
+       |  +--rw port-speed?            identityref
+       |  +--rw enable-flow-control?   boolean
+       +--ro state
+          +--ro mac-address?              oc-yang:mac-address
+          +--ro auto-negotiate?           boolean
+          +--ro duplex-mode?              enumeration
+          +--ro port-speed?               identityref
+          +--ro enable-flow-control?      boolean
+          +--ro hw-mac-address?           oc-yang:mac-address
+          +--ro negotiated-duplex-mode?   enumeration
+          +--ro negotiated-port-speed?    identityref
+          +--ro counters
+             +--ro in-mac-control-frames?    oc-yang:counter64
+             +--ro in-mac-pause-frames?      oc-yang:counter64
+             +--ro in-oversize-frames?       oc-yang:counter64
+             +--ro in-undersize-frames?      oc-yang:counter64
+             +--ro in-jabber-frames?         oc-yang:counter64
+             +--ro in-fragment-frames?       oc-yang:counter64
+             +--ro in-8021q-frames?          oc-yang:counter64
+             +--ro in-crc-errors?            oc-yang:counter64
+             +--ro in-block-errors?          oc-yang:counter64
+             +--ro out-mac-control-frames?   oc-yang:counter64
+             +--ro out-mac-pause-frames?     oc-yang:counter64
+             +--ro out-8021q-frames?         oc-yang:counter64

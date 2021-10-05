@@ -1,0 +1,68 @@
+{
+  "_facts_gathered": true,
+  "net_all_ipv4_addresses": [
+    "10.125.0.61"
+  ],
+  "net_all_ipv6_addresses": [],
+  "net_api": "cliconf",
+  "net_config": "!\n! Last configuration change at 10:10:28 UTC Wed Apr 29 2020 by ansible\n!\nversion 17.1\nservice timestamps debug datetime msec\nservice timestamps log datetime msec\nservice password-encryption\n! Call-home is enabled by Smart-Licensing.\nservice call-home\nplatform qfp utilization monitor load 80\nplatform punt-keepalive disable-kernel-core\nplatform console virtual\n!\nhostname R1\n!\nboot-start-marker\nboot-end-marker\n!\n!\nvrf definition CHEMICAL\n description CHEMICAL ENGINEERING FIRM\n rd 65000:2\n route-target export 65000:2\n route-target import 65000:2\n !\n address-family ipv4\n exit-address-family\n !\n address-family ipv6\n exit-address-family\n!\nvrf definition CHEM_MGMT\n description CHEMICAL ENGINEERING MANAGER\n rd 65000:3\n route-target export 65000:3\n route-target import 65000:4\n !\n address-family ipv4\n exit-address-family\n !\n address-family ipv6\n exit-address-family\n!\nvrf definition POLICE\n description POLICE DEPARTMENT\n rd 65000:1\n route-target export 65000:1\n route-target import 65000:1\n !\n address-family ipv4\n exit-address-family\n !\n address-family ipv6\n exit-address-family\n!\nlogging persistent size 1000000 filesize 8192 immediate\nenable password 7 1513051F0D282721\n!\nno aaa new-model\ncall-home\n ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com\n ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.\n contact-email-addr sch-smart-licensing@cisco.com\n profile \"CiscoTAC-1\"\n  active\n  destination transport-method http\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\nlogin on-success log\n!\n!\n!\n!\n!\n!\n!\nsubscriber templating\n! \n! \n! \n! \n!\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ncrypto pki trustpoint TP-self-signed-3365296766\n enrollment selfsigned\n subject-name cn=IOS-Self-Signed-Certificate-3365296766\n revocation-check none\n rsakeypair TP-self-signed-3365296766\n!\ncrypto pki trustpoint SLA-TrustPoint\n enrollment pkcs12\n revocation-check crl\n!\n!\ncrypto pki certificate chain TP-self-signed-3365296766\n certificate self-signed 01\n  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 \n  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 \n  69666963 6174652D 33333635 32393637 3636301E 170D3230 30343239 30393438 \n  35315A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649 \n  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 33363532 \n  39363736 36308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 \n  0A028201 01008CE3 CE47448C BE0E4AD6 855AE0E6 FC43DFE1 63D89463 D0A1106C \n  4A9F9F35 34B36FD6 E32FE8EC B77019C1 8BF933A6 1E7C823B A12A9BCD 4AD34FA6 \n  608DB506 494311EB 7E09D18A 78A30C4C 54F6B162 07135735 44BAA9D6 41784CB4 \n  9004657E 793BB415 33EB45EE 570EEC74 EA9D51FA A522C6E3 92F662F2 B582F2BD \n  0CA08161 436D2018 804E9528 9903323A 2D9F0D0D F5DB1C09 7AAA4712 111EFC02 \n  48B244E0 341D2657 ED8DC455 34FCA905 F6FC6FF2 867C654B 417B4A86 54877EDF \n  3A165808 656B3052 8D523DE6 5B78EC29 73FCB96E 699CCC29 16480364 5FA4CEB0 \n  145D1D91 7BE0382E 88761C38 59AF05DB B50FE487 52B55491 0473BFA1 E58814C1 \n  10674769 04F30203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF \n  301F0603 551D2304 18301680 146583FE F8B3CE73 733641C9 E2EA9343 FB09F12B \n  57301D06 03551D0E 04160414 6583FEF8 B3CE7373 3641C9E2 EA9343FB 09F12B57 \n  300D0609 2A864886 F70D0101 05050003 82010100 5B19C94E 1E00F5E1 055B6206 \n  EB3F1397 CC3DB2CC 064678A7 8AB6027A CE44CE3B E9667B28 58B10A06 ACDC9758 \n  86050444 DF0B55E4 0CF14CA4 B8D99141 1F912615 8650221E B6ADC8C9 E545BC38 \n  A6EDACB7 AF5D4F14 912D6E47 E5D466C7 B8790E48 D5B0709D 562DF0DF B9098AC0 \n  36678019 EB05E65E D3132CDA E3881710 BD8BE4BC B2FE81A4 B80D7A19 04BB35D4 \n  FD1259E3 D1AABC00 71FECD76 1CF52927 E3A1F45F 6B5F0D09 2169C7F6 7908EC62 \n  56CF42AE 5A1F3B40 869786F7 9DA7C60D 784804B5 AD99495B 160D7272 13768BB6 \n  7E1E0074 56C587E5 DD19880C 8BF6CF73 78D4CC24 75F52ADF 7F93450D 76EDEB18 \n  4D01C005 BA8EDC35 EA846D0E 402D7528 1B1F5BF8\n  \tquit\ncrypto pki certificate chain SLA-TrustPoint\n certificate ca 01\n  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 \n  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 \n  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 \n  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 \n  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 \n  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 \n  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D \n  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 \n  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE \n  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC \n  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 \n  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 \n  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 \n  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 \n  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 \n  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 \n  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 \n  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 \n  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B \n  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 \n  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C \n  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B \n  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 \n  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB \n  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 \n  D697DF7F 28\n  \tquit\n!\nlicense udi pid CSR1000V sn 9I0KLXDB4OE\ndiagnostic bootup level minimal\nmemory free low-watermark processor 72107\n!\n!\nspanning-tree extend system-id\n!\nusername ec2-user privilege 15\nusername ansible privilege 15 password 7 13041901020E082F\n!\nredundancy\n!\n!\n!\n!\n!\n!\n! \n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n! \n! \n!\n!\ninterface VirtualPortGroup0\n no ip address\n ip nat inside\n no mop enabled\n no mop sysid\n!\ninterface GigabitEthernet1\n ip address dhcp\n ip nat outside\n negotiation auto\n no mop enabled\n no mop sysid\n!\niox\nip forward-protocol nd\nip tcp window-size 8192\nip http server\nip http authentication local\nip http secure-server\n!\nip route 0.0.0.0 0.0.0.0 GigabitEthernet1 10.125.0.1\nip ssh rsa keypair-name ssh-key\nip ssh version 2\nip ssh pubkey-chain\n  username ec2-user\n   key-hash ssh-rsa 74E90E0BC4B94DFC57DCB78C49A5AECC ec2-user\nip scp server enable\n!\nip access-list standard GS_NAT_ACL\n 10 permit 192.168.35.0 0.0.0.255\n!\n!\n!\n!\n!\n!\n!\ncontrol-plane\n!\n!\n!\n!\n!\n!\nline con 0\n stopbits 1\nline vty 0 4\n exec-timeout 0 0\n login local\n transport input ssh\nline vty 5 20\n login local\n transport input ssh\n!\n!\n!\n!\n!\n!\napp-hosting appid guestshell\n app-vnic gateway1 virtualportgroup 0 guest-interface 0\n  guest-ipaddress 192.168.35.102 netmask 255.255.255.0\n app-default-gateway 192.168.35.101 guest-interface 0\n name-server0 8.8.8.8\nnetconf-yang\nend",
+  "net_filesystems": [
+    "bootflash:"
+  ],
+  "net_filesystems_info": {
+    "bootflash:": {
+      "spacefree_kb": 5343744.0,
+      "spacetotal_kb": 6138880.0
+    }
+  },
+  "net_gather_network_resources": [],
+  "net_gather_subset": [
+    "config",
+    "interfaces",
+    "default",
+    "hardware"
+  ],
+  "net_hostname": "R1",
+  "net_image": "boot:packages.conf",
+  "net_interfaces": {
+    "GigabitEthernet1": {
+      "bandwidth": 1000000,
+      "description": null,
+      "duplex": "Full",
+      "ipv4": [
+        {
+          "address": "10.125.0.61",
+          "subnet": "24"
+        }
+      ],
+      "lineprotocol": "up",
+      "macaddress": "1217.ebe8.bdd5",
+      "mediatype": "Virtual",
+      "mtu": 1500,
+      "operstatus": "up",
+      "type": "CSR vNIC"
+    },
+    "VirtualPortGroup0": {
+      "bandwidth": 750000,
+      "description": null,
+      "duplex": null,
+      "ipv4": [],
+      "lineprotocol": "up",
+      "macaddress": "001e.7a0a.d9bd",
+      "mediatype": null,
+      "mtu": 1500,
+      "operstatus": "up",
+      "type": "Virtual Port Group"
+    }
+  },
+  "net_iostype": "IOS-XE",
+  "net_memfree_mb": 1828265.2578125,
+  "net_memtotal_mb": 2074798.4765625,
+  "net_model": "CSR1000V",
+  "net_neighbors": {},
+  "net_python_version": "3.7.3",
+  "net_serialnum": "9I0KLXDB4OE",
+  "net_system": "ios",
+  "net_version": "17.01.01",
+  "network_resources": {}
+}

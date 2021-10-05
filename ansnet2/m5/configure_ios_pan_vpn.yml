@@ -1,0 +1,59 @@
+---
+- name: "Configure IPsec VPN to PAN firewall in AWS"
+  hosts: "R1"
+  vars_files:
+    - "vault.yml"
+  tasks:
+
+    # Ansible netcommon collection documentation
+    # https://github.com/ansible-collections/ansible.netcommon
+    - name: "Compute IPsec tunnel destination IP to PAN_VM1"
+      ansible.builtin.set_fact:
+        tunnel_dest: "{{ hostvars.PAN_VM1.ipsec_endpoint }}"
+      when:
+        - "hostvars.PAN_VM1 is defined"
+        - "hostvars.PAN_VM1.ipsec_endpoint is defined"
+      delegate_to: "localhost"
+
+    - name: "Assign default tunnel_dest value if PAN_VM1 doesn't exist"
+      ansible.builtin.set_fact:
+        tunnel_dest: "203.0.113.99"
+      when: "tunnel_dest is not defined"
+      delegate_to: "localhost"
+
+    - name: "Build IPsec tunnel to {{ tunnel_dest }} using jinja2 template"
+      ansible.netcommon.cli_config:
+        config: "{{ lookup('template', 'templates/ios_pan_ipsec.j2') }}"
+      register: "config_updates"
+
+    - name: "Save configuration when changes occur"
+      ansible.netcommon.cli_command:
+        command: "write memory"
+      when: "config_updates.changed"
+
+    - name: "Perform verification when tunnel_dest is non-default"
+      block:
+        - name: "Check IKEv2 SA status to {{ tunnel_dest }}"
+          ansible.netcommon.cli_command:
+            command: "show crypto ikev2 sa remote {{ tunnel_dest }}"
+          register: "ikev2_check"
+          until: "'READY' in ikev2_check.stdout"
+          retries: 10
+          delay: 2
+
+        - name: "Check IPsec SA status to {{ tunnel_dest }}"
+          ansible.netcommon.cli_command:
+            command: "show crypto ipsec sa peer {{ tunnel_dest }}"
+          register: "ipsec_check"
+          until: "'Status: ACTIVE(ACTIVE)' in ipsec_check.stdout"
+          retries: 3
+          delay: 1
+
+        - name: "Check static route via Tunnel{{ ipsec.tunnel_id }}"
+          ansible.netcommon.cli_command:
+            command: "show ip route 10.0.2.0 255.255.255.0"
+          register: "route_check"
+          until: "'via Tunnel' ~ ipsec.tunnel_id in route_check.stdout"
+          retries: 3
+          delay: 1
+      when: "tunnel_dest != '203.0.113.99'"

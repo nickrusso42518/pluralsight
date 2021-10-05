@@ -1,0 +1,187 @@
+[
+  {
+    "id": "L_646829496481104231",
+    "organizationId": "549236",
+    "name": "DNSMB2-njrusmc@gmail.com",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "productTypes": [
+      "appliance",
+      "switch",
+      "wireless"
+    ],
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481104079",
+    "organizationId": "549236",
+    "name": "DevNet Sandbox Always on READ ONLY",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "productTypes": [
+      "appliance",
+      "switch",
+      "wireless"
+    ],
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481104109",
+    "organizationId": "549236",
+    "name": "DEVCOR Network",
+    "timeZone": "America/Los_Angeles",
+    "tags": " tag1 tag2 ",
+    "productTypes": [
+      "appliance",
+      "switch",
+      "wireless"
+    ],
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "N_646829496481160294",
+    "organizationId": "549236",
+    "name": "Test-MX-Hub",
+    "timeZone": "America/Toronto",
+    "tags": null,
+    "productTypes": [
+      "appliance"
+    ],
+    "type": "appliance",
+    "disableMyMerakiCom": true,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "N_646829496481160295",
+    "organizationId": "549236",
+    "name": "Test-MX-Spoke",
+    "timeZone": "America/Toronto",
+    "tags": null,
+    "productTypes": [
+      "appliance"
+    ],
+    "type": "appliance",
+    "disableMyMerakiCom": true,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "N_646829496481160296",
+    "organizationId": "549236",
+    "name": "Test-MX-Hub_2",
+    "timeZone": "America/Chicago",
+    "tags": null,
+    "productTypes": [
+      "appliance"
+    ],
+    "type": "appliance",
+    "disableMyMerakiCom": true,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481104207",
+    "organizationId": "549236",
+    "name": "DNSMB3",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "productTypes": [
+      "appliance",
+      "switch",
+      "wireless"
+    ],
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481104251",
+    "organizationId": "549236",
+    "name": "DNSMB5-person@email.com",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "productTypes": [
+      "appliance",
+      "switch",
+      "wireless"
+    ],
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481104252",
+    "organizationId": "549236",
+    "name": "DNSMB4",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "productTypes": [
+      "switch",
+      "wireless"
+    ],
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481104259",
+    "organizationId": "549236",
+    "name": "DNSMB1-person@email.com",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "productTypes": [
+      "switch",
+      "wireless"
+    ],
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481104268",
+    "organizationId": "549236",
+    "name": "DNENT2-person@email.com",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "productTypes": [
+      "camera",
+      "switch",
+      "wireless"
+    ],
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481104275",
+    "organizationId": "549236",
+    "name": "DNENT3-person@email.com",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "productTypes": [
+      "switch",
+      "wireless"
+    ],
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  },
+  {
+    "id": "L_646829496481104276",
+    "organizationId": "549236",
+    "name": "DNENT1-person@email.com",
+    "timeZone": "America/Los_Angeles",
+    "tags": null,
+    "productTypes": [
+      "switch",
+      "wireless"
+    ],
+    "type": "combined",
+    "disableMyMerakiCom": false,
+    "disableRemoteStatusPage": true
+  }
+]

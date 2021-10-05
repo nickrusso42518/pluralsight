@@ -1,0 +1,34 @@
+---
+- name: "PLAY 1: Use ansible-network.network-engine role for parsing"
+  hosts: routers
+  connection: network_cli
+  roles:
+    - "ansible-network.network-engine"
+
+  tasks:
+    - name: "TASK 1: Get router configuration"
+      ios_command:
+        commands: "show running-config | section ^vrf_definition"
+      register: vrf_config
+
+    - name: "TASK 2: Parse the RT import and export data"
+      command_parser:
+        file: "parsers/vrf.yml"
+        content: "{{ vrf_config.stdout[0] }}"
+
+    - name: "TASK 3: Use set theory to reconcile intended vs actual RT state"
+      set_fact:
+        needed_vrf_changes: "{{ vrfs | rt_diff(vrf_data) }}"
+
+    - name: "TASK 4: Apply RT state changes"
+      ios_config:
+        src: "templates/vpn.j2"
+        save_when: changed
+      notify: config_changed
+      register: cli_result
+
+  handlers:
+    - name: "HANDLER 1: Display relevant changes"
+      listen: config_changed
+      debug:
+        msg: "{{ cli_result.updates }}"

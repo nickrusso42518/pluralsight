@@ -1,0 +1,44 @@
+[
+    {
+        "name": "NICK-WEBSITE",
+        "description": "Nick Russo website",
+        "subType": "FQDN",
+        "value": "njrusmc.net",
+        "type": "networkobject"
+    },
+    {
+        "name": "GOOGLE-DNS",
+        "description": "Well-known DNS server",
+        "subType": "HOST",
+        "value": "8.8.8.8",
+        "type": "networkobject"
+    },
+    {
+        "name": "TEST-NET-1",
+        "description": "See RFC5737",
+        "subType": "NETWORK",
+        "value": "192.0.2.0/24",
+        "type": "networkobject"
+    },
+    {
+        "name": "TEST-NET-2",
+        "description": "See RFC5737",
+        "subType": "NETWORK",
+        "value": "198.51.100.0/24",
+        "type": "networkobject"
+    },
+    {
+        "name": "TEST-NET-3",
+        "description": "See RFC5737",
+        "subType": "NETWORK",
+        "value": "203.0.113.0/24",
+        "type": "networkobject"
+    },
+    {
+        "name": "IPV6-DOC",
+        "description": "See RFC3849",
+        "subType": "NETWORK",
+        "value": "2001:db8::/32",
+        "type": "networkobject"
+    }
+]

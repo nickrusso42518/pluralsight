@@ -1,0 +1,25 @@
+{
+  "response": [
+    {
+      "parentId": "8b820681-a903-4b7b-b803-e32c1f5c0c7e",
+      "systemGroup": false,
+      "groupTypeList": [
+        "SITE"
+      ],
+      "additionalInfo": [
+        {
+          "nameSpace": "Location",
+          "attributes": {
+            "addressInheritedFrom": "639ceb71-2bef-478c-9f21-a4d66bc4956e",
+            "type": "area"
+          }
+        }
+      ],
+      "name": "Maryland",
+      "instanceTenantId": "5be540a20700b3004c25ea95",
+      "id": "639ceb71-2bef-478c-9f21-a4d66bc4956e",
+      "siteHierarchy": "8b820681-a903-4b7b-b803-e32c1f5c0c7e/639ceb71-2bef-478c-9f21-a4d66bc4956e",
+      "siteNameHierarchy": "Global/Maryland"
+    }
+  ]
+}

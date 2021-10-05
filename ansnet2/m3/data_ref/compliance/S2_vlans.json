@@ -1,0 +1,52 @@
+{
+  "changed": false,
+  "compliance_report": {
+    "complies": true,
+    "get_vlans": {
+      "complies": true,
+      "extra": [],
+      "missing": [],
+      "present": {
+        "1": {
+          "complies": true,
+          "nested": true
+        },
+        "10": {
+          "complies": true,
+          "nested": true
+        },
+        "1002": {
+          "complies": true,
+          "nested": true
+        },
+        "1003": {
+          "complies": true,
+          "nested": true
+        },
+        "1004": {
+          "complies": true,
+          "nested": true
+        },
+        "1005": {
+          "complies": true,
+          "nested": true
+        },
+        "11": {
+          "complies": true,
+          "nested": true
+        },
+        "12": {
+          "complies": true,
+          "nested": true
+        },
+        "13": {
+          "complies": true,
+          "nested": true
+        }
+      }
+    },
+    "skipped": []
+  },
+  "failed": false,
+  "failed_when_result": false
+}

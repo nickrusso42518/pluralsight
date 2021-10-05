@@ -1,0 +1,12 @@
+{% for id, sub in data["subscriptions"].items() %}
+telemetry ietf subscription {{ id }}
+ encoding encode-kvgpb
+ filter xpath {{ sub["xpath"] }}
+ stream yang-push
+{% if sub["period"] == "on_change" %}
+ update-policy on-change
+{% else %}
+ update-policy periodic {{ sub["period"] }}
+{% endif %}
+ receiver ip address {{ sub["rx"]["ip"] }} {{ sub["rx"]["tcp_port"] }} protocol grpc-tcp
+{% endfor %}

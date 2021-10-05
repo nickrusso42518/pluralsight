@@ -1,0 +1,15 @@
+---
+- name: "PLAY 1: Purge security policy"
+  hosts: "perimeter_asav"
+  tasks:
+    - name: "TASK 1: Remove all policy invocations and objects"
+      asa_config:
+        lines:
+          - "clear configure access-group"
+          - "clear configure access-list"
+          - "clear configure object-group"
+          - "clear configure object"
+        match: "none"
+        save: false
+      changed_when: false
+...

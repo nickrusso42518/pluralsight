@@ -1,0 +1,19 @@
+{% for vrf in data %}
+vrf {{ vrf.name }}
+ description {{ vrf.description }}
+ address-family ipv4 unicast
+  import route-target
+{%  for rt in vrf.add_rti %}
+   {{ rt }}
+{%  endfor %}
+{%  for rt in vrf.del_rti %}
+   no {{ rt }}
+{%  endfor %}
+  export route-target
+{%  for rt in vrf.add_rte %}
+   {{ rt }}
+{%  endfor %}
+{%  for rt in vrf.del_rte %}
+   no {{ rt }}
+{%  endfor %}
+{% endfor %}

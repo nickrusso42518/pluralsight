@@ -1,0 +1,20 @@
+{
+  "tokenTtlInSeconds": 1200,
+  "sessionMaxIdleTimeInSeconds": 0,
+  "authResponse": {
+    "user": {
+      "username": "admin",
+      "fullName": "Admin User",
+      "roles": [
+        {
+          "name": "Master Admin",
+          "source": "Internal"
+        }
+      ]
+    },
+    "passwordExpiresAt": null,
+    "lastSuccessfulLoginDate": "2020-07-20T14:05:58Z",
+    "lastSuccessfulLoginLocation": "192.168.118.1",
+    "numFailedLoginsSinceLastSuccessful": 0
+  }
+}

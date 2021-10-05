@@ -1,0 +1,22 @@
+[
+  {
+    "alertTime": "2020-06-18T11:14:26.0Z",
+    "deviceId": "ba6a59f4-e692-4724-ba36-c28132c761de",
+    "deviceVersion": "13.7a",
+    "dstDomain": "internetbadguys.com",
+    "dstUrl": "http://internetbadguys.com/a-bad-url",
+    "eventTime": "2020-06-18T09:30:26.0Z",
+    "protocolVersion": "1.0a",
+    "providerName": "AMP"
+  },
+  {
+    "alertTime": "2020-06-18T10:14:26.0Z",
+    "deviceId": "ba6a59f4-e692-4724-ba36-c28132c761de",
+    "deviceVersion": "13.7a",
+    "dstDomain": "malware4less.com",
+    "dstUrl": "http://malware4less.com/a-bad-url",
+    "eventTime": "2020-06-18T08:30:26.0Z",
+    "protocolVersion": "1.0a",
+    "providerName": "AMP"
+  }
+]

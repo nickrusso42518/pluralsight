@@ -1,0 +1,29 @@
+{% set tunnel_ipv4 = ipsec.ipv4_net | ipaddr("1") | ipaddr("address") %}
+{% set tunnel_mask = ipsec.ipv4_net | ipaddr("netmask") %} 
+crypto logging session
+crypto logging ikev2
+crypto ikev2 proposal IKEV2_PROPOSAL
+ encryption aes-cbc-256
+ integrity sha384
+ group 20
+crypto ikev2 policy IKEV2_POLICY
+ proposal IKEV2_PROPOSAL
+crypto ikev2 profile IKEV2_PROFILE
+ match identity remote address 0.0.0.0
+ identity local fqdn {{ inventory_hostname | lower }}.globomantics.com
+ authentication remote pre-share key {{ ipsec.psk }}
+ authentication local pre-share key {{ ipsec.psk }}
+ dpd 10 10 periodic
+crypto ipsec transform-set IPSEC_XFORM esp-gcm 256
+ mode tunnel
+crypto ipsec profile IPSEC_PROFILE
+ set transform-set IPSEC_XFORM
+ set ikev2-profile IKEV2_PROFILE
+interface Tunnel{{ ipsec.tunnel_id }}
+ description IPSEC VPN TO PAN_FW1
+ ip address {{ tunnel_ipv4 }} {{ tunnel_mask }}
+ tunnel source {{ ipsec_src_intf }}
+ tunnel mode ipsec ipv4
+ tunnel destination {{ tunnel_dest | default("203.0.113.99") }}
+ tunnel protection ipsec profile IPSEC_PROFILE
+ip route 10.0.2.0 255.255.255.0 Tunnel{{ ipsec.tunnel_id }} name AWS_SERVERS

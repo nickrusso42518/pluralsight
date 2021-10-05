@@ -1,0 +1,5 @@
+{
+  "error": "Rate Limit exceeded; BapiName: Get Client Detail, RateLimit config details: RateLimitContext{rate=5, windowUnit='minute', windowDuration=1, maxConcurrentExecutionsPermitted=0}",
+  "bapiExtendedStatusCode": "REJECTED_ABOVE_THROTTLE_LIMIT",
+  "bapiExtendedStatusDescription": "For BAPI: Get Client Detail, maximum allowed BAPI instances per 1 minute is 5. The limit has been reached for the time-window between Tue Sep 14 16:22:32 UTC 2019 and now"
+}

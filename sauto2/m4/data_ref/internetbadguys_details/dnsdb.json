@@ -1,0 +1,55 @@
+{
+  "rrs_tf": [
+    {
+      "rrs": [
+        {
+          "name": "www.internetbadguys.com.",
+          "ttl": 1,
+          "type": "A",
+          "rr": "67.215.92.210",
+          "class": "IN"
+        }
+      ],
+      "first_seen": "2020-03-26",
+      "last_seen": "2020-06-26"
+    }
+  ],
+  "features": {
+    "base_domain": "internetbadguys.com",
+    "is_subdomain": true,
+    "age": 92,
+    "ttls_mean": 1.0,
+    "ttls_min": 1,
+    "ttls_max": 1,
+    "ttls_median": 1.0,
+    "ttls_stddev": 0.0,
+    "country_codes": [
+      "US"
+    ],
+    "country_count": 1,
+    "locations": [
+      {
+        "lat": 37.751007080078125,
+        "lon": -97.8219985961914
+      }
+    ],
+    "locations_count": 1,
+    "asns": [
+      36692
+    ],
+    "asns_count": 1,
+    "non_routable": false,
+    "mail_exchanger": false,
+    "geo_distance_sum": 0.0,
+    "geo_distance_mean": 0.0,
+    "rips_stability": 1.0,
+    "rips": 1,
+    "div_rips": 1.0,
+    "ff_candidate": false,
+    "prefixes": [
+      "67.215.88.0"
+    ],
+    "prefixes_count": 1,
+    "cname": false
+  }
+}

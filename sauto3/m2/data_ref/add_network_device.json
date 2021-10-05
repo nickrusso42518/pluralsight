@@ -1,0 +1,35 @@
+{
+  "NetworkDevice": {
+    "id": "6f923ee0-c69a-11ea-b0f0-02ad37c1e915",
+    "name": "RAVPN",
+    "description": "Simulated Globomantics switches",
+    "modelName": "3650",
+    "authenticationSettings": {
+      "networkProtocol": "RADIUS",
+      "radiusSharedSecret": "globo123",
+      "enableKeyWrap": false,
+      "dtlsRequired": false,
+      "keyEncryptionKey": "",
+      "keyInputFormat": "ASCII",
+      "enableMultiSecret": "false"
+    },
+    "profileName": "Cisco",
+    "coaPort": 1700,
+    "link": {
+      "rel": "self",
+      "href": "https://10.10.20.70:9060/ers/config/networkdevice/6f923ee0-c69a-11ea-b0f0-02ad37c1e915",
+      "type": "application/json"
+    },
+    "NetworkDeviceIPList": [
+      {
+        "ipaddress": "192.168.0.0",
+        "mask": 16
+      }
+    ],
+    "NetworkDeviceGroupList": [
+      "Location#All Locations",
+      "IPSEC#Is IPSEC Device#No",
+      "Device Type#All Device Types"
+    ]
+  }
+}

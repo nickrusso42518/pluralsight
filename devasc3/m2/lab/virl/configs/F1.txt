@@ -1,0 +1,179 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname F1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip inspect log drop-pkt
+ip inspect dns-timeout 120
+ip inspect name TO_INTERNET icmp timeout 120
+ip inspect name TO_INTERNET udp router-traffic timeout 120
+ip inspect name TO_INTERNET tcp timeout 120
+ip cef
+no ipv6 cef
+!
+parameter-map type inspect global
+ log dropped-packets enable
+ max-incomplete low 18000
+ max-incomplete high 20000
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.3 255.255.255.255
+ ip ospf 1 area 0
+!
+interface GigabitEthernet0/1
+ description R1
+ mac-address 0000.0000.cccc
+ ip address 10.1.3.3 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface GigabitEthernet0/2
+ description INTERNET
+ mac-address 0000.0000.cccc
+ ip address 203.0.113.3 255.255.255.0
+ ip access-group ACL_DENY_INCOMING in
+ ip nat outside
+ ip inspect TO_INTERNET out
+ ip virtual-reassembly in
+!
+interface GigabitEthernet0/3
+ mac-address 0000.0000.cccc
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/4
+ description F1
+ mac-address 0000.0000.cccc
+ ip address 10.2.3.3 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+router ospf 1
+ passive-interface default
+ no passive-interface GigabitEthernet0/1
+ no passive-interface GigabitEthernet0/4
+ default-information originate
+!
+router bgp 65000
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 203.0.113.4 remote-as 65203
+ !
+ address-family ipv4
+  neighbor 203.0.113.4 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip nat inside source list ACL_NAT interface GigabitEthernet0/2 overload
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard ACL_NAT
+ permit 10.0.0.0 0.255.255.255
+!
+ip access-list extended ACL_DENY_INCOMING
+ permit ip host 203.0.113.4 host 203.0.113.3
+ deny   ip any any log
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp source Loopback0
+ntp server 132.163.96.5
+!
+end

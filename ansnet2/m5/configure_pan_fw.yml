@@ -1,0 +1,125 @@
+---
+- name: "Configure PAN NGFW running in AWS"
+  hosts: "pan_aws"
+  vars_files:
+    - "vault.yml"
+  tasks:
+    # PAN Collection documentation
+    # https://paloaltonetworks.github.io/pan-os-ansible/
+    - name: "Define PAN NGFW credentials"
+      ansible.builtin.set_fact:
+        pan_creds:
+          username: "{{ pan_username }}"
+          password: "{{ pan_password }}"
+          ip_address: "{{ ansible_host }}"
+      no_log: true
+
+    - name: "Update PAN NGFW admin password"
+      paloaltonetworks.panos.panos_admpwd:
+        ip_address: "{{ ansible_host }}"
+        key_filename: "/home/centos/globokey.pem"  # FQFN needed
+        username: "{{ pan_creds.username }}"
+        newpassword: "{{ pan_creds.password }}"
+      register: "admin_pass"
+      until:
+        - "admin_pass.stdout is defined"
+        - "'Configuration committed successfully' in admin_pass.stdout"
+      retries: 40
+      delay: 30  # 30 * 40 = 1200 seconds = 20 minutes total
+
+    - name: "Wait for PA NGFW REST API to respond"
+      paloaltonetworks.panos.panos_check:
+        provider: "{{ pan_creds }}"
+        interval: 5
+        timeout: 60
+
+    - name: "Configure VPN underlay interface and zone"
+      paloaltonetworks.panos.panos_interface:
+        provider: "{{ pan_creds }}"
+        if_name: "ethernet1/1"
+        comment: "VPN underlay"
+        zone_name: "vpn"
+        create_default_route: true
+        enable_dhcp: true
+
+    - name: "Configure server interface and zone"
+      paloaltonetworks.panos.panos_interface:
+        provider: "{{ pan_creds }}"
+        if_name: "ethernet1/2"
+        comment: "Servers"
+        zone_name: "servers"
+        create_default_route: false
+        enable_dhcp: true
+
+    - name: "Configure IKE gateway"
+      paloaltonetworks.panos.panos_ike_gateway:
+        provider: "{{ pan_creds }}"
+        name: "IKE_GW_GloboHQ"
+        version: "ikev2"
+        interface: "ethernet1/1"
+        peer_ip_type: "dynamic"
+        peer_id_type: "fqdn"
+        peer_id_value: "{{ groups.ios_routers[0] | lower }}.globomantics.com"
+        pre_shared_key: "{{ ipsec.psk }}"
+        ikev2_crypto_profile: "Suite-B-GCM-256"  # built-in
+        liveness_check_interval: 10
+        enable_passive_mode: true
+        enable_liveness_check: true
+        enable_nat_traversal: true
+
+    - name: "Configure IPsec tunnel interface"
+      paloaltonetworks.panos.panos_tunnel:
+        provider: "{{ pan_creds }}"
+        if_name: "tunnel.{{ ipsec.tunnel_id }}"
+        zone_name: "globo"
+        vr_name: "default"
+        ip: ["{{ tunnel_ipv4 }}/{{ tunnel_prefix }}"]
+        comment: "IPsec tunnel to Globomantics HQ"
+      vars:
+        tunnel_ipv4: "{{ ipsec.ipv4_net | ipaddr('77') | ipaddr('address') }}"
+        tunnel_prefix: "{{ ipsec.ipv4_net | ipaddr('prefix') }}"
+
+    - name: "Configure IPsec tunnel parameters"
+      paloaltonetworks.panos.panos_ipsec_tunnel:
+        provider: "{{ pan_creds }}"
+        name: "IPsec_Tunnel_GloboHQ"
+        tunnel_interface: "tunnel.{{ ipsec.tunnel_id }}"
+        ak_ike_gateway: "IKE_GW_GloboHQ"
+        ak_ipsec_crypto_profile: "Suite-B-GCM-256"  # built-in
+
+    - name: "Configure static route to all Globo VLANs"
+      paloaltonetworks.panos.panos_static_route:
+        provider: "{{ pan_creds }}"
+        name: "To_GloboHQ"
+        destination: "192.168.0.0/16"
+        nexthop_type: "none"
+        interface: "tunnel.{{ ipsec.tunnel_id }}"
+
+    - name: "Permit HTTP from Globo Mgmt VLAN to cloud servers"
+      paloaltonetworks.panos.panos_security_rule:
+        provider: "{{ pan_creds }}"
+        rule_name: "Mgmt_HTTP"
+        source_zone: ["globo"]
+        source_ip: ["192.168.10.0/24"]
+        destination_zone: ["servers"]
+        service: ["service-http"]  # built-in service for TCP 80 and 8080
+        location: "top"
+        action: "allow"
+
+    - name: "Permit SSH from Globo Mgmt VLAN to cloud servers"
+      paloaltonetworks.panos.panos_security_rule:
+        provider: "{{ pan_creds }}"
+        rule_name: "Mgmt_SSH"
+        source_zone: ["globo"]
+        source_ip: ["192.168.10.0/24"]
+        destination_zone: ["servers"]
+        application: ["ssh"]  # built-in application for TCP 22
+        location: "after"
+        existing_rule: "Mgmt_HTTP"
+        action: "allow"
+
+    - name: "Commit changes"
+      paloaltonetworks.panos.panos_commit_firewall:
+        provider: "{{ pan_creds }}"
+        description: "Ansible initial provisioning complete"
+...

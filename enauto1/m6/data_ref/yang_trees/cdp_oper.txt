@@ -1,0 +1,46 @@
+module: Cisco-IOS-XE-cdp-oper
+  +--ro cdp-neighbor-details
+     +--ro cdp-neighbor-detail* [device-id]
+        +--ro device-id              uint32
+        +--ro device-name?           string
+        +--ro local-intf-name?       string
+        +--ro port-id?               string
+        +--ro capability?            string
+        +--ro platform-name?         string
+        +--ro version?               string
+        +--ro duplex?                cdp-ios-xe-oper:cdp-duplex
+        +--ro adv-version?           cdp-ios-xe-oper:cdp-adv-version
+        +--ro hello-message
+        |  +--ro oui?             string
+        |  +--ro protocol-id?     string
+        |  +--ro payload-value?   string
+        |  +--ro payload-len?     uint16
+        +--ro vty-mgmt-domain?       string
+        +--ro native-vlan?           uint16
+        +--ro vvid-tag?              uint8
+        +--ro vvid?                  uint16
+        +--ro power?                 uint32
+        +--ro power-request
+        |  +--ro power-request-id?      uint16
+        |  +--ro power-man-id?          uint16
+        |  +--ro power-request-level?   string
+        +--ro power-available
+        |  +--ro power-request-id?   uint16
+        |  +--ro power-man-id?       uint16
+        |  +--ro power-available?    uint32
+        |  +--ro power-man-level?    uint32
+        +--ro unidirectional-mode?   cdp-ios-xe-oper:cdp-unidirectional-mode
+        +--ro spare-pair
+        |  +--ro spare-pair-poe?                  cdp-ios-xe-oper:cdp-yes-no
+        |  +--ro spare-pair-detection-required?   cdp-ios-xe-oper:cdp-yes-no
+        |  +--ro spare-pair-pd-config?            cdp-ios-xe-oper:cdp-enable-disable
+        |  +--ro spare-pair-pse-operational?      cdp-ios-xe-oper:cdp-yes-no
+        +--ro mgmt-address?          inet:ip-address
+        +--ro ip-address?            inet:ip-address
+        +--ro ipv6-address?          inet:ip-address
+        +--ro clns-address?          string
+        +--ro decnet-addr?           string
+        +--ro novell-addr?           string
+        +--ro second-port-status?    string
+        +--ro table-id?              uint16
+        +--ro neighbor-identifier?   string

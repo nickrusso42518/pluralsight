@@ -1,0 +1,91 @@
+---
+- name: "Mock parsed run_vrf_dict from parser"
+  set_fact:
+    run_vrf_dict:
+      VPN1:  # missing export
+        route_import:
+          - "65000:1"
+        route_export: []
+      VPN2:  # extra import
+        route_import:
+          - "65000:222"
+          - "65000:1"
+        route_export:
+          - "65000:2"
+      VPN3:  # missing export and extra import
+        route_import:
+          - "65000:2"
+          - "65000:333"
+        route_export: []
+
+- name: "Mock int_vrf_list state from vars files"
+  set_fact:
+    int_vrf_list:
+      - name: "VPN1"
+        description: "first VRF"
+        rd: "65000:1"
+        route_import:
+          - "65000:1"
+        route_export:
+          - "65000:2"
+      - name: "VPN2"
+        description: "second VRF"
+        rd: "65000:2"
+        route_import:
+          - "65000:1"
+        route_export:
+          - "65000:2"
+      - name: "VPN3"
+        description: "third VRF"
+        rd: "65000:3"
+        route_import:
+          - "65000:2"
+        route_export:
+          - "65000:1"
+
+- name: "Find route-target differences"
+  set_fact:
+    rt_updates: "{{ int_vrf_list | rt_diff(run_vrf_dict) }}"
+
+- name: "Print structured data"
+  debug:
+    msg: "{{ rt_updates }}"
+
+- name: "ASSERT >> Ensure VPN1 RT difference succeeded"
+  assert:
+    that:
+      - "rt_updates | length == 3"
+      - "rt_updates[0]['name'] == 'VPN1'"
+      - "rt_updates[0]['description'] == 'first VRF'"
+      - "rt_updates[0]['rd'] == '65000:1'"
+      - "rt_updates[0]['add_rte'] | length == 1"
+      - "rt_updates[0]['add_rte'][0] == '65000:2'"
+      - "rt_updates[0]['del_rte'] | length == 0"
+      - "rt_updates[0]['add_rti'] | length == 0"
+      - "rt_updates[0]['del_rti'] | length == 0"
+
+- name: "ASSERT >> Ensure VPN2 RT difference succeeded"
+  assert:
+    that:
+      - "rt_updates[1]['name'] == 'VPN2'"
+      - "rt_updates[1]['description'] == 'second VRF'"
+      - "rt_updates[1]['rd'] == '65000:2'"
+      - "rt_updates[1]['add_rte'] | length == 0"
+      - "rt_updates[1]['del_rte'] | length == 0"
+      - "rt_updates[1]['add_rti'] | length == 0"
+      - "rt_updates[1]['del_rti'] | length == 1"
+      - "rt_updates[1]['del_rti'][0] == '65000:222'"
+
+- name: "ASSERT >> Ensure VPN3 RT difference succeeded"
+  assert:
+    that:
+      - "rt_updates[2]['name'] == 'VPN3'"
+      - "rt_updates[2]['description'] == 'third VRF'"
+      - "rt_updates[2]['rd'] == '65000:3'"
+      - "rt_updates[2]['add_rte'] | length == 1"
+      - "rt_updates[2]['add_rte'][0] == '65000:1'"
+      - "rt_updates[2]['del_rte'] | length == 0"
+      - "rt_updates[2]['add_rti'] | length == 0"
+      - "rt_updates[2]['del_rti'] | length == 1"
+      - "rt_updates[2]['del_rti'][0] == '65000:333'"
+...

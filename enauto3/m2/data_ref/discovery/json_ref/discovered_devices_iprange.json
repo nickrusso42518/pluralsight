@@ -1,0 +1,70 @@
+{
+  "response": [
+    {
+      "hostname": "leaf1.abc.inc",
+      "managementIpAddress": "10.10.20.81",
+      "reachabilityStatus": "Success",
+      "pingStatus": "SUCCESS",
+      "snmpStatus": "SUCCESS",
+      "cliStatus": "SUCCESS",
+      "httpStatus": "NOT-PROVIDED",
+      "netconfStatus": "NOT-PROVIDED",
+      "inventoryCollectionStatus": "In Progress",
+      "inventoryReachabilityStatus": "Reachable",
+      "id": "b8fea8e3-1a64-4230-bf20-398b37ff7141"
+    },
+    {
+      "hostname": "leaf2.abc.inc",
+      "managementIpAddress": "10.10.20.82",
+      "reachabilityStatus": "Success",
+      "pingStatus": "SUCCESS",
+      "snmpStatus": "SUCCESS",
+      "cliStatus": "SUCCESS",
+      "httpStatus": "NOT-PROVIDED",
+      "netconfStatus": "NOT-PROVIDED",
+      "inventoryCollectionStatus": "In Progress",
+      "inventoryReachabilityStatus": "Reachable",
+      "id": "be1fa065-0804-4635-9318-8f41f94f73bd"
+    },
+    {
+      "hostname": "spine1.abc.inc",
+      "managementIpAddress": "10.10.20.80",
+      "reachabilityStatus": "Success",
+      "pingStatus": "SUCCESS",
+      "snmpStatus": "SUCCESS",
+      "cliStatus": "SUCCESS",
+      "httpStatus": "NOT-PROVIDED",
+      "netconfStatus": "NOT-PROVIDED",
+      "inventoryCollectionStatus": "In Progress",
+      "inventoryReachabilityStatus": "Reachable",
+      "id": "24498184-6fc7-40a6-9944-1911dcb5395f"
+    },
+    {
+      "hostname": "host1",
+      "managementIpAddress": "10.10.20.83",
+      "reachabilityStatus": "Success",
+      "pingStatus": "SUCCESS",
+      "snmpStatus": "SUCCESS",
+      "cliStatus": "SUCCESS",
+      "httpStatus": "NOT-PROVIDED",
+      "netconfStatus": "NOT-PROVIDED",
+      "inventoryCollectionStatus": "In Progress",
+      "inventoryReachabilityStatus": "Reachable",
+      "id": "c225aaa1-4329-4271-8d16-f21bd5a1ccf0"
+    },
+    {
+      "hostname": "host2",
+      "managementIpAddress": "10.10.20.84",
+      "reachabilityStatus": "Success",
+      "pingStatus": "SUCCESS",
+      "snmpStatus": "SUCCESS",
+      "cliStatus": "SUCCESS",
+      "httpStatus": "NOT-PROVIDED",
+      "netconfStatus": "NOT-PROVIDED",
+      "inventoryCollectionStatus": "In Progress",
+      "inventoryReachabilityStatus": "Reachable",
+      "id": "b92aa03a-d629-482c-b77a-21c8030147cf"
+    }
+  ],
+  "version": "1.0"
+}

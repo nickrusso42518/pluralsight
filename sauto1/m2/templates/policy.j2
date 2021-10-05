@@ -1,0 +1,37 @@
+{# CREATE NETWORK OBJECTS #}
+{% for network in networks %}
+object network {{ network["name"] }}
+ description {{ network["description"] }}
+ {{ network["type"] }} {{ network["value"] }}
+{% endfor %}
+{# CREATE SERVICE OBJECTS #}
+{% for service in services %}
+object service {{ service["name"] }}
+ description {{ service["description"] }}
+{% if service["type"] in ["tcp", "udp"] %}
+ service {{ service["type"] }} destination eq {{ service["value"] }}
+{% else %}
+ service {{ service["type"] }}
+{% endif %}
+{% endfor %}
+{# CREATE OBJECT GROUPS #}
+{% for type, group in object_groups.items() %}
+{% for name, attr in group.items() %}
+object-group {{ type }} {{ name }}
+ description {{ attr["description"] }}
+{% for member in attr["members"] %}
+ {{ type }}-object object {{ member }}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{# CREATE AND APPLY ACCESS LISTS #}
+{% for name, attr in access_lists.items() %}
+{% for rule in attr["rules"] %}
+{% set ac = rule["action"] -%}
+{% set pr = rule["protocol"] -%}
+{% set sn = rule["src_net"] -%}
+{% set dn = rule["dst_net"] -%}
+access-list {{ name }} extended {{ ac }} {{ pr }} {{ sn }} {{ dn }}
+{% endfor %}
+access-group {{ name }} {{ attr["direction"] }} interface {{ attr["nameif"] }}
+{% endfor %}

@@ -1,0 +1,16 @@
+{
+  "rpc-reply": {
+    "@xmlns": "urn:ietf:params:xml:ns:netconf:base:1.0",
+    "@message-id": "urn:uuid:459f88ad-3142-4be1-9354-c611ef40d094",
+    "@xmlns:nc": "urn:ietf:params:xml:ns:netconf:base:1.0",
+    "subscription-result": {
+      "@xmlns": "urn:ietf:params:xml:ns:yang:ietf-event-notifications",
+      "@xmlns:notif-bis": "urn:ietf:params:xml:ns:yang:ietf-event-notifications",
+      "#text": "notif-bis:ok"
+    },
+    "subscription-id": {
+      "@xmlns": "urn:ietf:params:xml:ns:yang:ietf-event-notifications",
+      "#text": "2147483757"
+    }
+  }
+}

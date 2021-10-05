@@ -1,0 +1,56 @@
+{
+  "items": [
+    {
+      "version": "gdqedd4ysjmfd",
+      "name": "GOOGLE-DNS",
+      "description": "Well-known DNS server",
+      "subType": "HOST",
+      "value": "8.8.8.8",
+      "isSystemDefined": false,
+      "dnsResolution": null,
+      "id": "824f494a-f0e2-11e9-92e6-c7a2ea108681",
+      "type": "networkobject",
+      "links": {
+        "self": "https://10.10.20.65/api/fdm/v2/object/networks/824f494a-f0e2-11e9-92e6-c7a2ea108681"
+      }
+    },
+    {
+      "version": "m7dthizzq6ppc",
+      "name": "IPV6-DOC",
+      "description": "See RFC3849",
+      "subType": "NETWORK",
+      "value": "2001:db8::/32",
+      "isSystemDefined": false,
+      "dnsResolution": null,
+      "id": "8407a7b6-f0e2-11e9-92e6-1f5195bf7153",
+      "type": "networkobject",
+      "links": {
+        "self": "https://10.10.20.65/api/fdm/v2/object/networks/8407a7b6-f0e2-11e9-92e6-1f5195bf7153"
+      }
+    },
+    {
+      "version": "ku65jdkcm2zzd",
+      "name": "NICK-WEBSITE",
+      "description": "Nick Russo website",
+      "subType": "FQDN",
+      "value": "njrusmc.net",
+      "isSystemDefined": false,
+      "dnsResolution": "IPV4_AND_IPV6",
+      "id": "81df9787-f0e2-11e9-92e6-b34fef183c42",
+      "type": "networkobject",
+      "links": {
+        "self": "https://10.10.20.65/api/fdm/v2/object/networks/81df9787-f0e2-11e9-92e6-b34fef183c42"
+      }
+    }
+  ],
+  "paging": {
+    "prev": [],
+    "next": [
+      "https://10.10.20.65/api/fdm/v2/object/networks?limit=3&offset=3"
+    ],
+    "limit": 3,
+    "offset": 0,
+    "count": 8,
+    "pages": 0
+  }
+}

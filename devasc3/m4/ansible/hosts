@@ -1,0 +1,8 @@
+[web]
+server1.njrusmc.net
+server2.njrusmc.net
+
+[web:vars]
+# password is "webpass"
+web_user="webadmin"
+web_pass="$6$salt123$QqmU4LyNsc8E9I9QHk.gKXvrWJZ2yikncz1f6ZuWmFBhweqoRUcQ4oTsq9l3nWpzZggG46b076IBe/UgBCXxS0"

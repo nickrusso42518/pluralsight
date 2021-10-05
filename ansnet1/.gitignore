@@ -1,0 +1,5 @@
+**.pyc
+m2/outputs/**
+m6/roles/**
+m7/netconf/outputs/**
+m7/restconf/outputs/**

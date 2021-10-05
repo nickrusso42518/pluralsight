@@ -1,0 +1,14 @@
+---
+# If we structure our desired state based off the YANG model, then
+# we can easily consume the data when assembling the edit-config RPC.
+intf:
+  eth1/71:
+    interface-mode: "ACCESS"
+    access-vlan: 171
+  eth1/72:
+    interface-mode: "ACCESS"
+    access-vlan: 172
+  eth1/73:
+    interface-mode: "TRUNK"
+    native-vlan: 173
+...

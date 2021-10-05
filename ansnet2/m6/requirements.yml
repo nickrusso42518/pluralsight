@@ -1,0 +1,7 @@
+---
+collections:
+  - "amazon.aws"
+  - "community.aws"
+  - "ansible.netcommon"
+  - "cisco.ios"
+...

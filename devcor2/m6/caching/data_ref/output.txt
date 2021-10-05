@@ -1,0 +1,36 @@
+INFO:root:---------------------------------------------------------
+INFO:root:First GET to URL: http://njrusmc.net/jobaid/wlan_pcap.zip
+DEBUG:cachecontrol.controller:Looking up "http://njrusmc.net/jobaid/wlan_pcap.zip" in the cache
+DEBUG:cachecontrol.controller:No cache entry available
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): njrusmc.net:80
+DEBUG:urllib3.connectionpool:http://njrusmc.net:80 "GET /jobaid/wlan_pcap.zip HTTP/1.1" 200 1817324
+DEBUG:cachecontrol.controller:Updating cache with response from "http://njrusmc.net/jobaid/wlan_pcap.zip"
+DEBUG:cachecontrol.controller:Caching due to etag
+INFO:root:Response 200 / OK
+INFO:root:Cache-Control: public, max-age=300
+INFO:root:ETag: "fce931267722b83a8f2d6290b4b015ec"
+INFO:root:Second GET to URL: http://njrusmc.net/jobaid/wlan_pcap.zip
+DEBUG:cachecontrol.controller:Looking up "http://njrusmc.net/jobaid/wlan_pcap.zip" in the cache
+DEBUG:cachecontrol.controller:Current age based on date: 1
+DEBUG:cachecontrol.controller:Freshness lifetime from max-age: 300
+DEBUG:cachecontrol.controller:The response is "fresh", returning cached response
+DEBUG:cachecontrol.controller:300 > 1
+INFO:root:Response 200 / OK
+INFO:root:---------------------------------------------------------
+INFO:root:First GET to URL: http://njrusmc.net/jobaid/lmnop_answers.pdf
+DEBUG:cachecontrol.controller:Looking up "http://njrusmc.net/jobaid/lmnop_answers.pdf" in the cache
+DEBUG:cachecontrol.controller:No cache entry available
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): njrusmc.net:80
+DEBUG:urllib3.connectionpool:http://njrusmc.net:80 "GET /jobaid/lmnop_answers.pdf HTTP/1.1" 200 1528010
+DEBUG:cachecontrol.controller:Updating cache with response from "http://njrusmc.net/jobaid/lmnop_answers.pdf"
+DEBUG:cachecontrol.controller:Response header has "no-store"
+INFO:root:Response 200 / OK
+INFO:root:Cache-Control: no-store
+INFO:root:ETag: "9658f493e9d5cff2794472edae1aff51"
+INFO:root:Second GET to URL: http://njrusmc.net/jobaid/lmnop_answers.pdf
+DEBUG:cachecontrol.controller:Looking up "http://njrusmc.net/jobaid/lmnop_answers.pdf" in the cache
+DEBUG:cachecontrol.controller:No cache entry available
+DEBUG:urllib3.connectionpool:http://njrusmc.net:80 "GET /jobaid/lmnop_answers.pdf HTTP/1.1" 200 1528010
+DEBUG:cachecontrol.controller:Updating cache with response from "http://njrusmc.net/jobaid/lmnop_answers.pdf"
+DEBUG:cachecontrol.controller:Response header has "no-store"
+INFO:root:Response 200 / OK

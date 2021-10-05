@@ -1,0 +1,25 @@
+{
+  "version": "v1.2.0",
+  "metadata": {
+    "links": {
+      "self": "https://api.amp.cisco.com/v1/groups?name=Audit"
+    },
+    "results": {
+      "total": 1,
+      "current_item_count": 1,
+      "index": 0,
+      "items_per_page": 500
+    }
+  },
+  "data": [
+    {
+      "name": "Audit",
+      "description": "Audit Group for nickrus+lab",
+      "guid": "0fd176db-c9f8-4741-8909-d48d38c383d6",
+      "source": null,
+      "links": {
+        "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+      }
+    }
+  ]
+}

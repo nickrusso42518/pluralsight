@@ -1,0 +1,179 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname INTERNET
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip host L1.globomantics.com 10.2.5.99
+ip cef
+no ipv6 cef
+!
+parameter-map type inspect global
+ log dropped-packets enable
+ max-incomplete low 18000
+ max-incomplete high 20000
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+username http privilege 15 password 0 http
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description GOOGLE DNS
+ ip address 8.8.8.8 255.255.255.255
+!
+interface Loopback1
+ description NIST NTP
+ ip address 132.163.96.5 255.255.255.255
+!
+interface Ethernet0/0
+ mac-address 0000.0000.dddd
+ no ip address
+ shutdown
+!
+interface Ethernet0/1
+ description F1
+ mac-address 0000.0000.dddd
+ ip address 203.0.113.4 255.255.255.0
+!
+interface Ethernet0/2
+ mac-address 0000.0000.dddd
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ mac-address 0000.0000.dddd
+ no ip address
+ shutdown
+!
+interface Serial1/0
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/1
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+router bgp 65203
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 203.0.113.3 remote-as 65000
+ !
+ address-family ipv4
+  neighbor 203.0.113.3 activate
+  neighbor 203.0.113.3 default-originate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+ip http server
+ip http authentication local
+no ip http secure-server
+ip http path unix:
+ip dns server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp logging
+ntp master 1
+!
+end

@@ -1,0 +1,19 @@
+---
+# Version 3.7 for compose files corresponds with
+# Docker engine 18.06.0 and newer (per Docker docs).
+version: "3.7"
+
+services:
+  web:
+    build: "."
+    image: "flask:latest"
+    ports:
+      - "5000:5000/tcp"
+
+  db:
+    image: "mysql:latest"
+    command: "--default-authentication-plugin=mysql_native_password"
+    environment:
+      MYSQL_ROOT_PASSWORD: "globomantics"
+      MYSQL_DATABASE: "db"
+...

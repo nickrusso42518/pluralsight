@@ -1,0 +1,14 @@
+{
+  "api_version": 2,
+  "id": 9289747,
+  "data": {
+    "count": 1,
+    "max-confidence": 60,
+    "max-severity": 5,
+    "bis": [
+      "pe-header-timestamp-future"
+    ],
+    "score": 3,
+    "sample": "2d0025ac53a89954ab46c1e8fe39b515"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "items": [
+    {
+      "version": "cdongmehhy7re",
+      "name": "Balanced Security and Connectivity",
+      "description": "Balanced Security and Connectivity Layer",
+      "rules": {
+        "links": {
+          "self": "https://10.10.20.65/api/fdm/latest/policy/intrusionpolicies/93a735a1-9b4c-11ea-95ce-bb199e75725f/intrusionrules"
+        }
+      },
+      "id": "93a735a1-9b4c-11ea-95ce-bb199e75725f",
+      "type": "intrusionpolicy",
+      "links": {
+        "self": "https://10.10.20.65/api/fdm/latest/policy/intrusionpolicies/93a735a1-9b4c-11ea-95ce-bb199e75725f"
+      }
+    }
+  ],
+  "paging": {
+    "prev": [],
+    "next": [],
+    "limit": 10,
+    "offset": 0,
+    "count": 1,
+    "pages": 0
+  }
+}

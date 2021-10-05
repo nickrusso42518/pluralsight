@@ -1,0 +1,5 @@
+---
+ansible_python_interpreter: "/usr/bin/env python"
+ansible_network_os: "ios"
+ansible_user: "ansible"
+ansible_password: "ansible"

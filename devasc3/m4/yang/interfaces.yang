@@ -1,0 +1,76 @@
+module interfaces {
+  yang-version "1.1";
+  namespace "https://yang.globomantics.com/interfaces";
+  prefix "interfaces";
+
+  // VLANs are integers but are only valid in the range from
+  // 1 to 4094, so we can constrain this range by creating a
+  // custom data type. We can use "vlan-type" as a leaf now.
+  typedef vlan-type {
+    type uint16 {
+      range 1..4094;
+    }
+    description "Valid VLAN range";
+  }
+
+  // Reusable collection of attributes that is common to
+  // all types of interfaces, so if we create multiple types
+  // of interfaces, they all get a name and and up/down state.
+  grouping interface-basic-grouping {
+    description "Common characteristics of all interfaces";
+    leaf name {
+      type string;
+      description "Name of the interface";
+    }
+    leaf enabled {
+      type boolean;
+      default "false";
+      description "True if interface is enabled, false otherwise";
+    }
+  }
+
+  // Wrapper object that contains children elements, such as an
+  // assortment of different interface lists
+  container interface-container {
+
+    // Physical switchports, like where you'd plug in a cable.
+    // These have names, up/down state, and a VLAN assigned.
+    // We use our custom "vlan-type" to constrain the VLAN range.
+    list switchport-list {
+      description "List of physical switchports";
+
+      // Only the "name" leaf is required
+      key "name";
+
+      // Inherit additional leaves from this grouping
+      uses "interface-basic-grouping";
+
+      // Specific to physical switchports
+      leaf vlan {
+        type vlan-type;
+        description "VLAN assigned to switchport";
+        default 1;
+      }
+    }
+
+    // Virtual interfaces, such as switched virtual interfaces
+    // (SVIs), tunnels, and loopbacks that may exist on a switch.
+    // They don't have VLANs but optionally may have an IP address.
+    list virtual-list {
+      description "List of virtual interfaces";
+
+      // Only the "name" leaf is required
+      key "name";
+
+      // Inherit additional leaves from this grouping
+      uses "interface-basic-grouping";
+
+      // Specific to virtual interfaces
+      leaf ip_address {
+        type string;
+        description "IP address assigned to interface";
+        default "0.0.0.0";
+      }
+    }
+  }
+}

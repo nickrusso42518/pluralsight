@@ -1,0 +1,18 @@
+---
+# Version 3.7 for compose files corresponds with
+# Docker engine 18.06.0 and newer (per Docker docs).
+version: "3.7"
+
+# Nested dictionary of containers to create. We deploy out custom
+# container which extended the popular all-in-one ELK stack.
+# Most of this is standard except for TCP port 5045 which is
+# specific to our NETCONF MDT script.
+services:
+  elk:
+    build: "."
+    image: "globo_elk:latest"
+    ports:
+      - "5601:5601/tcp"  # Kibana web interface
+      - "9200:9200/tcp"  # Elasticsearch JSON interface
+      - "5045:5045/tcp"  # Custom TCP logstash NETCONF MDT
+...

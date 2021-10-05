@@ -1,0 +1,210 @@
+{
+  "Results": [
+    {
+      "Moid": "5d838c366176752d309a9413",
+      "ObjectType": "network.Element",
+      "CreateTime": "2019-09-19T14:09:58.956Z",
+      "ModTime": "2019-09-19T14:10:55.852Z",
+      "Tags": [],
+      "Owners": [
+        "5d838c0d7564612d30862731",
+        "5d838c136f72612d30f8447c"
+      ],
+      "SharedScope": "",
+      "AccountMoid": "5d838c0d7564612d30862731",
+      "DomainGroupMoid": "5d838c0d7564612d3086273f",
+      "Ancestors": [],
+      "Parent": {
+        "ObjectType": "",
+        "Moid": ""
+      },
+      "DeviceMoId": "5d838c136f72612d30f8447c",
+      "Dn": "sys/switch-A",
+      "Rn": "",
+      "Model": "UCS-FI-6332-16UP",
+      "Revision": "0",
+      "Serial": "JAB121800UL",
+      "Vendor": "Cisco Systems, Inc.",
+      "AdminInbandInterfaceState": "disable",
+      "FaultSummary": 0,
+      "InbandIpAddress": "0.0.0.0",
+      "InbandIpGateway": "0.0.0.0",
+      "InbandIpMask": "0.0.0.0",
+      "InbandVlan": 0,
+      "OutOfBandIpAddress": "10.10.20.41",
+      "OutOfBandIpGateway": "10.10.20.254",
+      "OutOfBandIpMask": "255.255.255.0",
+      "OutOfBandMac": "00:00:00:00:00:00",
+      "SwitchId": "A",
+      "Cards": [
+        {
+          "ObjectType": "equipment.SwitchCard",
+          "Moid": "5d838c226176752d309a8741",
+          "link": "https://www.intersight.com/api/v1/equipment/SwitchCards/5d838c226176752d309a8741"
+        }
+      ],
+      "Fanmodules": [
+        {
+          "ObjectType": "equipment.FanModule",
+          "Moid": "5d838c3a6176752d309a9611",
+          "link": "https://www.intersight.com/api/v1/equipment/FanModules/5d838c3a6176752d309a9611"
+        },
+        {
+          "ObjectType": "equipment.FanModule",
+          "Moid": "5d838c3a6176752d309a9619",
+          "link": "https://www.intersight.com/api/v1/equipment/FanModules/5d838c3a6176752d309a9619"
+        },
+        {
+          "ObjectType": "equipment.FanModule",
+          "Moid": "5d838c3a6176752d309a961f",
+          "link": "https://www.intersight.com/api/v1/equipment/FanModules/5d838c3a6176752d309a961f"
+        },
+        {
+          "ObjectType": "equipment.FanModule",
+          "Moid": "5d838c3a6176752d309a9621",
+          "link": "https://www.intersight.com/api/v1/equipment/FanModules/5d838c3a6176752d309a9621"
+        }
+      ],
+      "ManagementContoller": {
+        "ObjectType": "management.Controller",
+        "Moid": "5d838c406176752d309a986f",
+        "link": "https://www.intersight.com/api/v1/management/Controllers/5d838c406176752d309a986f"
+      },
+      "ManagementEntity": {
+        "ObjectType": "management.Entity",
+        "Moid": "5d838c456176752d309a997b",
+        "link": "https://www.intersight.com/api/v1/management/Entities/5d838c456176752d309a997b"
+      },
+      "Psus": [
+        {
+          "ObjectType": "equipment.Psu",
+          "Moid": "5d838c336176752d309a9263",
+          "link": "https://www.intersight.com/api/v1/equipment/Psus/5d838c336176752d309a9263"
+        },
+        {
+          "ObjectType": "equipment.Psu",
+          "Moid": "5d838c336176752d309a92bd",
+          "link": "https://www.intersight.com/api/v1/equipment/Psus/5d838c336176752d309a92bd"
+        }
+      ],
+      "RegisteredDevice": {
+        "ObjectType": "asset.DeviceRegistration",
+        "Moid": "5d838c136f72612d30f8447c",
+        "link": "https://www.intersight.com/api/v1/asset/DeviceRegistrations/5d838c136f72612d30f8447c"
+      },
+      "TopSystem": {
+        "ObjectType": "top.System",
+        "Moid": "5d838c386176752d309a9593",
+        "link": "https://www.intersight.com/api/v1/top/Systems/5d838c386176752d309a9593"
+      },
+      "UcsmRunningFirmware": {
+        "ObjectType": "firmware.RunningFirmware",
+        "Moid": "5d838c206176752d309a83d5",
+        "link": "https://www.intersight.com/api/v1/firmware/RunningFirmwares/5d838c206176752d309a83d5"
+      }
+    },
+    {
+      "Moid": "5d838c376176752d309a941f",
+      "ObjectType": "network.Element",
+      "CreateTime": "2019-09-19T14:09:59.074Z",
+      "ModTime": "2019-09-19T14:10:55.852Z",
+      "Tags": [],
+      "Owners": [
+        "5d838c0d7564612d30862731",
+        "5d838c136f72612d30f8447c"
+      ],
+      "SharedScope": "",
+      "AccountMoid": "5d838c0d7564612d30862731",
+      "DomainGroupMoid": "5d838c0d7564612d3086273f",
+      "Ancestors": [],
+      "Parent": {
+        "ObjectType": "",
+        "Moid": ""
+      },
+      "DeviceMoId": "5d838c136f72612d30f8447c",
+      "Dn": "sys/switch-B",
+      "Rn": "",
+      "Model": "UCS-FI-6332-16UP",
+      "Revision": "0",
+      "Serial": "JAB221800UL",
+      "Vendor": "Cisco Systems, Inc.",
+      "AdminInbandInterfaceState": "disable",
+      "FaultSummary": 0,
+      "InbandIpAddress": "0.0.0.0",
+      "InbandIpGateway": "0.0.0.0",
+      "InbandIpMask": "0.0.0.0",
+      "InbandVlan": 0,
+      "OutOfBandIpAddress": "10.10.20.42",
+      "OutOfBandIpGateway": "10.10.20.254",
+      "OutOfBandIpMask": "255.255.255.0",
+      "OutOfBandMac": "00:00:00:00:00:00",
+      "SwitchId": "B",
+      "Cards": [
+        {
+          "ObjectType": "equipment.SwitchCard",
+          "Moid": "5d838c226176752d309a873f",
+          "link": "https://www.intersight.com/api/v1/equipment/SwitchCards/5d838c226176752d309a873f"
+        }
+      ],
+      "Fanmodules": [
+        {
+          "ObjectType": "equipment.FanModule",
+          "Moid": "5d838c3a6176752d309a960d",
+          "link": "https://www.intersight.com/api/v1/equipment/FanModules/5d838c3a6176752d309a960d"
+        },
+        {
+          "ObjectType": "equipment.FanModule",
+          "Moid": "5d838c3a6176752d309a9615",
+          "link": "https://www.intersight.com/api/v1/equipment/FanModules/5d838c3a6176752d309a9615"
+        },
+        {
+          "ObjectType": "equipment.FanModule",
+          "Moid": "5d838c3a6176752d309a9617",
+          "link": "https://www.intersight.com/api/v1/equipment/FanModules/5d838c3a6176752d309a9617"
+        },
+        {
+          "ObjectType": "equipment.FanModule",
+          "Moid": "5d838c3a6176752d309a961d",
+          "link": "https://www.intersight.com/api/v1/equipment/FanModules/5d838c3a6176752d309a961d"
+        }
+      ],
+      "ManagementContoller": {
+        "ObjectType": "management.Controller",
+        "Moid": "5d838c3f6176752d309a982b",
+        "link": "https://www.intersight.com/api/v1/management/Controllers/5d838c3f6176752d309a982b"
+      },
+      "ManagementEntity": {
+        "ObjectType": "management.Entity",
+        "Moid": "5d838c456176752d309a9975",
+        "link": "https://www.intersight.com/api/v1/management/Entities/5d838c456176752d309a9975"
+      },
+      "Psus": [
+        {
+          "ObjectType": "equipment.Psu",
+          "Moid": "5d838c336176752d309a9261",
+          "link": "https://www.intersight.com/api/v1/equipment/Psus/5d838c336176752d309a9261"
+        },
+        {
+          "ObjectType": "equipment.Psu",
+          "Moid": "5d838c336176752d309a929b",
+          "link": "https://www.intersight.com/api/v1/equipment/Psus/5d838c336176752d309a929b"
+        }
+      ],
+      "RegisteredDevice": {
+        "ObjectType": "asset.DeviceRegistration",
+        "Moid": "5d838c136f72612d30f8447c",
+        "link": "https://www.intersight.com/api/v1/asset/DeviceRegistrations/5d838c136f72612d30f8447c"
+      },
+      "TopSystem": {
+        "ObjectType": "top.System",
+        "Moid": "5d838c386176752d309a9593",
+        "link": "https://www.intersight.com/api/v1/top/Systems/5d838c386176752d309a9593"
+      },
+      "UcsmRunningFirmware": {
+        "ObjectType": "firmware.RunningFirmware",
+        "Moid": "5d838c206176752d309a83d5",
+        "link": "https://www.intersight.com/api/v1/firmware/RunningFirmwares/5d838c206176752d309a83d5"
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "Y2lzY29zcGFyazovL3VzL1dFQkhPT0svMjg2NGQ4ODUtODBiYy00ODM3LWE3NDAtYTk4ZTU4MWIxNGFm",
+  "name": "crm",
+  "targetUrl": "http://crm.njrusmc.net:5000/wtwebhook",
+  "resource": "messages",
+  "event": "created",
+  "filter": "mentionedPeople=Y2lzY29zcGFyazovL3VzL1BFT1BMRS9kNDRiNDg0MC1lYWQ5LTQwMmUtOWYxNi0zMzA2ZDI5NDNkNzE",
+  "orgId": "Y2lzY29zcGFyazovL3VzL09SR0FOSVpBVElPTi9jb25zdW1lcg",
+  "createdBy": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9kNDRiNDg0MC1lYWQ5LTQwMmUtOWYxNi0zMzA2ZDI5NDNkNzE",
+  "appId": "Y2lzY29zcGFyazovL3VzL0FQUExJQ0FUSU9OL0MzMmM4MDc3NDBjNmU3ZGYxMWRhZjE2ZjIyOGRmNjI4YmJjYTQ5YmE1MmZlY2JiMmM3ZDUxNWNiNGEwY2M5MWFh",
+  "ownedBy": "creator",
+  "status": "active",
+  "created": "2019-09-24T18:31:04.878Z",
+  "actorId": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS8zODhhMDJlMi01NDVmLTRhOTAtYmVjNC02NDE5Y2IyNDA4NGQ",
+  "data": {
+    "id": "Y2lzY29zcGFyazovL3VzL01FU1NBR0UvMGJiYmZiNTAtZGVmYS0xMWU5LThkYzEtNTE5ZjBlNWFjMjZh",
+    "roomId": "Y2lzY29zcGFyazovL3VzL1JPT00vMzVkZDliMjAtYjYwOC0xMWU5LTlmMTQtZGQ0MzkwYzA2NGZl",
+    "roomType": "group",
+    "personId": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS8zODhhMDJlMi01NDVmLTRhOTAtYmVjNC02NDE5Y2IyNDA4NGQ",
+    "personEmail": "njrusmc@gmail.com",
+    "mentionedPeople": [
+      "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9kNDRiNDg0MC1lYWQ5LTQwMmUtOWYxNi0zMzA2ZDI5NDNkNzE"
+    ],
+    "created": "2019-09-24T18:35:13.157Z"
+  }
+}

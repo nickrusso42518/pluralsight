@@ -1,0 +1,25 @@
+---
+# Connectivity variables
+ansible_python_interpreter: "/usr/bin/env python"
+ansible_connection: "ansible.netcommon.network_cli"
+# ansible_user: "admin"
+# ansible_password: "globoPass123!"
+# ansible_password: !vault |
+#           $ANSIBLE_VAULT;1.1;AES256
+#           31623230383862366265626161656137646637646261323265396464323734613433343833663965
+#           3831356439376335643032653066363732306664313235330a366666343339313936613663333965
+#           34623830633032393732393164336232613237643239613465383439626161313332646437393335
+#           3565306537613636310a336336393665373134626633613361646132643664366335333433316335
+#           3066
+
+# SSH public key authentication (no password needed)
+ansible_user: "admin_sshkey"
+ansible_ssh_private_key_file: "/home/centos/.ssh/id_rsa"
+
+# Network state variables
+vlans:
+  management: 10
+  engineering: 11
+  sales: 12
+  finance: 13
+...

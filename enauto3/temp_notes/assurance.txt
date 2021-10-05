@@ -1,0 +1,38 @@
+https://www.youtube.com/watch?v=o0VGIiu0ZPA
+
+notes:
+  - like intersight
+  - gain full visibility
+  - predict performance
+  - rapidly troubleshoot
+  - can see overall summary from GUI
+
+  - network health: infra components (wired/wlan)
+  - breaks down into router, core, distro, access (wired)
+  - breaks down into WLC and APs (wireless)
+  - client health too
+  - can click on individual issues (clients impacted, etc)
+
+data > information > insight > action (increasing biz benefit)
+
+intersection of human, business, technology -> design thinking
+
+self-healing network
+
+can check user-level stats using "Cisco 360"
+  - global health
+  - 360 is a low-level view (most detailed)
+
+for each device you have, will show health.
+
+some devices (like apple iOS) have extra analytics that DNAC accesses
+
+PI: device based mgmt, no intent/business
+DNAC: superset of PI (still has SWIM, etc)
+
+path trace:
+  - not traceroute
+  - uses topology info
+  - queries devices for ECMP
+
+integrates with appdynamics to measure application health

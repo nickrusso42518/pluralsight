@@ -1,0 +1,17 @@
+module: Cisco-IOS-XE-mdt-cfg
+  +--rw mdt-config-data
+     +--rw mdt-subscription* [subscription-id]
+        +--rw subscription-id
+        +--rw base
+        |  +--rw stream?
+        |  +--rw encoding?
+        |  +--rw (update-trigger-choice)?
+        |  |  +--:(sub-upd-trig-periodic)
+        |  |  |  +--rw period
+        |  |  +--:(sub-upd-trig-on-change)
+        |  |     +--rw no-synch-on-start?
+        |  +--rw xpath
+        +--rw mdt-receivers* [address port]
+           +--rw protocol
+           +--rw address
+           +--rw port

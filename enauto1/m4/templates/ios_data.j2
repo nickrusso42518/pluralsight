@@ -1,0 +1,10 @@
+### Begin interface summary ###
+{% for name, data in facts["ansible_facts"]["ansible_net_interfaces"].items() %}
+{{ loop.index }}. {{ name }}: {{ data["operstatus"] }}/{{ data["lineprotocol"] }}
+{% endfor %}
+### End   interface summary ###
+{% for command, output in commands | zip(cli_output["stdout"]) %}
+### Begin output from command: {{ command }} ###
+{{ output }}
+### End   output from command: {{ command }} ###
+{% endfor %}

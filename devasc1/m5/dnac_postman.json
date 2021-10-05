@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "e2503f8c-f3de-422a-a28e-1bffa97d74b2",
+		"name": "DNAC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DevNet DNAC get token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Cisco123!",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "devnetuser",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token",
+					"protocol": "https",
+					"host": [
+						"sandboxdnac",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"dna",
+						"system",
+						"api",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DevNet DNAC get devices",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "PASTE-TOKEN-HERE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandboxdnac.cisco.com/dna/intent/api/v1/network-device/",
+					"protocol": "https",
+					"host": [
+						"sandboxdnac",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"dna",
+						"intent",
+						"api",
+						"v1",
+						"network-device",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

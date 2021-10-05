@@ -1,0 +1,148 @@
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname S2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+enable password globoPass123!
+!
+username admin privilege 15 password 0 globoPass123!
+username admin_sshkey privilege 15 nopassword
+no aaa new-model
+!
+!
+!
+!
+!
+vtp mode off
+no ip routing
+no ip icmp rate-limit unreachable
+!
+!
+!
+no ip domain-lookup
+ip domain-name globomantics.net
+no ip cef
+no ipv6 cef
+!
+!
+file prompt quiet
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 1-4094 priority 8192
+!
+!
+vlan 10
+ name MANAGEMENT
+!
+vlan 11
+ name ENGINEERING
+!
+vlan 12
+ name SALES
+!
+vlan 13
+ name FINANCE
+no cdp run
+!
+! 
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ description TO R1
+ switchport trunk allowed vlan 10-13
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ spanning-tree portfast edge trunk
+!
+interface GigabitEthernet0/2
+ description TO S3 (NXOS)
+ switchport trunk allowed vlan 10-13
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ description TO S4 (EOS)
+ switchport trunk allowed vlan 10-13
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ negotiation auto
+!
+interface Vlan10
+ description MANAGEMENT VLAN
+ ip address 192.168.10.2 255.255.255.0
+!
+interface Vlan11
+ description ENGINEERING VLAN
+ ip address 192.168.11.2 255.255.255.0
+!
+interface Vlan12
+ description SALES VLAN
+ ip address 192.168.12.2 255.255.255.0
+!
+interface Vlan13
+ description FINANCE VLAN
+ ip address 192.168.13.2 255.255.255.0
+!
+ip forward-protocol nd
+!
+ip http server
+!
+ip ssh logging events
+ip ssh version 2
+ip ssh pubkey-chain
+  username admin_sshkey
+   key-hash ssh-rsa 8F8BF5090218D3E83655F502349D5F6C
+ip ssh server algorithm encryption aes128-ctr
+ip ssh client algorithm encryption aes128-ctr
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+line vty 0 4
+ exec-timeout 0 0
+ login local
+ transport input telnet ssh
+!
+!
+end

@@ -1,0 +1,15 @@
+cameras:
+  - Cisco Meraki MV series are "smart cameras"
+  - detection, classification, and tracking happen on-device (edge computing)
+  - REST and MQTT API endpoints for MV sense
+  - snapshot API: get a snapshot of a camera's view at a specific time
+  - live API: returns a Dashboard link for a specified camera
+  - can do people detection and light level readings
+
+restapi:
+  - near real-time or historical data from cameras
+  - slight delay from sending requests to camera
+
+mqtt:
+  - public/subscribe technique (streaming telemetry)
+  - server continuously pushes messages to/gets responses from cameras

@@ -1,0 +1,42 @@
+---
+- name: "PLAY 1: Set theory based SSH/CLI infrastructure-as-code"
+  hosts: routers
+  connection: network_cli
+  tasks:
+    - name: "TASK 0: Input data validation"
+      assert:
+        that:
+          - "item.name is defined"
+          - "item.rd is defined"
+          - "item.description is defined"
+          - "item.route_import is defined"
+          - "item.route_export is defined"
+        msg: "Invalid VRF dictionary; check inputs"
+      loop: "{{ vrfs }}"
+      delegate_to: localhost
+
+    - name: "TASK 1: Get router configuration"
+      ios_command:
+        commands: "show running-config | section ^vrf_definition"
+      register: vrf_config
+
+    - name: "TASK 2: Parse the RT import and export data"
+      set_fact:
+        vrf_data: "{{ vrf_config.stdout[0] | ios_vrf_rt }}"
+
+    - name: "TASK 3: Use set theory to reconcile intended vs actual RT state"
+      set_fact:
+        needed_vrf_changes: "{{ vrfs | rt_diff(vrf_data) }}"
+
+    - name: "TASK 4: Apply RT state changes"
+      ios_config:
+        src: "templates/vpn.j2"
+        save_when: changed
+      notify: config_changed
+      register: cli_result
+
+  handlers:
+    - name: "HANDLER 1: Display relevant changes"
+      listen: config_changed
+      debug:
+        msg: "{{ cli_result.updates }}"

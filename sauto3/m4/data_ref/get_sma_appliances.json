@@ -1,0 +1,30 @@
+{
+  "data": {
+    "appliances": [
+      {
+        "4238A607D1BA8F8C40A7-B0F5AEE67FEA": {
+          "product_type": "WSA",
+          "pvo_enabled": false,
+          "connection_established": true,
+          "tracking_enabled": false,
+          "reporting_enabled": false,
+          "host_name": "wsa.dcloud.cisco.com",
+          "spam_enabled": false,
+          "ip_address": "198.19.11.10"
+        }
+      },
+      {
+        "4238C0F25B8AC071FEBE-FAC362D5AEDC": {
+          "product_type": "ESA",
+          "pvo_enabled": true,
+          "connection_established": true,
+          "tracking_enabled": true,
+          "reporting_enabled": true,
+          "host_name": "esa.dcloud.cisco.com",
+          "spam_enabled": true,
+          "ip_address": "198.19.10.146"
+        }
+      }
+    ]
+  }
+}

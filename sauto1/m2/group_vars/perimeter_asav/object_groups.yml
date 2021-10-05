@@ -1,0 +1,24 @@
+---
+object_groups:
+  network:
+    NETG_BLACKLIST:
+      description: "in-to-out blacklist"
+      members:
+        - "NET_TEST_1"
+        - "NET_TEST_2"
+        - "NET_TEST_3"
+
+    NETG_VPN_CONCENTRATORS:
+      description: "All VPN concentrators"
+      members:
+        - "NET_VPN_EAST"
+        - "NET_VPN_WEST"
+
+  service:
+    PORTG_IPSEC:
+      description: "All IPsec related ports and protocols"
+      members:
+        - "UDP_IKE"
+        - "UDP_IPSEC_NATT"
+        - "PROTO_ESP"
+...

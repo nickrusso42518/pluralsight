@@ -1,0 +1,8 @@
+{# ARISTA EOS HAS 3 SPACES OF INDENTATION #}
+{% for name, vid in vlans.items() %}
+vlan {{ vid }}
+   name {{ name | upper }}
+interface Vlan{{ vid }}
+   description {{ name | upper }} VLAN
+   ip address 192.168.{{ vid }}.{{ inventory_hostname[1:] }}/24
+{% endfor %}

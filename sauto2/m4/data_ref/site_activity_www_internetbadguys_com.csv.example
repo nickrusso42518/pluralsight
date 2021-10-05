@@ -1,0 +1,11 @@
+date,device_id,device_type,device_name,site,action,categories
+2020-07-09T10:20:40.000Z,435018686,Anyconnect Roaming Client,Nicholas’s MacBook Pro,www.internetbadguys.com,BLOCKED,Malware Phishing Enforcement API Testing Computer Security
+2020-07-09T10:01:12.000Z,435022770,Roaming Computers,EC2AMAZ-M367V5R,www.internetbadguys.com,BLOCKED,Malware Phishing Enforcement API Testing Computer Security
+2020-07-09T09:59:01.000Z,435018686,Anyconnect Roaming Client,Nicholas’s MacBook Pro,www.internetbadguys.com,BLOCKED,Malware Phishing Enforcement API Testing Computer Security
+2020-07-09T09:57:49.000Z,435022770,Roaming Computers,EC2AMAZ-M367V5R,www.internetbadguys.com,BLOCKED,Malware Phishing Enforcement API Testing Computer Security
+2020-07-09T09:57:48.000Z,435022770,Roaming Computers,EC2AMAZ-M367V5R,www.internetbadguys.com,BLOCKED,Malware Phishing Enforcement API Testing Computer Security
+2020-07-09T09:54:28.000Z,435018686,Anyconnect Roaming Client,Nicholas’s MacBook Pro,www.internetbadguys.com,BLOCKED,Malware Phishing Enforcement API Testing Computer Security
+2020-07-09T03:41:26.000Z,435018686,Anyconnect Roaming Client,Nicholas’s MacBook Pro,www.internetbadguys.com,BLOCKED,Malware Phishing Enforcement API Testing Computer Security
+2020-07-08T23:09:16.000Z,435018686,Anyconnect Roaming Client,Nicholas’s MacBook Pro,www.internetbadguys.com,BLOCKED,Malware Phishing Enforcement API Testing Computer Security
+2020-07-08T22:37:54.000Z,435018686,Anyconnect Roaming Client,Nicholas’s MacBook Pro,www.internetbadguys.com,BLOCKED,Malware Phishing Enforcement API Testing Computer Security
+2020-07-08T22:32:25.000Z,435018686,Anyconnect Roaming Client,Nicholas’s MacBook Pro,www.internetbadguys.com,BLOCKED,Malware Phishing Enforcement API Testing Computer Security

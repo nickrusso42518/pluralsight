@@ -1,0 +1,102 @@
+{
+  "data": {
+    "customSecurityEvents": {
+      "id": 1030,
+      "domainId": 132,
+      "name": "Wired Brain Coffee",
+      "description": "Detects suspicious app on the Globomantics network",
+      "timestamp": "2020-07-20T14:13:59.712+0000",
+      "enabled": true,
+      "subject": {
+        "ipAddresses": {
+          "excludes": [],
+          "includes": [
+            "209.182.177.5"
+          ]
+        },
+        "users": {
+          "excludes": [],
+          "includes": []
+        },
+        "devices": {
+          "excludes": [],
+          "includes": []
+        },
+        "portProtocols": {
+          "excludes": [],
+          "includes": []
+        },
+        "trustSecIds": {
+          "excludes": [],
+          "includes": []
+        },
+        "trustSecNames": {
+          "excludes": [],
+          "includes": []
+        },
+        "processNames": {
+          "excludes": [],
+          "includes": []
+        },
+        "applications": {
+          "excludes": [],
+          "includes": []
+        },
+        "fileHashs": {
+          "excludes": [],
+          "includes": []
+        },
+        "orientation": "either",
+        "tags": {
+          "excludes": [],
+          "includes": []
+        }
+      },
+      "peer": {
+        "ipAddresses": {
+          "excludes": [],
+          "includes": []
+        },
+        "users": {
+          "excludes": [],
+          "includes": []
+        },
+        "devices": {
+          "excludes": [],
+          "includes": []
+        },
+        "portProtocols": {
+          "includes": [
+            "43283/TCP"
+          ],
+          "excludes": []
+        },
+        "trustSecIds": {
+          "excludes": [],
+          "includes": []
+        },
+        "trustSecNames": {
+          "excludes": [],
+          "includes": []
+        },
+        "processNames": {
+          "excludes": [],
+          "includes": []
+        },
+        "applications": {
+          "excludes": [],
+          "includes": []
+        },
+        "fileHashs": {
+          "excludes": [],
+          "includes": []
+        },
+        "tags": {
+          "excludes": [],
+          "includes": []
+        }
+      },
+      "connection": {}
+    }
+  }
+}

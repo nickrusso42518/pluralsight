@@ -1,0 +1,35 @@
+Trying to set bogus VLAN 9999
+vlan must be of a type compatible with vlan-type
+{
+  "interface-container": {
+    "switchport-list": {
+      "Ethernet0/1": {
+        "name": "Ethernet0/1",
+        "enabled": 1,
+        "vlan": 10
+      },
+      "Ethernet0/2": {
+        "name": "Ethernet0/2",
+        "enabled": 1,
+        "vlan": 20
+      },
+      "Ethernet0/3": {
+        "name": "Ethernet0/3",
+        "enabled": 0,
+        "vlan": 1
+      }
+    },
+    "virtual-list": {
+      "Loopback0": {
+        "name": "Loopback0",
+        "enabled": 1,
+        "ip_address": "192.0.2.1"
+      },
+      "Loopback1": {
+        "name": "Loopback1",
+        "enabled": 0,
+        "ip_address": "0.0.0.0"
+      }
+    }
+  }
+}

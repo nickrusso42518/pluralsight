@@ -1,0 +1,784 @@
+{
+  "version": "v1.2.0",
+  "metadata": {
+    "links": {
+      "self": "https://api.amp.cisco.com/v1/events?limit=20",
+      "next": "https://api.amp.cisco.com/v1/events?limit=20&offset=20"
+    },
+    "results": {
+      "total": 164,
+      "current_item_count": 20,
+      "index": 0,
+      "items_per_page": 20
+    }
+  },
+  "data": [
+    {
+      "id": 1592610181962849008,
+      "timestamp": 1592610181,
+      "timestamp_nanoseconds": 962849000,
+      "date": "2020-06-19T23:43:01+00:00",
+      "event_type": "Scan Started",
+      "event_type_id": 554696714,
+      "connector_guid": "39839b40-f755-42a7-869e-fd841e1c40bc",
+      "group_guids": [
+        "1efca1bf-d627-4336-aeb6-ff03400ff163"
+      ],
+      "computer": {
+        "connector_guid": "39839b40-f755-42a7-869e-fd841e1c40bc",
+        "hostname": "Nicholas\u2019s MacBook Pro",
+        "external_ip": "100.16.207.26",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "192.168.1.151",
+            "mac": "c8:e0:eb:13:de:6d"
+          },
+          {
+            "ip": "",
+            "mac": "32:00:19:11:ea:c0"
+          },
+          {
+            "ip": "",
+            "mac": "32:00:19:11:ea:c1"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/39839b40-f755-42a7-869e-fd841e1c40bc",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/39839b40-f755-42a7-869e-fd841e1c40bc/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/1efca1bf-d627-4336-aeb6-ff03400ff163"
+        }
+      },
+      "scan": {
+        "description": "/Users/nicholasrusso/Downloads/iconfinder_clock_226587.png"
+      }
+    },
+    {
+      "id": 1592610181967989009,
+      "timestamp": 1592610181,
+      "timestamp_nanoseconds": 967989000,
+      "date": "2020-06-19T23:43:01+00:00",
+      "event_type": "Scan Completed, No Detections",
+      "event_type_id": 554696715,
+      "connector_guid": "39839b40-f755-42a7-869e-fd841e1c40bc",
+      "group_guids": [
+        "1efca1bf-d627-4336-aeb6-ff03400ff163"
+      ],
+      "computer": {
+        "connector_guid": "39839b40-f755-42a7-869e-fd841e1c40bc",
+        "hostname": "Nicholas\u2019s MacBook Pro",
+        "external_ip": "100.16.207.26",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "192.168.1.151",
+            "mac": "c8:e0:eb:13:de:6d"
+          },
+          {
+            "ip": "",
+            "mac": "32:00:19:11:ea:c0"
+          },
+          {
+            "ip": "",
+            "mac": "32:00:19:11:ea:c1"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/39839b40-f755-42a7-869e-fd841e1c40bc",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/39839b40-f755-42a7-869e-fd841e1c40bc/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/1efca1bf-d627-4336-aeb6-ff03400ff163"
+        }
+      },
+      "scan": {
+        "description": "/Users/nicholasrusso/Downloads/iconfinder_clock_226587.png",
+        "clean": true,
+        "scanned_files": 1,
+        "scanned_processes": 0,
+        "scanned_paths": 0,
+        "malicious_detections": 0
+      }
+    },
+    {
+      "id": 6839695501453950980,
+      "timestamp": 1592490706,
+      "timestamp_nanoseconds": 545000000,
+      "date": "2020-06-18T14:31:46+00:00",
+      "event_type": "Execution Blocked",
+      "event_type_id": 553648168,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "user": "Administrator@EC2AMAZ-M367V5R",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "file": {
+        "disposition": "Blocklisted",
+        "file_name": "calc.exe",
+        "file_path": "\\\\?\\C:\\Windows\\system32\\calc.exe",
+        "identity": {
+          "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+          "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+          "md5": "dead69d07bc33b762abd466fb6f53e11"
+        },
+        "parent": {
+          "process_id": 3640,
+          "disposition": "Clean",
+          "file_name": "explorer.exe",
+          "identity": {
+            "sha256": "b47c78a36a4db2fb653876f4d6bd3dd7726cd311c2b2f8204ce8ed21ebd700f2",
+            "sha1": "baca86ccd45f8b5c27d0e9605b74b5fe924526b8",
+            "md5": "e1cb52c97c27f702cc96cf886b67fb8b"
+          }
+        }
+      }
+    },
+    {
+      "id": 6839695501453950981,
+      "timestamp": 1592490706,
+      "timestamp_nanoseconds": 638000000,
+      "date": "2020-06-18T14:31:46+00:00",
+      "event_type": "Execution Blocked",
+      "event_type_id": 553648168,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "user": "Administrator@EC2AMAZ-M367V5R",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "file": {
+        "disposition": "Blocklisted",
+        "file_name": "calc.exe",
+        "file_path": "\\\\?\\C:\\Windows\\System32\\calc.exe",
+        "identity": {
+          "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+          "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+          "md5": "dead69d07bc33b762abd466fb6f53e11"
+        }
+      }
+    },
+    {
+      "id": 6839695372604932097,
+      "timestamp": 1592490676,
+      "timestamp_nanoseconds": 144000000,
+      "date": "2020-06-18T14:31:16+00:00",
+      "event_type": "Execution Blocked",
+      "event_type_id": 553648168,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "user": "Administrator@EC2AMAZ-M367V5R",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "file": {
+        "disposition": "Blocklisted",
+        "file_name": "calc.exe",
+        "file_path": "\\\\?\\C:\\Windows\\System32\\calc.exe",
+        "identity": {
+          "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+          "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+          "md5": "dead69d07bc33b762abd466fb6f53e11"
+        }
+      }
+    },
+    {
+      "id": 6839695372604932098,
+      "timestamp": 1592490676,
+      "timestamp_nanoseconds": 246000000,
+      "date": "2020-06-18T14:31:16+00:00",
+      "event_type": "Execution Blocked",
+      "event_type_id": 553648168,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "user": "Administrator@EC2AMAZ-M367V5R",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "file": {
+        "disposition": "Blocklisted",
+        "file_name": "calc.exe",
+        "file_path": "\\\\?\\C:\\Windows\\system32\\calc.exe",
+        "identity": {
+          "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+          "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+          "md5": "dead69d07bc33b762abd466fb6f53e11"
+        },
+        "parent": {
+          "process_id": 3640,
+          "disposition": "Clean",
+          "file_name": "explorer.exe",
+          "identity": {
+            "sha256": "b47c78a36a4db2fb653876f4d6bd3dd7726cd311c2b2f8204ce8ed21ebd700f2",
+            "sha1": "baca86ccd45f8b5c27d0e9605b74b5fe924526b8",
+            "md5": "e1cb52c97c27f702cc96cf886b67fb8b"
+          }
+        }
+      }
+    },
+    {
+      "id": 6839695372604932099,
+      "timestamp": 1592490676,
+      "timestamp_nanoseconds": 778000000,
+      "date": "2020-06-18T14:31:16+00:00",
+      "event_type": "Execution Blocked",
+      "event_type_id": 553648168,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "user": "Administrator@EC2AMAZ-M367V5R",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "file": {
+        "disposition": "Blocklisted",
+        "file_name": "calc.exe",
+        "file_path": "\\\\?\\C:\\Windows\\System32\\calc.exe",
+        "identity": {
+          "sha256": "3091e2abfb55d05d6284b6c4b058b62c8c28afc1d883b699e9a2b5482ec6fd51",
+          "sha1": "f5ed372fd8ec7c455ff66bce73f16ca51cbc0302",
+          "md5": "dead69d07bc33b762abd466fb6f53e11"
+        }
+      }
+    },
+    {
+      "id": 6839690064025354246,
+      "timestamp": 1592489440,
+      "timestamp_nanoseconds": 522000000,
+      "date": "2020-06-18T14:10:40+00:00",
+      "event_type": "Scan Completed With Detections",
+      "event_type_id": 1091567628,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "scan": {
+        "description": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip",
+        "clean": false,
+        "scanned_files": 1,
+        "scanned_processes": 0,
+        "scanned_paths": 0,
+        "malicious_detections": 1
+      }
+    },
+    {
+      "id": 6839690064025354244,
+      "timestamp": 1592489440,
+      "timestamp_nanoseconds": 256000000,
+      "date": "2020-06-18T14:10:40+00:00",
+      "event_type": "Scan Started",
+      "event_type_id": 554696714,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "scan": {
+        "description": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip"
+      }
+    },
+    {
+      "id": 6839690064025354245,
+      "timestamp": 1592489440,
+      "timestamp_nanoseconds": 522000000,
+      "date": "2020-06-18T14:10:40+00:00",
+      "event_type": "Threat Detected",
+      "event_type_id": 1090519054,
+      "detection": "Win.Ransomware.Eicar::95.sbx.tg",
+      "detection_id": "6839690064025354241",
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "file": {
+        "disposition": "Malicious",
+        "file_name": "eicar_com.zip",
+        "file_path": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip",
+        "identity": {
+          "sha256": "2546dcffc5ad854d4ddc64fbf056871cd5a00f2471cb7a5bfd4ac23b6e9eedad",
+          "sha1": "d27265074c9eac2e2122ed69294dbc4d7cce9141",
+          "md5": "6ce6f415d8475545be5ba114f208b0ff"
+        }
+      }
+    },
+    {
+      "id": 6839689948061237251,
+      "timestamp": 1592489413,
+      "timestamp_nanoseconds": 254000000,
+      "date": "2020-06-18T14:10:13+00:00",
+      "event_type": "Scan Completed With Detections",
+      "event_type_id": 1091567628,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "scan": {
+        "description": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip",
+        "clean": false,
+        "scanned_files": 1,
+        "scanned_processes": 0,
+        "scanned_paths": 0,
+        "malicious_detections": 1
+      }
+    },
+    {
+      "id": 6839689948061237250,
+      "timestamp": 1592489413,
+      "timestamp_nanoseconds": 254000000,
+      "date": "2020-06-18T14:10:13+00:00",
+      "event_type": "Threat Detected",
+      "event_type_id": 1090519054,
+      "detection": "Win.Ransomware.Eicar::95.sbx.tg",
+      "detection_id": "0",
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "file": {
+        "disposition": "Malicious",
+        "file_name": "eicar_com.zip",
+        "file_path": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip",
+        "identity": {
+          "sha256": "2546dcffc5ad854d4ddc64fbf056871cd5a00f2471cb7a5bfd4ac23b6e9eedad",
+          "sha1": "d27265074c9eac2e2122ed69294dbc4d7cce9141",
+          "md5": "6ce6f415d8475545be5ba114f208b0ff"
+        }
+      }
+    },
+    {
+      "id": 6839689943766269953,
+      "timestamp": 1592489412,
+      "timestamp_nanoseconds": 676000000,
+      "date": "2020-06-18T14:10:12+00:00",
+      "event_type": "Scan Started",
+      "event_type_id": 554696714,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "scan": {
+        "description": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip"
+      }
+    },
+    {
+      "id": 6839687268001644550,
+      "timestamp": 1592488789,
+      "timestamp_nanoseconds": 816000000,
+      "date": "2020-06-18T13:59:49+00:00",
+      "event_type": "Scan Completed With Detections",
+      "event_type_id": 1091567628,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "scan": {
+        "description": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip",
+        "clean": false,
+        "scanned_files": 1,
+        "scanned_processes": 0,
+        "scanned_paths": 0,
+        "malicious_detections": 1
+      }
+    },
+    {
+      "id": 6839687268001644549,
+      "timestamp": 1592488789,
+      "timestamp_nanoseconds": 816000000,
+      "date": "2020-06-18T13:59:49+00:00",
+      "event_type": "Threat Detected",
+      "event_type_id": 1090519054,
+      "detection": "Win.Ransomware.Eicar::95.sbx.tg",
+      "detection_id": "6839687268001644546",
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "file": {
+        "disposition": "Malicious",
+        "file_name": "eicar_com.zip",
+        "file_path": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip",
+        "identity": {
+          "sha256": "2546dcffc5ad854d4ddc64fbf056871cd5a00f2471cb7a5bfd4ac23b6e9eedad",
+          "sha1": "d27265074c9eac2e2122ed69294dbc4d7cce9141",
+          "md5": "6ce6f415d8475545be5ba114f208b0ff"
+        }
+      }
+    },
+    {
+      "id": 6839687268001644548,
+      "timestamp": 1592488789,
+      "timestamp_nanoseconds": 628000000,
+      "date": "2020-06-18T13:59:49+00:00",
+      "event_type": "Scan Started",
+      "event_type_id": 554696714,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "scan": {
+        "description": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip"
+      }
+    },
+    {
+      "id": 6839687229346938883,
+      "timestamp": 1592488780,
+      "timestamp_nanoseconds": 940000000,
+      "date": "2020-06-18T13:59:40+00:00",
+      "event_type": "Scan Completed With Detections",
+      "event_type_id": 1091567628,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "scan": {
+        "description": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip",
+        "clean": false,
+        "scanned_files": 1,
+        "scanned_processes": 0,
+        "scanned_paths": 0,
+        "malicious_detections": 1
+      }
+    },
+    {
+      "id": 6839687229346938882,
+      "timestamp": 1592488780,
+      "timestamp_nanoseconds": 940000000,
+      "date": "2020-06-18T13:59:40+00:00",
+      "event_type": "Threat Detected",
+      "event_type_id": 1090519054,
+      "detection": "Win.Ransomware.Eicar::95.sbx.tg",
+      "detection_id": "6839687229346938881",
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "severity": "Medium",
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "file": {
+        "disposition": "Malicious",
+        "file_name": "eicar_com.zip",
+        "file_path": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip",
+        "identity": {
+          "sha256": "2546dcffc5ad854d4ddc64fbf056871cd5a00f2471cb7a5bfd4ac23b6e9eedad",
+          "sha1": "d27265074c9eac2e2122ed69294dbc4d7cce9141",
+          "md5": "6ce6f415d8475545be5ba114f208b0ff"
+        }
+      }
+    },
+    {
+      "id": 6839687229346938881,
+      "timestamp": 1592488780,
+      "timestamp_nanoseconds": 815000000,
+      "date": "2020-06-18T13:59:40+00:00",
+      "event_type": "Scan Started",
+      "event_type_id": 554696714,
+      "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+      "group_guids": [
+        "0fd176db-c9f8-4741-8909-d48d38c383d6"
+      ],
+      "computer": {
+        "connector_guid": "82403470-8d83-426c-8984-3f0679f1cb7f",
+        "hostname": "EC2AMAZ-M367V5R",
+        "external_ip": "54.90.2.203",
+        "active": true,
+        "network_addresses": [
+          {
+            "ip": "172.31.46.65",
+            "mac": "06:6b:13:a3:05:61"
+          }
+        ],
+        "links": {
+          "computer": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f",
+          "trajectory": "https://api.amp.cisco.com/v1/computers/82403470-8d83-426c-8984-3f0679f1cb7f/trajectory",
+          "group": "https://api.amp.cisco.com/v1/groups/0fd176db-c9f8-4741-8909-d48d38c383d6"
+        }
+      },
+      "scan": {
+        "description": "C:\\Users\\Administrator\\Downloads\\eicar_com.zip"
+      }
+    },
+    {
+      "id": 8496687,
+      "timestamp": 1592488736,
+      "timestamp_nanoseconds": 70068100,
+      "date": "2020-06-18T13:58:56+00:00",
+      "event_type": "Install Started",
+      "event_type_id": 553648158,
+      "hostname": "EC2AMAZ-M367V5R"
+    }
+  ]
+}
