@@ -1,0 +1,231 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R14
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+username admin privilege 15 password 0 admin
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+class-map match-any CMAP_DEVICE_MGMT
+ match access-group name ACL_IPV4_SSH
+ match access-group name ACL_IPV4_TELNET
+class-map match-any CMAP_ICMP_PING
+ match access-group name ACL_IPV4_ICMP_PING
+class-map match-any CMAP_ROUTING
+ match access-group name ACL_IPV4_BGP
+ match access-group name ACL_IPV4_EIGRP
+!
+policy-map PMAP_CPP_IN
+ class CMAP_DEVICE_MGMT
+  police rate 100 pps
+ class CMAP_ROUTING
+  police rate 40 pps
+ class CMAP_ICMP_PING
+  police rate 15 pps burst 5 packets
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.14 255.255.255.255
+!
+interface Ethernet0/0
+ description TO S5
+ ip address 10.34.56.14 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface Ethernet0/1
+ description TO R13
+ ip address 10.13.14.14 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ description TO R20
+ ip address 192.168.14.14 255.255.255.0
+ ip nat outside
+ ip virtual-reassembly in
+!
+!
+router eigrp GLOBO
+ !
+ address-family ipv4 unicast autonomous-system 65000
+  !
+  af-interface Loopback0
+   passive-interface
+  exit-af-interface
+  !
+  topology base
+   distance eigrp 90 205
+   redistribute bgp 100 route-map RM_BGP_TO_EIGRP
+  exit-af-topology
+  network 10.0.0.0
+  eigrp router-id 10.0.0.14
+ exit-address-family
+!
+router bgp 100
+ bgp router-id 10.0.0.14
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.0.0.13 remote-as 100
+ neighbor 10.0.0.13 password IBGP_PASS
+ neighbor 10.0.0.13 update-source Loopback0
+ neighbor 192.168.14.20 remote-as 20
+ neighbor 192.168.14.20 password EBGP_PASS
+ !
+ address-family ipv4
+  network 100.64.14.0 mask 255.255.255.0
+  neighbor 10.0.0.13 activate
+  neighbor 10.0.0.13 next-hop-self
+  neighbor 192.168.14.20 activate
+  neighbor 192.168.14.20 route-map RM_BGP_INBOUND in
+  neighbor 192.168.14.20 route-map RM_BGP_OUTBOUND out
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip nat pool NAT_POOL 100.64.14.0 100.64.14.250 prefix-length 24
+ip nat inside source list ACL_NAT pool NAT_POOL
+ip route 100.64.14.0 255.255.255.0 Null0 name NAT_POOL_FOR_BGP
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard ACL_NAT
+ deny   192.168.14.0 0.0.0.255
+ permit 10.0.0.0 0.255.255.255
+ permit 192.168.0.0 0.0.255.255
+!
+ip access-list extended ACL_IPV4_BGP
+ permit tcp any any eq bgp
+ permit tcp any eq bgp any
+ip access-list extended ACL_IPV4_EIGRP
+ permit eigrp any any
+ip access-list extended ACL_IPV4_ICMP_PING
+ permit icmp any any echo
+ip access-list extended ACL_IPV4_SSH
+ permit tcp any any eq 22
+ permit tcp any eq 22 any
+ip access-list extended ACL_IPV4_TELNET
+ permit tcp any any eq telnet
+ permit tcp any eq telnet any
+!
+!
+ip prefix-list PL_DEFAULT_ONLY seq 5 permit 0.0.0.0/0
+!
+ip prefix-list PL_LOCAL_NAT_POOL seq 5 permit 100.64.14.0/24
+ipv6 ioam timestamp
+!
+route-map RM_BGP_INBOUND permit 10
+ description PRIMARY DEFAULT PATH
+ match ip address prefix-list PL_DEFAULT_ONLY
+ set local-preference 200
+!
+route-map RM_BGP_TO_EIGRP permit 10
+ match ip address prefix-list PL_DEFAULT_ONLY
+ set metric 100000 10 255 1 1500
+!
+route-map RM_BGP_OUTBOUND permit 10
+ description ONLY ALLOW NAT POOL OUTBOUND
+ match ip address prefix-list PL_LOCAL_NAT_POOL
+!
+!
+!
+control-plane
+ service-policy input PMAP_CPP_IN
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input telnet ssh
+!
+!
+end

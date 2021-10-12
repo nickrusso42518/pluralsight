@@ -1,0 +1,164 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R13
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+key chain KC_OSPF_AUTH
+ key 1
+  key-string OSPF_SHA256
+  cryptographic-algorithm hmac-sha-256
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.13 255.255.255.255
+ ip ospf 1 area 3
+!
+interface Ethernet0/0
+ description UNUSED; OSPF PLAINTEXT AUTH EXAMPLE
+ no ip address
+ ip ospf authentication
+ ip ospf authentication-key OSPFTEXT
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+!
+interface Ethernet0/2
+ description TO R11
+ ip address 10.11.13.13 255.255.255.0
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 OSPF_MD5
+ ip ospf network point-to-point
+ ip ospf 1 area 3
+!
+interface Ethernet0/3
+ description TO R10
+ ip address 10.10.13.13 255.255.255.0
+ ip ospf authentication key-chain KC_OSPF_AUTH
+ ip ospf network point-to-point
+ ip ospf 1 area 3
+!
+router ospf 1
+ router-id 10.0.0.13
+ area 3 stub
+ passive-interface Loopback0
+!
+router bgp 4200000002
+ bgp router-id 10.0.0.13
+ bgp log-neighbor-changes
+ bgp listen range 10.0.0.0/24 peer-group IBGP_EAST
+ bgp listen limit 10
+ no bgp default ipv4-unicast
+ neighbor IBGP_EAST peer-group
+ neighbor IBGP_EAST remote-as 4200000002
+ neighbor IBGP_EAST update-source Loopback0
+ !
+ address-family ipv4
+  neighbor IBGP_EAST activate
+  neighbor IBGP_EAST route-reflector-client
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

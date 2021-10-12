@@ -1,0 +1,187 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R7
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition X
+ rd 65000:9
+ route-target export 65000:901
+ route-target import 65000:902
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label range 7000 7999
+mpls traffic-eng tunnels
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.7 255.255.255.255
+!
+interface Ethernet0/0
+ description TO R6
+ ip address 10.6.7.7 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 10
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth
+!
+interface Ethernet0/1
+ description TO R16
+ vrf forwarding X
+ ip address 192.168.7.7 255.255.255.0
+ ipv6 address FE80::7 link-local
+!
+interface Ethernet0/2
+ no ip address
+!
+interface Ethernet0/3
+ description TO R3
+ ip address 10.3.7.7 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 10
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth
+!
+router ospf 1
+ mpls ldp autoconfig
+ mpls traffic-eng router-id Loopback0
+ mpls traffic-eng area 0
+ router-id 10.0.0.7
+ prefix-suppression
+ passive-interface Loopback0
+ network 10.0.0.0 0.255.255.255 area 0
+!
+router bgp 65000
+ template peer-session IBGP
+  remote-as 65000
+  transport connection-mode active
+  update-source Loopback0
+ exit-peer-session
+ !
+ bgp router-id 10.0.0.7
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.0.0.1 inherit peer-session IBGP
+ !
+ address-family vpnv4
+  neighbor 10.0.0.1 activate
+  neighbor 10.0.0.1 send-community extended
+ exit-address-family
+ !
+ address-family vpnv6
+  neighbor 10.0.0.1 activate
+  neighbor 10.0.0.1 send-community extended
+ exit-address-family
+ !
+ address-family ipv4 vrf X
+  redistribute static
+ exit-address-family
+ !
+ address-family ipv6 vrf X
+  redistribute static
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route vrf X 172.26.0.0 255.255.0.0 Ethernet0/1 192.168.7.16 name CENTRAL_EXTRANET
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 route vrf X FC00:172:26::/48 Ethernet0/1 FE80::16 name CENTRAL_EXTRANET
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

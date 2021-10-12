@@ -1,0 +1,155 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label range 2000 2999
+mpls traffic-eng tunnels
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.2 255.255.255.255
+!
+interface Ethernet0/0
+ description TO R1
+ ip address 10.1.2.2 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 5
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ mpls traffic-eng administrative-weight 500
+ ip rsvp bandwidth
+!
+interface Ethernet0/1
+ description TO R3
+ ip address 10.2.3.2 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 5
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ mpls traffic-eng administrative-weight 500
+ ip rsvp bandwidth
+!
+interface Ethernet0/2
+ description TO R5
+ ip address 10.2.5.2 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 10
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth
+!
+interface Ethernet0/3
+ description TO R6
+ ip address 10.2.6.2 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 10
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth
+!
+router ospf 1
+ mpls ldp autoconfig area 0
+ mpls traffic-eng router-id Loopback0
+ mpls traffic-eng area 0
+ router-id 10.0.0.2
+ prefix-suppression
+ passive-interface Loopback0
+ network 10.0.0.0 0.255.255.255 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

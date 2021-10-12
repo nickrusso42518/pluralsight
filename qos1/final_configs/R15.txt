@@ -1,0 +1,314 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R15
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name njrusmc.net
+ip name-server 192.168.20.10
+ip multicast-routing
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+class-map match-all CMAP_QUEUE_BUSINESS_DATA
+  description LOW-LATENCY AND HIGH-THROUGHPUT TRAFFIC
+ match dscp af11  af12  af13  af21  af22  af23
+class-map match-all CMAP_QUEUE_OAM_SIGNALING
+  description NETOPS AND VOICE/VIDEO SIGNALING TRAFFIC
+ match dscp cs2  cs5
+class-map match-all CMAP_MATCH_VOICE_AND_SIGNALING
+  description MATCH VOICE AND ASSOCIATED SIGNALING
+ match access-group name ACL_VOICE_AND_SIGNALING
+class-map match-all CMAP_MATCH_OAM
+  description MATCH NETOPS/OAM TRAFFIC
+ match access-group name ACL_OAM
+class-map match-all CMAP_MATCH_SCAVENGER
+  description MATCH SCAVENGER (UNDESIRABLE) TRAFFIC
+ match access-group name ACL_SCAVENGER
+class-map match-all CMAP_MATCH_BULK_DATA
+  description MATCH BULK (HIGH-THROUGHPUT) DATA
+ match access-group name ACL_BULK_DATA
+class-map match-all CMAP_QUEUE_VOICE
+  description VOICE BEARER TRAFFIC
+ match dscp ef
+class-map match-all CMAP_MATCH_BROADCAST_VIDEO
+  description MATCH BROADCAST VIDEO FROM DATA CENTER
+ match access-group name ACL_BROADCAST_VIDEO
+class-map match-all CMAP_QUEUE_BROADCAST_VIDEO
+  description ONE-WAY, INELASTIC VIDEO TRAFFIC
+ match dscp cs3
+class-map match-all CMAP_MATCH_TRANSACTIONAL_DATA
+  description MATCH TRANSACTIONAL (LOW-LATENCY) DATA
+ match access-group name ACL_TRANSACTIONAL_DATA
+class-map match-all CMAP_QUEUE_NETCONTROL
+  description NETWORK CONTROL (ROUTING, ETC)
+ match dscp cs6  cs7
+!
+policy-map PMAP_INGRESS_EDGE_MARK
+ description CLASSIFY AND MARK TRAFFIC FROM HOSTS
+ class CMAP_MATCH_VOICE_AND_SIGNALING
+ class CMAP_MATCH_BROADCAST_VIDEO
+  set dscp cs3
+ class CMAP_MATCH_OAM
+  set dscp cs2
+ class CMAP_MATCH_TRANSACTIONAL_DATA
+  set dscp af21
+ class CMAP_MATCH_BULK_DATA
+  set dscp af11
+ class CMAP_MATCH_SCAVENGER
+  set dscp cs1
+ class class-default
+  set dscp default
+policy-map PMAP_EGRESS_CAMPUS_QUEUE
+ description EGRESS QUEUING POLICY IN CAMPUS
+ class CMAP_QUEUE_VOICE
+  priority percent 10
+ class CMAP_QUEUE_BROADCAST_VIDEO
+  bandwidth percent 20
+ class CMAP_QUEUE_NETCONTROL
+  bandwidth percent 2
+ class CMAP_QUEUE_OAM_SIGNALING
+  bandwidth percent 8
+ class CMAP_QUEUE_BUSINESS_DATA
+  bandwidth percent 35
+  random-detect dscp-based
+ class class-default
+  bandwidth percent 25
+  random-detect dscp-based
+  random-detect dscp 0 20 40 10
+  random-detect dscp 8 10 20 8
+policy-map PMAP_EGRESS_WAN_SHAPE
+ description EGRESS SHAPER TO HUB
+ class class-default
+  shape average 35000000 140000 0 account user-defined 14
+   service-policy PMAP_EGRESS_CAMPUS_QUEUE
+!
+!
+crypto logging session
+crypto logging ikev2
+!
+crypto ikev2 proposal IKEV2_PROPOSAL
+ encryption aes-cbc-256
+ integrity sha384
+ group 20
+!
+crypto ikev2 policy IKEV2_POLICY
+ proposal IKEV2_PROPOSAL
+!
+crypto ikev2 keyring IKEV2_KEYRING
+ peer WAN
+  address 172.16.0.0 255.255.0.0
+  pre-shared-key local IPSEC_GLOBO
+  pre-shared-key remote IPSEC_GLOBO
+ !
+!
+!
+crypto ikev2 profile IKEV2_PROFILE
+ match identity remote address 172.16.0.0 255.255.0.0
+ authentication local pre-share
+ authentication remote pre-share
+ keyring local IKEV2_KEYRING
+!
+!
+!
+crypto ipsec transform-set IPSEC_XFORM_AH_SHA1 ah-sha-hmac
+ mode tunnel
+crypto ipsec transform-set IPSEC_XFORM_ESPNULL_SHA1 esp-null esp-sha-hmac
+ mode transport
+!
+crypto ipsec profile IPSEC_PROFILE_AH_SHA1
+ set transform-set IPSEC_XFORM_AH_SHA1
+ set ikev2-profile IKEV2_PROFILE
+!
+crypto ipsec profile IPSEC_PROFILE_ESPNULL_SHA1
+ set transform-set IPSEC_XFORM_ESPNULL_SHA1
+ set ikev2-profile IKEV2_PROFILE
+!
+!
+!
+bridge irb
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.15 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Tunnel815
+ description R8 GRE TUNNEL
+ ip address 10.8.15.15 255.255.255.0
+ ip mtu 1400
+ ip pim sparse-mode
+ ip tcp adjust-mss 1360
+ ip ospf 1 area 0
+ tunnel source 172.16.135.15
+ tunnel destination 172.16.118.8
+ tunnel protection ipsec profile IPSEC_PROFILE_AH_SHA1
+!
+interface Ethernet0/0
+ description P17
+ no ip address
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+!
+interface Ethernet0/1
+ description H18
+ no ip address
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+!
+interface Ethernet0/2
+ description R13
+ ip address 172.16.135.15 255.255.255.0
+ service-policy output PMAP_EGRESS_WAN_SHAPE
+!
+interface Ethernet0/3
+ no ip address
+!
+interface BVI1
+ description ROUTED INTERFACE FOR P17 and H18
+ ip address 192.168.15.15 255.255.255.0
+ ip pim passive
+ ip igmp version 3
+ ip ospf 1 area 0
+ service-policy input PMAP_INGRESS_EDGE_MARK
+!
+router ospf 1
+ passive-interface default
+ no passive-interface Tunnel815
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+no ip pim autorp
+ip pim ssm default
+ip route 172.16.118.0 255.255.255.0 172.16.135.13
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list extended ACL_BROADCAST_VIDEO
+ permit udp 192.168.15.0 0.0.0.255 224.0.0.0 15.255.255.255 eq 4000
+ip access-list extended ACL_BULK_DATA
+ remark FILE TRANSPORT PROTOCOL (FTP) TRAFFIC
+ permit tcp any any range ftp-data ftp
+ permit tcp any range ftp-data ftp any
+ip access-list extended ACL_OAM
+ remark SECURE SHELL (SSH) FOR DEVICE MANAGEMENT
+ permit tcp any any eq 22
+ permit tcp any eq 22 any
+ remark SNMP POLLS AND TRAPS FOR DEVICE MONITORING
+ permit udp any any range snmp snmptrap
+ permit udp any range snmp snmptrap any
+ remark RADIUS FOR DEVICE AUTHENTICATION
+ permit tcp any any range 1812 1813
+ permit tcp any range 1812 1813 any
+ip access-list extended ACL_SCAVENGER
+ remark SPECIFY LOW PRIORITY/LOW EFFORT FLOWS
+ permit ip any host 198.51.100.21
+ip access-list extended ACL_TRANSACTIONAL_DATA
+ remark HTTP TO SALES/CRM CLOUD SERVICE
+ permit tcp any host 198.51.100.22 eq 8080
+ remark CLIENT DNS REQUESTS
+ permit udp any any eq domain
+ip access-list extended ACL_VOICE_AND_SIGNALING
+ remark VOICE BEARER TRAFFIC - REAL-TIME TRANSPORT PROTOCOL (RTP)
+ permit udp any any range 16384 32767 dscp ef
+ permit udp any range 16384 32767 any dscp ef
+ remark TCP-BASED SESSION INITIATION PROTOCOL (SIP)
+ permit tcp any any eq 5060 dscp cs5
+ permit tcp any eq 5060 any dscp cs5
+ remark UDP-BASED SESSION INITIATION PROTOCOL (SIP)
+ permit udp any any eq 5060 dscp cs5
+ permit udp any eq 5060 any dscp cs5
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+bridge 1 protocol ieee
+bridge 1 route ip
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp logging
+ntp source Loopback0
+ntp server 10.0.0.5
+ntp server 10.0.0.6
+!
+end

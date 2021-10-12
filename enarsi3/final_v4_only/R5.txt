@@ -1,0 +1,224 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+crypto logging session
+crypto logging ikev2
+!
+crypto ikev2 proposal IKEV2_PROPOSAL
+ encryption aes-cbc-256
+ integrity sha384
+ group 20
+!
+crypto ikev2 policy IKEV2_POLICY
+ proposal IKEV2_PROPOSAL
+!
+!
+crypto ikev2 profile IKEV2_PROFILE
+ match identity remote address 10.0.0.11 255.255.255.255
+ identity local fqdn r5.globomantics.com
+ authentication local pre-share key globoIPsec123
+ authentication remote pre-share key globoIPsec123
+!
+!
+!
+crypto ipsec transform-set IPSEC_XFORM_TUNNEL esp-null esp-sha-hmac
+ mode tunnel
+crypto ipsec transform-set IPSEC_XFORM_TRANSPORT esp-null esp-sha-hmac
+ mode transport require
+!
+crypto ipsec profile IPSEC_PROFILE_TRANSPORT
+ set transform-set IPSEC_XFORM_TRANSPORT
+ set ikev2-profile IKEV2_PROFILE
+!
+crypto ipsec profile IPSEC_PROFILE_TUNNEL
+ set transform-set IPSEC_XFORM_TUNNEL
+ set ikev2-profile IKEV2_PROFILE
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.5 255.255.255.255
+ ip ospf 1 area 1
+!
+interface Tunnel101
+ description GRE/IPSEC TUNNEL MODE
+ ip address 10.0.101.5 255.255.255.0
+ ip ospf 1 area 1
+ ip ospf cost 500
+ shutdown
+ tunnel source 10.0.0.5
+ tunnel destination 10.0.0.11
+ tunnel key 101
+ tunnel protection ipsec profile IPSEC_PROFILE_TUNNEL
+!
+interface Tunnel102
+ description GRE/IPSEC TRANSPORT MODE
+ ip address 10.0.102.5 255.255.255.0
+ ip ospf 1 area 1
+ ip ospf cost 500
+ tunnel source 10.0.0.5
+ tunnel destination 10.0.0.11
+ tunnel key 102
+ tunnel protection ipsec profile IPSEC_PROFILE_TRANSPORT
+!
+interface Ethernet0/0
+ description TO R2
+ ip address 10.2.5.5 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet0/1
+ description TO R3
+ ip address 10.3.5.5 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet0/2
+ description TO R12
+ ip address 192.168.5.5 255.255.255.0
+!
+interface Ethernet0/3
+ description TO R1
+ ip address 10.1.5.5 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet1/0
+ description TO R4
+ ip address 10.4.5.5 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet1/1
+ no ip address
+ shutdown
+!
+interface Ethernet1/2
+ no ip address
+ shutdown
+!
+interface Ethernet1/3
+ no ip address
+ shutdown
+!
+router ospf 1
+ router-id 10.0.0.5
+ area 1 virtual-link 10.0.0.11
+ passive-interface Loopback0
+!
+router bgp 65001
+ bgp router-id 10.0.0.5
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 192.168.5.12 remote-as 12
+ !
+ address-family ipv4
+  network 10.0.0.4 mask 255.255.255.255
+  network 10.0.0.5 mask 255.255.255.255
+  neighbor 192.168.5.12 activate
+  neighbor 192.168.5.12 prefix-list PL_DENY_LOCAL_LB in
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+ip prefix-list PL_DENY_LOCAL_LB seq 5 deny 10.0.0.4/31 ge 32
+ip prefix-list PL_DENY_LOCAL_LB seq 10 permit 0.0.0.0/0 le 32
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

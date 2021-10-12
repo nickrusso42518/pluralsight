@@ -1,0 +1,256 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R7
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name njrusmc.net
+ip name-server 192.168.20.10
+ip multicast-routing
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+class-map match-all CMAP_QUEUE_BUSINESS_DATA
+  description LOW-LATENCY AND HIGH-THROUGHPUT TRAFFIC
+ match dscp af11  af12  af13  af21  af22  af23
+class-map match-all CMAP_QUEUE_OAM_SIGNALING
+  description NETOPS AND VOICE/VIDEO SIGNALING TRAFFIC
+ match dscp cs2  cs5
+class-map match-all CMAP_QUEUE_SIGNALING
+  description VOICE/VIDEO SIGNALING TRAFFIC
+ match dscp cs5
+class-map match-all CMAP_QUEUE_BULK_DATA
+  description HIGH-THROUGHPUT TRAFFIC
+ match dscp af11  af12  af13
+class-map match-all CMAP_QUEUE_SCAVENGER
+  description SCAVENGER (UNDESIRABLE) TRAFFIC
+ match dscp cs1
+class-map match-all CMAP_QUEUE_VOICE
+  description VOICE BEARER TRAFFIC
+ match dscp ef
+class-map match-all CMAP_QUEUE_BROADCAST_VIDEO
+  description ONE-WAY, INELASTIC VIDEO TRAFFIC
+ match dscp cs3
+class-map match-all CMAP_QUEUE_MM_CONFERENCING_DATA
+  description MULTIMEDIA CONFERENCING (TWO-WAY ELASTIC VIDEO) DATA
+ match dscp af41  af42  af43
+class-map match-all CMAP_QUEUE_TRANSACTIONAL_DATA
+  description LOW-LATENCY TRAFFIC
+ match dscp af21  af22  af23
+class-map match-all CMAP_QUEUE_NETCONTROL
+  description NETWORK CONTROL (ROUTING, ETC)
+ match dscp cs6  cs7
+!
+policy-map PMAP_EGRESS_INTERNET_QUEUE
+ description EGRESS QUEUING POLICY AT INTERNET EDGE
+ class CMAP_QUEUE_VOICE
+  priority percent 30
+ class CMAP_QUEUE_NETCONTROL
+  bandwidth percent 2
+ class CMAP_QUEUE_SIGNALING
+  bandwidth percent 3
+ class CMAP_QUEUE_MM_CONFERENCING_DATA
+  bandwidth percent 15
+  random-detect dscp-based
+ class CMAP_QUEUE_TRANSACTIONAL_DATA
+  bandwidth percent 19
+  random-detect dscp-based
+ class CMAP_QUEUE_BULK_DATA
+  bandwidth percent 5
+  random-detect dscp-based
+ class CMAP_QUEUE_SCAVENGER
+  bandwidth percent 1
+ class class-default
+  bandwidth percent 25
+  random-detect dscp-based
+policy-map PMAP_EGRESS_CAMPUS_QUEUE
+ description EGRESS QUEUING POLICY IN CAMPUS
+ class CMAP_QUEUE_VOICE
+  priority percent 10
+ class CMAP_QUEUE_BROADCAST_VIDEO
+  bandwidth percent 20
+ class CMAP_QUEUE_NETCONTROL
+  bandwidth percent 2
+ class CMAP_QUEUE_OAM_SIGNALING
+  bandwidth percent 8
+ class CMAP_QUEUE_BUSINESS_DATA
+  bandwidth percent 35
+  random-detect dscp-based
+ class class-default
+  bandwidth percent 25
+  random-detect dscp-based
+  random-detect dscp 0 20 40 10
+  random-detect dscp 8 10 20 8
+policy-map PMAP_EGRESS_INTERNET_SHAPE
+ description HIERARCHICAL SHAPER AT INTERNET EDGE
+ class class-default
+  shape average 55000000 220000 220000
+   service-policy PMAP_EGRESS_INTERNET_QUEUE
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.7 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Ethernet0/0
+ description R5
+ bandwidth 1000000
+ ip address 10.5.7.7 255.255.255.0
+ ip pim sparse-mode
+ ip nat inside
+ ip virtual-reassembly in
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ service-policy output PMAP_EGRESS_CAMPUS_QUEUE
+!
+interface Ethernet0/1
+ description R6
+ bandwidth 1000000
+ ip address 10.6.7.7 255.255.255.0
+ ip pim sparse-mode
+ ip nat inside
+ ip virtual-reassembly in
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ service-policy output PMAP_EGRESS_CAMPUS_QUEUE
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ description R20 (INTERNET)
+ bandwidth 1000000
+ ip address 172.16.207.7 255.255.255.0
+ ip nat outside
+ ip virtual-reassembly in
+ service-policy output PMAP_EGRESS_INTERNET_SHAPE
+!
+router ospf 1
+ passive-interface Loopback0
+ default-information originate
+!
+router bgp 65001
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 172.16.207.20 remote-as 65020
+ !
+ address-family ipv4
+  network 203.0.113.0
+  neighbor 172.16.207.20 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+no ip pim autorp
+ip pim ssm default
+ip nat pool NAT_POOL_203 203.0.113.0 203.0.113.255 prefix-length 24
+ip nat inside source list ACL_NAT pool NAT_POOL_203 overload
+ip route 203.0.113.0 255.255.255.0 Null0
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard ACL_NAT
+ permit 10.0.0.0 0.255.255.255
+ permit 192.168.0.0 0.0.255.255
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp logging
+ntp source Loopback0
+ntp server 10.0.0.5
+ntp server 10.0.0.6
+!
+end

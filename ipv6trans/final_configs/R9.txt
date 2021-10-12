@@ -1,0 +1,156 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R9
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name globomantics.com
+ip name-server 2020:192:168:20::10
+ip name-server 192.168.20.10
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no ip address
+ shutdown
+!
+interface Ethernet0/1
+ description R7
+ no ip address
+!
+interface Ethernet0/1.4
+ description R7 (IPV4)
+ encapsulation dot1Q 4
+ ip address 10.7.9.9 255.255.255.0
+ nat64 enable
+!
+interface Ethernet0/1.6
+ description R7 (IPV6)
+ encapsulation dot1Q 6
+ nat64 enable
+ ipv6 address FE80::9 link-local
+ ipv6 address FC00:10:7:9::9/64
+ ipv6 nd ra suppress all
+ no ipv6 unreachables
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 10.0.0.0 255.0.0.0 Ethernet0/1.4 10.7.9.7 name INTERNAL_TRANSITS
+ip route 192.168.0.0 255.255.0.0 Ethernet0/1.4 10.7.9.7 name CLIENT_VLANS
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+nat64 prefix stateful 2020:6464::/96
+nat64 v4 pool NAT64_POOL 100.64.0.0 100.64.0.255
+nat64 v6v4 list ACL_GLOBAL_UNICAST pool NAT64_POOL
+ipv6 route ::/0 FC00:10:7:9::7 name IPV6_INTERNET
+ipv6 ioam timestamp
+!
+!
+!
+ipv6 access-list ACL_GLOBAL_UNICAST
+ deny ipv6 2020::/16 any
+ permit ipv6 2000::/3 2020:6464::C0A8:1400/120
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp server 10.0.0.3
+ntp server 10.0.0.4
+!
+end

@@ -1,0 +1,171 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R19
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name globomantics.com
+ip name-server 192.168.20.10
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+bridge irb
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.19 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Ethernet0/0
+ description H5
+ no ip address
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+!
+interface Ethernet0/1
+ description H6
+ no ip address
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+!
+interface Ethernet0/2
+ description WINDOWS HOST
+ no ip address
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+!
+interface Ethernet0/3
+ no ip address
+!
+interface Ethernet1/0
+ no ip address
+!
+interface Ethernet1/1
+ description R3 (IPV4 ONLY)
+ ip address 10.3.19.19 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet1/2
+ description R4 (IPV4 ONLY)
+ ip address 10.4.19.19 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet1/3
+ no ip address
+!
+interface BVI1
+ description ROUTED INTERFACE FOR H6 and H7
+ ip address 192.168.19.19 255.255.255.0
+ ip helper-address 192.168.20.10
+ ip ospf 1 area 0
+!
+router ospf 1
+ router-id 10.0.0.19
+ passive-interface default
+ no passive-interface Ethernet1/1
+ no passive-interface Ethernet1/2
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+bridge 1 protocol ieee
+bridge 1 route ip
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp server 10.0.0.3
+ntp server 10.0.0.4
+!
+end

@@ -1,0 +1,175 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label range 1000 1999
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.1 255.255.255.255
+!
+interface Ethernet0/0
+ description TO R18
+ ip address 169.254.1.1 255.255.255.0
+ ip verify unicast source reachable-via rx 100
+!
+interface Ethernet0/1
+ description TO S14
+ ip address 10.12.34.1 255.255.255.0
+ standby version 2
+ standby 0 ip 10.12.34.254
+ standby 0 preempt
+ ip ospf network broadcast
+ ip ospf priority 50
+!
+interface Ethernet0/2
+ description TO R4
+ ip address 10.1.4.1 255.255.255.0
+ ip ospf network point-to-point
+!
+interface Ethernet0/3
+ description TO R6
+ ip address 10.1.6.1 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 1
+ mpls ip
+!
+router ospf 1
+ router-id 10.0.0.1
+ area 1 filter-list prefix PL_AREA1_LOOPBACKS out
+ summary-address 100.64.0.0 255.255.252.0
+ redistribute bgp 100 subnets route-map RM_BGP_TO_OSPF
+ passive-interface Loopback0
+ network 10.0.0.1 0.0.0.0 area 0
+ network 10.1.4.1 0.0.0.0 area 0
+ network 10.12.34.0 0.0.0.255 area 0
+ default-information originate always metric 20
+!
+router bgp 100
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 169.254.1.18 remote-as 18
+ !
+ address-family ipv4
+  network 203.0.113.0 mask 255.255.255.128
+  network 203.0.113.128 mask 255.255.255.128
+  aggregate-address 203.0.113.0 255.255.255.0 summary-only
+  neighbor 169.254.1.18 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+ip prefix-list PL_AREA1_LOOPBACKS seq 5 permit 10.0.0.0/24 ge 32
+!
+ip prefix-list PL_CGNAT_ROUTES seq 5 permit 100.64.0.0/10 le 24
+ip access-list log-update threshold 5
+ipv6 ioam timestamp
+!
+route-map RM_BGP_TO_OSPF permit 10
+ match ip address prefix-list PL_CGNAT_ROUTES
+ set metric 50
+ set metric-type type-2
+!
+!
+mpls ldp router-id Loopback0 force
+access-list 100 deny   ip any any log
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

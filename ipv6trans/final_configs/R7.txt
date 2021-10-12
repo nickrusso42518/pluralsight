@@ -1,0 +1,351 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R7
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name globomantics.com
+ip name-server 2020:192:168:20::10
+ip name-server 192.168.20.10
+ip multicast-routing
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+crypto logging session
+crypto logging ikev2
+!
+crypto ikev2 proposal IKEV2_PROPOSAL
+ encryption aes-cbc-256
+ integrity sha384
+ group 20
+!
+crypto ikev2 policy IKEV2_POLICY
+ proposal IKEV2_PROPOSAL
+!
+crypto ikev2 keyring IKEV2_KEYRING
+ peer REMOTE_SITES
+  address 198.51.100.0 255.255.255.0
+  pre-shared-key local IPSEC_GLOBO
+  pre-shared-key remote IPSEC_GLOBO
+ !
+!
+!
+crypto ikev2 profile IKEV2_PROFILE
+ match identity remote address 198.51.100.0 255.255.255.0
+ authentication local pre-share
+ authentication remote pre-share
+ keyring local IKEV2_KEYRING
+!
+!
+!
+crypto ipsec transform-set IPSEC_XFORM_AH_SHA1 ah-sha-hmac
+ mode tunnel
+crypto ipsec transform-set IPSEC_XFORM_ESPNULL_SHA1 esp-null esp-sha-hmac
+ mode transport
+!
+crypto ipsec profile IPSEC_PROFILE_AH_SHA1
+ set transform-set IPSEC_XFORM_AH_SHA1
+ set ikev2-profile IKEV2_PROFILE
+!
+crypto ipsec profile IPSEC_PROFILE_ESPNULL_SHA1
+ set transform-set IPSEC_XFORM_ESPNULL_SHA1
+ set ikev2-profile IKEV2_PROFILE
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.7 255.255.255.255
+ ip ospf 1 area 0
+ ipv6 address FC00::7/128
+ ospfv3 1 ipv6 area 0
+!
+interface Loopback251
+ description INTERNET TUNNEL ENDPOINT
+ ip address 203.0.113.251 255.255.255.255
+!
+interface Tunnel714
+ description R14 (GRE OVER AH/TUNNEL IPSEC)
+ ip address 10.7.14.7 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+ ip ospf 1 area 0
+ ipv6 address FE80::7 link-local
+ ipv6 address FC00:DEAD::/64 eui-64
+ no ipv6 nd ra suppress
+ ipv6 dhcp relay destination  2020:192:168:20::10
+ tunnel source Loopback251
+ tunnel destination 198.51.100.14
+ tunnel protection ipsec profile IPSEC_PROFILE_AH_SHA1
+!
+interface Tunnel716
+ description R16 (6IN4 OVER ESPNULL/TRANS IPSEC)
+ no ip address
+ ipv6 address FE80::7 link-local
+ ospfv3 1 ipv6 area 0
+ tunnel source Loopback251
+ tunnel mode ipv6ip
+ tunnel destination 198.51.100.16
+ tunnel protection ipsec profile IPSEC_PROFILE_ESPNULL_SHA1
+!
+interface Ethernet0/0
+ description R20 (INTERNET)
+ ip address 172.16.207.21 255.255.255.254
+ ip access-group ACL_INTERNET_IN_V4 in
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ ip nat outside
+ ip virtual-reassembly in
+ ip verify unicast source reachable-via rx allow-default
+ ipv6 address FE80::7 link-local
+ ipv6 address FC00:172:16:207::21/127
+ ipv6 nd ra suppress all
+ no ipv6 redirects
+ no ipv6 unreachables
+ ipv6 verify unicast source reachable-via rx allow-default
+ ipv6 traffic-filter ACL_INTERNET_IN_V6 in
+!
+interface Ethernet0/1
+ description R9
+ no ip address
+!
+interface Ethernet0/1.4
+ description R9 (IPV4)
+ encapsulation dot1Q 4
+ ip address 10.7.9.7 255.255.255.0
+ ip ospf 1 area 0
+!
+interface Ethernet0/1.6
+ description R9 (IPV6)
+ encapsulation dot1Q 6
+ ipv6 address FE80::7 link-local
+ ipv6 address FC00:10:7:9::7/64
+ ipv6 nd ra suppress all
+!
+interface Ethernet0/2
+ description R3
+ ip address 10.3.7.7 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ ipv6 address FE80::7 link-local
+ ipv6 nd ra suppress all
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network point-to-point
+!
+interface Ethernet0/3
+ description R4
+ ip address 10.4.7.7 255.255.255.0
+ ip nat inside
+ ip virtual-reassembly in
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ ipv6 address FE80::7 link-local
+ ipv6 nd ra suppress all
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network point-to-point
+!
+router ospfv3 1
+ !
+ address-family ipv6 unicast
+  passive-interface Loopback0
+  default-information originate
+  redistribute static route-map RM_STATIC_TO_OSPFV3
+  router-id 10.0.0.7
+ exit-address-family
+!
+router ospf 1
+ router-id 10.0.0.7
+ redistribute static subnets route-map RM_STATIC_TO_OSPFV2
+ passive-interface Ethernet0/1.4
+ passive-interface Loopback0
+ default-information originate
+!
+router bgp 65007
+ bgp router-id 10.0.0.7
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 172.16.207.20 remote-as 65020
+ neighbor FC00:172:16:207::20 remote-as 65020
+ !
+ address-family ipv4
+  network 203.0.113.0
+  neighbor 172.16.207.20 activate
+ exit-address-family
+ !
+ address-family ipv6
+  network 2020::/16
+  neighbor FC00:172:16:207::20 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip nat pool NAT_POOL_203 203.0.113.0 203.0.113.250 prefix-length 24
+ip nat inside source list ACL_NAT pool NAT_POOL_203 overload
+ip nat inside source static 192.168.20.10 203.0.113.252 no-payload
+ip route 100.64.0.0 255.255.255.0 Ethernet0/1.4 10.7.9.9 tag 64 name NAT64_POOL
+ip route 203.0.113.0 255.255.255.0 Null0 name NAT44_POOL
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard ACL_NAT
+ permit 10.0.0.0 0.255.255.255
+ permit 192.168.0.0 0.0.255.255
+!
+ip access-list extended ACL_INTERNET_IN_V4
+ remark DENY 6IN4 TUNNELS; SEE R20 TU64
+ deny   41 any any
+ remark PERMIT BGP; EITHER SIDE CAN INITIATE
+ permit tcp host 172.16.207.20 host 172.16.207.21 eq bgp
+ permit tcp host 172.16.207.20 eq bgp host 172.16.207.21
+ remark DENY RFC1918 PRIVATE SOURCES
+ deny   ip 10.0.0.0 0.255.255.255 any
+ deny   ip 172.16.0.0 0.15.255.255 any
+ deny   ip 192.168.0.0 0.0.255.255 any
+ remark DENY OTHER INVALID SOURCES
+ deny   ip 0.0.0.0 0.255.255.255 any
+ deny   ip 127.0.0.0 0.255.255.255 any
+ deny   ip 224.0.0.0 15.255.255.255 any
+ remark PERMIT DNS AND HTTP TO DC SERVER VIA NAT44
+ permit udp any host 203.0.113.252 eq domain
+ permit tcp any host 203.0.113.252 eq www
+ remark PERMIT GOOGLE DNS FORWARDING TO DC SERVER VIA NAT44
+ permit udp host 8.8.8.8 eq domain host 203.0.113.252
+ permit udp host 8.8.4.4 eq domain host 203.0.113.252
+ deny   ip any host 203.0.113.252
+ remark PERMIT ALL OTHER TRAFFIC
+ permit ip any any
+!
+ipv6 route 2020:6464::/96 Ethernet0/1.6 FC00:10:7:9::9 name NAT64_PREFIX
+ipv6 route 2020::/16 Null0 name BGP_AGGREGATE
+ipv6 ioam timestamp
+!
+!
+ipv6 prefix-list PL_DHCPV6_PD_POOL seq 5 permit 2020:7777:CAFE::/48 ge 64 le 64
+route-map RM_STATIC_TO_OSPFV3 permit 10
+ match ipv6 address prefix-list PL_DHCPV6_PD_POOL
+!
+route-map RM_STATIC_TO_OSPFV2 permit 10
+ match tag 64
+!
+!
+!
+ipv6 access-list ACL_INTERNET_IN_V6
+ remark DENY 6IN6 TUNNELS; SEE R20 TU66
+ deny 41 any any
+ remark PERMIT BGP; EITHER SIDE CAN INITIATE
+ permit tcp host FC00:172:16:207::20 host FC00:172:16:207::21 eq bgp
+ permit tcp host FC00:172:16:207::20 eq bgp host FC00:172:16:207::21
+ remark PERMIT DNS AND HTTP TO DC SERVER VIA NAT64
+ permit udp any host 2020:6464::C0A8:140A eq domain
+ permit tcp any host 2020:6464::C0A8:140A eq www
+ deny ipv6 any host 2020:6464::C0A8:140A
+ remark PERMIT DNS AND HTTP TO DC SERVER VIA PLAIN IPV6
+ permit udp any host 2020:192:168:20::10 eq domain
+ permit tcp any host 2020:192:168:20::10 eq www
+ remark PERMIT GOOGLE DNS FORWARDING TO DC SERVER VIA PLAIN IPV6
+ permit udp host 2001:4860:4860::8888 eq domain host 2020:192:168:20::10
+ permit udp host 2001:4860:4860::8844 eq domain host 2020:192:168:20::10
+ deny ipv6 any host 2020:192:168:20::10
+ remark PERMIT ALL ND AND GUA TRAFFIC
+ permit icmp FE80::/10 any nd-ns
+ permit icmp FE80::/10 any nd-na
+ permit ipv6 2000::/3 any
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+banner exec %
+NAT64: 2020:6464::/96
+ISATAP: 2020:10:99:99::/64
+6rd: 2020:172:16::/48
+DHCPv6 PD: 2020:7777:CAFE::/48
+Client VLAN: 2020:192:168:10::/64
+Server VLAN: 2020:192:168:20::/64
+%
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp source Loopback0
+ntp server 10.0.0.3
+ntp server 10.0.0.4
+!
+end

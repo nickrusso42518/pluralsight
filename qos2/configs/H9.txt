@@ -1,0 +1,151 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname H9
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name njrusmc.net
+ip name-server 192.168.20.10
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no ip address
+!
+interface Ethernet0/1
+ no ip address
+!
+interface Ethernet0/2
+ description S1
+ ip address 192.168.10.9 255.255.255.0
+!
+interface Ethernet0/3
+ no ip address
+!
+ip default-gateway 192.16.10.254
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 192.168.10.254
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip sla 1
+ http raw http://198.51.100.22:8080
+ http-raw-request
+  GET /startup-config.cfg HTTP/1.1\r\n
+  Host: 198.51.100.22\r\n
+  Authorization: Basic dXNlcjpwYXNz\r\n
+  \r\n
+  exit
+ip sla schedule 1 life forever start-time now
+ip sla 2
+ icmp-echo 198.51.100.21
+ frequency 30
+ip sla schedule 2 life forever start-time now
+ip sla 3
+ tcp-connect 192.168.20.10 22
+ip sla schedule 3 life forever start-time now
+ip sla 4
+ tcp-connect 192.168.20.10 2049
+ip sla schedule 4 life forever start-time now
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+alias exec web copy http://user:pass@192.168.20.10/startup-config.cfg null:
+alias exec char telnet 192.168.20.10 19
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp logging
+ntp server 10.0.0.5
+ntp server 10.0.0.6
+!
+end

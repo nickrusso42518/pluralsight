@@ -1,0 +1,237 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service tcp-small-servers
+!
+hostname R20
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition WAN
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip host v4.google.com 192.0.2.20
+ip host v6.google.com 2001:DB8::20
+ip host www.google.com 2001:DB8::20 192.0.2.20
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+ipv6 dhcp pool DHCPV6_GOOGLE_STATELESS
+ dns-server 2001:4860:4860::8888
+ dns-server 2001:4860:4860::8844
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+bridge irb
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.20 255.255.255.255
+!
+interface Loopback1
+ description DNS ENDPOINTS
+ ip address 8.8.4.4 255.0.0.0 secondary
+ ip address 8.8.8.8 255.0.0.0
+ ipv6 address 2001:4860:4860::8844/64
+ ipv6 address 2001:4860:4860::8888/64
+!
+interface Tunnel64
+ description 6IN4 ATTACKER
+ no ip address
+ shutdown
+ ipv6 address FE80::20 link-local
+ tunnel source 172.16.207.20
+ tunnel mode ipv6ip
+ tunnel destination 172.16.207.21
+!
+interface Tunnel66
+ description 6IN6 ATTACKER
+ no ip address
+ shutdown
+ ipv6 address FE80::20 link-local
+ tunnel source FC00:172:16:207::20
+ tunnel mode ipv6
+ tunnel destination FC00:172:16:207::21
+!
+interface Ethernet0/0
+ description R7
+ ip address 172.16.207.20 255.255.255.254
+ ipv6 address FE80::20 link-local
+ ipv6 address FC00:172:16:207::20/127
+ ipv6 nd ra suppress all
+!
+interface Ethernet0/1
+ description R8
+ vrf forwarding WAN
+ ip address 172.16.208.20 255.255.255.0
+!
+interface Ethernet0/2
+ description R11
+ vrf forwarding WAN
+ ip address 172.16.211.20 255.255.255.0
+!
+interface Ethernet0/3
+ description R13
+ vrf forwarding WAN
+ ip address 172.16.213.20 255.255.255.0
+!
+interface Ethernet1/0
+ description R14
+ no ip address
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+!
+interface Ethernet1/1
+ description R15
+ no ip address
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+!
+interface Ethernet1/2
+ description INTERNET TEST PREFIXES
+ ip address 192.0.2.20 255.255.255.0
+ ipv6 address 2001:DB8::20/64
+ ipv6 nd other-config-flag
+ ipv6 dhcp server DHCPV6_GOOGLE_STATELESS
+!
+interface Ethernet1/3
+ no ip address
+!
+interface BVI1
+ description INTERNET SUBSCRIBER L3 GATEWAY
+ ip address 198.51.100.20 255.255.255.128
+!
+router bgp 65020
+ bgp router-id 10.0.0.20
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 172.16.207.21 remote-as 65007
+ neighbor 198.51.100.14 remote-as 65014
+ neighbor 198.51.100.16 remote-as 65016
+ neighbor FC00:172:16:207::21 remote-as 65007
+ !
+ address-family ipv4
+  neighbor 172.16.207.21 activate
+  neighbor 172.16.207.21 default-originate
+  neighbor 198.51.100.14 activate
+  neighbor 198.51.100.16 activate
+  neighbor 198.51.100.16 default-originate
+ exit-address-family
+ !
+ address-family ipv6
+  neighbor FC00:172:16:207::21 activate
+  neighbor FC00:172:16:207::21 default-originate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip dns view GLOBO
+ dns forwarder 2020:192:168:20::10
+ dns forwarder 203.0.113.252
+ dns forwarding source-interface Loopback1
+ip dns view default
+ domain name google.com
+ip dns view-list DNS
+ view GLOBO 10
+  restrict name-group 1
+ view default 1000
+ip dns name-list 1 permit \.GLOBOMANTICS\.COM
+ip dns server view-group DNS
+ip dns server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+bridge 1 protocol ieee
+bridge 1 route ip
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

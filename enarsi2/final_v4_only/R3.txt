@@ -1,0 +1,165 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging buffered 1000000
+logging console informational
+!
+aaa new-model
+!
+!
+aaa group server tacacs+ AAA_TACACS_GROUP
+ server name C15
+ ip tacacs source-interface Loopback0
+!
+aaa authentication login default none
+aaa authentication login AAA_AUTHC_TACACS group AAA_TACACS_GROUP local
+aaa authorization exec default none
+aaa authorization exec AAA_AUTHZ_TACACS group AAA_TACACS_GROUP if-authenticated
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.3 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Ethernet0/0
+ description TO R4
+ ip address 10.3.4.3 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet0/1
+ description TO R2
+ ip address 10.2.3.3 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+router ospf 1
+ router-id 10.0.0.3
+ passive-interface Loopback0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+tacacs server C15
+ address ipv4 10.12.34.15
+ key gns3
+ timeout 2
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+alias exec tacacs_gns3 test aaa group AAA_TACACS_GROUP gns3 gns3 legacy
+alias exec tacacs_bad test aaa group AAA_TACACS_GROUP gns3 bad legacy
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ authorization exec AAA_AUTHZ_TACACS
+ login authentication AAA_AUTHC_TACACS
+ transport input telnet ssh
+!
+!
+end

@@ -1,0 +1,218 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R16
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name google.com
+ip name-server 8.8.8.8
+ip name-server 8.8.4.4
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+crypto logging session
+crypto logging ikev2
+!
+crypto ikev2 proposal IKEV2_PROPOSAL
+ encryption aes-cbc-256
+ integrity sha384
+ group 20
+!
+crypto ikev2 policy IKEV2_POLICY
+ proposal IKEV2_PROPOSAL
+!
+crypto ikev2 keyring IKEV2_KEYRING
+ peer R7
+  address 203.0.113.251
+  pre-shared-key local IPSEC_GLOBO
+  pre-shared-key remote IPSEC_GLOBO
+ !
+!
+!
+crypto ikev2 profile IKEV2_PROFILE
+ match identity remote address 203.0.113.251 255.255.255.255
+ authentication local pre-share
+ authentication remote pre-share
+ keyring local IKEV2_KEYRING
+!
+!
+!
+crypto ipsec transform-set IPSEC_XFORM_AH_SHA1 ah-sha-hmac
+ mode tunnel
+crypto ipsec transform-set IPSEC_XFORM_ESPNULL_SHA1 esp-null esp-sha-hmac
+ mode transport
+!
+crypto ipsec profile IPSEC_PROFILE_AH_SHA1
+ set transform-set IPSEC_XFORM_AH_SHA1
+ set ikev2-profile IKEV2_PROFILE
+!
+crypto ipsec profile IPSEC_PROFILE_ESPNULL_SHA1
+ set transform-set IPSEC_XFORM_ESPNULL_SHA1
+ set ikev2-profile IKEV2_PROFILE
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ no ip address
+ ipv6 address FC00::16/128
+ ospfv3 1 ipv6 area 0
+!
+interface Tunnel716
+ description R7 (6IN4 OVER ESPNULL/TRANS IPSEC)
+ no ip address
+ ipv6 address FE80::16 link-local
+ ospfv3 1 ipv6 area 0
+ tunnel source Ethernet1/1
+ tunnel mode ipv6ip
+ tunnel destination 203.0.113.251
+ tunnel protection ipsec profile IPSEC_PROFILE_ESPNULL_SHA1
+!
+interface Ethernet0/0
+ description TO LAN CLIENTS (ADD YOUR OWN)
+ ip address 198.51.100.216 255.255.255.128
+ ipv6 address FE80::16 link-local
+ ipv6 address 2020:192:168:16::16/64
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+interface Ethernet1/0
+ no ip address
+ shutdown
+!
+interface Ethernet1/1
+ description R20 (INTERNET)
+ ip address 198.51.100.16 255.255.255.128
+!
+interface Ethernet1/2
+ no ip address
+ shutdown
+!
+interface Ethernet1/3
+ no ip address
+ shutdown
+!
+router ospfv3 1
+ !
+ address-family ipv6 unicast
+  passive-interface Ethernet0/0
+  passive-interface Loopback0
+ exit-address-family
+!
+router bgp 65016
+ bgp router-id 10.0.0.16
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 198.51.100.20 remote-as 65020
+ !
+ address-family ipv4
+  network 198.51.100.128 mask 255.255.255.128
+  neighbor 198.51.100.20 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp server FC00::3
+ntp server FC00::4
+!
+end

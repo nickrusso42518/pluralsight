@@ -1,0 +1,246 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname S3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+fhrp version vrrp v3
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name globomantics.com
+ip name-server 2020:192:168:20::10
+ip name-server 192.168.20.10
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.3 255.255.255.255
+ ip ospf 1 area 0
+ ipv6 address FC00::3/128
+ ospfv3 1 ipv6 area 0
+!
+interface Loopback99
+ description ISATAP HEADEND (PRIMARY)
+ ip address 10.99.99.6 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Tunnel99
+ description ISATAP HEADEND
+ no ip address
+ no ip redirects
+ ipv6 address 2020:10:99:99::/64 eui-64
+ no ipv6 nd ra suppress
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 cost 10
+ tunnel source Loopback99
+ tunnel mode ipv6ip isatap
+!
+interface Ethernet0/0
+ description S1
+ no ip address
+!
+interface Ethernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.3 255.255.255.0
+ ip helper-address 192.168.20.10
+ ip ospf 1 area 0
+ ipv6 address FE80::3 link-local
+ ipv6 address 2020:192:168:10::3/64
+ ipv6 nd prefix default no-advertise
+ ipv6 nd managed-config-flag
+ ipv6 dhcp relay destination  2020:192:168:20::10
+ ospfv3 1 ipv6 area 0
+ vrrp 14 address-family ipv4
+  priority 105
+  address 192.168.10.254 primary
+  exit-vrrp
+ vrrp 16 address-family ipv6
+  priority 105
+  address FE80::34 primary
+  exit-vrrp
+!
+interface Ethernet0/1
+ description S2
+ no ip address
+!
+interface Ethernet0/1.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.3 255.255.255.0
+ ip ospf 1 area 0
+ ipv6 address FE80::3 link-local
+ ipv6 address 2020:192:168:20::3/120
+ ipv6 nd prefix default no-advertise
+ ospfv3 1 ipv6 area 0
+ vrrp 24 address-family ipv4
+  priority 105
+  address 192.168.20.254 primary
+  exit-vrrp
+ vrrp 26 address-family ipv6
+  priority 105
+  address FE80::34 primary
+  exit-vrrp
+!
+interface Ethernet0/2
+ description R7
+ ip address 10.3.7.3 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ ipv6 address FE80::3 link-local
+ ipv6 nd ra suppress all
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network point-to-point
+!
+interface Ethernet0/3
+ description R8
+ ip address 10.3.8.3 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ ipv6 address FE80::3 link-local
+ ipv6 nd ra suppress all
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network point-to-point
+!
+interface Ethernet1/0
+ description R4
+ ip address 10.3.4.3 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ ipv6 address FE80::3 link-local
+ ipv6 nd ra suppress all
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network point-to-point
+!
+interface Ethernet1/1
+ description R19 (IPV4 ONLY)
+ ip address 10.3.19.3 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet1/2
+ no ip address
+!
+interface Ethernet1/3
+ no ip address
+!
+router ospfv3 1
+ !
+ address-family ipv6 unicast
+  passive-interface default
+  no passive-interface Ethernet0/2
+  no passive-interface Ethernet0/3
+  no passive-interface Ethernet1/0
+  router-id 10.0.0.3
+ exit-address-family
+!
+router ospf 1
+ router-id 10.0.0.3
+ passive-interface default
+ no passive-interface Ethernet0/2
+ no passive-interface Ethernet0/3
+ no passive-interface Ethernet1/0
+ no passive-interface Ethernet1/1
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+no ip pim autorp
+ip pim ssm default
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp source Loopback0
+ntp master
+ntp peer 10.0.0.4
+!
+end

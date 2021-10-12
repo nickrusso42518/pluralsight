@@ -1,0 +1,136 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R15
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 172.24.0.15 255.255.255.255
+ ip ospf 65015 area 0
+ ipv6 address FC00:172:24::15/128
+ ospfv3 65015 ipv6 area 0
+!
+interface Ethernet0/0
+ no ip address
+!
+interface Ethernet0/1
+ no ip address
+!
+interface Ethernet0/2
+ description TO R6
+ ip address 192.168.6.15 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 65015 area 0
+ ipv6 address FE80::15 link-local
+ ospfv3 65015 ipv6 area 0
+ ospfv3 65015 ipv6 network point-to-point
+!
+interface Ethernet0/3
+ no ip address
+!
+router ospfv3 65015
+ !
+ address-family ipv6 unicast
+  passive-interface Loopback0
+ exit-address-family
+!
+router ospf 65015
+ router-id 172.24.0.15
+ passive-interface Loopback0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

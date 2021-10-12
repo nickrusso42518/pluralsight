@@ -1,0 +1,225 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R6
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition CITY_RESPONDERS
+ rd 100:1
+ route-target export 100:6
+ route-target import 100:8
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+no ipv6 cef
+!
+!
+flow record FLOW_RECORD
+ match ipv4 source address
+ match ipv4 destination address
+ match ipv4 protocol
+ match transport source-port
+ match transport destination-port
+ collect counter bytes
+ collect counter packets
+!
+!
+flow exporter FLOW_EXPORTER
+ destination 10.12.34.17
+ source Loopback0
+ transport udp 2055
+ template data timeout 30
+!
+!
+flow monitor FLOW_MONITOR
+ exporter FLOW_EXPORTER
+ cache timeout inactive 60
+ record FLOW_RECORD
+!
+multilink bundle-name authenticated
+mpls label range 6000 6999
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+class-map match-any CMAP_EDGE_PROTO
+ match access-group name ACL_IPV4_EDGE_PROTO
+class-map match-any CMAP_CORE_PROTO
+ match access-group name ACL_IPV4_CORE_PROTO
+!
+policy-map PMAP_CPP_IN
+ class CMAP_CORE_PROTO
+  police rate 100 pps
+ class CMAP_EDGE_PROTO
+  police rate 60 pps
+ class class-default
+  police cir 32000
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.6 255.255.255.255
+ ip ospf 1 area 1
+!
+interface Ethernet0/0
+ description TO R10 (L3VPN)
+ vrf forwarding CITY_RESPONDERS
+ ip address 192.168.6.6 255.255.255.0
+ ip flow monitor FLOW_MONITOR input
+!
+interface Ethernet0/1
+ description TO R7
+ ip address 10.6.7.6 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 1
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ description TO R1
+ ip address 10.1.6.6 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 1
+!
+router ospf 1
+ mpls ldp autoconfig area 1
+ router-id 10.0.0.6
+ passive-interface Loopback0
+!
+router bgp 100
+ bgp router-id 10.0.0.6
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.0.0.5 remote-as 100
+ neighbor 10.0.0.5 transport connection-mode active
+ neighbor 10.0.0.5 update-source Loopback0
+ !
+ address-family vpnv4
+  neighbor 10.0.0.5 activate
+  neighbor 10.0.0.5 send-community extended
+ exit-address-family
+ !
+ address-family ipv4 vrf CITY_RESPONDERS
+  neighbor 192.168.6.10 remote-as 65010
+  neighbor 192.168.6.10 transport connection-mode passive
+  neighbor 192.168.6.10 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list extended ACL_IPV4_CORE_PROTO
+ remark PERMIT OSPF UNICAST AND ALL-ROUTERS MULTICAST
+ permit ospf 10.0.0.0 0.255.255.255 10.0.0.0 0.255.255.255
+ permit ospf 10.0.0.0 0.255.255.255 host 224.0.0.5
+ remark PERMIT LDP DISCOVERY AND SESSION (BIDIR)
+ permit udp 10.0.0.0 0.255.255.255 host 224.0.0.2 eq 646
+ permit tcp 10.0.0.0 0.0.0.255 host 10.0.0.8 eq 646
+ permit tcp 10.0.0.0 0.0.0.255 eq 646 host 10.0.0.8
+ remark PERMIT BGP CLIENT
+ permit tcp 10.0.0.0 0.0.0.255 eq bgp host 10.0.0.8
+ remark PERMIT SNMP SERVER (POLL REQUESTS)
+ permit udp host 10.12.34.16 host 10.0.0.8 eq snmp
+ip access-list extended ACL_IPV4_EDGE_PROTO
+ remark PERMIT BGP SERVER
+ permit tcp 192.168.0.0 0.0.255.255 192.168.0.0 0.0.255.255 eq bgp
+!
+ipv6 ioam timestamp
+!
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+ service-policy input PMAP_CPP_IN
+!
+!
+!
+!
+!
+!
+!
+alias exec nf show flow monitor FLOW_MONITOR cache
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

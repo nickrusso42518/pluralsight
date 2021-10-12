@@ -1,0 +1,216 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label range 1000 1999
+mpls traffic-eng tunnels
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.1 255.255.255.255
+!
+interface Ethernet0/0
+ description TO R2
+ ip address 10.1.2.1 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 5
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ mpls traffic-eng administrative-weight 500
+ ip rsvp bandwidth
+!
+interface Ethernet0/1
+ description TO R9
+ ip address 10.1.9.1 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 10
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth
+!
+interface Ethernet0/2
+ description TO R3
+ ip address 10.1.3.1 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 5
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ mpls traffic-eng administrative-weight 500
+ ip rsvp bandwidth
+!
+interface Ethernet0/3
+ description TO R4
+ ip address 10.1.4.1 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 10
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth
+!
+router ospf 1
+ mpls ldp autoconfig
+ mpls traffic-eng router-id Loopback0
+ mpls traffic-eng area 0
+ router-id 10.0.0.1
+ prefix-suppression
+ passive-interface Loopback0
+ network 10.0.0.0 0.255.255.255 area 0
+!
+router bgp 65000
+ template peer-policy VPNV4V6
+  route-reflector-client
+ exit-peer-policy
+ !
+ template peer-session IBGP
+  remote-as 65000
+  transport connection-mode passive
+  update-source Loopback0
+ exit-peer-session
+ !
+ bgp router-id 10.0.0.1
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.0.0.4 inherit peer-session IBGP
+ neighbor 10.0.0.5 inherit peer-session IBGP
+ neighbor 10.0.0.6 inherit peer-session IBGP
+ neighbor 10.0.0.7 inherit peer-session IBGP
+ neighbor 10.0.0.8 inherit peer-session IBGP
+ neighbor 10.0.0.9 inherit peer-session IBGP
+ !
+ address-family vpnv4
+  neighbor 10.0.0.4 activate
+  neighbor 10.0.0.4 send-community extended
+  neighbor 10.0.0.4 inherit peer-policy VPNV4V6
+  neighbor 10.0.0.5 activate
+  neighbor 10.0.0.5 send-community extended
+  neighbor 10.0.0.5 inherit peer-policy VPNV4V6
+  neighbor 10.0.0.6 activate
+  neighbor 10.0.0.6 send-community extended
+  neighbor 10.0.0.6 inherit peer-policy VPNV4V6
+  neighbor 10.0.0.7 activate
+  neighbor 10.0.0.7 send-community extended
+  neighbor 10.0.0.7 inherit peer-policy VPNV4V6
+  neighbor 10.0.0.8 activate
+  neighbor 10.0.0.8 send-community extended
+  neighbor 10.0.0.8 inherit peer-policy VPNV4V6
+  neighbor 10.0.0.9 activate
+  neighbor 10.0.0.9 send-community extended
+  neighbor 10.0.0.9 inherit peer-policy VPNV4V6
+ exit-address-family
+ !
+ address-family vpnv6
+  neighbor 10.0.0.4 activate
+  neighbor 10.0.0.4 send-community extended
+  neighbor 10.0.0.4 inherit peer-policy VPNV4V6
+  neighbor 10.0.0.5 activate
+  neighbor 10.0.0.5 send-community extended
+  neighbor 10.0.0.5 inherit peer-policy VPNV4V6
+  neighbor 10.0.0.6 activate
+  neighbor 10.0.0.6 send-community extended
+  neighbor 10.0.0.6 inherit peer-policy VPNV4V6
+  neighbor 10.0.0.7 activate
+  neighbor 10.0.0.7 send-community extended
+  neighbor 10.0.0.7 inherit peer-policy VPNV4V6
+  neighbor 10.0.0.8 activate
+  neighbor 10.0.0.8 send-community extended
+  neighbor 10.0.0.8 inherit peer-policy VPNV4V6
+  neighbor 10.0.0.9 activate
+  neighbor 10.0.0.9 send-community extended
+  neighbor 10.0.0.9 inherit peer-policy VPNV4V6
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

@@ -1,0 +1,145 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R19
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.19 255.255.255.255
+!
+interface Loopback1
+ ip address 192.0.2.65 255.255.255.192 secondary
+ ip address 192.0.2.129 255.255.255.192 secondary
+ ip address 192.0.2.193 255.255.255.192 secondary
+ ip address 192.0.2.1 255.255.255.192
+!
+interface Ethernet0/0
+ no ip address
+!
+interface Ethernet0/1
+ no ip address
+!
+interface Ethernet0/2
+ no ip address
+!
+interface Ethernet0/3
+ description R8
+ ip address 172.16.198.19 255.255.255.0
+!
+router bgp 65019
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 172.16.198.8 remote-as 65001
+ !
+ address-family ipv4
+  network 192.0.2.0 mask 255.255.255.192
+  network 192.0.2.64 mask 255.255.255.192
+  network 192.0.2.128 mask 255.255.255.192
+  network 192.0.2.192 mask 255.255.255.192
+  neighbor 172.16.198.8 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

@@ -1,0 +1,191 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.5 255.255.255.255
+ ipv6 address FC00::5/128
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/0
+ description TO S14
+ ip address 10.12.34.5 255.255.255.0
+ ip ospf priority 0
+ ipv6 address FE80::5 link-local
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network broadcast
+ ospfv3 1 ipv6 priority 0
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+router ospfv3 1
+ router-id 10.0.0.5
+ !
+ address-family ipv6 unicast
+  passive-interface Loopback0
+ exit-address-family
+!
+router ospf 1
+ router-id 10.0.0.5
+ passive-interface Loopback0
+ network 0.0.0.0 255.255.255.255 area 0
+!
+router bgp 100
+ bgp router-id 10.0.0.5
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.0.0.6 remote-as 100
+ neighbor 10.0.0.6 transport connection-mode passive
+ neighbor 10.0.0.6 update-source Loopback0
+ neighbor 10.0.0.8 remote-as 100
+ neighbor 10.0.0.8 transport connection-mode passive
+ neighbor 10.0.0.8 update-source Loopback0
+ !
+ address-family vpnv4
+  neighbor 10.0.0.6 activate
+  neighbor 10.0.0.6 send-community extended
+  neighbor 10.0.0.6 route-reflector-client
+  neighbor 10.0.0.8 activate
+  neighbor 10.0.0.8 send-community extended
+  neighbor 10.0.0.8 route-reflector-client
+ exit-address-family
+ !
+ address-family vpnv6
+  neighbor 10.0.0.6 activate
+  neighbor 10.0.0.6 send-community extended
+  neighbor 10.0.0.6 route-reflector-client
+  neighbor 10.0.0.8 activate
+  neighbor 10.0.0.8 send-community extended
+  neighbor 10.0.0.8 route-reflector-client
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard ACL_C16
+ permit 10.12.34.16
+ deny   any log
+!
+ipv6 ioam timestamp
+!
+snmp-server group V3_GROUP v3 priv read FULL_VIEW access ACL_S16
+snmp-server view FULL_VIEW iso included
+snmp-server community public RO ACL_C16
+snmp-server community private RW ACL_C16
+snmp-server trap-source Loopback0
+snmp-server contact njrusmc@gmail.com
+snmp-server enable traps bgp
+snmp-server host 10.12.34.16 version 3 priv V3_USER  bgp
+snmp-server host 10.12.34.16 version 2c v2ctrap  bgp
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

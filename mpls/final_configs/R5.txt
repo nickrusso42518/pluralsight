@@ -1,0 +1,222 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition B
+ rd 65000:2
+ route-target export 65000:200
+ route-target export 65000:902
+ route-target import 65000:200
+ route-target import 65000:901
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label range 5000 5999
+mpls traffic-eng tunnels
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.5 255.255.255.255
+!
+interface Ethernet0/0
+ description TO R4
+ ip address 10.4.5.5 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 10
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth
+!
+interface Ethernet0/1
+ description TO R12
+ vrf forwarding B
+ ip address 192.168.5.5 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 65015 area 0
+ ipv6 address FE80::5 link-local
+ ospfv3 65015 ipv6 area 0
+ ospfv3 65015 ipv6 network point-to-point
+!
+interface Ethernet0/2
+ description TO R2
+ ip address 10.2.5.5 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 10
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth
+!
+interface Ethernet0/3
+ description TO R13
+ ip address 192.168.5.5 255.255.255.0
+ ipv6 address FE80::5 link-local
+ ipv6 address FC00:192:168:5::5/64
+!
+router ospfv3 65015
+ !
+ address-family ipv6 unicast vrf B
+  redistribute bgp 65000
+  domain-id type 0005 value 555555555555
+ exit-address-family
+!
+router ospf 65015 vrf B
+ router-id 192.168.5.5
+ redistribute bgp 65000 subnets
+!
+router ospf 1
+ mpls ldp autoconfig
+ mpls traffic-eng router-id Loopback0
+ mpls traffic-eng area 0
+ router-id 10.0.0.5
+ prefix-suppression
+ passive-interface Loopback0
+ network 10.0.0.0 0.255.255.255 area 0
+!
+router bgp 65000
+ template peer-session IBGP
+  remote-as 65000
+  transport connection-mode active
+  update-source Loopback0
+ exit-peer-session
+ !
+ bgp router-id 10.0.0.5
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.0.0.1 inherit peer-session IBGP
+ neighbor 10.0.0.9 inherit peer-session IBGP
+ neighbor 10.0.0.9 transport connection-mode passive
+ neighbor 192.168.5.13 remote-as 65013
+ neighbor FC00:192:168:5::13 remote-as 65013
+ !
+ address-family ipv4
+  neighbor 10.0.0.9 activate
+  neighbor 10.0.0.9 next-hop-self
+  neighbor 192.168.5.13 activate
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor 10.0.0.1 activate
+  neighbor 10.0.0.1 send-community extended
+ exit-address-family
+ !
+ address-family ipv6
+  neighbor 10.0.0.9 activate
+  neighbor 10.0.0.9 next-hop-self
+  neighbor 10.0.0.9 send-label
+  neighbor FC00:192:168:5::13 activate
+ exit-address-family
+ !
+ address-family vpnv6
+  neighbor 10.0.0.1 activate
+  neighbor 10.0.0.1 send-community extended
+ exit-address-family
+ !
+ address-family ipv4 vrf B
+  redistribute ospf 65015
+ exit-address-family
+ !
+ address-family ipv6 vrf B
+  redistribute ospf 65015
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

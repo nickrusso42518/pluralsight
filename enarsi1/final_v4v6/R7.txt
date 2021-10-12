@@ -1,0 +1,234 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R7
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+key chain KC_BFD_AUTH
+ key 1
+  key-string BFD_SECRET123
+  cryptographic-algorithm hmac-sha-1
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+bfd-template single-hop BFD_TO_CORE
+ interval min-tx 500 min-rx 500 multiplier 3
+ authentication sha-1 keychain KC_BFD_AUTH
+!
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+bridge irb
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.7 255.255.255.255
+ ipv6 address FC00::7/128
+!
+interface Loopback2
+ description BVI SIMULATION
+ ip address 192.168.7.77 255.255.255.192
+!
+interface Ethernet0/0
+ description TO S15
+ no ip address
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+!
+interface Ethernet0/1
+ description TO S16
+ no ip address
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+!
+interface Ethernet0/2
+ description TO S17
+ no ip address
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+!
+interface Ethernet0/3
+ no ip address
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+!
+interface Ethernet1/0
+ no ip address
+ shutdown
+!
+interface Ethernet1/1
+ no ip address
+ shutdown
+!
+interface Ethernet1/2
+ description TO R3
+ ip address 10.3.7.7 255.255.255.0
+ ipv6 address FE80::7 link-local
+ ipv6 nd ra suppress all
+ bfd interval 500 min_rx 500 multiplier 3
+!
+interface Ethernet1/3
+ description TO R4
+ ip address 10.4.7.7 255.255.255.0
+ ipv6 address FE80::7 link-local
+ ipv6 nd ra suppress all
+ bfd template BFD_TO_CORE
+!
+interface BVI1
+ description DATA CENTER BVI
+ ip address 192.168.7.7 255.255.255.192
+!
+!
+router eigrp GLOBO
+ !
+ address-family ipv4 unicast autonomous-system 65000
+  !
+  af-interface default
+   bfd
+   passive-interface
+  exit-af-interface
+  !
+  af-interface Ethernet1/2
+   summary-address 192.168.7.0 255.255.255.0
+   no passive-interface
+  exit-af-interface
+  !
+  af-interface Ethernet1/3
+   summary-address 192.168.7.0 255.255.255.0
+   no passive-interface
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  network 0.0.0.0
+  eigrp router-id 10.0.0.7
+  eigrp stub connected
+ exit-address-family
+ !
+ address-family ipv6 unicast autonomous-system 65000
+  !
+  af-interface default
+   bfd
+   passive-interface
+  exit-af-interface
+  !
+  af-interface Ethernet1/2
+   no passive-interface
+  exit-af-interface
+  !
+  af-interface Ethernet1/3
+   no passive-interface
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  eigrp router-id 10.0.0.7
+  eigrp stub connected
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list extended ACL_TEST_BFD
+ deny   udp any any eq 3784
+ deny   udp any any eq 3785
+ deny   eigrp any any
+ permit ip any any
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+bridge 1 protocol ieee
+bridge 1 route ip
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

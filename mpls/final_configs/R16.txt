@@ -1,0 +1,128 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R16
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 172.26.1.16 255.255.255.0 secondary
+ ip address 172.26.2.16 255.255.255.0 secondary
+ ip address 172.26.3.16 255.255.255.0 secondary
+ ip address 172.26.0.16 255.255.255.0
+ ipv6 address FC00:172:26:A::16/64
+ ipv6 address FC00:172:26:B::16/64
+ ipv6 address FC00:172:26:C::16/64
+ ipv6 address FC00:172:26:D::16/64
+!
+interface Ethernet0/0
+ no ip address
+!
+interface Ethernet0/1
+ description TO R7
+ ip address 192.168.7.16 255.255.255.0
+ ipv6 address FE80::16 link-local
+!
+interface Ethernet0/2
+ no ip address
+!
+interface Ethernet0/3
+ no ip address
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 172.16.0.0 255.240.0.0 Ethernet0/1 192.168.7.7 name TO_CUSTOMERS
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 route FC00:172::/32 Ethernet0/1 FE80::7 name TO_CUSTOMERS
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

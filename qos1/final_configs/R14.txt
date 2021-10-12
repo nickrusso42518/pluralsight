@@ -1,0 +1,244 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R14
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition GLOBOMANTICS
+ rd 65011:1
+ route-target export 65011:1
+ route-target import 65011:1
+ !
+ address-family ipv4
+ exit-address-family
+!
+no logging console
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label range 14000 14999
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+class-map match-all CMAP_EDGE_NETCONTROL
+  description CUSTOMER NETWORK CONTROL SEEN AT EDGE
+ match dscp cs6  cs7
+class-map match-any CMAP_CORE_NETCONTROL
+  description CARRIER NETWORK CONTROL
+ match mpls experimental topmost 6  7
+ match dscp cs6  cs7
+class-map match-all CMAP_CORE_ELASTIC
+  description CUSTOMER ELASTIC DATA AND NETWORK CONTROL SEEN IN CORE
+ match mpls experimental topmost 2
+class-map match-all CMAP_CORE_INELASTIC
+  description CUSTOMER INELASTIC DATA SEEN IN CORE
+ match mpls experimental topmost 5
+class-map match-any CMAP_EDGE_ELASTIC
+  description CUSTOMER ELASTIC DATA AND NETWORK CONTROL SEEN AT EDGE
+ match dscp af11  af12  af13
+ match dscp af21  af22  af23
+ match dscp af31  af32  af33
+ match dscp af41  af42  af43
+ match dscp cs6  cs7
+class-map match-all CMAP_EDGE_INELASTIC
+  description CUSTOMER INELASTIC DATA SEEN AT EDGE
+ match dscp cs3  cs4  cs5  ef
+!
+policy-map PMAP_INGRESS_EDGE_MARK
+ description CLASSIFY, MARK, AND POLICE TRAFFIC FROM CE
+ class CMAP_EDGE_INELASTIC
+  police cir percent 30
+   conform-action set-mpls-exp-imposition-transmit 5
+   exceed-action set-mpls-exp-imposition-transmit 5
+   violate-action set-mpls-exp-imposition-transmit 0
+ class CMAP_EDGE_ELASTIC
+  police cir percent 40 pir percent 50
+   conform-action set-mpls-exp-imposition-transmit 2
+   exceed-action set-mpls-exp-imposition-transmit 0
+   violate-action drop
+ class class-default
+  police cir percent 25
+   conform-action set-mpls-exp-imposition-transmit 0
+   exceed-action drop
+policy-map PMAP_EGRESS_EDGE_QUEUE
+ description DSCP-BASED CUSTOMER QUEUING (SHORT PIPE)
+ class CMAP_EDGE_INELASTIC
+  priority percent 30
+ class CMAP_EDGE_NETCONTROL
+  bandwidth percent 5
+ class CMAP_EDGE_ELASTIC
+  bandwidth percent 40
+  random-detect dscp-based
+ class class-default
+  bandwidth percent 25
+  random-detect dscp-based
+policy-map PMAP_EGRESS_EDGE_SHAPE
+ description SHAPER FOR REMOTE SITES
+ class class-default
+  shape average percent 100
+   service-policy PMAP_EGRESS_EDGE_QUEUE
+policy-map PMAP_EGRESS_CORE_QUEUE
+ description EGRESS QUEUING POLICY IN MPLS CORE
+ class CMAP_CORE_INELASTIC
+  priority percent 30
+ class CMAP_CORE_NETCONTROL
+  bandwidth percent 5
+ class CMAP_CORE_ELASTIC
+  bandwidth percent 40
+  random-detect dscp-based
+ class class-default
+  bandwidth percent 25
+  random-detect dscp-based
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.14 255.255.255.255
+!
+interface Ethernet0/0
+ description R13
+ ip address 10.13.14.14 255.255.255.0
+ ip router isis 1
+ isis network point-to-point
+ service-policy output PMAP_EGRESS_CORE_QUEUE
+ ip rsvp bandwidth
+!
+interface Ethernet0/1
+ description R12
+ ip address 10.12.14.14 255.255.255.0
+ ip router isis 1
+ isis network point-to-point
+ service-policy output PMAP_EGRESS_CORE_QUEUE
+ ip rsvp bandwidth
+!
+interface Ethernet0/2
+ description R16
+ bandwidth 35000
+ vrf forwarding GLOBOMANTICS
+ ip address 172.16.146.14 255.255.255.0
+ service-policy input PMAP_INGRESS_EDGE_MARK
+ service-policy output PMAP_EGRESS_EDGE_SHAPE
+!
+interface Ethernet0/3
+ no ip address
+!
+router isis 1
+ mpls ldp autoconfig
+ net 49.0000.0000.0000.0014.00
+ is-type level-2-only
+ metric-style wide
+ log-adjacency-changes all
+ passive-interface Loopback0
+!
+router bgp 65011
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.0.0.12 remote-as 65011
+ neighbor 10.0.0.12 update-source Loopback0
+ !
+ address-family vpnv4
+  neighbor 10.0.0.12 activate
+  neighbor 10.0.0.12 send-community extended
+ exit-address-family
+ !
+ address-family ipv4 vrf GLOBOMANTICS
+  redistribute connected
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

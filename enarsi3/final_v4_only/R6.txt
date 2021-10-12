@@ -1,0 +1,162 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R6
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+ip telnet source-interface Loopback0
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.6 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Ethernet0/0
+ description TO R1
+ ip address 10.1.6.6 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet0/1
+ description TO R2
+ ip address 10.2.6.6 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet0/2
+ description TO R3
+ ip address 10.3.6.6 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet0/3
+ description TO C18
+ ip address 10.6.18.6 255.255.255.0
+ ip access-group ACL_PROTECT_SERVERS out
+ ip ospf 1 area 0
+!
+router ospf 1
+ router-id 10.0.0.6
+ passive-interface Ethernet0/3
+ passive-interface Loopback0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list extended ACL_PROTECT_SERVERS
+ permit tcp any host 10.6.18.18 eq ftp time-range TIME_MORNING
+ permit tcp any host 10.6.18.18 range 42000 42999 time-range TIME_MORNING
+ permit icmp any host 10.6.18.18 echo time-range TIME_MWF
+ permit udp any host 10.6.18.18 eq syslog time-range TIME_8MAR2021
+ deny   ip any any log-input
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+alias exec acl_on clock set 06:00:00 8 Mar 2021
+alias exec acl_off clock set 12:00:00 9 Mar 2021
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+time-range TIME_8MAR2021
+ absolute start 00:00 08 March 2021 end 23:59 08 March 2021
+!
+time-range TIME_MORNING
+ periodic daily 6:00 to 11:59
+!
+time-range TIME_MWF
+ periodic Monday Wednesday Friday 0:00 to 23:59
+!
+!
+end

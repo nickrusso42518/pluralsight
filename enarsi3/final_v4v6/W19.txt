@@ -1,0 +1,280 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname W19
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.19 255.255.255.255
+!
+interface Loopback1
+ description RADIO NETWORK SIMULATIONS
+ ip address 192.0.2.33 255.255.255.224 secondary
+ ip address 192.0.2.65 255.255.255.224 secondary
+ ip address 192.0.2.97 255.255.255.224 secondary
+ ip address 192.0.2.129 255.255.255.224 secondary
+ ip address 192.0.2.161 255.255.255.224 secondary
+ ip address 192.0.2.193 255.255.255.224 secondary
+ ip address 192.0.2.225 255.255.255.224 secondary
+ ip address 192.0.2.1 255.255.255.224
+ ipv6 address FC00:19:1922:FFF1::19/64
+ ipv6 address FC00:19:1922:FFF2::19/64
+ ipv6 address FC00:19:1922:FFF3::19/64
+ ipv6 address FC00:19:1922:FFF4::19/64
+ ipv6 address FC00:19:1922:FFF5::19/64
+ ipv6 address FC00:19:1922:FFF6::19/64
+ ipv6 address FC00:19:1922:FFF7::19/64
+ ipv6 address FC00:19:1922:FFF8::19/64
+!
+interface Ethernet0/0
+ description TO R9
+ ip address 169.254.9.19 255.255.255.0
+ ipv6 address FE80::19 link-local
+ ipv6 rip RADIO enable
+!
+interface Ethernet0/1
+ description TO R8
+ ip address 169.254.8.19 255.255.255.0
+ ipv6 address FE80::19 link-local
+ ipv6 rip RADIO enable
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+router rip
+ version 2
+ redistribute connected route-map RM_CONN_TO_RIP
+ network 169.254.0.0
+ no auto-summary
+!
+ip forward-protocol nd
+!
+!
+ip ftp source-interface Loopback1
+ip ftp username user
+ip ftp password pass
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard ACL_NET1
+ permit 192.0.2.0 0.0.0.31
+ip access-list standard ACL_NET2
+ permit 192.0.2.32 0.0.0.31
+ip access-list standard ACL_NET3
+ permit 192.0.2.64 0.0.0.31
+ip access-list standard ACL_NET4
+ permit 192.0.2.96 0.0.0.31
+ip access-list standard ACL_NET5
+ permit 192.0.2.128 0.0.0.31
+ip access-list standard ACL_NET6
+ permit 192.0.2.160 0.0.0.31
+ip access-list standard ACL_NET7
+ permit 192.0.2.192 0.0.0.31
+ip access-list standard ACL_NET8
+ permit 192.0.2.224 0.0.0.31
+!
+ipv6 router rip RADIO
+ redistribute connected route-map RM_CONN_TO_RIP_V6
+!
+ipv6 ioam timestamp
+!
+!
+ipv6 prefix-list PL_NET1_V6 seq 5 permit FC00:19:1922:FFF1::/64
+!
+ipv6 prefix-list PL_NET2_V6 seq 5 permit FC00:19:1922:FFF2::/64
+!
+ipv6 prefix-list PL_NET3_V6 seq 5 permit FC00:19:1922:FFF3::/64
+!
+ipv6 prefix-list PL_NET4_V6 seq 5 permit FC00:19:1922:FFF4::/64
+!
+ipv6 prefix-list PL_NET5_V6 seq 5 permit FC00:19:1922:FFF5::/64
+!
+ipv6 prefix-list PL_NET6_V6 seq 5 permit FC00:19:1922:FFF6::/64
+!
+ipv6 prefix-list PL_NET7_V6 seq 5 permit FC00:19:1922:FFF7::/64
+!
+ipv6 prefix-list PL_NET8_V6 seq 5 permit FC00:19:1922:FFF8::/64
+route-map RM_CONN_TO_RIP permit 10
+ match ip address ACL_NET1
+ set metric 1
+ set tag 101
+!
+route-map RM_CONN_TO_RIP permit 20
+ match ip address ACL_NET2
+ set metric 2
+ set tag 102
+!
+route-map RM_CONN_TO_RIP permit 30
+ match ip address ACL_NET3
+ set metric 3
+ set tag 103
+!
+route-map RM_CONN_TO_RIP permit 40
+ match ip address ACL_NET4
+ set metric 4
+ set tag 104
+!
+route-map RM_CONN_TO_RIP permit 50
+ match ip address ACL_NET5
+ set metric 5
+ set tag 101
+!
+route-map RM_CONN_TO_RIP permit 60
+ match ip address ACL_NET6
+ set metric 6
+ set tag 102
+!
+route-map RM_CONN_TO_RIP permit 70
+ match ip address ACL_NET7
+ set metric 7
+ set tag 103
+!
+route-map RM_CONN_TO_RIP permit 80
+ match ip address ACL_NET8
+ set metric 8
+ set tag 104
+!
+route-map RM_CONN_TO_RIP_V6 permit 10
+ match ipv6 address prefix-list PL_NET1_V6
+ set metric 1
+ set tag 101
+!
+route-map RM_CONN_TO_RIP_V6 permit 20
+ match ipv6 address prefix-list PL_NET2_V6
+ set metric 2
+ set tag 102
+!
+route-map RM_CONN_TO_RIP_V6 permit 30
+ match ipv6 address prefix-list PL_NET3_V6
+ set metric 3
+ set tag 103
+!
+route-map RM_CONN_TO_RIP_V6 permit 40
+ match ipv6 address prefix-list PL_NET4_V6
+ set metric 4
+ set tag 104
+!
+route-map RM_CONN_TO_RIP_V6 permit 50
+ match ipv6 address prefix-list PL_NET5_V6
+ set metric 5
+ set tag 101
+!
+route-map RM_CONN_TO_RIP_V6 permit 60
+ match ipv6 address prefix-list PL_NET6_V6
+ set metric 6
+ set tag 102
+!
+route-map RM_CONN_TO_RIP_V6 permit 70
+ match ipv6 address prefix-list PL_NET7_V6
+ set metric 7
+ set tag 103
+!
+route-map RM_CONN_TO_RIP_V6 permit 80
+ match ipv6 address prefix-list PL_NET8_V6
+ set metric 8
+ set tag 104
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+alias exec ftp_test more ftp://10.6.18.18/test.txt
+alias exec ftp6_test more ftp://[fc00:10:6:18::18]/test.txt
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

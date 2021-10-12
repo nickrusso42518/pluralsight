@@ -1,0 +1,230 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+aaa new-model
+!
+!
+aaa group server radius AAA_RADIUS_SERVERS
+ server name S16
+ ip radius source-interface Loopback0
+!
+aaa authentication login default none
+aaa authentication login AAA_AUTHC_RADIUS group AAA_RADIUS_SERVERS local
+aaa authorization exec default none
+aaa authorization exec AAA_AUTHZ_RADIUS group AAA_RADIUS_SERVERS if-authenticated
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.3 255.255.255.255
+ ipv6 address FC00::3/128
+!
+interface Ethernet0/0
+ description TO S1
+ ip address 10.1.3.3 255.255.255.0
+ ipv6 address FE80::3 link-local
+ ipv6 nd ra suppress all
+!
+interface Ethernet0/1
+ description TO S2
+ ip address 10.2.3.3 255.255.255.0
+ ipv6 address FE80::3 link-local
+ ipv6 nd ra suppress all
+!
+interface Ethernet0/2
+ description TO R8
+ ip address 10.3.8.3 255.255.255.0
+ ipv6 address FE80::3 link-local
+ ipv6 nd ra suppress all
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+interface Ethernet1/0
+ description TO R4
+ ip address 10.3.4.3 255.255.255.0
+ ipv6 address FE80::3 link-local
+ ipv6 nd ra suppress all
+!
+interface Ethernet1/1
+ description TO S5
+ ip address 10.34.56.3 255.255.255.0
+ ipv6 address FE80::3 link-local
+ ipv6 nd ra suppress all
+!
+interface Ethernet1/2
+ description TO R7
+ ip address 10.3.7.3 255.255.255.0
+ ipv6 address FE80::3 link-local
+ ipv6 nd ra suppress all
+ bfd interval 500 min_rx 500 multiplier 3
+!
+interface Ethernet1/3
+ no ip address
+ shutdown
+!
+!
+router eigrp GLOBO
+ !
+ address-family ipv4 unicast autonomous-system 65000
+  !
+  af-interface Loopback0
+   passive-interface
+  exit-af-interface
+  !
+  af-interface Ethernet0/2
+   authentication mode hmac-sha-256 EIGRP_SHA256
+  exit-af-interface
+  !
+  af-interface Ethernet1/2
+   bfd
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  network 0.0.0.0
+  eigrp router-id 10.0.0.3
+ exit-address-family
+ !
+ address-family ipv6 unicast autonomous-system 65000
+  !
+  af-interface Loopback0
+   passive-interface
+  exit-af-interface
+  !
+  af-interface Ethernet0/2
+   authentication mode hmac-sha-256 EIGRP_SHA256
+  exit-af-interface
+  !
+  af-interface Ethernet1/2
+   bfd
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  eigrp router-id 10.0.0.3
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+!
+radius server S16
+ address ipv4 192.168.7.16 auth-port 1812 acct-port 1813
+ timeout 2
+ key gns3
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+alias exec radius_alice test aaa group AAA_RADIUS_SERVERS alice gns3 legacy
+alias exec radius_bob test aaa group AAA_RADIUS_SERVERS bob gns3 legacy
+alias exec radius_chuck test aaa group AAA_RADIUS_SERVERS chuck gns3 legacy
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ authorization exec AAA_AUTHZ_RADIUS
+ login authentication AAA_AUTHC_RADIUS
+ transport input telnet ssh
+!
+!
+end

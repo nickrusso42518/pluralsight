@@ -1,0 +1,213 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R4
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.4 255.255.255.255
+ ip ospf 1 area 0
+ ipv6 address FC00::4/128
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/0
+ description TO R3
+ ip address 10.3.4.4 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ ipv6 address FE80::4 link-local
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network point-to-point
+!
+interface Ethernet0/1
+ description TO R12
+ ip address 172.16.4.4 255.255.255.0
+ ipv6 address FE80::4 link-local
+!
+interface Ethernet0/2
+ description TO R1
+ ip address 10.1.4.4 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ ipv6 address FE80::4 link-local
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network point-to-point
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+!
+router eigrp SCHOOL
+ !
+ address-family ipv4 unicast autonomous-system 65000
+  !
+  topology base
+   redistribute ospf 1 match internal external 1 external 2 metric 100000 10 255 1 1500 route-map RM_DENY_EIGRP
+  exit-af-topology
+  network 172.16.4.4 0.0.0.0
+  eigrp router-id 10.0.0.4
+ exit-address-family
+ !
+ address-family ipv6 unicast autonomous-system 65000
+  !
+  af-interface default
+   shutdown
+  exit-af-interface
+  !
+  af-interface Ethernet0/1
+   no shutdown
+  exit-af-interface
+  !
+  topology base
+   redistribute ospf 1 match internal external 2 metric 100000 10 255 1 1500 route-map RM_DENY_EIGRP_V6
+  exit-af-topology
+  eigrp router-id 10.0.0.4
+ exit-address-family
+!
+router ospfv3 1
+ router-id 10.0.0.4
+ !
+ address-family ipv6 unicast
+  passive-interface Loopback0
+  redistribute eigrp 65000 metric-type 1 route-map RM_PERMIT_EIGRP_V6
+ exit-address-family
+!
+router ospf 1
+ router-id 10.0.0.4
+ redistribute eigrp 65000 metric-type 1 subnets route-map RM_PERMIT_EIGRP
+ passive-interface Loopback0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+ip prefix-list PL_EIGRP_ROUTES seq 5 permit 203.0.113.0/24 le 25
+ipv6 ioam timestamp
+!
+!
+ipv6 prefix-list PL_EIGRP_ROUTES_V6 seq 5 permit 2021::/16 ge 32 le 32
+route-map RM_GENERIC_SET_TAG permit 10
+ set tag 85
+!
+route-map RM_GENERIC_BLOCK_TAG deny 10
+ match tag 85
+!
+route-map RM_GENERIC_BLOCK_TAG permit 20
+!
+route-map RM_DENY_EIGRP deny 10
+ match ip address prefix-list PL_EIGRP_ROUTES
+!
+route-map RM_DENY_EIGRP permit 20
+!
+route-map RM_PERMIT_EIGRP permit 10
+ match ip address prefix-list PL_EIGRP_ROUTES
+!
+route-map RM_PERMIT_EIGRP_V6 permit 10
+ match ipv6 address prefix-list PL_EIGRP_ROUTES_V6
+!
+route-map RM_DENY_EIGRP_V6 deny 10
+ match ipv6 address prefix-list PL_EIGRP_ROUTES_V6
+!
+route-map RM_DENY_EIGRP_V6 permit 20
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

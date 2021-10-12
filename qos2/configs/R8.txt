@@ -1,0 +1,287 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R8
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name njrusmc.net
+ip name-server 192.168.20.10
+ip multicast-routing
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+class-map match-all CMAP_QUEUE_BUSINESS_DATA
+  description LOW-LATENCY AND HIGH-THROUGHPUT TRAFFIC
+ match dscp af11  af12  af13  af21  af22  af23
+class-map match-all CMAP_QUEUE_OAM_SIGNALING
+  description NETOPS AND VOICE/VIDEO SIGNALING TRAFFIC
+ match dscp cs2  cs5
+class-map match-all CMAP_QUEUE_VOICE
+  description VOICE BEARER TRAFFIC
+ match dscp ef
+class-map match-all CMAP_MATCH_R16
+  description MATCHES DESTINATION TUNNEL IP ON R16
+ match access-group name ACL_TUNNEL_IP_16
+class-map match-all CMAP_MATCH_R15
+  description MATCHES DESTINATION TUNNEL IP ON R15
+ match access-group name ACL_TUNNEL_IP_15
+class-map match-all CMAP_QUEUE_BROADCAST_VIDEO
+  description ONE-WAY, INELASTIC VIDEO TRAFFIC
+ match dscp cs3
+class-map match-all CMAP_QUEUE_NETCONTROL
+  description NETWORK CONTROL (ROUTING, ETC)
+ match dscp cs6  cs7
+!
+policy-map PMAP_INGRESS_EXTRANET
+ description POLICE TRAFFIC FROM EXTRANET PARTNER
+ class class-default
+  police cir 5000000
+   conform-action transmit
+   exceed-action transmit
+   violate-action set-dscp-transmit default
+policy-map PMAP_EGRESS_CAMPUS_QUEUE
+ description EGRESS QUEUING POLICY IN CAMPUS
+ class CMAP_QUEUE_VOICE
+  priority percent 10
+ class CMAP_QUEUE_BROADCAST_VIDEO
+  bandwidth percent 20
+ class CMAP_QUEUE_NETCONTROL
+  bandwidth percent 2
+ class CMAP_QUEUE_OAM_SIGNALING
+  bandwidth percent 8
+ class CMAP_QUEUE_BUSINESS_DATA
+  bandwidth percent 35
+  random-detect dscp-based
+ class class-default
+  bandwidth percent 25
+  random-detect dscp-based
+  random-detect dscp 0 20 40 10
+  random-detect dscp 8 10 20 8
+policy-map PMAP_EGRESS_WAN_SHAPE
+ description EGRESS SHAPING POLICY TOWARDS WAN
+ class CMAP_MATCH_R15
+  shape average 35000000 140000 0 account user-defined 14
+   service-policy PMAP_EGRESS_CAMPUS_QUEUE
+ class CMAP_MATCH_R16
+  shape average 35000000 140000 0 account user-defined 14
+   service-policy PMAP_EGRESS_CAMPUS_QUEUE
+!
+!
+crypto logging session
+crypto logging ikev2
+!
+crypto ikev2 proposal IKEV2_PROPOSAL
+ encryption aes-cbc-256
+ integrity sha384
+ group 20
+!
+crypto ikev2 policy IKEV2_POLICY
+ proposal IKEV2_PROPOSAL
+!
+crypto ikev2 keyring IKEV2_KEYRING
+ peer WAN
+  address 172.16.0.0 255.255.0.0
+  pre-shared-key local IPSEC_GLOBO
+  pre-shared-key remote IPSEC_GLOBO
+ !
+!
+!
+crypto ikev2 profile IKEV2_PROFILE
+ match identity remote address 172.16.0.0 255.255.0.0
+ authentication local pre-share
+ authentication remote pre-share
+ keyring local IKEV2_KEYRING
+!
+!
+!
+crypto ipsec transform-set IPSEC_XFORM_AH_SHA1 ah-sha-hmac
+ mode tunnel
+crypto ipsec transform-set IPSEC_XFORM_ESPNULL_SHA1 esp-null esp-sha-hmac
+ mode transport
+!
+crypto ipsec profile IPSEC_PROFILE_AH_SHA1
+ set transform-set IPSEC_XFORM_AH_SHA1
+ set ikev2-profile IKEV2_PROFILE
+!
+crypto ipsec profile IPSEC_PROFILE_ESPNULL_SHA1
+ set transform-set IPSEC_XFORM_ESPNULL_SHA1
+ set ikev2-profile IKEV2_PROFILE
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.8 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Tunnel815
+ description R15 GRE TUNNEL
+ ip address 10.8.15.8 255.255.255.0
+ ip mtu 1400
+ ip pim sparse-mode
+ ip tcp adjust-mss 1360
+ ip ospf 1 area 0
+ tunnel source 172.16.118.8
+ tunnel destination 172.16.135.15
+ tunnel protection ipsec profile IPSEC_PROFILE_AH_SHA1
+!
+interface Tunnel816
+ description R16 GRE TUNNEL
+ ip address 10.8.16.8 255.255.255.0
+ ip mtu 1400
+ ip pim sparse-mode
+ ip tcp adjust-mss 1360
+ ip ospf 1 area 0
+ tunnel source 172.16.118.8
+ tunnel destination 172.16.146.16
+ tunnel protection ipsec profile IPSEC_PROFILE_ESPNULL_SHA1
+!
+interface Ethernet0/0
+ description R6
+ bandwidth 1000000
+ ip address 10.6.8.8 255.255.255.0
+ ip pim sparse-mode
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ service-policy output PMAP_EGRESS_CAMPUS_QUEUE
+!
+interface Ethernet0/1
+ description R5
+ bandwidth 1000000
+ ip address 10.5.8.8 255.255.255.0
+ ip pim sparse-mode
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ service-policy output PMAP_EGRESS_CAMPUS_QUEUE
+!
+interface Ethernet0/2
+ description R11 (MPLS CARRIER)
+ bandwidth 1000000
+ ip address 172.16.118.8 255.255.255.0
+ service-policy output PMAP_EGRESS_WAN_SHAPE
+!
+interface Ethernet0/3
+ description R19 (EXTRANET)
+ ip address 172.16.198.8 255.255.255.0
+ service-policy input PMAP_INGRESS_EXTRANET
+!
+router ospf 1
+ redistribute bgp 65001 subnets
+ passive-interface Loopback0
+!
+router bgp 65001
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 172.16.198.19 remote-as 65019
+ !
+ address-family ipv4
+  redistribute ospf 1
+  neighbor 172.16.198.19 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+no ip pim autorp
+ip pim ssm default
+ip route 172.16.135.0 255.255.255.0 172.16.118.11
+ip route 172.16.146.0 255.255.255.0 172.16.118.11
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list extended ACL_TUNNEL_IP_15
+ permit ip any host 172.16.135.15
+ip access-list extended ACL_TUNNEL_IP_16
+ permit ip any host 172.16.146.16
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp logging
+ntp source Loopback0
+ntp server 10.0.0.5
+ntp server 10.0.0.6
+!
+end

@@ -1,0 +1,175 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R7
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label range 7000 7999
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.7 255.255.255.255
+ ip ospf 1 area 1
+!
+interface Ethernet0/0
+ description TO R9
+ ip address 10.7.9.7 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 1
+!
+interface Ethernet0/1
+ description TO R6
+ ip address 10.6.7.7 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 1
+!
+interface Ethernet0/2
+ description TO R8
+ ip address 10.7.8.7 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 1
+ ip ospf cost 5000
+!
+interface Ethernet0/3
+ description TO R13
+ ip address 172.16.7.7 255.255.255.0
+!
+!
+router eigrp SCHOOL
+ !
+ address-family ipv4 unicast autonomous-system 65000
+  !
+  topology base
+   redistribute ospf 1 match internal external 2 metric 100000 10 255 1 1500 route-map RM_DENY_EIGRP
+  exit-af-topology
+  network 172.16.7.7 0.0.0.0
+  eigrp router-id 10.0.0.7
+ exit-address-family
+!
+router ospf 1
+ mpls ldp autoconfig area 1
+ router-id 10.0.0.7
+ redistribute eigrp 65000 metric-type 1 subnets route-map RM_PERMIT_EIGRP
+ passive-interface Loopback0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+ip prefix-list PL_EIGRP_ROUTES seq 5 permit 203.0.113.0/24 le 25
+ipv6 ioam timestamp
+!
+route-map RM_GENERIC_SET_TAG permit 10
+ set tag 85
+!
+route-map RM_GENERIC_BLOCK_TAG deny 10
+ match tag 85
+!
+route-map RM_GENERIC_BLOCK_TAG permit 20
+!
+route-map RM_DENY_EIGRP deny 10
+ match ip address prefix-list PL_EIGRP_ROUTES
+!
+route-map RM_DENY_EIGRP permit 20
+!
+route-map RM_PERMIT_EIGRP permit 10
+ match ip address prefix-list PL_EIGRP_ROUTES
+!
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

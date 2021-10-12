@@ -1,0 +1,372 @@
+version 15.2
+service nagle
+no service pad
+service tcp-keepalives-in
+service tcp-keepalives-out
+no service timestamps debug uptime
+no service timestamps log uptime
+no service password-encryption
+!
+hostname S1_C3750X
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition ATTACKER
+ !
+ address-family ipv6
+ exit-address-family
+!
+vrf definition H17
+ !
+ address-family ipv6
+ exit-address-family
+!
+vrf definition H18
+ !
+ address-family ipv6
+ exit-address-family
+!
+vrf definition S3
+ !
+ address-family ipv6
+ exit-address-family
+!
+vrf definition S4
+ !
+ address-family ipv6
+ exit-address-family
+!
+logging buffered 1000000
+enable password globo
+!
+username globo privilege 15 password 0 globo
+no aaa new-model
+switch 1 provision ws-c3750x-24
+system mtu routing 1500
+!
+!
+!
+!
+fhrp version vrrp v3
+no ip source-route
+ip arp proxy disable
+ip arp gratuitous none
+no ip icmp rate-limit unreachable
+!
+ip dhcp excluded-address 192.168.2.0 192.168.2.200
+ip dhcp excluded-address 192.168.2.250 192.168.2.255
+!
+ip dhcp pool MGMT_POOL
+ network 192.168.2.0 255.255.255.0
+!
+!
+no ip domain-lookup
+ip domain-name njrusmc.net
+ipv6 nd raguard policy RAGUARD_ROUTER_VLAN10
+ device-role router
+ managed-config-flag off
+ other-config-flag on
+ router-preference maximum medium
+ match ra prefix-list PL_VLAN10_PREFIX
+ match ipv6 access-list ACL_ROUTER_LLA
+!
+ipv6 nd raguard policy RAGUARD_ROUTER_VLAN20
+ device-role router
+ managed-config-flag off
+ other-config-flag off
+ router-preference maximum medium
+ match ipv6 access-list ACL_ROUTER_LLA
+!
+ipv6 unicast-routing
+ipv6 snooping policy SNOOPING_VLAN10
+ limit address-count 5
+ data-glean recovery ndp
+ protocol ndp prefix-list PL_VLAN10_ADDRS
+!
+ipv6 dhcp guard policy DHCPV6_GUARD_SERVER
+ device-role server
+ match server access-list ACL_DHCPV6_SERVERS
+ match reply prefix-list PL_VLAN10_ADDRS
+ipv6 source-guard policy SGUARD_GENERIC
+ permit link-local
+!
+vtp domain lab.local
+vtp mode off
+!
+!
+!
+!
+!
+!
+!
+license boot level ipservices
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+no spanning-tree vlan 1-4000
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 10
+ name USERS
+!
+vlan 4002
+ name MGMT
+no cdp run
+!
+ip tcp synwait-time 5
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface GigabitEthernet1/0/1
+ description DHCP GUARD CLIENT EXAMPLE
+ shutdown
+ ipv6 dhcp guard
+!
+interface GigabitEthernet1/0/2
+ description DHCP GUARD SERVER EXAMPLE
+ shutdown
+ ipv6 dhcp guard attach-policy DHCPV6_GUARD_SERVER
+!
+interface GigabitEthernet1/0/3
+ description S3
+ switchport trunk allowed vlan 2-4094
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 10
+ switchport mode trunk
+ switchport nonegotiate
+ ipv6 nd raguard attach-policy RAGUARD_ROUTER_VLAN10 vlan 10
+ ipv6 nd raguard attach-policy RAGUARD_ROUTER_VLAN20 vlan 20
+ ipv6 nd suppress
+ ipv6 snooping attach-policy SNOOPING_VLAN10 vlan 10
+ ipv6 snooping vlan 20
+ ipv6 destination-guard
+!
+interface GigabitEthernet1/0/4
+ description S4
+ switchport trunk allowed vlan 2-4094
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 10
+ switchport mode trunk
+ switchport nonegotiate
+ ipv6 nd raguard attach-policy RAGUARD_ROUTER_VLAN10 vlan 10
+ ipv6 nd raguard attach-policy RAGUARD_ROUTER_VLAN20 vlan 20
+ ipv6 nd suppress
+ ipv6 snooping attach-policy SNOOPING_VLAN10 vlan 10
+ ipv6 snooping vlan 20
+ ipv6 destination-guard
+!
+interface GigabitEthernet1/0/5
+ description VRF S3
+ no switchport
+ vrf forwarding S3
+ no ip address
+ ipv6 address FE80::3 link-local
+ ipv6 address 2020:192:168:10::3/64
+ ipv6 nd other-config-flag
+ ipv6 nd ra interval 10
+ vrrp 14 address-family ipv6
+  priority 105
+  address FE80::34 primary
+  exit-vrrp
+!
+interface GigabitEthernet1/0/6
+ description VRF S4
+ no switchport
+ vrf forwarding S4
+ no ip address
+ ipv6 address FE80::4 link-local
+ ipv6 address 2020:192:168:10::4/64
+ ipv6 nd other-config-flag
+ ipv6 nd ra interval 10
+ vrrp 14 address-family ipv6
+  address FE80::34 primary
+  exit-vrrp
+!
+interface GigabitEthernet1/0/7
+ shutdown
+!
+interface GigabitEthernet1/0/8
+ shutdown
+!
+interface GigabitEthernet1/0/9
+ shutdown
+!
+interface GigabitEthernet1/0/10
+ shutdown
+!
+interface GigabitEthernet1/0/11
+ shutdown
+!
+interface GigabitEthernet1/0/12
+ shutdown
+!
+interface GigabitEthernet1/0/13
+ shutdown
+!
+interface GigabitEthernet1/0/14
+ shutdown
+!
+interface GigabitEthernet1/0/15
+ shutdown
+!
+interface GigabitEthernet1/0/16
+ shutdown
+!
+interface GigabitEthernet1/0/17
+ description H17
+ switchport access vlan 10
+ switchport mode access
+ ipv6 nd raguard
+ ipv6 nd suppress
+ ipv6 snooping attach-policy SNOOPING_VLAN10
+ ipv6 destination-guard
+ ipv6 source-guard attach-policy SGUARD_GENERIC
+!
+interface GigabitEthernet1/0/18
+ description H18
+ switchport access vlan 10
+ switchport mode access
+ ipv6 nd raguard
+ ipv6 nd suppress
+ ipv6 snooping attach-policy SNOOPING_VLAN10
+ ipv6 destination-guard
+ ipv6 source-guard attach-policy SGUARD_GENERIC
+!
+interface GigabitEthernet1/0/19
+ description VRF H17
+ no switchport
+ vrf forwarding H17
+ no ip address
+ ipv6 address autoconfig
+ ipv6 nd ra suppress all
+!
+interface GigabitEthernet1/0/20
+ description VRF H18
+ no switchport
+ vrf forwarding H18
+ no ip address
+ ipv6 address autoconfig default
+ ipv6 nd ra suppress all
+!
+interface GigabitEthernet1/0/21
+ description ATTACKER
+ switchport access vlan 10
+ switchport mode access
+ ipv6 nd raguard
+ ipv6 nd suppress
+ ipv6 snooping attach-policy SNOOPING_VLAN10
+ ipv6 destination-guard
+ ipv6 source-guard attach-policy SGUARD_GENERIC
+!
+interface GigabitEthernet1/0/22
+ shutdown
+!
+interface GigabitEthernet1/0/23
+ description VRF ATTACKER
+ no switchport
+ vrf forwarding ATTACKER
+ no ip address
+ ipv6 address FE80::AAAA link-local
+ ipv6 address 2020:192:168:10::AAAA/64
+ ipv6 nd router-preference High
+ ipv6 nd ra interval 10
+!
+interface GigabitEthernet1/0/24
+ description MGMT LAPTOP
+ switchport access vlan 4002
+ switchport mode access
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/1/1
+ shutdown
+!
+interface GigabitEthernet1/1/2
+ shutdown
+!
+interface GigabitEthernet1/1/3
+ shutdown
+!
+interface GigabitEthernet1/1/4
+ shutdown
+!
+interface TenGigabitEthernet1/1/1
+ shutdown
+!
+interface TenGigabitEthernet1/1/2
+ shutdown
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface Vlan4002
+ description MGMT SVI
+ ip address 192.168.2.254 255.255.255.0
+ no ip route-cache
+!
+no ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+!
+!
+ipv6 prefix-list PL_VLAN10_ADDRS seq 5 permit 2020:192:168:10::/64 ge 128
+!
+ipv6 prefix-list PL_VLAN10_PREFIX seq 5 permit 2020:192:168:10::/64
+!
+!
+ipv6 access-list ACL_DHCPV6_SERVERS
+ permit ipv6 host FE80::3 any
+ permit ipv6 host 2020:192:168:10::3 any
+!
+ipv6 access-list ACL_ROUTER_LLA
+ sequence 30 permit ipv6 host FE80::34 any
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ transport preferred none
+ transport output telnet ssh
+line vty 0 4
+ exec-timeout 0 0
+ privilege level 15
+ login local
+ transport preferred none
+ transport input ssh
+ transport output telnet ssh
+line vty 5 15
+ no login
+ no exec
+!
+!
+end

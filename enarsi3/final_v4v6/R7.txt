@@ -1,0 +1,187 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R7
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+track 1 ip sla 1 reachability
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.7 255.255.255.255
+ ipv6 address FC00::7/128
+ ospfv3 1 ipv4 area 0
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/0
+ description TO C17
+ ip address 10.7.17.7 255.255.255.0
+ ip policy route-map RM_PBR
+ ipv6 address FE80::7 link-local
+ ipv6 address FC00:10:7:17::7/64
+ ipv6 policy route-map RM_PBR_V6
+ ospfv3 1 ipv4 area 0
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/1
+ description TO R1
+ ip address 10.1.7.7 255.255.255.0
+ ipv6 address FE80::7 link-local
+ ospfv3 1 network point-to-point
+ ospfv3 1 ipv4 area 0
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/2
+ description TO R2
+ ip address 10.2.7.7 255.255.255.0
+ ipv6 address FE80::7 link-local
+ ipv6 address FC00:10:2:7::7/64
+ ospfv3 1 network point-to-point
+ ospfv3 1 ipv4 area 0
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/3
+ description TO R3
+ ip address 10.3.7.7 255.255.255.0
+ ipv6 address FE80::7 link-local
+ ospfv3 1 network point-to-point
+ ospfv3 1 ipv4 area 0
+ ospfv3 1 ipv6 area 0
+!
+router ospfv3 1
+ router-id 10.0.0.7
+ !
+ address-family ipv4 unicast
+  passive-interface Ethernet0/0
+  passive-interface Loopback0
+ exit-address-family
+ !
+ address-family ipv6 unicast
+  passive-interface Ethernet0/0
+  passive-interface Loopback0
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list extended ACL_TELNET
+ permit tcp 10.7.17.0 0.0.0.255 eq telnet any
+!
+ip sla 1
+ icmp-echo 10.2.7.2 source-interface Ethernet0/2
+ frequency 10
+ip sla schedule 1 life forever start-time now
+ipv6 ioam timestamp
+!
+route-map RM_PBR permit 10
+ description SEND TELNET RESPONSES TO R2 WHEN LINK IS UP
+ match ip address ACL_TELNET
+ set ip next-hop verify-availability 10.2.7.2 10 track 1
+!
+route-map RM_PBR_V6 permit 10
+ description SEND TELNET RESPONSES TO R2 (V6)
+ match ipv6 address ACL_TELNET_V6
+ set ipv6 next-hop FC00:10:2:7::2
+!
+!
+!
+ipv6 access-list ACL_TELNET_V6
+ permit tcp FC00:10:7:17::/64 eq telnet any
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

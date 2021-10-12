@@ -1,0 +1,217 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R6
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name njrusmc.net
+ip name-server 192.168.20.10
+ip multicast-routing
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+class-map match-all CMAP_QUEUE_BUSINESS_DATA
+  description LOW-LATENCY AND HIGH-THROUGHPUT TRAFFIC
+ match dscp af11  af12  af13  af21  af22  af23
+class-map match-all CMAP_QUEUE_OAM_SIGNALING
+  description NETOPS AND VOICE/VIDEO SIGNALING TRAFFIC
+ match dscp cs2  cs5
+class-map match-all CMAP_QUEUE_VOICE
+  description VOICE BEARER TRAFFIC
+ match dscp ef
+class-map match-all CMAP_QUEUE_BROADCAST_VIDEO
+  description ONE-WAY, INELASTIC VIDEO TRAFFIC
+ match dscp cs3
+class-map match-all CMAP_QUEUE_NETCONTROL
+  description NETWORK CONTROL (ROUTING, ETC)
+ match dscp cs6  cs7
+!
+policy-map PMAP_EGRESS_CAMPUS_QUEUE
+ description EGRESS QUEUING POLICY IN CAMPUS
+ class CMAP_QUEUE_VOICE
+  priority percent 10
+ class CMAP_QUEUE_BROADCAST_VIDEO
+  bandwidth percent 20
+ class CMAP_QUEUE_NETCONTROL
+  bandwidth percent 2
+ class CMAP_QUEUE_OAM_SIGNALING
+  bandwidth percent 8
+ class CMAP_QUEUE_BUSINESS_DATA
+  bandwidth percent 35
+  random-detect dscp-based
+ class class-default
+  bandwidth percent 25
+  random-detect dscp-based
+  random-detect dscp 0 20 40 10
+  random-detect dscp 8 10 20 8
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.6 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Ethernet0/0
+ description R8
+ bandwidth 1000000
+ ip address 10.6.8.6 255.255.255.0
+ ip pim sparse-mode
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ service-policy output PMAP_EGRESS_CAMPUS_QUEUE
+!
+interface Ethernet0/1
+ description R7
+ bandwidth 1000000
+ ip address 10.6.7.6 255.255.255.0
+ ip pim sparse-mode
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ service-policy output PMAP_EGRESS_CAMPUS_QUEUE
+!
+interface Ethernet0/2
+ description R4
+ bandwidth 1000000
+ ip address 10.4.6.6 255.255.255.0
+ ip pim sparse-mode
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ service-policy output PMAP_EGRESS_CAMPUS_QUEUE
+!
+interface Ethernet0/3
+ description R3
+ bandwidth 1000000
+ ip address 10.3.6.6 255.255.255.0
+ ip pim sparse-mode
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ service-policy output PMAP_EGRESS_CAMPUS_QUEUE
+!
+interface Ethernet1/0
+ description R5
+ bandwidth 1000000
+ ip address 10.5.6.6 255.255.255.0
+ ip pim sparse-mode
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ service-policy output PMAP_EGRESS_CAMPUS_QUEUE
+!
+interface Ethernet1/1
+ no ip address
+!
+interface Ethernet1/2
+ no ip address
+!
+interface Ethernet1/3
+ no ip address
+!
+router ospf 1
+ max-metric router-lsa
+ passive-interface Loopback0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+no ip pim autorp
+ip pim ssm default
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp logging
+ntp source Loopback0
+ntp master
+ntp peer 10.0.0.5
+!
+end

@@ -1,0 +1,154 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname H6
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip routing
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Tunnel99
+ description ISATAP SUBSCRIBER (DEST: isatap.globomantics.com)
+ no ip address
+ no ip route-cache
+ ipv6 address autoconfig
+ tunnel source Ethernet0/1
+ tunnel mode ipv6ip
+ tunnel destination 10.99.99.6
+!
+interface Ethernet0/0
+ no ip address
+ no ip route-cache
+!
+interface Ethernet0/1
+ description R19 (IPV4 ONLY)
+ ip address dhcp
+ no ip route-cache
+!
+interface Ethernet0/2
+ no ip address
+ no ip route-cache
+!
+interface Ethernet0/3
+ no ip address
+ no ip route-cache
+!
+interface Ethernet1/0
+ no ip address
+ no ip route-cache
+!
+interface Ethernet1/1
+ no ip address
+ no ip route-cache
+!
+interface Ethernet1/2
+ no ip address
+ no ip route-cache
+!
+interface Ethernet1/3
+ no ip address
+ no ip route-cache
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp server 10.0.0.3
+ntp server 10.0.0.4
+!
+end

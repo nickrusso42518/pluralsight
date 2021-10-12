@@ -1,0 +1,175 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.3 255.255.255.255
+ ipv6 address FC00::3/128
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv4 area 0
+!
+interface Loopback1
+ description TEST CONNECTED REDISTRIBUTION
+ ip address 10.3.3.3 255.255.255.255
+ ipv6 address FC00::3333/128
+!
+interface Ethernet0/0
+ description TO R4
+ ip address 10.3.4.3 255.255.255.0
+ ipv6 address FE80::3 link-local
+ ospfv3 1 network point-to-point
+ ospfv3 1 ipv4 area 0
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/1
+ description TO R5
+ ip address 10.3.5.3 255.255.255.0
+ ipv6 address FE80::3 link-local
+ ospfv3 1 network point-to-point
+ ospfv3 1 ipv4 area 0
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/2
+ description TO R6
+ ip address 10.3.6.3 255.255.255.0
+ ipv6 address FE80::3 link-local
+ ospfv3 1 network point-to-point
+ ospfv3 1 ipv4 area 0
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/3
+ description TO R7
+ ip address 10.3.7.3 255.255.255.0
+ ipv6 address FE80::3 link-local
+ ospfv3 1 network point-to-point
+ ospfv3 1 ipv4 area 0
+ ospfv3 1 ipv6 area 0
+!
+router ospfv3 1
+ router-id 10.0.0.3
+ !
+ address-family ipv4 unicast
+  redistribute connected route-map RM_CONN_TO_OSPF
+  passive-interface Loopback0
+ exit-address-family
+ !
+ address-family ipv6 unicast
+  passive-interface Loopback0
+  redistribute connected route-map RM_CONN_TO_OSPF
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+logging origin-id hostname
+logging facility sys14
+logging source-interface Loopback0
+logging host 10.6.18.18 xml sequence-num-session
+logging host ipv6 FC00:10:6:18::18 xml sequence-num-session
+ipv6 ioam timestamp
+!
+route-map RM_CONN_TO_OSPF permit 10
+ match interface Loopback1
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

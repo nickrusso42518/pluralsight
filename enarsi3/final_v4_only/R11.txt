@@ -1,0 +1,252 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R11
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+crypto logging session
+crypto logging ikev2
+!
+crypto ikev2 proposal IKEV2_PROPOSAL
+ encryption aes-cbc-256
+ integrity sha384
+ group 20
+crypto ikev2 proposal IKEV2_PROPOSAL_LEGACY
+ encryption 3des
+ integrity md5
+ group 5
+!
+crypto ikev2 policy IKEV2_POLICY
+ proposal IKEV2_PROPOSAL
+ proposal IKEV2_PROPOSAL_LEGACY
+!
+!
+crypto ikev2 profile IKEV2_PROFILE
+ match identity remote fqdn domain globomantics.com
+ authentication local pre-share key globoIPsec123
+ authentication remote pre-share key globoIPsec123
+!
+!
+!
+crypto ipsec transform-set IPSEC_XFORM_TUNNEL esp-null esp-sha-hmac
+ mode tunnel
+crypto ipsec transform-set IPSEC_XFORM_TRANSPORT esp-null esp-sha-hmac
+ mode transport require
+!
+crypto ipsec profile IPSEC_PROFILE_TRANSPORT
+ set transform-set IPSEC_XFORM_TRANSPORT
+ set ikev2-profile IKEV2_PROFILE
+ responder-only
+!
+crypto ipsec profile IPSEC_PROFILE_TUNNEL
+ set transform-set IPSEC_XFORM_TUNNEL
+ set ikev2-profile IKEV2_PROFILE
+ responder-only
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.11 255.255.255.255
+ ip ospf 1 area 1
+!
+interface Tunnel101
+ description GRE/IPSEC TUNNEL MODE
+ ip address 10.0.101.11 255.255.255.0
+ ip ospf 1 area 1
+ ip ospf cost 500
+ shutdown
+ tunnel source 10.0.0.11
+ tunnel destination 10.0.0.5
+ tunnel key 101
+ tunnel protection ipsec profile IPSEC_PROFILE_TUNNEL
+!
+interface Tunnel102
+ description GRE/IPSEC TRANSPORT MODE
+ ip address 10.0.102.11 255.255.255.0
+ ip ospf 1 area 1
+ ip ospf cost 500
+ tunnel source 10.0.0.11
+ tunnel destination 10.0.0.5
+ tunnel key 102
+ tunnel protection ipsec profile IPSEC_PROFILE_TRANSPORT
+!
+interface Ethernet0/0
+ description TO R15
+ ip address 10.11.15.11 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet0/1
+ description TO R14
+ ip address 10.11.14.11 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet0/2
+ description TO R13
+ ip address 10.11.13.11 255.255.255.0
+ ip ospf message-digest-key 1 md5 OSPF_MD5
+ ip ospf network point-to-point
+ ip ospf 1 area 3
+!
+interface Ethernet0/3
+ description TO R16
+ ip address 10.11.16.11 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+!
+interface Ethernet1/0
+ description TO R10
+ ip address 10.10.11.11 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 1
+!
+interface Ethernet1/1
+ no ip address
+ shutdown
+!
+interface Ethernet1/2
+ no ip address
+ shutdown
+!
+interface Ethernet1/3
+ description TO R20
+ ip address 192.168.11.11 255.255.255.0
+!
+router ospf 1
+ router-id 10.0.0.11
+ area 1 virtual-link 10.0.0.5
+ area 3 authentication message-digest
+ area 3 stub
+ area 3 default-cost 500
+ area 3 filter-list prefix PL_LOOPBACKS in
+ passive-interface Loopback0
+!
+router bgp 64086.59906
+ template peer-policy IBGP_EAST_POL
+  next-hop-self
+ exit-peer-policy
+ !
+ template peer-session IBGP_EAST_SESS
+  remote-as 64086.59906
+  transport connection-mode active
+  update-source Loopback0
+ exit-peer-session
+ !
+ bgp router-id 10.0.0.11
+ bgp asnotation dot
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.0.0.13 inherit peer-session IBGP_EAST_SESS
+ neighbor 192.168.11.20 remote-as 20
+ !
+ address-family ipv4
+  network 10.0.0.11 mask 255.255.255.255
+  neighbor 10.0.0.13 activate
+  neighbor 10.0.0.13 inherit peer-policy IBGP_EAST_POL
+  neighbor 192.168.11.20 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard ACL_NAT
+ permit 10.0.0.0 0.255.255.255
+ permit 192.0.2.0 0.0.0.255
+!
+!
+ip prefix-list PL_LOOPBACKS seq 5 permit 10.0.0.0/24 ge 32
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

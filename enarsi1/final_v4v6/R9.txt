@@ -1,0 +1,258 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R9
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition WAN_UNDERLAY
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.9 255.255.255.255
+ ipv6 address FC00::9/128
+!
+interface Tunnel81
+ description DMVPN WAN PHASE 1
+ ip address 10.0.81.9 255.255.255.0
+ no ip redirects
+ ip nhrp map 10.0.81.8 172.16.8.8
+ ip nhrp map multicast 172.16.8.8
+ ip nhrp network-id 81
+ ip nhrp nhs 10.0.81.8
+ shutdown
+ ipv6 address FE80::9 link-local
+ ipv6 address FC00:10:0:81::9/64
+ no ipv6 redirects
+ ipv6 nhrp map FC00:10:0:81::8/128 172.16.8.8
+ ipv6 nhrp map multicast 172.16.8.8
+ ipv6 nhrp network-id 81
+ ipv6 nhrp nhs FC00:10:0:81::8
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel key 81
+ tunnel vrf WAN_UNDERLAY
+!
+interface Tunnel82
+ description DMVPN WAN PHASE 2
+ ip address 10.0.82.9 255.255.255.0
+ no ip redirects
+ ip nhrp network-id 82
+ ip nhrp nhs 10.0.82.8 nbma 172.16.8.8 multicast
+ shutdown
+ ipv6 address FE80::9 link-local
+ ipv6 address FC00:10:0:82::9/64
+ no ipv6 redirects
+ ipv6 nhrp network-id 82
+ ipv6 nhrp nhs FC00:10:0:82::8 nbma 172.16.8.8 multicast
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel key 82
+ tunnel vrf WAN_UNDERLAY
+!
+interface Tunnel83
+ description DMVPN WAN PHASE 3
+ ip address 10.0.83.9 255.255.255.0
+ no ip redirects
+ ip nhrp network-id 83
+ ip nhrp nhs dynamic nbma 172.16.8.8 multicast
+ ip nhrp shortcut
+ ipv6 address FE80::9 link-local
+ ipv6 address FC00:10:0:83::9/64
+ no ipv6 redirects
+ ipv6 nhrp network-id 83
+ ipv6 nhrp nhs dynamic nbma 172.16.8.8 multicast
+ ipv6 nhrp shortcut
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel key 83
+ tunnel vrf WAN_UNDERLAY
+!
+interface Ethernet0/0
+ description TO R10
+ ip address 10.9.10.9 255.255.255.0
+ ipv6 address FE80::9 link-local
+ ipv6 nd ra suppress all
+!
+interface Ethernet0/1
+ description TO R9 (WAN_UNDERLAY)
+ vrf forwarding WAN_UNDERLAY
+ ip address 172.16.9.9 255.255.255.0
+ ip access-group ACL_WAN_INBOUND in
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+!
+router eigrp GLOBO
+ !
+ address-family ipv4 unicast autonomous-system 65000
+  !
+  af-interface Loopback0
+   passive-interface
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  network 0.0.0.0
+  eigrp router-id 10.0.0.9
+  eigrp stub connected summary leak-map RM_EIGRP_LEAK
+ exit-address-family
+ !
+ address-family ipv6 unicast autonomous-system 65000
+  !
+  af-interface Loopback0
+   passive-interface
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  eigrp router-id 10.0.0.9
+  eigrp stub connected leak-map RM_EIGRP_LEAK_V6
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route vrf WAN_UNDERLAY 172.16.0.0 255.255.0.0 172.16.9.19 name TO_REMOTE_SITES
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list extended ACL_WAN_INBOUND
+ permit gre 172.16.0.0 0.0.255.255 host 172.16.9.9
+ permit icmp 172.16.0.0 0.0.255.255 host 172.16.9.9 echo
+ permit icmp 172.16.0.0 0.0.255.255 host 172.16.9.9 echo-reply
+!
+!
+ip prefix-list PL_DEFAULT_ONLY seq 5 permit 0.0.0.0/0
+!
+ip prefix-list PL_R10_VLANS seq 5 permit 192.168.10.0/24 le 32
+ipv6 ioam timestamp
+!
+!
+ipv6 prefix-list PL_DEFAULT_ONLY_V6 seq 5 permit ::/0
+!
+ipv6 prefix-list PL_R10_VLANS_V6 seq 5 permit 2021:192:168:AA00::/56 ge 64 le 64
+route-map RM_EIGRP_LEAK permit 10
+ description LEAK R10 VLANS OVER WAN TO R8
+ match ip address prefix-list PL_R10_VLANS
+ match interface Tunnel81 Tunnel82 Tunnel83
+!
+route-map RM_EIGRP_LEAK permit 20
+ description LEAK R8 DEFAULT OVER LAN TO R10
+ match ip address prefix-list PL_DEFAULT_ONLY
+ match interface Ethernet0/0
+!
+route-map RM_EIGRP_LEAK_V6 permit 10
+ description LEAK R10 VLANS OVER WAN TO R8
+ match ip address prefix-list PL_R10_VLANS_V6
+ match interface Tunnel81 Tunnel82 Tunnel83
+!
+route-map RM_EIGRP_LEAK_V6 permit 20
+ description LEAK R8 DEFAULT OVER LAN TO R10
+ match ip address prefix-list PL_DEFAULT_ONLY_V6
+ match interface Ethernet0/0
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

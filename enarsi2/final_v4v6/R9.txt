@@ -1,0 +1,186 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R9
+!
+boot-start-marker
+boot-end-marker
+!
+!
+logging buffered 1000000
+logging console informational
+!
+aaa new-model
+!
+!
+aaa group server tacacs+ AAA_TACACS_GROUP
+ server name C15
+ ip tacacs source-interface Loopback0
+!
+aaa authentication login default none
+aaa authentication login AAA_AUTHC_TACACS group AAA_TACACS_GROUP local
+aaa authorization exec default none
+aaa authorization exec AAA_AUTHZ_TACACS group AAA_TACACS_GROUP if-authenticated
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label range 9000 9999
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.9 255.255.255.255
+ ipv6 address FC00::9/128
+ ospfv3 1 ipv6 area 1
+!
+interface Ethernet0/0
+ description TO R7
+ ip address 10.7.9.9 255.255.255.0
+ ip ospf network point-to-point
+ ipv6 address FE80::9 link-local
+ ospfv3 1 ipv6 area 1
+ ospfv3 1 ipv6 network point-to-point
+!
+interface Ethernet0/1
+ description TO R8
+ ip address 10.8.9.9 255.255.255.0
+ ip ospf network point-to-point
+ ipv6 address FE80::9 link-local
+ ospfv3 1 ipv6 area 1
+ ospfv3 1 ipv6 network point-to-point
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ description TO R2
+ ip address 10.2.9.9 255.255.255.0
+ ip ospf network point-to-point
+ ipv6 address FE80::9 link-local
+ ospfv3 1 ipv6 area 1
+ ospfv3 1 ipv6 network point-to-point
+!
+router ospfv3 1
+ router-id 10.0.0.9
+ !
+ address-family ipv6 unicast
+  passive-interface Loopback0
+ exit-address-family
+!
+router ospf 1
+ mpls ldp autoconfig
+ router-id 10.0.0.9
+ passive-interface Loopback0
+ network 0.0.0.0 255.255.255.255 area 1
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+mpls ldp router-id Loopback0 force
+tacacs server C15
+ address ipv4 10.12.34.15
+ key gns3
+ timeout 2
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+alias exec tacacs_gns3 test aaa group AAA_TACACS_GROUP gns3 gns3 legacy
+alias exec tacacs_bad test aaa group AAA_TACACS_GROUP gns3 bad legacy
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ authorization exec AAA_AUTHZ_TACACS
+ login authentication AAA_AUTHC_TACACS
+ transport input telnet ssh
+!
+!
+end

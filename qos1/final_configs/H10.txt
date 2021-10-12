@@ -1,0 +1,141 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service tcp-small-servers
+!
+hostname H10
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name njrusmc.net
+ip host www.njrusmc.net 198.51.100.20
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+username user privilege 15 password 0 pass
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp ecn
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no ip address
+!
+interface Ethernet0/1
+ no ip address
+!
+interface Ethernet0/2
+ description S2
+ ip address 192.168.20.10 255.255.255.0
+!
+interface Ethernet0/3
+ no ip address
+!
+ip forward-protocol nd
+!
+!
+ip http server
+ip http authentication local
+no ip http secure-server
+ip http path unix:
+ip dns server
+ip route 0.0.0.0 0.0.0.0 192.168.20.254
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip sla 1
+ udp-echo 232.0.0.10 4000 control disable
+ tos 96
+ frequency 10
+ip sla schedule 1 life forever start-time now
+ip sla responder
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp logging
+ntp server 10.0.0.5
+ntp server 10.0.0.6
+!
+end

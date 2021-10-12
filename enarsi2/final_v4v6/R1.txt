@@ -1,0 +1,224 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label range 1000 1999
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.1 255.255.255.255
+ ipv6 address FC00::1/128
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/0
+ description TO R18
+ ip address 169.254.1.1 255.255.255.0
+ ip verify unicast source reachable-via rx 100
+ ipv6 address FE80::1 link-local
+ ipv6 address FC00:169:254:1::1/64
+ ipv6 verify unicast source reachable-via rx ACL_URPF_LOGGER
+!
+interface Ethernet0/1
+ description TO S14
+ ip address 10.12.34.1 255.255.255.0
+ standby version 2
+ standby 0 ip 10.12.34.254
+ standby 0 preempt
+ standby 6 ipv6 FE80::254
+ standby 6 preempt
+ ip ospf network broadcast
+ ip ospf priority 50
+ ipv6 address FE80::1 link-local
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network broadcast
+ ospfv3 1 ipv6 priority 50
+!
+interface Ethernet0/2
+ description TO R4
+ ip address 10.1.4.1 255.255.255.0
+ ip ospf network point-to-point
+ ipv6 address FE80::1 link-local
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network point-to-point
+!
+interface Ethernet0/3
+ description TO R6
+ ip address 10.1.6.1 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 1
+ ipv6 address FE80::1 link-local
+ mpls ip
+ ospfv3 1 ipv6 area 1
+ ospfv3 1 ipv6 network point-to-point
+!
+router ospfv3 1
+ router-id 10.0.0.1
+ !
+ address-family ipv6 unicast
+  passive-interface Loopback0
+  default-information originate always metric 20
+  summary-prefix 2AAA::/16
+  redistribute bgp 100 route-map RM_BGP_TO_OSPF_V6
+  area 1 filter-list prefix PL_AREA1_LOOPBACKS_V6 out
+ exit-address-family
+!
+router ospf 1
+ router-id 10.0.0.1
+ area 1 filter-list prefix PL_AREA1_LOOPBACKS out
+ summary-address 100.64.0.0 255.255.252.0
+ redistribute bgp 100 subnets route-map RM_BGP_TO_OSPF
+ passive-interface Loopback0
+ network 10.0.0.1 0.0.0.0 area 0
+ network 10.1.4.1 0.0.0.0 area 0
+ network 10.12.34.0 0.0.0.255 area 0
+ default-information originate always metric 20
+!
+router bgp 100
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 169.254.1.18 remote-as 18
+ neighbor FC00:169:254:1::18 remote-as 18
+ !
+ address-family ipv4
+  network 203.0.113.0 mask 255.255.255.128
+  network 203.0.113.128 mask 255.255.255.128
+  aggregate-address 203.0.113.0 255.255.255.0 summary-only
+  neighbor 169.254.1.18 activate
+ exit-address-family
+ !
+ address-family ipv6
+  network 2021:A::/32
+  network 2021:B::/32
+  aggregate-address 2021::/16 summary-only
+  neighbor FC00:169:254:1::18 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+ip prefix-list PL_AREA1_LOOPBACKS seq 5 permit 10.0.0.0/24 ge 32
+!
+ip prefix-list PL_CGNAT_ROUTES seq 5 permit 100.64.0.0/10 le 24
+ip access-list log-update threshold 5
+ipv6 ioam timestamp
+!
+!
+ipv6 prefix-list PL_AREA1_LOOPBACKS_V6 seq 5 permit FC00::/112 ge 128
+!
+ipv6 prefix-list PL_INET_ROUTES_V6 seq 5 permit 2AAA::/16 le 48
+route-map RM_BGP_TO_OSPF permit 10
+ match ip address prefix-list PL_CGNAT_ROUTES
+ set metric 50
+ set metric-type type-2
+!
+route-map RM_BGP_TO_OSPF_V6 permit 10
+ match ipv6 address prefix-list PL_INET_ROUTES_V6
+ set metric 50
+ set metric-type type-2
+!
+!
+mpls ldp router-id Loopback0 force
+access-list 100 deny   ip any any log
+!
+ipv6 access-list ACL_URPF_LOGGER
+ deny ipv6 any any log
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

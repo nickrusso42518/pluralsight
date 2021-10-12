@@ -1,0 +1,192 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R9
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.9 255.255.255.255
+ ipv6 address FC00::9/128
+ ospfv3 1 ipv4 area 2
+ ospfv3 1 ipv6 area 2
+!
+interface Ethernet0/0
+ description TO R19
+ ip address 169.254.9.9 255.255.255.0
+ ipv6 address FE80::9 link-local
+ ipv6 rip RADIO enable
+ ipv6 rip RADIO default-information originate metric 14
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+interface Ethernet1/0
+ no ip address
+ shutdown
+!
+interface Ethernet1/1
+ description TO R1
+ ip address 10.1.9.9 255.255.255.0
+ ipv6 address FE80::9 link-local
+ ospfv3 1 network point-to-point
+ ospfv3 1 ipv4 area 2
+ ospfv3 1 ipv6 area 2
+!
+interface Ethernet1/2
+ no ip address
+ shutdown
+!
+interface Ethernet1/3
+ no ip address
+ shutdown
+!
+router ospfv3 1
+ router-id 10.0.0.9
+ !
+ address-family ipv4 unicast
+  redistribute rip metric 10 route-map RM_RIP_TO_OSPF
+  passive-interface Loopback0
+  distance 130
+  area 2 nssa
+ exit-address-family
+ !
+ address-family ipv6 unicast
+  passive-interface Loopback0
+  distance ospf external 130
+  redistribute rip RADIO metric 10 route-map RM_RIP_TO_OSPF
+  area 2 nssa
+ exit-address-family
+!
+router rip
+ version 2
+ network 169.254.0.0
+ default-information originate
+ distribute-list prefix PL_DENY_DEFAULT in Ethernet0/0
+ no auto-summary
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+ip prefix-list PL_DENY_DEFAULT seq 5 deny 0.0.0.0/0
+ip prefix-list PL_DENY_DEFAULT seq 10 permit 0.0.0.0/0 le 32
+ipv6 router rip RADIO
+!
+ipv6 ioam timestamp
+!
+route-map RM_RIP_TO_OSPF permit 10
+ description MATCH TAGS 101-103 and METRICS 1-7
+ match metric 4 +- 3
+ match tag 101 102 103
+!
+route-map RM_DENY_ALL deny 10
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

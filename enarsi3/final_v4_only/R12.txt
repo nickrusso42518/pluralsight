@@ -1,0 +1,146 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R12
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.12 255.255.255.255
+!
+interface Loopback1
+ description WAN PREFIX SIMULATION
+ ip address 198.51.100.12 255.255.255.0
+!
+interface Ethernet0/0
+ description TO R20
+ ip address 192.168.20.12 255.255.255.0
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+!
+interface Ethernet0/2
+ description TO R5
+ ip address 192.168.5.12 255.255.255.0
+!
+interface Ethernet0/3
+ no ip address
+!
+router bgp 12
+ bgp router-id 10.0.0.12
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 192.168.5.5 remote-as 65001
+ neighbor 192.168.20.20 remote-as 20
+ !
+ address-family ipv4
+  network 198.51.100.0
+  neighbor 192.168.5.5 activate
+  neighbor 192.168.20.20 activate
+  neighbor 192.168.20.20 remove-private-as
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

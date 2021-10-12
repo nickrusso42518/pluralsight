@@ -1,0 +1,167 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R20
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+username user privilege 15 password 0 pass
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+class-map match-all CMAP_HTTP_RESPONSE
+ match access-group name ACL_HTTP_RESPONSE
+class-map match-all CMAP_SIP_RESPONSE
+ match access-group name ACL_SIP_RESPONSE
+!
+policy-map PMAP_EGRESS_MARK
+ class CMAP_HTTP_RESPONSE
+  set dscp af21
+ class CMAP_SIP_RESPONSE
+  set dscp cs5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.20 255.255.255.255
+!
+interface Loopback1
+ description INTERNET TEST
+ ip address 198.51.100.21 255.255.255.0 secondary
+ ip address 198.51.100.22 255.255.255.0 secondary
+ ip address 198.51.100.23 255.255.255.0 secondary
+ ip address 198.51.100.20 255.255.255.0
+!
+interface Ethernet0/0
+ no ip address
+!
+interface Ethernet0/1
+ no ip address
+!
+interface Ethernet0/2
+ no ip address
+!
+interface Ethernet0/3
+ description R7
+ ip address 172.16.207.20 255.255.255.0
+ service-policy output PMAP_EGRESS_MARK
+!
+router bgp 65020
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 172.16.207.7 remote-as 65001
+ !
+ address-family ipv4
+  network 198.51.100.0
+  neighbor 172.16.207.7 activate
+  neighbor 172.16.207.7 default-originate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+ip http server
+ip http port 8080
+ip http authentication local
+no ip http secure-server
+ip http path unix:
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list extended ACL_HTTP_RESPONSE
+ permit tcp any eq 8080 any
+ip access-list extended ACL_SIP_RESPONSE
+ permit tcp any eq 5060 any
+!
+ip sla responder
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

@@ -1,0 +1,251 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R4
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+aaa new-model
+!
+!
+aaa group server radius AAA_RADIUS_SERVERS
+ server name C16
+ ip radius source-interface Loopback0
+!
+aaa authentication login default none
+aaa authentication login AAA_AUTHC_RADIUS group AAA_RADIUS_SERVERS local
+aaa authorization exec default none
+aaa authorization exec AAA_AUTHZ_RADIUS group AAA_RADIUS_SERVERS if-authenticated
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+key chain KC_EIGRP_AUTH
+ key 2021
+  key-string EIGRP_2021
+  accept-lifetime 00:00:00 Jan 1 2021 23:59:59 Dec 31 2021
+  send-lifetime 00:00:00 Jan 1 2021 23:59:59 Dec 31 2021
+  cryptographic-algorithm md5
+ key 2022
+  key-string EIGRP_2022
+  accept-lifetime 00:00:00 Jan 1 2022 23:59:59 Dec 31 2022
+  send-lifetime 00:00:00 Jan 1 2022 23:59:59 Dec 31 2022
+  cryptographic-algorithm md5
+key chain KC_BFD_AUTH
+ key 1
+  key-string BFD_SECRET123
+  cryptographic-algorithm hmac-sha-1
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+bfd-template single-hop BFD_TO_CORE
+ interval min-tx 500 min-rx 500 multiplier 3
+ authentication sha-1 keychain KC_BFD_AUTH
+!
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.4 255.255.255.255
+ ipv6 address FC00::4/128
+!
+interface Ethernet0/0
+ description TO S2
+ ip address 10.2.4.4 255.255.255.0
+ ipv6 address FE80::4 link-local
+ ipv6 nd ra suppress all
+!
+interface Ethernet0/1
+ description TO S1
+ ip address 10.1.4.4 255.255.255.0
+ ipv6 address FE80::4 link-local
+ ipv6 nd ra suppress all
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ description TO R8
+ ip address 10.4.8.4 255.255.255.0
+ ipv6 address FE80::4 link-local
+ ipv6 nd ra suppress all
+!
+interface Ethernet1/0
+ description TO R3
+ ip address 10.3.4.4 255.255.255.0
+ ipv6 address FE80::4 link-local
+ ipv6 nd ra suppress all
+!
+interface Ethernet1/1
+ description TO S6
+ ip address 10.34.56.4 255.255.255.0
+ ipv6 address FE80::4 link-local
+ ipv6 nd ra suppress all
+!
+interface Ethernet1/2
+ no ip address
+ shutdown
+!
+interface Ethernet1/3
+ description TO R7
+ ip address 10.4.7.4 255.255.255.0
+ ipv6 address FE80::4 link-local
+ ipv6 nd ra suppress all
+ bfd template BFD_TO_CORE
+!
+!
+router eigrp GLOBO
+ !
+ address-family ipv4 unicast autonomous-system 65000
+  !
+  af-interface Loopback0
+   passive-interface
+  exit-af-interface
+  !
+  af-interface Ethernet0/3
+   authentication mode md5
+   authentication key-chain KC_EIGRP_AUTH
+  exit-af-interface
+  !
+  af-interface Ethernet1/3
+   bfd
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  network 0.0.0.0
+  eigrp router-id 10.0.0.4
+ exit-address-family
+ !
+ address-family ipv6 unicast autonomous-system 65000
+  !
+  af-interface Loopback0
+   passive-interface
+  exit-af-interface
+  !
+  af-interface Ethernet0/3
+   authentication mode md5
+   authentication key-chain KC_EIGRP_AUTH
+  exit-af-interface
+  !
+  af-interface Ethernet1/3
+   bfd
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  eigrp router-id 10.0.0.4
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+!
+!
+radius server C16
+ address ipv4 192.168.7.16 auth-port 1812 acct-port 1813
+ timeout 2
+ key gns3
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+alias exec radius_alice test aaa group AAA_RADIUS_SERVERS alice gns3 legacy
+alias exec radius_bob test aaa group AAA_RADIUS_SERVERS bob gns3 legacy
+alias exec radius_chuck test aaa group AAA_RADIUS_SERVERS chuck gns3 legacy
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ authorization exec AAA_AUTHZ_RADIUS
+ login authentication AAA_AUTHC_RADIUS
+ transport input telnet ssh
+!
+!
+end

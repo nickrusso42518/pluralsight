@@ -1,0 +1,239 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label range 2000 2999
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+track 1 ip sla 1
+ delay up 30
+!
+track 2 interface Ethernet0/0 line-protocol
+ delay down 5 up 5
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.2 255.255.255.255
+ ipv6 address FC00::2/128
+ ospfv3 1 ipv6 area 0
+!
+interface Ethernet0/0
+ description TO R19
+ ip address 169.254.2.2 255.255.255.0
+ ip verify unicast source reachable-via rx
+ ipv6 address FE80::2 link-local
+ ipv6 address FC00:169:254:2::2/64
+ ipv6 verify unicast source reachable-via rx
+!
+interface Ethernet0/1
+ description TO R4
+ ip address 10.2.3.2 255.255.255.0
+ ip ospf network point-to-point
+ ipv6 address FE80::2 link-local
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network point-to-point
+!
+interface Ethernet0/2
+ description TO S14
+ ip address 10.12.34.2 255.255.255.0
+ standby version 2
+ standby 0 ip 10.12.34.254
+ standby 0 priority 105
+ standby 0 preempt
+ standby 0 track 1 decrement 10
+ standby 6 ipv6 FE80::254
+ standby 6 priority 105
+ standby 6 preempt
+ standby 6 track 2 decrement 10
+ ipv6 address FE80::2 link-local
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network broadcast
+!
+interface Ethernet0/3
+ description TO R9
+ ip address 10.2.9.2 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 1
+ ipv6 address FE80::2 link-local
+ mpls ip
+ ospfv3 1 ipv6 area 1
+ ospfv3 1 ipv6 network point-to-point
+!
+router ospfv3 1
+ router-id 10.0.0.2
+ !
+ address-family ipv6 unicast
+  passive-interface Loopback0
+  default-information originate metric 10 route-map RM_OSPF_COND_DEFAULT_V6
+  area 0 filter-list prefix PL_AREA1_LOOPBACKS_V6 in
+ exit-address-family
+!
+router ospf 1
+ router-id 10.0.0.2
+ area 0 filter-list prefix PL_AREA1_LOOPBACKS in
+ passive-interface Loopback0
+ network 10.0.0.0 0.255.255.255 area 0
+ default-information originate metric 10 route-map RM_OSPF_COND_DEFAULT
+!
+router bgp 100
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 169.254.2.19 remote-as 19
+ neighbor FC00:169:254:2::19 remote-as 19
+ !
+ address-family ipv4
+  redistribute ospf 1 route-map RM_OSPF_TO_BGP
+  neighbor 169.254.2.19 activate
+ exit-address-family
+ !
+ address-family ipv6
+  redistribute ospf 1 match internal external 1 route-map RM_OSPF_TO_BGP_V6
+  neighbor FC00:169:254:2::19 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 192.0.2.2 255.255.255.255 Null0 name COND_TRACKER track 1
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard ACL_EIGRP_203
+ permit 203.0.113.0 0.0.0.255
+!
+!
+ip prefix-list PL_AREA1_LOOPBACKS seq 5 permit 10.0.0.0/24 ge 32
+!
+ip prefix-list PL_COND_CGNAT seq 5 permit 100.64.0.0/24
+ip prefix-list PL_COND_CGNAT seq 10 permit 100.64.1.0/24
+ip prefix-list PL_COND_CGNAT seq 15 permit 100.64.2.0/24
+ip prefix-list PL_COND_CGNAT seq 20 permit 100.64.3.0/24
+!
+ip prefix-list PL_COND_TRACKER seq 5 permit 192.0.2.2/32
+ip sla 1
+ udp-jitter 169.254.2.19 16384 codec g711ulaw codec-numpackets 20
+ tos 184
+ threshold 100
+ timeout 500
+ frequency 10
+ip sla schedule 1 life forever start-time now
+ipv6 route FC00::2222/128 Null0 track 2 name COND_TRACKER_V6
+ipv6 ioam timestamp
+!
+!
+ipv6 prefix-list PL_AREA1_LOOPBACKS_V6 seq 5 permit FC00::/112 ge 128
+!
+ipv6 prefix-list PL_COND_TRACKER_V6 seq 5 permit FC00::2222/128
+!
+ipv6 prefix-list PL_EIGRP_203_V6 seq 5 permit 2021::/16 ge 32
+route-map RM_OSPF_TO_BGP permit 10
+ description MATCH ORIGINAL EIGRP ROUTES
+ match ip address ACL_EIGRP_203
+ match route-type external
+!
+route-map RM_OSPF_COND_DEFAULT permit 10
+ match ip address prefix-list PL_COND_TRACKER
+!
+route-map RM_OSPF_COND_DEFAULT_V6 permit 10
+ match ipv6 address prefix-list PL_COND_TRACKER_V6
+!
+route-map RM_OSPF_TO_BGP_V6 permit 10
+ match ipv6 address prefix-list PL_EIGRP_203_V6
+!
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

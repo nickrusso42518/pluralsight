@@ -1,0 +1,138 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R17
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 172.23.0.17 255.255.255.255
+ ipv6 address FC00:172:23::17/128
+!
+interface Ethernet0/0
+ no ip address
+!
+interface Ethernet0/1
+ description TO R8
+ ip address 192.168.8.17 255.255.255.0
+ ipv6 address FE80::17 link-local
+ ipv6 address FC00:192:168:8::17/64
+!
+interface Ethernet0/2
+ no ip address
+!
+interface Ethernet0/3
+ no ip address
+!
+router bgp 65017
+ bgp router-id 172.23.0.17
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 192.168.8.8 remote-as 65000
+ neighbor FC00:192:168:8::8 remote-as 65000
+ !
+ address-family ipv4
+  network 172.23.0.17 mask 255.255.255.255
+  neighbor 192.168.8.8 activate
+ exit-address-family
+ !
+ address-family ipv6
+  network FC00:172:23::17/128
+  neighbor FC00:192:168:8::8 activate
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

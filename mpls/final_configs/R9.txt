@@ -1,0 +1,237 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R9
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition C
+ rd 65000:3
+ route-target export 65000:300
+ route-target export 65000:902
+ route-target import 65000:300
+ route-target import 65000:901
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label range 9000 9999
+mpls traffic-eng tunnels
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.9 255.255.255.255
+!
+interface Tunnel96
+ description TO R6
+ ip unnumbered Loopback0
+ tunnel mode mpls traffic-eng
+ tunnel destination 10.0.0.6
+ tunnel mpls traffic-eng autoroute announce
+ tunnel mpls traffic-eng priority 7 7
+ tunnel mpls traffic-eng bandwidth 5000
+ tunnel mpls traffic-eng path-option 1 dynamic
+ no routing dynamic
+!
+interface Ethernet0/0
+ description TO R20
+ ip address 192.168.9.9 255.255.255.0
+ ipv6 address FE80::9 link-local
+ ipv6 address FC00:192:168:9::9/64
+!
+interface Ethernet0/1
+ description TO R1
+ ip address 10.1.9.9 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 10
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth
+!
+interface Ethernet0/2
+ description TO R8
+ ip address 10.8.9.9 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf cost 10
+ mpls mtu 1534
+ mpls traffic-eng tunnels
+ ip rsvp bandwidth
+!
+interface Ethernet0/3
+ description TO R19
+ vrf forwarding C
+ ip address 192.168.9.9 255.255.255.0
+ ipv6 address FE80::9 link-local
+!
+!
+router eigrp C
+ !
+ address-family ipv4 unicast vrf C autonomous-system 65019
+  !
+  topology base
+   default-metric 100000 10 255 1 1500
+   redistribute bgp 65000
+  exit-af-topology
+  network 0.0.0.0
+ exit-address-family
+ !
+ address-family ipv6 unicast vrf C autonomous-system 65019
+  !
+  topology base
+   default-metric 100000 10 255 1 1500
+   redistribute bgp 65000
+  exit-af-topology
+ exit-address-family
+!
+router ospf 1
+ mpls ldp autoconfig
+ mpls traffic-eng router-id Loopback0
+ mpls traffic-eng area 0
+ router-id 10.0.0.9
+ prefix-suppression
+ passive-interface Loopback0
+ network 10.0.0.0 0.255.255.255 area 0
+!
+router bgp 65000
+ template peer-session IBGP
+  remote-as 65000
+  transport connection-mode active
+  update-source Loopback0
+ exit-peer-session
+ !
+ bgp router-id 10.0.0.9
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.0.0.1 inherit peer-session IBGP
+ neighbor 10.0.0.5 inherit peer-session IBGP
+ neighbor 192.168.9.20 remote-as 65020
+ neighbor FC00:192:168:9::20 remote-as 65020
+ !
+ address-family ipv4
+  neighbor 10.0.0.5 activate
+  neighbor 10.0.0.5 next-hop-self
+  neighbor 192.168.9.20 activate
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor 10.0.0.1 activate
+  neighbor 10.0.0.1 send-community extended
+ exit-address-family
+ !
+ address-family ipv6
+  neighbor 10.0.0.5 activate
+  neighbor 10.0.0.5 next-hop-self
+  neighbor 10.0.0.5 send-label
+  neighbor FC00:192:168:9::20 activate
+ exit-address-family
+ !
+ address-family vpnv6
+  neighbor 10.0.0.1 activate
+  neighbor 10.0.0.1 send-community extended
+ exit-address-family
+ !
+ address-family ipv4 vrf C
+  redistribute eigrp 65019
+ exit-address-family
+ !
+ address-family ipv6 vrf C
+  redistribute eigrp 65019
+ exit-address-family
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

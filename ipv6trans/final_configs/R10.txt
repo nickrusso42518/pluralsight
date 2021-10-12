@@ -1,0 +1,187 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service tcp-small-servers
+!
+hostname H10
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip routing
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+ip dhcp excluded-address 192.168.10.0 192.168.10.10
+ip dhcp excluded-address 192.168.10.250 192.168.10.255
+ip dhcp excluded-address 192.168.19.0 192.168.19.20
+!
+ip dhcp pool DHCPV4_CAMPUS_STATEFUL
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.254
+ dns-server 192.168.20.10
+ domain-name globomantics.com
+!
+ip dhcp pool DHCPV4_LEGACY_STATEFUL
+ network 192.168.19.0 255.255.255.0
+ default-router 192.168.19.19
+ dns-server 192.168.20.10
+ domain-name globomantics.com
+!
+!
+!
+ip host view GLOBO nat64.globomantics.com 2020:6464::C0A8:140A
+ip host view GLOBO isatap.globomantics.com 10.99.99.6
+ip host view GLOBO v6.globomantics.com 2020:192:168:20::10
+ip host view GLOBO v4.globomantics.com 192.168.20.10
+ip host view GLOBO www.globomantics.com 2020:192:168:20::10 203.0.113.252
+no ip cef
+no ipv6 cef
+ipv6 dhcp pool DHCPV6_WAN_STATELESS
+ link-address 2020:172:16::/48
+ dns-server 2020:192:168:20::10
+ domain-name globomantics.com
+!
+ipv6 dhcp pool DHCPV6_CAMPUS_STATEFUL
+ address prefix 2020:192:168:10::/64
+ dns-server 2020:192:168:20::10
+ domain-name globomantics.com
+!
+ipv6 dhcp pool DHCPV6_INTERNET_PD
+ prefix-delegation pool PD_POOL lifetime 28800 28800
+ link-address FC00:DEAD::/32
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+username user privilege 15 password 0 pass
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp ecn
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no ip address
+ no ip route-cache
+!
+interface Ethernet0/1
+ no ip address
+ no ip route-cache
+!
+interface Ethernet0/2
+ description S2 (NAT64 ADDR: 2020:6464::C0A8:140A)
+ ip address 192.168.20.10 255.255.255.0
+ no ip route-cache
+ ipv6 address FE80::10 link-local
+ ipv6 address 2020:192:168:20::10/120
+ ipv6 dhcp server
+!
+interface Ethernet0/3
+ no ip address
+ no ip route-cache
+!
+ip default-gateway 192.168.20.254
+ip forward-protocol nd
+!
+!
+ip http server
+ip http authentication local
+no ip http secure-server
+ip http path unix:
+ip dns view GLOBO
+ip dns view default
+ domain name globomantics.com
+ dns forwarder 2001:4860:4860::8888
+ dns forwarder 2001:4860:4860::8844
+ dns forwarder 8.8.8.8
+ dns forwarder 8.8.4.4
+ip dns view-list DNS
+ view GLOBO 10
+  restrict name-group 1
+ view default 1000
+ip dns name-list 1 permit \.GLOBOMANTICS\.COM
+ip dns server view-group DNS
+ip dns server
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 local pool PD_POOL 2020:7777:CAFE::/48 64
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp server 10.0.0.3
+ntp server 10.0.0.4
+!
+end

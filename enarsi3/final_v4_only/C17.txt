@@ -1,0 +1,147 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname C17
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip routing
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip domain name globomantics.com
+no ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint TP_HTTPS
+ enrollment selfsigned
+ serial-number
+ ip-address 10.7.17.7
+ subject-name CN=www.globomantics.com
+ revocation-check crl
+ rsakeypair RSA_HTTPS
+!
+!
+crypto pki certificate chain TP_HTTPS
+ certificate self-signed 03 nvram:2048017ipadd#3.cer
+username user privilege 15 password 0 pass
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ description TO R7
+ ip address 10.7.17.17 255.255.255.0
+ no ip route-cache
+!
+interface Ethernet0/1
+ no ip address
+ no ip route-cache
+!
+interface Ethernet0/2
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ no ip route-cache
+ shutdown
+!
+ip default-gateway 10.7.17.7
+ip forward-protocol nd
+!
+!
+ip http server
+ip http authentication local
+no ip http secure-server
+ip http path unix:
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 ioam timestamp
+!
+!
+tftp-server unix:NETMAP
+tftp-server unix:startup-config.cfg alias scfg
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+banner exec ^CThis is the Globomantics C17 server^C
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input telnet
+!
+!
+end

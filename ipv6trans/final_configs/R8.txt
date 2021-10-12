@@ -1,0 +1,184 @@
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R8
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition FVRF
+ description FRONT-DOOR VRF FOR 6RD TUNNELS
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+ip domain name globomantics.com
+ip name-server 2020:192:168:20::10
+ip name-server 192.168.20.10
+ip multicast-routing
+ip cef
+ipv6 unicast-routing
+ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp log mismatch duplex
+!
+ip tcp synwait-time 5
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.8 255.255.255.255
+ ip ospf 1 area 0
+ ipv6 address FC00::8/128
+ ospfv3 1 ipv6 area 0
+!
+interface Tunnel6
+ description 6RD BORDER RELAY (BR)
+ no ip address
+ no ip redirects
+ ipv6 address 2020:172:16:D008::8/64
+ tunnel source Ethernet0/1
+ tunnel mode ipv6ip 6rd
+ tunnel vrf FVRF
+ tunnel 6rd ipv4 prefix-len 16
+ tunnel 6rd prefix 2020:172:16::/48
+!
+interface Ethernet0/0
+ no ip address
+!
+interface Ethernet0/1
+ description R20 (WAN)
+ vrf forwarding FVRF
+ ip address 172.16.208.8 255.255.255.0
+ ipv6 nd ra suppress
+!
+interface Ethernet0/2
+ description R4
+ bandwidth 1000000
+ ip address 10.4.8.8 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ ipv6 address FE80::8 link-local
+ ipv6 nd ra suppress
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network point-to-point
+!
+interface Ethernet0/3
+ description R3
+ ip address 10.3.8.8 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 0
+ ipv6 address FE80::8 link-local
+ ipv6 nd ra suppress
+ ospfv3 1 ipv6 area 0
+ ospfv3 1 ipv6 network point-to-point
+!
+router ospfv3 1
+ !
+ address-family ipv6 unicast
+  passive-interface Loopback0
+  redistribute static
+  router-id 10.0.0.8
+ exit-address-family
+!
+router ospf 1
+ router-id 10.0.0.8
+ passive-interface Loopback0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route vrf FVRF 172.16.0.0 255.255.0.0 Ethernet0/1 172.16.208.20 name UNDERLAY
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ipv6 route 2020:172:16::/48 Tunnel6 name WITHIN_6RD
+ipv6 ioam timestamp
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+ transport preferred none
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login
+ transport input none
+!
+ntp source Loopback0
+ntp server 10.0.0.3
+ntp server 10.0.0.4
+!
+end
