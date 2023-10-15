@@ -1,0 +1,21 @@
+{
+    "name": "sda_temp",
+    "composite": false,
+    "deviceTypes": [
+        {
+            "productFamily": "Switches and Hubs",
+            "productSeries": "Cisco Catalyst 9300 Series Switches",
+            "productType": "Cisco Catalyst 9300 Switch"
+        }
+    ],
+    "softwareType": "IOS-XE",
+    "templateContent": "interface Loopback0\nip address $lb0_ip 255.255.255.255",
+    "templateParams": [
+        {
+            "parameterName": "$lb0_ip",
+            "dataType": "STRING",
+            "required": true,
+            "order": 1
+        }
+    ]
+}

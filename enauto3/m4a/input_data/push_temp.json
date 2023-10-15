@@ -1,0 +1,27 @@
+{
+    "forcePushTemplate": true,
+    "targetInfo": [
+        {
+            "id": "198.18.128.22",
+            "params": {
+                "lb0_ip": "192.0.2.22"
+            },
+            "type": "MANAGED_DEVICE_IP"
+        },
+        {
+            "id": "198.18.128.23",
+            "params": {
+                "lb0_ip": "192.0.2.23"
+            },
+            "type": "MANAGED_DEVICE_IP"
+        },
+        {
+            "id": "198.18.128.24",
+            "params": {
+                "lb0_ip": "192.0.2.24"
+            },
+            "type": "MANAGED_DEVICE_IP"
+        }
+    ],
+    "templateId": "change_me"
+}
