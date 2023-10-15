@@ -1,0 +1,20 @@
+{
+    "settings": {
+        "ippool": [
+            {
+                "ipPoolName": "global_pool",
+                "type": "Generic",
+                "ipPoolCidr": "198.51.100.0/24",
+                "dhcpServerIps": [
+                    "198.51.100.1",
+                    "198.51.100.2"
+                ],
+                "dnsServerIps": [
+                    "8.8.8.8",
+                    "8.8.4.4"
+                ],
+                "IpAddressSpace": "IPv4"
+            }
+        ]
+    }
+}

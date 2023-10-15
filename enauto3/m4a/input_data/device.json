@@ -1,0 +1,14 @@
+{
+  "ipAddress": [
+    "192.0.2.1"
+  ],
+  "snmpVersion": "v2",
+  "snmpROCommunity": "readonly",
+  "snmpRWCommunity": "readwrite",
+  "snmpRetry": "1",
+  "snmpTimeout": "60",
+  "cliTransport": "ssh",
+  "userName": "nick",
+  "password": "secret123!",
+  "enablePassword": "secret456!"
+}

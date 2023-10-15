@@ -1,0 +1,17 @@
+{
+    "name": "data_pool",
+    "type": "Generic",
+    "ipv4GlobalPool": "198.51.100.0/24",
+    "ipv4Prefix": true,
+    "ipv4PrefixLength": 26,
+    "ipv4Subnet": "198.51.100.128",
+    "ipv4GateWay": "198.51.100.129",
+    "ipv4DhcpServers": [
+        "198.51.100.1",
+        "198.51.100.2"
+    ],
+    "ipv4DnsServers": [
+        "8.8.8.8",
+        "8.8.4.4"
+    ]
+}
