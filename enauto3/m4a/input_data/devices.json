@@ -1,0 +1,15 @@
+{
+    "ipAddress": [
+        "198.18.128.22",
+        "198.18.128.23",
+        "198.18.128.24"
+    ],
+    "snmpVersion": "v2",
+    "snmpROCommunity": "public",
+    "snmpRWCommunity": "private",
+    "snmpRetry": "1",
+    "snmpTimeout": "60",
+    "cliTransport": "ssh",
+    "userName": "netadmin",
+    "password": "C1sco12345"
+}
