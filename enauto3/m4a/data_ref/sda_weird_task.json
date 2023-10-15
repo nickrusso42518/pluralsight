@@ -1,0 +1,17 @@
+{
+    "response": {
+        "endTime": 1697277654057,
+        "data": "workflow_id=fd73a37d-cf92-4c0d-acd7-7b1bfd3f8ce4;cfs_id=ff16e2b4-c18c-4867-9427-d7bb658d4bfb;rollback_status=not_supported;rollback_taskid=0;failure_task=NA;processcfs_complete=true",
+        "startTime": 1697277650367,
+        "version": 1697277652133,
+        "progress": "TASK_MODIFY_PUT",
+        "serviceType": "NCSP",
+        "username": "",
+        "lastUpdate": 1697277652133,
+        "isError": false,
+        "rootId": "f1dae1aa-07cd-419b-8974-3451129e21da",
+        "instanceTenantId": "608c3366fcb9d524d15fd867",
+        "id": "f1dae1aa-07cd-419b-8974-3451129e21da"
+    },
+    "version": "1.0"
+}

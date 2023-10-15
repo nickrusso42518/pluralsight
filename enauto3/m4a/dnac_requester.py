@@ -54,7 +54,7 @@ class DNACRequester:
         jsonbody=None,
         params=None,
         raise_for_status=True,
-        timeout_sec=5,
+        timeout_sec=15,
     ):
         """
         Issues a generic request. Basically, a wrapper for "requests" using
@@ -133,3 +133,21 @@ class DNACRequester:
                 return status_resp
 
             # Neither failure nor success; still in progress, loop again
+
+    def wait_for_sda(self, response, desc_on_success=True):
+        """
+        Checks the business/sda response for success and raises an
+        error with the description otherwise.
+        """
+
+        # If input is response object, convert to dict first
+        if not isinstance(response, dict):
+            response = response.json()
+
+        # If the status is failed, raise error with reason
+        if response["status"].lower().startswith("fail"):
+            raise ValueError(f"Description: {response['description']}")
+
+        # If set, print the description even on successful calls
+        if desc_on_success:
+            print(response["description"])

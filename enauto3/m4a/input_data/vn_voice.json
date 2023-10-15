@@ -1,0 +1,11 @@
+{
+    "siteNameHierarchy": "Global/Maryland/secretlab",
+    "virtualNetworkName": "DEFAULT_VN",
+    "ipPoolName": "voice_pool",
+    "trafficType": "Voice",
+    "autoGenerateVlanName": true,
+    "authenticationPolicyName": "No Authentication",
+    "isL2FloodingEnabled": true,
+    "isThisCriticalPool": true,
+    "poolType": "Extended"
+}

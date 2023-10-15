@@ -1,0 +1,8 @@
+{
+    "status": "success",
+    "description": "Authenticate Template deployed successfully in given sda fabric site.",
+    "taskId": "2fcf1cbf-99ff-447b-bcab-e88b6777a041",
+    "taskStatusUrl": "/dna/intent/api/v1/task/2fcf1cbf-99ff-447b-bcab-e88b6777a041",
+    "executionStatusUrl": "/dna/intent/api/v1/execution-status/f124752c-6476-42f3-8e51-7fe0b207d4ac",
+    "executionId": "f124752c-6476-42f3-8e51-7fe0b207d4ac"
+}

@@ -1,0 +1,8 @@
+{
+    "status": "success",
+    "description": "Fabric site added successfully in SDA Fabric.",
+    "taskId": "23dc180c-adde-481a-8e86-60010cb3ed46",
+    "taskStatusUrl": "/dna/intent/api/v1/task/23dc180c-adde-481a-8e86-60010cb3ed46",
+    "executionStatusUrl": "/dna/intent/api/v1/execution-status/f6d337ef-c73e-4f1f-b56a-3490f55728e5",
+    "executionId": "f6d337ef-c73e-4f1f-b56a-3490f55728e5"
+}
