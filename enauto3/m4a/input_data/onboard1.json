@@ -1,0 +1,9 @@
+{
+    "siteNameHierarchy": "Global/Maryland/secretlab",
+    "deviceManagementIpAddress": "198.18.128.22",
+    "interfaceName": "GigabitEthernet1/0/1",
+    "dataIpAddressPoolName": "data_pool",
+    "voiceIpAddressPoolName": "voice_pool",
+    "scalableGroupName": "",
+    "authenticateTemplateName": "No Authentication"
+}
