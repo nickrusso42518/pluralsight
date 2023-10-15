@@ -20,7 +20,10 @@ def main():
     # https://dcloud.cisco.com
     dnac = DNACRequester(
         # host="10.10.20.85", username="admin", password="Cisco1234!", verify=False
-        host="198.18.129.100", username="admin", password="C1sco12345", verify=False
+        host="198.18.129.100",
+        username="admin",
+        password="C1sco12345",
+        verify=False,
     )
 
     # Loop over each type of site object (this time, no floor)
@@ -36,9 +39,7 @@ def main():
         print(f"Adding {body_type} object {name}")
 
         # Issue an HTTP POST request to create the site object
-        add_resp = dnac.req(
-            "dna/intent/api/v1/site", method="post", jsonbody=data
-        )
+        add_resp = dnac.req("dna/intent/api/v1/site", method="post", jsonbody=data)
 
         # Extract the executionStatusUrl and wait for it to finish being created
         status_url = add_resp.json()["executionStatusUrl"]

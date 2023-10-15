@@ -9,6 +9,7 @@ requests simpler.
 import time
 import requests
 
+
 class DNACRequester:
     """
     Lightweight SDK class to simplify interacting with the DNAC REST API.

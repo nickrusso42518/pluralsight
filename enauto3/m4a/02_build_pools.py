@@ -20,7 +20,10 @@ def main():
     # https://dcloud.cisco.com
     dnac = DNACRequester(
         # host="10.10.20.85", username="admin", password="Cisco1234!", verify=False
-        host="198.18.129.100", username="admin", password="C1sco12345", verify=False
+        host="198.18.129.100",
+        username="admin",
+        password="C1sco12345",
+        verify=False,
     )
 
     # Load in the JSON data into Python objects
@@ -29,9 +32,7 @@ def main():
 
     # Create new global pool
     print("Adding global pool")
-    add_resp = dnac.req(
-        "dna/intent/api/v1/global-pool", method="post", jsonbody=data
-    )
+    add_resp = dnac.req("dna/intent/api/v1/global-pool", method="post", jsonbody=data)
 
     # Extract the executionStatusUrl and wait for it to finish being created
     status_url = add_resp.json()["executionStatusUrl"]
@@ -56,7 +57,7 @@ def main():
         add_resp = dnac.req(
             f"dna/intent/api/v1/reserve-ip-subpool/{bld_id}",
             method="post",
-            jsonbody=data
+            jsonbody=data,
         )
 
         # Extract the executionStatusUrl and wait for it to finish being created
@@ -65,8 +66,7 @@ def main():
 
         # Get the object just created so we can confirm it
         get_resp = dnac.req(
-            "dna/intent/api/v1/reserve-ip-subpool",
-            params={"siteId": bld_id}
+            "dna/intent/api/v1/reserve-ip-subpool", params={"siteId": bld_id}
         )
         obj_data = get_resp.json()["response"][0]
         print(f"{body_type} created with id {obj_data['id']}")
