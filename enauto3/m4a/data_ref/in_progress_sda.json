@@ -1,0 +1,8 @@
+{
+    "status": "pending",
+    "description": "API execution is in progress.",
+    "taskId": "13ff3141-4691-4621-b3ed-248d77fb119a",
+    "taskStatusUrl": "/dna/intent/api/v1/task/13ff3141-4691-4621-b3ed-248d77fb119a",
+    "executionStatusUrl": "/dna/intent/api/v1/execution-status/f907a000-2064-4d45-b1a3-75641af3a5fc",
+    "executionId": "f907a000-2064-4d45-b1a3-75641af3a5fc"
+}

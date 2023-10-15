@@ -1,0 +1,83 @@
+$ python 01_build_sites.py
+Adding area object Global/Maryland
+Object created with id 6aa5703a-5900-44c6-b95a-046635b9ba80
+Adding building object Global/Maryland/secretlab
+Object created with id 8bef8401-6d7f-4a9d-aa13-f736a33daaa4
+
+$ python 02_build_pools.py
+Adding global pool
+Getting site (building) ID
+Adding reservable data_pool to site 8bef8401-6d7f-4a9d-aa13-f736a33daaa4
+data_pool created with id 46eec117-750f-4dba-8a38-a9627b456c41
+Adding reservable voice_pool to site 8bef8401-6d7f-4a9d-aa13-f736a33daaa4
+voice_pool created with id 46eec117-750f-4dba-8a38-a9627b456c41
+
+$ python 03_build_creds.py
+Adding cli global credential
+Added cli with ID 5bf0cb72-5c62-473c-b4fc-95379a17d322
+Adding snmpv2-read-community global credential
+Added snmpv2-read-community with ID ec43ffa6-b312-4e5f-a60f-c74a2562fe41
+Adding snmpv2-write-community global credential
+Added snmpv2-write-community with ID 7feb864f-0a15-47c6-a6e5-d5da21e8df0d
+Cred activation dict: {
+  "cliId": "5bf0cb72-5c62-473c-b4fc-95379a17d322",
+  "snmpV2ReadId": "ec43ffa6-b312-4e5f-a60f-c74a2562fe41",
+  "snmpV2WriteId": "7feb864f-0a15-47c6-a6e5-d5da21e8df0d"
+}
+Getting global site ID
+Assigning creds to 768efbac-f004-4801-b98e-4e1aa9f64bfd
+
+$ python 04_add_devices.py
+Adding network devices
+Getting site (building) ID
+Assignments: [
+  {
+    "ip": "198.18.128.22"
+  },
+  {
+    "ip": "198.18.128.23"
+  },
+  {
+    "ip": "198.18.128.24"
+  }
+]
+
+$ python 05_build_templ.py
+Creating template
+Snippet rendered:
+interface Loopback0
+ip address 203.0.113.9 255.255.255.255
+Version status: Successfully committed template sda_temp to version 1
+Deploy status: Deployment of  Template: 96690b3c-423b-4d16-aa0a-f7b2b1b754da.ApplicableTargets: [198.18.128.22, 198.18.128.23, 198.18.128.24]Template Deployemnt Id: a4d6a2b1-5845-44d5-ba32-ee8c5ffb8883
+
+$ python 06_manual_prov.py
+
+Manual steps:
+  1. Log into DNAC via web GUI
+  2. Navigate to menu option Provision > Inventory
+  3. Navigate to site tree Maryland > secretlab
+  4. Select all devices
+  5. Navigate to Actions > Provision > Provision Device
+  6. Don't make changes. Just click Next > Next > Deploy > Apply
+
+$ python 08_build_sda_fabric.py
+Adding fabric site
+Fabric site added successfully in SDA Fabric.
+Adding authentication profile
+Authenticate Template deployed successfully in given sda fabric site.
+Assigning VN to fabric site
+Virtual Network added successfully in SDA Fabric.
+Assigning vn_voice pool to VN
+IP Pool successfully added in Virtual Network in SDA Fabric.
+Assigning vn_data pool to VN
+API execution is in progress.
+
+$ python 09_assign_roles.py
+Adding control-plane device 198.18.128.24
+API execution is in progress.
+Adding edge device 198.18.128.22
+API execution is in progress.
+Adding edge device 198.18.128.23
+API execution is in progress.
+Onboarding sample host
+Port assignment completed successfully.

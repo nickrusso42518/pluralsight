@@ -1,0 +1,105 @@
+{
+    "response": [
+        {
+            "id": "54a2a8c5-25b3-409d-8ed5-53e0fff4560e",
+            "groupName": "data_pool",
+            "ipPools": [
+                {
+                    "ipPoolName": "data_pool",
+                    "dhcpServerIps": [],
+                    "gateways": [
+                        "198.51.100.129"
+                    ],
+                    "createTime": 1697240184833,
+                    "lastUpdateTime": 1697240184851,
+                    "totalIpAddressCount": 64,
+                    "usedIpAddressCount": 0,
+                    "parentUuid": "bf3b4eaa-526c-4df4-87f7-da233ed3d3cc",
+                    "owner": "DNAC",
+                    "shared": true,
+                    "overlapping": false,
+                    "configureExternalDhcp": false,
+                    "usedPercentage": "0",
+                    "clientOptions": {},
+                    "groupUuid": "54a2a8c5-25b3-409d-8ed5-53e0fff4560e",
+                    "unavailableIpAddressCount": 0,
+                    "availableIpAddressCount": 0,
+                    "totalAssignableIpAddressCount": 61,
+                    "dnsServerIps": [],
+                    "hasSubpools": false,
+                    "defaultAssignedIpAddressCount": 3,
+                    "context": [
+                        {
+                            "owner": "DNAC",
+                            "contextKey": "siteId",
+                            "contextValue": "9842a44d-7d25-43c1-92b7-f1cf7ad5e2f0"
+                        },
+                        {
+                            "owner": "DNAC",
+                            "contextKey": "reserved_by",
+                            "contextValue": "DNAC"
+                        }
+                    ],
+                    "ipv6": false,
+                    "id": "add7c744-cead-4e0d-b58c-16fbfc35df75",
+                    "ipPoolCidr": "198.51.100.128/26"
+                }
+            ],
+            "siteId": "9842a44d-7d25-43c1-92b7-f1cf7ad5e2f0",
+            "siteHierarchy": "Global/Maryland/secretlab",
+            "type": "generic",
+            "groupOwner": "DNAC"
+        },
+        {
+            "id": "c1c99696-ccca-46a9-8b34-88c6a1a4201d",
+            "groupName": "voice_pool",
+            "ipPools": [
+                {
+                    "ipPoolName": "voice_pool",
+                    "dhcpServerIps": [],
+                    "gateways": [
+                        "198.51.100.193"
+                    ],
+                    "createTime": 1697240272381,
+                    "lastUpdateTime": 1697240272405,
+                    "totalIpAddressCount": 64,
+                    "usedIpAddressCount": 0,
+                    "parentUuid": "bf3b4eaa-526c-4df4-87f7-da233ed3d3cc",
+                    "owner": "DNAC",
+                    "shared": true,
+                    "overlapping": false,
+                    "configureExternalDhcp": false,
+                    "usedPercentage": "0",
+                    "clientOptions": {},
+                    "groupUuid": "c1c99696-ccca-46a9-8b34-88c6a1a4201d",
+                    "unavailableIpAddressCount": 0,
+                    "availableIpAddressCount": 0,
+                    "totalAssignableIpAddressCount": 61,
+                    "dnsServerIps": [],
+                    "hasSubpools": false,
+                    "defaultAssignedIpAddressCount": 3,
+                    "context": [
+                        {
+                            "owner": "DNAC",
+                            "contextKey": "reserved_by",
+                            "contextValue": "DNAC"
+                        },
+                        {
+                            "owner": "DNAC",
+                            "contextKey": "siteId",
+                            "contextValue": "9842a44d-7d25-43c1-92b7-f1cf7ad5e2f0"
+                        }
+                    ],
+                    "ipv6": false,
+                    "id": "72b45e11-b801-4f33-948e-eeb3b9b5bda1",
+                    "ipPoolCidr": "198.51.100.192/26"
+                }
+            ],
+            "siteId": "9842a44d-7d25-43c1-92b7-f1cf7ad5e2f0",
+            "siteHierarchy": "Global/Maryland/secretlab",
+            "type": "generic",
+            "groupOwner": "DNAC"
+        }
+    ],
+    "version": "1.0"
+}

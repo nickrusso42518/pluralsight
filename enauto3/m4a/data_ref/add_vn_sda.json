@@ -1,0 +1,8 @@
+{
+    "status": "success",
+    "description": "Virtual Network added successfully in SDA Fabric.",
+    "taskId": "d75874ea-b06f-4b03-ad8d-280c444f5d4b",
+    "taskStatusUrl": "/dna/intent/api/v1/task/d75874ea-b06f-4b03-ad8d-280c444f5d4b",
+    "executionStatusUrl": "/dna/intent/api/v1/execution-status/1b6d9f7e-2e87-4b84-8e45-377b423b02a1",
+    "executionId": "1b6d9f7e-2e87-4b84-8e45-377b423b02a1"
+}

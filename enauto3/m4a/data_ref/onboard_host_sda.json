@@ -1,0 +1,8 @@
+{
+    "status": "success",
+    "description": "Port assignment completed successfully.",
+    "taskId": "3def4aa0-f916-4a26-9d8e-f52def1f5cec",
+    "taskStatusUrl": "/dna/intent/api/v1/task/3def4aa0-f916-4a26-9d8e-f52def1f5cec",
+    "executionStatusUrl": "/dna/intent/api/v1/execution-status/b1f9f972-c28b-48a6-a80c-2016378bb542",
+    "executionId": "b1f9f972-c28b-48a6-a80c-2016378bb542"
+}

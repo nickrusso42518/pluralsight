@@ -1,0 +1,8 @@
+{
+    "status": "failed",
+    "description": "Invalid dataIpAddressPoolName in request = data_ip_pool.",
+    "taskId": null,
+    "taskStatusUrl": "/dna/intent/api/v1/task/null",
+    "executionStatusUrl": "/dna/intent/api/v1/execution-status/f4bb4a01-fc4e-4278-9d9d-8dcd0e6ffc47",
+    "executionId": "f4bb4a01-fc4e-4278-9d9d-8dcd0e6ffc47"
+}

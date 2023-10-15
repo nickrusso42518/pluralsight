@@ -1,0 +1,44 @@
+{
+    "response": [
+        {
+            "ipPoolName": "globol_pool",
+            "dhcpServerIps": [
+                "198.51.100.1",
+                "198.51.100.2"
+            ],
+            "gateways": [],
+            "createTime": 1697238378711,
+            "lastUpdateTime": 1697238378711,
+            "totalIpAddressCount": 256,
+            "usedIpAddressCount": 0,
+            "parentUuid": "root",
+            "owner": "ipam",
+            "shared": true,
+            "overlapping": false,
+            "configureExternalDhcp": false,
+            "usedPercentage": "0",
+            "clientOptions": {},
+            "ipPoolType": "generic",
+            "unavailableIpAddressCount": 0,
+            "availableIpAddressCount": 0,
+            "totalAssignableIpAddressCount": 254,
+            "dnsServerIps": [
+                "8.8.8.8",
+                "8.8.4.4"
+            ],
+            "hasSubpools": false,
+            "defaultAssignedIpAddressCount": 2,
+            "context": [
+                {
+                    "owner": "DNAC",
+                    "contextKey": "type",
+                    "contextValue": "generic"
+                }
+            ],
+            "ipv6": false,
+            "id": "cef174d2-8e12-4dcd-9694-f3a236058c5e",
+            "ipPoolCidr": "198.51.100.0/24"
+        }
+    ],
+    "version": "1.0"
+}

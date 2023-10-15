@@ -1,0 +1,8 @@
+{
+    "status": "success",
+    "description": "IP Pool successfully added in Virtual Network in SDA Fabric.",
+    "taskId": "7a9ef708-192b-4a0f-b665-63f0cba8ea73",
+    "taskStatusUrl": "/dna/intent/api/v1/task/7a9ef708-192b-4a0f-b665-63f0cba8ea73",
+    "executionStatusUrl": "/dna/intent/api/v1/execution-status/d7bf60fd-377d-4ea5-9baa-ca3af01c8ea4",
+    "executionId": "d7bf60fd-377d-4ea5-9baa-ca3af01c8ea4"
+}
