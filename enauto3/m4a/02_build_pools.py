@@ -64,13 +64,6 @@ def main():
         status_url = add_resp.json()["executionStatusUrl"]
         dnac.wait_for_exec_status(status_url[1:])
 
-        # Get the object just created so we can confirm it
-        get_resp = dnac.req(
-            "dna/intent/api/v1/reserve-ip-subpool", params={"siteId": bld_id}
-        )
-        obj_data = get_resp.json()["response"][0]
-        print(f"{body_type} created with id {obj_data['id']}")
-
 
 if __name__ == "__main__":
     main()
