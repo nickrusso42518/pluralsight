@@ -2,8 +2,8 @@
 # from "aws configure" does not carry over
 provider "aws" {
   region = "us-east-1"
-  access_key = "AKIAQUIXDWMC2BWT3SMX"
-  secret_key = "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"
+  access_key = "change"
+  secret_key = "change"
 }
 
 # aws ec2 describe-images --filters 'Name=name,Values=Cisco-C8K-17.12.01a-*'
