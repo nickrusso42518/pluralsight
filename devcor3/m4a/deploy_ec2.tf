@@ -1,9 +1,9 @@
-# Tells Terraform what region to use, as this default setting
-# from "aws configure" does not carry over
+# Tells Terraform what region to use, along with user-specific
+# access credentials from an existing user with API Access
 provider "aws" {
   region = "us-east-1"
-  access_key = "change"
-  secret_key = "change"
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
 }
 
 # aws ec2 describe-images --filters 'Name=name,Values=Cisco-C8K-17.12.01a-*'

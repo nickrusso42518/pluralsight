@@ -1,7 +1,14 @@
-# Easy and secure way to override these defaults with env vars:
-# export TF_VAR_xe_username=(your username)
-# export TF_VAR_xe_password=(your password)
-# etc ...
+# export TF_VAR_aws_access_key=...
+variable "aws_access_key" {
+  type = string
+}
+
+# export TF_VAR_aws_secret_key=...
+variable "aws_secret_key" {
+  type = string
+}
+
+# Can override these use env vars as well
 variable "xe_username" {
   type = string
   description = "Login username for Cat8000v"
