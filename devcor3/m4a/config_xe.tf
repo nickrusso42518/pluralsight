@@ -18,10 +18,28 @@ provider "iosxe" {
   url      = "https://${aws_instance.xe_ec2.public_ip}"
 }
 
-# Wait 10 minutes (60 iterations of 10 second waits) for RESTCONF to respond
-resource "null_resource" "wait_for_https" {
-  provisioner "local-exec" {
-    command = "./wait_for_rc.sh 60 ${aws_instance.xe_ec2.public_ip} ${var.xe_username} ${var.xe_password}"
+# Wait 10 minutes (60 retries * 10 second waits) for HTTPS GET to respond.
+# We expect a 200 OK response from the top-level restconf endpoint, and be
+# sure to include the base64-encoded credentials for basic authentication.
+data "http" "wait_for_https" {
+  url      = "https://${aws_instance.xe_ec2.public_ip}/restconf"
+  insecure = true
+
+  request_headers = {
+    accept        = "application/yang-data+json"
+    authorization = "Basic ${base64encode("${var.xe_username}:${var.xe_password}")}"
+  }
+
+  retry {
+    attempts     = 60
+    min_delay_ms = 10000
+  }
+
+  lifecycle {
+    postcondition {
+      condition     = contains([200], self.status_code)
+      error_message = "Non-200 status code"
+    }
   }
 }
 
@@ -38,7 +56,7 @@ resource "iosxe_logging" "logging" {
     }
   ]
   depends_on = [
-    null_resource.wait_for_https
+    data.http.wait_for_https
   ]
 }
 
@@ -50,7 +68,7 @@ resource "iosxe_restconf" "logging" {
     immediate = ""
   }
   depends_on = [
-    null_resource.wait_for_https
+    data.http.wait_for_https
   ]
 }
 
