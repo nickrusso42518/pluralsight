@@ -8,7 +8,7 @@
 # $ ./wait_for_rc.sh 30 54.242.210.158 ec2-user password123!
 # Waiting for RESTCONF on 54.242.210.158 OK!
 
-echo -n "Waiting for RESTCONF on $2 "
+echo -n "Waiting for RESTCONF on $2"
 i=0
 
 # So long as curl to HTTPS/5000 keeps failing and we haven't tried X times

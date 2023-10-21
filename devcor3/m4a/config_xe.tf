@@ -1,10 +1,12 @@
 # Tell TF where to find the provider so `terraform init` can install it.
+# Specify minimum and/or exact versions; a good idea for new providers.
 # https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest
 terraform {
+  required_version = ">= 1.6.0"
   required_providers {
     iosxe = {
       source = "CiscoDevNet/iosxe"
-      version = "0.5.1"
+      version = ">= 0.5.1"
     }
   }
 }
@@ -23,7 +25,7 @@ resource "null_resource" "wait_for_https" {
   }
 }
 
-# Configure logging first to support new NTP servers
+# Configure system logging (syslog) information
 resource "iosxe_logging" "logging" {
   trap_severity     = "informational"
   source_interface  = "GigabitEthernet1"
@@ -40,8 +42,8 @@ resource "iosxe_logging" "logging" {
   ]
 }
 
-# Configure highly customized option not available in logging resource
-# { "logging": { "persistent": { "immediate": [null] } } }
+# Configure highly niche option not available in previous logging resource
+# YANG structure: { "logging": { "persistent": { "immediate": [null] } } }
 resource "iosxe_restconf" "logging" {
   path = "Cisco-IOS-XE-native:native/logging/persistent"
   attributes = {

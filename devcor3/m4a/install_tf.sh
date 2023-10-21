@@ -19,6 +19,5 @@ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
   > /etc/apt/sources.list.d/hashicorp.list
 
 apt update
-apt-get install golang-go terraform -y
-go version
+apt-get install terraform -y
 terraform -version
