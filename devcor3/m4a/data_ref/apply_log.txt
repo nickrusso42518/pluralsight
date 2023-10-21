@@ -1,0 +1,41 @@
+aws_instance.xe_ec2: Creating...
+aws_instance.xe_ec2: Still creating... [10s elapsed]
+aws_instance.xe_ec2: Creation complete after 12s [id=i-0a534443746a6bb80]
+null_resource.wait_for_https: Creating...
+null_resource.wait_for_https: Provisioning with 'local-exec'...
+null_resource.wait_for_https (local-exec): Executing: ["/bin/sh" "-c" "./wait_for_rc.sh 30 54.81.91.104 ec2-user password123!"]
+null_resource.wait_for_https (local-exec): Waiting for RESTCONF on 54.81.91.104
+null_resource.wait_for_https: Still creating... [10s elapsed]
+null_resource.wait_for_https: Still creating... [20s elapsed]
+null_resource.wait_for_https: Still creating... [30s elapsed]
+null_resource.wait_for_https: Still creating... [40s elapsed]
+null_resource.wait_for_https: Still creating... [50s elapsed]
+null_resource.wait_for_https: Still creating... [1m0s elapsed]
+null_resource.wait_for_https: Still creating... [1m10s elapsed]
+null_resource.wait_for_https: Still creating... [1m20s elapsed]
+null_resource.wait_for_https: Still creating... [1m30s elapsed]
+null_resource.wait_for_https: Still creating... [1m40s elapsed]
+null_resource.wait_for_https: Still creating... [1m50s elapsed]
+null_resource.wait_for_https: Still creating... [2m0s elapsed]
+null_resource.wait_for_https: Still creating... [2m10s elapsed]
+null_resource.wait_for_https: Still creating... [2m20s elapsed]
+null_resource.wait_for_https: Still creating... [2m30s elapsed]
+null_resource.wait_for_https: Still creating... [2m40s elapsed]
+null_resource.wait_for_https: Still creating... [2m50s elapsed]
+null_resource.wait_for_https: Still creating... [3m0s elapsed]
+null_resource.wait_for_https: Still creating... [3m10s elapsed]
+null_resource.wait_for_https (local-exec): OK!
+null_resource.wait_for_https: Creation complete after 3m17s [id=852697053480222489]
+iosxe_restconf.logging: Creating...
+iosxe_logging.logging: Creating...
+iosxe_restconf.logging: Creation complete after 0s [id=Cisco-IOS-XE-native:native/logging/persistent]
+iosxe_logging.logging: Creation complete after 0s [id=Cisco-IOS-XE-native:native/logging]
+iosxe_save_config.save: Creating...
+iosxe_save_config.save: Creation complete after 2s
+
+Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+xe_latest_id = "ami-00a63f9e5e0c62c43"
+xe_public_ip = "54.81.91.104"

@@ -1,0 +1,74 @@
+xe_latest = {
+  "architecture" = "x86_64"
+  "arn" = "arn:aws:ec2:us-east-1::image/ami-00a63f9e5e0c62c43"
+  "block_device_mappings" = toset([
+    {
+      "device_name" = "/dev/xvda"
+      "ebs" = tomap({
+        "delete_on_termination" = "true"
+        "encrypted" = "false"
+        "iops" = "0"
+        "snapshot_id" = "snap-0d79288700faf4dee"
+        "throughput" = "0"
+        "volume_size" = "16"
+        "volume_type" = "gp2"
+      })
+      "no_device" = ""
+      "virtual_name" = ""
+    },
+  ])
+  "boot_mode" = ""
+  "creation_date" = "2023-08-29T19:25:07.000Z"
+  "deprecation_time" = "2025-08-29T19:25:07.000Z"
+  "description" = "Cisco-C8K-.17.12.01a"
+  "ena_support" = true
+  "executable_users" = tolist(null) /* of string */
+  "filter" = toset([
+    {
+      "name" = "name"
+      "values" = toset([
+        "Cisco-C8K-17.12.01a-*",
+      ])
+    },
+  ])
+  "hypervisor" = "xen"
+  "id" = "ami-00a63f9e5e0c62c43"
+  "image_id" = "ami-00a63f9e5e0c62c43"
+  "image_location" = "aws-marketplace/Cisco-C8K-17.12.01a-3294efff-833b-4aa6-8220-a81f42421ad0"
+  "image_owner_alias" = "aws-marketplace"
+  "image_type" = "machine"
+  "imds_support" = ""
+  "include_deprecated" = false
+  "kernel_id" = ""
+  "most_recent" = true
+  "name" = "Cisco-C8K-17.12.01a-3294efff-833b-4aa6-8220-a81f42421ad0"
+  "name_regex" = tostring(null)
+  "owner_id" = "679593333241"
+  "owners" = tolist([
+    "aws-marketplace",
+  ])
+  "platform" = ""
+  "platform_details" = "Linux/UNIX"
+  "product_codes" = toset([
+    {
+      "product_code_id" = "2zsydyu0ze6wijf5osuaabzkg"
+      "product_code_type" = "marketplace"
+    },
+  ])
+  "public" = true
+  "ramdisk_id" = ""
+  "root_device_name" = "/dev/xvda"
+  "root_device_type" = "ebs"
+  "root_snapshot_id" = "snap-0d79288700faf4dee"
+  "sriov_net_support" = "simple"
+  "state" = "available"
+  "state_reason" = tomap({
+    "code" = "UNSET"
+    "message" = "UNSET"
+  })
+  "tags" = tomap({})
+  "timeouts" = null /* object */
+  "tpm_support" = ""
+  "usage_operation" = "RunInstances"
+  "virtualization_type" = "hvm"
+}
