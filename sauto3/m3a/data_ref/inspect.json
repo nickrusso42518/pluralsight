@@ -1,0 +1,14 @@
+[
+  {
+    "value": "9.37.65.139",
+    "type": "ip"
+  },
+  {
+    "value": "9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484",
+    "type": "sha256"
+  },
+  {
+    "value": "www.internetbadguys.com",
+    "type": "domain"
+  }
+]

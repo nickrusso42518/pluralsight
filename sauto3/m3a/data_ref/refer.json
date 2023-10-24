@@ -1,0 +1,216 @@
+{
+    "data": [
+        {
+            "module": "Umbrella",
+            "module_instance_id": "66177e08-2a2e-48ff-b1a2-35562dd1abb4",
+            "module_type_id": "188d70f7-29d5-5069-9098-d83a3ec8e797",
+            "id": "ref-odns-investigate-ip-view-9.37.65.139",
+            "title": "IP view for 9.37.65.139",
+            "description": "Investigate this IP",
+            "categories": [
+                "View",
+                "Investigate",
+                "OpenDNS",
+                "Umbrella"
+            ],
+            "url": "https://dashboard.umbrella.com/o/7529441/#/investigate/ip-view/9.37.65.139"
+        },
+        {
+            "module": "Umbrella",
+            "module_instance_id": "66177e08-2a2e-48ff-b1a2-35562dd1abb4",
+            "module_type_id": "188d70f7-29d5-5069-9098-d83a3ec8e797",
+            "id": "ref-odns-investigate-sample-view-sha256-9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484",
+            "title": "Sample view for 9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484",
+            "description": "Investigate this SHA256",
+            "categories": [
+                "View",
+                "Investigate",
+                "OpenDNS",
+                "Umbrella",
+                "Sample"
+            ],
+            "url": "https://dashboard.umbrella.com/o/7529441/#/investigate/sample-view/9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484"
+        },
+        {
+            "module": "Umbrella",
+            "module_instance_id": "66177e08-2a2e-48ff-b1a2-35562dd1abb4",
+            "module_type_id": "188d70f7-29d5-5069-9098-d83a3ec8e797",
+            "id": "ref-odns-investigate-domain-view-name-www.internetbadguys.com",
+            "title": "Domain view for www.internetbadguys.com",
+            "description": "Investigate this Domain",
+            "categories": [
+                "View",
+                "Investigate",
+                "OpenDNS",
+                "Umbrella"
+            ],
+            "url": "https://dashboard.umbrella.com/o/7529441/#/investigate/domain-view/name/www.internetbadguys.com/view"
+        },
+        {
+            "module": "Secure Malware Analytics",
+            "module_instance_id": "da7af479-3fa2-4619-977c-be605b93a06a",
+            "module_type_id": "d80e8041-e8ed-4d42-9b4c-7b0a7a4a6d1b",
+            "id": "ref-tg-detail-ip-9.37.65.139",
+            "title": "Browse 9.37.65.139",
+            "description": "Browse this ip on Malware Analytics",
+            "categories": [
+                "Browse",
+                "Threat Grid"
+            ],
+            "url": "https://panacea.threatgrid.com/ips/9.37.65.139"
+        },
+        {
+            "module": "Secure Malware Analytics",
+            "module_instance_id": "da7af479-3fa2-4619-977c-be605b93a06a",
+            "module_type_id": "d80e8041-e8ed-4d42-9b4c-7b0a7a4a6d1b",
+            "id": "ref-tg-detail-sha256-9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484",
+            "title": "Browse 9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484",
+            "description": "Browse this sha256 on Malware Analytics",
+            "categories": [
+                "Browse",
+                "Threat Grid"
+            ],
+            "url": "https://panacea.threatgrid.com/artifacts/9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484"
+        },
+        {
+            "module": "Secure Malware Analytics",
+            "module_instance_id": "da7af479-3fa2-4619-977c-be605b93a06a",
+            "module_type_id": "d80e8041-e8ed-4d42-9b4c-7b0a7a4a6d1b",
+            "id": "ref-tg-detail-domain-www.internetbadguys.com",
+            "title": "Browse www.internetbadguys.com",
+            "description": "Browse this domain on Malware Analytics",
+            "categories": [
+                "Browse",
+                "Threat Grid"
+            ],
+            "url": "https://panacea.threatgrid.com/domains/www.internetbadguys.com"
+        },
+        {
+            "module": "Secure Malware Analytics",
+            "module_instance_id": "da7af479-3fa2-4619-977c-be605b93a06a",
+            "module_type_id": "d80e8041-e8ed-4d42-9b4c-7b0a7a4a6d1b",
+            "id": "ref-tg-search-ip-9.37.65.139",
+            "title": "Search 9.37.65.139",
+            "description": "Lookup this ip on Malware Analytics",
+            "categories": [
+                "Search",
+                "Threat Grid"
+            ],
+            "url": "https://panacea.threatgrid.com/mask/search/samples?query=9.37.65.139&term=sample-ip"
+        },
+        {
+            "module": "Secure Malware Analytics",
+            "module_instance_id": "da7af479-3fa2-4619-977c-be605b93a06a",
+            "module_type_id": "d80e8041-e8ed-4d42-9b4c-7b0a7a4a6d1b",
+            "id": "ref-tg-search-sha256-9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484",
+            "title": "Search 9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484",
+            "description": "Lookup this sha256 on Malware Analytics",
+            "categories": [
+                "Search",
+                "Threat Grid"
+            ],
+            "url": "https://panacea.threatgrid.com/mask/search/samples?query=9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484&term=sample-sha256"
+        },
+        {
+            "module": "Secure Malware Analytics",
+            "module_instance_id": "da7af479-3fa2-4619-977c-be605b93a06a",
+            "module_type_id": "d80e8041-e8ed-4d42-9b4c-7b0a7a4a6d1b",
+            "id": "ref-tg-search-domain-www.internetbadguys.com",
+            "title": "Search www.internetbadguys.com",
+            "description": "Lookup this domain on Malware Analytics",
+            "categories": [
+                "Search",
+                "Threat Grid"
+            ],
+            "url": "https://panacea.threatgrid.com/mask/search/samples?query=www.internetbadguys.com&term=domain"
+        },
+        {
+            "module": "Secure Endpoint - dCloud Cisco SecureX v2 Always On - Sanitized",
+            "module_instance_id": "f08ad439-fd77-4a98-9637-09e632a5b103",
+            "module_type_id": "03d8591b-8374-5666-8fcc-eaea9188193c",
+            "id": "ref-amp-file-trajectory-sha256-9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484",
+            "title": "File trajectory",
+            "description": "View file trajectory for 9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484 on AMP for Endpoints console",
+            "categories": [
+                "AMP for Endpoints",
+                "File trajectory"
+            ],
+            "url": "https://console.amp.cisco.com/file/trajectory/9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484"
+        },
+        {
+            "module": "Secure Endpoint - dCloud Cisco SecureX v2 Always On - Sanitized",
+            "module_instance_id": "f08ad439-fd77-4a98-9637-09e632a5b103",
+            "module_type_id": "03d8591b-8374-5666-8fcc-eaea9188193c",
+            "id": "ref-amp-search-ip-9.37.65.139",
+            "title": "Search for this IP",
+            "description": "Lookup this IP on AMP for Endpoints console",
+            "categories": [
+                "AMP for Endpoints",
+                "Search"
+            ],
+            "url": "https://console.amp.cisco.com/search?query=9.37.65.139"
+        },
+        {
+            "module": "Secure Endpoint - dCloud Cisco SecureX v2 Always On - Sanitized",
+            "module_instance_id": "f08ad439-fd77-4a98-9637-09e632a5b103",
+            "module_type_id": "03d8591b-8374-5666-8fcc-eaea9188193c",
+            "id": "ref-amp-search-sha256-9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484",
+            "title": "Search for this SHA256",
+            "description": "Lookup this SHA256 on AMP for Endpoints console",
+            "categories": [
+                "AMP for Endpoints",
+                "Search"
+            ],
+            "url": "https://console.amp.cisco.com/search?query=9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484"
+        },
+        {
+            "module": "Secure Endpoint - dCloud Cisco SecureX v2 Always On - Sanitized",
+            "module_instance_id": "f08ad439-fd77-4a98-9637-09e632a5b103",
+            "module_type_id": "03d8591b-8374-5666-8fcc-eaea9188193c",
+            "id": "ref-amp-search-domain-www.internetbadguys.com",
+            "title": "Search for this domain",
+            "description": "Lookup this domain on AMP for Endpoints console",
+            "categories": [
+                "AMP for Endpoints",
+                "Search"
+            ],
+            "url": "https://console.amp.cisco.com/search?query=www.internetbadguys.com"
+        },
+        {
+            "module": "Talos Intelligence",
+            "module_instance_id": "f14a7465-a77a-4e28-8b97-23706a56eab5",
+            "module_type_id": "2460c99b-2f01-523b-a65d-30a3c6603245",
+            "id": "ref-talos-search-ip-9.37.65.139",
+            "title": "Search for this IP",
+            "description": "Lookup this IP on Talos Intelligence",
+            "categories": [
+                "Talos Intelligence",
+                "Search"
+            ],
+            "url": "https://www.talosintelligence.com/reputation_center/lookup?search=9.37.65.139"
+        },
+        {
+            "module": "Talos Intelligence",
+            "module_instance_id": "f14a7465-a77a-4e28-8b97-23706a56eab5",
+            "module_type_id": "2460c99b-2f01-523b-a65d-30a3c6603245",
+            "id": "ref-talos-search-domain-www.internetbadguys.com",
+            "title": "Search for this domain",
+            "description": "Lookup this domain on Talos Intelligence",
+            "categories": [
+                "Talos Intelligence",
+                "Search"
+            ],
+            "url": "https://www.talosintelligence.com/reputation_center/lookup?search=www.internetbadguys.com"
+        }
+    ],
+    "errors": [
+        {
+            "module_instance_id": "3348b4e6-fe7a-430c-98c7-5ba0d96c3b50",
+            "module_type_id": "b7f21c6b-701a-4b45-8a3d-449001844efe",
+            "code": "client-error",
+            "message": "There was a client error in the module: {:errors [{:type \"fatal\", :code \"authentication_error\", :message \"missing orbital scope\"}], :data nil} [403]",
+            "type": "error",
+            "module": "Orbital"
+        }
+    ]
+}

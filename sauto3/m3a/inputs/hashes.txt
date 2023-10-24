@@ -1,0 +1,3 @@
+adb3779bd853c92992c1b000f1f36317f00d48773f562b2ca62a45d52e15da67  nick@globomantics.com
+9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484  ./ci_scripts/make_atom.py
+2990cb9eda3c268f0670ced0c5e82d66f588384a6102e7997c4b0a5cfbf6e43f  ./ci_scripts/html_lint.sh

@@ -1,0 +1,1703 @@
+{
+    "data": [
+        {
+            "module": "Umbrella",
+            "module_instance_id": "66177e08-2a2e-48ff-b1a2-35562dd1abb4",
+            "module_type_id": "188d70f7-29d5-5069-9098-d83a3ec8e797",
+            "data": {
+                "verdicts": {
+                    "count": 2,
+                    "docs": [
+                        {
+                            "type": "verdict",
+                            "disposition": 5,
+                            "observable": {
+                                "value": "9.37.65.139",
+                                "type": "ip"
+                            },
+                            "judgement_id": "transient:e35ac0c0-bff7-4fbd-b634-fd4c4c212ccf",
+                            "disposition_name": "Unknown",
+                            "valid_time": {
+                                "start_time": "2023-10-24T16:04:21.928Z",
+                                "end_time": "2023-11-23T16:04:21.928Z"
+                            }
+                        },
+                        {
+                            "type": "verdict",
+                            "disposition": 2,
+                            "observable": {
+                                "value": "www.internetbadguys.com",
+                                "type": "domain"
+                            },
+                            "judgement_id": "transient:b424e849-42d0-4e89-8e1c-a40e052034c7",
+                            "disposition_name": "Malicious",
+                            "valid_time": {
+                                "start_time": "2023-10-24T16:04:22.975Z",
+                                "end_time": "2023-11-23T16:04:22.975Z"
+                            }
+                        }
+                    ]
+                },
+                "judgements": {
+                    "count": 3,
+                    "docs": [
+                        {
+                            "valid_time": {
+                                "start_time": "2023-10-24T16:04:21.928Z",
+                                "end_time": "2023-11-23T16:04:21.928Z"
+                            },
+                            "schema_version": "1.3.10",
+                            "observable": {
+                                "value": "9.37.65.139",
+                                "type": "ip"
+                            },
+                            "type": "judgement",
+                            "source": "Umbrella Investigate API",
+                            "disposition": 5,
+                            "reason": "Neutral Cisco Umbrella reputation status",
+                            "source_uri": "https://dashboard.umbrella.com/o/7529441/#/investigate/ip-view/9.37.65.139",
+                            "disposition_name": "Unknown",
+                            "priority": 90,
+                            "id": "transient:e35ac0c0-bff7-4fbd-b634-fd4c4c212ccf",
+                            "severity": "Unknown",
+                            "tlp": "amber",
+                            "confidence": "High"
+                        },
+                        {
+                            "valid_time": {
+                                "start_time": "2023-10-24T16:04:23.994Z",
+                                "end_time": "2525-01-01T00:00:00.000Z"
+                            },
+                            "schema_version": "1.3.10",
+                            "observable": {
+                                "value": "www.internetbadguys.com",
+                                "type": "domain"
+                            },
+                            "type": "judgement",
+                            "source": "Umbrella Enforcement API",
+                            "disposition": 2,
+                            "reason": "Added to the customer’s domain list",
+                            "source_uri": "https://dashboard.umbrella.com",
+                            "disposition_name": "Malicious",
+                            "priority": 90,
+                            "id": "transient:706060db-3902-4e61-a7e3-e6c6ea9c4387",
+                            "severity": "High",
+                            "tlp": "amber",
+                            "confidence": "High"
+                        },
+                        {
+                            "valid_time": {
+                                "start_time": "2023-10-24T16:04:22.975Z",
+                                "end_time": "2023-11-23T16:04:22.975Z"
+                            },
+                            "schema_version": "1.3.10",
+                            "observable": {
+                                "value": "www.internetbadguys.com",
+                                "type": "domain"
+                            },
+                            "type": "judgement",
+                            "source": "Umbrella Investigate API",
+                            "disposition": 2,
+                            "reason": "Poor Cisco Umbrella reputation status",
+                            "source_uri": "https://dashboard.umbrella.com/o/7529441/#/investigate/domain-view/name/www.internetbadguys.com/view",
+                            "disposition_name": "Malicious",
+                            "priority": 90,
+                            "id": "transient:b424e849-42d0-4e89-8e1c-a40e052034c7",
+                            "severity": "High",
+                            "tlp": "amber",
+                            "confidence": "High"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "module": "Secure Malware Analytics",
+            "module_instance_id": "da7af479-3fa2-4619-977c-be605b93a06a",
+            "module_type_id": "d80e8041-e8ed-4d42-9b4c-7b0a7a4a6d1b",
+            "data": {
+                "indicators": {
+                    "count": 5,
+                    "docs": [
+                        {
+                            "description": "The submitted PDF was found to contain less than two pages, and a domain classified as malicious by Umbrella was contacted. The combination of these two behaviours is highly suspicious and is indicative of phishing or malicious activity by the PDF.",
+                            "valid_time": {
+                                "start_time": "2017-01-01T00:00:00.000Z",
+                                "end_time": "2525-01-01T00:00:00.000Z"
+                            },
+                            "producer": "Secure Malware Analytics",
+                            "schema_version": "1.1.3",
+                            "type": "indicator",
+                            "title": "pdf-malicious-uri-low-pages",
+                            "source_uri": "https://panacea.threatgrid.com/indicators/pdf-malicious-uri-low-pages",
+                            "id": "transient:indicator-2bb22bfd-bc58-4988-ae57-83bd024d8825",
+                            "severity": "High",
+                            "confidence": "High"
+                        },
+                        {
+                            "description": "A domain referenced during the sample run has been categorized as phishing by Cisco Umbrella. Cisco Umbrella is a cloud security platform which provides additional detail about network activity such as security and content categorization for domains. Domains involved in phishing campaigns will often host web pages that attempt to steal user passwords, or other sensitive data. A phishing domain will host a web page that looks legitimate (like a banking login page) and if a user is tricked into entering their username and password, those credentials will be stolen.",
+                            "valid_time": {
+                                "start_time": "2017-01-01T00:00:00.000Z",
+                                "end_time": "2525-01-01T00:00:00.000Z"
+                            },
+                            "producer": "Secure Malware Analytics",
+                            "schema_version": "1.1.3",
+                            "type": "indicator",
+                            "title": "network-dns-category-phishing",
+                            "source_uri": "https://panacea.threatgrid.com/indicators/network-dns-category-phishing",
+                            "id": "transient:indicator-1d62ae0b-9e82-4977-9f73-58ebe57cba1d",
+                            "severity": "Medium",
+                            "confidence": "Medium"
+                        },
+                        {
+                            "description": "The submitted document was seen establishing outbound network communications. This activity could simply be embedded code that is reaching out to the vendor to check if it is running the latest version. However, it is more likely that this activity is malicious in nature. Attackers leverage vulnerabilities inside document types to establish a foothold into a victim's network. Once the system is exploited, embedded code will be executed that will download the second stage of the attack. Most often the second stage that is downloaded is a customized backdoor such as a Remote Access Trojan (RAT).",
+                            "valid_time": {
+                                "start_time": "2017-01-01T00:00:00.000Z",
+                                "end_time": "2525-01-01T00:00:00.000Z"
+                            },
+                            "producer": "Secure Malware Analytics",
+                            "schema_version": "1.1.3",
+                            "type": "indicator",
+                            "title": "document-network-traffic",
+                            "source_uri": "https://panacea.threatgrid.com/indicators/document-network-traffic",
+                            "id": "transient:indicator-4caafa60-60f6-44e2-aeb2-aeae58fa20df",
+                            "severity": "Medium",
+                            "confidence": "Medium"
+                        },
+                        {
+                            "description": "A domain which is present in a Cisco Umbrella block list was referenced during the analysis of the sample. Cisco Umbrella is a cloud security platform which provides additional detail about network activity such as security and content categorization for domains. Domains in the Cisco Umbrella block list are typically created to be part of a malware campaign and must reach a certain threshold of malicious activity before Cisco Umbrella will add it to the block list.",
+                            "valid_time": {
+                                "start_time": "2017-01-01T00:00:00.000Z",
+                                "end_time": "2525-01-01T00:00:00.000Z"
+                            },
+                            "producer": "Secure Malware Analytics",
+                            "schema_version": "1.1.3",
+                            "type": "indicator",
+                            "title": "network-opendns-malicious",
+                            "source_uri": "https://panacea.threatgrid.com/indicators/network-opendns-malicious",
+                            "id": "transient:indicator-f0faf4d8-488f-4722-a115-f42775587e1d",
+                            "severity": "High",
+                            "confidence": "Medium"
+                        },
+                        {
+                            "description": "A document was seen contacting a domain that has been flagged by Cisco Umbrella as having suspicious or malicious content, or was newly registered. Documents often contact external domains for additional content. However, the fact that the domain is classified as potentially harmful or new is indicative of malicious behaviour.",
+                            "valid_time": {
+                                "start_time": "2017-01-01T00:00:00.000Z",
+                                "end_time": "2525-01-01T00:00:00.000Z"
+                            },
+                            "producer": "Secure Malware Analytics",
+                            "schema_version": "1.1.3",
+                            "type": "indicator",
+                            "title": "network-dns-doc-network-traffic",
+                            "source_uri": "https://panacea.threatgrid.com/indicators/network-dns-doc-network-traffic",
+                            "id": "transient:indicator-2753a00c-e8f9-426d-b2a4-780659f71e71",
+                            "severity": "High",
+                            "confidence": "High"
+                        }
+                    ]
+                },
+                "relationships": {
+                    "count": 19,
+                    "docs": [
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-f0faf4d8-488f-4722-a115-f42775587e1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-1ce30d77-54f0-4348-8810-c1d7df2edeee",
+                            "id": "transient:relationship-e4a64af4-f8bb-42c1-8771-6ee6557714e1",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-2753a00c-e8f9-426d-b2a4-780659f71e71",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-2ee4f352-89f5-4788-b214-2c0b419f9aa0",
+                            "id": "transient:relationship-01c349f1-7891-4641-a950-6892bf1da6d6",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-4caafa60-60f6-44e2-aeb2-aeae58fa20df",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-2ee4f352-89f5-4788-b214-2c0b419f9aa0",
+                            "id": "transient:relationship-6f5226c2-f39b-4d18-8af0-58cfe7bc54bc",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-1d62ae0b-9e82-4977-9f73-58ebe57cba1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-9e44669b-8983-4842-86d6-2dcf0761fe73",
+                            "id": "transient:relationship-277f2b68-302f-4166-9d25-b1efafb03a00",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-1d62ae0b-9e82-4977-9f73-58ebe57cba1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-5fc2f178-0613-4650-9f25-f949092d6f5c",
+                            "id": "transient:relationship-209165eb-3ac6-4c7a-ba24-2a4e538aba20",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-f0faf4d8-488f-4722-a115-f42775587e1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-5fc2f178-0613-4650-9f25-f949092d6f5c",
+                            "id": "transient:relationship-8891b6eb-9f36-4ffa-a32a-81617b6d8965",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-f0faf4d8-488f-4722-a115-f42775587e1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-2ee4f352-89f5-4788-b214-2c0b419f9aa0",
+                            "id": "transient:relationship-6d6413ea-0682-48d7-a126-8bb0f9bd3482",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-1d62ae0b-9e82-4977-9f73-58ebe57cba1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-602438ed-c3b5-4423-9167-7bc7bf15ee34",
+                            "id": "transient:relationship-3fc51b0c-8d65-4be6-a775-f1174647d560",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-2bb22bfd-bc58-4988-ae57-83bd024d8825",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-9e44669b-8983-4842-86d6-2dcf0761fe73",
+                            "id": "transient:relationship-0e417223-a91f-4074-9752-c9caa8f3696e",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-f0faf4d8-488f-4722-a115-f42775587e1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-7f96d3a3-0f11-4567-8f68-70a485455834",
+                            "id": "transient:relationship-82dc7068-296c-468f-8bc9-7c6691055999",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-f0faf4d8-488f-4722-a115-f42775587e1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-0a9a6ce3-2261-4373-a5b4-1418b179585c",
+                            "id": "transient:relationship-4e066a6e-e60f-41c7-aeb3-1b51cdc64a4d",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-f0faf4d8-488f-4722-a115-f42775587e1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-602438ed-c3b5-4423-9167-7bc7bf15ee34",
+                            "id": "transient:relationship-e7229f64-cd15-4282-a7b8-26ec9f7dc9fc",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-1d62ae0b-9e82-4977-9f73-58ebe57cba1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-2ee4f352-89f5-4788-b214-2c0b419f9aa0",
+                            "id": "transient:relationship-71f453e4-a0e3-4691-8107-5921337a2efe",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-f0faf4d8-488f-4722-a115-f42775587e1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-9e44669b-8983-4842-86d6-2dcf0761fe73",
+                            "id": "transient:relationship-f7d18380-39af-4b83-95c4-148929dca377",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-1d62ae0b-9e82-4977-9f73-58ebe57cba1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-1ce30d77-54f0-4348-8810-c1d7df2edeee",
+                            "id": "transient:relationship-73d4a461-ffbb-453e-b6bf-fc053ae30e9a",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-1d62ae0b-9e82-4977-9f73-58ebe57cba1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-7f96d3a3-0f11-4567-8f68-70a485455834",
+                            "id": "transient:relationship-e791b2f4-b175-4a4c-af83-fe7194f215d7",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-2bb22bfd-bc58-4988-ae57-83bd024d8825",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-7f96d3a3-0f11-4567-8f68-70a485455834",
+                            "id": "transient:relationship-170d2dd3-86b8-4240-b840-ba3dd19ac2d3",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-2bb22bfd-bc58-4988-ae57-83bd024d8825",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-2ee4f352-89f5-4788-b214-2c0b419f9aa0",
+                            "id": "transient:relationship-bb7d6c39-3260-4d9f-ba02-0bc168f69d53",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        },
+                        {
+                            "tlp": "green",
+                            "schema_version": "1.1.3",
+                            "target_ref": "transient:indicator-1d62ae0b-9e82-4977-9f73-58ebe57cba1d",
+                            "type": "relationship",
+                            "source_ref": "transient:sighting-0a9a6ce3-2261-4373-a5b4-1418b179585c",
+                            "id": "transient:relationship-c9115c85-f2d6-44f4-a49a-e168876a9e8e",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "relationship_type": "sighting-of"
+                        }
+                    ]
+                },
+                "sightings": {
+                    "count": 7,
+                    "docs": [
+                        {
+                            "schema_version": "1.1.3",
+                            "relations": [
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "e40321a5c6442004271ac48742a1999b00b11b7ee6648e595947a3e14ffa8a89",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d28ba713cfba44b9fcaa69c28a31eb55",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "b17883b3171fc5dbc3aa0e2781cb2f33cc95f6f5",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "c551a04d490963710b5421ede03f9a1ebbdb20b5e1bb0293ca21a41b3dac9399",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "7ac1da0c8697a12b1ea43ff25803856a",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "76b7e14123ea2195d694384d42590f963fce355b",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "98e08a967f84f8746a50264273d082c0254f8890027ae559f8839014b4dbb32e",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "8ba4e920cccae57494f97badb5c6707b",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d7db6dfff707d9b6462b0989e79416caf85b0629",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "3aa78a6dac6a4291bf3774d0ddad66529377960766d4f29ca1e49481b72a868f",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "9837a3a06e64157022b2aa091c2758fb",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "f8ba550a79f45753b9661b71183fead6672d1ca4",
+                                        "type": "sha1"
+                                    }
+                                }
+                            ],
+                            "observables": [
+                                {
+                                    "value": "www.internetbadguys.com",
+                                    "type": "domain"
+                                }
+                            ],
+                            "type": "sighting",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "source_uri": "https://panacea.threatgrid.com/domains/www.internetbadguys.com",
+                            "id": "transient:sighting-602438ed-c3b5-4423-9167-7bc7bf15ee34",
+                            "count": 1,
+                            "confidence": "Info",
+                            "observed_time": {
+                                "start_time": "2023-09-21T09:26:37.000Z",
+                                "end_time": "2023-09-21T09:33:29.000Z"
+                            },
+                            "sensor": "process.sandbox"
+                        },
+                        {
+                            "schema_version": "1.1.3",
+                            "relations": [
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "e40321a5c6442004271ac48742a1999b00b11b7ee6648e595947a3e14ffa8a89",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d28ba713cfba44b9fcaa69c28a31eb55",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "b17883b3171fc5dbc3aa0e2781cb2f33cc95f6f5",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "c551a04d490963710b5421ede03f9a1ebbdb20b5e1bb0293ca21a41b3dac9399",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "7ac1da0c8697a12b1ea43ff25803856a",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "76b7e14123ea2195d694384d42590f963fce355b",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "98e08a967f84f8746a50264273d082c0254f8890027ae559f8839014b4dbb32e",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "8ba4e920cccae57494f97badb5c6707b",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d7db6dfff707d9b6462b0989e79416caf85b0629",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "3aa78a6dac6a4291bf3774d0ddad66529377960766d4f29ca1e49481b72a868f",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "9837a3a06e64157022b2aa091c2758fb",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "f8ba550a79f45753b9661b71183fead6672d1ca4",
+                                        "type": "sha1"
+                                    }
+                                }
+                            ],
+                            "observables": [
+                                {
+                                    "value": "www.internetbadguys.com",
+                                    "type": "domain"
+                                }
+                            ],
+                            "type": "sighting",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "source_uri": "https://panacea.threatgrid.com/domains/www.internetbadguys.com",
+                            "id": "transient:sighting-5fc2f178-0613-4650-9f25-f949092d6f5c",
+                            "count": 1,
+                            "confidence": "Info",
+                            "observed_time": {
+                                "start_time": "2023-08-07T19:46:23.000Z",
+                                "end_time": "2023-08-07T19:53:48.000Z"
+                            },
+                            "sensor": "process.sandbox"
+                        },
+                        {
+                            "schema_version": "1.1.3",
+                            "relations": [
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "e40321a5c6442004271ac48742a1999b00b11b7ee6648e595947a3e14ffa8a89",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d28ba713cfba44b9fcaa69c28a31eb55",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "b17883b3171fc5dbc3aa0e2781cb2f33cc95f6f5",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "c551a04d490963710b5421ede03f9a1ebbdb20b5e1bb0293ca21a41b3dac9399",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "7ac1da0c8697a12b1ea43ff25803856a",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "76b7e14123ea2195d694384d42590f963fce355b",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "98e08a967f84f8746a50264273d082c0254f8890027ae559f8839014b4dbb32e",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "8ba4e920cccae57494f97badb5c6707b",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d7db6dfff707d9b6462b0989e79416caf85b0629",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "3aa78a6dac6a4291bf3774d0ddad66529377960766d4f29ca1e49481b72a868f",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "9837a3a06e64157022b2aa091c2758fb",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "f8ba550a79f45753b9661b71183fead6672d1ca4",
+                                        "type": "sha1"
+                                    }
+                                }
+                            ],
+                            "observables": [
+                                {
+                                    "value": "www.internetbadguys.com",
+                                    "type": "domain"
+                                }
+                            ],
+                            "type": "sighting",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "source_uri": "https://panacea.threatgrid.com/domains/www.internetbadguys.com",
+                            "id": "transient:sighting-7f96d3a3-0f11-4567-8f68-70a485455834",
+                            "count": 1,
+                            "confidence": "Info",
+                            "observed_time": {
+                                "start_time": "2023-10-05T16:53:13.000Z",
+                                "end_time": "2023-10-05T16:59:42.000Z"
+                            },
+                            "sensor": "process.sandbox"
+                        },
+                        {
+                            "schema_version": "1.1.3",
+                            "relations": [
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "e40321a5c6442004271ac48742a1999b00b11b7ee6648e595947a3e14ffa8a89",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d28ba713cfba44b9fcaa69c28a31eb55",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "b17883b3171fc5dbc3aa0e2781cb2f33cc95f6f5",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "c551a04d490963710b5421ede03f9a1ebbdb20b5e1bb0293ca21a41b3dac9399",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "7ac1da0c8697a12b1ea43ff25803856a",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "76b7e14123ea2195d694384d42590f963fce355b",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "98e08a967f84f8746a50264273d082c0254f8890027ae559f8839014b4dbb32e",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "8ba4e920cccae57494f97badb5c6707b",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d7db6dfff707d9b6462b0989e79416caf85b0629",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "3aa78a6dac6a4291bf3774d0ddad66529377960766d4f29ca1e49481b72a868f",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "9837a3a06e64157022b2aa091c2758fb",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "f8ba550a79f45753b9661b71183fead6672d1ca4",
+                                        "type": "sha1"
+                                    }
+                                }
+                            ],
+                            "observables": [
+                                {
+                                    "value": "www.internetbadguys.com",
+                                    "type": "domain"
+                                }
+                            ],
+                            "type": "sighting",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "source_uri": "https://panacea.threatgrid.com/domains/www.internetbadguys.com",
+                            "id": "transient:sighting-1ce30d77-54f0-4348-8810-c1d7df2edeee",
+                            "count": 1,
+                            "confidence": "Info",
+                            "observed_time": {
+                                "start_time": "2023-08-02T17:14:25.000Z",
+                                "end_time": "2023-08-02T17:21:34.000Z"
+                            },
+                            "sensor": "process.sandbox"
+                        },
+                        {
+                            "schema_version": "1.1.3",
+                            "relations": [
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "e40321a5c6442004271ac48742a1999b00b11b7ee6648e595947a3e14ffa8a89",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d28ba713cfba44b9fcaa69c28a31eb55",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "b17883b3171fc5dbc3aa0e2781cb2f33cc95f6f5",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "c551a04d490963710b5421ede03f9a1ebbdb20b5e1bb0293ca21a41b3dac9399",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "7ac1da0c8697a12b1ea43ff25803856a",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "76b7e14123ea2195d694384d42590f963fce355b",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "98e08a967f84f8746a50264273d082c0254f8890027ae559f8839014b4dbb32e",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "8ba4e920cccae57494f97badb5c6707b",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d7db6dfff707d9b6462b0989e79416caf85b0629",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "3aa78a6dac6a4291bf3774d0ddad66529377960766d4f29ca1e49481b72a868f",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "9837a3a06e64157022b2aa091c2758fb",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "f8ba550a79f45753b9661b71183fead6672d1ca4",
+                                        "type": "sha1"
+                                    }
+                                }
+                            ],
+                            "observables": [
+                                {
+                                    "value": "www.internetbadguys.com",
+                                    "type": "domain"
+                                }
+                            ],
+                            "type": "sighting",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "source_uri": "https://panacea.threatgrid.com/domains/www.internetbadguys.com",
+                            "id": "transient:sighting-0a9a6ce3-2261-4373-a5b4-1418b179585c",
+                            "count": 1,
+                            "confidence": "Info",
+                            "observed_time": {
+                                "start_time": "2023-09-15T22:11:07.000Z",
+                                "end_time": "2023-09-15T22:18:18.000Z"
+                            },
+                            "sensor": "process.sandbox"
+                        },
+                        {
+                            "schema_version": "1.1.3",
+                            "relations": [
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "e40321a5c6442004271ac48742a1999b00b11b7ee6648e595947a3e14ffa8a89",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d28ba713cfba44b9fcaa69c28a31eb55",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "b17883b3171fc5dbc3aa0e2781cb2f33cc95f6f5",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "c551a04d490963710b5421ede03f9a1ebbdb20b5e1bb0293ca21a41b3dac9399",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "7ac1da0c8697a12b1ea43ff25803856a",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "76b7e14123ea2195d694384d42590f963fce355b",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "98e08a967f84f8746a50264273d082c0254f8890027ae559f8839014b4dbb32e",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "8ba4e920cccae57494f97badb5c6707b",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d7db6dfff707d9b6462b0989e79416caf85b0629",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "3aa78a6dac6a4291bf3774d0ddad66529377960766d4f29ca1e49481b72a868f",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "9837a3a06e64157022b2aa091c2758fb",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "f8ba550a79f45753b9661b71183fead6672d1ca4",
+                                        "type": "sha1"
+                                    }
+                                }
+                            ],
+                            "observables": [
+                                {
+                                    "value": "www.internetbadguys.com",
+                                    "type": "domain"
+                                }
+                            ],
+                            "type": "sighting",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "source_uri": "https://panacea.threatgrid.com/domains/www.internetbadguys.com",
+                            "id": "transient:sighting-2ee4f352-89f5-4788-b214-2c0b419f9aa0",
+                            "count": 1,
+                            "confidence": "Info",
+                            "observed_time": {
+                                "start_time": "2023-10-05T16:17:44.000Z",
+                                "end_time": "2023-10-05T16:24:28.000Z"
+                            },
+                            "sensor": "process.sandbox"
+                        },
+                        {
+                            "schema_version": "1.1.3",
+                            "relations": [
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "e40321a5c6442004271ac48742a1999b00b11b7ee6648e595947a3e14ffa8a89",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d28ba713cfba44b9fcaa69c28a31eb55",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "b17883b3171fc5dbc3aa0e2781cb2f33cc95f6f5",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "c551a04d490963710b5421ede03f9a1ebbdb20b5e1bb0293ca21a41b3dac9399",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "7ac1da0c8697a12b1ea43ff25803856a",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "76b7e14123ea2195d694384d42590f963fce355b",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "98e08a967f84f8746a50264273d082c0254f8890027ae559f8839014b4dbb32e",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "8ba4e920cccae57494f97badb5c6707b",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "d7db6dfff707d9b6462b0989e79416caf85b0629",
+                                        "type": "sha1"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "3aa78a6dac6a4291bf3774d0ddad66529377960766d4f29ca1e49481b72a868f",
+                                        "type": "sha256"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "9837a3a06e64157022b2aa091c2758fb",
+                                        "type": "md5"
+                                    }
+                                },
+                                {
+                                    "origin": "Secure Malware Analytics",
+                                    "relation": "Connected_From",
+                                    "source": {
+                                        "value": "www.internetbadguys.com",
+                                        "type": "domain"
+                                    },
+                                    "related": {
+                                        "value": "f8ba550a79f45753b9661b71183fead6672d1ca4",
+                                        "type": "sha1"
+                                    }
+                                }
+                            ],
+                            "observables": [
+                                {
+                                    "value": "www.internetbadguys.com",
+                                    "type": "domain"
+                                }
+                            ],
+                            "type": "sighting",
+                            "source": "Secure Malware Analytics File Dispositions",
+                            "source_uri": "https://panacea.threatgrid.com/domains/www.internetbadguys.com",
+                            "id": "transient:sighting-9e44669b-8983-4842-86d6-2dcf0761fe73",
+                            "count": 1,
+                            "confidence": "Info",
+                            "observed_time": {
+                                "start_time": "2023-10-07T00:53:07.000Z",
+                                "end_time": "2023-10-07T00:59:27.000Z"
+                            },
+                            "sensor": "process.sandbox"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "module": "AMP File Reputation",
+            "module_instance_id": "ddcf41a2-3ecb-43e8-b5b2-0e36ad2e16f3",
+            "module_type_id": "1898d0e8-45f7-550d-8ab5-915f064426dd",
+            "data": {
+                "verdicts": {
+                    "count": 0,
+                    "docs": []
+                },
+                "judgements": {
+                    "count": 0,
+                    "docs": []
+                }
+            }
+        },
+        {
+            "module": "Secure Endpoint - dCloud Cisco SecureX v2 Always On - Sanitized",
+            "module_instance_id": "f08ad439-fd77-4a98-9637-09e632a5b103",
+            "module_type_id": "03d8591b-8374-5666-8fcc-eaea9188193c",
+            "data": {
+                "sightings": {
+                    "count": 1,
+                    "docs": [
+                        {
+                            "description": "NFM iOS Sighting",
+                            "schema_version": "1.3.10",
+                            "observables": [
+                                {
+                                    "value": "www.internetbadguys.com",
+                                    "type": "domain"
+                                }
+                            ],
+                            "type": "sighting",
+                            "source": "AMP Event",
+                            "targets": [
+                                {
+                                    "type": "endpoint",
+                                    "observables": [
+                                        {
+                                            "value": "Demo_iOS_5",
+                                            "type": "hostname"
+                                        },
+                                        {
+                                            "value": "263da319-9b7b-4d77-92f9-67980dcd1ac1",
+                                            "type": "amp_computer_guid"
+                                        },
+                                        {
+                                            "value": "142.38.114.87",
+                                            "type": "ip"
+                                        },
+                                        {
+                                            "value": "e0:85:ef:38:65:12",
+                                            "type": "mac_address"
+                                        }
+                                    ],
+                                    "observed_time": {
+                                        "start_time": "2023-10-24T00:39:31.000Z"
+                                    },
+                                    "os": "iOS 17.1 (iPad12,2)"
+                                }
+                            ],
+                            "internal": true,
+                            "source_uri": "https://console.amp.cisco.com/computers/263da319-9b7b-4d77-92f9-67980dcd1ac1/trajectory?q=www.internetbadguys.com",
+                            "id": "transient:1b1c0b30-a5d5-482e-8ba4-51d26266aea3",
+                            "count": 1,
+                            "severity": "Unknown",
+                            "confidence": "High",
+                            "observed_time": {
+                                "start_time": "2023-10-24T00:39:31.000Z"
+                            },
+                            "sensor": "endpoint"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "module": "Talos Intelligence",
+            "module_instance_id": "f14a7465-a77a-4e28-8b97-23706a56eab5",
+            "module_type_id": "2460c99b-2f01-523b-a65d-30a3c6603245",
+            "data": {
+                "verdicts": {
+                    "count": 1,
+                    "docs": [
+                        {
+                            "type": "verdict",
+                            "disposition": 5,
+                            "observable": {
+                                "value": "www.internetbadguys.com",
+                                "type": "domain"
+                            },
+                            "judgement_id": "transient:fc814acd-eb48-41f2-b3ca-7bcad15b033d",
+                            "disposition_name": "Unknown",
+                            "valid_time": {
+                                "start_time": "2023-10-24T16:04:35.991Z",
+                                "end_time": "2023-11-23T16:04:35.991Z"
+                            }
+                        }
+                    ]
+                },
+                "judgements": {
+                    "count": 1,
+                    "docs": [
+                        {
+                            "valid_time": {
+                                "start_time": "2023-10-24T16:04:35.991Z",
+                                "end_time": "2023-11-23T16:04:35.991Z"
+                            },
+                            "schema_version": "1.3.10",
+                            "observable": {
+                                "value": "www.internetbadguys.com",
+                                "type": "domain"
+                            },
+                            "type": "judgement",
+                            "source": "Talos",
+                            "disposition": 5,
+                            "reason": "Neutral Talos Intelligence reputation score",
+                            "source_uri": "https://www.talosintelligence.com/reputation_center/lookup?search=www.internetbadguys.com",
+                            "disposition_name": "Unknown",
+                            "priority": 90,
+                            "id": "transient:fc814acd-eb48-41f2-b3ca-7bcad15b033d",
+                            "severity": "Low",
+                            "tlp": "white",
+                            "confidence": "High"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "errors": [
+        {
+            "module_instance_id": "2a475da2-a428-40c9-80d4-85abaa90ec13",
+            "module_type_id": "b2219f60-8ccf-5b1d-afb0-778ccd72dcdd",
+            "code": "client-error",
+            "message": "There was a client error in the ESA module: E4017: Device is offline [409]",
+            "type": "error",
+            "module": "Secure Email Appliance"
+        }
+    ]
+}

@@ -1,0 +1,90 @@
+{
+    "data": [
+        {
+            "module": "Umbrella",
+            "module_instance_id": "66177e08-2a2e-48ff-b1a2-35562dd1abb4",
+            "module_type_id": "188d70f7-29d5-5069-9098-d83a3ec8e797",
+            "data": {
+                "verdicts": {
+                    "count": 2,
+                    "docs": [
+                        {
+                            "type": "verdict",
+                            "disposition": 2,
+                            "observable": {
+                                "value": "www.internetbadguys.com",
+                                "type": "domain"
+                            },
+                            "disposition_name": "Malicious",
+                            "valid_time": {
+                                "start_time": "2023-10-24T16:05:28.645Z",
+                                "end_time": "2023-11-23T16:05:28.645Z"
+                            }
+                        },
+                        {
+                            "type": "verdict",
+                            "disposition": 5,
+                            "observable": {
+                                "value": "9.37.65.139",
+                                "type": "ip"
+                            },
+                            "disposition_name": "Unknown",
+                            "valid_time": {
+                                "start_time": "2023-10-24T16:05:28.479Z",
+                                "end_time": "2023-11-23T16:05:28.479Z"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "module": "Secure Malware Analytics",
+            "module_instance_id": "da7af479-3fa2-4619-977c-be605b93a06a",
+            "module_type_id": "d80e8041-e8ed-4d42-9b4c-7b0a7a4a6d1b",
+            "data": {}
+        },
+        {
+            "module": "OpenPhish",
+            "module_instance_id": "dce941d0-f812-4aae-9f7f-c9cf91c12c0c",
+            "module_type_id": "b191c846-bbcd-4056-844b-0335da621a31",
+            "data": {}
+        },
+        {
+            "module": "AMP File Reputation",
+            "module_instance_id": "ddcf41a2-3ecb-43e8-b5b2-0e36ad2e16f3",
+            "module_type_id": "1898d0e8-45f7-550d-8ab5-915f064426dd",
+            "data": {
+                "verdicts": {
+                    "count": 0,
+                    "docs": []
+                }
+            }
+        },
+        {
+            "module": "Talos Intelligence",
+            "module_instance_id": "f14a7465-a77a-4e28-8b97-23706a56eab5",
+            "module_type_id": "2460c99b-2f01-523b-a65d-30a3c6603245",
+            "data": {
+                "verdicts": {
+                    "count": 1,
+                    "docs": [
+                        {
+                            "type": "verdict",
+                            "disposition": 5,
+                            "observable": {
+                                "value": "www.internetbadguys.com",
+                                "type": "domain"
+                            },
+                            "disposition_name": "Unknown",
+                            "valid_time": {
+                                "start_time": "2023-10-24T16:05:40.847Z",
+                                "end_time": "2023-11-23T16:05:40.847Z"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,162 @@
+{
+    "data": [
+        {
+            "module": "Automation",
+            "module_instance_id": "14e5e7d0-795b-4904-a99e-597b6d248252",
+            "module_type_id": "b1600a94-3c89-50b5-8f93-f601acaf9b39",
+            "data": {
+                "status": "ok"
+            }
+        },
+        {
+            "module": "Secure Email Appliance",
+            "module_instance_id": "2a475da2-a428-40c9-80d4-85abaa90ec13",
+            "module_type_id": "b2219f60-8ccf-5b1d-afb0-778ccd72dcdd",
+            "data": {
+                "status": "error"
+            }
+        },
+        {
+            "module": "Orbital",
+            "module_instance_id": "3348b4e6-fe7a-430c-98c7-5ba0d96c3b50",
+            "module_type_id": "b7f21c6b-701a-4b45-8a3d-449001844efe",
+            "data": {
+                "status": "error"
+            }
+        },
+        {
+            "module": "Duo",
+            "module_instance_id": "38410cd9-970c-4a5b-a0af-00c3778bff54",
+            "module_type_id": "3a8550d2-f722-4657-a2fa-462c4437aaa3",
+            "data": {
+                "status": "error"
+            }
+        },
+        {
+            "module": "Umbrella",
+            "module_instance_id": "66177e08-2a2e-48ff-b1a2-35562dd1abb4",
+            "module_type_id": "188d70f7-29d5-5069-9098-d83a3ec8e797",
+            "data": {
+                "status": "error"
+            }
+        },
+        {
+            "module": "Firepower",
+            "module_instance_id": "69881ce4-01fb-40c9-95fd-2dd9a03eef4f",
+            "module_type_id": "544e6371-9f0c-573e-a31c-d44f7ae65c92",
+            "data": {
+                "status": "ok",
+                "quotas": {
+                    "event_triggers": {
+                        "description": "No rate-limit mode in effect",
+                        "values": {
+                            "bucket_unit": "minute",
+                            "bucket_limit": 600,
+                            "current_bucket_consumption": 0,
+                            "current_bucket_start_time": "2023-10-23T22:00:19.395Z",
+                            "current_bucket_end_time": "2023-10-23T22:01:19.395Z"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "module": "Private Intelligence",
+            "module_instance_id": "918e8244-a50b-4fc7-b700-87d38575825b",
+            "module_type_id": "2c8b4134-c521-5be5-aaf8-af06e5e27cbb",
+            "data": {
+                "status": "ok"
+            }
+        },
+        {
+            "module": "SecureX Global Threat Intelligence",
+            "module_instance_id": "b37ff2ee-0ca1-4dbc-936d-a35bf7d5e18f",
+            "module_type_id": "87563e81-ddc5-5f61-b4f8-dbe71252c922",
+            "data": {
+                "status": "ok"
+            }
+        },
+        {
+            "module": "Secure Malware Analytics",
+            "module_instance_id": "da7af479-3fa2-4619-977c-be605b93a06a",
+            "module_type_id": "d80e8041-e8ed-4d42-9b4c-7b0a7a4a6d1b",
+            "data": {
+                "status": "ok"
+            }
+        },
+        {
+            "module": "OpenPhish",
+            "module_instance_id": "dce941d0-f812-4aae-9f7f-c9cf91c12c0c",
+            "module_type_id": "b191c846-bbcd-4056-844b-0335da621a31",
+            "data": {
+                "status": "ok"
+            }
+        },
+        {
+            "module": "AMP File Reputation",
+            "module_instance_id": "ddcf41a2-3ecb-43e8-b5b2-0e36ad2e16f3",
+            "module_type_id": "1898d0e8-45f7-550d-8ab5-915f064426dd",
+            "data": {
+                "status": "ok"
+            }
+        },
+        {
+            "module": "Device Insights",
+            "module_instance_id": "e4e403e4-9376-4cec-bf0e-0ad99fa806fc",
+            "module_type_id": "b95d5cd0-5bcb-45f6-921c-e2777468f6b0",
+            "data": {
+                "status": "ok"
+            }
+        },
+        {
+            "module": "Secure Endpoint - dCloud Cisco SecureX v2 Always On - Sanitized",
+            "module_instance_id": "f08ad439-fd77-4a98-9637-09e632a5b103",
+            "module_type_id": "03d8591b-8374-5666-8fcc-eaea9188193c",
+            "data": {
+                "status": "ok"
+            }
+        },
+        {
+            "module": "Talos Intelligence",
+            "module_instance_id": "f14a7465-a77a-4e28-8b97-23706a56eab5",
+            "module_type_id": "2460c99b-2f01-523b-a65d-30a3c6603245",
+            "data": {
+                "status": "ok"
+            }
+        }
+    ],
+    "errors": [
+        {
+            "module_instance_id": "2a475da2-a428-40c9-80d4-85abaa90ec13",
+            "module_type_id": "b2219f60-8ccf-5b1d-afb0-778ccd72dcdd",
+            "code": "client-error",
+            "message": "There was a client error in the ESA module: E4017: Device is offline [409]",
+            "type": "error",
+            "module": "Secure Email Appliance"
+        },
+        {
+            "module_instance_id": "3348b4e6-fe7a-430c-98c7-5ba0d96c3b50",
+            "module_type_id": "b7f21c6b-701a-4b45-8a3d-449001844efe",
+            "code": "client-error",
+            "message": "There was a client error in the module: {:errors [{:type \"fatal\", :code \"authentication_error\", :message \"missing orbital scope\"}], :data nil} [403]",
+            "type": "error",
+            "module": "Orbital"
+        },
+        {
+            "module_instance_id": "38410cd9-970c-4a5b-a0af-00c3778bff54",
+            "module_type_id": "3a8550d2-f722-4657-a2fa-462c4437aaa3",
+            "code": "url-generation-error",
+            "message": "URL generation failed due to - Invalid url: api-d15a09fe.duosecurity.com/admin/v1/info/summary",
+            "type": "error",
+            "module": "Duo"
+        },
+        {
+            "module_instance_id": "66177e08-2a2e-48ff-b1a2-35562dd1abb4",
+            "module_type_id": "188d70f7-29d5-5069-9098-d83a3ec8e797",
+            "code": "client-error",
+            "message": "[Network Devices API] There was a client error in the Umbrella module: Invalid authentication credentials [401]",
+            "type": "error",
+            "module": "Umbrella"
+        }
+    ]
+}
