@@ -1,0 +1,126 @@
+$ python check_threats.py
+Secure Email Appliance error: There was a client error in the ESA module: E4017: Device is offline [409]
+Orbital error: There was a client error in the module: {:errors [{:type "fatal", :code "authentication_error", :message "missing orbital scope"}], :data nil} [403]
+Duo error: URL generation failed due to - Invalid url: api-d15a09fe.duosecurity.com/admin/v1/info/summary
+Umbrella error: [Network Devices API] There was a client error in the Umbrella module: Invalid authentication credentials [401]
+
+Inspect: logs.txt
+
+------------------------------------------------------------
+REFER
+Action: Investigate this IP/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/ip-view/9.67.100.1
+Action: Investigate this IP/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/ip-view/9.37.65.139
+Action: Investigate this IP/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/ip-view/129.1.1.1
+Action: Investigate this IP/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/ip-view/9.67.101.1
+Action: Browse this ip on Malware Analytics/URL: https://panacea.threatgrid.com/ips/129.1.1.1
+Action: Browse this ip on Malware Analytics/URL: https://panacea.threatgrid.com/ips/9.37.65.139
+Action: Browse this ip on Malware Analytics/URL: https://panacea.threatgrid.com/ips/9.67.100.1
+Action: Browse this ip on Malware Analytics/URL: https://panacea.threatgrid.com/ips/9.67.101.1
+Action: Lookup this ip on Malware Analytics/URL: https://panacea.threatgrid.com/mask/search/samples?query=129.1.1.1&term=sample-ip
+Action: Lookup this ip on Malware Analytics/URL: https://panacea.threatgrid.com/mask/search/samples?query=9.37.65.139&term=sample-ip
+Action: Lookup this ip on Malware Analytics/URL: https://panacea.threatgrid.com/mask/search/samples?query=9.67.100.1&term=sample-ip
+Action: Lookup this ip on Malware Analytics/URL: https://panacea.threatgrid.com/mask/search/samples?query=9.67.101.1&term=sample-ip
+Action: Lookup this IP on AMP for Endpoints console/URL: https://console.amp.cisco.com/search?query=9.67.100.1
+Action: Lookup this IP on AMP for Endpoints console/URL: https://console.amp.cisco.com/search?query=9.37.65.139
+Action: Lookup this IP on AMP for Endpoints console/URL: https://console.amp.cisco.com/search?query=129.1.1.1
+Action: Lookup this IP on AMP for Endpoints console/URL: https://console.amp.cisco.com/search?query=9.67.101.1
+Action: Lookup this IP on Talos Intelligence/URL: https://www.talosintelligence.com/reputation_center/lookup?search=9.67.100.1
+Action: Lookup this IP on Talos Intelligence/URL: https://www.talosintelligence.com/reputation_center/lookup?search=9.37.65.139
+Action: Lookup this IP on Talos Intelligence/URL: https://www.talosintelligence.com/reputation_center/lookup?search=129.1.1.1
+Action: Lookup this IP on Talos Intelligence/URL: https://www.talosintelligence.com/reputation_center/lookup?search=9.67.101.1
+
+------------------------------------------------------------
+DELIBERATE
+9.67.100.1: Unknown, verdict valid until 2023-11-23T17:48:46.966Z
+129.1.1.1: Unknown, verdict valid until 2023-11-23T17:48:47.543Z
+9.67.101.1: Unknown, verdict valid until 2023-11-23T17:48:48.539Z
+9.37.65.139: Unknown, verdict valid until 2023-11-23T17:48:47.376Z
+
+------------------------------------------------------------
+OBSERVE
+9.37.65.139: Sev Unknown/Conf High
+  Judgement reason: Neutral Cisco Umbrella reputation status
+9.67.101.1: Sev Unknown/Conf High
+  Judgement reason: Neutral Cisco Umbrella reputation status
+129.1.1.1: Sev Unknown/Conf High
+  Judgement reason: Neutral Cisco Umbrella reputation status
+9.67.100.1: Sev Unknown/Conf High
+  Judgement reason: Neutral Cisco Umbrella reputation status
+
+Inspect: media.txt
+
+------------------------------------------------------------
+REFER
+Action: Investigate this Domain/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/domain-view/name/www.twitter.com/view
+Action: Investigate this Domain/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/domain-view/name/www.internetbadguys.com/view
+Action: Browse this domain on Malware Analytics/URL: https://panacea.threatgrid.com/domains/www.internetbadguys.com
+Action: Browse this domain on Malware Analytics/URL: https://panacea.threatgrid.com/domains/www.twitter.com
+Action: Lookup this domain on Malware Analytics/URL: https://panacea.threatgrid.com/mask/search/samples?query=www.internetbadguys.com&term=domain
+Action: Lookup this domain on Malware Analytics/URL: https://panacea.threatgrid.com/mask/search/samples?query=www.twitter.com&term=domain
+Action: Lookup this domain on AMP for Endpoints console/URL: https://console.amp.cisco.com/search?query=www.twitter.com
+Action: Lookup this domain on AMP for Endpoints console/URL: https://console.amp.cisco.com/search?query=www.internetbadguys.com
+Action: Lookup this domain on Talos Intelligence/URL: https://www.talosintelligence.com/reputation_center/lookup?search=www.twitter.com
+Action: Lookup this domain on Talos Intelligence/URL: https://www.talosintelligence.com/reputation_center/lookup?search=www.internetbadguys.com
+
+------------------------------------------------------------
+DELIBERATE
+www.twitter.com: Clean, verdict valid until 2023-11-23T17:48:52.716Z
+www.internetbadguys.com: Malicious, verdict valid until 2023-11-23T17:48:53.131Z
+www.twitter.com: Clean, verdict valid until 2023-11-23T17:48:53.394Z
+www.internetbadguys.com: Unknown, verdict valid until 2023-11-23T17:48:53.395Z
+
+------------------------------------------------------------
+OBSERVE
+www.internetbadguys.com: Sev High/Conf High
+  Judgement reason: Poor Cisco Umbrella reputation status
+www.internetbadguys.com: Sev High/Conf High
+  Judgement reason: Added to the customer’s domain list
+www.twitter.com: Sev None/Conf High
+  Judgement reason: Good Cisco Umbrella reputation status
+www.twitter.com: Sev None/Conf High
+  Judgement reason: Good Talos Intelligence reputation score
+www.internetbadguys.com: Sev Low/Conf High
+  Judgement reason: Neutral Talos Intelligence reputation score
+
+Inspect: hashes.txt
+
+------------------------------------------------------------
+REFER
+Action: Investigate this Domain/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/domain-view/name/make_atom.py/view
+Action: Investigate this SHA256/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/sample-view/2990cb9eda3c268f0670ced0c5e82d66f588384a6102e7997c4b0a5cfbf6e43f
+Action: Investigate this SHA256/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/sample-view/adb3779bd853c92992c1b000f1f36317f00d48773f562b2ca62a45d52e15da67
+Action: Investigate this Email for associated domains/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/associated-domains-view/emails/nick%40globomantics.com
+Action: Investigate this Domain/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/domain-view/name/html_lint.sh/view
+Action: Investigate this SHA256/URL: https://dashboard.umbrella.com/o/7529441/#/investigate/sample-view/9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484
+Action: Browse this sha256 on Malware Analytics/URL: https://panacea.threatgrid.com/artifacts/2990cb9eda3c268f0670ced0c5e82d66f588384a6102e7997c4b0a5cfbf6e43f
+Action: Browse this sha256 on Malware Analytics/URL: https://panacea.threatgrid.com/artifacts/9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484
+Action: Browse this sha256 on Malware Analytics/URL: https://panacea.threatgrid.com/artifacts/adb3779bd853c92992c1b000f1f36317f00d48773f562b2ca62a45d52e15da67
+Action: Browse this domain on Malware Analytics/URL: https://panacea.threatgrid.com/domains/html_lint.sh
+Action: Browse this domain on Malware Analytics/URL: https://panacea.threatgrid.com/domains/make_atom.py
+Action: Lookup this sha256 on Malware Analytics/URL: https://panacea.threatgrid.com/mask/search/samples?query=2990cb9eda3c268f0670ced0c5e82d66f588384a6102e7997c4b0a5cfbf6e43f&term=sample-sha256
+Action: Lookup this sha256 on Malware Analytics/URL: https://panacea.threatgrid.com/mask/search/samples?query=9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484&term=sample-sha256
+Action: Lookup this sha256 on Malware Analytics/URL: https://panacea.threatgrid.com/mask/search/samples?query=adb3779bd853c92992c1b000f1f36317f00d48773f562b2ca62a45d52e15da67&term=sample-sha256
+Action: Lookup this domain on Malware Analytics/URL: https://panacea.threatgrid.com/mask/search/samples?query=html_lint.sh&term=domain
+Action: Lookup this domain on Malware Analytics/URL: https://panacea.threatgrid.com/mask/search/samples?query=make_atom.py&term=domain
+Action: View file trajectory for 2990cb9eda3c268f0670ced0c5e82d66f588384a6102e7997c4b0a5cfbf6e43f on AMP for Endpoints console/URL: https://console.amp.cisco.com/file/trajectory/2990cb9eda3c268f0670ced0c5e82d66f588384a6102e7997c4b0a5cfbf6e43f
+Action: View file trajectory for adb3779bd853c92992c1b000f1f36317f00d48773f562b2ca62a45d52e15da67 on AMP for Endpoints console/URL: https://console.amp.cisco.com/file/trajectory/adb3779bd853c92992c1b000f1f36317f00d48773f562b2ca62a45d52e15da67
+Action: View file trajectory for 9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484 on AMP for Endpoints console/URL: https://console.amp.cisco.com/file/trajectory/9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484
+Action: Lookup this SHA256 on AMP for Endpoints console/URL: https://console.amp.cisco.com/search?query=2990cb9eda3c268f0670ced0c5e82d66f588384a6102e7997c4b0a5cfbf6e43f
+Action: Lookup this SHA256 on AMP for Endpoints console/URL: https://console.amp.cisco.com/search?query=adb3779bd853c92992c1b000f1f36317f00d48773f562b2ca62a45d52e15da67
+Action: Lookup this SHA256 on AMP for Endpoints console/URL: https://console.amp.cisco.com/search?query=9db5fae0ac5886e09ea388a1345b0b4fde2967a148bfd9b813a541d5ca9ca484
+Action: Lookup this domain on AMP for Endpoints console/URL: https://console.amp.cisco.com/search?query=make_atom.py
+Action: Lookup this domain on AMP for Endpoints console/URL: https://console.amp.cisco.com/search?query=html_lint.sh
+Action: Lookup this domain on Talos Intelligence/URL: https://www.talosintelligence.com/reputation_center/lookup?search=make_atom.py
+Action: Lookup this domain on Talos Intelligence/URL: https://www.talosintelligence.com/reputation_center/lookup?search=html_lint.sh
+
+------------------------------------------------------------
+DELIBERATE
+html_lint.sh: Unknown, verdict valid until 2023-11-23T17:49:07.489Z
+make_atom.py: Unknown, verdict valid until 2023-11-23T17:49:07.042Z
+
+------------------------------------------------------------
+OBSERVE
+make_atom.py: Sev Unknown/Conf High
+  Judgement reason: Neutral Cisco Umbrella reputation status
+html_lint.sh: Sev Unknown/Conf High
+  Judgement reason: Neutral Cisco Umbrella reputation status
