@@ -100,17 +100,11 @@ class CiscoXDR:
         # If any errors occurred (status code >= 400), raise an HTTPError
         resp.raise_for_status()
 
-        # If there is a body, it will be JSON; convert to Python objects
-        if resp.text:
-            # import json; print(json.dumps(resp.json(), indent=2))
-            return resp.json()
-
-        # Body was not present; return empty dict for consistency
-        return {}
+        # import json; print(json.dumps(resp.json(), indent=2))
+        return resp.json()
 
 
 if __name__ == "__main__":
-
     # Create a new XDR instance with default (DevNet LL) parameters
     xdr = CiscoXDR.make_devnet_client()
 

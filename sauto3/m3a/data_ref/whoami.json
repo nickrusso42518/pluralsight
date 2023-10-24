@@ -1,0 +1,85 @@
+{
+  "user": {
+    "role": "admin",
+    "scopes": [
+      "event:read",
+      "insights",
+      "vault/configs:read",
+      "integration",
+      "private-intel",
+      "admin",
+      "profile",
+      "inspect",
+      "asset",
+      "feedback",
+      "sse",
+      "registry",
+      "users",
+      "investigation",
+      "invite",
+      "casebook",
+      "vault/config/metadata:read",
+      "orbital",
+      "enrich",
+      "oauth",
+      "collect",
+      "response",
+      "ui-settings",
+      "telemetry:write",
+      "openid",
+      "notification",
+      "global-intel:read",
+      "webhook",
+      "vault/config/posture:read",
+      "ao"
+    ],
+    "updated-at": "2023-08-01T14:29:53.275Z",
+    "idp-mappings": [
+      {
+        "idp": "sxso",
+        "user-identity-id": "00u1mqiq96xBaDmsd357",
+        "cco-id": "chrivand",
+        "enabled?": true
+      }
+    ],
+    "user-email": "chrivand@cisco.com",
+    "user-name": "Christopher Van Der Made",
+    "org-id": "e75a0577-c177-4d6b-8ad0-04baffb46df1",
+    "user-id": "32c9cd56-4af8-47e7-b45d-77a0e03af42a",
+    "enabled?": true,
+    "last-logged-at": [
+      "2023-08-01T14:29:53.275Z",
+      "2023-07-25T16:40:31.402Z",
+      "2023-07-25T16:40:12.050Z",
+      "2023-07-25T16:39:10.217Z",
+      "2023-07-25T16:34:24.290Z"
+    ],
+    "created-at": "2023-07-25T16:34:22.970Z",
+    "user-nick": "Christopher Van Der Made"
+  },
+  "org": {
+    "updated-at": "2021-11-02T13:51:42.612Z",
+    "address": {
+      "department": "",
+      "street1": "",
+      "street2": "",
+      "postal-code": "",
+      "city": "San Jose",
+      "country-iso-code": "US",
+      "country-name": "United States"
+    },
+    "name": "DevNet Express Security",
+    "allow-all-role-to-login": true,
+    "xdr-enabled?": false,
+    "sx-enabled?": true,
+    "enabled?": true,
+    "activation-status": "activated",
+    "scim-status": "activated",
+    "id": "e75a0577-c177-4d6b-8ad0-04baffb46df1",
+    "created-at": "2021-11-02T13:49:44.435Z",
+    "allow-all-role-to-login-editable?": true
+  },
+  "idp": {
+    "id": "sxso"
+  }
+}
