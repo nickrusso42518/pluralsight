@@ -1,0 +1,33 @@
+config
+mdt 1
+device [ csr08 ]
+xpath /process-cpu-ios-xe-oper:cpu-usage/cpu-utilization
+xe_src_addr 10.0.0.8
+sample 1000
+rx_ip 192.168.5.22
+rx_port 50051
+
+mdt 2
+device [ csr08 ]
+xpath /memory-ios-xe-oper:memory-statistics/memory-statistic
+xe_src_addr 10.0.0.8
+sample 1000
+rx_ip 192.168.5.22
+rx_port 50051
+
+mdt 3
+device [ xrv_sbx ]
+xpath Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization
+sample 1000
+rx_ip 192.168.5.22
+rx_port 50051
+
+mdt 4
+device [ xrv_sbx ]
+xpath Cisco-IOS-XR-procmem-oper:processes-memory
+sample 1000
+rx_ip 192.168.5.22
+rx_port 50051
+commit
+end
+

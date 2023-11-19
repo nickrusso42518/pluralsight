@@ -1,0 +1,1610 @@
+
+module: Cisco-IOS-XE-snmp
+  augment /ios:native/ios:snmp:
+    +--rw ifmib
+    |  +--rw ifindex
+    |  |  +--rw persist?   empty
+    |  +--rw ifalias
+    |     +--rw long?   empty
+    +--rw mib
+       +--rw community-map
+       |  +--rw community-map-list* [name]
+       |     +--rw name          string
+       |     +--rw encryption?   enumeration
+       |     +--rw engineid?     string
+       +--rw bulkstat
+       |  +--rw object-list* [name]
+       |     +--rw name    string
+       +--rw persist!
+          +--rw persist-enum?   enumeration
+  augment /ios:native/ios:snmp-server:
+    +--rw chassis-id?         string
+    +--rw community-config* [name]
+    |  +--rw name                string
+    |  +--rw encryption?         enumeration
+    |  +--rw view?               string
+    |  +--rw permission?         enumeration
+    |  +--rw ipv6?               string
+    |  +--rw access-list-name?   ios-types:std-acl-type
+    x--rw community* [name]
+    |  x--rw name                string
+    |  x--rw view?               string
+    |  +--rw (access-choice)?
+    |  |  +--:(RO)
+    |  |  |  x--rw RO?           empty
+    |  |  +--:(RW)
+    |  |     x--rw RW?           empty
+    |  x--rw ipv6?               string
+    |  x--rw access-list-name?   ios-types:std-acl-type
+    +--rw contact?            string
+    +--rw context* [name]
+    |  +--rw name    string
+    +--rw enable
+    |  +--rw enable-choice
+    |     +--rw logging
+    |     |  +--rw getop?   boolean
+    |     |  +--rw setop?   boolean
+    |     +--rw informs?   empty
+    |     +--rw traps!
+    |        +--rw aaa_server?           empty
+    |        +--rw vdsl2line?            empty
+    |        +--rw adslline?             empty
+    |        +--rw trustsec-sxp!
+    |        |  +--rw binding-conflict?     empty
+    |        |  +--rw binding-err?          empty
+    |        |  +--rw binding-expn-fail?    empty
+    |        |  +--rw conn-config-err?      empty
+    |        |  +--rw conn-down?            empty
+    |        |  +--rw conn-srcaddr-err?     empty
+    |        |  +--rw conn-up?              empty
+    |        |  +--rw msg-parse-err?        empty
+    |        |  +--rw oper-nodeid-change?   empty
+    |        +--rw vswitch!
+    |        |  +--rw dual-active!
+    |        |     +--rw vsl?   empty
+    |        +--rw trustsec-server!
+    |        |  +--rw radius-server!
+    |        |     +--rw provision-secret?   empty
+    |        +--rw trustsec!
+    |        |  +--rw authz-file-error!
+    |        |     +--rw cache-file-error!
+    |        |        +--rw keystore-file-error!
+    |        |           +--rw keystore-sync-fail!
+    |        |              +--rw random-number-fail!
+    |        |                 +--rw src-entropy-fail?   empty
+    |        +--rw trustsec-interface!
+    |        |  +--rw unauthorized!
+    |        |     +--rw sap-fail!
+    |        |        +--rw authc-fail!
+    |        |           +--rw supplicant-fail!
+    |        |              +--rw authz-fail?   empty
+    |        +--rw trustsec-policy!
+    |        |  +--rw peer-policy-updated!
+    |        |     +--rw authz-sgacl-fail?   empty
+    |        +--rw ospfv3
+    |        |  +--rw state-change?   empty
+    |        |  +--rw errors?         empty
+    |        +--rw ike
+    |        |  +--rw policy
+    |        |  |  +--rw add?      empty
+    |        |  |  +--rw delete?   empty
+    |        |  +--rw tunnel
+    |        |     +--rw start?   empty
+    |        |     +--rw stop?    empty
+    |        +--rw pki?                  empty
+    |        +--rw local-auth?           empty
+    |        +--rw alarms!
+    |        |  +--rw alarm-type?   union
+    |        +--rw atm
+    |        |  +--rw pvc!
+    |        |  |  +--rw extension
+    |        |  |  |  +--rw down?         empty
+    |        |  |  |  +--rw up?           empty
+    |        |  |  |  +--rw mibversion?   enumeration
+    |        |  |  |  +--rw oam
+    |        |  |  |     +--rw failure
+    |        |  |  |        +--rw loopback?   empty
+    |        |  |  +--rw interval?        uint16
+    |        |  |  +--rw fail-interval?   uint16
+    |        |  +--rw subif!
+    |        |     +--rw interval?   uint16
+    |        |     +--rw count?      uint16
+    |        +--rw authenticate-fail?    empty
+    |        +--rw auth-framework!
+    |        |  +--rw sec-violation?   empty
+    |        +--rw bfd?                  empty
+    |        +--rw bgp-conf
+    |        |  +--rw cbgp2?   empty
+    |        +--rw bgp?                  empty
+    |        +--rw bridge!
+    |        |  +--rw newroot?          empty
+    |        |  +--rw topologychange?   empty
+    |        +--rw bstun?                empty
+    |        +--rw bulkstat!
+    |        |  +--rw collection?   empty
+    |        |  +--rw transfer?     empty
+    |        +--rw call-home!
+    |        |  +--rw message-send-fail?   empty
+    |        |  +--rw server-fail?         empty
+    |        +--rw c2900?                empty
+    |        +--rw c6kxbar!
+    |        |  +--rw intbus-crcexcd?    empty
+    |        |  +--rw intbus-crcrcvrd?   empty
+    |        |  +--rw swbus?             empty
+    |        +--rw casa?                 empty
+    |        +--rw ccme?                 empty
+    |        +--rw cef
+    |        |  +--rw resource-failure?        empty
+    |        |  +--rw peer-state-change?       empty
+    |        |  +--rw peer-fib-state-change?   empty
+    |        |  +--rw inconsistency?           empty
+    |        +--rw cluster?              empty
+    |        +--rw channel?              empty
+    |        +--rw chassis?              empty
+    |        +--rw cnpd?                 empty
+    |        +--rw config?               empty
+    |        +--rw copy-config?          empty
+    |        +--rw config-copy?          empty
+    |        +--rw config-ctid?          empty
+    |        +--rw cpu!
+    |        |  +--rw threshold?   empty
+    |        +--rw cpu_threshold?        empty
+    |        +--rw csg!
+    |        |  +--rw agent?          empty
+    |        |  +--rw database?       empty
+    |        |  +--rw quota-server?   empty
+    |        +--rw dial?                 empty
+    |        +--rw director?             empty
+    |        +--rw dlsw?                 empty
+    |        +--rw deauthenticate?       empty
+    |        +--rw disassociate?         empty
+    |        +--rw dnis?                 empty
+    |        +--rw dot11-qos?            empty
+    |        +--rw dot1x
+    |        |  +--rw auth-fail-vlan?      empty
+    |        |  +--rw guest-vlan?          empty
+    |        |  +--rw no-auth-fail-vlan?   empty
+    |        |  +--rw no-guest-vlan?       empty
+    |        +--rw ds0-busyout?          empty
+    |        +--rw ds1?                  empty
+    |        +--rw ds1-loopback?         empty
+    |        +--rw ds3?                  empty
+    |        +--rw dsp!
+    |        |  +--rw card-status?   empty
+    |        |  +--rw oper-state?    empty
+    |        +--rw dhcp?                 empty
+    |        +--rw eigrp?                empty
+    |        +--rw energywise!
+    |        |  +--rw event-occured?      empty
+    |        |  +--rw level-change?       empty
+    |        |  +--rw neighbor-added?     empty
+    |        |  +--rw neighbor-deleted?   empty
+    |        +--rw entity?               empty
+    |        +--rw entity-diag!
+    |        |  +--rw boot-up-fail?          empty
+    |        |  +--rw hm-test-recover?       empty
+    |        |  +--rw hm-thresh-reached?     empty
+    |        |  +--rw scheduled-test-fail?   empty
+    |        +--rw envmon!
+    |        |  +--rw fan?           empty
+    |        |  +--rw shutdown?      empty
+    |        |  +--rw supply?        empty
+    |        |  +--rw temperature?   empty
+    |        |  +--rw status?        empty
+    |        +--rw errdisable!
+    |        |  +--rw notification-rate?   uint16
+    |        +--rw ether-oam?            empty
+    |        +--rw ethernet
+    |        |  +--rw cfm
+    |        |  |  +--rw alarm?        empty
+    |        |  |  +--rw cc!
+    |        |  |  |  +--rw config?          empty
+    |        |  |  |  +--rw cross-connect?   empty
+    |        |  |  |  +--rw loop?            empty
+    |        |  |  |  +--rw mep-down?        empty
+    |        |  |  |  +--rw mep-up?          empty
+    |        |  |  +--rw crosscheck!
+    |        |  |     +--rw mep-missing?   empty
+    |        |  |     +--rw mep-unknown?   empty
+    |        |  |     +--rw service-up?    empty
+    |        |  +--rw evc!
+    |        |     +--rw create?   empty
+    |        |     +--rw delete?   empty
+    |        |     +--rw status?   empty
+    |        +--rw event-manager?        empty
+    |        +--rw firewall!
+    |        |  +--rw serverstatus?   empty
+    |        +--rw flash!
+    |        |  +--rw insertion?   empty
+    |        |  +--rw removal?     empty
+    |        +--rw flowmon?              empty
+    |        +--rw flex-links!
+    |        |  +--rw status?   empty
+    |        +--rw frame-relay!
+    |        |  +--rw multilink
+    |        |  |  +--rw bundle-mismatch?   empty
+    |        |  +--rw subif!
+    |        +--rw fru-ctrl?             empty
+    |        +--rw gatekeeper?           empty
+    |        +--rw hsrp?                 empty
+    |        +--rw icsudsu?              empty
+    |        +--rw ima?                  empty
+    |        +--rw ipmobile?             empty
+    |        +--rw ipmulticast?          empty
+    |        +--rw ipsec
+    |        |  +--rw cryptomap
+    |        |  |  +--rw add?      empty
+    |        |  |  +--rw attach?   empty
+    |        |  |  +--rw delete?   empty
+    |        |  |  +--rw detach?   empty
+    |        |  +--rw tunnel
+    |        |  |  +--rw start?   empty
+    |        |  |  +--rw stop?    empty
+    |        |  +--rw too-many-sas?   empty
+    |        +--rw isakmp
+    |        |  +--rw policy
+    |        |  |  +--rw add?      empty
+    |        |  |  +--rw delete?   empty
+    |        |  +--rw tunnel
+    |        |     +--rw start?   empty
+    |        |     +--rw stop?    empty
+    |        +--rw isdn!
+    |        |  +--rw call-information?   empty
+    |        |  +--rw chan-not-avail?     empty
+    |        |  +--rw ietf?               empty
+    |        |  +--rw layer2?             empty
+    |        +--rw ipsla?                empty
+    |        +--rw isis?                 empty
+    |        +--rw l2tc!
+    |        |  +--rw sys-threshold?   empty
+    |        |  +--rw threshold?       empty
+    |        +--rw l2tun
+    |        |  +--rw session?      empty
+    |        |  +--rw pseudowire
+    |        |     +--rw status?   empty
+    |        +--rw license!
+    |        |  +--rw deploy?   empty
+    |        |  +--rw error?    empty
+    |        |  +--rw usage?    empty
+    |        +--rw mac-notification!
+    |        |  +--rw change?      empty
+    |        |  +--rw move?        empty
+    |        |  +--rw threshold?   empty
+    |        +--rw mac-notification2!
+    |        |  +--rw change?      empty
+    |        |  +--rw move?        empty
+    |        |  +--rw threshold?   empty
+    |        +--rw memory!
+    |        |  +--rw bufferpeak?   empty
+    |        +--rw module?               empty
+    |        +--rw mpls!
+    |        |  +--rw traffic-eng!
+    |        |  |  +--rw up?        empty
+    |        |  |  +--rw down?      empty
+    |        |  |  +--rw reroute?   empty
+    |        |  +--rw fast-reroute!
+    |        |  |  +--rw protected?   empty
+    |        |  +--rw rfc!
+    |        |  |  +--rw ldp?   empty
+    |        |  +--rw ldp!
+    |        |  |  +--rw pv-limit?       empty
+    |        |  |  +--rw session-down?   empty
+    |        |  |  +--rw session-up?     empty
+    |        |  |  +--rw threshold?      empty
+    |        |  +--rw vpn?            empty
+    |        +--rw msdp?                 empty
+    |        +--rw mvpn?                 empty
+    |        +--rw nhrp!
+    |        |  +--rw nhs!
+    |        |  +--rw nhc!
+    |        |  +--rw nhp!
+    |        |  +--rw quota-exceeded!
+    |        +--rw ospf
+    |        |  +--rw state-change!
+    |        |  |  +--rw if-state-change?             empty
+    |        |  |  +--rw neighbor-state-change?       empty
+    |        |  |  +--rw virtif-state-change?         empty
+    |        |  |  +--rw virtneighbor-state-change?   empty
+    |        |  +--rw errors!
+    |        |  +--rw retransmit!
+    |        |  |  +--rw packets?        empty
+    |        |  |  +--rw virt-packets?   empty
+    |        |  +--rw lsa!
+    |        |  |  +--rw lsa-maxage?      empty
+    |        |  |  +--rw lsa-originate?   empty
+    |        |  +--rw cisco-specific!
+    |        |     +--rw state-change!
+    |        |     |  +--rw nssa-trans-change?   empty
+    |        |     |  +--rw shamlink!
+    |        |     |     +--rw interface?       empty
+    |        |     |     +--rw interface-old?   empty
+    |        |     |     +--rw neighbor?        empty
+    |        |     +--rw errors!
+    |        |     +--rw errdisable!
+    |        |     |  +--rw notification-rate?   uint16
+    |        |     +--rw retransmit!
+    |        |     +--rw lsa!
+    |        |        +--rw lsa-maxage?      empty
+    |        |        +--rw lsa-originate?   empty
+    |        +--rw pim!
+    |        |  +--rw invalid-pim-message?   empty
+    |        |  +--rw neighbor-change?       empty
+    |        |  +--rw rp-mapping-change?     empty
+    |        +--rw plogd!
+    |        +--rw port-security!
+    |        |  +--rw trap-rate?   uint16
+    |        +--rw power-ethernet
+    |        |  +--rw group?    string
+    |        |  +--rw police?   empty
+    |        +--rw pppoe?                empty
+    |        +--rw pw!
+    |        |  +--rw vc?   empty
+    |        +--rw rep?                  empty
+    |        +--rw resource-policy?      empty
+    |        +--rw rf?                   empty
+    |        +--rw rogue-ap?             empty
+    |        +--rw rsvp?                 empty
+    |        +--rw rtr?                  empty
+    |        +--rw slb!
+    |        |  +--rw csrp?      empty
+    |        |  +--rw real?      empty
+    |        |  +--rw virtual?   empty
+    |        +--rw smart-licenseing
+    |        |  +--rw smart-license?   empty
+    |        |  +--rw entitlement?     empty
+    |        |  +--rw global?          empty
+    |        +--rw snmp
+    |        |  +--rw authentication?   empty
+    |        |  +--rw coldstart?        empty
+    |        |  +--rw linkdown?         empty
+    |        |  +--rw linkup?           empty
+    |        |  +--rw warmstart?        empty
+    |        +--rw sonet?                empty
+    |        +--rw srst?                 empty
+    |        +--rw srp?                  empty
+    |        +--rw stackwise!
+    |        |  +--rw GLS?                           empty
+    |        |  +--rw ILS?                           empty
+    |        |  +--rw SRLS?                          empty
+    |        |  +--rw insufficient-power?            empty
+    |        |  +--rw invalid-input-current?         empty
+    |        |  +--rw invalid-output-current?        empty
+    |        |  +--rw member-removed?                empty
+    |        |  +--rw member-upgrade-notification?   empty
+    |        |  +--rw new-master?                    empty
+    |        |  +--rw new-member?                    empty
+    |        |  +--rw port-change?                   empty
+    |        |  +--rw power-budget-warning?          empty
+    |        |  +--rw power-invalid-topology?        empty
+    |        |  +--rw power-link-status-changed?     empty
+    |        |  +--rw power-oper-status-changed?     empty
+    |        |  +--rw power-priority-conflict?       empty
+    |        |  +--rw power-version-mismatch?        empty
+    |        |  +--rw ring-redundant?                empty
+    |        |  +--rw stack-mismatch?                empty
+    |        |  +--rw unbalanced-power-supplies?     empty
+    |        |  +--rw under-budget?                  empty
+    |        |  +--rw under-voltage?                 empty
+    |        +--rw stpx!
+    |        |  +--rw inconsistency?        empty
+    |        |  +--rw root-inconsistency?   empty
+    |        |  +--rw loop-inconsistency?   empty
+    |        +--rw stun?                 empty
+    |        +--rw switch-over?          empty
+    |        +--rw syslog?               empty
+    |        +--rw transceiver
+    |        |  +--rw all?   empty
+    |        +--rw tty?                  empty
+    |        +--rw udld!
+    |        |  +--rw link-fail-rpt?   empty
+    |        |  +--rw status-change?   empty
+    |        +--rw vlancreate?           empty
+    |        +--rw vlandelete?           empty
+    |        +--rw vlan-mac-limit?       empty
+    |        +--rw vlan-membership?      empty
+    |        +--rw voice?                empty
+    |        +--rw vrfmib
+    |        |  +--rw vrf-up?            empty
+    |        |  +--rw vrf-down?          empty
+    |        |  +--rw vnet-trunk-up?     empty
+    |        |  +--rw vnet-trunk-down?   empty
+    |        +--rw vrrp?                 empty
+    |        +--rw vsimaster?            empty
+    |        +--rw vstack!
+    |        |  +--rw addition?    empty
+    |        |  +--rw failure?     empty
+    |        |  +--rw lost?        empty
+    |        |  +--rw operation?   empty
+    |        +--rw vtp?                  empty
+    |        +--rw wlan-wep?             empty
+    |        +--rw xgcp?                 empty
+    |        +--rw wiredguest!
+    |        |  +--rw wired_guest?   empty
+    |        +--rw wireless!
+    |           +--rw AP?                  empty
+    |           +--rw bsn80211Security?    empty
+    |           +--rw bsnAutoRF?           empty
+    |           +--rw bsnGeneral?          empty
+    |           +--rw Client?              empty
+    |           +--rw MESH?                empty
+    |           +--rw rogue?               empty
+    |           +--rw RRM?                 empty
+    |           +--rw SI?                  empty
+    |           +--rw tunnel?              empty
+    |           +--rw wireless_mobility?   empty
+    |           o--rw bsnMobileStation!
+    |              o--rw bsnAccessPoint!
+    |                 o--rw bsnRogue?   empty
+    +--rw engineID
+    |  +--rw local?         string
+    |  +--rw remote-conf
+    |  |  +--rw host-list* [ip-address]
+    |  |  |  +--rw ip-address    ios-types:host-type
+    |  |  |  +--rw engine-id?    string
+    |  |  +--rw host-vrf-list* [ip-address]
+    |  |  |  +--rw ip-address    ios-types:host-type
+    |  |  |  +--rw vrf* [vrf-name]
+    |  |  |     +--rw vrf-name     string
+    |  |  |     +--rw engine-id?   string
+    |  |  +--rw host-udp-list* [ip-address]
+    |  |  |  +--rw ip-address    ios-types:host-type
+    |  |  |  +--rw udp-port* [port-number]
+    |  |  |     +--rw port-number    uint16
+    |  |  |     +--rw engine-id?     string
+    |  |  +--rw host-udp-vrf-list* [ip-address]
+    |  |     +--rw ip-address    ios-types:host-type
+    |  |     +--rw udp-port* [port-number]
+    |  |        +--rw port-number    uint16
+    |  |        +--rw vrf* [vrf-name]
+    |  |           +--rw vrf-name     string
+    |  |           +--rw engine-id?   string
+    |  x--rw remote
+    +--rw file-transfer
+    |  +--rw access-group
+    |     +--rw access-group-name?   union
+    +--rw group* [id]
+    |  +--rw id           string
+    |  +--rw (security-model)?
+    |     +--:(v1)
+    |     |  +--rw v1
+    |     +--:(v2c)
+    |     |  +--rw v2c
+    |     +--:(v3)
+    |        +--rw v3
+    |           +--rw security-level-list* [security-level]
+    |           |  +--rw security-level    enumeration
+    |           |  +--rw context-node?     string
+    |           |  +--rw match-node?       enumeration
+    |           |  +--rw read-node?        string
+    |           |  +--rw write-node?       string
+    |           |  +--rw notify-node?      string
+    |           |  x--rw access-node?      union
+    |           |  +--rw access-config
+    |           |     +--rw ipv6-acl?             string
+    |           |     +--rw (access-option)?
+    |           |        +--:(standard-acl)
+    |           |        |  +--rw standard-acl?   uint32
+    |           |        +--:(acl-name)
+    |           |        |  +--rw acl-name?       string
+    |           |        +--:(ipv6)
+    |           |           x--rw ipv6?           string
+    |           x--rw security-level?        enumeration
+    |           x--rw context?               string
+    |           x--rw match?                 enumeration
+    |           x--rw read?                  string
+    |           x--rw write?                 string
+    |           x--rw notify?                string
+    |           x--rw access?                union
+    +--rw host-config
+    |  +--rw ip-community* [ip-address community-or-user]
+    |  |  +--rw ip-address           ios-types:host-type
+    |  |  +--rw community-or-user    string
+    |  |  +--rw (informs-traps-choice)?
+    |  |  |  +--:(informs)
+    |  |  |  |  +--rw informs?       empty
+    |  |  |  +--:(traps)
+    |  |  |     +--rw traps?         empty
+    |  |  +--rw version?             enumeration
+    |  |  +--rw security-level?      enumeration
+    |  |  +--rw trap-enable
+    |  |  |  +--rw aaa_server?                empty
+    |  |  |  +--rw alarms?                    empty
+    |  |  |  +--rw atm?                       empty
+    |  |  |  +--rw bfd?                       empty
+    |  |  |  +--rw bgp?                       empty
+    |  |  |  +--rw bstun?                     empty
+    |  |  |  +--rw bulkstat?                  empty
+    |  |  |  +--rw call-home?                 empty
+    |  |  |  +--rw casa?                      empty
+    |  |  |  +--rw cef?                       empty
+    |  |  |  +--rw cnpd?                      empty
+    |  |  |  +--rw config?                    empty
+    |  |  |  +--rw config-copy?               empty
+    |  |  |  +--rw config-ctid?               empty
+    |  |  |  +--rw cpu?                       empty
+    |  |  |  +--rw dhcp?                      empty
+    |  |  |  +--rw dlsw?                      empty
+    |  |  |  +--rw ds1?                       empty
+    |  |  |  +--rw dsp?                       empty
+    |  |  |  +--rw dspu?                      empty
+    |  |  |  +--rw eigrp?                     empty
+    |  |  |  +--rw entity?                    empty
+    |  |  |  +--rw entity-diag?               empty
+    |  |  |  +--rw entity-qfp?                empty
+    |  |  |  +--rw entity-state?              empty
+    |  |  |  +--rw ethernet-cfm?              empty
+    |  |  |  +--rw evc?                       empty
+    |  |  |  +--rw event-manager?             empty
+    |  |  |  +--rw firewall?                  empty
+    |  |  |  +--rw flash?                     empty
+    |  |  |  +--rw flowmon?                   empty
+    |  |  |  +--rw frame-relay?               empty
+    |  |  |  +--rw fru-ctrl?                  empty
+    |  |  |  +--rw gdoi?                      empty
+    |  |  |  +--rw hsrp?                      empty
+    |  |  |  +--rw iplocalpool?               empty
+    |  |  |  +--rw ipmulticast?               empty
+    |  |  |  +--rw ipsec?                     empty
+    |  |  |  +--rw ipsla?                     empty
+    |  |  |  +--rw isakmp?                    empty
+    |  |  |  +--rw isg-mib?                   empty
+    |  |  |  +--rw isis?                      empty
+    |  |  |  +--rw l2tun-pseudowire-status?   empty
+    |  |  |  +--rw l2tun-session?             empty
+    |  |  |  +--rw license?                   empty
+    |  |  |  +--rw memory?                    empty
+    |  |  |  +--rw mpls-fast-reroute?         empty
+    |  |  |  +--rw mpls-ldp?                  empty
+    |  |  |  +--rw mpls-traffic-eng?          empty
+    |  |  |  +--rw mpls-vpn?                  empty
+    |  |  |  +--rw msdp?                      empty
+    |  |  |  +--rw mvpn?                      empty
+    |  |  |  +--rw nhrp?                      empty
+    |  |  |  +--rw ospf?                      empty
+    |  |  |  +--rw ospfv3?                    empty
+    |  |  |  +--rw pfr?                       empty
+    |  |  |  +--rw pim?                       empty
+    |  |  |  +--rw pw-vc?                     empty
+    |  |  |  +--rw resource-policy?           empty
+    |  |  |  +--rw rf?                        empty
+    |  |  |  +--rw rsrb?                      empty
+    |  |  |  +--rw rsvp?                      empty
+    |  |  |  +--rw sdlc?                      empty
+    |  |  |  +--rw sdllc?                     empty
+    |  |  |  +--rw snmp?                      empty
+    |  |  |  +--rw sonet?                     empty
+    |  |  |  +--rw srp?                       empty
+    |  |  |  +--rw stun?                      empty
+    |  |  |  +--rw syslog?                    empty
+    |  |  |  +--rw trustsec-sxp?              empty
+    |  |  |  +--rw tty?                       empty
+    |  |  |  +--rw voice?                     empty
+    |  |  |  +--rw vrfmib?                    empty
+    |  |  |  +--rw vrrp?                      empty
+    |  |  |  +--rw x25?                       empty
+    |  |  +--rw encryption?          enumeration
+    |  +--rw ip-community-port* [ip-address community-or-user udp-port]
+    |  |  +--rw ip-address           ios-types:host-type
+    |  |  +--rw community-or-user    string
+    |  |  +--rw udp-port             uint16
+    |  |  +--rw (informs-traps-choice)?
+    |  |  |  +--:(informs)
+    |  |  |  |  +--rw informs?       empty
+    |  |  |  +--:(traps)
+    |  |  |     +--rw traps?         empty
+    |  |  +--rw version?             enumeration
+    |  |  +--rw security-level?      enumeration
+    |  |  +--rw trap-enable
+    |  |  |  +--rw aaa_server?                empty
+    |  |  |  +--rw alarms?                    empty
+    |  |  |  +--rw atm?                       empty
+    |  |  |  +--rw bfd?                       empty
+    |  |  |  +--rw bgp?                       empty
+    |  |  |  +--rw bstun?                     empty
+    |  |  |  +--rw bulkstat?                  empty
+    |  |  |  +--rw call-home?                 empty
+    |  |  |  +--rw casa?                      empty
+    |  |  |  +--rw cef?                       empty
+    |  |  |  +--rw cnpd?                      empty
+    |  |  |  +--rw config?                    empty
+    |  |  |  +--rw config-copy?               empty
+    |  |  |  +--rw config-ctid?               empty
+    |  |  |  +--rw cpu?                       empty
+    |  |  |  +--rw dhcp?                      empty
+    |  |  |  +--rw dlsw?                      empty
+    |  |  |  +--rw ds1?                       empty
+    |  |  |  +--rw dsp?                       empty
+    |  |  |  +--rw dspu?                      empty
+    |  |  |  +--rw eigrp?                     empty
+    |  |  |  +--rw entity?                    empty
+    |  |  |  +--rw entity-diag?               empty
+    |  |  |  +--rw entity-qfp?                empty
+    |  |  |  +--rw entity-state?              empty
+    |  |  |  +--rw ethernet-cfm?              empty
+    |  |  |  +--rw evc?                       empty
+    |  |  |  +--rw event-manager?             empty
+    |  |  |  +--rw firewall?                  empty
+    |  |  |  +--rw flash?                     empty
+    |  |  |  +--rw flowmon?                   empty
+    |  |  |  +--rw frame-relay?               empty
+    |  |  |  +--rw fru-ctrl?                  empty
+    |  |  |  +--rw gdoi?                      empty
+    |  |  |  +--rw hsrp?                      empty
+    |  |  |  +--rw iplocalpool?               empty
+    |  |  |  +--rw ipmulticast?               empty
+    |  |  |  +--rw ipsec?                     empty
+    |  |  |  +--rw ipsla?                     empty
+    |  |  |  +--rw isakmp?                    empty
+    |  |  |  +--rw isg-mib?                   empty
+    |  |  |  +--rw isis?                      empty
+    |  |  |  +--rw l2tun-pseudowire-status?   empty
+    |  |  |  +--rw l2tun-session?             empty
+    |  |  |  +--rw license?                   empty
+    |  |  |  +--rw memory?                    empty
+    |  |  |  +--rw mpls-fast-reroute?         empty
+    |  |  |  +--rw mpls-ldp?                  empty
+    |  |  |  +--rw mpls-traffic-eng?          empty
+    |  |  |  +--rw mpls-vpn?                  empty
+    |  |  |  +--rw msdp?                      empty
+    |  |  |  +--rw mvpn?                      empty
+    |  |  |  +--rw nhrp?                      empty
+    |  |  |  +--rw ospf?                      empty
+    |  |  |  +--rw ospfv3?                    empty
+    |  |  |  +--rw pfr?                       empty
+    |  |  |  +--rw pim?                       empty
+    |  |  |  +--rw pw-vc?                     empty
+    |  |  |  +--rw resource-policy?           empty
+    |  |  |  +--rw rf?                        empty
+    |  |  |  +--rw rsrb?                      empty
+    |  |  |  +--rw rsvp?                      empty
+    |  |  |  +--rw sdlc?                      empty
+    |  |  |  +--rw sdllc?                     empty
+    |  |  |  +--rw snmp?                      empty
+    |  |  |  +--rw sonet?                     empty
+    |  |  |  +--rw srp?                       empty
+    |  |  |  +--rw stun?                      empty
+    |  |  |  +--rw syslog?                    empty
+    |  |  |  +--rw trustsec-sxp?              empty
+    |  |  |  +--rw tty?                       empty
+    |  |  |  +--rw voice?                     empty
+    |  |  |  +--rw vrfmib?                    empty
+    |  |  |  +--rw vrrp?                      empty
+    |  |  |  +--rw x25?                       empty
+    |  |  +--rw encryption?          enumeration
+    |  +--rw ip-vrf-community* [ip-address vrf community-or-user]
+    |  |  +--rw ip-address           ios-types:host-type
+    |  |  +--rw vrf                  string
+    |  |  +--rw community-or-user    string
+    |  |  +--rw (informs-traps-choice)?
+    |  |  |  +--:(informs)
+    |  |  |  |  +--rw informs?       empty
+    |  |  |  +--:(traps)
+    |  |  |     +--rw traps?         empty
+    |  |  +--rw version?             enumeration
+    |  |  +--rw security-level?      enumeration
+    |  |  +--rw trap-enable
+    |  |  |  +--rw aaa_server?                empty
+    |  |  |  +--rw alarms?                    empty
+    |  |  |  +--rw atm?                       empty
+    |  |  |  +--rw bfd?                       empty
+    |  |  |  +--rw bgp?                       empty
+    |  |  |  +--rw bstun?                     empty
+    |  |  |  +--rw bulkstat?                  empty
+    |  |  |  +--rw call-home?                 empty
+    |  |  |  +--rw casa?                      empty
+    |  |  |  +--rw cef?                       empty
+    |  |  |  +--rw cnpd?                      empty
+    |  |  |  +--rw config?                    empty
+    |  |  |  +--rw config-copy?               empty
+    |  |  |  +--rw config-ctid?               empty
+    |  |  |  +--rw cpu?                       empty
+    |  |  |  +--rw dhcp?                      empty
+    |  |  |  +--rw dlsw?                      empty
+    |  |  |  +--rw ds1?                       empty
+    |  |  |  +--rw dsp?                       empty
+    |  |  |  +--rw dspu?                      empty
+    |  |  |  +--rw eigrp?                     empty
+    |  |  |  +--rw entity?                    empty
+    |  |  |  +--rw entity-diag?               empty
+    |  |  |  +--rw entity-qfp?                empty
+    |  |  |  +--rw entity-state?              empty
+    |  |  |  +--rw ethernet-cfm?              empty
+    |  |  |  +--rw evc?                       empty
+    |  |  |  +--rw event-manager?             empty
+    |  |  |  +--rw firewall?                  empty
+    |  |  |  +--rw flash?                     empty
+    |  |  |  +--rw flowmon?                   empty
+    |  |  |  +--rw frame-relay?               empty
+    |  |  |  +--rw fru-ctrl?                  empty
+    |  |  |  +--rw gdoi?                      empty
+    |  |  |  +--rw hsrp?                      empty
+    |  |  |  +--rw iplocalpool?               empty
+    |  |  |  +--rw ipmulticast?               empty
+    |  |  |  +--rw ipsec?                     empty
+    |  |  |  +--rw ipsla?                     empty
+    |  |  |  +--rw isakmp?                    empty
+    |  |  |  +--rw isg-mib?                   empty
+    |  |  |  +--rw isis?                      empty
+    |  |  |  +--rw l2tun-pseudowire-status?   empty
+    |  |  |  +--rw l2tun-session?             empty
+    |  |  |  +--rw license?                   empty
+    |  |  |  +--rw memory?                    empty
+    |  |  |  +--rw mpls-fast-reroute?         empty
+    |  |  |  +--rw mpls-ldp?                  empty
+    |  |  |  +--rw mpls-traffic-eng?          empty
+    |  |  |  +--rw mpls-vpn?                  empty
+    |  |  |  +--rw msdp?                      empty
+    |  |  |  +--rw mvpn?                      empty
+    |  |  |  +--rw nhrp?                      empty
+    |  |  |  +--rw ospf?                      empty
+    |  |  |  +--rw ospfv3?                    empty
+    |  |  |  +--rw pfr?                       empty
+    |  |  |  +--rw pim?                       empty
+    |  |  |  +--rw pw-vc?                     empty
+    |  |  |  +--rw resource-policy?           empty
+    |  |  |  +--rw rf?                        empty
+    |  |  |  +--rw rsrb?                      empty
+    |  |  |  +--rw rsvp?                      empty
+    |  |  |  +--rw sdlc?                      empty
+    |  |  |  +--rw sdllc?                     empty
+    |  |  |  +--rw snmp?                      empty
+    |  |  |  +--rw sonet?                     empty
+    |  |  |  +--rw srp?                       empty
+    |  |  |  +--rw stun?                      empty
+    |  |  |  +--rw syslog?                    empty
+    |  |  |  +--rw trustsec-sxp?              empty
+    |  |  |  +--rw tty?                       empty
+    |  |  |  +--rw voice?                     empty
+    |  |  |  +--rw vrfmib?                    empty
+    |  |  |  +--rw vrrp?                      empty
+    |  |  |  +--rw x25?                       empty
+    |  |  +--rw encryption?          enumeration
+    |  +--rw ip-vrf-community-port* [ip-address vrf community-or-user udp-port]
+    |     +--rw ip-address           ios-types:host-type
+    |     +--rw vrf                  string
+    |     +--rw community-or-user    string
+    |     +--rw udp-port             uint16
+    |     +--rw (informs-traps-choice)?
+    |     |  +--:(informs)
+    |     |  |  +--rw informs?       empty
+    |     |  +--:(traps)
+    |     |     +--rw traps?         empty
+    |     +--rw version?             enumeration
+    |     +--rw security-level?      enumeration
+    |     +--rw trap-enable
+    |     |  +--rw aaa_server?                empty
+    |     |  +--rw alarms?                    empty
+    |     |  +--rw atm?                       empty
+    |     |  +--rw bfd?                       empty
+    |     |  +--rw bgp?                       empty
+    |     |  +--rw bstun?                     empty
+    |     |  +--rw bulkstat?                  empty
+    |     |  +--rw call-home?                 empty
+    |     |  +--rw casa?                      empty
+    |     |  +--rw cef?                       empty
+    |     |  +--rw cnpd?                      empty
+    |     |  +--rw config?                    empty
+    |     |  +--rw config-copy?               empty
+    |     |  +--rw config-ctid?               empty
+    |     |  +--rw cpu?                       empty
+    |     |  +--rw dhcp?                      empty
+    |     |  +--rw dlsw?                      empty
+    |     |  +--rw ds1?                       empty
+    |     |  +--rw dsp?                       empty
+    |     |  +--rw dspu?                      empty
+    |     |  +--rw eigrp?                     empty
+    |     |  +--rw entity?                    empty
+    |     |  +--rw entity-diag?               empty
+    |     |  +--rw entity-qfp?                empty
+    |     |  +--rw entity-state?              empty
+    |     |  +--rw ethernet-cfm?              empty
+    |     |  +--rw evc?                       empty
+    |     |  +--rw event-manager?             empty
+    |     |  +--rw firewall?                  empty
+    |     |  +--rw flash?                     empty
+    |     |  +--rw flowmon?                   empty
+    |     |  +--rw frame-relay?               empty
+    |     |  +--rw fru-ctrl?                  empty
+    |     |  +--rw gdoi?                      empty
+    |     |  +--rw hsrp?                      empty
+    |     |  +--rw iplocalpool?               empty
+    |     |  +--rw ipmulticast?               empty
+    |     |  +--rw ipsec?                     empty
+    |     |  +--rw ipsla?                     empty
+    |     |  +--rw isakmp?                    empty
+    |     |  +--rw isg-mib?                   empty
+    |     |  +--rw isis?                      empty
+    |     |  +--rw l2tun-pseudowire-status?   empty
+    |     |  +--rw l2tun-session?             empty
+    |     |  +--rw license?                   empty
+    |     |  +--rw memory?                    empty
+    |     |  +--rw mpls-fast-reroute?         empty
+    |     |  +--rw mpls-ldp?                  empty
+    |     |  +--rw mpls-traffic-eng?          empty
+    |     |  +--rw mpls-vpn?                  empty
+    |     |  +--rw msdp?                      empty
+    |     |  +--rw mvpn?                      empty
+    |     |  +--rw nhrp?                      empty
+    |     |  +--rw ospf?                      empty
+    |     |  +--rw ospfv3?                    empty
+    |     |  +--rw pfr?                       empty
+    |     |  +--rw pim?                       empty
+    |     |  +--rw pw-vc?                     empty
+    |     |  +--rw resource-policy?           empty
+    |     |  +--rw rf?                        empty
+    |     |  +--rw rsrb?                      empty
+    |     |  +--rw rsvp?                      empty
+    |     |  +--rw sdlc?                      empty
+    |     |  +--rw sdllc?                     empty
+    |     |  +--rw snmp?                      empty
+    |     |  +--rw sonet?                     empty
+    |     |  +--rw srp?                       empty
+    |     |  +--rw stun?                      empty
+    |     |  +--rw syslog?                    empty
+    |     |  +--rw trustsec-sxp?              empty
+    |     |  +--rw tty?                       empty
+    |     |  +--rw voice?                     empty
+    |     |  +--rw vrfmib?                    empty
+    |     |  +--rw vrrp?                      empty
+    |     |  +--rw x25?                       empty
+    |     +--rw encryption?          enumeration
+    x--rw host* [ip-address community-or-user]
+    |  x--rw ip-address           ios-types:host-type
+    |  x--rw community-or-user    string
+    |  x--rw vrf?                 string
+    |  x--rw (informs-traps-choice)?
+    |  |  +--:(informs)
+    |  |  |  x--rw informs?       empty
+    |  |  +--:(traps)
+    |  |     x--rw traps?         empty
+    |  x--rw version?             enumeration
+    |  x--rw security-level?      enumeration
+    |  x--rw udp-port?            uint16
+    |  x--rw trap-enable
+    |     x--rw aaa_server?                empty
+    |     x--rw alarms?                    empty
+    |     x--rw atm?                       empty
+    |     x--rw bfd?                       empty
+    |     x--rw bgp?                       empty
+    |     x--rw bstun?                     empty
+    |     x--rw bulkstat?                  empty
+    |     x--rw call-home?                 empty
+    |     x--rw casa?                      empty
+    |     x--rw cef?                       empty
+    |     x--rw cnpd?                      empty
+    |     x--rw config?                    empty
+    |     x--rw config-copy?               empty
+    |     x--rw config-ctid?               empty
+    |     x--rw cpu?                       empty
+    |     x--rw dhcp?                      empty
+    |     x--rw dlsw?                      empty
+    |     x--rw ds1?                       empty
+    |     x--rw dsp?                       empty
+    |     x--rw dspu?                      empty
+    |     x--rw eigrp?                     empty
+    |     x--rw entity?                    empty
+    |     x--rw entity-diag?               empty
+    |     x--rw entity-qfp?                empty
+    |     x--rw entity-state?              empty
+    |     x--rw ethernet-cfm?              empty
+    |     x--rw evc?                       empty
+    |     x--rw event-manager?             empty
+    |     x--rw firewall?                  empty
+    |     x--rw flash?                     empty
+    |     x--rw flowmon?                   empty
+    |     x--rw frame-relay?               empty
+    |     x--rw fru-ctrl?                  empty
+    |     x--rw gdoi?                      empty
+    |     x--rw hsrp?                      empty
+    |     x--rw iplocalpool?               empty
+    |     x--rw ipmulticast?               empty
+    |     x--rw ipsec?                     empty
+    |     x--rw ipsla?                     empty
+    |     x--rw isakmp?                    empty
+    |     x--rw isg-mib?                   empty
+    |     x--rw isis?                      empty
+    |     x--rw l2tun-pseudowire-status?   empty
+    |     x--rw l2tun-session?             empty
+    |     x--rw license?                   empty
+    |     x--rw memory?                    empty
+    |     x--rw mpls-fast-reroute?         empty
+    |     x--rw mpls-ldp?                  empty
+    |     x--rw mpls-traffic-eng?          empty
+    |     x--rw mpls-vpn?                  empty
+    |     x--rw msdp?                      empty
+    |     x--rw mvpn?                      empty
+    |     x--rw nhrp?                      empty
+    |     x--rw ospf?                      empty
+    |     x--rw ospfv3?                    empty
+    |     x--rw pfr?                       empty
+    |     x--rw pim?                       empty
+    |     x--rw pw-vc?                     empty
+    |     x--rw resource-policy?           empty
+    |     x--rw rf?                        empty
+    |     x--rw rsrb?                      empty
+    |     x--rw rsvp?                      empty
+    |     x--rw sdlc?                      empty
+    |     x--rw sdllc?                     empty
+    |     x--rw snmp?                      empty
+    |     x--rw sonet?                     empty
+    |     x--rw srp?                       empty
+    |     x--rw stun?                      empty
+    |     x--rw syslog?                    empty
+    |     x--rw trustsec-sxp?              empty
+    |     x--rw tty?                       empty
+    |     x--rw voice?                     empty
+    |     x--rw vrfmib?                    empty
+    |     x--rw vrrp?                      empty
+    |     x--rw x25?                       empty
+    +--rw ip
+    |  +--rw dscp?         uint8
+    |  +--rw precedence?   uint8
+    +--rw ifindex
+    |  +--rw persist?   empty
+    +--rw location?           string
+    +--rw manager!
+    |  +--rw session-timeout?   uint32
+    +--rw packetsize?         uint32
+    +--rw queue-length?       uint16
+    +--rw source-interface
+    |  +--rw informs
+    |  |  +--rw (interface-choice)?
+    |  |     +--:(AppNav-Compress)
+    |  |     |  +--rw AppNav-Compress?             uint16
+    |  |     +--:(AppNav-UnCompress)
+    |  |     |  +--rw AppNav-UnCompress?           uint16
+    |  |     +--:(ATM)
+    |  |     |  +--rw ATM?                         string
+    |  |     +--:(ATM-subinterface)
+    |  |     |  +--rw ATM-subinterface
+    |  |     |     +--rw ATM?   string
+    |  |     +--:(ATM-ACR)
+    |  |     |  +--rw ATM-ACR?                     string
+    |  |     +--:(ATM-ACRsubinterface)
+    |  |     |  +--rw ATM-ACRsubinterface
+    |  |     |     +--rw ATM-ACR?   string
+    |  |     +--:(BDI)
+    |  |     |  +--rw BDI?                         string
+    |  |     +--:(CEM)
+    |  |     |  +--rw CEM?                         string
+    |  |     +--:(CEM-ACR)
+    |  |     |  +--rw CEM-ACR?                     uint8
+    |  |     +--:(Embedded-Service-Engine)
+    |  |     |  +--rw Embedded-Service-Engine?     string
+    |  |     +--:(Ethernet)
+    |  |     |  +--rw Ethernet?                    string
+    |  |     +--:(FastEthernet)
+    |  |     |  +--rw FastEthernet?                string
+    |  |     +--:(GigabitEthernet)
+    |  |     |  +--rw GigabitEthernet?             string
+    |  |     +--:(FiveGigabitEthernet)
+    |  |     |  +--rw FiveGigabitEthernet?         string
+    |  |     +--:(AppGigabitEthernet)
+    |  |     |  +--rw AppGigabitEthernet?          string
+    |  |     +--:(TwentyFiveGigabitEthernet)
+    |  |     |  o--rw TwentyFiveGigabitEthernet?   string
+    |  |     +--:(TwentyFiveGigE)
+    |  |     |  +--rw TwentyFiveGigE?              string
+    |  |     +--:(TwoGigabitEthernet)
+    |  |     |  +--rw TwoGigabitEthernet?          string
+    |  |     +--:(FortyGigabitEthernet)
+    |  |     |  +--rw FortyGigabitEthernet?        string
+    |  |     +--:(HundredGigE)
+    |  |     |  +--rw HundredGigE?                 string
+    |  |     +--:(LISP)
+    |  |     |  +--rw LISP?                        string
+    |  |     +--:(LISP-subinterface)
+    |  |     |  +--rw LISP-subinterface
+    |  |     |     +--rw LISP?   string
+    |  |     +--:(Loopback)
+    |  |     |  +--rw Loopback?                    uint32
+    |  |     +--:(Multilink)
+    |  |     |  +--rw Multilink?                   uint16
+    |  |     +--:(nve)
+    |  |     |  +--rw nve?                         uint16
+    |  |     +--:(overlay)
+    |  |     |  +--rw overlay?                     uint16
+    |  |     +--:(Port-channel)
+    |  |     |  +--rw Port-channel?                uint32
+    |  |     +--:(Port-channel-subinterface)
+    |  |     |  +--rw Port-channel-subinterface
+    |  |     |     +--rw Port-channel?   string
+    |  |     +--:(pseudowire)
+    |  |     |  +--rw pseudowire?                  uint32
+    |  |     +--:(SM)
+    |  |     |  +--rw SM?                          string
+    |  |     +--:(Cellular)
+    |  |     |  +--rw Cellular?                    string
+    |  |     +--:(Dialer)
+    |  |     |  +--rw Dialer?                      string
+    |  |     +--:(Serial)
+    |  |     |  +--rw Serial?                      string
+    |  |     +--:(Async)
+    |  |     |  +--rw Async?                       string
+    |  |     +--:(TenGigabitEthernet)
+    |  |     |  +--rw TenGigabitEthernet?          string
+    |  |     +--:(Tunnel)
+    |  |     |  +--rw Tunnel?                      uint32
+    |  |     +--:(Virtual-Template)
+    |  |     |  +--rw Virtual-Template?            uint16
+    |  |     +--:(Vlan)
+    |  |     |  +--rw Vlan?                        uint16
+    |  |     +--:(VirtualPortGroup)
+    |  |     |  +--rw VirtualPortGroup?            uint16
+    |  |     +--:(vasileft)
+    |  |     |  +--rw vasileft?                    uint16
+    |  |     +--:(vasiright)
+    |  |     |  +--rw vasiright?                   uint16
+    |  |     +--:(BD-VIF)
+    |  |     |  +--rw BD-VIF?                      string
+    |  |     +--:(MFR)
+    |  |     |  +--rw MFR?                         uint32
+    |  |     +--:(Serial-subinterface)
+    |  |        +--rw Serial-subinterface
+    |  |           +--rw Serial?   string
+    |  +--rw traps
+    |     +--rw (interface-choice)?
+    |        +--:(AppNav-Compress)
+    |        |  +--rw AppNav-Compress?             uint16
+    |        +--:(AppNav-UnCompress)
+    |        |  +--rw AppNav-UnCompress?           uint16
+    |        +--:(ATM)
+    |        |  +--rw ATM?                         string
+    |        +--:(ATM-subinterface)
+    |        |  +--rw ATM-subinterface
+    |        |     +--rw ATM?   string
+    |        +--:(ATM-ACR)
+    |        |  +--rw ATM-ACR?                     string
+    |        +--:(ATM-ACRsubinterface)
+    |        |  +--rw ATM-ACRsubinterface
+    |        |     +--rw ATM-ACR?   string
+    |        +--:(BDI)
+    |        |  +--rw BDI?                         string
+    |        +--:(CEM)
+    |        |  +--rw CEM?                         string
+    |        +--:(CEM-ACR)
+    |        |  +--rw CEM-ACR?                     uint8
+    |        +--:(Embedded-Service-Engine)
+    |        |  +--rw Embedded-Service-Engine?     string
+    |        +--:(Ethernet)
+    |        |  +--rw Ethernet?                    string
+    |        +--:(FastEthernet)
+    |        |  +--rw FastEthernet?                string
+    |        +--:(GigabitEthernet)
+    |        |  +--rw GigabitEthernet?             string
+    |        +--:(FiveGigabitEthernet)
+    |        |  +--rw FiveGigabitEthernet?         string
+    |        +--:(AppGigabitEthernet)
+    |        |  +--rw AppGigabitEthernet?          string
+    |        +--:(TwentyFiveGigabitEthernet)
+    |        |  o--rw TwentyFiveGigabitEthernet?   string
+    |        +--:(TwentyFiveGigE)
+    |        |  +--rw TwentyFiveGigE?              string
+    |        +--:(TwoGigabitEthernet)
+    |        |  +--rw TwoGigabitEthernet?          string
+    |        +--:(FortyGigabitEthernet)
+    |        |  +--rw FortyGigabitEthernet?        string
+    |        +--:(HundredGigE)
+    |        |  +--rw HundredGigE?                 string
+    |        +--:(LISP)
+    |        |  +--rw LISP?                        string
+    |        +--:(LISP-subinterface)
+    |        |  +--rw LISP-subinterface
+    |        |     +--rw LISP?   string
+    |        +--:(Loopback)
+    |        |  +--rw Loopback?                    uint32
+    |        +--:(Multilink)
+    |        |  +--rw Multilink?                   uint16
+    |        +--:(nve)
+    |        |  +--rw nve?                         uint16
+    |        +--:(overlay)
+    |        |  +--rw overlay?                     uint16
+    |        +--:(Port-channel)
+    |        |  +--rw Port-channel?                uint32
+    |        +--:(Port-channel-subinterface)
+    |        |  +--rw Port-channel-subinterface
+    |        |     +--rw Port-channel?   string
+    |        +--:(pseudowire)
+    |        |  +--rw pseudowire?                  uint32
+    |        +--:(SM)
+    |        |  +--rw SM?                          string
+    |        +--:(Cellular)
+    |        |  +--rw Cellular?                    string
+    |        +--:(Dialer)
+    |        |  +--rw Dialer?                      string
+    |        +--:(Serial)
+    |        |  +--rw Serial?                      string
+    |        +--:(Async)
+    |        |  +--rw Async?                       string
+    |        +--:(TenGigabitEthernet)
+    |        |  +--rw TenGigabitEthernet?          string
+    |        +--:(Tunnel)
+    |        |  +--rw Tunnel?                      uint32
+    |        +--:(Virtual-Template)
+    |        |  +--rw Virtual-Template?            uint16
+    |        +--:(Vlan)
+    |        |  +--rw Vlan?                        uint16
+    |        +--:(VirtualPortGroup)
+    |        |  +--rw VirtualPortGroup?            uint16
+    |        +--:(vasileft)
+    |        |  +--rw vasileft?                    uint16
+    |        +--:(vasiright)
+    |        |  +--rw vasiright?                   uint16
+    |        +--:(BD-VIF)
+    |        |  +--rw BD-VIF?                      string
+    |        +--:(MFR)
+    |        |  +--rw MFR?                         uint32
+    |        +--:(Serial-subinterface)
+    |           +--rw Serial-subinterface
+    |              +--rw Serial?   string
+    +--rw system-shutdown?    empty
+    +--rw tftp-server-list?   union
+    +--rw trap
+    |  +--rw link
+    |  |  +--rw ietf?         empty
+    |  |  +--rw switchover?   empty
+    |  +--rw timeout?   uint16
+    +--rw trap-source
+    |  +--rw (interface-choice)?
+    |     +--:(AppNav-Compress)
+    |     |  +--rw AppNav-Compress?             uint16
+    |     +--:(AppNav-UnCompress)
+    |     |  +--rw AppNav-UnCompress?           uint16
+    |     +--:(ATM)
+    |     |  +--rw ATM?                         string
+    |     +--:(ATM-subinterface)
+    |     |  +--rw ATM-subinterface
+    |     |     +--rw ATM?   string
+    |     +--:(ATM-ACR)
+    |     |  +--rw ATM-ACR?                     string
+    |     +--:(ATM-ACRsubinterface)
+    |     |  +--rw ATM-ACRsubinterface
+    |     |     +--rw ATM-ACR?   string
+    |     +--:(BDI)
+    |     |  +--rw BDI?                         string
+    |     +--:(CEM)
+    |     |  +--rw CEM?                         string
+    |     +--:(CEM-ACR)
+    |     |  +--rw CEM-ACR?                     uint8
+    |     +--:(Embedded-Service-Engine)
+    |     |  +--rw Embedded-Service-Engine?     string
+    |     +--:(Ethernet)
+    |     |  +--rw Ethernet?                    string
+    |     +--:(FastEthernet)
+    |     |  +--rw FastEthernet?                string
+    |     +--:(GigabitEthernet)
+    |     |  +--rw GigabitEthernet?             string
+    |     +--:(FiveGigabitEthernet)
+    |     |  +--rw FiveGigabitEthernet?         string
+    |     +--:(AppGigabitEthernet)
+    |     |  +--rw AppGigabitEthernet?          string
+    |     +--:(TwentyFiveGigabitEthernet)
+    |     |  o--rw TwentyFiveGigabitEthernet?   string
+    |     +--:(TwentyFiveGigE)
+    |     |  +--rw TwentyFiveGigE?              string
+    |     +--:(TwoGigabitEthernet)
+    |     |  +--rw TwoGigabitEthernet?          string
+    |     +--:(FortyGigabitEthernet)
+    |     |  +--rw FortyGigabitEthernet?        string
+    |     +--:(HundredGigE)
+    |     |  +--rw HundredGigE?                 string
+    |     +--:(LISP)
+    |     |  +--rw LISP?                        string
+    |     +--:(LISP-subinterface)
+    |     |  +--rw LISP-subinterface
+    |     |     +--rw LISP?   string
+    |     +--:(Loopback)
+    |     |  +--rw Loopback?                    uint32
+    |     +--:(Multilink)
+    |     |  +--rw Multilink?                   uint16
+    |     +--:(nve)
+    |     |  +--rw nve?                         uint16
+    |     +--:(overlay)
+    |     |  +--rw overlay?                     uint16
+    |     +--:(Port-channel)
+    |     |  +--rw Port-channel?                uint32
+    |     +--:(Port-channel-subinterface)
+    |     |  +--rw Port-channel-subinterface
+    |     |     +--rw Port-channel?   string
+    |     +--:(pseudowire)
+    |     |  +--rw pseudowire?                  uint32
+    |     +--:(SM)
+    |     |  +--rw SM?                          string
+    |     +--:(Cellular)
+    |     |  +--rw Cellular?                    string
+    |     +--:(Dialer)
+    |     |  +--rw Dialer?                      string
+    |     +--:(Serial)
+    |     |  +--rw Serial?                      string
+    |     +--:(Async)
+    |     |  +--rw Async?                       string
+    |     +--:(TenGigabitEthernet)
+    |     |  +--rw TenGigabitEthernet?          string
+    |     +--:(Tunnel)
+    |     |  +--rw Tunnel?                      uint32
+    |     +--:(Virtual-Template)
+    |     |  +--rw Virtual-Template?            uint16
+    |     +--:(Vlan)
+    |     |  +--rw Vlan?                        uint16
+    |     +--:(VirtualPortGroup)
+    |     |  +--rw VirtualPortGroup?            uint16
+    |     +--:(vasileft)
+    |     |  +--rw vasileft?                    uint16
+    |     +--:(vasiright)
+    |     |  +--rw vasiright?                   uint16
+    |     +--:(BD-VIF)
+    |     |  +--rw BD-VIF?                      string
+    |     +--:(MFR)
+    |     |  +--rw MFR?                         uint32
+    |     +--:(Serial-subinterface)
+    |        +--rw Serial-subinterface
+    |           +--rw Serial?   string
+    +--rw user
+    |  +--rw names* [username grpname]
+    |     +--rw username    string
+    |     +--rw grpname     string
+    |     +--rw v3!
+    |        +--rw auth-config!
+    |        |  +--rw algorithm        enumeration
+    |        |  +--rw password         string
+    |        |  +--rw priv-config
+    |        |  |  +--rw (priv-option)?
+    |        |  |     +--:(aes)
+    |        |  |     |  +--rw aes!
+    |        |  |     |     +--rw algorithm        enumeration
+    |        |  |     |     +--rw password         string
+    |        |  |     |     +--rw access-config
+    |        |  |     |        +--rw ipv6-acl?             string
+    |        |  |     |        +--rw (access-option)?
+    |        |  |     |           +--:(standard-acl)
+    |        |  |     |           |  +--rw standard-acl?   uint32
+    |        |  |     |           +--:(acl-name)
+    |        |  |     |           |  +--rw acl-name?       string
+    |        |  |     |           +--:(ipv6)
+    |        |  |     |              x--rw ipv6?           string
+    |        |  |     +--:(des)
+    |        |  |     |  +--rw des!
+    |        |  |     |     +--rw password         string
+    |        |  |     |     +--rw access-config
+    |        |  |     |        +--rw ipv6-acl?             string
+    |        |  |     |        +--rw (access-option)?
+    |        |  |     |           +--:(standard-acl)
+    |        |  |     |           |  +--rw standard-acl?   uint32
+    |        |  |     |           +--:(acl-name)
+    |        |  |     |           |  +--rw acl-name?       string
+    |        |  |     |           +--:(ipv6)
+    |        |  |     |              x--rw ipv6?           string
+    |        |  |     +--:(des3)
+    |        |  |        +--rw des3!
+    |        |  |           +--rw password         string
+    |        |  |           +--rw access-config
+    |        |  |              +--rw ipv6-acl?             string
+    |        |  |              +--rw (access-option)?
+    |        |  |                 +--:(standard-acl)
+    |        |  |                 |  +--rw standard-acl?   uint32
+    |        |  |                 +--:(acl-name)
+    |        |  |                 |  +--rw acl-name?       string
+    |        |  |                 +--:(ipv6)
+    |        |  |                    x--rw ipv6?           string
+    |        |  +--rw access-config
+    |        |     +--rw ipv6-acl?             string
+    |        |     +--rw (access-option)?
+    |        |        +--:(standard-acl)
+    |        |        |  +--rw standard-acl?   uint32
+    |        |        +--:(acl-name)
+    |        |        |  +--rw acl-name?       string
+    |        |        +--:(ipv6)
+    |        |           x--rw ipv6?           string
+    |        x--rw auth
+    |        |  x--rw sha
+    |        |  |  x--rw auth
+    |        |  |     x--rw authpass?   string
+    |        |  |     x--rw priv
+    |        |  |        x--rw aes
+    |        |  |           x--rw algo128
+    |        |  |              x--rw privpass
+    |        |  |                 x--rw privpass?   string
+    |        |  |                 x--rw access?     string
+    |        |  x--rw md5
+    |        |     x--rw auth
+    |        |        x--rw authpass?   string
+    |        |        x--rw priv
+    |        |           x--rw aes
+    |        |              x--rw algo128
+    |        |                 x--rw privpass
+    |        |                    x--rw privpass?   string
+    |        |                    x--rw access?     string
+    |        +--rw encrypted!
+    |           +--rw access-config
+    |           |  +--rw ipv6-acl?             string
+    |           |  +--rw (access-option)?
+    |           |     +--:(standard-acl)
+    |           |     |  +--rw standard-acl?   uint32
+    |           |     +--:(acl-name)
+    |           |     |  +--rw acl-name?       string
+    |           |     +--:(ipv6)
+    |           |        x--rw ipv6?           string
+    |           +--rw auth-config!
+    |           |  +--rw algorithm        enumeration
+    |           |  +--rw password         string
+    |           |  +--rw priv-config
+    |           |  |  +--rw (priv-option)?
+    |           |  |     +--:(aes)
+    |           |  |     |  +--rw aes!
+    |           |  |     |     +--rw algorithm        enumeration
+    |           |  |     |     +--rw password         string
+    |           |  |     |     +--rw access-config
+    |           |  |     |        +--rw ipv6-acl?             string
+    |           |  |     |        +--rw (access-option)?
+    |           |  |     |           +--:(standard-acl)
+    |           |  |     |           |  +--rw standard-acl?   uint32
+    |           |  |     |           +--:(acl-name)
+    |           |  |     |           |  +--rw acl-name?       string
+    |           |  |     |           +--:(ipv6)
+    |           |  |     |              x--rw ipv6?           string
+    |           |  |     +--:(des)
+    |           |  |     |  +--rw des!
+    |           |  |     |     +--rw password         string
+    |           |  |     |     +--rw access-config
+    |           |  |     |        +--rw ipv6-acl?             string
+    |           |  |     |        +--rw (access-option)?
+    |           |  |     |           +--:(standard-acl)
+    |           |  |     |           |  +--rw standard-acl?   uint32
+    |           |  |     |           +--:(acl-name)
+    |           |  |     |           |  +--rw acl-name?       string
+    |           |  |     |           +--:(ipv6)
+    |           |  |     |              x--rw ipv6?           string
+    |           |  |     +--:(des3)
+    |           |  |        +--rw des3!
+    |           |  |           +--rw password         string
+    |           |  |           +--rw access-config
+    |           |  |              +--rw ipv6-acl?             string
+    |           |  |              +--rw (access-option)?
+    |           |  |                 +--:(standard-acl)
+    |           |  |                 |  +--rw standard-acl?   uint32
+    |           |  |                 +--:(acl-name)
+    |           |  |                 |  +--rw acl-name?       string
+    |           |  |                 +--:(ipv6)
+    |           |  |                    x--rw ipv6?           string
+    |           |  +--rw access-config
+    |           |     +--rw ipv6-acl?             string
+    |           |     +--rw (access-option)?
+    |           |        +--:(standard-acl)
+    |           |        |  +--rw standard-acl?   uint32
+    |           |        +--:(acl-name)
+    |           |        |  +--rw acl-name?       string
+    |           |        +--:(ipv6)
+    |           |           x--rw ipv6?           string
+    |           x--rw auth
+    |              x--rw sha
+    |              |  x--rw auth
+    |              |     x--rw authpass?   string
+    |              |     x--rw priv
+    |              |        x--rw aes
+    |              |           x--rw algo128
+    |              |              x--rw privpass
+    |              |                 x--rw privpass?   string
+    |              |                 x--rw access?     string
+    |              x--rw md5
+    |                 x--rw auth
+    |                    x--rw authpass?   string
+    |                    x--rw priv
+    |                       x--rw aes
+    |                          x--rw algo128
+    |                             x--rw privpass
+    |                                x--rw privpass?   string
+    |                                x--rw access?     string
+    +--rw view* [name mib]
+       +--rw name       string
+       +--rw mib        string
+       +--rw inc-exl?   enumeration
+  augment /ios:native/ios:interface/ios:FastEthernet:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:GigabitEthernet:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:TenGigabitEthernet:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:FiveGigabitEthernet:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:AppGigabitEthernet:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigabitEthernet:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:TwentyFiveGigE:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:TwoGigabitEthernet:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:FortyGigabitEthernet:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:HundredGigE:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:Loopback:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:Port-channel:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:Tunnel:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:Virtual-Template:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty
+  augment /ios:native/ios:interface/ios:VirtualPortGroup:
+    +--rw snmp
+       +--rw ifindex
+       |  +--rw (ifindex-choice)?
+       |     +--:(persist)
+       |     |  +--rw persist?   empty
+       |     +--:(clear)
+       |        +--rw clear?     boolean
+       +--rw trap
+          +--rw link-status?         boolean
+          +--rw link-status-capas
+             +--rw link-status
+                +--rw permit
+                   +--rw duplicates?   empty

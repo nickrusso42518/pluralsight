@@ -1,0 +1,27 @@
+devices device csr02
+config
+telemetry ietf subscription 1
+encoding encode-kvgpb
+filter xpath /whatever
+source-address 203.0.113.1
+stream yang-push
+update-policy periodic 100
+receiver ip address 192.168.5.22 50051 protocol grpc-tcp
+top
+devices device xrv11
+config
+telemetry model-driven
+destination-group 1
+address-family ipv4 192.168.5.22 port 50051
+encoding self-describing-gpb
+protocol grpc no-tls
+sensor-group 1
+sensor-path /whatever
+subscription 1
+sensor-group-id 1 sample-interval 1000
+destination-id 1
+source-interface Loopback0
+top
+show configuration | display xml
+abort
+

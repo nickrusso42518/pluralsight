@@ -1,0 +1,50 @@
+<config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <snmp xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-snmp-agent-cfg">
+    <trap-hosts>
+     <trap-host>
+      <ip-address>192.168.5.22</ip-address>
+      <default-user-communities>
+       <default-user-community>
+        <community-name>SNMPUSER</community-name>
+        <version>3</version>
+        <security-level>privacy</security-level>
+       </default-user-community>
+      </default-user-communities>
+     </trap-host>
+    </trap-hosts>
+    <users>
+     <user>
+      <user-name>SNMPUSER</user-name>
+      <group-name>SNMPGROUP</group-name>
+      <version>v3</version>
+      <authentication-password-configured></authentication-password-configured>
+      <algorithm>sha</algorithm>
+      <authentication-password>01121310533B071C32</authentication-password>
+      <privacy-password-configured></privacy-password-configured>
+      <priv-algorithm>aes128</priv-algorithm>
+      <privacy-password>0014010F126B0A151C</privacy-password>
+     </user>
+    </users>
+    <views>
+     <view>
+      <view-name>SNMPVIEW</view-name>
+      <family>iso</family>
+      <view-inclusion>included</view-inclusion>
+     </view>
+    </views>
+    <groups>
+     <group>
+      <name>SNMPGROUP</name>
+      <snmp-version>v3</snmp-version>
+      <security-model>privacy</security-model>
+      <read-view>SNMPVIEW</read-view>
+     </group>
+    </groups>
+    <notification>
+     <isis xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-clns-isis-cfg">
+      <all>true</all>
+     </isis>
+    </notification>
+    <trap-source>Loopback0</trap-source>
+  </snmp>
+</config>

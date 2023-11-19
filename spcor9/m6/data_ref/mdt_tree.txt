@@ -1,0 +1,369 @@
+module: mdt
+  +--rw mdt* [sub_id]
+     +---x check-sync
+     |  +---w input
+     |  |  +---w outformat?                  outformat4
+     |  |  +---w (depth)?
+     |  |  |  +--:(deep)
+     |  |  |  |  +---w deep?                 empty
+     |  |  |  +--:(shallow)
+     |  |  |     +---w shallow?              empty
+     |  |  +---w suppress-positive-result?   empty
+     |  |  +---w (choice-lsa)?
+     |  |     +--:(use-lsa)
+     |  |     |  +---w use-lsa?              empty
+     |  |     +--:(no-lsa)
+     |  |        +---w no-lsa?               empty
+     |  +--ro output
+     |     +--ro (outformat)?
+     |        +--:(in-sync)
+     |        |  +--ro in-sync?      boolean
+     |        +--:(case-xml)
+     |        |  +--ro result-xml
+     |        |     +--ro local-node
+     |        |     |  +--ro data?   <anyxml>
+     |        |     +--ro lsa-node* []
+     |        |        +--ro name?   string
+     |        |        +--ro data?   <anyxml>
+     |        +--:(case-cli)
+     |        |  +--ro cli
+     |        |     +--ro local-node
+     |        |     |  +--ro data?   string
+     |        |     +--ro lsa-node* []
+     |        |        +--ro name?   string
+     |        |        +--ro data?   string
+     |        +--:(case-cli-c)
+     |        |  +--ro cli-c
+     |        |     +--ro local-node
+     |        |     |  +--ro data?   string
+     |        |     +--ro lsa-node* []
+     |        |        +--ro name?   string
+     |        |        +--ro data?   string
+     |        +--:(case-native)
+     |           +--ro native
+     |              +--ro device* [name]
+     |                 +--ro name    string
+     |                 +--ro data?   string
+     +---x deep-check-sync
+     |  +---w input
+     |  |  +---w outformat?                  outformat-deep-check-sync
+     |  |  +---w suppress-positive-result?   empty
+     |  |  +---w (choice-lsa)?
+     |  |  |  +--:(use-lsa)
+     |  |  |  |  +---w use-lsa?              empty
+     |  |  |  +--:(no-lsa)
+     |  |  |     +---w no-lsa?               empty
+     |  |  +---w (wait-for-lock-choice)?
+     |  |     +--:(no-wait-for-lock)
+     |  |     |  +---w no-wait-for-lock?     empty
+     |  |     +--:(wait-for-lock)
+     |  |        +---w wait-for-lock!
+     |  |           +---w (timeout-choice)?
+     |  |              +--:(timeout)
+     |  |              |  +---w timeout?    uint32
+     |  |              +--:(infinity)
+     |  |                 +---w infinity?   empty
+     |  +--ro output
+     |     +--ro (outformat)?
+     |        +--:(case-xml)
+     |        |  +--ro result-xml
+     |        |     +--ro local-node
+     |        |     |  +--ro data?   <anyxml>
+     |        |     +--ro lsa-service* [service-id]
+     |        |        +--ro service-id    instance-identifier
+     |        |        +--ro data?         <anyxml>
+     |        +--:(case-cli)
+     |        |  +--ro cli
+     |        |     +--ro local-node
+     |        |     |  +--ro data?   string
+     |        |     +--ro lsa-service* [service-id]
+     |        |        +--ro service-id    instance-identifier
+     |        |        +--ro data?         string
+     |        +--:(case-cli-c)
+     |        |  +--ro cli-c
+     |        |     +--ro local-node
+     |        |     |  +--ro data?   string
+     |        |     +--ro lsa-service* [service-id]
+     |        |        +--ro service-id    instance-identifier
+     |        |        +--ro data?         string
+     |        +--:(case-sync)
+     |           +--ro sync-result
+     |              +--ro local-node
+     |              |  +--ro in-sync?   boolean
+     |              +--ro lsa-service* [service-id]
+     |                 +--ro service-id    instance-identifier
+     |                 +--ro in-sync?      boolean
+     +---x re-deploy
+     |  +---w input
+     |  |  +---w dry-run!
+     |  |  |  +---w outformat?   outformat3
+     |  |  +---w no-revision-drop?             empty
+     |  |  +---w no-networking?                empty
+     |  |  +---w (choice-sync-check)?
+     |  |  |  +--:(no-overwrite)
+     |  |  |  |  +---w no-overwrite?           empty
+     |  |  |  +--:(no-out-of-sync-check)
+     |  |  |     +---w no-out-of-sync-check?   empty
+     |  |  +---w commit-queue!
+     |  |  |  +---w tag?            string
+     |  |  |  +---w (operation-mode)?
+     |  |  |  |  +--:(async)
+     |  |  |  |  |  +---w async?    empty
+     |  |  |  |  +--:(sync)
+     |  |  |  |  |  +---w sync!
+     |  |  |  |  |     +---w (timeout-choice)?
+     |  |  |  |  |        +--:(timeout)
+     |  |  |  |  |        |  +---w timeout?    uint32
+     |  |  |  |  |        +--:(infinity)
+     |  |  |  |  |           +---w infinity?   empty
+     |  |  |  |  +--:(bypass)
+     |  |  |  |     +---w bypass?   empty
+     |  |  |  +---w block-others?   empty
+     |  |  |  +---w lock?           empty
+     |  |  |  +---w atomic?         boolean
+     |  |  |  +---w error-option?   enumeration
+     |  |  |  +---w unlock!
+     |  |  |     +---w (choice-unlock-id)?
+     |  |  |        +--:(id)
+     |  |  |        |  +---w id?    uint64
+     |  |  |        +--:(tag)
+     |  |  |           +---w tag?   string
+     |  |  +---w (choice-lsa)?
+     |  |  |  +--:(use-lsa)
+     |  |  |  |  +---w use-lsa?                empty
+     |  |  |  +--:(no-lsa)
+     |  |  |     +---w no-lsa?                 empty
+     |  |  o---w wait-device*                  -> /ncs:devices/device/name
+     |  |  +---w trace-id?                     string
+     |  |  +---w (depth)?
+     |  |  |  +--:(deep)
+     |  |  |  |  +---w deep?                   empty
+     |  |  |  +--:(shallow)
+     |  |  |     +---w shallow?                empty
+     |  |  +---w reconcile!
+     |  |     +---w (c-non-service-config)?
+     |  |        +--:(keep-non-service-config)
+     |  |        |  +---w keep-non-service-config?      empty
+     |  |        +--:(discard-non-service-config)
+     |  |           +---w discard-non-service-config?   empty
+     |  +--ro output
+     |     +--ro (outformat)?
+     |     |  +--:(case-xml)
+     |     |  |  +--ro result-xml
+     |     |  |     +--ro local-node
+     |     |  |     |  +--ro data?   <anyxml>
+     |     |  |     +--ro lsa-node* []
+     |     |  |        +--ro name?   string
+     |     |  |        +--ro data?   <anyxml>
+     |     |  +--:(case-cli)
+     |     |  |  +--ro cli
+     |     |  |     +--ro local-node
+     |     |  |     |  +--ro data?   string
+     |     |  |     +--ro lsa-node* []
+     |     |  |        +--ro name?   string
+     |     |  |        +--ro data?   string
+     |     |  +--:(case-cli-c)
+     |     |  |  +--ro cli-c
+     |     |  |     +--ro local-node
+     |     |  |     |  +--ro data?   string
+     |     |  |     +--ro lsa-node* []
+     |     |  |        +--ro name?   string
+     |     |  |        +--ro data?   string
+     |     |  +--:(case-native)
+     |     |     +--ro native
+     |     |        +--ro device* [name]
+     |     |           +--ro name    string
+     |     |           +--ro data?   string
+     |     +--ro commit-queue
+     |        +--ro id?              -> /ncs:devices/commit-queue/queue-item/id
+     |        +--ro status?          enumeration
+     |        +--ro failed-device* [name]
+     |           +--ro name      -> /ncs:devices/device/name
+     |           +--ro reason?   string
+     +---x reactive-re-deploy
+     |  +---w input
+     |  |  +---w sync?   empty
+     |  +--ro output
+     |     +--ro commit-queue
+     |        +--ro id?              -> /ncs:devices/commit-queue/queue-item/id
+     |        +--ro status?          enumeration
+     |        +--ro failed-device* [name]
+     |           +--ro name      -> /ncs:devices/device/name
+     |           +--ro reason?   string
+     +---x touch
+     +--ro modified
+     |  +--ro devices*        -> /ncs:devices/device/name
+     |  +--ro services*       instance-identifier
+     |  +--ro lsa-services*   instance-identifier
+     +--ro directly-modified
+     |  +--ro devices*        -> /ncs:devices/device/name
+     |  +--ro services*       instance-identifier
+     |  +--ro lsa-services*   instance-identifier
+     +---x get-modifications
+     |  +---w input
+     |  |  +---w outformat?       outformat2
+     |  |  +---w reverse?         empty
+     |  |  +---w (depth)?
+     |  |  |  +--:(deep)
+     |  |  |  |  +---w deep?      empty
+     |  |  |  +--:(shallow)
+     |  |  |     +---w shallow?   empty
+     |  |  +---w (choice-lsa)?
+     |  |     +--:(use-lsa)
+     |  |     |  +---w use-lsa?   empty
+     |  |     +--:(no-lsa)
+     |  |        +---w no-lsa?    empty
+     |  +--ro output
+     |     +--ro (outformat)?
+     |        +--:(case-xml)
+     |        |  +--ro result-xml
+     |        |     +--ro local-node
+     |        |     |  +--ro data?   <anyxml>
+     |        |     +--ro lsa-service* [service-id]
+     |        |        +--ro service-id    instance-identifier
+     |        |        +--ro data?         <anyxml>
+     |        +--:(case-cli)
+     |        |  +--ro cli
+     |        |     +--ro local-node
+     |        |     |  +--ro data?   string
+     |        |     +--ro lsa-service* [service-id]
+     |        |        +--ro service-id    instance-identifier
+     |        |        +--ro data?         string
+     |        +--:(case-cli-c)
+     |           +--ro cli-c
+     |              +--ro local-node
+     |              |  +--ro data?   string
+     |              +--ro lsa-service* [service-id]
+     |                 +--ro service-id    instance-identifier
+     |                 +--ro data?         string
+     +---x un-deploy
+     |  +---w input
+     |  |  +---w dry-run!
+     |  |  |  +---w outformat?   outformat3
+     |  |  +---w no-revision-drop?             empty
+     |  |  +---w no-networking?                empty
+     |  |  +---w (choice-sync-check)?
+     |  |  |  +--:(no-overwrite)
+     |  |  |  |  +---w no-overwrite?           empty
+     |  |  |  +--:(no-out-of-sync-check)
+     |  |  |     +---w no-out-of-sync-check?   empty
+     |  |  +---w commit-queue!
+     |  |  |  +---w tag?            string
+     |  |  |  +---w (operation-mode)?
+     |  |  |  |  +--:(async)
+     |  |  |  |  |  +---w async?    empty
+     |  |  |  |  +--:(sync)
+     |  |  |  |  |  +---w sync!
+     |  |  |  |  |     +---w (timeout-choice)?
+     |  |  |  |  |        +--:(timeout)
+     |  |  |  |  |        |  +---w timeout?    uint32
+     |  |  |  |  |        +--:(infinity)
+     |  |  |  |  |           +---w infinity?   empty
+     |  |  |  |  +--:(bypass)
+     |  |  |  |     +---w bypass?   empty
+     |  |  |  +---w block-others?   empty
+     |  |  |  +---w lock?           empty
+     |  |  |  +---w atomic?         boolean
+     |  |  |  +---w error-option?   enumeration
+     |  |  |  +---w unlock!
+     |  |  |     +---w (choice-unlock-id)?
+     |  |  |        +--:(id)
+     |  |  |        |  +---w id?    uint64
+     |  |  |        +--:(tag)
+     |  |  |           +---w tag?   string
+     |  |  +---w (choice-lsa)?
+     |  |  |  +--:(use-lsa)
+     |  |  |  |  +---w use-lsa?                empty
+     |  |  |  +--:(no-lsa)
+     |  |  |     +---w no-lsa?                 empty
+     |  |  o---w wait-device*                  -> /ncs:devices/device/name
+     |  |  +---w trace-id?                     string
+     |  |  +---w ignore-refcount?              empty
+     |  +--ro output
+     |     +--ro (outformat)?
+     |     |  +--:(case-xml)
+     |     |  |  +--ro result-xml
+     |     |  |     +--ro local-node
+     |     |  |     |  +--ro data?   <anyxml>
+     |     |  |     +--ro lsa-node* []
+     |     |  |        +--ro name?   string
+     |     |  |        +--ro data?   <anyxml>
+     |     |  +--:(case-cli)
+     |     |  |  +--ro cli
+     |     |  |     +--ro local-node
+     |     |  |     |  +--ro data?   string
+     |     |  |     +--ro lsa-node* []
+     |     |  |        +--ro name?   string
+     |     |  |        +--ro data?   string
+     |     |  +--:(case-cli-c)
+     |     |  |  +--ro cli-c
+     |     |  |     +--ro local-node
+     |     |  |     |  +--ro data?   string
+     |     |  |     +--ro lsa-node* []
+     |     |  |        +--ro name?   string
+     |     |  |        +--ro data?   string
+     |     |  +--:(case-native)
+     |     |     +--ro native
+     |     |        +--ro device* [name]
+     |     |           +--ro name    string
+     |     |           +--ro data?   string
+     |     +--ro commit-queue
+     |        +--ro id?              -> /ncs:devices/commit-queue/queue-item/id
+     |        +--ro status?          enumeration
+     |        +--ro failed-device* [name]
+     |           +--ro name      -> /ncs:devices/device/name
+     |           +--ro reason?   string
+     +--ro used-by-customer-service*   -> /ncs:services/customer-service/object-id
+     +--ro commit-queue
+     |  +--ro queue-item* [id]
+     |  |  +--ro id    uint64
+     |  +--ro completed
+     |     +--ro queue-item* [id]
+     |        +--ro id    uint64
+     +--rw private
+     |  +--rw diff-set?                  binary
+     |  +--rw forward-diff-set?          binary
+     |  +--rw device-list*               string
+     |  +--rw ned-id-list*               string
+     |  +--rw service-list*              instance-identifier
+     |  +--rw lsa-service-list*          yang:xpath1.0
+     |  +--rw synthesizer-kicker-list*   instance-identifier
+     |  +--rw property-list
+     |  |  +--rw property* [name]
+     |  |     +--rw name     string
+     |  |     +--rw value?   string
+     |  +--rw re-deploy-counter?         int32
+     |  +--rw latest-commit-params?      binary
+     |  +--rw latest-u-info?             binary
+     +--ro plan-location?              instance-identifier
+     +--ro log
+     |  +---x purge
+     |  |  +---w input
+     |  |  |  +---w type?         log-entry-t
+     |  |  |  +---w level?        log-entry-level-t
+     |  |  |  +---w older-than!
+     |  |  |     +---w (age-spec)?
+     |  |  |        +--:(seconds)
+     |  |  |        |  +---w seconds?   uint16
+     |  |  |        +--:(minutes)
+     |  |  |        |  +---w minutes?   uint16
+     |  |  |        +--:(hours)
+     |  |  |        |  +---w hours?     uint16
+     |  |  |        +--:(days)
+     |  |  |        |  +---w days?      uint16
+     |  |  |        +--:(weeks)
+     |  |  |           +---w weeks?     uint16
+     |  |  +--ro output
+     |  |     +--ro purged-log-entries?   uint16
+     |  +--ro log-entry* [when]
+     |     +--ro when       yang:date-and-time
+     |     +--ro type       log-entry-t
+     |     +--ro level      log-entry-level-t
+     |     +--ro message?   string
+     +--rw sub_id                      uint32
+     +--rw device*                     -> /ncs:devices/device/name
+     +--rw xpath?                      string
+     +--rw xe_src_addr?                inet:ipv4-address
+     +--rw sample?                     uint32
+     +--rw rx_ip?                      inet:ipv4-address
+     +--rw rx_port?                    uint16

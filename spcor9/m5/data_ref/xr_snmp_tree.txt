@@ -1,0 +1,322 @@
+module: Cisco-IOS-XR-snmp-agent-cfg
+  +--rw snmp
+  |  +--rw encrypted-community-maps
+  |  |  +--rw encrypted-community-map* [community-name]
+  |  |     +--rw community-name    xr:Cisco-ios-xr-string
+  |  |     +--rw context?          string
+  |  |     +--rw security?         string
+  |  |     +--rw target-list?      string
+  |  +--rw views
+  |  |  +--rw view* [view-name family]
+  |  |     +--rw view-name         xr:Cisco-ios-xr-string
+  |  |     +--rw family            string
+  |  |     +--rw view-inclusion    Snmp-mib-view-inclusion
+  |  +--rw logging
+  |  |  +--rw threshold
+  |  |     +--rw oid-processing?   uint32
+  |  |     +--rw pdu-processing?   uint32
+  |  +--rw administration
+  |  |  +--rw default-communities
+  |  |  |  +--rw default-community* [community-name]
+  |  |  |     +--rw community-name    string
+  |  |  |     +--rw priviledge?       Snmp-access-level
+  |  |  |     +--rw view-name?        string
+  |  |  |     +--rw v4acl-type?       Snmpacl
+  |  |  |     +--rw v4-access-list?   string
+  |  |  |     +--rw v6acl-type?       Snmpacl
+  |  |  |     +--rw v6-access-list?   string
+  |  |  |     +--rw owner?            Snmp-owner-access
+  |  |  +--rw encrypted-communities
+  |  |     +--rw encrypted-community* [community-name]
+  |  |        +--rw community-name    xr:Cisco-ios-xr-string
+  |  |        +--rw priviledge?       Snmp-access-level
+  |  |        +--rw view-name?        string
+  |  |        +--rw v4acl-type?       Snmpacl
+  |  |        +--rw v4-access-list?   string
+  |  |        +--rw v6acl-type?       Snmpacl
+  |  |        +--rw v6-access-list?   string
+  |  |        +--rw owner?            Snmp-owner-access
+  |  +--rw agent
+  |  |  +--rw engine-id
+  |  |     +--rw remotes
+  |  |     |  +--rw remote* [remote-address]
+  |  |     |     +--rw remote-address      inet:ip-address-no-zone
+  |  |     |     +--rw remote-engine-id?   string
+  |  |     |     +--rw port?               xr:Cisco-ios-xr-port-number
+  |  |     +--rw local?     string
+  |  +--rw trap
+  |  |  +--rw timeout?         uint32
+  |  |  +--rw throttle-time?   uint32
+  |  |  +--rw queue-length?    uint32
+  |  +--rw ipv6
+  |  |  +--rw tos
+  |  |     +--rw type?         Snmp-tos
+  |  |     +--rw precedence?   Snmp-precedence-value1
+  |  |     +--rw dscp?         Snmp-dscp-value
+  |  +--rw ipv4
+  |  |  +--rw tos
+  |  |     +--rw type?         Snmp-tos
+  |  |     +--rw precedence?   Snmp-precedence-value1
+  |  |     +--rw dscp?         Snmp-dscp-value
+  |  +--rw system
+  |  |  +--rw chassis-id?   string
+  |  |  +--rw location?     string
+  |  |  +--rw contact?      string
+  |  +--rw target
+  |  |  +--rw targets
+  |  |     +--rw target* [target-list-name]
+  |  |        +--rw vrf-names
+  |  |        |  +--rw vrf-name* [name]
+  |  |        |     +--rw name    xr:Cisco-ios-xr-string
+  |  |        +--rw target-addresses
+  |  |        |  +--rw target-address* [ip-address]
+  |  |        |     +--rw ip-address    inet:ip-address-no-zone
+  |  |        +--rw target-list-name    xr:Cisco-ios-xr-string
+  |  +--rw notification
+  |  |  +--rw snmp
+  |  |     +--rw authentication?   empty
+  |  |     +--rw cold-start?       empty
+  |  |     +--rw warm-start?       empty
+  |  |     +--rw enable?           empty
+  |  +--rw correlator
+  |  |  +--rw rules
+  |  |  |  +--rw rule* [name]
+  |  |  |     +--rw non-stateful!
+  |  |  |     |  +--rw root-causes
+  |  |  |     |  |  +--rw root-cause* [oid]
+  |  |  |     |  |     +--rw created?     empty
+  |  |  |     |  |     +--rw oid          string
+  |  |  |     |  |     +--rw var-binds
+  |  |  |     |  |        +--rw var-bind* [oid]
+  |  |  |     |  |           +--rw match
+  |  |  |     |  |           |  +--rw value?   string
+  |  |  |     |  |           |  +--rw index?   string
+  |  |  |     |  |           +--rw oid      string
+  |  |  |     |  +--rw non-root-causes
+  |  |  |     |  |  +--rw non-root-cause* [oid]
+  |  |  |     |  |     +--rw created?     empty
+  |  |  |     |  |     +--rw oid          string
+  |  |  |     |  |     +--rw var-binds
+  |  |  |     |  |        +--rw var-bind* [oid]
+  |  |  |     |  |           +--rw match
+  |  |  |     |  |           |  +--rw value?   string
+  |  |  |     |  |           |  +--rw index?   string
+  |  |  |     |  |           +--rw oid      string
+  |  |  |     |  +--rw timeout?           uint32
+  |  |  |     +--rw name            string
+  |  |  |     +--rw applied-to
+  |  |  |        +--rw hosts
+  |  |  |        |  +--rw host* [ip-address port]
+  |  |  |        |     +--rw ip-address    inet:ip-address-no-zone
+  |  |  |        |     +--rw port          xr:Cisco-ios-xr-port-number
+  |  |  |        +--rw all?     empty
+  |  |  +--rw rule-sets
+  |  |  |  +--rw rule-set* [name]
+  |  |  |     +--rw rulenames
+  |  |  |     |  +--rw rulename* [rulename]
+  |  |  |     |     +--rw rulename    string
+  |  |  |     +--rw name          string
+  |  |  |     +--rw applied-to
+  |  |  |        +--rw hosts
+  |  |  |        |  +--rw host* [ip-address port]
+  |  |  |        |     +--rw ip-address    inet:ip-address-no-zone
+  |  |  |        |     +--rw port          xr:Cisco-ios-xr-port-number
+  |  |  |        +--rw all?     empty
+  |  |  +--rw buffer-size?   uint32
+  |  +--rw bulk-stats
+  |  |  +--rw schemas
+  |  |  |  +--rw schema* [schema-name]
+  |  |  |     +--rw instance!
+  |  |  |     |  +--rw type             Snmp-bulkstat-schema
+  |  |  |     |  +--rw instance?        xr:Interface-name
+  |  |  |     |  +--rw start            string
+  |  |  |     |  +--rw end              string
+  |  |  |     |  +--rw max              int32
+  |  |  |     |  +--rw sub-interface    boolean
+  |  |  |     +--rw type?                 empty
+  |  |  |     +--rw schema-object-list?   xr:Cisco-ios-xr-string
+  |  |  |     +--rw poll-interval?        uint32
+  |  |  |     +--rw schema-name           xr:Cisco-ios-xr-string
+  |  |  +--rw objects
+  |  |  |  +--rw object* [object-list-name]
+  |  |  |     +--rw objects
+  |  |  |     |  +--rw object* [oid]
+  |  |  |     |     +--rw oid    string
+  |  |  |     +--rw type?               empty
+  |  |  |     +--rw object-list-name    xr:Cisco-ios-xr-string
+  |  |  +--rw transfers
+  |  |  |  +--rw transfer* [transfer-name]
+  |  |  |     +--rw transfer-schemas
+  |  |  |     |  +--rw transfer-schema* [schema-name]
+  |  |  |     |     +--rw schema-name    xr:Cisco-ios-xr-string
+  |  |  |     +--rw secondary?          string
+  |  |  |     +--rw type?               empty
+  |  |  |     +--rw buffer-size?        uint32
+  |  |  |     +--rw retain?             uint32
+  |  |  |     +--rw format?             Snmp-bulkstat-file-format
+  |  |  |     +--rw retry?              uint32
+  |  |  |     +--rw enable?             empty
+  |  |  |     +--rw primary?            string
+  |  |  |     +--rw interval?           int32
+  |  |  |     +--rw transfer-name       xr:Cisco-ios-xr-string
+  |  |  +--rw memory?      uint32
+  |  +--rw default-community-maps
+  |  |  +--rw default-community-map* [community-name]
+  |  |     +--rw community-name    xr:Cisco-ios-xr-string
+  |  |     +--rw context?          string
+  |  |     +--rw security?         string
+  |  |     +--rw target-list?      string
+  |  +--rw overload-control!
+  |  |  +--rw drop-time        uint32
+  |  |  +--rw throttle-rate    uint32
+  |  +--rw timeouts
+  |  |  +--rw duplicates?   uint32
+  |  |  +--rw in-qdrop?     uint32
+  |  |  +--rw subagent?     uint32
+  |  |  +--rw pdu-stats?    uint32
+  |  +--rw users
+  |  |  +--rw user* [user-name]
+  |  |     +--rw user-name                             string
+  |  |     +--rw group-name                            string
+  |  |     +--rw version                               User-snmp-version
+  |  |     +--rw authentication-password-configured?   empty
+  |  |     +--rw algorithm?                            Snmp-hash-algorithm
+  |  |     +--rw authentication-password?              xr:Proprietary-password
+  |  |     +--rw privacy-password-configured?          empty
+  |  |     +--rw priv-algorithm?                       Snmp-priv-algorithm
+  |  |     +--rw privacy-password?                     xr:Proprietary-password
+  |  |     +--rw v4acl-type?                           Snmpacl
+  |  |     +--rw v4-access-list?                       string
+  |  |     +--rw v6acl-type?                           Snmpacl
+  |  |     +--rw v6-access-list?                       string
+  |  |     +--rw owner?                                Snmp-owner-access
+  |  |     +--rw remote-address?                       inet:ip-address-no-zone
+  |  |     +--rw port?                                 xr:Cisco-ios-xr-port-number
+  |  +--rw vrfs
+  |  |  +--rw vrf* [name]
+  |  |     +--rw name                xr:Cisco-ios-xr-string
+  |  |     +--rw trap-hosts
+  |  |     |  +--rw trap-host* [ip-address]
+  |  |     |     +--rw encrypted-user-communities
+  |  |     |     |  +--rw encrypted-user-community* [community-name]
+  |  |     |     |     +--rw community-name          xr:Cisco-ios-xr-string
+  |  |     |     |     +--rw port?                   xr:Cisco-ios-xr-port-number
+  |  |     |     |     +--rw version                 string
+  |  |     |     |     +--rw security-level?         Snmp-security-model
+  |  |     |     |     +--rw basic-trap-types        int32
+  |  |     |     |     +--rw advanced-trap-types1    int32
+  |  |     |     |     +--rw advanced-trap-types2    int32
+  |  |     |     +--rw inform-host
+  |  |     |     |  +--rw inform-user-communities
+  |  |     |     |  |  +--rw inform-user-community* [community-name]
+  |  |     |     |  |     +--rw community-name          xr:Cisco-ios-xr-string
+  |  |     |     |  |     +--rw port?                   xr:Cisco-ios-xr-port-number
+  |  |     |     |  |     +--rw version                 string
+  |  |     |     |  |     +--rw security-level?         Snmp-security-model
+  |  |     |     |  |     +--rw basic-trap-types        int32
+  |  |     |     |  |     +--rw advanced-trap-types1    int32
+  |  |     |     |  |     +--rw advanced-trap-types2    int32
+  |  |     |     |  +--rw inform-encrypted-user-communities
+  |  |     |     |     +--rw inform-encrypted-user-community* [community-name]
+  |  |     |     |        +--rw community-name          xr:Cisco-ios-xr-string
+  |  |     |     |        +--rw port?                   xr:Cisco-ios-xr-port-number
+  |  |     |     |        +--rw version                 string
+  |  |     |     |        +--rw security-level?         Snmp-security-model
+  |  |     |     |        +--rw basic-trap-types        int32
+  |  |     |     |        +--rw advanced-trap-types1    int32
+  |  |     |     |        +--rw advanced-trap-types2    int32
+  |  |     |     +--rw default-user-communities
+  |  |     |     |  +--rw default-user-community* [community-name]
+  |  |     |     |     +--rw community-name          xr:Cisco-ios-xr-string
+  |  |     |     |     +--rw port?                   xr:Cisco-ios-xr-port-number
+  |  |     |     |     +--rw version                 string
+  |  |     |     |     +--rw security-level?         Snmp-security-model
+  |  |     |     |     +--rw basic-trap-types        int32
+  |  |     |     |     +--rw advanced-trap-types1    int32
+  |  |     |     |     +--rw advanced-trap-types2    int32
+  |  |     |     +--rw ip-address                    inet:ip-address-no-zone
+  |  |     +--rw contexts
+  |  |     |  +--rw context* [context-name]
+  |  |     |     +--rw context-name    xr:Cisco-ios-xr-string
+  |  |     +--rw context-mappings
+  |  |        +--rw context-mapping* [context-mapping-name]
+  |  |           +--rw context-mapping-name    xr:Cisco-ios-xr-string
+  |  |           +--rw context?                Snmp-context
+  |  |           +--rw instance-name?          string
+  |  |           +--rw vrf-name?               string
+  |  |           +--rw topology-name?          string
+  |  +--rw groups
+  |  |  +--rw group* [name]
+  |  |     +--rw name              xr:Cisco-ios-xr-string
+  |  |     +--rw snmp-version      Group-snmp-version
+  |  |     +--rw security-model?   Snmp-security-model
+  |  |     +--rw notify-view?      string
+  |  |     +--rw read-view?        string
+  |  |     +--rw write-view?       string
+  |  |     +--rw v4acl-type?       Snmpacl
+  |  |     +--rw v4-access-list?   string
+  |  |     +--rw v6acl-type?       Snmpacl
+  |  |     +--rw v6-access-list?   string
+  |  |     +--rw context-name?     string
+  |  +--rw inform-retries?                    uint32
+  |  +--rw trap-port?                         uint32
+  |  +--rw oid-poll-stats?                    empty
+  |  +--rw trap-source?                       xr:Interface-name
+  |  +--rw vrf-authentication-trap-disable?   empty
+  |  +--rw inform-timeout?                    uint32
+  |  +--rw trap-source-ipv6?                  xr:Interface-name
+  |  +--rw packet-size?                       uint32
+  |  +--rw throttle-time?                     uint32
+  |  +--rw trap-source-ipv4?                  xr:Interface-name
+  |  +--rw inform-pending?                    uint32
+  |  +--rw trap-hosts
+  |  |  +--rw trap-host* [ip-address]
+  |  |     +--rw encrypted-user-communities
+  |  |     |  +--rw encrypted-user-community* [community-name]
+  |  |     |     +--rw community-name          xr:Cisco-ios-xr-string
+  |  |     |     +--rw port?                   xr:Cisco-ios-xr-port-number
+  |  |     |     +--rw version                 string
+  |  |     |     +--rw security-level?         Snmp-security-model
+  |  |     |     +--rw basic-trap-types        int32
+  |  |     |     +--rw advanced-trap-types1    int32
+  |  |     |     +--rw advanced-trap-types2    int32
+  |  |     +--rw inform-host
+  |  |     |  +--rw inform-user-communities
+  |  |     |  |  +--rw inform-user-community* [community-name]
+  |  |     |  |     +--rw community-name          xr:Cisco-ios-xr-string
+  |  |     |  |     +--rw port?                   xr:Cisco-ios-xr-port-number
+  |  |     |  |     +--rw version                 string
+  |  |     |  |     +--rw security-level?         Snmp-security-model
+  |  |     |  |     +--rw basic-trap-types        int32
+  |  |     |  |     +--rw advanced-trap-types1    int32
+  |  |     |  |     +--rw advanced-trap-types2    int32
+  |  |     |  +--rw inform-encrypted-user-communities
+  |  |     |     +--rw inform-encrypted-user-community* [community-name]
+  |  |     |        +--rw community-name          xr:Cisco-ios-xr-string
+  |  |     |        +--rw port?                   xr:Cisco-ios-xr-port-number
+  |  |     |        +--rw version                 string
+  |  |     |        +--rw security-level?         Snmp-security-model
+  |  |     |        +--rw basic-trap-types        int32
+  |  |     |        +--rw advanced-trap-types1    int32
+  |  |     |        +--rw advanced-trap-types2    int32
+  |  |     +--rw default-user-communities
+  |  |     |  +--rw default-user-community* [community-name]
+  |  |     |     +--rw community-name          xr:Cisco-ios-xr-string
+  |  |     |     +--rw port?                   xr:Cisco-ios-xr-port-number
+  |  |     |     +--rw version                 string
+  |  |     |     +--rw security-level?         Snmp-security-model
+  |  |     |     +--rw basic-trap-types        int32
+  |  |     |     +--rw advanced-trap-types1    int32
+  |  |     |     +--rw advanced-trap-types2    int32
+  |  |     +--rw ip-address                    inet:ip-address-no-zone
+  |  +--rw contexts
+  |  |  +--rw context* [context-name]
+  |  |     +--rw context-name    xr:Cisco-ios-xr-string
+  |  +--rw context-mappings
+  |     +--rw context-mapping* [context-mapping-name]
+  |        +--rw context-mapping-name    xr:Cisco-ios-xr-string
+  |        +--rw context?                Snmp-context
+  |        +--rw instance-name?          string
+  |        +--rw vrf-name?               string
+  |        +--rw topology-name?          string
+  +--rw mib

@@ -1,0 +1,6 @@
+snmp-server host 192.168.5.22 traps version 3 priv SNMPUSER
+snmp-server user SNMPUSER SNMPGROUP v3 auth sha encrypted 01121310533B071C32 priv aes 128 encrypted 0014010F126B0A151C
+snmp-server view SNMPVIEW iso included
+snmp-server group SNMPGROUP v3 priv read SNMPVIEW
+snmp-server traps isis all
+snmp-server trap-source Loopback0

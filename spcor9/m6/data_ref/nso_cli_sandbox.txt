@@ -1,0 +1,14 @@
+config
+devices authgroups group devnetxr default-map remote-name admin remote-password C1sco12345
+devices device xrv_sbx
+address   sandbox-iosxr-1.cisco.com
+port      22
+authgroup devnetxr
+device-type cli ned-id cisco-iosxr-cli-7.50
+device-type cli protocol ssh
+state admin-state unlocked
+commit
+ssh fetch-host-keys
+sync-from
+end
+

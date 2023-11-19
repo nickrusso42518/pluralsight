@@ -1,0 +1,79 @@
+{
+  "main_config": {
+    "Cisco-IOS-XE-native:flow": {
+      "Cisco-IOS-XE-flow:record": [
+        {
+          "name": "FLOW_RECORD_IPV4",
+          "collect": {
+            "counter": {
+              "bytes": {},
+              "packets": {}
+            }
+          },
+          "match": {
+            "ipv4": {
+              "destination": {
+                "address": [
+                  null
+                ]
+              },
+              "dscp": {},
+              "source": {
+                "address": [
+                  null
+                ]
+              }
+            },
+            "transport": {
+              "destination-port": [
+                null
+              ],
+              "source-port": [
+                null
+              ]
+            }
+          }
+        }
+      ],
+      "Cisco-IOS-XE-flow:exporter": [
+        {
+          "name": "FLOW_EXPORTER",
+          "destination": {
+            "ipdest": {
+              "ip": "192.168.5.22"
+            }
+          },
+          "source": {
+            "Loopback": 0
+          },
+          "transport": {
+            "udp": 2055
+          }
+        }
+      ],
+      "Cisco-IOS-XE-flow:monitor": [
+        {
+          "name": "FLOW_MONITOR_IPV4",
+          "exporter": [
+            {
+              "name": "FLOW_EXPORTER"
+            }
+          ],
+          "record": {
+            "type": "FLOW_RECORD_IPV4"
+          }
+        }
+      ]
+    }
+  },
+  "intf_apply": {
+    "Cisco-IOS-XE-flow:flow": {
+      "monitor-new": [
+        {
+          "name": "FLOW_MONITOR_IPV4",
+          "direction": "input"
+        }
+      ]
+    }
+  }
+}

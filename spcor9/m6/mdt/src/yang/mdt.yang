@@ -1,0 +1,59 @@
+module mdt {
+  namespace "http://globomantics.xyz/mdt";
+  prefix mdt;
+
+  import ietf-inet-types {
+    prefix inet;
+  }
+  import tailf-ncs {
+    prefix ncs;
+  }
+  import tailf-common {
+    prefix tailf;
+  }
+
+  list mdt {
+    key sub_id;
+
+    uses ncs:service-data;
+    ncs:servicepoint "mdt";
+
+    leaf sub_id {
+      tailf:info "Subscription ID";
+      type uint32 {
+        range "0..2147483647";
+      }
+    }
+
+    leaf-list device {
+      tailf:info "Devices to target; use [] for multiple";
+      type leafref {
+        path "/ncs:devices/ncs:device/ncs:name";
+      }
+    }
+    leaf xpath {
+      tailf:info "xpath expression to monitor";
+      type string;
+    }
+
+    leaf xe_src_addr {
+      tailf:info "XE only: source IPv4 address";
+      type inet:ipv4-address;
+    }
+
+    leaf sample {
+      tailf:info "sample interval in centiseconds (1/100th)";
+      type uint32;
+    }
+
+    leaf rx_ip {
+      tailf:info "telemetry receiver IPv4 address";
+      type inet:ipv4-address;
+    }
+
+    leaf rx_port {
+      tailf:info "telemetry receiver TCP/UDP port";
+      type uint16;
+    }
+  }
+}

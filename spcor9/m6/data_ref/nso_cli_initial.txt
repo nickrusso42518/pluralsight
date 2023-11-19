@@ -1,0 +1,67 @@
+config
+devices authgroups group default default-map remote-name labadmin remote-password labadmin
+devices device csr02
+address   10.0.90.2
+port      22
+authgroup default
+device-type cli ned-id cisco-ios-cli-6.93
+device-type cli protocol ssh
+state admin-state unlocked
+commit
+ssh fetch-host-keys
+sync-from
+
+devices device csr03
+address   10.0.90.3
+port      22
+authgroup default
+device-type cli ned-id cisco-ios-cli-6.93
+device-type cli protocol ssh
+state admin-state unlocked
+commit
+ssh fetch-host-keys
+sync-from
+
+devices device csr05
+address   10.0.90.5
+port      22
+authgroup default
+device-type cli ned-id cisco-ios-cli-6.93
+device-type cli protocol ssh
+state admin-state unlocked
+commit
+ssh fetch-host-keys
+sync-from
+
+devices device csr08
+address   10.0.90.8
+port      22
+authgroup default
+device-type cli ned-id cisco-ios-cli-6.93
+device-type cli protocol ssh
+state admin-state unlocked
+commit
+ssh fetch-host-keys
+sync-from
+
+devices device xrv11
+address   10.0.90.11
+port      23
+authgroup default
+device-type cli ned-id cisco-iosxr-cli-7.50
+device-type cli protocol telnet
+state admin-state unlocked
+commit
+sync-from
+
+devices device xrv12
+address   10.0.90.12
+port      23
+authgroup default
+device-type cli ned-id cisco-iosxr-cli-7.50
+device-type cli protocol telnet
+state admin-state unlocked
+commit
+sync-from
+end
+

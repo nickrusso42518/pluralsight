@@ -1,0 +1,61 @@
+<config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+    <snmp-server>
+      <user xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-snmp">
+        <names>
+          <username>SNMPUSER</username>
+          <grpname>SNMPGROUP</grpname>
+          <v3>
+            <auth-config>
+              <algorithm>sha</algorithm>
+              <password>authPass</password>
+              <priv-config>
+                <aes>
+                  <algorithm>128</algorithm>
+                  <password>privPass</password>
+                </aes>
+              </priv-config>
+            </auth-config>
+          </v3>
+        </names>
+      </user>
+      <group xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-snmp">
+        <id>SNMPGROUP</id>
+        <v3>
+          <security-level-list>
+            <security-level>priv</security-level>
+            <read-node>SNMPVIEW</read-node>
+          </security-level-list>
+          <security-level>priv</security-level>
+          <read>SNMPVIEW</read>
+        </v3>
+      </group>
+      <enable xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-snmp">
+        <enable-choice>
+          <traps>
+            <isis/>
+          </traps>
+        </enable-choice>
+      </enable>
+      <host-config xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-snmp">
+        <ip-community>
+          <ip-address>192.168.5.22</ip-address>
+          <community-or-user>SNMPUSER</community-or-user>
+          <version>3</version>
+          <security-level>priv</security-level>
+          <trap-enable>
+            <isis/>
+          </trap-enable>
+        </ip-community>
+      </host-config>
+      <trap-source xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-snmp">
+        <Loopback>0</Loopback>
+      </trap-source>
+      <view xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-snmp">
+        <name>SNMPVIEW</name>
+        <mib>iso</mib>
+        <inc-exl>included</inc-exl>
+      </view>
+    </snmp-server>
+  </native>
+</config>

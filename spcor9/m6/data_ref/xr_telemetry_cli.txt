@@ -1,0 +1,30 @@
+telemetry model-driven
+ destination-group 1
+  address-family ipv4 192.168.5.22 port 50051
+   encoding self-describing-gpb
+   protocol grpc no-tls
+  !
+ !
+ destination-group 2
+  address-family ipv4 192.168.5.22 port 50051
+   encoding self-describing-gpb
+   protocol grpc no-tls
+  !
+ !
+ sensor-group 1
+  sensor-path /process-cpu-ios-xe-oper:cpu-usage/cpu-utilization
+ !
+ sensor-group 2
+  sensor-path /memory-ios-xe-oper:memory-statistics/memory-statistic
+ !
+ subscription 1
+  sensor-group-id 1 sample-interval 10000
+  destination-id 1
+  source-interface Loopback0
+ !
+ subscription 2
+  sensor-group-id 2 sample-interval 10000
+  destination-id 2
+  source-interface Loopback0
+ !
+!
