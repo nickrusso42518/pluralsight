@@ -1,0 +1,108 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Tue Mar 14 19:58:29 2023 by labadmin
+!
+hostname XRV12
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.12 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.12 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3112
+ description XRV11
+ ipv4 address 10.11.12.12 255.255.255.0
+ encapsulation dot1q 3112
+!
+interface GigabitEthernet0/0/0/0.3412
+ description CSR04
+ ipv4 address 10.4.12.12 255.255.255.0
+ encapsulation dot1q 3412
+!
+interface GigabitEthernet0/0/0/0.3612
+ description CSR06
+ ipv4 address 10.6.12.12 255.255.255.0
+ encapsulation dot1q 3612
+!
+prefix-set PS_LOOPBACKS
+  10.0.0.4/32,
+  10.0.0.11/32
+end-set
+!
+route-policy RPL_PASS
+  pass
+end-policy
+!
+route-policy RPL_OSPF_TO_BGP
+  if destination in PS_LOOPBACKS then
+    pass
+  endif
+end-policy
+!
+router static
+ address-family ipv4 unicast
+  10.6.12.6/32 GigabitEthernet0/0/0/0.3612
+ !
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router ospf 65001
+ redistribute bgp 65001 metric 10 metric-type 2
+ area 0
+  network point-to-point
+  mpls ldp auto-config
+  prefix-suppression
+  interface Loopback0
+   passive enable
+  !
+  interface GigabitEthernet0/0/0/0.3112
+  !
+  interface GigabitEthernet0/0/0/0.3412
+  !
+ !
+!
+router bgp 65001
+ address-family ipv4 unicast
+  redistribute ospf 65001 route-policy RPL_OSPF_TO_BGP
+  allocate-label all
+ !
+ neighbor 10.6.12.6
+  remote-as 65000
+  address-family ipv4 labeled-unicast
+   route-policy RPL_PASS in
+   route-policy RPL_PASS out
+  !
+ !
+!
+mpls oam
+!
+mpls ldp
+ router-id 10.0.0.12
+ address-family ipv4
+  label
+   local
+    allocate for host-routes
+   !
+  !
+ !
+!
+mpls label range table 0 92000 92900
+ssh server v2
+ssh server vrf MGMT
+end

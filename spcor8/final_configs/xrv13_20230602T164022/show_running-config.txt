@@ -1,0 +1,128 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Mon May 29 20:30:07 2023 by labadmin
+!
+hostname XRV13
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.13 255.255.255.255
+ ipv6 address 2001:db8::13/128
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.13 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3123
+ description XRV12
+ ipv4 address 172.16.13.13 255.255.255.0
+ ipv6 address fe80::13 link-local
+ ipv6 address fc00:172:16:13::13/64
+ encapsulation dot1q 3123
+!
+interface GigabitEthernet0/0/0/0.3534
+ description LAN
+ ipv4 address 10.5.34.13 255.255.255.0
+ ipv6 address fe80::13 link-local
+ encapsulation dot1q 3534
+!
+interface GigabitEthernet0/0/0/0.3913
+ description CSR09
+ ipv4 address 10.9.13.13 255.255.255.0
+ ipv6 address fe80::13 link-local
+ encapsulation dot1q 3913
+!
+route-policy RPL_PASS
+  pass
+end-policy
+!
+router static
+ address-family ipv6 unicast
+  2002::/16 Null0
+ !
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 1
+ net 49.0000.0000.0000.0013.00
+ log adjacency changes
+ log pdu drops
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+ !
+ address-family ipv6 unicast
+  metric-style wide
+  advertise passive-only
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+  !
+  address-family ipv6 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3534
+  circuit-type level-1
+  priority 113
+  address-family ipv4 unicast
+  !
+  address-family ipv6 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3913
+  circuit-type level-2-only
+  point-to-point
+  address-family ipv4 unicast
+  !
+  address-family ipv6 unicast
+  !
+ !
+!
+router bgp 65002
+ address-family ipv4 unicast
+  redistribute isis 1
+ !
+ address-family ipv6 unicast
+  network 2002::/16
+  redistribute isis 1
+ !
+ session-group EBGP
+  remote-as 65000
+  password encrypted 1537292B34150A111C1B
+  ttl-security
+ !
+ neighbor 172.16.13.12
+  use session-group EBGP
+  address-family ipv4 unicast
+   route-policy RPL_PASS in
+   route-policy RPL_PASS out
+  !
+ !
+ neighbor fc00:172:16:13::12
+  use session-group EBGP
+  address-family ipv6 unicast
+   route-policy RPL_PASS in
+   route-policy RPL_PASS out
+  !
+ !
+!
+mpls oam
+!
+mpls label range table 0 93000 93900
+ssh server v2
+ssh server vrf MGMT
+end

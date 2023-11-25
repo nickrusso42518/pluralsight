@@ -1,0 +1,16 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3015                       up             up       
+Gi2.3111                       up             up       
+Gi3                            up             up       
+Gi3.3999149                    up             up       L2A
+Gi4                            up             up       
+Gi4.3999249                    up             up       L2B
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo15                           up             up       
+Lo21                           up             up       
+Lo22                           up             up       
+Lo111                          up             up

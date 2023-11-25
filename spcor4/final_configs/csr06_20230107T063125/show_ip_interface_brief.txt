@@ -1,0 +1,15 @@
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       10.0.90.6       YES NVRAM  up                    up      
+GigabitEthernet2       unassigned      YES NVRAM  up                    up      
+GigabitEthernet2.3046  unassigned      YES NVRAM  deleted               down    
+GigabitEthernet2.3067  unassigned      YES NVRAM  deleted               down    
+GigabitEthernet2.3611  10.6.11.6       YES TFTP   up                    up      
+GigabitEthernet2.3612  10.6.12.6       YES TFTP   up                    up      
+GigabitEthernet2.3613  10.6.13.6       YES TFTP   up                    up      
+GigabitEthernet3       unassigned      YES NVRAM  up                    up      
+GigabitEthernet4       unassigned      YES NVRAM  up                    up      
+GigabitEthernet5       unassigned      YES NVRAM  up                    up      
+GigabitEthernet6       unassigned      YES NVRAM  up                    up      
+GigabitEthernet7       unassigned      YES NVRAM  up                    up      
+Loopback0              10.0.0.6        YES NVRAM  up                    up      
+Loopback42             10.0.42.6       YES manual up                    up

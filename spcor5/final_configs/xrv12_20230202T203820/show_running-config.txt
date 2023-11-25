@@ -1,0 +1,248 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Sun Jan 29 11:14:31 2023 by labadmin
+!
+hostname XRV12
+logging monitor debugging
+domain lookup disable
+explicit-path name EP_4_3_7_8
+ index 10 next-address strict ipv4 unicast 10.0.0.4
+ index 20 next-address strict ipv4 unicast 10.0.0.3
+ index 30 next-address strict ipv4 unicast 10.0.0.7
+ index 40 next-address strict ipv4 unicast 10.0.0.8
+!
+vrf L3D
+ address-family ipv4 unicast
+  import route-target
+   65000:34
+  !
+  export route-target
+   65000:34
+  !
+ !
+ address-family ipv6 unicast
+  import route-target
+   65000:34
+  !
+  export route-target
+   65000:34
+  !
+ !
+!
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.12 255.255.255.255
+!
+interface tunnel-te128
+ description CSR08 SR-TE STATEFUL PASSIVE
+ ipv4 unnumbered Loopback0
+ signalled-name "CSR08 SR-TE STATEFUL PASSIVE"
+ signalled-bandwidth 3000 class-type 0
+ destination 10.0.0.8
+ affinity ignore
+ path-option 1 dynamic segment-routing pce
+!
+interface tunnel-te812
+ description CSR08 FRR-PROTECTED
+ ipv4 unnumbered Loopback0
+ signalled-name CSR08-FRR-PROTECTED
+ autoroute announce
+ !
+ destination 10.0.0.8
+ fast-reroute protect node
+ affinity ignore
+ path-option 1 explicit name EP_4_3_7_8
+ path-option 2 dynamic
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.12 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3112
+ description XRV11
+ ipv4 address 10.11.12.12 255.255.255.0
+ encapsulation dot1q 3112
+!
+interface GigabitEthernet0/0/0/0.3121
+ description CSR01
+ vrf L3D
+ ipv4 address 172.16.121.12 255.255.255.0
+ ipv6 address fe80::12 link-local
+ ipv6 address fc00:172:16:121::12/64
+ encapsulation dot1q 3121
+!
+interface GigabitEthernet0/0/0/0.3213
+ description XRV12
+ ipv4 address 10.12.13.12 255.255.255.0
+ encapsulation dot1q 3213
+!
+interface GigabitEthernet0/0/0/0.3412
+ description CSR04
+ ipv4 address 10.4.12.12 255.255.255.0
+ encapsulation dot1q 3412
+!
+interface GigabitEthernet0/0/0/1
+ shutdown
+!
+interface GigabitEthernet0/0/0/2
+ shutdown
+!
+interface GigabitEthernet0/0/0/3
+ shutdown
+!
+interface GigabitEthernet0/0/0/4
+ shutdown
+!
+interface GigabitEthernet0/0/0/5
+ shutdown
+!
+interface GigabitEthernet0/0/0/6
+ shutdown
+!
+route-policy RPL_PASS
+  pass
+end-policy
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65000
+ is-type level-2-only
+ net 49.0001.0000.0000.0012.00
+ log adjacency changes
+ log pdu drops
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+  mpls traffic-eng level-2-only
+  mpls traffic-eng router-id Loopback0
+  segment-routing mpls
+  segment-routing prefix-sid-map advertise-local
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+   prefix-sid index 12
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3112
+  point-to-point
+  address-family ipv4 unicast
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3213
+  point-to-point
+  address-family ipv4 unicast
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3412
+  point-to-point
+  address-family ipv4 unicast
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa
+  !
+ !
+!
+router bgp 65000
+ address-family vpnv4 unicast
+ !
+ address-family vpnv6 unicast
+ !
+ neighbor 10.0.0.14
+  remote-as 65000
+  update-source Loopback0
+  address-family vpnv4 unicast
+  !
+  address-family vpnv6 unicast
+  !
+ !
+ vrf L3D
+  rd 65000:34
+  address-family ipv4 unicast
+  !
+  address-family ipv6 unicast
+  !
+  neighbor 172.16.121.1
+   remote-as 65001
+   address-family ipv4 unicast
+    as-override
+   !
+  !
+  neighbor fc00:172:16:121::1
+   remote-as 65001
+   address-family ipv6 unicast
+    as-override
+   !
+  !
+ !
+!
+mpls oam
+!
+rsvp
+ interface GigabitEthernet0/0/0/0.3112
+  bandwidth mam max-reservable-bw 750000 bc0 650000 bc1 100000
+  bandwidth rdm bc0 750000 bc1 100000
+ !
+ interface GigabitEthernet0/0/0/0.3213
+  bandwidth mam max-reservable-bw 750000 bc0 650000 bc1 100000
+  bandwidth rdm bc0 750000 bc1 100000
+ !
+ interface GigabitEthernet0/0/0/0.3412
+  bandwidth mam max-reservable-bw 750000 bc0 650000 bc1 100000
+  bandwidth rdm bc0 750000 bc1 100000
+ !
+!
+mpls traffic-eng
+ interface GigabitEthernet0/0/0/0.3112
+  attribute-names RED
+ !
+ interface GigabitEthernet0/0/0/0.3213
+  attribute-names RED BLUE
+ !
+ interface GigabitEthernet0/0/0/0.3412
+  attribute-names RED
+ !
+ pce
+  peer source ipv4 10.0.0.12
+  peer ipv4 10.0.0.14
+   password encrypted 0538343B04737E2A3C
+  !
+  segment-routing
+  logging events peer-status
+  stateful-client
+  !
+ !
+ affinity-map RED 0x1
+ affinity-map BLUE bit-position 1
+ reoptimize timers delay after-frr 120
+ ds-te mode ietf
+ ds-te bc-model mam
+!
+mpls ldp
+ router-id 10.0.0.12
+ interface tunnel-te812
+  address-family ipv4
+  !
+ !
+!
+mpls label range table 0 92000 92900
+ssh server v2
+ssh server vrf MGMT
+end

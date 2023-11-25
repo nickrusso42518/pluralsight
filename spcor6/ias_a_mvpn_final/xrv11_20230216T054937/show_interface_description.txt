@@ -1,0 +1,14 @@
+Interface          Status      Protocol    Description
+--------------------------------------------------------------------------------
+Lo0                up          up          
+Nu0                up          up          
+Mg0/0/CPU0/0       up          up          MGMT
+Gi0/0/0/0          up          up          
+Gi0/0/0/0.3511     up          up          CSR05
+Gi0/0/0/0.3888311  up          up          CSR03
+Gi0/0/0/1          admin-down  admin-down  
+Gi0/0/0/2          admin-down  admin-down  
+Gi0/0/0/3          admin-down  admin-down  
+Gi0/0/0/4          admin-down  admin-down  
+Gi0/0/0/5          admin-down  admin-down  
+Gi0/0/0/6          admin-down  admin-down

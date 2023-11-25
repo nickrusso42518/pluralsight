@@ -1,0 +1,16 @@
+Interface          Status      Protocol    Description
+--------------------------------------------------------------------------------
+Lo0                up          up          
+Nu0                up          up          
+Mg0/0/CPU0/0       up          up          MGMT
+Gi0/0/0/0          up          up          
+Gi0/0/0/0.3111     up          up          CSR01 VRF RAN
+Gi0/0/0/0.3112     up          up          XRV12
+Gi0/0/0/0.3311     up          up          CSR03
+Gi0/0/0/0.3411     up          up          CSR04
+Gi0/0/0/1          up          up          
+Gi0/0/0/2          up          up          
+Gi0/0/0/3          up          up          
+Gi0/0/0/4          up          up          
+Gi0/0/0/5          up          up          
+Gi0/0/0/6          up          up

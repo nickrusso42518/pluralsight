@@ -1,0 +1,43 @@
+GigabitEthernet1       [up/up]
+    unassigned
+GigabitEthernet2       [up/up]
+    unassigned
+GigabitEthernet2.501   [up/up]
+    FE80::8
+GigabitEthernet2.3018  [deleted/down]
+    unassigned
+GigabitEthernet2.3028  [deleted/down]
+    unassigned
+GigabitEthernet2.3048  [deleted/down]
+    unassigned
+GigabitEthernet2.3078  [up/up]
+    unassigned
+GigabitEthernet2.3089  [deleted/down]
+    unassigned
+GigabitEthernet2.3182  [up/up]
+    FE80::8
+    FC00:172:16:182::8
+GigabitEthernet2.3183  [up/up]
+    FE80::8
+GigabitEthernet2.3810  [deleted/down]
+    unassigned
+GigabitEthernet2.3811  [up/up]
+    unassigned
+GigabitEthernet2.3812  [up/up]
+    unassigned
+GigabitEthernet2.3813  [deleted/down]
+    unassigned
+GigabitEthernet2.3814  [deleted/down]
+    unassigned
+GigabitEthernet3       [administratively down/down]
+    unassigned
+GigabitEthernet4       [administratively down/down]
+    unassigned
+GigabitEthernet5       [administratively down/down]
+    unassigned
+GigabitEthernet6       [administratively down/down]
+    unassigned
+GigabitEthernet7       [administratively down/down]
+    unassigned
+Loopback0              [up/up]
+    unassigned

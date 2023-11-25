@@ -1,0 +1,132 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Wed Jan 11 21:24:16 2023 by labadmin
+!
+hostname XRV14
+logging monitor debugging
+domain lookup disable
+pce
+ address ipv4 10.0.0.14
+ logging no-path
+ password encrypted 107D3B2D2028222829
+!
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.14 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.14 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3069
+ description CSR06 + CSR09
+ ipv4 address 10.6.9.14 255.255.255.0
+ encapsulation dot1q 3069
+!
+interface GigabitEthernet0/0/0/1
+ shutdown
+!
+interface GigabitEthernet0/0/0/2
+ shutdown
+!
+interface GigabitEthernet0/0/0/3
+ shutdown
+!
+interface GigabitEthernet0/0/0/4
+ shutdown
+!
+interface GigabitEthernet0/0/0/5
+ shutdown
+!
+interface GigabitEthernet0/0/0/6
+ shutdown
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65000
+ is-type level-2-only
+ net 49.0002.0000.0000.0014.00
+ log adjacency changes
+ log pdu drops
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3069
+  priority 0 level 2
+  address-family ipv4 unicast
+  !
+ !
+!
+router bgp 65000
+ address-family vpnv4 unicast
+ !
+ address-family vpnv6 unicast
+ !
+ address-family link-state link-state
+ !
+ neighbor-group IBGP_LS
+  remote-as 65000
+  password encrypted 0529213F0D7F71282C313F
+  update-source Loopback0
+  address-family link-state link-state
+  !
+ !
+ neighbor-group IBGP_VPN
+  remote-as 65000
+  update-source Loopback0
+  address-family vpnv4 unicast
+   route-reflector-client
+  !
+  address-family vpnv6 unicast
+   route-reflector-client
+  !
+ !
+ neighbor 10.0.0.2
+  use neighbor-group IBGP_VPN
+ !
+ neighbor 10.0.0.4
+  use neighbor-group IBGP_VPN
+ !
+ neighbor 10.0.0.5
+  use neighbor-group IBGP_VPN
+ !
+ neighbor 10.0.0.6
+  use neighbor-group IBGP_LS
+ !
+ neighbor 10.0.0.8
+  use neighbor-group IBGP_VPN
+ !
+ neighbor 10.0.0.9
+  use neighbor-group IBGP_LS
+ !
+ neighbor 10.0.0.12
+  use neighbor-group IBGP_VPN
+ !
+ neighbor 10.0.0.13
+  use neighbor-group IBGP_VPN
+ !
+!
+mpls label range table 0 94000 94900
+ssh server v2
+ssh server vrf MGMT
+end

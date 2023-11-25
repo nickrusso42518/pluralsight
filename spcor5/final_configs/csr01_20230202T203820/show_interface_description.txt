@@ -1,0 +1,19 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3012                       up             up       CSR02
+Gi2.3018                       up             up       CSR08
+Gi2.3121                       up             up       XRV12
+Gi2.3131                       up             up       XRV13
+Gi3                            up             up       
+Gi3.3999014                    up             up       
+Gi3.3999015                    up             up       
+Gi4                            up             up       
+Gi4.3999015                    up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo1                            up             up       
+Lo2                            up             up       
+Lo3                            up             up       
+Lo4                            up             up

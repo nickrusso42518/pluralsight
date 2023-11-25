@@ -1,0 +1,18 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3046                       up             up       LAN
+Gi2.3103                       up             up       CSR03
+Gi2.3110                       deleted        down     
+Gi2.3113                       deleted        down     
+Gi2.3198                       deleted        down     
+Gi2.3410                       deleted        down     
+Gi2.3810                       deleted        down     
+Gi2.3910                       deleted        down     
+Gi3                            up             up       
+Gi4                            up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo0                            up             up       
+Lo198                          up             up       URPF SPOOF TEST

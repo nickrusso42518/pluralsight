@@ -1,0 +1,140 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Fri Jun  9 11:36:17 2023 by labadmin
+!
+hostname XRV11
+logging monitor debugging
+telnet vrf MGMT ipv4 server max-servers 5
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+vrf SPOKE
+ address-family ipv4 unicast
+  import route-target
+   65008:101
+  !
+  export route-target
+   65008:102
+  !
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.11 255.255.255.255
+ ipv6 address fc00::11/128
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.11 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3112
+ description XRV12
+ ipv4 address 10.11.12.11 255.255.255.0
+ ipv6 address fe80::11 link-local
+ encapsulation dot1q 3112
+!
+interface GigabitEthernet0/0/0/0.3116
+ description CSR06
+ vrf SPOKE
+ ipv4 address 172.16.116.11 255.255.255.0
+ encapsulation dot1q 3116
+!
+interface GigabitEthernet0/0/0/0.3811
+ description CSR08
+ ipv4 address 10.8.11.11 255.255.255.0
+ ipv6 address fe80::11 link-local
+ encapsulation dot1q 3811
+!
+route-policy RPL_PASS
+  pass
+end-policy
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65000
+ is-type level-2-only
+ net 49.0000.0000.0000.0011.00
+ log adjacency changes
+ log pdu drops
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+  segment-routing mpls
+  segment-routing prefix-sid-map advertise-local
+ !
+ address-family ipv6 unicast
+  metric-style wide
+  advertise passive-only
+  single-topology
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+   prefix-sid index 11
+  !
+  address-family ipv6 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3112
+  point-to-point
+  address-family ipv4 unicast
+  !
+  address-family ipv6 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3811
+  point-to-point
+  address-family ipv4 unicast
+  !
+  address-family ipv6 unicast
+  !
+ !
+!
+router bgp 65000
+ address-family vpnv4 unicast
+ !
+ neighbor 10.0.0.2
+  remote-as 65000
+  update-source Loopback0
+  address-family vpnv4 unicast
+  !
+ !
+ vrf SPOKE
+  rd 65011:100
+  address-family ipv4 unicast
+  !
+  neighbor 172.16.116.6
+   remote-as 65006
+   address-family ipv4 unicast
+    route-policy RPL_PASS in
+    route-policy RPL_PASS out
+   !
+  !
+ !
+!
+mpls oam
+!
+mpls ldp
+!
+netconf agent tty
+!
+netconf-yang agent
+ ssh
+!
+mpls label range table 0 91000 91900
+ssh server v2
+ssh server vrf MGMT
+ssh server netconf vrf MGMT
+end

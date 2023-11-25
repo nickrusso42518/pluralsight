@@ -1,0 +1,20 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3018                       up             up       CSR01
+Gi2.3048                       up             up       CSR04
+Gi2.3078                       up             up       CSR08
+Gi2.3813                       up             up       XRV13
+Gi3                            up             up       
+Gi4                            up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo0                            up             up       
+MP2                            up             up       
+MP3                            up             up       
+MP4                            up             up       
+Tu128                          admin down     down     XRV12 SR-TE STATEFUL PASSIVE (BUGGED)
+Tu812                          up             up       XRV12 CBTS MASTER
+Tu8121                         up             up       XRV12 CBTS MEMBER - VOICE/VIDEO
+Tu8122                         up             up       XRV12 CBTS MEMBER - CRITICAL DATA

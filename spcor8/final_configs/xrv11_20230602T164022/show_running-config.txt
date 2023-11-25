@@ -1,0 +1,218 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Fri Jun  2 16:37:52 2023 by labadmin
+!
+hostname XRV11
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+vrf FS_INJECT
+ address-family ipv4 flowspec
+  export route-target
+   65000:500
+  !
+ !
+ address-family ipv6 flowspec
+  export route-target
+   65000:500
+  !
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+!
+class-map type traffic match-all CMAP_FS_HTTP
+ match protocol tcp 
+ match destination-port 80 443 
+ end-class-map
+! 
+!
+class-map type traffic match-all CMAP_FS_PING_V4
+ match ipv4 icmp-type 8 0 
+ match ipv4 icmp-code 0 
+ end-class-map
+! 
+class-map type traffic match-all CMAP_FS_TELNET_FTP
+ match protocol tcp 
+ match destination-port 20-21 23 
+ end-class-map
+! 
+class-map type traffic match-all CMAP_FS_RTBH_SOURCE
+ match source-address ipv6 2001:db8:aaaa::/48
+ end-class-map
+! 
+class-map type traffic match-all CMAP_FS_RTBH_DESTINATION
+ match destination-address ipv6 2002::/16
+ end-class-map
+! 
+policy-map type pbr PMAP_FS_RTBH
+ class type traffic CMAP_FS_RTBH_SOURCE 
+  drop
+ ! 
+ class type traffic CMAP_FS_RTBH_DESTINATION 
+  drop
+ ! 
+ class type traffic class-default 
+ ! 
+ end-policy-map
+! 
+policy-map type pbr PMAP_FS_POLICE
+ class type traffic CMAP_FS_PING_V4 
+  police rate 64 kbps 
+  ! 
+ ! 
+ class type traffic class-default 
+ ! 
+ end-policy-map
+! 
+policy-map type pbr PMAP_FS_REDIRECT_SINK
+ class type traffic CMAP_FS_TELNET_FTP 
+  set dscp cs1
+  redirect nexthop route-target 65000:501
+ ! 
+ class type traffic class-default 
+ ! 
+ end-policy-map
+! 
+policy-map type pbr PMAP_FS_REDIRECT_SCRUB
+ class type traffic CMAP_FS_HTTP 
+  redirect nexthop route-target 65000:502
+ ! 
+ class type traffic class-default 
+ ! 
+ end-policy-map
+! 
+interface Loopback0
+ ipv4 address 10.0.0.11 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.11 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3112
+ description XRV12
+ ipv4 address 10.11.12.11 255.255.255.0
+ encapsulation dot1q 3112
+!
+interface GigabitEthernet0/0/0/0.3311
+ description CSR03
+ ipv4 address 10.3.11.11 255.255.255.0
+ encapsulation dot1q 3311
+!
+interface GigabitEthernet0/0/0/0.3811
+ description CSR08
+ ipv4 address 10.8.11.11 255.255.255.0
+ encapsulation dot1q 3811
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router ospf 65000
+ security ttl hops 1
+ area 0
+  network point-to-point
+  mpls ldp sync
+  mpls ldp auto-config
+  prefix-suppression
+  interface Loopback0
+   passive enable
+  !
+  interface GigabitEthernet0/0/0/0.3112
+  !
+  interface GigabitEthernet0/0/0/0.3311
+  !
+  interface GigabitEthernet0/0/0/0.3811
+  !
+ !
+!
+router bgp 65000
+ address-family vpnv4 unicast
+ !
+ address-family vpnv6 unicast
+ !
+ address-family vpnv4 flowspec
+ !
+ address-family vpnv6 flowspec
+ !
+ neighbor-group IBGP_RRC
+  remote-as 65000
+  update-source Loopback0
+  address-family vpnv4 unicast
+   route-reflector-client
+  !
+  address-family vpnv6 unicast
+   route-reflector-client
+  !
+  address-family vpnv4 flowspec
+   route-reflector-client
+  !
+  address-family vpnv6 flowspec
+   route-reflector-client
+  !
+ !
+ neighbor 10.0.0.3
+  use neighbor-group IBGP_RRC
+ !
+ neighbor 10.0.0.7
+  use neighbor-group IBGP_RRC
+ !
+ neighbor 10.0.0.8
+  use neighbor-group IBGP_RRC
+ !
+ neighbor 10.0.0.12
+  use neighbor-group IBGP_RRC
+ !
+ vrf FS_INJECT
+  rd 65000:500
+  address-family ipv4 flowspec
+  !
+  address-family ipv6 flowspec
+  !
+ !
+!
+mpls oam
+!
+mpls ldp
+ log
+  session-protection
+ !
+ router-id 10.0.0.11
+ neighbor
+  password encrypted 10622D293A36273F24
+ !
+ session protection duration 180
+ address-family ipv4
+  label
+   local
+    allocate for host-routes
+   !
+  !
+ !
+!
+flowspec
+ vrf FS_INJECT
+  address-family ipv4
+   service-policy type pbr PMAP_FS_POLICE
+   service-policy type pbr PMAP_FS_REDIRECT_SINK
+   service-policy type pbr PMAP_FS_REDIRECT_SCRUB
+  !
+  address-family ipv6
+   service-policy type pbr PMAP_FS_RTBH
+  !
+ !
+!
+mpls label range table 0 91000 91900
+ssh server v2
+ssh server vrf MGMT
+end

@@ -1,0 +1,145 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Fri Feb 17 15:24:59 2023 by labadmin
+!
+hostname XRV12
+logging monitor debugging
+domain lookup disable
+vrf L3A
+ address-family ipv4 unicast
+  import route-target
+   65000:102
+  !
+  export route-target
+   65000:103
+  !
+ !
+ address-family ipv6 unicast
+  import route-target
+   65000:102
+  !
+  export route-target
+   65000:103
+  !
+ !
+!
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.12 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.12 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3112
+ description CSR01
+ vrf L3A
+ ipv4 address 172.16.112.12 255.255.255.0
+ ipv6 address fe80::12 link-local
+ ipv6 address fc00:172:16:112::12/64
+ encapsulation dot1q 3112
+!
+interface GigabitEthernet0/0/0/0.3512
+ description CSR05
+ ipv4 address 10.5.12.12 255.255.255.0
+ encapsulation dot1q 3512
+!
+interface GigabitEthernet0/0/0/0.3612
+ description CSR06
+ ipv4 address 10.6.12.12 255.255.255.0
+ encapsulation dot1q 3612
+!
+route-policy RPL_PASS
+  pass
+end-policy
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65001
+ is-type level-2-only
+ net 49.0000.0000.0000.0012.00
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+  mpls ldp auto-config
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3512
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3612
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+!
+router bgp 65001
+ address-family vpnv4 unicast
+ !
+ address-family vpnv6 unicast
+ !
+ address-family l2vpn evpn
+ !
+ neighbor 10.0.0.7
+  remote-as 65001
+  update-source Loopback0
+  session-open-mode active-only
+  address-family vpnv4 unicast
+  !
+  address-family vpnv6 unicast
+  !
+  address-family l2vpn evpn
+  !
+ !
+ vrf L3A
+  rd 65000:101
+  address-family ipv4 unicast
+  !
+  address-family ipv6 unicast
+  !
+  neighbor 172.16.112.1
+   remote-as 65101
+   address-family ipv4 unicast
+    route-policy RPL_PASS in
+    route-policy RPL_PASS out
+   !
+  !
+  neighbor fc00:172:16:112::1
+   remote-as 65101
+   address-family ipv6 unicast
+    route-policy RPL_PASS in
+    route-policy RPL_PASS out
+   !
+  !
+ !
+!
+mpls oam
+!
+mpls ldp
+ mldp
+ !
+!
+mpls label range table 0 92000 92900
+ssh server v2
+ssh server vrf MGMT
+end

@@ -1,0 +1,469 @@
+Building configuration...
+
+Current configuration : 11168 bytes
+!
+! Last configuration change at 18:37:30 UTC Wed May 31 2023 by labadmin
+!
+version 17.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname CSR08
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition MGMT
+ !
+ address-family ipv4
+ exit-address-family
+!
+vrf definition SCRUB_OFFRAMP
+ rd 65000:503
+ route-target import 65000:503
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+vrf definition SCRUB_ONRAMP
+ rd 65000:502
+ route-target export 65000:502
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+vrf definition SINK
+ rd 65000:501
+ route-target export 65000:501
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+no aaa new-model
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name lab.local
+!
+!
+!
+login on-success log
+ipv6 unicast-routing
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+!
+mpls label range 8000 8900 static 8901 8999
+mpls ldp password required
+mpls ldp password fallback LDP_AUTH
+mpls ldp session protection duration 180
+mpls ldp label
+ allocate global host-routes
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D 
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE 
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC 
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B 
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C 
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B 
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB 
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 
+  D697DF7F 28
+  	quit
+!
+license udi pid CSR1000V sn 9IQ40WP0LJC
+license boot level ax
+diagnostic bootup level minimal
+memory free low-watermark processor 71489
+!
+!
+spanning-tree extend system-id
+!
+username labadmin privilege 15 secret 9 $9$/zUQycWNZH2BYU$4pspS.hkBFXTvLn5aXmpUIVYQ2QZjpQ1syQefBG79IA
+!
+redundancy
+!
+!
+!
+!
+!
+!
+lldp run
+cdp run
+!
+!
+class-map match-all CMAP_CPP_OAM
+ match access-group name ACL_CPP_OAM
+class-map match-all CMAP_EXP5
+ match mpls experimental topmost 5 
+class-map match-any CMAP_CPP_IP_FRAGMENTS
+ match access-group name ACL_CPP_IP_FRAGMENTS_V4
+ match access-group name ACL_CPP_IP_FRAGMENTS_V6
+class-map match-all CMAP_CPP_NC
+ match access-group name ACL_CPP_NC
+!
+policy-map PMAP_CPP_IN
+ class CMAP_CPP_NC
+  police cir 100000
+ class CMAP_CPP_OAM
+  police rate 6000 pps
+ class CMAP_CPP_IP_FRAGMENTS
+  police cir 8000 conform-action drop 
+ class class-default
+  police rate 100 pps
+policy-map PMAP_POLICE_EXP5_TO_EXP2_IN
+ class CMAP_EXP5
+  police cir 8000
+   conform-action set-mpls-exp-topmost-transmit 5
+   exceed-action set-mpls-exp-topmost-transmit 2
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface Loopback0
+ ip address 10.0.0.8 255.255.255.255
+!
+interface GigabitEthernet1
+ description MGMT
+ vrf forwarding MGMT
+ ip address 10.0.90.8 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2.501
+ description SINK ANALYSIS
+ encapsulation dot1Q 501
+ vrf forwarding SINK
+ ip address 192.0.2.8 255.255.255.0
+ ip access-group ACL_V4_DENY_ALL in
+ ip access-group ACL_V4_SINK_COUNT out
+ ipv6 address FE80::8 link-local
+ ipv6 nd ra suppress all
+ ipv6 traffic-filter ACL_V6_DENY_ALL in
+ ipv6 traffic-filter ACL_V6_SINK_COUNT out
+!
+interface GigabitEthernet2.3078
+ description CSR07
+ encapsulation dot1Q 3078
+ ip address 10.7.8.8 255.255.255.0
+ ip ospf network point-to-point
+ service-policy input PMAP_POLICE_EXP5_TO_EXP2_IN
+!
+interface GigabitEthernet2.3182
+ description CSR01 (EGRESS PE TO SCRUBBER)
+ encapsulation dot1Q 3182
+ vrf forwarding SCRUB_ONRAMP
+ ip address 172.16.182.8 255.255.255.0
+ ip access-group ACL_V4_FROM_SCRUB_ONRAMP in
+ ipv6 address FE80::8 link-local
+ ipv6 address FC00:172:16:182::8/64
+ ipv6 nd ra suppress all
+ ipv6 traffic-filter ACL_V6_FROM_SCRUB_ONRAMP in
+!
+interface GigabitEthernet2.3183
+ description CSR01 (INGRESS PE FROM SCRUBBER)
+ encapsulation dot1Q 3183
+ vrf forwarding SCRUB_OFFRAMP
+ ip address 172.16.183.8 255.255.255.0
+ ip access-group ACL_V4_DENY_ALL out
+ ipv6 address FE80::8 link-local
+ ipv6 nd ra suppress all
+ ipv6 traffic-filter ACL_V6_DENY_ALL out
+!
+interface GigabitEthernet2.3811
+ description XRV11
+ encapsulation dot1Q 3811
+ ip address 10.8.11.8 255.255.255.0
+ ip ospf network point-to-point
+ service-policy input PMAP_POLICE_EXP5_TO_EXP2_IN
+!
+interface GigabitEthernet2.3812
+ description XRV12
+ encapsulation dot1Q 3812
+ ip address 10.8.12.8 255.255.255.0
+ ip ospf network point-to-point
+ service-policy input PMAP_POLICE_EXP5_TO_EXP2_IN
+!
+interface GigabitEthernet3
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet4
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet5
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet6
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet7
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+router ospf 65000
+ ttl-security all-interfaces
+ prefix-suppression
+ passive-interface Loopback0
+ network 10.0.0.0 0.255.255.255 area 0
+ mpls ldp sync
+ mpls ldp autoconfig
+!
+router bgp 65000
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.0.0.11 remote-as 65000
+ neighbor 10.0.0.11 update-source Loopback0
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor 10.0.0.11 activate
+  neighbor 10.0.0.11 send-community extended
+ exit-address-family
+ !
+ address-family vpnv4 flowspec
+  neighbor 10.0.0.11 activate
+  neighbor 10.0.0.11 send-community extended
+ exit-address-family
+ !
+ address-family vpnv6
+  neighbor 10.0.0.11 activate
+  neighbor 10.0.0.11 send-community extended
+ exit-address-family
+ !
+ address-family vpnv6 flowspec
+  neighbor 10.0.0.11 activate
+  neighbor 10.0.0.11 send-community extended
+ exit-address-family
+ !
+ address-family ipv4 vrf SCRUB_ONRAMP
+  neighbor 172.16.182.1 remote-as 65001
+  neighbor 172.16.182.1 ttl-security hops 1
+  neighbor 172.16.182.1 transport connection-mode passive
+  neighbor 172.16.182.1 password EBGP_AUTH
+  neighbor 172.16.182.1 activate
+  neighbor 172.16.182.1 route-map RM_DENY_ALL out
+ exit-address-family
+ !
+ address-family ipv6 vrf SCRUB_ONRAMP
+  neighbor FC00:172:16:182::1 remote-as 65001
+  neighbor FC00:172:16:182::1 ttl-security hops 1
+  neighbor FC00:172:16:182::1 transport connection-mode passive
+  neighbor FC00:172:16:182::1 password EBGP_AUTH
+  neighbor FC00:172:16:182::1 activate
+  neighbor FC00:172:16:182::1 route-map RM_DENY_ALL out
+ exit-address-family
+ !
+ address-family ipv4 vrf SINK
+  network 0.0.0.0
+ exit-address-family
+ !
+ address-family ipv6 vrf SINK
+  network ::/0
+ exit-address-family
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+!
+ip route vrf MGMT 0.0.0.0 0.0.0.0 GigabitEthernet1 10.0.90.254
+ip route vrf SINK 0.0.0.0 0.0.0.0 GigabitEthernet2.501 192.0.2.254 name SINK_ATTRACT
+ip ssh version 2
+!
+ip access-list extended ACL_CPP_IP_FRAGMENTS_V4
+ 10 permit ip any any fragments
+ip access-list extended ACL_CPP_NC
+ 10 remark BGP (BIDIRECTIONAL)
+ 10 permit tcp any any eq bgp
+ 20 permit tcp any eq bgp any
+ 30 remark LDP SESSION (BIDIRECTIONAL) + DISCOVERY
+ 30 permit tcp any any eq 646
+ 40 permit tcp any eq 646 any
+ 50 permit udp any any eq 646
+ 60 remark OSPFV2
+ 60 permit ospf any any
+ip access-list extended ACL_CPP_OAM
+ 10 remark SNMP SERVER RESPONSES
+ 10 permit udp any range snmp snmptrap any
+ 20 remark RADIUS/TACACS SERVER RESPONSES
+ 20 permit udp any range 1812 1813 any
+ 30 permit tcp any eq tacacs any
+ 40 remark NTP SERVER RESPONSES
+ 40 permit udp any eq ntp any
+ 50 remark PING
+ 50 permit icmp any any echo
+ 60 permit icmp any any echo-reply
+ip access-list extended ACL_V4_DENY_ALL
+ 10 deny   ip any any
+ip access-list extended ACL_V4_FROM_SCRUB_ONRAMP
+ 10 permit tcp host 172.16.182.1 host 172.16.182.8 eq bgp
+ 20 permit icmp host 172.16.182.1 host 172.16.182.8 echo
+ 30 permit icmp host 172.16.182.1 host 172.16.182.8 echo-reply
+ 40 deny   ip any any
+ip access-list extended ACL_V4_SINK_COUNT
+ 10 permit ip any any
+!
+arp vrf SINK 192.0.2.254 0000.0000.0254 ARPA
+ipv6 route vrf SINK ::/0 GigabitEthernet2.501 FE80::254 name SINK_ATTRACT
+!
+!
+ipv6 neighbor FE80::254 GigabitEthernet2.501 0000.0000.0254
+route-map RM_DENY_ALL deny 10 
+ description DO NOT SEND ROUTES TO SCRUBBER
+!
+mpls ldp router-id Loopback0 force
+!
+!
+!
+ipv6 access-list ACL_CPP_IP_FRAGMENTS_V6
+ sequence 10 permit ipv6 any any fragments
+!
+ipv6 access-list ACL_V6_DENY_ALL
+ sequence 10 deny ipv6 any any
+!
+ipv6 access-list ACL_V6_FROM_SCRUB_ONRAMP
+ sequence 10 permit icmp any any nd-ns
+ sequence 20 permit icmp any any nd-na
+ sequence 30 permit tcp host FC00:172:16:182::1 host FC00:172:16:182::8 eq bgp
+ sequence 40 permit icmp host FC00:172:16:182::1 host FC00:172:16:182::8 echo-request
+ sequence 50 permit icmp host FC00:172:16:182::1 host FC00:172:16:182::8 echo-reply
+ sequence 60 permit ipv6 any any
+!
+ipv6 access-list ACL_V6_SINK_COUNT
+ sequence 10 permit ipv6 any any
+!
+control-plane
+ service-policy input PMAP_CPP_IN
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ stopbits 1
+line vty 0 4
+ exec-timeout 0 0
+ login local
+ transport input telnet ssh
+!
+!
+!
+!
+!
+!
+end

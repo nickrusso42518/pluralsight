@@ -1,0 +1,18 @@
+Interface          Status      Protocol    Description
+--------------------------------------------------------------------------------
+Lo0                up          up          
+Nu0                up          up          
+tt413              up          up          CSR04 SR-TE STATELESS PASSIVE
+tt713              up          up          CSR07 STITCHING
+Mg0/0/CPU0/0       up          up          MGMT
+Gi0/0/0/0          up          up          
+Gi0/0/0/0.3113     up          up          CSR10
+Gi0/0/0/0.3131     up          up          CSR01
+Gi0/0/0/0.3213     up          up          XRV12
+Gi0/0/0/0.3813     up          up          CSR08
+Gi0/0/0/1          admin-down  admin-down  
+Gi0/0/0/2          admin-down  admin-down  
+Gi0/0/0/3          admin-down  admin-down  
+Gi0/0/0/4          admin-down  admin-down  
+Gi0/0/0/5          admin-down  admin-down  
+Gi0/0/0/6          admin-down  admin-down

@@ -1,0 +1,154 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Tue Mar  7 10:00:29 2023 by labadmin
+!
+hostname XRV13
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.13 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.13 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3134
+ description XRV14
+ ipv4 address 10.13.14.13 255.255.255.0
+ encapsulation dot1q 3134
+!
+interface GigabitEthernet0/0/0/0.3213
+ description CSR02
+ ipv4 address 10.2.13.13 255.255.255.0
+ encapsulation dot1q 3213
+!
+interface GigabitEthernet0/0/0/0.3813
+ description CSR08
+ ipv4 address 10.8.13.13 255.255.255.0
+ encapsulation dot1q 3813
+!
+route-policy RPL_ISIS_L1L2_DENY_ALL
+  drop
+end-policy
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65000
+ net 49.0002.0000.0000.0013.00
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+  propagate level 1 into level 2 route-policy RPL_ISIS_L1L2_DENY_ALL
+  segment-routing mpls
+  segment-routing prefix-sid-map advertise-local
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+   prefix-sid index 13
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3134
+  circuit-type level-1
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3213
+  circuit-type level-2-only
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3813
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+!
+router bgp 65000
+ bgp cluster-id 0.0.8.13
+ ibgp policy out enforce-modifications
+ address-family ipv4 unicast
+  allocate-label all
+ !
+ address-family vpnv4 unicast
+ !
+ address-family vpnv6 unicast
+ !
+ address-family l2vpn evpn
+ !
+ af-group IPV4LU_RRC address-family ipv4 labeled-unicast
+  route-reflector-client
+  next-hop-self
+ !
+ session-group IBGP
+  remote-as 65000
+  update-source Loopback0
+ !
+ neighbor 10.0.0.5
+  use session-group IBGP
+  address-family ipv4 labeled-unicast
+   use af-group IPV4LU_RRC
+  !
+  address-family vpnv4 unicast
+   route-reflector-client
+  !
+  address-family vpnv6 unicast
+   route-reflector-client
+  !
+  address-family l2vpn evpn
+   route-reflector-client
+  !
+ !
+ neighbor 10.0.0.7
+  use session-group IBGP
+  address-family ipv4 labeled-unicast
+   next-hop-self
+  !
+  address-family vpnv4 unicast
+  !
+  address-family vpnv6 unicast
+  !
+  address-family l2vpn evpn
+  !
+ !
+ neighbor 10.0.0.9
+  use session-group IBGP
+  address-family ipv4 labeled-unicast
+   use af-group IPV4LU_RRC
+  !
+  address-family vpnv4 unicast
+   route-reflector-client
+  !
+  address-family vpnv6 unicast
+   route-reflector-client
+  !
+  address-family l2vpn evpn
+   route-reflector-client
+  !
+ !
+!
+mpls oam
+!
+mpls ldp
+!
+mpls label range table 0 93000 93900
+ssh server v2
+ssh server vrf MGMT
+end

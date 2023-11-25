@@ -1,0 +1,22 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.501                        up             up       SINK ANALYSIS
+Gi2.3018                       deleted        down     
+Gi2.3028                       deleted        down     
+Gi2.3048                       deleted        down     
+Gi2.3078                       up             up       CSR07
+Gi2.3089                       deleted        down     
+Gi2.3182                       up             up       CSR01 (EGRESS PE TO SCRUBBER)
+Gi2.3183                       up             up       CSR01 (INGRESS PE FROM SCRUBBER)
+Gi2.3810                       deleted        down     
+Gi2.3811                       up             up       XRV11
+Gi2.3812                       up             up       XRV12
+Gi2.3813                       deleted        down     
+Gi2.3814                       deleted        down     
+Gi3                            admin down     down     
+Gi4                            admin down     down     
+Gi5                            admin down     down     
+Gi6                            admin down     down     
+Gi7                            admin down     down     
+Lo0                            up             up

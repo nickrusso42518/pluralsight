@@ -1,0 +1,18 @@
+Interface          Status      Protocol    Description
+--------------------------------------------------------------------------------
+Lo0                up          up          
+Nu0                up          up          
+tt128              up          up          CSR08 SR-TE STATEFUL PASSIVE
+tt812              up          up          CSR08 FRR-PROTECTED
+Mg0/0/CPU0/0       up          up          MGMT
+Gi0/0/0/0          up          up          
+Gi0/0/0/0.3112     up          up          XRV11
+Gi0/0/0/0.3121     up          up          CSR01
+Gi0/0/0/0.3213     up          up          XRV12
+Gi0/0/0/0.3412     up          up          CSR04
+Gi0/0/0/1          admin-down  admin-down  
+Gi0/0/0/2          admin-down  admin-down  
+Gi0/0/0/3          admin-down  admin-down  
+Gi0/0/0/4          admin-down  admin-down  
+Gi0/0/0/5          admin-down  admin-down  
+Gi0/0/0/6          admin-down  admin-down

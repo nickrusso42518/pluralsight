@@ -1,0 +1,21 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3012                       deleted        down     
+Gi2.3023                       deleted        down     
+Gi2.3024                       up             up       CSR02
+Gi2.3025                       deleted        down     
+Gi2.3026                       deleted        down     
+Gi2.3027                       deleted        down     
+Gi2.3028                       deleted        down     
+Gi2.3213                       deleted        down     
+Gi2.3512                       deleted        down     
+Gi2.3523                       deleted        down     
+Gi2.3777023                    deleted        down     
+Gi3                            up             up       
+Gi4                            up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo0                            up             up       
+Lo22                           up             up       REDISTRIBUTE CONNECTED

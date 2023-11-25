@@ -1,0 +1,239 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Fri Jan 27 21:37:48 2023 by labadmin
+!
+hostname XRV13
+logging monitor debugging
+domain lookup disable
+vrf L3B
+ address-family ipv4 unicast
+  import route-target
+   65000:12
+  !
+  export route-target
+   65000:12
+  !
+ !
+ address-family ipv6 unicast
+  import route-target
+   65000:12
+  !
+  export route-target
+   65000:12
+  !
+ !
+!
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.13 255.255.255.255
+!
+interface tunnel-te413
+ description CSR04 SR-TE STATELESS PASSIVE
+ ipv4 unnumbered Loopback0
+ signalled-name "CSR04 SR-TE STATELESS PASSIVE"
+ destination 10.0.0.4
+ affinity ignore
+ path-option 1 dynamic segment-routing pce
+!
+interface tunnel-te713
+ description CSR07 STITCHING
+ ipv4 unnumbered Loopback0
+ signalled-name CSR07-STITCHING
+ destination 10.0.0.7
+ affinity include BLUE
+ affinity exclude RED
+ path-option 1 dynamic
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.13 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3113
+ description CSR10
+ ipv4 address 10.10.13.13 255.255.255.0
+ encapsulation dot1q 3113
+!
+interface GigabitEthernet0/0/0/0.3131
+ description CSR01
+ vrf L3B
+ ipv4 address 172.16.131.13 255.255.255.0
+ ipv6 address fe80::13 link-local
+ ipv6 address fc00:172:16:131::13/64
+ encapsulation dot1q 3131
+!
+interface GigabitEthernet0/0/0/0.3213
+ description XRV12
+ ipv4 address 10.12.13.13 255.255.255.0
+ encapsulation dot1q 3213
+!
+interface GigabitEthernet0/0/0/0.3813
+ description CSR08
+ ipv4 address 10.8.13.13 255.255.255.0
+ encapsulation dot1q 3813
+!
+interface GigabitEthernet0/0/0/1
+ shutdown
+!
+interface GigabitEthernet0/0/0/2
+ shutdown
+!
+interface GigabitEthernet0/0/0/3
+ shutdown
+!
+interface GigabitEthernet0/0/0/4
+ shutdown
+!
+interface GigabitEthernet0/0/0/5
+ shutdown
+!
+interface GigabitEthernet0/0/0/6
+ shutdown
+!
+route-policy RPL_PASS
+  pass
+end-policy
+!
+router static
+ address-family ipv4 unicast
+  10.0.0.2/32 tunnel-te713
+ !
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65000
+ is-type level-2-only
+ net 49.0002.0000.0000.0013.00
+ log adjacency changes
+ log pdu drops
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+  mpls traffic-eng level-2-only
+  mpls traffic-eng router-id Loopback0
+  segment-routing mpls
+  segment-routing prefix-sid-map advertise-local
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+   prefix-sid index 13
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3113
+  point-to-point
+  address-family ipv4 unicast
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3213
+  point-to-point
+  address-family ipv4 unicast
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3813
+  point-to-point
+  address-family ipv4 unicast
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa
+  !
+ !
+!
+router bgp 65000
+ address-family vpnv4 unicast
+ !
+ address-family vpnv6 unicast
+ !
+ neighbor 10.0.0.14
+  remote-as 65000
+  update-source Loopback0
+  address-family vpnv4 unicast
+  !
+  address-family vpnv6 unicast
+  !
+ !
+ vrf L3B
+  rd 65000:12
+  address-family ipv4 unicast
+  !
+  address-family ipv6 unicast
+  !
+  neighbor 172.16.131.1
+   remote-as 65001
+   address-family ipv4 unicast
+    as-override
+   !
+  !
+  neighbor fc00:172:16:131::1
+   remote-as 65001
+   address-family ipv6 unicast
+    as-override
+   !
+  !
+ !
+!
+mpls oam
+!
+rsvp
+ interface GigabitEthernet0/0/0/0.3113
+  bandwidth mam max-reservable-bw 750000 bc0 650000 bc1 100000
+  bandwidth rdm bc0 750000 bc1 100000
+ !
+ interface GigabitEthernet0/0/0/0.3213
+  bandwidth mam max-reservable-bw 750000 bc0 650000 bc1 100000
+  bandwidth rdm bc0 750000 bc1 100000
+ !
+ interface GigabitEthernet0/0/0/0.3813
+  bandwidth mam max-reservable-bw 750000 bc0 650000 bc1 100000
+  bandwidth rdm bc0 750000 bc1 100000
+ !
+!
+mpls traffic-eng
+ interface GigabitEthernet0/0/0/0.3113
+  attribute-names BLUE
+ !
+ interface GigabitEthernet0/0/0/0.3213
+  attribute-names RED BLUE
+ !
+ interface GigabitEthernet0/0/0/0.3813
+  attribute-names BLUE
+  admin-weight 500
+ !
+ pce
+  peer source ipv4 10.0.0.13
+  peer ipv4 10.0.0.14
+   password encrypted 0538343B04737E2A3C
+  !
+  segment-routing
+  logging events peer-status
+ !
+ affinity-map RED bit-position 0
+ affinity-map BLUE bit-position 1
+ ds-te mode ietf
+ ds-te bc-model mam
+!
+mpls ldp
+ router-id 10.0.0.13
+ interface tunnel-te713
+  address-family ipv4
+  !
+ !
+!
+mpls label range table 0 93000 93900
+ssh server v2
+ssh server vrf MGMT
+end

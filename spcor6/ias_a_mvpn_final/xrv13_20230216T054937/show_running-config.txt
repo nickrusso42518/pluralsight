@@ -1,0 +1,92 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Tue Feb 14 21:55:01 2023 by labadmin
+!
+hostname XRV13
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.13 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.13 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3113
+ description CSR10
+ ipv4 address 10.10.13.13 255.255.255.0
+ encapsulation dot1q 3113
+!
+interface GigabitEthernet0/0/0/0.3413
+ description CSR04
+ ipv4 address 10.4.13.13 255.255.255.0
+ encapsulation dot1q 3413
+!
+interface GigabitEthernet0/0/0/0.3813
+ description CSR08
+ ipv4 address 10.8.13.13 255.255.255.0
+ encapsulation dot1q 3813
+!
+interface GigabitEthernet0/0/0/1
+ shutdown
+!
+interface GigabitEthernet0/0/0/2
+ shutdown
+!
+interface GigabitEthernet0/0/0/3
+ shutdown
+!
+interface GigabitEthernet0/0/0/4
+ shutdown
+!
+interface GigabitEthernet0/0/0/5
+ shutdown
+!
+interface GigabitEthernet0/0/0/6
+ shutdown
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router ospf 65002
+ prefix-suppression
+ area 0
+  network point-to-point
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 13
+  !
+  interface GigabitEthernet0/0/0/0.3113
+  !
+  interface GigabitEthernet0/0/0/0.3413
+  !
+  interface GigabitEthernet0/0/0/0.3813
+  !
+ !
+!
+mpls oam
+!
+multicast-routing
+ address-family ipv4
+  interface all enable
+ !
+!
+mpls label range table 0 93000 93900
+ssh server v2
+ssh server vrf MGMT
+end

@@ -1,0 +1,19 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3025                       up             up       CSR05
+Gi2.3059                       up             up       CSR09
+Gi2.3511                       up             up       XRV11
+Gi3                            up             up       
+Gi4                            up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo0                            up             up       
+MP2                            up             up       
+MP3                            up             up       
+MP4                            up             up       
+Tu145                          up             up       CSR04 VOICE
+Tu245                          up             up       CSR04 DATA
+pw145                          up             up       CSR04 VOICE
+pw245                          up             up       CSR04 DATA

@@ -1,0 +1,17 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3018                       up             up       CSR01
+Gi2.3048                       deleted        down     
+Gi2.3078                       deleted        down     
+Gi2.3089                       up             up       CSR09
+Gi2.3813                       up             up       XRV13
+Gi2.3814                       up             up       XRV14
+Gi3                            up             up       
+Gi4                            up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo0                            up             up       
+Tu0                            up             up       
+Tu1                            up             up       Pim Register Tunnel (Encap) for RP 10.111.111.3 on VRF L3B

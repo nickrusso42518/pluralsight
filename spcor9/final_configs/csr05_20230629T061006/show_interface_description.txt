@@ -1,0 +1,12 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3035                       up             up       CSR03
+Gi2.3512                       up             up       XRV12
+Gi3                            up             up       SERVER LAN
+Gi4                            up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo0                            up             up       
+Lo1                            up             up

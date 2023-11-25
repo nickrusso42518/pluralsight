@@ -1,0 +1,141 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Wed Jan 18 19:16:22 2023 by labadmin
+!
+hostname XRV11
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.11 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.11 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3110
+ description CSR10
+ ipv4 address 10.10.11.11 255.255.255.0
+ encapsulation dot1q 3110
+!
+interface GigabitEthernet0/0/0/0.3112
+ description XRV12
+ ipv4 address 10.11.12.11 255.255.255.0
+ encapsulation dot1q 3112
+!
+interface GigabitEthernet0/0/0/0.3511
+ description CSR05
+ ipv4 address 10.5.11.11 255.255.255.0
+ encapsulation dot1q 3511
+!
+interface GigabitEthernet0/0/0/1
+ shutdown
+!
+interface GigabitEthernet0/0/0/2
+ shutdown
+!
+interface GigabitEthernet0/0/0/3
+ shutdown
+!
+interface GigabitEthernet0/0/0/4
+ shutdown
+!
+interface GigabitEthernet0/0/0/5
+ shutdown
+!
+interface GigabitEthernet0/0/0/6
+ shutdown
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65000
+ is-type level-2-only
+ net 49.0001.0000.0000.0011.00
+ log adjacency changes
+ log pdu drops
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+  mpls traffic-eng level-2-only
+  mpls traffic-eng router-id Loopback0
+  segment-routing mpls
+  segment-routing prefix-sid-map advertise-local
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+   prefix-sid index 11
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3110
+  point-to-point
+  address-family ipv4 unicast
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3112
+  point-to-point
+  address-family ipv4 unicast
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3511
+  point-to-point
+  address-family ipv4 unicast
+   fast-reroute per-prefix
+   fast-reroute per-prefix ti-lfa
+  !
+ !
+!
+mpls oam
+!
+rsvp
+ interface GigabitEthernet0/0/0/0.3110
+  bandwidth mam max-reservable-bw 750000 bc0 650000 bc1 100000
+  bandwidth rdm bc0 750000 bc1 100000
+ !
+ interface GigabitEthernet0/0/0/0.3112
+  bandwidth mam max-reservable-bw 750000 bc0 650000 bc1 100000
+  bandwidth rdm bc0 750000 bc1 100000
+ !
+ interface GigabitEthernet0/0/0/0.3511
+  bandwidth mam max-reservable-bw 750000 bc0 650000 bc1 100000
+  bandwidth rdm bc0 750000 bc1 100000
+ !
+!
+mpls traffic-eng
+ interface GigabitEthernet0/0/0/0.3110
+  attribute-flags 0x3
+ !
+ interface GigabitEthernet0/0/0/0.3112
+  attribute-flags 0x1
+ !
+ interface GigabitEthernet0/0/0/0.3511
+  attribute-flags 0x1
+ !
+ ds-te mode ietf
+ ds-te bc-model mam
+!
+mpls ldp
+ router-id 10.0.0.11
+!
+mpls label range table 0 91000 91900
+ssh server v2
+ssh server vrf MGMT
+end

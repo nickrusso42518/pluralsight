@@ -1,0 +1,171 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Fri Jan  6 19:00:23 2023 by labadmin
+!
+hostname XRV14
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+key chain KC_ISIS_LSP
+ key 1
+  accept-lifetime 11:00:00 january 01 2022 infinite
+  key-string password 022F3772383923127C71282C313F
+  send-lifetime 11:00:00 january 01 2022 infinite
+  cryptographic-algorithm HMAC-MD5
+ !
+!
+key chain KC_ISIS_HELLO
+ key 1
+  accept-lifetime 11:00:00 january 01 2022 infinite
+  key-string password 08087F673A262D323E27233B0B1E1000
+  send-lifetime 11:00:00 january 01 2022 infinite
+  cryptographic-algorithm HMAC-MD5
+ !
+!
+interface Loopback0
+ ipv4 address 10.0.0.14 255.255.255.255
+!
+interface Loopback42
+ description SECONDARY IBGP PEER
+ ipv4 address 10.0.42.14 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.14 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3114
+ description XRV11
+ ipv4 address 10.11.14.14 255.255.255.0
+ encapsulation dot1q 3114
+!
+interface GigabitEthernet0/0/0/0.3124
+ description XRV12
+ ipv4 address 10.12.14.14 255.255.255.0
+ encapsulation dot1q 3124
+!
+interface GigabitEthernet0/0/0/0.3134
+ description XRV13
+ ipv4 address 10.13.14.14 255.255.255.0
+ encapsulation dot1q 3134
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65000
+ set-overload-bit
+ is-type level-2-only
+ net 49.0000.0000.0000.0014.00
+ log adjacency changes
+ log pdu drops
+ lsp-password keychain KC_ISIS_LSP
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+  segment-routing mpls
+  segment-routing prefix-sid-map advertise-local
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+   prefix-sid index 14
+  !
+ !
+ interface Loopback42
+  passive
+  address-family ipv4 unicast
+   prefix-sid index 414 n-flag-clear
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3114
+  point-to-point
+  hello-password keychain KC_ISIS_HELLO
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3124
+  point-to-point
+  hello-password keychain KC_ISIS_HELLO
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3134
+  point-to-point
+  hello-password keychain KC_ISIS_HELLO
+  address-family ipv4 unicast
+  !
+ !
+!
+router bgp 65000
+ address-family l2vpn vpls-vpws
+ !
+ address-family l2vpn evpn
+ !
+ neighbor-group IBGP_RRC_BVPLS_ONLY
+  remote-as 65000
+  update-source Loopback42
+  address-family l2vpn vpls-vpws
+   route-reflector-client
+   Signalling ldp disable
+  !
+ !
+ neighbor-group IBGP_RRC_LVPLS_EVPN
+  remote-as 65000
+  update-source Loopback0
+  address-family l2vpn vpls-vpws
+   route-reflector-client
+   Signalling bgp disable
+  !
+  address-family l2vpn evpn
+   route-reflector-client
+  !
+ !
+ neighbor 10.0.0.1
+  use neighbor-group IBGP_RRC_LVPLS_EVPN
+ !
+ neighbor 10.0.0.2
+  use neighbor-group IBGP_RRC_LVPLS_EVPN
+ !
+ neighbor 10.0.0.3
+  use neighbor-group IBGP_RRC_LVPLS_EVPN
+ !
+ neighbor 10.0.0.4
+  use neighbor-group IBGP_RRC_LVPLS_EVPN
+ !
+ neighbor 10.0.0.6
+  use neighbor-group IBGP_RRC_LVPLS_EVPN
+ !
+ neighbor 10.0.42.1
+  use neighbor-group IBGP_RRC_BVPLS_ONLY
+ !
+ neighbor 10.0.42.2
+  use neighbor-group IBGP_RRC_BVPLS_ONLY
+ !
+ neighbor 10.0.42.3
+  use neighbor-group IBGP_RRC_BVPLS_ONLY
+ !
+ neighbor 10.0.42.4
+  use neighbor-group IBGP_RRC_BVPLS_ONLY
+ !
+ neighbor 10.0.42.6
+  use neighbor-group IBGP_RRC_BVPLS_ONLY
+ !
+!
+mpls oam
+!
+mpls label range table 0 94000 94900
+ssh server v2
+ssh server vrf MGMT
+end

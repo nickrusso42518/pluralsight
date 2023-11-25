@@ -1,0 +1,22 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3024                       deleted        down     
+Gi2.3211                       up             up       XRV11
+Gi2.3212                       up             up       XRV12
+Gi2.3213                       up             up       XRV13
+Gi3                            up             up       
+Gi4                            up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo0                            up             up       
+Lo42                           up             up       SECONDARY IBGP PEER
+pw100010                       up             up       
+pw100012                       up             up       
+pw100014                       up             up       
+pw100016                       up             up       
+pw100017                       up             up       
+pw100021                       up             up       
+pw100024                       up             up       
+pw100025                       up             up

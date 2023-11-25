@@ -1,0 +1,30 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3012                       deleted        down     
+Gi2.3016                       up             up       CSR06
+Gi2.3018                       up             up       CSR08
+Gi2.3110                       up             up       CSR10
+Gi2.3112                       up             up       XRV12
+Gi2.3121                       deleted        down     
+Gi2.3131                       deleted        down     
+Gi3                            up             up       
+Gi3.3001                       up             up       CSR01 BACKDOOR (L2A)
+Gi3.3999014                    deleted        down     
+Gi3.3999015                    deleted        down     
+Gi3.3999168                    up             up       CSR06
+Gi4                            up             up       
+Gi4.3001                       up             up       CSR01 BACKDOOR (L2B)
+Gi4.3999015                    deleted        down     
+Gi4.3999268                    up             up       CSR08
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo101                          up             up       
+Lo102                          up             up       
+Lo103                          up             up       
+Lo201                          up             up       
+Lo202                          up             up       
+Tu0                            up             up       Pim Register Tunnel (Encap) for RP 10.111.111.3 on VRF L3C
+Tu1                            up             up       Pim Register Tunnel (Encap) for RP 10.111.111.3 on VRF L3B
+Tu2                            up             up       Pim Register Tunnel (Encap) for RP 10.111.111.3 on VRF L3A

@@ -1,0 +1,88 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Fri Apr 14 21:56:09 2023 by labadmin
+!
+hostname XRV14
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.14 255.255.255.255
+ ipv6 address 2001:db8::14/128
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.14 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3514
+ description CSR05
+ ipv4 address 10.5.14.14 255.255.255.0
+ ipv6 address fe80::14 link-local
+ encapsulation dot1q 3514
+!
+interface GigabitEthernet0/0/0/0.3534
+ description LAN
+ ipv4 address 10.5.34.14 255.255.255.0
+ ipv6 address fe80::14 link-local
+ encapsulation dot1q 3534
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 1
+ is-type level-1
+ net 49.0000.0000.0000.0014.00
+ log adjacency changes
+ log pdu drops
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+ !
+ address-family ipv6 unicast
+  metric-style wide
+  advertise passive-only
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+  !
+  address-family ipv6 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3514
+  point-to-point
+  address-family ipv4 unicast
+   metric 100
+  !
+  address-family ipv6 unicast
+   metric 250
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3534
+  address-family ipv4 unicast
+   metric 250
+  !
+  address-family ipv6 unicast
+   metric 100
+  !
+ !
+!
+mpls oam
+!
+mpls label range table 0 94000 94900
+ssh server v2
+ssh server vrf MGMT
+end

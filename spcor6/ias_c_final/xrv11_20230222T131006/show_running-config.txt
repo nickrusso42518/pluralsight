@@ -1,0 +1,102 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Mon Feb 20 00:49:17 2023 by labadmin
+!
+hostname XRV11
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.11 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.11 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3511
+ description CSR05
+ ipv4 address 10.5.11.11 255.255.255.0
+ encapsulation dot1q 3511
+!
+interface GigabitEthernet0/0/0/0.3888311
+ description CSR03
+ ipv4 address 10.3.11.11 255.255.255.0
+ encapsulation dot1q 3888 second-dot1q 311
+!
+route-policy RPL_PASS
+  pass
+end-policy
+!
+route-policy RPL_SET_TAG($TAG)
+  set tag 3
+end-policy
+!
+route-policy RPL_DROP_TAG($TAG)
+  if tag eq $TAG then
+    drop
+  else
+    pass
+  endif
+end-policy
+!
+router static
+ address-family ipv4 unicast
+  10.3.11.3/32 GigabitEthernet0/0/0/0.3888311
+ !
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65001
+ is-type level-2-only
+ net 49.0000.0000.0000.0011.00
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+  redistribute bgp 65001 level-2 metric 100 route-policy RPL_SET_TAG(3)
+  mpls ldp auto-config
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3511
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+!
+router bgp 65001
+ address-family ipv4 unicast
+  redistribute isis 65001 route-policy RPL_DROP_TAG(3)
+  allocate-label all
+ !
+ neighbor 10.3.11.3
+  remote-as 65002
+  address-family ipv4 labeled-unicast
+   route-policy RPL_PASS in
+  !
+ !
+!
+mpls oam
+!
+mpls ldp
+ mldp
+ !
+!
+mpls label range table 0 91000 91900
+ssh server v2
+ssh server vrf MGMT
+end

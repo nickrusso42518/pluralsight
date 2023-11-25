@@ -1,0 +1,125 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Fri Dec 30 14:10:36 2022 by labadmin
+!
+hostname XRV11
+group GROUP_ISIS_INTF
+ router isis '65000'
+  interface 'Gig.*'
+   point-to-point
+   hello-password keychain KC_ISIS_HELLO
+   address-family ipv4 unicast
+   !
+  !
+ !
+end-group
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+key chain KC_ISIS_LSP
+ key 1
+  accept-lifetime 11:00:00 january 01 2022 infinite
+  key-string password 0472382F3C1E607D392624222623
+  send-lifetime 11:00:00 january 01 2022 infinite
+  cryptographic-algorithm HMAC-MD5
+ !
+!
+key chain KC_ISIS_HELLO
+ key 1
+  accept-lifetime 11:00:00 january 01 2022 infinite
+  key-string password 1230363E2134242106070B171200163B
+  send-lifetime 11:00:00 january 01 2022 infinite
+  cryptographic-algorithm HMAC-MD5
+ !
+!
+interface Loopback0
+ ipv4 address 10.0.0.11 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.11 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3111
+ description CSR01
+ ipv4 address 10.1.11.11 255.255.255.0
+ encapsulation dot1q 3111
+!
+interface GigabitEthernet0/0/0/0.3114
+ description XRV14
+ ipv4 address 10.11.14.11 255.255.255.0
+ encapsulation dot1q 3114
+!
+interface GigabitEthernet0/0/0/0.3211
+ description CSR02
+ ipv4 address 10.2.11.11 255.255.255.0
+ encapsulation dot1q 3211
+!
+interface GigabitEthernet0/0/0/0.3311
+ description CSR03
+ ipv4 address 10.3.11.11 255.255.255.0
+ encapsulation dot1q 3311
+!
+interface GigabitEthernet0/0/0/0.3411
+ description CSR04
+ ipv4 address 10.4.11.11 255.255.255.0
+ encapsulation dot1q 3411
+!
+interface GigabitEthernet0/0/0/0.3611
+ description CSR06
+ ipv4 address 10.6.11.11 255.255.255.0
+ encapsulation dot1q 3611
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65000
+ apply-group GROUP_ISIS_INTF
+ is-type level-2-only
+ net 49.0000.0000.0000.0011.00
+ log adjacency changes
+ log pdu drops
+ lsp-password keychain KC_ISIS_LSP
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+  segment-routing mpls
+  segment-routing prefix-sid-map advertise-local
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+   prefix-sid index 11
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3111
+ !
+ interface GigabitEthernet0/0/0/0.3114
+ !
+ interface GigabitEthernet0/0/0/0.3211
+ !
+ interface GigabitEthernet0/0/0/0.3311
+ !
+ interface GigabitEthernet0/0/0/0.3411
+ !
+ interface GigabitEthernet0/0/0/0.3611
+ !
+!
+mpls oam
+!
+mpls label range table 0 91000 91900
+ssh server v2
+ssh server vrf MGMT
+end

@@ -1,0 +1,127 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Tue Mar 14 18:32:35 2023 by labadmin
+!
+hostname XRV13
+logging monitor debugging
+domain lookup disable
+vrf CSC
+ address-family ipv4 unicast
+  import route-target
+   65000:300
+  !
+  export route-target
+   65000:300
+  !
+ !
+!
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.13 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.13 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3134
+ description XRV14
+ vrf CSC
+ ipv4 address 10.13.14.13 255.255.255.0
+ encapsulation dot1q 3134
+!
+interface GigabitEthernet0/0/0/0.3213
+ description CSR02
+ ipv4 address 10.2.13.13 255.255.255.0
+ encapsulation dot1q 3213
+!
+interface GigabitEthernet0/0/0/0.3813
+ description CSR08
+ ipv4 address 10.8.13.13 255.255.255.0
+ encapsulation dot1q 3813
+!
+route-policy RPL_PASS
+  pass
+end-policy
+!
+router static
+ vrf CSC
+  address-family ipv4 unicast
+   10.13.14.14/32 GigabitEthernet0/0/0/0.3134
+  !
+ !
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65000
+ is-type level-2-only
+ net 49.0000.0000.0000.0013.00
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+  segment-routing mpls
+  segment-routing prefix-sid-map receive
+  segment-routing prefix-sid-map advertise-local
+  mpls ldp auto-config
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+   prefix-sid index 13
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3213
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3813
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+!
+router bgp 65000
+ address-family vpnv4 unicast
+ !
+ neighbor 10.0.0.7
+  remote-as 65000
+  update-source Loopback0
+  address-family vpnv4 unicast
+  !
+ !
+ vrf CSC
+  rd 65000:300
+  address-family ipv4 unicast
+   allocate-label all
+  !
+  neighbor 10.13.14.14
+   remote-as 65001
+   address-family ipv4 labeled-unicast
+    route-policy RPL_PASS in
+    route-policy RPL_PASS out
+    as-override
+    site-of-origin 65001:2
+   !
+  !
+ !
+!
+mpls oam
+!
+mpls ldp
+!
+mpls label range table 0 93000 93900
+ssh server v2
+ssh server vrf MGMT
+end

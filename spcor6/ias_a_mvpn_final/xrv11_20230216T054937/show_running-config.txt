@@ -1,0 +1,201 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Wed Feb 15 11:18:40 2023 by labadmin
+!
+hostname XRV11
+logging monitor debugging
+domain lookup disable
+vrf L3A
+ vpn id 65000:7
+ address-family ipv4 unicast
+  import route-target
+   65000:101
+  !
+  export route-target
+   65000:101
+  !
+ !
+ address-family ipv6 unicast
+  import route-target
+   65000:101
+  !
+  export route-target
+   65000:101
+  !
+ !
+!
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.11 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.11 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3511
+ description CSR05
+ ipv4 address 10.5.11.11 255.255.255.0
+ encapsulation dot1q 3511
+!
+interface GigabitEthernet0/0/0/0.3888311
+ description CSR03
+ vrf L3A
+ ipv4 address 10.3.11.11 255.255.255.0
+ ipv6 address fe80::11 link-local
+ ipv6 address fc00:10:3:11::11/64
+ encapsulation dot1q 3888 second-dot1q 311
+!
+interface GigabitEthernet0/0/0/1
+ shutdown
+!
+interface GigabitEthernet0/0/0/2
+ shutdown
+!
+interface GigabitEthernet0/0/0/3
+ shutdown
+!
+interface GigabitEthernet0/0/0/4
+ shutdown
+!
+interface GigabitEthernet0/0/0/5
+ shutdown
+!
+interface GigabitEthernet0/0/0/6
+ shutdown
+!
+prefix-set PS_EAST_NETS
+  192.0.2.2/32,
+  192.0.2.3/32
+end-set
+!
+route-policy RPL_PASS
+  pass
+end-policy
+!
+route-policy RPL_MLDP_MVPN1
+  set core-tree mldp-default
+end-policy
+!
+route-policy RPL_CSR3_LPREF_IN
+  if destination in PS_EAST_NETS and origin is igp then
+    set local-preference 50
+  else
+    set local-preference 200
+  endif
+end-policy
+!
+route-policy RPL_CSR3_ASPREP_OUT
+  if as-path originates-from '65101'  or destination in (203.0.113.0/24 le 32) then
+    prepend as-path most-recent 3
+  else
+    pass
+  endif
+end-policy
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router isis 65001
+ is-type level-2-only
+ net 49.0000.0000.0000.0011.00
+ address-family ipv4 unicast
+  metric-style wide
+  advertise passive-only
+  mpls ldp auto-config
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0.3511
+  point-to-point
+  address-family ipv4 unicast
+  !
+ !
+!
+router bgp 65001
+ address-family vpnv4 unicast
+ !
+ address-family vpnv6 unicast
+ !
+ address-family l2vpn evpn
+ !
+ neighbor 10.0.0.7
+  remote-as 65001
+  update-source Loopback0
+  session-open-mode active-only
+  address-family vpnv4 unicast
+  !
+  address-family vpnv6 unicast
+  !
+  address-family l2vpn evpn
+  !
+ !
+ vrf L3A
+  rd 65000:101
+  address-family ipv4 unicast
+  !
+  address-family ipv6 unicast
+  !
+  neighbor 10.3.11.3
+   remote-as 65002
+   address-family ipv4 unicast
+    route-policy RPL_CSR3_LPREF_IN in
+    route-policy RPL_CSR3_ASPREP_OUT out
+   !
+  !
+  neighbor fc00:10:3:11::3
+   remote-as 65002
+   address-family ipv6 unicast
+    route-policy RPL_PASS in
+    route-policy RPL_PASS out
+   !
+  !
+ !
+!
+mpls oam
+!
+mpls ldp
+ mldp
+ !
+ router-id 10.0.0.11
+!
+multicast-routing
+ address-family ipv4
+  interface Loopback0
+   enable
+  !
+  mdt source Loopback0
+ !
+ vrf L3A
+  address-family ipv4
+   interface all enable
+   mdt default mldp ipv4 10.0.0.7
+  !
+ !
+!
+mpls label range table 0 91000 91900
+router pim
+ vrf L3A
+  address-family ipv4
+   rpf topology route-policy RPL_MLDP_MVPN1
+  !
+ !
+!
+ssh server v2
+ssh server vrf MGMT
+end

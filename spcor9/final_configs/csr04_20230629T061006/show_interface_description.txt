@@ -1,0 +1,14 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3024                       deleted        down     
+Gi2.3034                       up             up       CSR03
+Gi2.3046                       deleted        down     
+Gi2.3411                       deleted        down     
+Gi2.3412                       deleted        down     
+Gi3                            up             up       
+Gi4                            up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo0                            up             up

@@ -1,0 +1,122 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Tue Feb 14 21:55:03 2023 by labadmin
+!
+hostname XRV14
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.14 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.14 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3414
+ description CSR04
+ ipv4 address 10.4.14.14 255.255.255.0
+ encapsulation dot1q 3414
+!
+interface GigabitEthernet0/0/0/0.3814
+ description XRV14
+ ipv4 address 10.8.14.14 255.255.255.0
+ encapsulation dot1q 3814
+!
+interface GigabitEthernet0/0/0/1
+ shutdown
+!
+interface GigabitEthernet0/0/0/2
+ shutdown
+!
+interface GigabitEthernet0/0/0/3
+ shutdown
+!
+interface GigabitEthernet0/0/0/4
+ shutdown
+!
+interface GigabitEthernet0/0/0/5
+ shutdown
+!
+interface GigabitEthernet0/0/0/6
+ shutdown
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router ospf 65002
+ prefix-suppression
+ max-metric router-lsa
+ area 0
+  network point-to-point
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 14
+  !
+  interface GigabitEthernet0/0/0/0.3414
+  !
+  interface GigabitEthernet0/0/0/0.3814
+  !
+ !
+!
+router bgp 65002
+ address-family vpnv4 unicast
+ !
+ address-family vpnv6 unicast
+ !
+ address-family ipv4 mdt
+ !
+ address-family l2vpn evpn
+ !
+ neighbor-group IBGP_RRC
+  remote-as 65002
+  update-source Loopback0
+  session-open-mode passive-only
+  address-family vpnv4 unicast
+   route-reflector-client
+  !
+  address-family vpnv6 unicast
+   route-reflector-client
+  !
+  address-family ipv4 mdt
+   route-reflector-client
+  !
+  address-family l2vpn evpn
+   route-reflector-client
+  !
+ !
+ neighbor 10.0.0.3
+  use neighbor-group IBGP_RRC
+ !
+ neighbor 10.0.0.8
+  use neighbor-group IBGP_RRC
+ !
+ neighbor 10.0.0.10
+  use neighbor-group IBGP_RRC
+ !
+!
+mpls oam
+!
+multicast-routing
+ address-family ipv4
+  interface all enable
+ !
+!
+mpls label range table 0 94000 94900
+ssh server v2
+ssh server vrf MGMT
+end

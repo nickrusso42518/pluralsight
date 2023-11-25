@@ -1,0 +1,18 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3046                       deleted        down     
+Gi2.3103                       deleted        down     
+Gi2.3610                       up             up       VPWS BETWEEN HUBS/ROOTS
+Gi2.3610102                    up             up       LVPLS
+Gi2.3610103                    up             up       EVPN
+Gi2.3610142                    up             up       BVPLS
+Gi3                            up             up       
+Gi4                            up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo101                          up             up       VPWS BETWEEN HUBS/ROOTS
+Lo102                          up             up       LVPLS
+Lo103                          up             up       EVPN
+Lo142                          up             up       BVPLS

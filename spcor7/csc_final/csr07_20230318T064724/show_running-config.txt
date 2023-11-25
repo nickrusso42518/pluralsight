@@ -1,0 +1,336 @@
+Building configuration...
+
+Current configuration : 8432 bytes
+!
+! Last configuration change at 19:25:56 UTC Wed Mar 8 2023 by labadmin
+!
+version 17.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service call-home
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname CSR07
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition MGMT
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+no ip icmp rate-limit unreachable
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name lab.local
+!
+!
+!
+login on-success log
+ipv6 unicast-routing
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+!
+mpls label range 7000 7900 static 7901 7999
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+crypto pki trustpoint TP-self-signed-866929242
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-866929242
+ revocation-check none
+ rsakeypair TP-self-signed-866929242
+!
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101 300D0609 2A864886 F70D0101 0B050030 
+  32310E30 0C060355 040A1305 43697363 6F312030 1E060355 04031317 43697363 
+  6F204C69 63656E73 696E6720 526F6F74 20434130 1E170D31 33303533 30313934 
+  3834375A 170D3338 30353330 31393438 34375A30 32310E30 0C060355 040A1305 
+  43697363 6F312030 1E060355 04031317 43697363 6F204C69 63656E73 696E6720 
+  526F6F74 20434130 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 
+  82010A02 82010100 A6BCBD96 131E05F7 145EA72C 2CD686E6 17222EA1 F1EFF64D 
+  CBB4C798 212AA147 C655D8D7 9471380D 8711441E 1AAF071A 9CAE6388 8A38E520 
+  1C394D78 462EF239 C659F715 B98C0A59 5BBB5CBD 0CFEBEA3 700A8BF7 D8F256EE 
+  4AA4E80D DB6FD1C9 60B1FD18 FFC69C96 6FA68957 A2617DE7 104FDC5F EA2956AC 
+  7390A3EB 2B5436AD C847A2C5 DAB553EB 69A9A535 58E9F3E3 C0BD23CF 58BD7188 
+  68E69491 20F320E7 948E71D7 AE3BCC84 F10684C7 4BC8E00F 539BA42B 42C68BB7 
+  C7479096 B4CB2D62 EA2F505D C7B062A4 6811D95B E8250FC4 5D5D5FB8 8F27D191 
+  C55F0D76 61F9A4CD 3D992327 A8BB03BD 4E6D7069 7CBADF8B DF5F4368 95135E44 
+  DFC7C6CF 04DD7FD1 02030100 01A34230 40300E06 03551D0F 0101FF04 04030201 
+  06300F06 03551D13 0101FF04 05300301 01FF301D 0603551D 0E041604 1449DC85 
+  4B3D31E5 1B3E6A17 606AF333 3D3B4C73 E8300D06 092A8648 86F70D01 010B0500 
+  03820101 00507F24 D3932A66 86025D9F E838AE5C 6D4DF6B0 49631C78 240DA905 
+  604EDCDE FF4FED2B 77FC460E CD636FDB DD44681E 3A5673AB 9093D3B1 6C9E3D8B 
+  D98987BF E40CBD9E 1AECA0C2 2189BB5C 8FA85686 CD98B646 5575B146 8DFC66A8 
+  467A3DF4 4D565700 6ADF0F0D CF835015 3C04FF7C 21E878AC 11BA9CD2 55A9232C 
+  7CA7B7E6 C1AF74F6 152E99B7 B1FCF9BB E973DE7F 5BDDEB86 C71E3B49 1765308B 
+  5FB0DA06 B92AFE7F 494E8A9E 07B85737 F3A58BE1 1A48A229 C37C1E69 39F08678 
+  80DDCD16 D6BACECA EEBC7CF9 8428787B 35202CDC 60E4616A B623CDBD 230E3AFB 
+  418616A9 4093E049 4D10AB75 27E86F73 932E35B5 8862FDAE 0275156F 719BB2F0 
+  D697DF7F 28
+  	quit
+crypto pki certificate chain TP-self-signed-866929242
+ certificate self-signed 01
+  3082032E 30820216 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 38363639 32393234 32301E17 0D323230 39323732 32353533 
+  315A170D 33323039 32363232 35353331 5A303031 2E302C06 03550403 1325494F 
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3836 36393239 
+  32343230 82012230 0D06092A 864886F7 0D010101 05000382 010F0030 82010A02 
+  82010100 E2DC57C6 D5E0E255 639B76EE 7AB66205 C420B19F 26D40389 62E0DA48 
+  639CD059 3F146C18 5898C753 FD887CDF 9E7C80F9 ED1AAE65 AE8F0756 BD4A4EB6 
+  43E2BA45 2F5EFF80 5D3185FB 799B288F 2967921C 81A843CF ADEA32DB D999DC90 
+  6E81AB04 089A384F AE6712D6 81166177 63CDD567 04DD9D19 9748D66E 49F0487F 
+  623A1834 43786378 3E3266C2 A9A88205 D5DA8172 A3B02630 F4A499EB BFD4FE7C 
+  189233A5 29160137 BB528662 F60C90A8 AFD0BF34 F50A7BD1 BFF85267 55693020 
+  732AEE56 849DD4CC 6184F5E7 26D250D3 3B170E4F 2E7289E0 5DA21365 76BD57B7 
+  DB444ABE 4A4C9698 A73F1FA3 BD31EF58 1F17B9CD 6DD601A8 DCC4986C 246E532B 
+  36A8863D 02030100 01A35330 51300F06 03551D13 0101FF04 05300301 01FF301F 
+  0603551D 23041830 16801410 793B7F30 93DBB5D1 20761B07 5D036667 DD76BE30 
+  1D060355 1D0E0416 04141079 3B7F3093 DBB5D120 761B075D 036667DD 76BE300D 
+  06092A86 4886F70D 01010505 00038201 0100062A B088DAAC F2F7B0B6 D4F75478 
+  0E0C0D89 C83C0C9C 63E319AF DEC732A8 44A82313 B38C6C3F 63D190FE 9EEE19AD 
+  FA294203 6A03A119 14E62A11 5A47CF2E D174C875 43C32930 AC862522 7D0444F2 
+  0129CD3B 5F828EEF D116B8B0 62150F78 B44016D5 384BD580 CC50AE27 29EA4668 
+  7ACD1548 4EC6A9A2 CCAC9CA4 C62E149E 524FC05E 3E719337 C3B2F61F 81F2AA09 
+  C51FDDE7 9C6A0F0F 5CB88F47 3722B8B5 702E9A50 1D12F386 D00090C0 093419D7 
+  45AD3EB4 CEDEA708 6E8A76AB 9F30F31C 0755A158 1F728AFF 40BA7C27 0FDE3F3F 
+  6D2DB22D 0F57568F 3BB1FC81 7E7BFCFD F99A5713 B848D811 D99A6688 67806BCC 
+  3BFECC87 3F790FB9 1F5F6D78 876638A9 238F
+  	quit
+!
+license udi pid CSR1000V sn 95E0JDIB8AR
+license boot level ax
+diagnostic bootup level minimal
+memory free low-watermark processor 71489
+!
+!
+spanning-tree extend system-id
+!
+username labadmin privilege 15 secret 9 $9$DCL9izkApGfQGk$OylrJvKahwPstxWKGsIKwEzVBb7nMghnPb7fHucIxMk
+!
+redundancy
+!
+!
+!
+!
+!
+!
+lldp run
+cdp run
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface Loopback0
+ ip address 10.0.0.7 255.255.255.255
+!
+interface GigabitEthernet1
+ description MGMT
+ vrf forwarding MGMT
+ ip address 10.0.90.7 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2.3027
+ description CSR02
+ encapsulation dot1Q 3027
+ ip address 10.2.7.7 255.255.255.0
+ ip router isis 65000
+ isis network point-to-point 
+ isis csnp-interval 10 level-1
+ isis csnp-interval 10 level-2
+!
+interface GigabitEthernet2.3067
+ description CSR06
+ encapsulation dot1Q 3067
+ ip address 10.6.7.7 255.255.255.0
+ ip router isis 65000
+ isis network point-to-point 
+ isis csnp-interval 10 level-1
+ isis csnp-interval 10 level-2
+!
+interface GigabitEthernet3
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet4
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet5
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet6
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet7
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+!
+segment-routing mpls
+ !
+ connected-prefix-sid-map
+  address-family ipv4
+   10.0.0.7/32 index 7 range 1 
+  exit-address-family
+ !
+!
+router isis 65000
+ net 49.0000.0000.0000.0007.00
+ is-type level-2-only
+ advertise passive-only
+ metric-style wide
+ log-adjacency-changes all
+ segment-routing mpls
+ segment-routing prefix-sid-map advertise-local
+ passive-interface Loopback0
+!
+router bgp 65000
+ template peer-session IBGP_SESS
+  remote-as 65000
+  update-source Loopback0
+ exit-peer-session
+ !
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.0.0.6 inherit peer-session IBGP_SESS
+ neighbor 10.0.0.8 inherit peer-session IBGP_SESS
+ neighbor 10.0.0.13 inherit peer-session IBGP_SESS
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor 10.0.0.6 activate
+  neighbor 10.0.0.6 send-community extended
+  neighbor 10.0.0.6 route-reflector-client
+  neighbor 10.0.0.8 activate
+  neighbor 10.0.0.8 send-community extended
+  neighbor 10.0.0.8 route-reflector-client
+  neighbor 10.0.0.13 activate
+  neighbor 10.0.0.13 send-community extended
+  neighbor 10.0.0.13 route-reflector-client
+ exit-address-family
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+!
+ip route vrf MGMT 0.0.0.0 0.0.0.0 GigabitEthernet1 10.0.90.254
+ip ssh version 2
+!
+!
+!
+!
+mpls ldp router-id Loopback0 force
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ stopbits 1
+line vty 0 4
+ exec-timeout 0 0
+ login local
+ transport input telnet ssh
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+!
+!
+!
+!
+!
+end

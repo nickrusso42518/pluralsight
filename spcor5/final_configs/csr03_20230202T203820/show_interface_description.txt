@@ -1,0 +1,17 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3023                       up             up       CSR03
+Gi2.3034                       up             up       CSR04
+Gi2.3037                       up             up       CSR07
+Gi3                            up             up       
+Gi4                            up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo0                            up             up       
+MP2                            up             up       
+MP3                            up             up       
+MP4                            up             up       
+Tu37                           up             up       LINK PROT (NHOP) CSR07
+Tu38                           up             up       NODE PROT (NNHOP CSR07) CSR08
