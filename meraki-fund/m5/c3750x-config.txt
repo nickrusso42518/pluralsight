@@ -1,0 +1,129 @@
+version 15.2
+service nagle
+no service pad
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname 3750X
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+switch 1 provision ws-c3750x-24
+system mtu routing 1500
+!
+!
+!
+!
+no ip source-route
+ip routing
+ip arp proxy disable
+ip arp gratuitous none
+!
+ip dhcp excluded-address 192.168.5.0 192.168.5.10
+ip dhcp excluded-address 192.168.5.250 192.168.5.255
+ip dhcp excluded-address 192.168.6.0 192.168.6.10
+ip dhcp excluded-address 192.168.6.250 192.168.6.255
+!
+!
+ip dhcp pool ENG_POOL
+ network 192.168.5.0 255.255.255.0
+ default-router 192.168.5.254 
+ dns-server 192.168.1.1 
+!
+ip dhcp pool SALES_POOL
+ network 192.168.6.0 255.255.255.0
+ default-router 192.168.6.254 
+ dns-server 192.168.1.1 
+!
+!
+vtp domain lab.local
+vtp mode off
+!
+!
+license boot level ipservices
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree logging
+spanning-tree extend system-id
+!
+!
+!
+vlan internal allocation policy ascending
+!
+vlan 4001
+ name INTERNET
+!
+vlan 4005
+ name ENGINEERING
+!
+vlan 4006
+ name SALES
+!
+ip tcp synwait-time 10
+lldp run
+!
+! 
+interface GigabitEthernet1/0/19
+ description MERAKI AP - MR20
+ switchport trunk allowed vlan 4001,4005,4006
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 4001
+ switchport mode trunk
+ switchport nonegotiate
+ spanning-tree portfast edge trunk
+!
+interface GigabitEthernet1/0/20
+ description MERAKI CAMERA - MV12WE
+ switchport access vlan 4001
+ switchport mode access
+ spanning-tree portfast edge
+ ! OPTIONALLY SHUTDOWN FOR WIRELESS CAMERA
+ ! shutdown
+!
+interface GigabitEthernet1/0/24
+ description LINK TO VERIZON ROUTER (INTERNET)
+ switchport access vlan 4001
+ switchport mode access
+ spanning-tree portfast edge
+!
+interface Vlan1
+ description UNUSED
+ no ip address
+ shutdown
+!
+interface Vlan4001
+ description INET SVI
+ ip address 192.168.1.254 255.255.255.0
+!
+interface Vlan4005
+ description ENGINEERING SVI
+ ip address 192.168.5.254 255.255.255.0
+!
+interface Vlan4006
+ description SALES SVI
+ ip address 192.168.6.254 255.255.255.0
+!
+no ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 Vlan4001 192.168.1.1 name INET_GWAY
+!
+ip ssh logging events
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip scp server enable
+!
+!
+end
