@@ -1,7 +1,6 @@
 hostname R2
 username pyuser
  group root-lr
- group cisco-support
  password pypass
 !
 vrf POLICE
@@ -46,7 +45,7 @@ interface Loopback2
 interface tunnel-ip23
  ipv4 address 192.168.23.2 255.255.255.0
  tunnel source TenGigE0/0/0/0
- tunnel destination 10.235.0.83
+ tunnel destination 10.125.0.83
 !
 interface TenGigE0/0/0/0
  ipv4 address 10.125.0.82 255.255.255.0
@@ -63,7 +62,7 @@ router ospf 1
   interface Loopback0
    passive enable
   !
-  interface tunnel-ip12
+  interface tunnel-ip23
   !
  !
 !
