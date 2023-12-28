@@ -1,0 +1,12 @@
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       
+Gi2.3023                       deleted        down     
+Gi2.3025                       up             up       TO CSR05
+Gi2.3212                       deleted        down     
+Gi3                            up             up       
+Gi4                            up             up       
+Gi5                            up             up       
+Gi6                            up             up       
+Gi7                            up             up       
+Lo0                            up             up       SOURCE FROM SECONDARY TO SPOOF

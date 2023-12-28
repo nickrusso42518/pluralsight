@@ -1,0 +1,122 @@
+update {
+  timestamp: 1700916909857000000
+  prefix {
+    origin: "Cisco-IOS-XR-nto-misc-oper"
+    elem {
+      name: "memory-summary"
+    }
+    elem {
+      name: "nodes"
+    }
+    elem {
+      name: "node"
+      key {
+        key: "node-name"
+        value: "0/RP0/CPU0"
+      }
+    }
+    elem {
+      name: "summary"
+    }
+  }
+  update {
+    path {
+      elem {
+        name: "page-size"
+      }
+    }
+    val {
+      uint_val: 4096
+    }
+  }
+  update {
+    path {
+      elem {
+        name: "ram-memory"
+      }
+    }
+    val {
+      uint_val: 15032385536
+    }
+  }
+  update {
+    path {
+      elem {
+        name: "free-physical-memory"
+      }
+    }
+    val {
+      uint_val: 10942939136
+    }
+  }
+  update {
+    path {
+      elem {
+        name: "system-ram-memory"
+      }
+    }
+    val {
+      uint_val: 15032385536
+    }
+  }
+  update {
+    path {
+      elem {
+        name: "free-application-memory"
+      }
+    }
+    val {
+      uint_val: 10942939136
+    }
+  }
+  update {
+    path {
+      elem {
+        name: "image-memory"
+      }
+    }
+    val {
+      uint_val: 4194304
+    }
+  }
+  update {
+    path {
+      elem {
+        name: "boot-ram-size"
+      }
+    }
+    val {
+      uint_val: 0
+    }
+  }
+  update {
+    path {
+      elem {
+        name: "reserved-memory"
+      }
+    }
+    val {
+      uint_val: 0
+    }
+  }
+  update {
+    path {
+      elem {
+        name: "io-memory"
+      }
+    }
+    val {
+      uint_val: 0
+    }
+  }
+  update {
+    path {
+      elem {
+        name: "flash-system"
+      }
+    }
+    val {
+      uint_val: 0
+    }
+  }
+}

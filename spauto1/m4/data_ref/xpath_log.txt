@@ -1,0 +1,19 @@
+x('/data/memory-summary/nodes/node/node-name')
+
+s(x('/data/memory-summary/nodes/node/node-name'))
+
+x('/data/memory-summary/nodes/node/node-name/text()')
+
+s(x('/data/memory-summary/nodes/node[node-name="0/RP0/CPU0"]/node-name'))
+
+x('/data/memory-summary/nodes/node[node-name="0/RP0/CPU1"]/node-name')
+
+x('/data/memory-summary/nodes/node/node-name[@active="true"]')
+
+x('/data/memory-summary/nodes/node/node-name[@active="false"]')
+
+page = x("//page-size")
+page
+
+page[0].getparent().tag
+page[1].getparent().tag

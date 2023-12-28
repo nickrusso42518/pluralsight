@@ -1,0 +1,243 @@
+2023-11-25 15:18:03,646 - ydk - INFO - Path where models are to be downloaded: /root/.ydk/10.0.90.41
+2023-11-25 15:18:03,665 - ydk - INFO - Connected to 10.0.90.41 on port 830 using ssh with timeout of -1
+2023-11-25 15:18:03,677 - ydk - INFO - Executing 'lock' RPC on candidate
+2023-11-25 15:18:03,678 - ydk - INFO - ============= Sending RPC to device =============
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"><lock xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <target>
+    <candidate/>
+  </target>
+</lock>
+</rpc>
+2023-11-25 15:18:05,287 - ydk - INFO - ============= Received RPC from device =============
+<?xml version="1.0"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="1">
+  <ok/>
+</rpc-reply>
+
+Processing 172.16.0.0/16
+Using AFI: vrfipv4
+Prefix leaf values: OrderedDict([('prefix', (172.16.0.0, ['str', 'str'])), ('prefix_length', (16, ['int']))])
+2023-11-25 15:18:05,291 - ydk - INFO - Executing 'edit-config' RPC on [vrf-prefix[prefix='172.16.0.0'][prefix-length='16']]
+2023-11-25 15:18:05,342 - ydk - INFO - ============= Sending RPC to device =============
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"><edit-config xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <target>
+    <candidate/>
+  </target>
+  <config><router-static xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ip-static-cfg">
+  <default-vrf>
+    <address-family>
+      <vrfipv4>
+        <vrf-unicast>
+          <vrf-prefixes>
+            <vrf-prefix>
+              <prefix>172.16.0.0</prefix>
+              <prefix-length>16</prefix-length>
+              <vrf-route>
+                <vrf-next-hop-table>
+                  <vrf-next-hop-interface-name>
+                    <interface-name>Null0</interface-name>
+                    <tag>888</tag>
+                    <description>YDK_NETCONF</description>
+                  </vrf-next-hop-interface-name>
+                </vrf-next-hop-table>
+              </vrf-route>
+            </vrf-prefix>
+          </vrf-prefixes>
+        </vrf-unicast>
+      </vrfipv4>
+    </address-family>
+  </default-vrf>
+</router-static>
+</config>
+</edit-config>
+</rpc>
+2023-11-25 15:18:05,554 - ydk - INFO - ============= Received RPC from device =============
+<?xml version="1.0"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="2">
+  <ok/>
+</rpc-reply>
+
+Processing 172.17.0.0/16
+Using AFI: vrfipv4
+Prefix leaf values: OrderedDict([('prefix', (172.17.0.0, ['str', 'str'])), ('prefix_length', (16, ['int']))])
+2023-11-25 15:18:05,564 - ydk - INFO - Executing 'edit-config' RPC on [vrf-prefix[prefix='172.17.0.0'][prefix-length='16']]
+2023-11-25 15:18:05,574 - ydk - INFO - ============= Sending RPC to device =============
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"><edit-config xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <target>
+    <candidate/>
+  </target>
+  <config><router-static xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ip-static-cfg">
+  <default-vrf>
+    <address-family>
+      <vrfipv4>
+        <vrf-unicast>
+          <vrf-prefixes>
+            <vrf-prefix>
+              <prefix>172.17.0.0</prefix>
+              <prefix-length>16</prefix-length>
+              <vrf-route>
+                <vrf-next-hop-table>
+                  <vrf-next-hop-interface-name>
+                    <interface-name>Null0</interface-name>
+                    <tag>888</tag>
+                    <description>YDK_NETCONF</description>
+                  </vrf-next-hop-interface-name>
+                </vrf-next-hop-table>
+              </vrf-route>
+            </vrf-prefix>
+          </vrf-prefixes>
+        </vrf-unicast>
+      </vrfipv4>
+    </address-family>
+  </default-vrf>
+</router-static>
+</config>
+</edit-config>
+</rpc>
+2023-11-25 15:18:05,787 - ydk - INFO - ============= Received RPC from device =============
+<?xml version="1.0"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="3">
+  <ok/>
+</rpc-reply>
+
+Processing fd00::/16
+Using AFI: vrfipv6
+Prefix leaf values: OrderedDict([('prefix', (fd00::, ['str', 'str'])), ('prefix_length', (16, ['int']))])
+2023-11-25 15:18:05,793 - ydk - INFO - Executing 'edit-config' RPC on [vrf-prefix[prefix='fd00::'][prefix-length='16']]
+2023-11-25 15:18:05,799 - ydk - ERROR - Cannot find model with module name 'fd00'
+2023-11-25 15:18:05,800 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fd00" not found.
+2023-11-25 15:18:06,004 - ydk - ERROR - Cannot find model with module name 'fd00'
+2023-11-25 15:18:06,005 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fd00" not found.
+2023-11-25 15:18:06,211 - ydk - ERROR - Cannot find model with module name 'fd00'
+2023-11-25 15:18:06,212 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fd00" not found.
+2023-11-25 15:18:06,419 - ydk - ERROR - Cannot find model with module name 'fd00'
+2023-11-25 15:18:06,421 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fd00" not found.
+2023-11-25 15:18:06,429 - ydk - INFO - ============= Sending RPC to device =============
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"><edit-config xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <target>
+    <candidate/>
+  </target>
+  <config><router-static xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ip-static-cfg">
+  <default-vrf>
+    <address-family>
+      <vrfipv6>
+        <vrf-unicast>
+          <vrf-prefixes>
+            <vrf-prefix>
+              <prefix>fd00::</prefix>
+              <prefix-length>16</prefix-length>
+              <vrf-route>
+                <vrf-next-hop-table>
+                  <vrf-next-hop-interface-name>
+                    <interface-name>Null0</interface-name>
+                    <tag>888</tag>
+                    <description>YDK_NETCONF</description>
+                  </vrf-next-hop-interface-name>
+                </vrf-next-hop-table>
+              </vrf-route>
+            </vrf-prefix>
+          </vrf-prefixes>
+        </vrf-unicast>
+      </vrfipv6>
+    </address-family>
+  </default-vrf>
+</router-static>
+</config>
+</edit-config>
+</rpc>
+2023-11-25 15:18:06,648 - ydk - INFO - ============= Received RPC from device =============
+<?xml version="1.0"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="8">
+  <ok/>
+</rpc-reply>
+
+Processing fd01::/16
+Using AFI: vrfipv6
+Prefix leaf values: OrderedDict([('prefix', (fd01::, ['str', 'str'])), ('prefix_length', (16, ['int']))])
+2023-11-25 15:18:06,657 - ydk - INFO - Executing 'edit-config' RPC on [vrf-prefix[prefix='fd01::'][prefix-length='16']]
+2023-11-25 15:18:06,662 - ydk - ERROR - Cannot find model with module name 'fd01'
+2023-11-25 15:18:06,662 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fd01" not found.
+2023-11-25 15:18:06,868 - ydk - ERROR - Cannot find model with module name 'fd01'
+2023-11-25 15:18:06,868 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fd01" not found.
+2023-11-25 15:18:07,073 - ydk - ERROR - Cannot find model with module name 'fd01'
+2023-11-25 15:18:07,074 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fd01" not found.
+2023-11-25 15:18:07,279 - ydk - ERROR - Cannot find model with module name 'fd01'
+2023-11-25 15:18:07,280 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fd01" not found.
+2023-11-25 15:18:07,285 - ydk - INFO - ============= Sending RPC to device =============
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"><edit-config xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <target>
+    <candidate/>
+  </target>
+  <config><router-static xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ip-static-cfg">
+  <default-vrf>
+    <address-family>
+      <vrfipv6>
+        <vrf-unicast>
+          <vrf-prefixes>
+            <vrf-prefix>
+              <prefix>fd01::</prefix>
+              <prefix-length>16</prefix-length>
+              <vrf-route>
+                <vrf-next-hop-table>
+                  <vrf-next-hop-interface-name>
+                    <interface-name>Null0</interface-name>
+                    <tag>888</tag>
+                    <description>YDK_NETCONF</description>
+                  </vrf-next-hop-interface-name>
+                </vrf-next-hop-table>
+              </vrf-route>
+            </vrf-prefix>
+          </vrf-prefixes>
+        </vrf-unicast>
+      </vrfipv6>
+    </address-family>
+  </default-vrf>
+</router-static>
+</config>
+</edit-config>
+</rpc>
+2023-11-25 15:18:07,498 - ydk - INFO - ============= Received RPC from device =============
+<?xml version="1.0"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="13">
+  <ok/>
+</rpc-reply>
+
+2023-11-25 15:18:07,498 - ydk - INFO - Executing 'validate' RPC on candidate, URL=
+2023-11-25 15:18:07,500 - ydk - INFO - ============= Sending RPC to device =============
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"><validate xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <source>
+    <candidate/>
+  </source>
+</validate>
+</rpc>
+2023-11-25 15:18:07,508 - ydk - INFO - ============= Received RPC from device =============
+<?xml version="1.0"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="14">
+  <ok/>
+</rpc-reply>
+
+2023-11-25 15:18:07,508 - ydk - INFO - Executing 'commit' RPC
+2023-11-25 15:18:07,509 - ydk - INFO - ============= Sending RPC to device =============
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"><commit xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"/>
+</rpc>
+2023-11-25 15:18:08,279 - ydk - INFO - ============= Received RPC from device =============
+<?xml version="1.0"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="15">
+  <ok/>
+</rpc-reply>
+
+2023-11-25 15:18:08,279 - ydk - INFO - Executing 'unlock' RPC on candidate
+2023-11-25 15:18:08,280 - ydk - INFO - ============= Sending RPC to device =============
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"><unlock xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <target>
+    <candidate/>
+  </target>
+</unlock>
+</rpc>
+2023-11-25 15:18:09,992 - ydk - INFO - ============= Received RPC from device =============
+<?xml version="1.0"?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="16">
+  <ok/>
+</rpc-reply>
+
+2023-11-25 15:18:10,002 - ydk - INFO - Disconnected from device

@@ -1,0 +1,29 @@
+update {
+  timestamp: 1700916835709000000
+  prefix {
+    origin: "Cisco-IOS-XR-nto-misc-oper"
+  }
+  update {
+    path {
+      elem {
+        name: "memory-summary"
+      }
+      elem {
+        name: "nodes"
+      }
+      elem {
+        name: "node"
+        key {
+          key: "node-name"
+          value: "0/RP0/CPU0"
+        }
+      }
+      elem {
+        name: "summary"
+      }
+    }
+    val {
+      json_ietf_val: "{\"page-size\":4096,\"ram-memory\":\"15032385536\",\"free-physical-memory\":\"10942939136\",\"system-ram-memory\":\"15032385536\",\"free-application-memory\":\"10942939136\",\"image-memory\":\"4194304\",\"boot-ram-size\":\"0\",\"reserved-memory\":\"0\",\"io-memory\":\"0\",\"flash-system\":\"0\"}"
+    }
+  }
+}

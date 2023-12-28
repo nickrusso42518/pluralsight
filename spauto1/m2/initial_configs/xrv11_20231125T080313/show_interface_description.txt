@@ -1,0 +1,12 @@
+Interface          Status      Protocol    Description
+--------------------------------------------------------------------------------
+Nu0                up          up          
+Mg0/RP0/CPU0/0     up          up          MGMT (GRPC DOES NOT WORK IN VRF)
+Gi0/0/0/0          up          up          
+Gi0/0/0/0.3113     up          up          TO CSR03
+Gi0/0/0/1          admin-down  admin-down  
+Gi0/0/0/2          admin-down  admin-down  
+Gi0/0/0/3          admin-down  admin-down  
+Gi0/0/0/4          admin-down  admin-down  
+Gi0/0/0/5          down        down        
+Gi0/0/0/6          down        down

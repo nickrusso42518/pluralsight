@@ -1,0 +1,168 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Sat Nov 25 12:29:02 2023 by labadmin
+!
+hostname XRV12
+logging monitor debugging
+domain lookup disable
+vrf ISP
+ address-family ipv4 unicast
+  import route-target
+   400:100
+  !
+  export route-target
+   400:100
+  !
+ !
+ address-family ipv6 unicast
+  import route-target
+   400:100
+  !
+  export route-target
+   400:100
+  !
+ !
+!
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+alias exec b4 show bgp vpnv4 unicast vrf ISP community 65332:888
+alias exec b6 show bgp vpnv6 unicast vrf ISP community 65332:888
+alias exec u4 show cef ipv4 drops location all | include RPF
+alias exec u6 show cef ipv6 drops location all | include RPF
+interface Loopback0
+ ipv4 address 10.0.0.12 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.12 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3123
+ description TO CSR03
+ vrf ISP
+ ipv4 address 172.16.123.12 255.255.255.0
+ ipv4 verify unicast source reachable-via any
+ ipv6 verify unicast source reachable-via any
+ ipv6 address fe80::12 link-local
+ ipv6 address fc00:172:16:123::12/64
+ encapsulation dot1q 3123
+!
+interface GigabitEthernet0/0/0/0.3213
+ description TO XRV13
+ ipv4 address 10.12.13.12 255.255.255.0
+ encapsulation dot1q 3213
+!
+interface GigabitEthernet0/0/0/0.3412
+ description TO CSR04
+ ipv4 address 10.4.12.12 255.255.255.0
+ encapsulation dot1q 3412
+!
+interface GigabitEthernet0/0/0/0.3512
+ description TO CSR05
+ ipv4 address 10.5.12.12 255.255.255.0
+ encapsulation dot1q 3512
+!
+route-policy RPL_PASS
+  pass
+end-policy
+!
+route-policy RPL_TEAM_CYMRU_IN
+  if community matches-every (65332:888) then
+    set next-hop discard
+    set local-preference 42518
+  endif
+end-policy
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router ospf 1
+ router-id 10.0.0.12
+ segment-routing mpls
+ segment-routing prefix-sid-map advertise-local
+ address-family ipv4 unicast
+ area 0
+  network point-to-point
+  interface Loopback0
+   passive enable
+   prefix-sid index 12
+  !
+  interface GigabitEthernet0/0/0/0.3213
+  !
+  interface GigabitEthernet0/0/0/0.3412
+  !
+  interface GigabitEthernet0/0/0/0.3512
+  !
+ !
+!
+router bgp 400
+ bgp router-id 10.0.0.12
+ address-family vpnv4 unicast
+ !
+ address-family vpnv6 unicast
+ !
+ neighbor 10.0.0.13
+  remote-as 400
+  update-source Loopback0
+  address-family vpnv4 unicast
+  !
+  address-family vpnv6 unicast
+  !
+ !
+ vrf ISP
+  rd 400:3
+  address-family ipv4 unicast
+  !
+  address-family ipv6 unicast
+  !
+  neighbor 172.16.123.3
+   remote-as 3
+   address-family ipv4 unicast
+    route-policy RPL_PASS in
+    route-policy RPL_PASS out
+   !
+  !
+  neighbor 172.16.113.11
+   remote-as 65532
+   ebgp-multihop 255
+   password encrypted 132738352422340F0E16
+   description TEAM CYMRU
+   address-family ipv4 unicast
+    route-policy RPL_TEAM_CYMRU_IN in
+   !
+  !
+  neighbor fc00:172:16:123::3
+   remote-as 3
+   address-family ipv6 unicast
+    route-policy RPL_PASS in
+    route-policy RPL_PASS out
+   !
+  !
+  neighbor fc00:172:16:113::11
+   remote-as 65532
+   ebgp-multihop 255
+   password encrypted 132738352422340F0E16
+   description TEAM CYMRU
+   address-family ipv6 unicast
+    route-policy RPL_TEAM_CYMRU_IN in
+   !
+  !
+ !
+!
+mpls oam
+!
+mpls label range table 0 92000 92900
+ssh server v2
+ssh server vrf MGMT
+end

@@ -1,0 +1,60 @@
+Sending Set RPC for Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv4/vrf-unicast/vrf-prefixes
+response {
+  path {
+    elem {
+      name: "Cisco-IOS-XR-ip-static-cfg:router-static"
+    }
+    elem {
+      name: "default-vrf"
+    }
+    elem {
+      name: "address-family"
+    }
+    elem {
+      name: "vrfipv4"
+    }
+    elem {
+      name: "vrf-unicast"
+    }
+    elem {
+      name: "vrf-prefixes"
+    }
+  }
+  message {
+  }
+  op: UPDATE
+}
+message {
+}
+timestamp: 1700916635483679481
+
+Sending Set RPC for Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv6/vrf-unicast/vrf-prefixes
+response {
+  path {
+    elem {
+      name: "Cisco-IOS-XR-ip-static-cfg:router-static"
+    }
+    elem {
+      name: "default-vrf"
+    }
+    elem {
+      name: "address-family"
+    }
+    elem {
+      name: "vrfipv6"
+    }
+    elem {
+      name: "vrf-unicast"
+    }
+    elem {
+      name: "vrf-prefixes"
+    }
+  }
+  message {
+  }
+  op: UPDATE
+}
+message {
+}
+timestamp: 1700916636097467728
+

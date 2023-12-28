@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <memory-summary xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-nto-misc-oper">
+    <nodes>
+      <node>
+        <node-name active="true">0/RP0/CPU0</node-name>
+        <summary>
+          <page-size/>
+          <ram-memory/>
+          <free-physical-memory/>
+          <system-ram-memory/>
+          <free-application-memory/>
+          <image-memory/>
+          <boot-ram-size/>
+          <reserved-memory/>
+          <io-memory/>
+          <flash-system/>
+        </summary>
+        <detail>
+          <page-size/>
+          <ram-memory/>
+          <free-physical-memory/>
+          <private-physical-memory/>
+          <system-ram-memory/>
+          <free-application-memory/>
+          <image-memory/>
+          <boot-ram-size/>
+          <reserved-memory/>
+          <io-memory/>
+          <flash-system/>
+          <total-shared-window/>
+          <allocated-memory/>
+          <program-text/>
+          <program-data/>
+          <program-stack/>
+          <total-used/>
+          <shared-window>
+            <shared-window/>
+            <window-size/>
+          </shared-window>
+        </detail>
+      </node>
+    </nodes>
+  </memory-summary>
+</data>

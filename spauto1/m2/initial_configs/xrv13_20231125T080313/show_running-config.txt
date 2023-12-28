@@ -1,0 +1,97 @@
+Building configuration...
+!! IOS XR Configuration 6.1.2
+!! Last configuration change at Fri Nov 24 13:09:45 2023 by labadmin
+!
+hostname XRV13
+logging monitor debugging
+domain lookup disable
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+interface Loopback0
+ ipv4 address 10.0.0.13 255.255.255.255
+!
+interface MgmtEth0/0/CPU0/0
+ description MGMT
+ vrf MGMT
+ ipv4 address 10.0.90.13 255.255.255.0
+!
+interface GigabitEthernet0/0/0/0.3213
+ description TO XRV12
+ ipv4 address 10.12.13.13 255.255.255.0
+ encapsulation dot1q 3213
+!
+interface GigabitEthernet0/0/0/0.3413
+ description TO CSR04
+ ipv4 address 10.4.13.13 255.255.255.0
+ encapsulation dot1q 3413
+!
+interface GigabitEthernet0/0/0/0.3513
+ description TO CSR05
+ ipv4 address 10.5.13.13 255.255.255.0
+ encapsulation dot1q 3513
+!
+router static
+ vrf MGMT
+  address-family ipv4 unicast
+   0.0.0.0/0 MgmtEth0/0/CPU0/0 10.0.90.254
+  !
+ !
+!
+router ospf 1
+ router-id 10.0.0.13
+ segment-routing mpls
+ segment-routing prefix-sid-map advertise-local
+ address-family ipv4 unicast
+ area 0
+  network point-to-point
+  interface Loopback0
+   passive enable
+   prefix-sid index 13
+  !
+  interface GigabitEthernet0/0/0/0.3213
+  !
+  interface GigabitEthernet0/0/0/0.3413
+  !
+  interface GigabitEthernet0/0/0/0.3513
+  !
+ !
+!
+router bgp 400
+ bgp router-id 10.0.0.13
+ address-family vpnv4 unicast
+ !
+ address-family vpnv6 unicast
+ !
+ neighbor-group IBGP_VPN
+  remote-as 400
+  update-source Loopback0
+  address-family vpnv4 unicast
+   route-reflector-client
+  !
+  address-family vpnv6 unicast
+   route-reflector-client
+  !
+ !
+ neighbor 10.0.0.4
+  use neighbor-group IBGP_VPN
+ !
+ neighbor 10.0.0.5
+  use neighbor-group IBGP_VPN
+ !
+ neighbor 10.0.0.12
+  use neighbor-group IBGP_VPN
+ !
+!
+mpls oam
+!
+mpls label range table 0 93000 93900
+ssh server v2
+ssh server vrf MGMT
+end

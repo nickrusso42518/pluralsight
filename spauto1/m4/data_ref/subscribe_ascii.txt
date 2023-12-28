@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/home/labadmin/spauto/m4/gnmi_subscribe.py", line 36, in <module>
+    main()
+  File "/home/labadmin/spauto/m4/gnmi_subscribe.py", line 31, in main
+    for response in responses:
+  File "/home/labadmin/spauto/m4/generic_gnmi.py", line 186, in subscribe
+    for segment in stream:
+  File "/home/labadmin/.local/lib/python3.10/site-packages/grpc/_channel.py", line 541, in __next__
+    return self._next()
+  File "/home/labadmin/.local/lib/python3.10/site-packages/grpc/_channel.py", line 967, in _next
+    raise self
+grpc._channel._MultiThreadedRendezvous: <_MultiThreadedRendezvous of RPC that terminated with:
+        status = StatusCode.UNIMPLEMENTED
+        details = "gNMI: subscribe: unsupported encoding: ASCII"
+        debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"gNMI: subscribe: unsupported encoding: ASCII", grpc_status:12, created_time:"2023-12-23T18:12:55.858972478+00:00"}"

@@ -1,0 +1,10 @@
+Interface                      IP-Address      Status          Protocol Vrf-Name
+MgmtEth0/RP0/CPU0/0            10.0.90.41      Up              Up       default 
+GigabitEthernet0/0/0/0         unassigned      Up              Up       default 
+GigabitEthernet0/0/0/0.3113    172.16.113.11   Up              Up       default 
+GigabitEthernet0/0/0/1         unassigned      Shutdown        Down     default 
+GigabitEthernet0/0/0/2         unassigned      Shutdown        Down     default 
+GigabitEthernet0/0/0/3         unassigned      Shutdown        Down     default 
+GigabitEthernet0/0/0/4         unassigned      Shutdown        Down     default 
+GigabitEthernet0/0/0/5         unassigned      Down            Down     default 
+GigabitEthernet0/0/0/6         unassigned      Down            Down     default

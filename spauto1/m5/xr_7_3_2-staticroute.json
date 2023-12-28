@@ -1,0 +1,35 @@
+{
+  "name": "xr-staticroute",
+  "version": "7.3.2",
+  "core_version": "0.8.5",
+  "author": "Nick Russo",
+  "copyright": "Cisco",
+  "description": "YDK bundle for IOS-XR static routes",
+  "long_description": "",
+  "models": {
+    "description": "",
+    "git": [
+      {
+        "url": "https://github.com/YangModels/yang.git",
+        "commits": [
+          {
+            "commitid": "6d9bdad93b77b70ed96a45398c9ebb13b94f08a3",
+            "file": [
+              "vendor/cisco/xr/732/Cisco-IOS-XR-types.yang",
+              "vendor/cisco/xr/732/Cisco-IOS-XR-ip-static-cfg.yang",
+              "vendor/cisco/xr/732/cisco-semver.yang"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "dependency": [
+    {
+      "name": "ietf",
+      "version": "0.1.5-post2",
+      "core_version": "0.8.5",
+      "uri": "file://profiles/bundles/ietf_0_1_5_post2.json"
+    }
+  ]
+}

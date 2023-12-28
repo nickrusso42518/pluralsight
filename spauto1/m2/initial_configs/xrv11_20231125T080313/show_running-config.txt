@@ -1,0 +1,119 @@
+Building configuration...
+!! IOS XR Configuration 7.3.2
+!! Last configuration change at Sat Nov 25 12:58:53 2023 by labadmin
+!
+hostname XRV11
+logging monitor debugging
+domain lookup disable
+username labadmin
+ group root-lr
+ group cisco-support
+ secret 10 $6$7AWyy0Xcjjuv9y0.$ty5d6m4b/roe95RSoJxaplaeSllhWRfctZPuM5/tUej54OnfTzBFHzgRiiyPRNK32zKmV45slcGxhSATfllyo1
+!
+grpc
+ port 57777
+ no-tls
+ address-family ipv4
+!
+telemetry model-driven
+ sensor-group cpumem
+  sensor-path Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization
+  sensor-path Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/node/summary
+ !
+ subscription perf
+  sensor-group-id cpumem sample-interval 3000
+ !
+!
+vrf MGMT
+ address-family ipv4 unicast
+ !
+!
+line default
+ timestamp disable
+ exec-timeout 0 0
+!
+icmp ipv4 rate-limit unreachable disable
+!
+netconf-yang agent
+ ssh
+!
+interface MgmtEth0/RP0/CPU0/0
+ description MGMT (GRPC DOES NOT WORK IN VRF)
+ ipv4 address 10.0.90.41 255.255.255.0
+ no shutdown
+!
+interface GigabitEthernet0/0/0/0
+ no shutdown
+!
+interface GigabitEthernet0/0/0/0.3113
+ description TO CSR03
+ ipv4 address 172.16.113.11 255.255.255.0
+ ipv6 address fe80::11 link-local
+ ipv6 address fc00:172:16:113::11/64
+ encapsulation dot1q 3113
+!
+route-policy RPL_SET_COMM
+  set community (65332:888, no-export)
+end-policy
+!
+route-policy RPL_STATIC_TO_BGP
+  if tag is 888 then
+    pass
+  endif
+end-policy
+!
+router static
+ address-family ipv4 unicast
+  0.0.0.0/0 GigabitEthernet0/0/0/0.3113 172.16.113.3 description TO_CSR03
+  10.0.2.0/24 MgmtEth0/RP0/CPU0/0 10.0.90.254 description LAB_MGMT
+  161.248.0.0/16 Null0 tag 888 description BOGON_AS1
+  162.4.0.0/16 Null0 tag 888 description BOGON_AS2
+  163.47.22.0/24 Null0 tag 888 description BOGON_AS3
+  163.47.25.0/24 Null0 tag 888 description BOGON_AS3
+  163.47.26.0/23 Null0 tag 888 description BOGON_AS3
+  163.47.28.0/24 Null0 tag 888 description BOGON_AS3
+ !
+ address-family ipv6 unicast
+  ::/0 GigabitEthernet0/0/0/0.3113 fc00:172:16:113::3
+  2401:ffc4::/30 Null0 tag 888 description BOGON_AS1
+  2401:ffc8::/29 Null0 tag 888 description BOGON_AS1
+  2402:401::/32 Null0 tag 888 description BOGON_AS2
+  2402:402::/31 Null0 tag 888 description BOGON_AS2
+  2403:2::/31 Null0 tag 888 description BOGON_AS3
+  2403:4::/30 Null0 tag 888 description BOGON_AS3
+ !
+!
+router bgp 65532
+ bgp router-id 160.0.0.11
+ address-family ipv4 unicast
+  redistribute static route-policy RPL_STATIC_TO_BGP
+ !
+ address-family ipv6 unicast
+  redistribute static route-policy RPL_STATIC_TO_BGP
+ !
+ neighbor 172.16.123.12
+  remote-as 400
+  ebgp-multihop 255
+  password encrypted 132738352422340F0E16
+  description GLOBOMANTICS
+  address-family ipv4 unicast
+   send-community-ebgp
+   route-policy RPL_SET_COMM out
+  !
+ !
+ neighbor fc00:172:16:123::12
+  remote-as 400
+  ebgp-multihop 255
+  password encrypted 132738352422340F0E16
+  description GLOBOMANTICS
+  address-family ipv6 unicast
+   send-community-ebgp
+   route-policy RPL_SET_COMM out
+  !
+ !
+!
+netconf agent tty
+!
+ssh server v2
+ssh server netconf vrf default
+end

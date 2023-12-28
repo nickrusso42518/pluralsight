@@ -1,0 +1,64 @@
+Sending Get RPC for Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv4/vrf-unicast/vrf-prefixes
+notification {
+  timestamp: 1700916624976091358
+  update {
+    path {
+      elem {
+        name: "Cisco-IOS-XR-ip-static-cfg:router-static"
+      }
+      elem {
+        name: "default-vrf"
+      }
+      elem {
+        name: "address-family"
+      }
+      elem {
+        name: "vrfipv4"
+      }
+      elem {
+        name: "vrf-unicast"
+      }
+      elem {
+        name: "vrf-prefixes"
+      }
+    }
+    val {
+      json_ietf_val: "{\"vrf-prefix\":[{\"prefix\":\"0.0.0.0\",\"prefix-length\":0,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name-next-hop-address\":[{\"interface-name\":\"GigabitEthernet0/0/0/0.3113\",\"next-hop-address\":\"172.16.113.3\"}]}}},{\"prefix\":\"10.0.2.0\",\"prefix-length\":24,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name-next-hop-address\":[{\"interface-name\":\"MgmtEth0/RP0/CPU0/0\",\"next-hop-address\":\"10.0.90.254\",\"description\":\"LAB_MGMT\"}]}}},{\"prefix\":\"161.248.0.0\",\"prefix-length\":16,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS1\"}]}}},{\"prefix\":\"162.4.0.0\",\"prefix-length\":16,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS2\"}]}}},{\"prefix\":\"163.47.22.0\",\"prefix-length\":24,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS3\"}]}}},{\"prefix\":\"163.47.25.0\",\"prefix-length\":24,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS3\"}]}}},{\"prefix\":\"163.47.26.0\",\"prefix-length\":23,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS3\"}]}}},{\"prefix\":\"163.47.28.0\",\"prefix-length\":24,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS3\"}]}}},{\"prefix\":\"198.51.100.0\",\"prefix-length\":24,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"PY_GRPC\"}]}}},{\"prefix\":\"203.0.113.0\",\"prefix-length\":24,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"PY_GRPC\"}]}}}]}"
+    }
+  }
+}
+error {
+}
+
+Sending Get RPC for Cisco-IOS-XR-ip-static-cfg:router-static/default-vrf/address-family/vrfipv6/vrf-unicast/vrf-prefixes
+notification {
+  timestamp: 1700916625309173450
+  update {
+    path {
+      elem {
+        name: "Cisco-IOS-XR-ip-static-cfg:router-static"
+      }
+      elem {
+        name: "default-vrf"
+      }
+      elem {
+        name: "address-family"
+      }
+      elem {
+        name: "vrfipv6"
+      }
+      elem {
+        name: "vrf-unicast"
+      }
+      elem {
+        name: "vrf-prefixes"
+      }
+    }
+    val {
+      json_ietf_val: "{\"vrf-prefix\":[{\"prefix\":\"::\",\"prefix-length\":0,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name-next-hop-address\":[{\"interface-name\":\"GigabitEthernet0/0/0/0.3113\",\"next-hop-address\":\"fc00:172:16:113::3\"}]}}},{\"prefix\":\"2001:db8:a::\",\"prefix-length\":48,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"PY_GRPC\"}]}}},{\"prefix\":\"2001:db8:b:b::\",\"prefix-length\":64,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"PY_GRPC\"}]}}},{\"prefix\":\"2401:ffc4::\",\"prefix-length\":30,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS1\"}]}}},{\"prefix\":\"2401:ffc8::\",\"prefix-length\":29,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS1\"}]}}},{\"prefix\":\"2402:401::\",\"prefix-length\":32,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS2\"}]}}},{\"prefix\":\"2402:402::\",\"prefix-length\":31,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS2\"}]}}},{\"prefix\":\"2403:2::\",\"prefix-length\":31,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS3\"}]}}},{\"prefix\":\"2403:4::\",\"prefix-length\":30,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"BOGON_AS3\"}]}}}]}"
+    }
+  }
+}
+error {
+}
+

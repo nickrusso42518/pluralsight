@@ -1,0 +1,35 @@
+router static
+ address-family ipv4 unicast
+  0.0.0.0/0 GigabitEthernet0/0/0/0.3113 172.16.113.3 description TO_CSR03
+  10.0.0.0/8 Null0 tag 888 description YDK_GNMI
+  10.0.2.0/24 MgmtEth0/RP0/CPU0/0 10.0.90.254 description LAB_MGMT
+  100.64.0.0/10 Null0 tag 888 description YDK_GNMI
+  161.248.0.0/16 Null0 tag 888 description BOGON_AS1
+  162.4.0.0/16 Null0 tag 888 description BOGON_AS2
+  163.47.22.0/24 Null0 tag 888 description BOGON_AS3
+  163.47.25.0/24 Null0 tag 888 description BOGON_AS3
+  163.47.26.0/23 Null0 tag 888 description BOGON_AS3
+  163.47.28.0/24 Null0 tag 888 description BOGON_AS3
+  172.21.0.0/16 Null0 tag 888 description YDK_NETCONF
+  172.22.0.0/16 Null0 tag 888 description YDK_NETCONF
+  192.0.2.0/24 Null0 tag 888 description PY_GNMI
+  198.51.100.0/24 Null0 tag 888 description PY_GRPC
+  203.0.113.0/24 Null0 tag 888 description PY_GRPC
+ !
+ address-family ipv6 unicast
+  ::/0 GigabitEthernet0/0/0/0.3113 fc00:172:16:113::3
+  2001:db8:a::/48 Null0 tag 888 description PY_GRPC
+  2001:db8:b:b::/64 Null0 tag 888 description PY_GRPC
+  2001:db8:c:cc00::/56 Null0 tag 888 description PY_GNMI
+  2401:ffc4::/30 Null0 tag 888 description BOGON_AS1
+  2401:ffc8::/29 Null0 tag 888 description BOGON_AS1
+  2402:401::/32 Null0 tag 888 description BOGON_AS2
+  2402:402::/31 Null0 tag 888 description BOGON_AS2
+  2403:2::/31 Null0 tag 888 description BOGON_AS3
+  2403:4::/30 Null0 tag 888 description BOGON_AS3
+  fc00::/16 Null0 tag 888 description YDK_GNMI
+  fc01::/16 Null0 tag 888 description YDK_GNMI
+  fd00::/16 Null0 tag 888 description YDK_NETCONF
+  fd01::/16 Null0 tag 888 description YDK_NETCONF
+ !
+!

@@ -1,0 +1,298 @@
+2023-11-25 15:13:50,279 - ydk - INFO - gNMIServiceProvider Connected to 10.0.90.41 via Insecure Channel
+Processing 10.0.0.0/8
+Using AFI: vrfipv4
+Prefix leaf values: OrderedDict([('prefix', (10.0.0.0, ['str', 'str'])), ('prefix_length', (8, ['int']))])
+2023-11-25 15:13:50,290 - ydk - INFO - Executing CRUD update operation on [vrf-prefix[prefix='10.0.0.0'][prefix-length='8']]
+2023-11-25 15:13:50,290 - ydk - INFO - Executing set gRPC operation 'update' on entity 'vrf-prefix[prefix='10.0.0.0'][prefix-length='8']'
+2023-11-25 15:13:50,342 - ydk - INFO - 
+=============== Set Request Sent ================
+update {
+  path {
+    origin: "Cisco-IOS-XR-ip-static-cfg"
+    elem {
+      name: "router-static"
+    }
+    elem {
+      name: "default-vrf"
+    }
+    elem {
+      name: "address-family"
+    }
+    elem {
+      name: "vrfipv4"
+    }
+    elem {
+      name: "vrf-unicast"
+    }
+    elem {
+      name: "vrf-prefixes"
+    }
+  }
+  val {
+    json_ietf_val: "{\"Cisco-IOS-XR-ip-static-cfg:vrf-prefix\":[{\"prefix\":\"10.0.0.0\",\"prefix-length\":8,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"YDK_GNMI\"}]}}}]}"
+  }
+}
+
+
+2023-11-25 15:13:50,921 - ydk - INFO - 
+============= Set Response Received =============
+response {
+  path {
+    origin: "Cisco-IOS-XR-ip-static-cfg"
+    elem {
+      name: "router-static"
+    }
+    elem {
+      name: "default-vrf"
+    }
+    elem {
+      name: "address-family"
+    }
+    elem {
+      name: "vrfipv4"
+    }
+    elem {
+      name: "vrf-unicast"
+    }
+    elem {
+      name: "vrf-prefixes"
+    }
+  }
+  message {
+  }
+  op: UPDATE
+}
+message {
+}
+timestamp: 1700925225661088243
+
+
+2023-11-25 15:13:50,921 - ydk - INFO - Set Operation Succeeded
+2023-11-25 15:13:50,922 - ydk - INFO - Operation succeeded
+Processing 100.64.0.0/10
+Using AFI: vrfipv4
+Prefix leaf values: OrderedDict([('prefix', (100.64.0.0, ['str', 'str'])), ('prefix_length', (10, ['int']))])
+2023-11-25 15:13:50,927 - ydk - INFO - Executing CRUD update operation on [vrf-prefix[prefix='100.64.0.0'][prefix-length='10']]
+2023-11-25 15:13:50,927 - ydk - INFO - Executing set gRPC operation 'update' on entity 'vrf-prefix[prefix='100.64.0.0'][prefix-length='10']'
+2023-11-25 15:13:50,935 - ydk - INFO - 
+=============== Set Request Sent ================
+update {
+  path {
+    origin: "Cisco-IOS-XR-ip-static-cfg"
+    elem {
+      name: "router-static"
+    }
+    elem {
+      name: "default-vrf"
+    }
+    elem {
+      name: "address-family"
+    }
+    elem {
+      name: "vrfipv4"
+    }
+    elem {
+      name: "vrf-unicast"
+    }
+    elem {
+      name: "vrf-prefixes"
+    }
+  }
+  val {
+    json_ietf_val: "{\"Cisco-IOS-XR-ip-static-cfg:vrf-prefix\":[{\"prefix\":\"100.64.0.0\",\"prefix-length\":10,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"YDK_GNMI\"}]}}}]}"
+  }
+}
+
+
+2023-11-25 15:13:51,437 - ydk - INFO - 
+============= Set Response Received =============
+response {
+  path {
+    origin: "Cisco-IOS-XR-ip-static-cfg"
+    elem {
+      name: "router-static"
+    }
+    elem {
+      name: "default-vrf"
+    }
+    elem {
+      name: "address-family"
+    }
+    elem {
+      name: "vrfipv4"
+    }
+    elem {
+      name: "vrf-unicast"
+    }
+    elem {
+      name: "vrf-prefixes"
+    }
+  }
+  message {
+  }
+  op: UPDATE
+}
+message {
+}
+timestamp: 1700925226177759026
+
+
+2023-11-25 15:13:51,439 - ydk - INFO - Set Operation Succeeded
+2023-11-25 15:13:51,439 - ydk - INFO - Operation succeeded
+Processing fc00::/16
+Using AFI: vrfipv6
+Prefix leaf values: OrderedDict([('prefix', (fc00::, ['str', 'str'])), ('prefix_length', (16, ['int']))])
+2023-11-25 15:13:51,443 - ydk - INFO - Executing CRUD update operation on [vrf-prefix[prefix='fc00::'][prefix-length='16']]
+2023-11-25 15:13:51,443 - ydk - INFO - Executing set gRPC operation 'update' on entity 'vrf-prefix[prefix='fc00::'][prefix-length='16']'
+2023-11-25 15:13:51,444 - ydk - ERROR - Cannot find model with module name 'fc00'
+2023-11-25 15:13:51,446 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fc00" not found.
+2023-11-25 15:13:51,446 - ydk - ERROR - Cannot find model with module name 'fc00'
+2023-11-25 15:13:51,448 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fc00" not found.
+2023-11-25 15:13:51,448 - ydk - ERROR - Cannot find model with module name 'fc00'
+2023-11-25 15:13:51,449 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fc00" not found.
+2023-11-25 15:13:51,450 - ydk - ERROR - Cannot find model with module name 'fc00'
+2023-11-25 15:13:51,452 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fc00" not found.
+2023-11-25 15:13:51,456 - ydk - INFO - 
+=============== Set Request Sent ================
+update {
+  path {
+    origin: "Cisco-IOS-XR-ip-static-cfg"
+    elem {
+      name: "router-static"
+    }
+    elem {
+      name: "default-vrf"
+    }
+    elem {
+      name: "address-family"
+    }
+    elem {
+      name: "vrfipv6"
+    }
+    elem {
+      name: "vrf-unicast"
+    }
+    elem {
+      name: "vrf-prefixes"
+    }
+  }
+  val {
+    json_ietf_val: "{\"Cisco-IOS-XR-ip-static-cfg:vrf-prefix\":[{\"prefix\":\"fc00::\",\"prefix-length\":16,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"YDK_GNMI\"}]}}}]}"
+  }
+}
+
+
+2023-11-25 15:13:52,057 - ydk - INFO - 
+============= Set Response Received =============
+response {
+  path {
+    origin: "Cisco-IOS-XR-ip-static-cfg"
+    elem {
+      name: "router-static"
+    }
+    elem {
+      name: "default-vrf"
+    }
+    elem {
+      name: "address-family"
+    }
+    elem {
+      name: "vrfipv6"
+    }
+    elem {
+      name: "vrf-unicast"
+    }
+    elem {
+      name: "vrf-prefixes"
+    }
+  }
+  message {
+  }
+  op: UPDATE
+}
+message {
+}
+timestamp: 1700925226791214040
+
+
+2023-11-25 15:13:52,058 - ydk - INFO - Set Operation Succeeded
+2023-11-25 15:13:52,058 - ydk - INFO - Operation succeeded
+Processing fc01::/16
+Using AFI: vrfipv6
+Prefix leaf values: OrderedDict([('prefix', (fc01::, ['str', 'str'])), ('prefix_length', (16, ['int']))])
+2023-11-25 15:13:52,063 - ydk - INFO - Executing CRUD update operation on [vrf-prefix[prefix='fc01::'][prefix-length='16']]
+2023-11-25 15:13:52,063 - ydk - INFO - Executing set gRPC operation 'update' on entity 'vrf-prefix[prefix='fc01::'][prefix-length='16']'
+2023-11-25 15:13:52,064 - ydk - ERROR - Cannot find model with module name 'fc01'
+2023-11-25 15:13:52,066 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fc01" not found.
+2023-11-25 15:13:52,066 - ydk - ERROR - Cannot find model with module name 'fc01'
+2023-11-25 15:13:52,068 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fc01" not found.
+2023-11-25 15:13:52,068 - ydk - ERROR - Cannot find model with module name 'fc01'
+2023-11-25 15:13:52,069 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fc01" not found.
+2023-11-25 15:13:52,070 - ydk - ERROR - Cannot find model with module name 'fc01'
+2023-11-25 15:13:52,072 - ydk - ERROR - Data is invalid according to the yang model. Libyang error: Data model "fc01" not found.
+2023-11-25 15:13:52,076 - ydk - INFO - 
+=============== Set Request Sent ================
+update {
+  path {
+    origin: "Cisco-IOS-XR-ip-static-cfg"
+    elem {
+      name: "router-static"
+    }
+    elem {
+      name: "default-vrf"
+    }
+    elem {
+      name: "address-family"
+    }
+    elem {
+      name: "vrfipv6"
+    }
+    elem {
+      name: "vrf-unicast"
+    }
+    elem {
+      name: "vrf-prefixes"
+    }
+  }
+  val {
+    json_ietf_val: "{\"Cisco-IOS-XR-ip-static-cfg:vrf-prefix\":[{\"prefix\":\"fc01::\",\"prefix-length\":16,\"vrf-route\":{\"vrf-next-hop-table\":{\"vrf-next-hop-interface-name\":[{\"interface-name\":\"Null0\",\"tag\":888,\"description\":\"YDK_GNMI\"}]}}}]}"
+  }
+}
+
+
+2023-11-25 15:13:52,611 - ydk - INFO - 
+============= Set Response Received =============
+response {
+  path {
+    origin: "Cisco-IOS-XR-ip-static-cfg"
+    elem {
+      name: "router-static"
+    }
+    elem {
+      name: "default-vrf"
+    }
+    elem {
+      name: "address-family"
+    }
+    elem {
+      name: "vrfipv6"
+    }
+    elem {
+      name: "vrf-unicast"
+    }
+    elem {
+      name: "vrf-prefixes"
+    }
+  }
+  message {
+  }
+  op: UPDATE
+}
+message {
+}
+timestamp: 1700925227351228811
+
+
+2023-11-25 15:13:52,611 - ydk - INFO - Set Operation Succeeded
+2023-11-25 15:13:52,611 - ydk - INFO - Operation succeeded
+2023-11-25 15:13:52,619 - ydk - INFO - Disconnected from device

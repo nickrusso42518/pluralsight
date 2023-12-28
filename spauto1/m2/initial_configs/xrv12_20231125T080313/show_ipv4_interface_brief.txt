@@ -1,0 +1,14 @@
+Interface                      IP-Address      Status          Protocol Vrf-Name
+Loopback0                      10.0.0.12       Up              Up       default 
+MgmtEth0/0/CPU0/0              10.0.90.12      Up              Up       MGMT    
+GigabitEthernet0/0/0/0         unassigned      Up              Up       default 
+GigabitEthernet0/0/0/0.3123    172.16.123.12   Up              Up       ISP     
+GigabitEthernet0/0/0/0.3213    10.12.13.12     Up              Up       default 
+GigabitEthernet0/0/0/0.3412    10.4.12.12      Up              Up       default 
+GigabitEthernet0/0/0/0.3512    10.5.12.12      Up              Up       default 
+GigabitEthernet0/0/0/1         unassigned      Up              Up       default 
+GigabitEthernet0/0/0/2         unassigned      Up              Up       default 
+GigabitEthernet0/0/0/3         unassigned      Up              Up       default 
+GigabitEthernet0/0/0/4         unassigned      Up              Up       default 
+GigabitEthernet0/0/0/5         unassigned      Up              Up       default 
+GigabitEthernet0/0/0/6         unassigned      Up              Up       default

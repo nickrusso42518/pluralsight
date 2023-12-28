@@ -1,0 +1,10 @@
+grpc
+ port 57777
+!
+telemetry model-driven
+ sensor-group cpumem
+  sensor-path Cisco-IOS-XR-wdsysmon-fd-oper:system-monitoring/cpu-utilization   
+  sensor-path Cisco-IOS-XR-nto-misc-oper:memory-summary/nodes/node/summary
+ !
+ subscription perf
+  sensor-group-id cpumem sample-interval 3000

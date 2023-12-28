@@ -1,0 +1,19 @@
+module: Cisco-IOS-XR-wdsysmon-fd-oper
+  +--ro system-monitoring
+     +--ro cpu-utilization* [node-name]
+        +--ro node-name                   xr:Node-id
+        +--ro total-cpu-one-minute?       uint32
+        +--ro total-cpu-five-minute?      uint32
+        +--ro total-cpu-fifteen-minute?   uint32
+        +--ro process-cpu* []
+           +--ro process-name?                 string
+           +--ro process-id?                   uint32
+           +--ro process-cpu-one-minute?       uint32
+           +--ro process-cpu-five-minute?      uint32
+           +--ro process-cpu-fifteen-minute?   uint32
+           +--ro thread-cpu* []
+              +--ro thread-name?                  string
+              +--ro thread-id?                    uint32
+              +--ro process-cpu-one-minute?       uint32
+              +--ro process-cpu-five-minute?      uint32
+              +--ro process-cpu-fifteen-minute?   uint32

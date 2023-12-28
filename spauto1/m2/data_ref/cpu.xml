@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <system-monitoring xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-wdsysmon-fd-oper">
+    <cpu-utilization>
+      <node-name/>
+      <total-cpu-one-minute/>
+      <total-cpu-five-minute/>
+      <total-cpu-fifteen-minute/>
+      <process-cpu>
+        <process-name/>
+        <process-id/>
+        <process-cpu-one-minute/>
+        <process-cpu-five-minute/>
+        <process-cpu-fifteen-minute/>
+        <thread-cpu>
+          <thread-name/>
+          <thread-id/>
+          <process-cpu-one-minute/>
+          <process-cpu-five-minute/>
+          <process-cpu-fifteen-minute/>
+        </thread-cpu>
+      </process-cpu>
+    </cpu-utilization>
+  </system-monitoring>
+</data>

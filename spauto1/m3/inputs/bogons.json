@@ -1,0 +1,84 @@
+{
+  "Cisco-IOS-XR-ip-static-cfg:router-static": {
+    "default-vrf": {
+      "address-family": {
+        "vrfipv4": {
+          "vrf-unicast": {
+            "vrf-prefixes": {
+              "vrf-prefix": [
+                {
+                  "prefix": "198.51.100.0",
+                  "prefix-length": 24,
+                  "vrf-route": {
+                    "vrf-next-hop-table": {
+                      "vrf-next-hop-interface-name": [
+                        {
+                          "interface-name": "Null0",
+                          "tag": 888,
+                          "description": "PY_GRPC"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "prefix": "203.0.113.0",
+                  "prefix-length": 24,
+                  "vrf-route": {
+                    "vrf-next-hop-table": {
+                      "vrf-next-hop-interface-name": [
+                        {
+                          "interface-name": "Null0",
+                          "tag": 888,
+                          "description": "PY_GRPC"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "vrfipv6": {
+          "vrf-unicast": {
+            "vrf-prefixes": {
+              "vrf-prefix": [
+                {
+                  "prefix": "2001:db8:a::",
+                  "prefix-length": 48,
+                  "vrf-route": {
+                    "vrf-next-hop-table": {
+                      "vrf-next-hop-interface-name": [
+                        {
+                          "interface-name": "Null0",
+                          "tag": 888,
+                          "description": "PY_GRPC"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "prefix": "2001:db8:b:b::",
+                  "prefix-length": 64,
+                  "vrf-route": {
+                    "vrf-next-hop-table": {
+                      "vrf-next-hop-interface-name": [
+                        {
+                          "interface-name": "Null0",
+                          "tag": 888,
+                          "description": "PY_GRPC"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

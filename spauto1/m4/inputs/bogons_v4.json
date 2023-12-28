@@ -1,0 +1,19 @@
+{
+  "vrf-prefix": [
+    {
+      "prefix": "192.0.2.0",
+      "prefix-length": 24,
+      "vrf-route": {
+        "vrf-next-hop-table": {
+          "vrf-next-hop-interface-name": [
+            {
+              "interface-name": "Null0",
+              "tag": 888,
+              "description": "PY_GNMI"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

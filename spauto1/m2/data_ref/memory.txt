@@ -1,0 +1,37 @@
+module: Cisco-IOS-XR-nto-misc-oper
+  +--ro memory-summary
+     +--ro nodes
+        +--ro node* [node-name]
+           +--ro summary
+           |  +--ro page-size?                 uint32
+           |  +--ro ram-memory?                uint64
+           |  +--ro free-physical-memory?      uint64
+           |  +--ro system-ram-memory?         uint64
+           |  +--ro free-application-memory?   uint64
+           |  +--ro image-memory?              uint64
+           |  +--ro boot-ram-size?             uint64
+           |  +--ro reserved-memory?           uint64
+           |  +--ro io-memory?                 uint64
+           |  +--ro flash-system?              uint64
+           +--ro detail
+           |  +--ro page-size?                 uint32
+           |  +--ro ram-memory?                uint64
+           |  +--ro free-physical-memory?      uint64
+           |  +--ro private-physical-memory?   uint64
+           |  +--ro system-ram-memory?         uint64
+           |  +--ro free-application-memory?   uint64
+           |  +--ro image-memory?              uint64
+           |  +--ro boot-ram-size?             uint64
+           |  +--ro reserved-memory?           uint64
+           |  +--ro io-memory?                 uint64
+           |  +--ro flash-system?              uint64
+           |  +--ro total-shared-window?       uint64
+           |  +--ro allocated-memory?          uint64
+           |  +--ro program-text?              uint64
+           |  +--ro program-data?              uint64
+           |  +--ro program-stack?             uint64
+           |  +--ro total-used?                uint64
+           |  +--ro shared-window* []
+           |     +--ro shared-window?   string
+           |     +--ro window-size?     uint64
+           +--ro node-name    xr:Node-id
