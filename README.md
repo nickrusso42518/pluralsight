@@ -36,7 +36,7 @@ Directory/course mapping:
   * spauto2 - [Automating BGP Routing Security with gRPC, gNMI, and YDK](https://www.pluralsight.com/courses/bgp-routing-security-grpc-gnmi-ydk-automating-cert).
   * spcor2 - [Implementing Cisco Multiprotocol Label Switching (MPLS)](https://www.pluralsight.com/courses/cisco-multiprotocol-label-switching-implementing).
   * spcor3 - [Modern Service Provider Architecture](https://www.pluralsight.com/courses/modern-service-provider-architectures-cert).
-  * spcor4 - [Deploying MPLS Segment Routing and Layer-2 VPNs](https://www.pluralsight.com/courses/redirecting-traffic-mpls-traffic-engineering-cert).
+  * spcor4 - [Deploying MPLS Segment Routing and Layer-2 VPNs](https://www.pluralsight.com/courses/mpls-segment-routing-layer-2-vpns-deploying-cert).
   * spcor5 - [Redirecting Traffic with MPLS Traffic Engineering](https://www.pluralsight.com/courses/redirecting-traffic-mpls-traffic-engineering-cert).
   * spcor6 - [Inter-AS and Multicast MPLS VPNs](https://www.pluralsight.com/courses/inter-as-multicast-mpls-vpns-cert).
   * spcor7 - [Seamless MPLS and Carrier Supporting Carrier](https://www.pluralsight.com/courses/implementing-seamless-mpls-carrier-supporting-cert).
