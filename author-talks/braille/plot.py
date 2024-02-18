@@ -9,7 +9,7 @@ import json
 import sys
 import matplotlib.pyplot as plt
 
-# When converting unicode chars to ints, they bits we care about are offset
+# When converting unicode chars to ints, the bits we care about are offset
 # by 10240 just given their position in the unicode plan. This must be
 # subtracted before performing any bitwise logic. Same as 0x2800 in hex.
 # >>> ord("\u2800") 10240
@@ -46,6 +46,7 @@ def main(name):
 
     # Convert the text name into Braille symbols
     braille = convert_name(name)
+    print(header := f"{name}: {braille}")
 
     # Plot each symbol independently, counting each one to ensure
     # the x_offset continues to increment by 2 as the symbols are plotted
@@ -53,7 +54,7 @@ def main(name):
         plot_symbol(symbol, i * 2)
 
     # Graph cleanup: specify a title, x/y axis limits, and scaling aspect
-    plt.title(f"{name}: {braille}")
+    plt.title(header)
     plt.xlim(0, 40)
     plt.ylim(0, 4)
     plt.gca().set_aspect("equal", adjustable="box")
@@ -79,6 +80,7 @@ def plot_symbol(symbol, x_offset):
     # to solve it WITHOUT needing to pass in another argument.
     # Results in alternating "ro" and "bo" strings for plotting.
     fmt = "rb"[(x_offset % 4) // 2] + "o"
+    print(f"Symbol {symbol} using format {fmt}")
 
     # There are 6 bits in the Braille symbol; iterate over it and compute
     # the bit position using 2^i exponent logic (0, 1, 2, 4, 16, 32)
@@ -91,7 +93,7 @@ def plot_symbol(symbol, x_offset):
         if (ord(symbol) - BRAILLE_UNICODE_OFFSET) & bit:
             dot = GRID[i + 1]
             plt.plot(dot[0] + x_offset, dot[1], fmt)
-            print(f"Symbol {symbol} raises bit {bit:02} for dot {dot}")
+            print(f"  raises bit {i} ({bit:02}) for dot {dot}")
 
 def convert_name(name):
 
