@@ -45,7 +45,9 @@ def main(name):
     """
 
     # Convert the text name into Braille symbols
+    # breakpoint()
     braille = convert_name(name)
+    # breakpoint()
     print(header := f"{name}: {braille}")
 
     # Plot each symbol independently, counting each one to ensure
