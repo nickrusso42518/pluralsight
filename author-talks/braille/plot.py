@@ -45,9 +45,9 @@ def main(name):
     """
 
     # Convert the text name into Braille symbols
-    # breakpoint()
+    #breakpoint()
     braille = convert_name(name)
-    # breakpoint()
+    #breakpoint()
     print(header := f"{name}: {braille}")
 
     # Plot each symbol independently, counting each one to ensure
@@ -93,6 +93,7 @@ def plot_symbol(symbol, x_offset):
         # plot the appropriate dot on the graph by referencing the GRID
         # map, applying the x_offset, and specifying the format string.
         if (ord(symbol) - BRAILLE_UNICODE_OFFSET) & bit:
+            #breakpoint()
             dot = GRID[i + 1]
             plt.plot(dot[0] + x_offset, dot[1], fmt)
             print(f"  raises bit {i} ({bit:02}) for dot {dot}")
