@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # Python 3.7/3.9 Complex Type Hinting
 
-from typing import Union, Optional
+from typing import Union
 from random import randint
 
 class Roster:
     def __init__(
         self,
         names: Union[str, list[str]],
-        delim: Optional[str] = "\n"
+        delim: str = "\n"
     ) -> None:
         if isinstance(names, str):
             self.names = names.split(delim)
