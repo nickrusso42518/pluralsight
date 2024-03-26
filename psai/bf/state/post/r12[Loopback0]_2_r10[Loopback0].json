@@ -1,0 +1,194 @@
+[
+  {
+    "Flow": {
+      "IP_PROTOCOL_PATTERN": {
+        "flags": 34,
+        "groupindex": {},
+        "groups": 1,
+        "pattern": "^UNNAMED_([0-9]+)$"
+      },
+      "dscp": 0,
+      "dstIp": "10.0.0.10",
+      "dstPort": 33434,
+      "ecn": 0,
+      "fragmentOffset": 0,
+      "icmpCode": null,
+      "icmpVar": null,
+      "ingressInterface": null,
+      "ingressNode": "r12",
+      "ingressVrf": "default",
+      "ipProtocol": "UDP",
+      "packetLength": 512,
+      "srcIp": "10.0.0.12",
+      "srcPort": 49152,
+      "tcpFlagsAck": 0,
+      "tcpFlagsCwr": 0,
+      "tcpFlagsEce": 0,
+      "tcpFlagsFin": 0,
+      "tcpFlagsPsh": 0,
+      "tcpFlagsRst": 0,
+      "tcpFlagsSyn": 0,
+      "tcpFlagsUrg": 0
+    },
+    "Traces": [
+      {
+        "disposition": "ACCEPTED",
+        "hops": [
+          {
+            "node": "r12",
+            "steps": [
+              {
+                "action": "ORIGINATED",
+                "detail": {
+                  "originatingVrf": "default"
+                }
+              },
+              {
+                "action": "FORWARDED",
+                "detail": {
+                  "arpIp": "10.12.14.14",
+                  "forwardingDetail": {
+                    "outputInterface": "Ethernet0/1",
+                    "resolvedNextHopIp": "10.12.14.14",
+                    "type": "ForwardedOutInterface"
+                  },
+                  "outputInterface": "Ethernet0/1",
+                  "routes": [
+                    {
+                      "admin": 110,
+                      "metric": 26,
+                      "network": "10.0.0.10/32",
+                      "nextHop": {
+                        "interface": "Ethernet0/1",
+                        "ip": "10.12.14.14",
+                        "type": "interface"
+                      },
+                      "nextHopIp": null,
+                      "protocol": "ospfIA"
+                    }
+                  ]
+                }
+              },
+              {
+                "action": "TRANSMITTED",
+                "detail": {
+                  "outputInterface": "Ethernet0/1",
+                  "transformedFlow": null
+                }
+              }
+            ]
+          },
+          {
+            "node": "r14",
+            "steps": [
+              {
+                "action": "RECEIVED",
+                "detail": {
+                  "inputInterface": "Ethernet0/1",
+                  "inputVrf": "default"
+                }
+              },
+              {
+                "action": "FORWARDED",
+                "detail": {
+                  "arpIp": "10.0.99.2",
+                  "forwardingDetail": {
+                    "outputInterface": "Ethernet0/2",
+                    "resolvedNextHopIp": "10.0.99.2",
+                    "type": "ForwardedOutInterface"
+                  },
+                  "outputInterface": "Ethernet0/2",
+                  "routes": [
+                    {
+                      "admin": 110,
+                      "metric": 16,
+                      "network": "10.0.0.10/32",
+                      "nextHop": {
+                        "interface": "Ethernet0/2",
+                        "ip": "10.0.99.2",
+                        "type": "interface"
+                      },
+                      "nextHopIp": null,
+                      "protocol": "ospfIA"
+                    }
+                  ]
+                }
+              },
+              {
+                "action": "TRANSMITTED",
+                "detail": {
+                  "outputInterface": "Ethernet0/2",
+                  "transformedFlow": null
+                }
+              }
+            ]
+          },
+          {
+            "node": "r02",
+            "steps": [
+              {
+                "action": "RECEIVED",
+                "detail": {
+                  "inputInterface": "Ethernet0/2",
+                  "inputVrf": "default"
+                }
+              },
+              {
+                "action": "FORWARDED",
+                "detail": {
+                  "arpIp": "10.2.10.10",
+                  "forwardingDetail": {
+                    "outputInterface": "Ethernet0/0",
+                    "resolvedNextHopIp": "10.2.10.10",
+                    "type": "ForwardedOutInterface"
+                  },
+                  "outputInterface": "Ethernet0/0",
+                  "routes": [
+                    {
+                      "admin": 110,
+                      "metric": 11,
+                      "network": "10.0.0.10/32",
+                      "nextHop": {
+                        "interface": "Ethernet0/0",
+                        "ip": "10.2.10.10",
+                        "type": "interface"
+                      },
+                      "nextHopIp": null,
+                      "protocol": "ospf"
+                    }
+                  ]
+                }
+              },
+              {
+                "action": "TRANSMITTED",
+                "detail": {
+                  "outputInterface": "Ethernet0/0",
+                  "transformedFlow": null
+                }
+              }
+            ]
+          },
+          {
+            "node": "r10",
+            "steps": [
+              {
+                "action": "RECEIVED",
+                "detail": {
+                  "inputInterface": "Ethernet0/0",
+                  "inputVrf": "default"
+                }
+              },
+              {
+                "action": "ACCEPTED",
+                "detail": {
+                  "interface": "Loopback0"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "TraceCount": 1
+  }
+]

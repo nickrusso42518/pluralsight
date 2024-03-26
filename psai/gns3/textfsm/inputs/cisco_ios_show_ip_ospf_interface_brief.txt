@@ -1,0 +1,6 @@
+Interface    PID   Area  IP Address/Mask    Cost  State Nbrs F/C
+Lo0          1     0     172.16.0.11/32     1     LOOP  0/0
+Se0/0/0.100  1     0     172.16.1.1/30      50    P2P   0/1
+Fa0/0        1     0     10.0.0.5/24        1     BDR   1/1
+Fa0/1        1     11    10.1.2.1/24        1     DR    2/2
+Se3/2:10     55    1     172.31.1.1/30      600   P2MP  4/4

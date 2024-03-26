@@ -1,0 +1,189 @@
+[
+  {
+    "area": "0.0.0.1",
+    "type": "Router",
+    "lsa_id": "10.255.70.103",
+    "adv_rtr": "10.255.70.103",
+    "seq_num": "0x80000002",
+    "age_sec": 215,
+    "options": "0x20",
+    "chksum": "0x4112",
+    "length": 48
+  },
+  {
+    "area": "0.0.0.1",
+    "type": "Router",
+    "lsa_id": "10.255.71.242",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000002",
+    "age_sec": 214,
+    "options": "0x20",
+    "chksum": "0x11b1",
+    "length": 48
+  },
+  {
+    "area": "0.0.0.1",
+    "type": "Summary",
+    "lsa_id": "23.1.1.0",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000002",
+    "age_sec": 172,
+    "options": "0x20",
+    "chksum": "0x6d72",
+    "length": 28
+  },
+  {
+    "area": "0.0.0.1",
+    "type": "Summary",
+    "lsa_id": "24.1.1.0",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000002",
+    "age_sec": 177,
+    "options": "0x20",
+    "chksum": "0x607e",
+    "length": 28
+  },
+  {
+    "area": "0.0.0.1",
+    "type": "NSSA",
+    "lsa_id": "33.1.1.1",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000002",
+    "age_sec": 217,
+    "options": "0x20",
+    "chksum": "0x73bd",
+    "length": 36
+  },
+  {
+    "area": "0.0.0.2",
+    "type": "Router",
+    "lsa_id": "10.255.71.52",
+    "adv_rtr": "10.255.71.52",
+    "seq_num": "0x80000004",
+    "age_sec": 174,
+    "options": "0x20",
+    "chksum": "0xd021",
+    "length": 36
+  },
+  {
+    "area": "0.0.0.2",
+    "type": "Router",
+    "lsa_id": "10.255.71.242",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000003",
+    "age_sec": 173,
+    "options": "0x20",
+    "chksum": "0xe191",
+    "length": 36
+  },
+  {
+    "area": "0.0.0.2",
+    "type": "Network",
+    "lsa_id": "23.1.1.1",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000002",
+    "age_sec": 173,
+    "options": "0x20",
+    "chksum": "0x9c76",
+    "length": 32
+  },
+  {
+    "area": "0.0.0.2",
+    "type": "Summary",
+    "lsa_id": "12.1.1.0",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000001",
+    "age_sec": 217,
+    "options": "0x20",
+    "chksum": "0xfeec",
+    "length": 28
+  },
+  {
+    "area": "0.0.0.2",
+    "type": "Summary",
+    "lsa_id": "24.1.1.0",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000002",
+    "age_sec": 177,
+    "options": "0x20",
+    "chksum": "0x607e",
+    "length": 28
+  },
+  {
+    "area": "0.0.0.2",
+    "type": "NSSA",
+    "lsa_id": "33.1.1.1",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000001",
+    "age_sec": 222,
+    "options": "0x28",
+    "chksum": "0xe047",
+    "length": 36
+  },
+  {
+    "area": "0.0.0.3",
+    "type": "Router",
+    "lsa_id": "10.255.71.238",
+    "adv_rtr": "10.255.71.238",
+    "seq_num": "0x80000003",
+    "age_sec": 179,
+    "options": "0x20",
+    "chksum": "0x3942",
+    "length": 36
+  },
+  {
+    "area": "0.0.0.3",
+    "type": "Router",
+    "lsa_id": "10.255.71.242",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000003",
+    "age_sec": 177,
+    "options": "0x20",
+    "chksum": "0xf37d",
+    "length": 36
+  },
+  {
+    "area": "0.0.0.3",
+    "type": "Network",
+    "lsa_id": "24.1.1.1",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000002",
+    "age_sec": 177,
+    "options": "0x20",
+    "chksum": "0xc591",
+    "length": 32
+  },
+  {
+    "area": "0.0.0.3",
+    "type": "Summary",
+    "lsa_id": "12.1.1.0",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000001",
+    "age_sec": 217,
+    "options": "0x20",
+    "chksum": "0xfeec",
+    "length": 28
+  },
+  {
+    "area": "0.0.0.3",
+    "type": "Summary",
+    "lsa_id": "23.1.1.0",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000002",
+    "age_sec": 172,
+    "options": "0x20",
+    "chksum": "0x6d72",
+    "length": 28
+  },
+  {
+    "area": "0.0.0.3",
+    "type": "NSSA",
+    "lsa_id": "33.1.1.1",
+    "adv_rtr": "10.255.71.242",
+    "seq_num": "0x80000001",
+    "age_sec": 222,
+    "options": "0x20",
+    "chksum": "0xeb3b",
+    "length": 36
+  }
+]

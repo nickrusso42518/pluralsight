@@ -1,0 +1,23 @@
+hostname R02
+interface Loopback0
+ ip address 10.0.0.2 255.255.255.255
+ ip ospf 1 area 0
+interface Ethernet0/0
+ description TO R10
+ ip address 10.2.10.2 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 1
+ ip ospf cost 10
+interface Ethernet0/2
+ description TO BACKBONE LAN
+ ip address 10.0.99.2 255.255.255.0
+ ip ospf authentication
+ ip ospf authentication-key OSPF1234
+ ip ospf network broadcast
+ ip ospf 1 area 0
+ ip ospf cost 5
+router ospf 1
+ router-id 10.0.0.2
+ area 1 nssa
+ passive-interface Loopback0
+end

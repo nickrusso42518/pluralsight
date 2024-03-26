@@ -1,0 +1,190 @@
+{
+  "<interface> ip ospf demand-circuit": {
+    "dst_cmd": "set area <area_id> interface <interface_name> demand-circuit",
+    "rel_val": 0.6977855797503227
+  },
+  "area <address> virtual-link <address> authentication message-digest": {
+    "dst_cmd": "set area <area_id> virtual-link neighbor-id <neighbor-id> transit-area <transit-area>",
+    "rel_val": 0.5847131771425307
+  },
+  "area <address>": {
+    "dst_cmd": "set area <area_id>",
+    "rel_val": 0.5736394081784748
+  },
+  "area <address> filter-list prefix <string> out": {
+    "dst_cmd": "set area <area_id> inter-area-prefix-export <value>",
+    "rel_val": 0.5139929189706058
+  },
+  "area <address> nssa translate type7 suppress-fa": {
+    "dst_cmd": "set area <area_id> nssa no-summaries",
+    "rel_val": 0.6350503288255183
+  },
+  "area <0-4294967295>": {
+    "dst_cmd": "set area <area_id>",
+    "rel_val": 0.478351190123511
+  },
+  "area <address> virtual-link <address> dead-interval <1-8192>": {
+    "dst_cmd": "set area <area_id> virtual-link neighbor-id <neighbor-id> transit-area <transit-area>",
+    "rel_val": 0.6154365343755153
+  },
+  "area <address> stub": {
+    "dst_cmd": "set area <area_id> stub",
+    "rel_val": 0.7229803226104481
+  },
+  "area <address> authentication": {
+    "dst_cmd": "set area <area_id> interface <interface_name> authentication md5 <key-id> key <value>",
+    "rel_val": 0.5672491820177263
+  },
+  "<interface> ip ospf mtu-ignore": {
+    "dst_cmd": "set area <area_id> interface <interface_name> disable",
+    "rel_val": 0.4667027703597537
+  },
+  "area <address> virtual-link <address> hello-interval <1-8192>": {
+    "dst_cmd": "set area <area_id> virtual-link neighbor-id <neighbor-id> transit-area <transit-area>",
+    "rel_val": 0.5886909119941885
+  },
+  "area <address> authentication message-digest": {
+    "dst_cmd": "set area <area_id> interface <interface_name> authentication md5 <key-id> key <value>",
+    "rel_val": 0.5681575286133227
+  },
+  "area <address> range <address> <address>": {
+    "dst_cmd": "set area <area_id> area-range <area_range>",
+    "rel_val": 0.6474590492780692
+  },
+  "area <address> virtual-link <address> authentication": {
+    "dst_cmd": "set area <area_id> virtual-link neighbor-id <neighbor-id> transit-area <transit-area>",
+    "rel_val": 0.618056204433611
+  },
+  "area <address> range <address> <address> advertise cost <0-16777215>": {
+    "dst_cmd": "set area <area_id> nssa area-range",
+    "rel_val": 0.5449057532540057
+  },
+  "area <address> range <address> <address> advertise": {
+    "dst_cmd": "set area <area_id> area-range <area_range>",
+    "rel_val": 0.5775737493047663
+  },
+  "area <address> virtual-link <address> retransmit-interval <1-8192>": {
+    "dst_cmd": "set area <area_id> virtual-link neighbor-id <neighbor-id> transit-area <transit-area>",
+    "rel_val": 0.6338597483405713
+  },
+  "<interface> ip ospf cost": {
+    "dst_cmd": "set area <area_id> interface <interface_name> metric <metric>",
+    "rel_val": 0.42042382826075086
+  },
+  "<interface> ip ospf database-filter": {
+    "dst_cmd": "set area <area_id> interface <interface_name> dynamic-neighbors",
+    "rel_val": 0.42274424508653397
+  },
+  "area <address> default-cost <0-16777215>": {
+    "dst_cmd": "set area <area_id> nssa default-lsa default-metric <default-metric>",
+    "rel_val": 0.5947332610385722
+  },
+  "passive-interface <interface>": {
+    "dst_cmd": "set area <area_id> interface <interface_name> passive",
+    "rel_val": 0.7072621013773729
+  },
+  "area <address> virtual-link <address> authentication null": {
+    "dst_cmd": "set area <area_id> virtual-link neighbor-id <neighbor-id> transit-area <transit-area>",
+    "rel_val": 0.5990595036663778
+  },
+  "<interface> ip ospf bfd": {
+    "dst_cmd": "set area <area_id> interface <interface_name> dynamic-neighbors",
+    "rel_val": 0.4523577200403267
+  },
+  "area <address> stub no-summary": {
+    "dst_cmd": "set area <area_id> stub no-summaries",
+    "rel_val": 0.7499813418334987
+  },
+  "<interface> ip ospf message-digest-key <1-255>": {
+    "dst_cmd": "set area <area_id> interface <interface_name> authentication md5 <key-id> key <value>",
+    "rel_val": 0.5699291595319128
+  },
+  "area <address> virtual-link <address> transmit-delay <1-8192>": {
+    "dst_cmd": "set area <area_id> virtual-link neighbor-id <neighbor-id> transit-area <transit-area>",
+    "rel_val": 0.631611200639932
+  },
+  "<interface> ip ospf dead-interval": {
+    "dst_cmd": "set area <area_id> interface <interface_name> poll-interval <poll-interval>",
+    "rel_val": 0.48479504841156595
+  },
+  "area <address> nssa": {
+    "dst_cmd": "set area <area_id> nssa",
+    "rel_val": 0.7553280837732769
+  },
+  "<interface> ip ospf <1-65535> area <address>": {
+    "dst_cmd": "set area <area_id> interface",
+    "rel_val": 0.670646855328161
+  },
+  "<interface> ip ospf flood-reduction": {
+    "dst_cmd": "set area <area_id> interface <interface_name> dynamic-neighbors",
+    "rel_val": 0.45723391384766754
+  },
+  "area <address> filter-list prefix <string> in": {
+    "dst_cmd": "set area <area_id> inter-area-prefix-import <value>",
+    "rel_val": 0.5025369298302488
+  },
+  "area <address> nssa no-summary": {
+    "dst_cmd": "set area <area_id> nssa no-summaries",
+    "rel_val": 0.7607671165818466
+  },
+  "router-id": {
+    "dst_cmd": "set routing-options router-id <router-id>",
+    "rel_val": 0.6349581223643482
+  },
+  "area <address> nssa translate type7 suppress-fa default-information-originate": {
+    "dst_cmd": "set area <area_id> nssa no-summaries",
+    "rel_val": 0.6057406443627023
+  },
+  "area <address> virtual-link <address> message-digest-key <1-255> md5 <0-7> <string>": {
+    "dst_cmd": "set area <area_id> interface <interface_name> authentication md5 <key-id> key <value>",
+    "rel_val": 0.6160423418906742
+  },
+  "passive-interface default": {
+    "dst_cmd": "set area <area_id> interface <interface_name> passive",
+    "rel_val": 0.6158603449187634
+  },
+  "area <address> nssa translate type7 suppress-fa no-redistribution": {
+    "dst_cmd": "set area <area_id> nssa no-summaries",
+    "rel_val": 0.6712810175659755
+  },
+  "area <address> range <address> <address> not-advertise": {
+    "dst_cmd": "set area <area_id> nssa area-range",
+    "rel_val": 0.5643584632123934
+  },
+  "area <address> sham-link <address> <address>": {
+    "dst_cmd": "set area <area_id> sham-link-remote <address>",
+    "rel_val": 0.8158148064710805
+  },
+  "area <address> nssa translate type7 suppress-fa no-summary": {
+    "dst_cmd": "set area <area_id> nssa no-summaries",
+    "rel_val": 0.7022377082915275
+  },
+  "<interface> ip ospf <1-65535> area <0-4294967295>": {
+    "dst_cmd": "set area <area_id> interface",
+    "rel_val": 0.6785294052831213
+  },
+  "<interface> ip ospf authentication-key": {
+    "dst_cmd": "set area <area_id> interface <interface_name> authentication md5 <key-id> key <value>",
+    "rel_val": 0.60979777726676
+  },
+  "<interface> ip ospf network": {
+    "dst_cmd": "set area <area_id> interface <interface_name> dynamic-neighbors",
+    "rel_val": 0.5435083842423317
+  },
+  "<interface> ip ospf prefix-suppression": {
+    "dst_cmd": "set area <area_id> inter-area-prefix-export <value>",
+    "rel_val": 0.5433932584274789
+  },
+  "<interface> ip ospf authentication": {
+    "dst_cmd": "set area <area_id> interface <interface_name> authentication md5 <key-id> key <value>",
+    "rel_val": 0.5713643514287624
+  },
+  "area <address> virtual-link <address> authentication-key": {
+    "dst_cmd": "set area <area_id> interface <interface_name> authentication md5 <key-id> key <value>",
+    "rel_val": 0.62376780468221
+  },
+  "area <address> virtual-link <address>": {
+    "dst_cmd": "set area <area_id> virtual-link neighbor-id <neighbor-id> transit-area <transit-area>",
+    "rel_val": 0.6938744120754125
+  }
+}

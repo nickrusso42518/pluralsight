@@ -1,0 +1,274 @@
+[
+  {
+    "Interface": {
+      "hostname": "r02",
+      "interface": "Ethernet0/0"
+    },
+    "VRF": "default",
+    "IP": "10.2.10.2",
+    "Area": 1,
+    "Remote_Interface": {
+      "hostname": "r10",
+      "interface": "Ethernet0/0"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.2.10.10",
+    "Remote_Area": 1,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r12",
+      "interface": "Ethernet0/3"
+    },
+    "VRF": "default",
+    "IP": "10.1.12.12",
+    "Area": 3,
+    "Remote_Interface": {
+      "hostname": "r01",
+      "interface": "em3.0"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.1.12.1",
+    "Remote_Area": 3,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r14",
+      "interface": "Ethernet0/2"
+    },
+    "VRF": "default",
+    "IP": "10.0.99.14",
+    "Area": 0,
+    "Remote_Interface": {
+      "hostname": "r01",
+      "interface": "em2.0"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.0.99.1",
+    "Remote_Area": 0,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r01",
+      "interface": "em2.0"
+    },
+    "VRF": "default",
+    "IP": "10.0.99.1",
+    "Area": 0,
+    "Remote_Interface": {
+      "hostname": "r14",
+      "interface": "Ethernet0/2"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.0.99.14",
+    "Remote_Area": 0,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r12",
+      "interface": "Ethernet0/1"
+    },
+    "VRF": "default",
+    "IP": "10.12.14.12",
+    "Area": 3,
+    "Remote_Interface": {
+      "hostname": "r14",
+      "interface": "Ethernet0/1"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.12.14.14",
+    "Remote_Area": 3,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r14",
+      "interface": "Ethernet0/2"
+    },
+    "VRF": "default",
+    "IP": "10.0.99.14",
+    "Area": 0,
+    "Remote_Interface": {
+      "hostname": "r02",
+      "interface": "Ethernet0/2"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.0.99.2",
+    "Remote_Area": 0,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r01",
+      "interface": "em2.0"
+    },
+    "VRF": "default",
+    "IP": "10.0.99.1",
+    "Area": 0,
+    "Remote_Interface": {
+      "hostname": "r02",
+      "interface": "Ethernet0/2"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.0.99.2",
+    "Remote_Area": 0,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r14",
+      "interface": "Ethernet0/1"
+    },
+    "VRF": "default",
+    "IP": "10.12.14.14",
+    "Area": 3,
+    "Remote_Interface": {
+      "hostname": "r12",
+      "interface": "Ethernet0/1"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.12.14.12",
+    "Remote_Area": 3,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r01",
+      "interface": "em3.0"
+    },
+    "VRF": "default",
+    "IP": "10.1.12.1",
+    "Area": 3,
+    "Remote_Interface": {
+      "hostname": "r12",
+      "interface": "Ethernet0/3"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.1.12.12",
+    "Remote_Area": 3,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r13",
+      "interface": "Ethernet0/1"
+    },
+    "VRF": "default",
+    "IP": "10.1.13.13",
+    "Area": 3,
+    "Remote_Interface": {
+      "hostname": "r01",
+      "interface": "em1.0"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.1.13.1",
+    "Remote_Area": 3,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r02",
+      "interface": "Ethernet0/2"
+    },
+    "VRF": "default",
+    "IP": "10.0.99.2",
+    "Area": 0,
+    "Remote_Interface": {
+      "hostname": "r14",
+      "interface": "Ethernet0/2"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.0.99.14",
+    "Remote_Area": 0,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r10",
+      "interface": "Ethernet0/0"
+    },
+    "VRF": "default",
+    "IP": "10.2.10.10",
+    "Area": 1,
+    "Remote_Interface": {
+      "hostname": "r02",
+      "interface": "Ethernet0/0"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.2.10.2",
+    "Remote_Area": 1,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r01",
+      "interface": "em1.0"
+    },
+    "VRF": "default",
+    "IP": "10.1.13.1",
+    "Area": 3,
+    "Remote_Interface": {
+      "hostname": "r13",
+      "interface": "Ethernet0/1"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.1.13.13",
+    "Remote_Area": 3,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r02",
+      "interface": "Ethernet0/2"
+    },
+    "VRF": "default",
+    "IP": "10.0.99.2",
+    "Area": 0,
+    "Remote_Interface": {
+      "hostname": "r01",
+      "interface": "em2.0"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.0.99.1",
+    "Remote_Area": 0,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r13",
+      "interface": "Ethernet0/3"
+    },
+    "VRF": "default",
+    "IP": "10.13.14.13",
+    "Area": 3,
+    "Remote_Interface": {
+      "hostname": "r14",
+      "interface": "Ethernet0/3"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.13.14.14",
+    "Remote_Area": 3,
+    "Session_Status": "ESTABLISHED"
+  },
+  {
+    "Interface": {
+      "hostname": "r14",
+      "interface": "Ethernet0/3"
+    },
+    "VRF": "default",
+    "IP": "10.13.14.14",
+    "Area": 3,
+    "Remote_Interface": {
+      "hostname": "r13",
+      "interface": "Ethernet0/3"
+    },
+    "Remote_VRF": "default",
+    "Remote_IP": "10.13.14.13",
+    "Remote_Area": 3,
+    "Session_Status": "ESTABLISHED"
+  }
+]

@@ -1,0 +1,20 @@
+set system host-name R01
+set system root-authentication plain-text-password-value convert123
+set interfaces lo0 unit 0 family inet address 10.0.0.1/32
+set protocols ospf area 0.0.0.0 interface lo0.0 passive
+set interfaces em0 unit 1 family inet address 10.1.13.1/24
+set interfaces em0 unit 1 description "TO R13"
+set protocols ospf area 0.0.0.3 interface em0.1 interface-type p2p
+set protocols ospf area 0.0.0.3 interface em0.1 metric 7
+set interfaces em0 unit 2 family inet address 10.0.99.1/24
+set interfaces em0 unit 2 description "TO BACKBONE LAN"
+set protocols ospf area 0.0.0.0 interface em0.2 authentication md5 1 key OSPF1234
+set protocols ospf area 0.0.0.0 interface em0.2 interface-type broadcast
+set protocols ospf area 0.0.0.0 interface em0.2 priority 0
+set protocols ospf area 0.0.0.0 interface em0.2 metric 5
+set interfaces em0 unit 3 family inet address 10.1.12.1/24
+set interfaces em0 unit 3 description "TO R12"
+set protocols ospf area 0.0.0.3 interface em0.3 interface-type p2p
+set protocols ospf area 0.0.0.3 interface em0.3 metric 7
+set protocols ospf area 0.0.0.3 stub no-summaries
+set protocols ospf router-id 10.0.0.1

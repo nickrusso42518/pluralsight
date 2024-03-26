@@ -27,6 +27,7 @@ Directory/course mapping:
   * ftp - [Protocol Deep Dive: FTP and Its Variants](https://www.pluralsight.com/courses/protocol-deep-dive-ftp-variants).
   * ipv6trans - [Securely Transitioning Enterprise Networks to IPv6](https://www.pluralsight.com/courses/securely-transitioning-enterprise-networks-ipv6).
   * meraki-fund - [Cisco Meraki Fundamentals](https://www.pluralsight.com/courses/cisco-meraki-fundamentals).
+  * psai - [Enhancing Network Automation with Generative AI](https://www.pluralsight.com/courses/generative-ai-network-automation-enhancing).
   * pynet1 - [Automating Networks with Python](https://www.pluralsight.com/courses/automating-networks-python).
   * qos1 - [Designing QoS for IP and MPLS Networks](https://www.pluralsight.com/courses/designing-qos-ip-mpls-networks).
   * qos2 - [Implementing and Validating QoS Designs](https://www.pluralsight.com/courses/implementing-validating-qos-designs).

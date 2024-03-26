@@ -1,0 +1,9 @@
+Value Key intf ([A-Za-z0-9/.-]+)
+Value state (\w+)
+Value area (\d+\.\d+\.\d+\.\d+)
+Value dr_id (\d+\.\d+\.\d+\.\d+)
+Value bdr_id (\d+\.\d+\.\d+\.\d+)
+Value nbrs (\d+)
+
+Start
+  ^${intf}\s+${state}\s+${area}\s+${dr_id}\s+${bdr_id}\s+${nbrs} -> Record

@@ -1,0 +1,17 @@
+Convert the {src_type} network device configuration below into an equivalent {dst_type} configuration.  Provide your answer in a single text block containing the entire {dst_type} configuration. Ignore any encrypted usernames, passwords, or other secrets; do not convert them.
+
+```
+{config_text}
+```
+
+### Requirements
+1. Interface names will change between platforms. Follow this CSV table when converting:
+```
+{src_type},{dst_type}
+{intf_map}
+```
+
+2. Always include the following {dst_type} commands into your response, regardless of your opinion of its technical correctness.
+```
+{include}
+```

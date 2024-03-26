@@ -1,0 +1,141 @@
+              Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+           cisco Systems, Inc.
+           170 West Tasman Drive
+           San Jose, California 95134-1706
+
+
+
+Cisco IOS Software, Linux Software (I86BI_LINUX-ADVENTERPRISEK9-M), Version 15.6(3)M3a, DEVELOPMENT TEST SOFTWARE
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2017 by Cisco Systems, Inc.
+Compiled Tue 19-Sep-17 10:03 by prod_rel_team
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Linux Unix (Intel-x86) processor with 208929K bytes of memory.Installed image archive
+
+Processor board ID 2048003
+4 Ethernet interfaces
+4 Serial interfaces
+128K bytes of NVRAM.
+
+SETUP: new interface Ethernet0/0 placed in "shutdown" state
+SETUP: new interface Ethernet0/2 placed in "shutdown" state
+SETUP: new interface Serial1/0 placed in "shutdown" state
+SETUP: new interface Serial1/1 placed in "shutdown" state
+SETUP: new interface Serial1/2 placed in "shutdown" state
+SETUP: new interface Serial1/3 placed in "shutdown" state
+
+
+Press RETURN to get started!
+
+
+*Mar 20 10:19:43.230: %LINEPROTO-5-UPDOWN: Line protocol on Interface VoIP-Null0, changed state to up
+*Mar 20 10:19:43.230: %LINK-3-UPDOWN: Interface Ethernet0/0, changed state to up
+*Mar 20 10:19:43.231: %LINK-3-UPDOWN: Interface Ethernet0/1, changed state to up
+*Mar 20 10:19:43.231: %LINK-3-UPDOWN: Interface Ethernet0/2, changed state to up
+*Mar 20 10:19:43.231: %LINK-3-UPDOWN: Interface Ethernet0/3, changed state to up
+*Mar 20 10:19:43.231: %LINK-3-UPDOWN: Interface Serial1/0, changed state to up
+*Mar 20 10:19:43.231: %LINK-3-UPDOWN: Interface Serial1/1, changed state to up
+*Mar 20 10:19:43.231: %LINK-3-UPDOWN: Interface Serial1/2, changed state to up
+*Mar 20 10:19:43.231: %LINK-3-UPDOWN: Interface Serial1/3, changed state to up
+*Mar 20 10:19:45.472: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
+*Mar 20 10:19:45.472: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/1, changed state to up
+*Mar 20 10:19:45.472: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/2, changed state to up
+*Mar 20 10:19:45.472: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/3, changed state to up
+*Mar 20 10:19:45.472: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial1/0, changed state to up
+*Mar 20 10:19:45.472: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial1/1, changed state to up
+*Mar 20 10:19:45.472: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial1/2, changed state to up
+*Mar 20 10:19:45.472: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial1/3, changed state to up
+*Mar 20 10:19:46.308: %SYS-5-CONFIG_I: Configured from memory by console
+*Mar 20 10:19:46.450: %SYS-5-RESTART: System restarted --
+Cisco IOS Software, Linux Software (I86BI_LINUX-ADVENTERPRISEK9-M), Version 15.6(3)M3a, DEVELOPMENT TEST SOFTWARE
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2017 by Cisco Systems, Inc.
+Compiled Tue 19-Sep-17 10:03 by prod_rel_team
+*Mar 20 10:19:46.490: %CRYPTO-6-ISAKMP_ON_OFF: ISAKMP is OFF
+*Mar 20 10:19:46.490: %CRYPTO-6-GDOI_ON_OFF: GDOI is OFF
+*Mar 20 10:19:47.246: %LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback0, changed state to up
+*Mar 20 10:19:48.311: %LINK-5-CHANGED: Interface Ethernet0/0, changed state to administratively down
+*Mar 20 10:19:48.311: %LINK-5-CHANGED: Interface Ethernet0/2, changed state to administratively down
+*Mar 20 10:19:48.320: %LINK-5-CHANGED: Interface Serial1/0, changed state to administratively down
+*Mar 20 10:19:48.320: %LINK-5-CHANGED: Interface Serial1/1, changed state to administratively down
+*Mar 20 10:19:48.320: %LINK-5-CHANGED: Interface Serial1/2, changed state to administratively down
+*Mar 20 10:19:48.320: %LINK-5-CHANGED: Interface Serial1/3, changed state to administratively down
+*Mar 20 10:19:49.317: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to down
+*Mar 20 10:19:49.317: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/2, changed state to down
+*Mar 20 10:19:49.322: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial1/0, changed state to down
+*Mar 20 10:19:49.322: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial1/1, changed state to down
+*Mar 20 10:19:49.322: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial1/2, changed state to down
+*Mar 20 10:19:49.322: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial1/3, changed state to down
+*Mar 20 10:19:55.335: %OSPF-5-ADJCHG: Process 1, Nbr 10.0.0.14 on Ethernet0/1 from LOADING to FULL, Loading Done
+R12>
+R12>enable
+R12#
+R12#
+R12#
+R12#
+R12#
+R12#terminal length 0
+R12#
+R12#terminal width 512
+R12#
+R12#
+R12#
+R12#show ip ospf neighbor
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+10.0.0.14         0   FULL/  -        00:00:39    10.12.14.14     Ethernet0/1
+R12#
+R12#show ip ospf interface brief
+Interface    PID   Area            IP Address/Mask    Cost  State Nbrs F/C
+Lo0          1     3               10.0.0.12/32       1     LOOP  0/0
+Et0/3        1     3               10.1.12.12/24      7     P2P   0/0
+Et0/1        1     3               10.12.14.12/24     10    P2P   1/1
+R12#
+R12#show ip ospf database
+
+            OSPF Router with ID (10.0.0.12) (Process ID 1)
+
+                Router Link States (Area 3)
+
+Link ID         ADV Router      Age         Seq#       Checksum Link count
+10.0.0.12       10.0.0.12       609         0x80000003 0x003BE7 4
+10.0.0.13       10.0.0.13       610         0x80000003 0x009982 4
+10.0.0.14       10.0.0.14       606         0x80000003 0x00B021 4
+
+                Summary Net Link States (Area 3)
+
+Link ID         ADV Router      Age         Seq#       Checksum
+0.0.0.0         10.0.0.14       620         0x80000001 0x000323
+10.0.0.2        10.0.0.14       565         0x80000001 0x009E76
+10.0.0.10       10.0.0.14       565         0x80000001 0x00B250
+10.0.0.14       10.0.0.14       606         0x80000001 0x00F31A
+10.0.99.0       10.0.0.14       615         0x80000001 0x006351
+10.2.10.0       10.0.0.14       565         0x80000001 0x00867B
+R12#
+R12#
+*Mar 20 10:31:03.302: %OSPF-5-ADJCHG: Process 1, Nbr 10.0.0.1 on Ethernet0/3 from LOADING to FULL, Loading Done
+R12#

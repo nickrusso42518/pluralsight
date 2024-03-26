@@ -1,0 +1,50 @@
+#  R1#show parser dump router | include ^15_(area_|router|passive)
+#  R1#show parser dump interface | include ^15_ip_ospf_
+router-id
+area <address> authentication message-digest
+area <address> authentication
+area <address> default-cost <0-16777215>
+area <address> stub no-summary
+area <address> stub
+area <address> nssa translate type7 suppress-fa no-redistribution
+area <address> nssa translate type7 suppress-fa no-summary
+area <address> nssa translate type7 suppress-fa default-information-originate
+area <address> nssa translate type7 suppress-fa
+area <address> nssa no-summary
+area <address> nssa
+area <address> range <address> <address> advertise cost <0-16777215>
+area <address> range <address> <address> advertise
+area <address> range <address> <address> not-advertise
+area <address> range <address> <address>
+area <address> filter-list prefix <string> in
+area <address> filter-list prefix <string> out
+area <address> virtual-link <address> hello-interval <1-8192>
+area <address> virtual-link <address> retransmit-interval <1-8192>
+area <address> virtual-link <address> transmit-delay <1-8192>
+area <address> virtual-link <address> dead-interval <1-8192>
+area <address> virtual-link <address> authentication
+area <address> virtual-link <address> authentication message-digest
+area <address> virtual-link <address> authentication null
+area <address> virtual-link <address> authentication
+area <address> virtual-link <address> authentication-key
+area <address> virtual-link <address> message-digest-key <1-255> md5 <0-7> <string>
+area <address> virtual-link <address>
+area <address> sham-link <address> <address>
+area <address>
+area <0-4294967295>
+passive-interface <interface>
+passive-interface default
+<interface> ip ospf authentication
+<interface> ip ospf authentication-key
+<interface> ip ospf message-digest-key <1-255>
+<interface> ip ospf cost
+<interface> ip ospf network
+<interface> ip ospf dead-interval
+<interface> ip ospf flood-reduction
+<interface> ip ospf demand-circuit
+<interface> ip ospf mtu-ignore
+<interface> ip ospf database-filter
+<interface> ip ospf prefix-suppression
+<interface> ip ospf bfd
+<interface> ip ospf <1-65535> area <address>
+<interface> ip ospf <1-65535> area <0-4294967295>

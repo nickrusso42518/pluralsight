@@ -1,0 +1,4 @@
+ip_address,interface,state,neighbor_id,priority,dead_time
+10.1.2.2,ge-0/0/2.0,Full,2.2.2.2,1,37
+10.1.3.3,ge-0/0/3.0,Full,3.3.3.3,1,31
+10.1.4.4,em2.0,2Way,4.4.4.4,128,7

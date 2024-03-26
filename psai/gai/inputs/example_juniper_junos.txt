@@ -1,0 +1,12 @@
+set system host-name R01
+set interfaces em1 unit 0 family inet address 203.0.113.1/28
+set interfaces em1 unit 0 description "TO R02"
+set interfaces ge-0/0/7 unit 0 family inet address 198.51.100.1/24
+set interfaces ge-0/0/7 unit 0 description "TO R03"
+set interfaces lo0 unit 0 family inet address 192.0.2.1/32
+set routing-options router-id 192.0.2.1
+set protocols ospf area 0.0.0.3 stub default-metric 1 no-summaries
+set protocols ospf area 0.0.0.3 interface em1.0 interface-type p2p
+set protocols ospf area 0.0.0.3 interface em1.0 metric 7
+set protocols ospf area 0.0.0.0 interface ge-0/0/7 authentication simple-password OSPF1234
+set protocols ospf area 0.0.0.1 interface lo0.0 passive

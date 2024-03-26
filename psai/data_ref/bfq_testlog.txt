@@ -1,0 +1,22 @@
+====================================================== test session starts =======================================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.3.0 -- /home/ubuntu/environments/ancc/bin/python
+cachedir: .pytest_cache
+rootdir: /home/ubuntu/ancc
+plugins: anyio-4.2.0
+collected 13 items                                                                                                               
+
+bf_pytest.py::test_no_duplicate_router_ids PASSED                                                                          [  7%]
+bf_pytest.py::test_no_incompatible_ospf_sessions PASSED                                                                    [ 15%]
+bf_pytest.py::test_no_forwarding_loops PASSED                                                                              [ 23%]
+bf_pytest.py::test_compatible_neighbors_up PASSED                                                                          [ 30%]
+bf_pytest.py::test_symmetric_costs PASSED                                                                                  [ 38%]
+bf_pytest.py::test_complementary_descriptions PASSED                                                                       [ 46%]
+bf_pytest.py::test_stubs_lack_externals PASSED                                                                             [ 53%]
+bf_pytest.py::test_stubs_have_default PASSED                                                                               [ 61%]
+bf_pytest.py::test_stubs_have_interareas PASSED                                                                            [ 69%]
+bf_pytest.py::test_nonstubs_have_externals PASSED                                                                          [ 76%]
+bf_pytest.py::test_traceroute_stub_to_nssa_interarea PASSED                                                                [ 84%]
+bf_pytest.py::test_traceroute_stub_to_nssa_external PASSED                                                                 [ 92%]
+bf_pytest.py::test_generate_topology PASSED                                                                                [100%]
+
+======================================================= 13 passed in 4.94s =======================================================

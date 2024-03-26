@@ -1,0 +1,15 @@
+Value Filldown area (\d+\.\d+\.\d+\.\d+)
+Value type (\w+)
+Value lsa_id (\d+\.\d+\.\d+\.\d+)
+Value adv_rtr (\d+\.\d+\.\d+\.\d+)
+Value seq_num ([0-9abcdefx]+)
+Value age_sec (\d+)
+Value options ([0-9abcdefx]+)
+Value chksum ([0-9abcdefx]+)
+Value length (\d+)
+
+Start
+  ^\s*OSPF\s+database,\s+Area\s+${area}
+  ^${type}\s+\*?${lsa_id}\s+${adv_rtr}\s+${seq_num}\s+${age_sec}\s+${options}\s+${chksum}\s+${length} -> Record
+
+EOF

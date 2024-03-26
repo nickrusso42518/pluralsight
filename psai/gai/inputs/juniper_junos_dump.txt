@@ -1,0 +1,40 @@
+#  [edit protocols ospf] root# help apropos interface | match "^set"
+#  [edit protocols ospf] root# help apropos area | match "^set"
+#  [edit] root# help apropos router-id | match <router-id>
+set area <area_id> sham-link-remote <address>
+set area <area_id> interface
+set area <area_id> interface <interface_name>
+set area <area_id> interface <interface_name> disable
+set area <area_id> interface <interface_name> passive
+set area <area_id> interface <interface_name> interface-type
+set area <area_id> interface <interface_name> secondary
+set area <area_id> interface <interface_name> metric <metric>
+set area <area_id> interface <interface_name> demand-circuit
+set area <area_id> interface <interface_name> dynamic-neighbors
+set area <area_id> interface <interface_name> poll-interval <poll-interval>
+set area <area_id> interface <interface_name> no-interface-state-traps
+set area <area_id> interface <interface_name> authentication simple-password <value>
+set area <area_id> interface <interface_name> authentication md5 <key-id> key <value>
+set area <area_id> peer-interface <peer_interface_name>
+set area <area_id>
+set area <area_id> stub
+set area <area_id> stub default-metric <default-metric>
+set area <area_id> stub no-summaries
+set area <area_id> nssa
+set area <area_id> nssa default-lsa default-metric <default-metric>
+set area <area_id> nssa no-summaries
+set area <area_id> nssa area-range
+set area <area_id> nssa area-range <area_range>
+set area <area_id> nssa area-range <area_range> restrict
+set area <area_id> nssa area-range <area_range> exact
+set area <area_id> nssa area-range <area_range> override-metric
+set area <area_id> area-range <area_range>
+set area <area_id> area-range <area_range> restrict
+set area <area_id> area-range <area_range> exact
+set area <area_id> area-range <area_range> override-metric <override-metric>
+set area <area_id> inter-area-prefix-export <value>
+set area <area_id> inter-area-prefix-import <value>
+set area <area_id> virtual-link neighbor-id <neighbor-id> transit-area <transit-area>
+set area <area_id> interface
+set routing-options router-id <router-id>
+set routing-instances <instance_name> routing-options router-id <router-id>

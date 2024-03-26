@@ -1,0 +1,30 @@
+hostname R14
+interface Loopback0
+ ip address 10.0.0.14 255.255.255.255
+ ip ospf 1 area 0
+interface Ethernet0/1
+ description TO R12
+ ip address 10.12.14.14 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 3
+ ip ospf cost 10
+interface Ethernet0/2
+ description TO BACKBONE LAN
+ ip address 10.0.99.14 255.255.255.0
+ ip ospf authentication
+ ip ospf authentication-key OSPF1234
+ ip ospf network broadcast
+ ip ospf priority 0
+ ip ospf 1 area 0
+ ip ospf cost 5
+interface Ethernet0/3
+ description TO R13
+ ip address 10.13.14.14 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 3
+ ip ospf cost 10
+router ospf 1
+ router-id 10.0.0.14
+ area 3 stub
+ passive-interface Loopback0
+end

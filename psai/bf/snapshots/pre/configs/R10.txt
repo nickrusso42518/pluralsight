@@ -1,0 +1,18 @@
+hostname R10
+interface Loopback0
+ ip address 10.0.0.10 255.255.255.255
+ ip ospf 1 area 1
+interface Loopback1
+ description EXTRANET LAN SIMULATION
+ ip address 192.168.0.10 255.255.240.0
+interface Ethernet0/0
+ description TO R02
+ ip address 10.2.10.10 255.255.255.0
+ ip ospf network point-to-point
+ ip ospf 1 area 1
+ ip ospf cost 10
+router ospf 1
+ router-id 10.0.0.10
+ area 1 nssa
+ redistribute connected subnets
+end

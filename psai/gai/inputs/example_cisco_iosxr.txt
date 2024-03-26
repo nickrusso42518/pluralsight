@@ -1,0 +1,23 @@
+hostname R01
+interface Loopback0
+ ipv4 address 192.0.2.1 255.255.255.255
+interface GigabitEthernet0/0/0/1
+ description TO R02
+ ipv4 address 203.0.113.1 255.255.255.240
+interface GigabitEthernet0/0/0/7
+ description TO R03
+ ipv4 address 198.51.100.1 255.255.255.0
+router ospf 1
+ router-id 192.0.2.1
+ area 0
+  interface GigabitEthernet0/0/0/7
+   authentication-key clear OSPF1234
+   network broadcast
+ area 1
+  interface Loopback0
+   passive enable
+ area 3
+  stub no-summary
+  interface GigabitEthernet0/0/0/1
+   cost 7
+   network point-to-point

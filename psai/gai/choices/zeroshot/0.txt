@@ -1,0 +1,67 @@
+system {
+    host-name R01;
+    replace:
+    interface lo0 {
+        unit 0 {
+            family inet {
+                address 10.0.0.1/32;
+            }
+        }
+    }
+    interface ge-0/0/0 {
+        description "TO R13";
+        unit 0 {
+            family inet {
+                address 10.1.13.1/24;
+            }
+        }
+    }
+    interface ge-0/0/1 {
+        description "TO BACKBONE LAN";
+        unit 0 {
+            family inet {
+                address 10.0.99.1/24 {
+                    authentication {
+                        md5 1 key "$9$vTfORPF1234";
+                    }
+                    priority 0;
+                }
+            }
+        }
+    }
+    interface ge-0/0/2 {
+        description "TO R12";
+        unit 0 {
+            family inet {
+                address 10.1.12.1/24;
+            }
+        }
+    }
+    protocols {
+        ospf {
+            area 0.0.0.0 {
+                interface lo0.0;
+                interface ge-0/0/1.0 {
+                    metric 5;
+                    interface-type broadcast;
+                }
+            }
+            area 0.0.0.3 {
+                stub {
+                    default-metric 10;
+                    no-summaries;
+                }
+                interface ge-0/0/0.0 {
+                    metric 7;
+                    interface-type p2p;
+                }
+                interface ge-0/0/2.0 {
+                    metric 7;
+                    interface-type p2p;
+                }
+            }
+            passive-interface lo0.0;
+            router-id 10.0.0.1;
+        }
+    }
+}

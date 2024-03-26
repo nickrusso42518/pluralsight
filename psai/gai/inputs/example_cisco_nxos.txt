@@ -1,0 +1,24 @@
+feature ospf
+hostname R01
+interface Loopback
+  ip address 192.0.2.1/24
+  ip router ospf 1 area 0.0.0.1
+interface Ethernet1/1
+  description TO R02
+  no switchport
+  ip address 203.0.113.1 255.255.255.240
+  ip ospf network point-to-point
+  ip router ospf 1 area 0.0.0.3
+  ip ospf cost 7
+interface Ethernet1/7
+  description TO R03
+  no switchport
+  ip address 198.51.100.1/24
+  ip router ospf 1 area 0.0.0.0
+  ip ospf network broadcast
+  ip ospf authentication
+  ip ospf authentication-key OSPF1234
+router ospf 1
+ router-id 192.0.2.1
+ area 0.0.0.3 stub no-summary
+ passive-interface Loopback0

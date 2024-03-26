@@ -1,0 +1,287 @@
+[
+  {
+    "Interface": {
+      "hostname": "r13",
+      "interface": "Loopback0"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 3,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": true,
+    "OSPF_Cost": 1,
+    "OSPF_Network_Type": "BROADCAST",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r02",
+      "interface": "Loopback0"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 0,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": true,
+    "OSPF_Cost": 1,
+    "OSPF_Network_Type": "BROADCAST",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r14",
+      "interface": "Loopback0"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 0,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": true,
+    "OSPF_Cost": 1,
+    "OSPF_Network_Type": "BROADCAST",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r14",
+      "interface": "Ethernet0/2"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 0,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 5,
+    "OSPF_Network_Type": "BROADCAST",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r02",
+      "interface": "Ethernet0/2"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 0,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 5,
+    "OSPF_Network_Type": "BROADCAST",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r13",
+      "interface": "Ethernet0/1"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 3,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 7,
+    "OSPF_Network_Type": "POINT_TO_POINT",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r01",
+      "interface": "Ethernet0/2"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 0,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 5,
+    "OSPF_Network_Type": "BROADCAST",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r02",
+      "interface": "Ethernet0/0"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 1,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 10,
+    "OSPF_Network_Type": "POINT_TO_POINT",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r12",
+      "interface": "Loopback0"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 3,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": true,
+    "OSPF_Cost": 1,
+    "OSPF_Network_Type": "BROADCAST",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r14",
+      "interface": "Ethernet0/1"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 3,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 10,
+    "OSPF_Network_Type": "POINT_TO_POINT",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r10",
+      "interface": "Loopback0"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 1,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 1,
+    "OSPF_Network_Type": "BROADCAST",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r14",
+      "interface": "Ethernet0/3"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 3,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 10,
+    "OSPF_Network_Type": "POINT_TO_POINT",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r13",
+      "interface": "Ethernet0/3"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 3,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 10,
+    "OSPF_Network_Type": "POINT_TO_POINT",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r01",
+      "interface": "Loopback0"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 0,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": true,
+    "OSPF_Cost": 1,
+    "OSPF_Network_Type": "BROADCAST",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r01",
+      "interface": "Ethernet0/1"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 3,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 7,
+    "OSPF_Network_Type": "POINT_TO_POINT",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r12",
+      "interface": "Ethernet0/1"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 3,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 10,
+    "OSPF_Network_Type": "POINT_TO_POINT",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r01",
+      "interface": "Ethernet0/3"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 3,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 7,
+    "OSPF_Network_Type": "POINT_TO_POINT",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r10",
+      "interface": "Ethernet0/0"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 1,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 10,
+    "OSPF_Network_Type": "POINT_TO_POINT",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  },
+  {
+    "Interface": {
+      "hostname": "r12",
+      "interface": "Ethernet0/3"
+    },
+    "VRF": "default",
+    "Process_ID": "1",
+    "OSPF_Area_Name": 3,
+    "OSPF_Enabled": true,
+    "OSPF_Passive": false,
+    "OSPF_Cost": 7,
+    "OSPF_Network_Type": "POINT_TO_POINT",
+    "OSPF_Hello_Interval": 10,
+    "OSPF_Dead_Interval": 40
+  }
+]

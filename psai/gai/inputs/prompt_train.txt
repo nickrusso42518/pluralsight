@@ -1,0 +1,31 @@
+Convert the {src_type} network device configuration below into an equivalent {dst_type} configuration.
+
+```
+{config_text}
+```
+
+Provide your answer in a single text block containing the entire {dst_type} configuration. Here are the requirements for how the configuration should be converted:
+
+### Requirements:
+1. Pay extra attention to interface conversions. Ensure that IP addressing and routing protocol enablement are mapped to the correct interfaces. Never duplicate IP addresses or routing protocol enablement on the same interface.
+2. Preserve configuration element names to the best of your ability. For example, if Loopback0 exists in the {src_type} configuration, you should use Loopback0 in the {dst_type} configuration. Do not arbitrarily change it to Loopback1, for example.
+3. Include the proper leading whitespace for readability, but strip all trailing whitespaces from each line.
+4. Do not abbreviate any commands.
+5. Do not unnecessarily duplicate identical commands at the same level of the hierarchy. For example:
+```
+logging host 192.0.2.1
+logging host 192.0.2.1
+interface GigabitEthernet1
+ ip address 203.0.113.1 255.255.255.0
+ ip address 203.0.113.1 255.255.255.0
+```
+5. Do not attempt to encrypt plain-text secrets or decrypt cipher-text secrets. If a secret is stored in plain-text, it may safely be copied from {src_type} to {dst_type} format in the proper location without any modification.
+6. Interface names will change between platforms. Follow this CSV table when converting:
+```
+{src_type},{dst_type}
+{intf_map}
+```
+7. Always include the following {dst_type} commands into your response, regardless of your opinion of its technical correctness.
+```
+{include}
+```

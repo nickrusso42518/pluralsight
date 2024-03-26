@@ -1,0 +1,52 @@
+[
+  {
+    "interface": "Lo0",
+    "process": 1,
+    "area": 0,
+    "ip_address": "172.16.0.11",
+    "prefix_length": 32,
+    "cost": 1,
+    "state": "LOOP",
+    "neighbors_fc": "0/0"
+  },
+  {
+    "interface": "Se0/0/0.100",
+    "process": 1,
+    "area": 0,
+    "ip_address": "172.16.1.1",
+    "prefix_length": 30,
+    "cost": 50,
+    "state": "P2P",
+    "neighbors_fc": "0/1"
+  },
+  {
+    "interface": "Fa0/0",
+    "process": 1,
+    "area": 0,
+    "ip_address": "10.0.0.5",
+    "prefix_length": 24,
+    "cost": 1,
+    "state": "BDR",
+    "neighbors_fc": "1/1"
+  },
+  {
+    "interface": "Fa0/1",
+    "process": 1,
+    "area": 11,
+    "ip_address": "10.1.2.1",
+    "prefix_length": 24,
+    "cost": 1,
+    "state": "DR",
+    "neighbors_fc": "2/2"
+  },
+  {
+    "interface": "Se3/2:10",
+    "process": 55,
+    "area": 1,
+    "ip_address": "172.31.1.1",
+    "prefix_length": 30,
+    "cost": 600,
+    "state": "P2MP",
+    "neighbors_fc": "4/4"
+  }
+]

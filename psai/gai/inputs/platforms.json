@@ -1,0 +1,75 @@
+{
+  "arista_eos": {
+    "type": "Arista EOS",
+    "include": [
+      "username convert secret convert123",
+      "enable secret convert123"
+    ],
+    "intf": {
+      "10": "Ethernet",
+      "100": "Ethernet",
+      "1000": "Ethernet",
+      "10000": "Ethernet",
+      "40000": "Ethernet",
+      "100000": "Ethernet"
+    }
+  },
+  "cisco_iosxe": {
+    "type": "Cisco IOS-XE",
+    "include": [
+      "username convert secret convert123",
+      "enable secret convert123"
+    ],
+    "intf": {
+      "10": "Ethernet",
+      "100": "FastEthernet",
+      "1000": "GigabitEthernet",
+      "10000": "TenGigabitEthernet",
+      "40000": "FortyGigabitEthernet",
+      "100000": "HundredGigabitEthernet"
+    }
+  },
+  "cisco_iosxr": {
+    "type": "Cisco IOS-XR",
+    "include": [
+      "username convert secret convert123",
+      "username convert group admin"
+    ],
+    "intf": {
+      "10": "GigabitEthernet",
+      "100": "GigabitEthernet",
+      "1000": "GigabitEthernet",
+      "10000": "TenGigE",
+      "40000": "FortyGigE",
+      "100000": "HundredGigE"
+    }
+  },
+  "cisco_nxos": {
+    "type": "Cisco NX-OS",
+    "include": [
+      "username convert password convert123 role network-admin"
+    ],
+    "intf": {
+      "10": "ethernet",
+      "100": "ethernet",
+      "1000": "ethernet",
+      "10000": "ethernet",
+      "40000": "ethernet",
+      "100000": "ethernet"
+    }
+  },
+  "juniper_junos": {
+    "type": "Juniper JunOS",
+    "include": [
+      "set system root-authentication plain-text-password-value convert123"
+    ],
+    "intf": {
+      "10": "em",
+      "100": "fe",
+      "1000": "ge",
+      "10000": "xe",
+      "40000": "xle",
+      "100000": "et"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+R13#traceroute 10.0.0.10 source 10.0.0.13
+Type escape sequence to abort.
+Tracing the route to 10.0.0.10
+VRF info: (vrf in name/id, vrf out name/id)
+  1 10.13.14.14 3 msec 2 msec 1 msec
+  2 10.0.99.2 2 msec 4 msec 1 msec
+  3 10.2.10.10 3 msec 4 msec 15 msec
+
+R13#traceroute 192.168.0.10 source 10.0.0.13
+Type escape sequence to abort.
+Tracing the route to 192.168.0.10
+VRF info: (vrf in name/id, vrf out name/id)
+  1 10.1.13.1 6 msec 7 msec 6 msec
+  2 10.0.99.2 6 msec 6 msec 1 msec
+  3 10.2.10.10 2 msec 4 msec 6 msec

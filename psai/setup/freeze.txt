@@ -1,0 +1,12 @@
+openai==1.7.0
+pybatfish==2023.12.16.1270
+httpx==0.26.0
+black==23.12.1
+pylint==3.0.3
+pytest==7.4.4
+pytest-asyncio==0.23.3
+scrapli==2023.7.30
+scrapli[textfsm]
+ntc-templates==4.3.0
+backoff==2.2.1
+scipy==1.12.0

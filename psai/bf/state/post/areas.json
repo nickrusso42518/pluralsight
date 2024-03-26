@@ -1,0 +1,116 @@
+[
+  {
+    "Node": "r01",
+    "VRF": "default",
+    "Process_ID": "default",
+    "Area": "0",
+    "Area_Type": "NONE",
+    "Active_Interfaces": [
+      "em2.0"
+    ],
+    "Passive_Interfaces": [
+      "lo0.0"
+    ]
+  },
+  {
+    "Node": "r14",
+    "VRF": "default",
+    "Process_ID": "1",
+    "Area": "0",
+    "Area_Type": "NONE",
+    "Active_Interfaces": [
+      "Ethernet0/2"
+    ],
+    "Passive_Interfaces": [
+      "Loopback0"
+    ]
+  },
+  {
+    "Node": "r12",
+    "VRF": "default",
+    "Process_ID": "1",
+    "Area": "3",
+    "Area_Type": "STUB",
+    "Active_Interfaces": [
+      "Ethernet0/1",
+      "Ethernet0/3"
+    ],
+    "Passive_Interfaces": [
+      "Loopback0"
+    ]
+  },
+  {
+    "Node": "r02",
+    "VRF": "default",
+    "Process_ID": "1",
+    "Area": "0",
+    "Area_Type": "NONE",
+    "Active_Interfaces": [
+      "Ethernet0/2"
+    ],
+    "Passive_Interfaces": [
+      "Loopback0"
+    ]
+  },
+  {
+    "Node": "r02",
+    "VRF": "default",
+    "Process_ID": "1",
+    "Area": "1",
+    "Area_Type": "NSSA",
+    "Active_Interfaces": [
+      "Ethernet0/0"
+    ],
+    "Passive_Interfaces": []
+  },
+  {
+    "Node": "r10",
+    "VRF": "default",
+    "Process_ID": "1",
+    "Area": "1",
+    "Area_Type": "NSSA",
+    "Active_Interfaces": [
+      "Ethernet0/0",
+      "Loopback0"
+    ],
+    "Passive_Interfaces": []
+  },
+  {
+    "Node": "r01",
+    "VRF": "default",
+    "Process_ID": "default",
+    "Area": "3",
+    "Area_Type": "STUB",
+    "Active_Interfaces": [
+      "em1.0",
+      "em3.0"
+    ],
+    "Passive_Interfaces": []
+  },
+  {
+    "Node": "r13",
+    "VRF": "default",
+    "Process_ID": "1",
+    "Area": "3",
+    "Area_Type": "STUB",
+    "Active_Interfaces": [
+      "Ethernet0/1",
+      "Ethernet0/3"
+    ],
+    "Passive_Interfaces": [
+      "Loopback0"
+    ]
+  },
+  {
+    "Node": "r14",
+    "VRF": "default",
+    "Process_ID": "1",
+    "Area": "3",
+    "Area_Type": "STUB",
+    "Active_Interfaces": [
+      "Ethernet0/1",
+      "Ethernet0/3"
+    ],
+    "Passive_Interfaces": []
+  }
+]

@@ -1,0 +1,173 @@
+{
+  "all_links": [
+    {
+      "Interface": {
+        "hostname": "r01",
+        "interface": "em2.0"
+      },
+      "Remote_Interface": {
+        "hostname": "sw",
+        "interface": "0/0"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r02",
+        "interface": "Ethernet0/2"
+      },
+      "Remote_Interface": {
+        "hostname": "sw",
+        "interface": "0/1"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r14",
+        "interface": "Ethernet0/2"
+      },
+      "Remote_Interface": {
+        "hostname": "sw",
+        "interface": "0/2"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r01",
+        "interface": "em1.0"
+      },
+      "Remote_Interface": {
+        "hostname": "r13",
+        "interface": "Ethernet0/1"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r13",
+        "interface": "Ethernet0/1"
+      },
+      "Remote_Interface": {
+        "hostname": "r01",
+        "interface": "em1.0"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r01",
+        "interface": "em3.0"
+      },
+      "Remote_Interface": {
+        "hostname": "r12",
+        "interface": "Ethernet0/3"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r12",
+        "interface": "Ethernet0/3"
+      },
+      "Remote_Interface": {
+        "hostname": "r01",
+        "interface": "em3.0"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r02",
+        "interface": "Ethernet0/0"
+      },
+      "Remote_Interface": {
+        "hostname": "r10",
+        "interface": "Ethernet0/0"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r10",
+        "interface": "Ethernet0/0"
+      },
+      "Remote_Interface": {
+        "hostname": "r02",
+        "interface": "Ethernet0/0"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r12",
+        "interface": "Ethernet0/1"
+      },
+      "Remote_Interface": {
+        "hostname": "r14",
+        "interface": "Ethernet0/1"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r14",
+        "interface": "Ethernet0/1"
+      },
+      "Remote_Interface": {
+        "hostname": "r12",
+        "interface": "Ethernet0/1"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r13",
+        "interface": "Ethernet0/3"
+      },
+      "Remote_Interface": {
+        "hostname": "r14",
+        "interface": "Ethernet0/3"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "r14",
+        "interface": "Ethernet0/3"
+      },
+      "Remote_Interface": {
+        "hostname": "r13",
+        "interface": "Ethernet0/3"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "sw",
+        "interface": "0/0"
+      },
+      "Remote_Interface": {
+        "hostname": "r01",
+        "interface": "em2.0"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "sw",
+        "interface": "0/1"
+      },
+      "Remote_Interface": {
+        "hostname": "r02",
+        "interface": "Ethernet0/2"
+      }
+    },
+    {
+      "Interface": {
+        "hostname": "sw",
+        "interface": "0/2"
+      },
+      "Remote_Interface": {
+        "hostname": "r14",
+        "interface": "Ethernet0/2"
+      }
+    }
+  ],
+  "nodes": {
+    "r10": "CISCO_IOS",
+    "r14": "CISCO_IOS",
+    "r12": "CISCO_IOS",
+    "r13": "CISCO_IOS",
+    "r01": "FLAT_JUNIPER",
+    "r02": "CISCO_IOS",
+    "sw": "nonbf-gns3-ethsw"
+  }
+}

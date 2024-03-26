@@ -1,0 +1,10 @@
+openai
+pybatfish
+httpx
+black
+pylint
+pytest
+scrapli
+ntc-templates
+backoff
+scipy
